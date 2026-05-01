@@ -10,7 +10,12 @@
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
   .container { max-width: 1400px; margin: 0 auto; padding: 16px; }
   h1 { font-size: 1.4rem; margin-bottom: 4px; }
-  .meta { color: var(--muted); font-size: 0.8rem; margin-bottom: 16px; }
+  .meta { color: var(--muted); font-size: 0.8rem; margin-bottom: 12px; }
+  .info-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+  .info-box .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; margin-right: 4px; }
+  .info-box .tag-filter { background: #f8514933; color: #f85149; }
+  .info-box .tag-score { background: #58a6ff22; color: #58a6ff; }
+  .info-box .tag-ref { background: #3fb95022; color: #3fb950; }
   .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
   .filters label { color: var(--muted); font-size: 0.85rem; }
   .filters select, .filters input { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-size: 0.85rem; }
@@ -44,6 +49,24 @@
 <div class="container">
   <h1>아파트 매수 후보 스코어링</h1>
   <div class="meta" id="meta"></div>
+
+  <div class="info-box">
+    <div style="margin-bottom:6px;font-weight:600;color:var(--text);">필터 조건</div>
+    <span class="tag tag-filter">가격</span> 최근 6개월 평균 7~9억 &nbsp;
+    <span class="tag tag-filter">세대수</span> 500세대 이상 &nbsp;
+    <span class="tag tag-filter">스프링클러</span> 2005년 이후 준공 (전 층 설치 의무) &nbsp;
+    <span class="tag tag-filter">거래량</span> 최근 6개월 3건+, 최근/이전 각 2건+
+    <br>
+    <div style="margin:8px 0 4px;font-weight:600;color:var(--text);">스코어링 가중치</div>
+    <span class="tag tag-score">가속도 35%</span> 최근 3개월 vs 이전 3개월 가격 변화율 &nbsp;
+    <span class="tag tag-score">환금성 25%</span> 최근 6개월 거래건수 / 해당 면적타입 세대수 &nbsp;
+    <span class="tag tag-score">신축도 20%</span> 건축년도 기반
+    <br>
+    <div style="margin:8px 0 4px;font-weight:600;color:var(--text);">참고 데이터 (스코어링 미반영)</div>
+    <span class="tag tag-ref">출퇴근</span> Kakao Mobility API 평일 실측 (판교아지트) &nbsp;
+    <span class="tag tag-ref">소아과</span> 카카오 검색 + 네이버 도로거리 도보 환산 &nbsp;
+    <span class="tag tag-ref">고저차</span> Google Elevation API (~10m 해상도)
+  </div>
 
   <div class="filters">
     <label>면적:</label>
@@ -119,7 +142,7 @@ async function init() {
   regions.forEach(r => { const o = document.createElement('option'); o.value = r; o.textContent = r; sel.appendChild(o); });
 
   document.getElementById('meta').textContent =
-    `가격: 7~9억 | 500세대+ | 2005년 이후 준공 | 스코어링: 가속도(35%) + 환금성(25%) + 신축도(20%)`;
+    `데이터: 2021-01~2026-04 실거래가 (전용 59~85㎡) | 최종 업데이트: ${new Date().toLocaleDateString('ko-KR')}`;
 
   render();
 
