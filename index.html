@@ -38,6 +38,12 @@
   .badge { display: inline-block; padding: 2px 6px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; }
   .badge-84 { background: #1f6feb33; color: #58a6ff; }
   .badge-sm { background: #23863533; color: #3fb950; }
+  .price-cell { position: relative; cursor: pointer; }
+  .price-cell:hover .tooltip { display: block; }
+  .tooltip { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 8px; z-index: 10; min-width: 220px; box-shadow: 0 4px 12px rgba(0,0,0,0.4); font-size: 0.75rem; text-align: left; white-space: normal; }
+  .tooltip table { width: 100%; font-size: 0.72rem; }
+  .tooltip th { background: transparent; font-weight: 600; color: var(--muted); padding: 2px 4px; cursor: default; }
+  .tooltip td { padding: 2px 4px; border: none; }
   @media (max-width: 768px) {
     .container { padding: 8px; }
     table { font-size: 0.75rem; }
@@ -223,17 +229,22 @@ function render() {
     const slopeClass = d.slope != null ? (d.slope <= 10 ? 'good' : d.slope >= 30 ? 'bad' : '') : '';
     const scoreWidth = Math.min(d.score / 80 * 60, 60);
 
+    const naverMap = (q) => `https://map.naver.com/v5/search/${encodeURIComponent(q)}`;
+    const regionLink = `<a href="${naverMap(d.name + ' ' + d.dong)}" target="_blank">${d.region} ${d.dong}</a>`;
+    const ped1Link = d.pedia1 && d.pedia1_name ? `<a href="${naverMap(d.pedia1_name + ' ' + d.dong)}" target="_blank" class="${pedClass(d.pedia1)}">${d.pedia1}분</a>` : (d.pedia1 ? `<span class="${pedClass(d.pedia1)}">${d.pedia1}분</span>` : '-');
+    const ped2Link = d.pedia2 && d.pedia2_name ? `<a href="${naverMap(d.pedia2_name + ' ' + d.dong)}" target="_blank" class="${pedClass(d.pedia2)}">${d.pedia2}분</a>` : (d.pedia2 ? `<span class="${pedClass(d.pedia2)}">${d.pedia2}분</span>` : '-');
+
     return `<tr>
       <td>${i+1}</td>
       <td>${link}${area}</td>
-      <td>${d.region} ${d.dong}</td>
-      <td>${(d.avg/10000).toFixed(1)}억</td>
+      <td>${regionLink}</td>
+      <td class="price-cell">${(d.avg/10000).toFixed(1)}억${d.recent_trades && d.recent_trades.length > 0 ? `<div class="tooltip"><div style="font-weight:600;margin-bottom:4px;color:var(--text)">최근 거래 (4월~)</div><table><tr><th>날짜</th><th>가격</th><th>층</th><th>면적</th></tr>${d.recent_trades.map(t => `<tr><td>${t.date.slice(5)}</td><td>${t.price}억</td><td>${t.floor}층</td><td>${t.area}㎡</td></tr>`).join('')}</table></div>` : ''}</td>
       <td class="${accelClass}">${d.accel > 0 ? '+' : ''}${d.accel}%</td>
       <td>${d.liquidity ? d.liquidity + '%' : '-'}</td>
       <td class="${morningClass}">${d.morning ? d.morning + '분' : '-'}</td>
       <td class="${eveningClass}">${d.evening ? d.evening + '분' : '-'}</td>
-      <td class="${pedClass(d.pedia1)}">${d.pedia1 ? d.pedia1 + '분' : '-'}</td>
-      <td class="${pedClass(d.pedia2)}">${d.pedia2 ? d.pedia2 + '분' : '-'}</td>
+      <td>${ped1Link}</td>
+      <td>${ped2Link}</td>
       <td class="${slopeClass}">${d.slope != null ? d.slope + 'm' + (d.slope_method === 'grid' ? '*' : '') : '-'}</td>
       <td>${d.build}</td>
       <td><span class="score-bar" style="width:${scoreWidth}px"></span> ${d.score}</td>
