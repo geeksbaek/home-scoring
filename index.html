@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>아파트 스코어링</title>
+<style>
+  :root { --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff; --green: #3fb950; --red: #f85149; --yellow: #d29922; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  .meta { color: var(--muted); font-size: 0.8rem; margin-bottom: 16px; }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
+  .filters label { color: var(--muted); font-size: 0.85rem; }
+  .filters select, .filters input { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-size: 0.85rem; }
+  .tab-bar { display: flex; gap: 4px; margin-bottom: 12px; }
+  .tab { padding: 8px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px 6px 0 0; cursor: pointer; color: var(--muted); font-size: 0.9rem; }
+  .tab.active { background: var(--border); color: var(--text); border-bottom-color: var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  th { background: var(--surface); position: sticky; top: 0; z-index: 1; cursor: pointer; user-select: none; }
+  th:hover { background: var(--border); }
+  th, td { padding: 8px 10px; text-align: center; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  td:nth-child(2) { text-align: left; max-width: 200px; overflow: hidden; text-overflow: ellipsis; }
+  td:nth-child(3) { text-align: left; color: var(--muted); font-size: 0.78rem; }
+  tr:hover { background: rgba(88,166,255,0.08); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .good { color: var(--green); }
+  .bad { color: var(--red); }
+  .warn { color: var(--yellow); }
+  .score-bar { display: inline-block; height: 6px; border-radius: 3px; background: var(--accent); vertical-align: middle; }
+  .badge { display: inline-block; padding: 2px 6px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; }
+  .badge-84 { background: #1f6feb33; color: #58a6ff; }
+  .badge-sm { background: #23863533; color: #3fb950; }
+  @media (max-width: 768px) {
+    .container { padding: 8px; }
+    table { font-size: 0.75rem; }
+    th, td { padding: 6px 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>아파트 매수 후보 스코어링</h1>
+  <div class="meta" id="meta"></div>
+
+  <div class="filters">
+    <label>면적:</label>
+    <select id="typeFilter">
+      <option value="84">84~85㎡</option>
+      <option value="small">59~76㎡</option>
+      <option value="all">전체</option>
+    </select>
+    <label>정렬:</label>
+    <select id="sortField">
+      <option value="score">점수</option>
+      <option value="accel">가속도</option>
+      <option value="liquidity">환금성</option>
+      <option value="morning">출근시간</option>
+      <option value="evening">퇴근시간</option>
+      <option value="pedia1">소아과</option>
+      <option value="slope">고저차</option>
+      <option value="avg">현재가</option>
+      <option value="build">건축년도</option>
+    </select>
+    <label>지역:</label>
+    <select id="regionFilter">
+      <option value="">전체</option>
+    </select>
+    <label>출근:</label>
+    <select id="commuteFilter">
+      <option value="">전체</option>
+      <option value="20">20분 이내</option>
+      <option value="30">30분 이내</option>
+      <option value="40">40분 이내</option>
+    </select>
+  </div>
+
+  <div id="count" style="color:var(--muted);font-size:0.8rem;margin-bottom:8px;"></div>
+  <table>
+    <thead>
+      <tr>
+        <th data-sort="rank">#</th>
+        <th data-sort="name">단지명</th>
+        <th data-sort="region">지역</th>
+        <th data-sort="avg">현재가</th>
+        <th data-sort="accel">가속도</th>
+        <th data-sort="liquidity">환금</th>
+        <th data-sort="morning">출근</th>
+        <th data-sort="evening">퇴근</th>
+        <th data-sort="pedia1">소아과1</th>
+        <th data-sort="pedia2">소아과2</th>
+        <th data-sort="slope">고저차</th>
+        <th data-sort="build">건축</th>
+        <th data-sort="score">점수</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<script>
+let DATA = [];
+let currentSort = 'score';
+let sortAsc = false;
+
+async function init() {
+  const r = await fetch('data.json');
+  DATA = await r.json();
+
+  // 스코어 계산
+  calcScores('84');
+  calcScores('small');
+
+  // 지역 필터 옵션
+  const regions = [...new Set(DATA.map(d => d.region.split(' ')[0]))].sort();
+  const sel = document.getElementById('regionFilter');
+  regions.forEach(r => { const o = document.createElement('option'); o.value = r; o.textContent = r; sel.appendChild(o); });
+
+  document.getElementById('meta').textContent =
+    `가격: 7~9억 | 500세대+ | 2005년 이후 준공 | 스코어링: 가속도(35%) + 환금성(25%) + 신축도(20%)`;
+
+  render();
+
+  document.getElementById('typeFilter').onchange = render;
+  document.getElementById('sortField').onchange = e => { currentSort = e.target.value; sortAsc = false; render(); };
+  document.getElementById('regionFilter').onchange = render;
+  document.getElementById('commuteFilter').onchange = render;
+  document.querySelectorAll('th[data-sort]').forEach(th => {
+    th.onclick = () => {
+      const field = th.dataset.sort;
+      if (currentSort === field) sortAsc = !sortAsc;
+      else { currentSort = field; sortAsc = false; }
+      document.getElementById('sortField').value = field;
+      render();
+    };
+  });
+}
+
+function calcScores(type) {
+  const subset = DATA.filter(d => type === '84' ? d.atype === '84' : d.atype !== '84');
+  const n = subset.length;
+  if (n === 0) return;
+
+  const rank = (arr) => {
+    const sorted = [...arr].sort((a, b) => a - b);
+    return arr.map(v => (sorted.indexOf(v) + 1) / n);
+  };
+
+  const accels = rank(subset.map(d => d.accel));
+  const liqs = rank(subset.map(d => d.liquidity || 0));
+  const builds = rank(subset.map(d => d.build));
+
+  subset.forEach((d, i) => {
+    d.score = Math.round((accels[i] * 35 + liqs[i] * 25 + builds[i] * 20) * 10) / 10;
+  });
+}
+
+function render() {
+  const type = document.getElementById('typeFilter').value;
+  const region = document.getElementById('regionFilter').value;
+  const commute = document.getElementById('commuteFilter').value;
+
+  let filtered = DATA.filter(d => {
+    if (type === '84') return d.atype === '84';
+    if (type === 'small') return d.atype !== '84';
+    return true;
+  });
+
+  if (region) filtered = filtered.filter(d => d.region.includes(region));
+  if (commute) filtered = filtered.filter(d => d.morning && d.morning <= parseInt(commute));
+
+  // 정렬
+  const sortKey = currentSort;
+  filtered.sort((a, b) => {
+    let va = a[sortKey], vb = b[sortKey];
+    if (va == null) va = sortAsc ? Infinity : -Infinity;
+    if (vb == null) vb = sortAsc ? Infinity : -Infinity;
+    if (sortKey === 'name' || sortKey === 'region') {
+      return sortAsc ? String(va).localeCompare(String(vb)) : String(vb).localeCompare(String(va));
+    }
+    // 출근/퇴근/소아과/고저차: 낮을수록 좋음 → 기본 오름차순
+    if (['morning','evening','pedia1','pedia2','slope','avg'].includes(sortKey)) {
+      return sortAsc ? vb - va : va - vb;
+    }
+    return sortAsc ? va - vb : vb - va;
+  });
+
+  document.getElementById('count').textContent = `${filtered.length}개 단지`;
+
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = filtered.map((d, i) => {
+    const link = d.hcode ? `<a href="https://hogangnono.com/apt/${d.hcode}" target="_blank">${d.name}</a>` : d.name;
+    const area = d.atype !== '84' ? ` <span class="badge badge-sm">${d.area}㎡</span>` : '';
+    const accelClass = d.accel > 5 ? 'good' : d.accel < 0 ? 'bad' : '';
+    const morningClass = d.morning ? (d.morning <= 25 ? 'good' : d.morning >= 40 ? 'bad' : '') : '';
+    const eveningClass = d.evening ? (d.evening <= 30 ? 'good' : d.evening >= 50 ? 'bad' : '') : '';
+    const pedClass = (v) => v ? (v <= 5 ? 'good' : v >= 20 ? 'bad' : '') : '';
+    const slopeClass = d.slope != null ? (d.slope <= 10 ? 'good' : d.slope >= 30 ? 'bad' : '') : '';
+    const scoreWidth = Math.min(d.score / 80 * 60, 60);
+
+    return `<tr>
+      <td>${i+1}</td>
+      <td>${link}${area}</td>
+      <td>${d.region} ${d.dong}</td>
+      <td>${(d.avg/10000).toFixed(1)}억</td>
+      <td class="${accelClass}">${d.accel > 0 ? '+' : ''}${d.accel}%</td>
+      <td>${d.liquidity ? d.liquidity + '%' : '-'}</td>
+      <td class="${morningClass}">${d.morning ? d.morning + '분' : '-'}</td>
+      <td class="${eveningClass}">${d.evening ? d.evening + '분' : '-'}</td>
+      <td class="${pedClass(d.pedia1)}">${d.pedia1 ? d.pedia1 + '분' : '-'}</td>
+      <td class="${pedClass(d.pedia2)}">${d.pedia2 ? d.pedia2 + '분' : '-'}</td>
+      <td class="${slopeClass}">${d.slope != null ? d.slope + 'm' + (d.slope_method === 'grid' ? '*' : '') : '-'}</td>
+      <td>${d.build}</td>
+      <td><span class="score-bar" style="width:${scoreWidth}px"></span> ${d.score}</td>
+    </tr>`;
+  }).join('');
+}
+
+init();
+</script>
+</body>
+</html>
