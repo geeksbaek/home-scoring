@@ -241,8 +241,8 @@ function render() {
       <td class="price-cell">${(d.avg/10000).toFixed(1)}억${d.recent_trades && d.recent_trades.length > 0 ? `<div class="tooltip"><div style="font-weight:600;margin-bottom:4px;color:var(--text)">최근 거래 (4월~)</div><table><tr><th>날짜</th><th>가격</th><th>층</th><th>면적</th></tr>${d.recent_trades.map(t => `<tr><td>${t.date.slice(5)}</td><td>${t.price}억</td><td>${t.floor}층</td><td>${t.area}㎡</td></tr>`).join('')}</table></div>` : ''}</td>
       <td class="${accelClass}">${d.accel > 0 ? '+' : ''}${d.accel}%</td>
       <td>${d.liquidity ? d.liquidity + '%' : '-'}</td>
-      <td class="${morningClass}">${d.morning ? d.morning + '분' : '-'}</td>
-      <td class="${eveningClass}">${d.evening ? d.evening + '분' : '-'}</td>
+      <td class="${morningClass}">${d.morning ? d.morning + '분' + (d.morning_cnt > 1 ? '<sub style="color:var(--muted);font-size:0.65rem">(' + d.morning_cnt + ')</sub>' : '') : '-'}</td>
+      <td class="${eveningClass}">${d.evening ? d.evening + '분' + (d.evening_cnt > 1 ? '<sub style="color:var(--muted);font-size:0.65rem">(' + d.evening_cnt + ')</sub>' : '') : '-'}</td>
       <td>${ped1Link}</td>
       <td>${ped2Link}</td>
       <td class="${slopeClass}">${d.slope != null ? d.slope + 'm' + (d.slope_method === 'grid' ? '*' : '') : '-'}</td>
