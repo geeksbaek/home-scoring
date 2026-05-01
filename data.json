@@ -772,8 +772,8 @@
     "liquidity": 0.9,
     "morning": null,
     "evening": null,
-    "slope": 5.7,
-    "slope_method": "grid",
+    "slope": null,
+    "slope_method": "",
     "pedia1": null,
     "pedia2": null,
     "hcode": null
