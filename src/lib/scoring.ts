@@ -16,8 +16,8 @@ export interface AptData {
   evening: number | null;
   morning_cnt: number;
   evening_cnt: number;
-  morning_details: { date: string; weekday: string; minutes: number }[];
-  evening_details: { date: string; weekday: string; minutes: number }[];
+  morning_details: { date: string; weekday: string; minutes: number; time?: string }[];
+  evening_details: { date: string; weekday: string; minutes: number; time?: string }[];
   slope: number | null;
   slope_method: string;
   slope_dongs: { dong: number; elev: number }[];
@@ -29,6 +29,13 @@ export interface AptData {
   pedia2_slope: number | null;
   hcode: string | null;
   recent_trades: { date: string; price: number; floor: number | null; area: number }[];
+  // K-apt
+  parking: number | null;
+  parking_per_hh: number | null;
+  elevator: number | null;
+  households: number | null;
+  heat_type: string | null;
+  repair_fund: number | null;
   // computed
   score: number;
   pedScore: number | null;
@@ -83,6 +90,15 @@ export function pedLabel(v: number | null): Label {
   if (v <= 15) return { text: "보통", variant: "default" };
   if (v <= 20) return { text: "나쁨", variant: "warning" };
   return { text: "매우나쁨", variant: "destructive" };
+}
+
+export function parkingLabel(v: number | null): Label {
+  if (v == null) return { text: "-", variant: "default" };
+  if (v >= 1.5) return { text: `${v}대`, variant: "success" };
+  if (v >= 1.2) return { text: `${v}대`, variant: "success" };
+  if (v >= 1.0) return { text: `${v}대`, variant: "default" };
+  if (v >= 0.8) return { text: `${v}대`, variant: "warning" };
+  return { text: `${v}대`, variant: "destructive" };
 }
 
 export function naverMapUrl(query: string, isMobile: boolean): string {

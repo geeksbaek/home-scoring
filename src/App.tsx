@@ -9,7 +9,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Card, CardContent } from "@/components/ui/card";
 import {
   type AptData, pedScore, commuteScore, calcScores,
-  commuteLabel, pedLabel, naverMapUrl, type Label,
+  commuteLabel, pedLabel, parkingLabel, naverMapUrl, type Label,
 } from "@/lib/scoring";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
@@ -67,12 +67,12 @@ function CommutePopover({ data }: { data: AptData }) {
         <div className="flex justify-between"><span className="text-muted-foreground">퇴근 평균</span><span>{data.evening ? `${data.evening}분` : "-"}</span></div>
         {data.morning_details?.length > 0 && (
           <div className="mt-2"><p className="font-semibold text-muted-foreground mb-1">출근 기록</p>
-            {data.morning_details.map((t, i) => <div key={i} className="flex justify-between"><span>{t.date.slice(5)} ({t.weekday})</span><span className={color(t.minutes)}>{t.minutes}분</span></div>)}
+            {data.morning_details.map((t, i) => <div key={i} className="flex justify-between"><span>{t.date.slice(5)} ({t.weekday}) {t.time ?? ""}</span><span className={color(t.minutes)}>{t.minutes}분</span></div>)}
           </div>
         )}
         {data.evening_details?.length > 0 && (
           <div className="mt-2"><p className="font-semibold text-muted-foreground mb-1">퇴근 기록</p>
-            {data.evening_details.map((t, i) => <div key={i} className="flex justify-between"><span>{t.date.slice(5)} ({t.weekday})</span><span className={color(t.minutes)}>{t.minutes}분</span></div>)}
+            {data.evening_details.map((t, i) => <div key={i} className="flex justify-between"><span>{t.date.slice(5)} ({t.weekday}) {t.time ?? ""}</span><span className={color(t.minutes)}>{t.minutes}분</span></div>)}
           </div>
         )}
         <p className="mt-2 pt-2 border-t text-muted-foreground text-[10px]">점수 = (출근 + 퇴근) / 2</p>
@@ -159,6 +159,26 @@ function SlopePopover({ data }: { data: AptData }) {
             );
           })}
         </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+function ParkingCell({ data }: { data: AptData }) {
+  const v = data.parking_per_hh;
+  if (v == null) return <span className="text-muted-foreground text-xs">-</span>;
+  const label = parkingLabel(v);
+  return (
+    <Popover>
+      <PopoverTrigger className="cursor-pointer"><LabelBadge label={label} /></PopoverTrigger>
+      <PopoverContent className="w-48 text-xs">
+        <p className="font-semibold mb-2">주차 정보</p>
+        <div className="flex justify-between"><span className="text-muted-foreground">총 주차대수</span><span>{data.parking?.toLocaleString()}대</span></div>
+        <div className="flex justify-between"><span className="text-muted-foreground">총 세대수</span><span>{data.households?.toLocaleString()}세대</span></div>
+        <div className="flex justify-between"><span className="text-muted-foreground">세대당 주차</span><span>{v}대</span></div>
+        {data.elevator != null && <div className="flex justify-between mt-1"><span className="text-muted-foreground">승강기</span><span>{data.elevator}대</span></div>}
+        {data.heat_type && <div className="flex justify-between"><span className="text-muted-foreground">난방</span><span>{data.heat_type}</span></div>}
+        {data.repair_fund != null && <div className="flex justify-between mt-1 pt-1 border-t"><span className="text-muted-foreground">장기수선충당금</span><span>{Math.round(data.repair_fund / 10000).toLocaleString()}만원</span></div>}
       </PopoverContent>
     </Popover>
   );
@@ -313,6 +333,7 @@ export default function App() {
                 <TableHead className="text-center">출퇴근<br />용이성</TableHead>
                 <TableHead className="text-center">소아과<br />접근성</TableHead>
                 <TableHead className="text-center hidden sm:table-cell">고저차</TableHead>
+                <TableHead className="text-center hidden sm:table-cell">주차</TableHead>
                 <TableHead className="text-center">점수</TableHead>
               </TableRow>
             </TableHeader>
@@ -352,6 +373,7 @@ export default function App() {
                     <TableCell className="text-center"><CommutePopover data={d} /></TableCell>
                     <TableCell className="text-center"><PedPopover data={d} /></TableCell>
                     <TableCell className="text-center hidden sm:table-cell"><SlopePopover data={d} /></TableCell>
+                    <TableCell className="text-center hidden sm:table-cell"><ParkingCell data={d} /></TableCell>
                     <TableCell className="text-center">
                       <div className="flex items-center justify-center gap-1">
                         <div className="h-1.5 w-12 rounded-full bg-muted overflow-hidden">
