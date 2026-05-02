@@ -164,8 +164,7 @@ async function init() {
   DATA = await (await fetch('data.json')).json();
   DATA.forEach(d => { d.pedScore = pedScore(d); });
 
-  calcScores('84');
-  calcScores('small');
+  calcScores();
 
   const regions = [...new Set(DATA.map(d => d.region.split(' ')[0]))].sort();
   const sel = document.getElementById('regionFilter');
@@ -189,18 +188,17 @@ async function init() {
   };
 }
 
-function calcScores(type) {
-  const subset = DATA.filter(d => type === '84' ? d.atype === '84' : d.atype !== '84');
-  const n = subset.length;
+function calcScores() {
+  const n = DATA.length;
   if (n === 0) return;
   const rank = (arr) => {
     const sorted = [...arr].sort((a, b) => a - b);
     return arr.map(v => (sorted.indexOf(v) + 1) / n);
   };
-  const accels = rank(subset.map(d => d.accel));
-  const liqs = rank(subset.map(d => d.liquidity || 0));
-  const builds = rank(subset.map(d => d.build));
-  subset.forEach((d, i) => {
+  const accels = rank(DATA.map(d => d.accel));
+  const liqs = rank(DATA.map(d => d.liquidity || 0));
+  const builds = rank(DATA.map(d => d.build));
+  DATA.forEach((d, i) => {
     d.score = Math.round((accels[i] * 35 + liqs[i] * 25 + builds[i] * 20) * 10) / 10;
   });
 }
