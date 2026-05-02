@@ -282,7 +282,10 @@ export default function App() {
                           <span className="text-muted-foreground text-[10px] ml-0.5">({d.build})</span>
                         </div>
                         <div className="flex gap-2 text-[10px]">
-                          {d.hcode && <a href={`https://hogangnono.com/apt/${d.hcode}`} target="_blank" rel="noopener" className="text-primary hover:underline">호갱노노</a>}
+                          {d.hcode
+                            ? <a href={`https://hogangnono.com/apt/${d.hcode}`} target="_blank" rel="noopener" className="text-primary hover:underline">호갱노노</a>
+                            : <a href={`https://new.land.naver.com/search?query=${encodeURIComponent(d.name)}`} target="_blank" rel="noopener" className="text-muted-foreground hover:underline">네이버부동산</a>
+                          }
                           <a href={naverMapUrl(`${d.name} ${d.dong}`, isMobile)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버지도</a>
                         </div>
                       </div>
