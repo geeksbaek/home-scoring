@@ -3366,7 +3366,7 @@
     "energy": null,
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": "2등급"
   },
   {
     "name": "영통아이파크캐슬3단지",
@@ -4481,7 +4481,7 @@
     },
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": "2등급"
   },
   {
     "name": "영통아이파크캐슬3단지",
@@ -4953,7 +4953,7 @@
     },
     "eq_design": true,
     "eq_capacity": "VII-0.141g",
-    "energy_grade": null
+    "energy_grade": "2등급"
   },
   {
     "name": "래미안금광",
@@ -17479,7 +17479,7 @@
     },
     "eq_design": true,
     "eq_capacity": "VII-0.141g",
-    "energy_grade": null
+    "energy_grade": "2등급"
   },
   {
     "name": "성남자이",
@@ -18899,7 +18899,7 @@
     },
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": "1등급"
   },
   {
     "name": "기흥역파크푸르지오",
