@@ -96,9 +96,9 @@
   <div class="filters">
     <label>면적:</label>
     <select id="typeFilter">
+      <option value="all">전체</option>
       <option value="84">84~85㎡</option>
       <option value="small">59~76㎡</option>
-      <option value="all">전체</option>
     </select>
     <label>정렬:</label>
     <select id="sortField">
@@ -240,6 +240,10 @@ function renderRow(d, i) {
 
   const mc = d.morning_cnt > 1 ? `<sub style="color:var(--muted);font-size:0.65rem">(${d.morning_cnt})</sub>` : '';
   const ec = d.evening_cnt > 1 ? `<sub style="color:var(--muted);font-size:0.65rem">(${d.evening_cnt})</sub>` : '';
+  const commTip = (details) => {
+    if (!details || !details.length) return '';
+    return `<div class="tooltip" style="min-width:180px"><div style="font-weight:600;margin-bottom:4px;color:var(--text)">측정 기록</div><table><tr><th>날짜</th><th>요일</th><th>소요</th></tr>${details.map(t => `<tr><td>${t.date.slice(5)}</td><td>${t.weekday}</td><td>${t.minutes}분</td></tr>`).join('')}</table></div>`;
+  };
   const scoreW = Math.min(d.score / 80 * 60, 60);
 
   // 소아과 툴팁
@@ -271,8 +275,8 @@ function renderRow(d, i) {
     <td class="has-tip">${(d.avg/10000).toFixed(1)}억${tradeTip}</td>
     <td class="has-tip ${accelClass(d.accel)}">${d.accel > 0 ? '+' : ''}${d.accel}%${accelTip}</td>
     <td>${d.liquidity ? d.liquidity + '%' + (d.liq_approx ? '*' : '') : '-'}</td>
-    <td class="${commuteClass(d.morning, 25, 40)}">${d.morning ? d.morning + '분' + mc : '-'}</td>
-    <td class="${commuteClass(d.evening, 30, 50)}">${d.evening ? d.evening + '분' + ec : '-'}</td>
+    <td class="has-tip ${commuteClass(d.morning, 25, 40)}">${d.morning ? d.morning + '분' + mc : '-'}${commTip(d.morning_details)}</td>
+    <td class="has-tip ${commuteClass(d.evening, 30, 50)}">${d.evening ? d.evening + '분' + ec : '-'}${commTip(d.evening_details)}</td>
     <td class="has-tip ${pedCls}">${pedLbl}${pedTip}</td>
     <td class="hide-mobile ${d.slope != null ? (d.slope <= 10 ? 'good' : d.slope >= 30 ? 'bad' : '') : ''}">${d.slope != null ? d.slope + 'm' + (d.slope_method === 'grid' ? '*' : '') : '-'}</td>
     <td><span class="score-bar" style="width:${scoreW}px"></span> ${d.score}</td>
