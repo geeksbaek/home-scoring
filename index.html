@@ -271,7 +271,7 @@ function renderRow(d, i) {
 
   return `<tr>
     <td>${i+1}</td>
-    <td class="col-name has-tip">${d.name}${area} <span style="color:var(--muted);font-size:0.7rem">(${d.build})</span>${links}<div class="tooltip" style="min-width:120px"><div style="color:var(--text)">${d.region} ${d.dong}</div></div></td>
+    <td class="col-name has-tip">${d.name}${area}<sub style="color:var(--muted);font-size:0.65rem">(${d.build})</sub>${links}<div class="tooltip" style="min-width:120px"><div style="color:var(--text)">${d.region} ${d.dong}</div></div></td>
     <td class="has-tip">${(d.avg/10000).toFixed(1)}억${tradeTip}</td>
     <td class="has-tip ${accelClass(d.accel)}">${d.accel > 0 ? '+' : ''}${d.accel}%${accelTip}</td>
     <td>${d.liquidity ? d.liquidity + '%' + (d.liq_approx ? '*' : '') : '-'}</td>
