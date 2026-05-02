@@ -151,7 +151,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "서광교파크스위첸",
@@ -371,7 +374,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "수원하늘채더퍼스트1단지",
@@ -635,7 +641,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "VII-0.204g",
+    "energy_grade": "1+"
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -1179,7 +1188,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "수원센트럴아이파크자이",
@@ -1555,7 +1567,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "매교역푸르지오SKVIEW",
@@ -2343,7 +2358,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "매교역푸르지오SKVIEW",
@@ -2867,7 +2885,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -3201,7 +3222,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "영통SKVIEW",
@@ -3339,7 +3363,10 @@
     "subway_line": "분당선",
     "subway_station": null,
     "education": "초등학교()",
-    "energy": null
+    "energy": null,
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "영통아이파크캐슬3단지",
@@ -3583,7 +3610,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.204g",
+    "energy_grade": "1+"
   },
   {
     "name": "광교더포레스트",
@@ -3867,7 +3897,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": "2"
   },
   {
     "name": "영통아이파크캐슬2단지",
@@ -4109,7 +4142,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.218g",
+    "energy_grade": "1"
   },
   {
     "name": "한양수자인",
@@ -4259,7 +4295,10 @@
     "subway_line": "분당선",
     "subway_station": null,
     "education": "초등학교(태장초교,잠원초교,대선초교) 중학교(영동중교,잠원중교, 망포중교) 고등학교(태장고교,망포고교)",
-    "energy": null
+    "energy": null,
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "영통라온프라이빗",
@@ -4439,7 +4478,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "영통아이파크캐슬3단지",
@@ -4635,7 +4677,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.204g",
+    "energy_grade": "1+"
   },
   {
     "name": "가천대역두산위브",
@@ -4905,7 +4950,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "래미안금광",
@@ -5175,7 +5223,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "한양수자인성남마크뷰",
@@ -5357,7 +5408,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "VII-0.169g",
+    "energy_grade": "1"
   },
   {
     "name": "힐스테이트구성",
@@ -5789,7 +5843,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "용인동백두산위브더제니스",
@@ -6085,7 +6142,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169",
+    "energy_grade": "1"
   },
   {
     "name": "기흥역더샵",
@@ -6275,7 +6335,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "기흥역파크푸르지오",
@@ -6485,7 +6548,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169",
+    "energy_grade": null
   },
   {
     "name": "힐스테이트광교산",
@@ -6673,7 +6739,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "힐스테이트광교산",
@@ -6867,7 +6936,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "미사강변트래지안",
@@ -7003,7 +7075,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": "1"
   },
   {
     "name": "반정아이파크캐슬5단지",
@@ -7399,7 +7474,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.204g",
+    "energy_grade": "1+"
   },
   {
     "name": "신동탄포레자이",
@@ -7685,7 +7763,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.204g",
+    "energy_grade": "1+"
   },
   {
     "name": "신동탄포레자이",
@@ -7983,7 +8064,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.204g",
+    "energy_grade": "1+"
   },
   {
     "name": "병점역아이파크캐슬",
@@ -8269,7 +8353,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.218g",
+    "energy_grade": "1+"
   },
   {
     "name": "한신더휴",
@@ -8581,7 +8668,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "시범한빛마을동탄아이파크",
@@ -8713,7 +8803,10 @@
     "subway_line": "1호선",
     "subway_station": null,
     "education": "초등학교(석우초) 중학교(석우중) 고등학교(동탄고)",
-    "energy": null
+    "energy": null,
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -9043,7 +9136,10 @@
     "subway_line": null,
     "subway_station": null,
     "education": "초등학교(방교초등학교) 중학교(방교중학교)",
-    "energy": null
+    "energy": null,
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄역신안인스빌리베라2차",
@@ -9337,7 +9433,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄역더샵센트럴시티2차",
@@ -9609,7 +9708,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "힐스테이트동탄",
@@ -9923,7 +10025,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "한화 포레나 동탄호수",
@@ -10157,7 +10262,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169g",
+    "energy_grade": "1+"
   },
   {
     "name": "동탄역 호반 써밋",
@@ -10503,7 +10611,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -11109,7 +11220,10 @@
     "subway_line": null,
     "subway_station": null,
     "education": "초등학교(방교초등학교) 중학교(방교중학교)",
-    "energy": null
+    "energy": null,
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄역센트럴푸르지오",
@@ -11661,7 +11775,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄역신안인스빌리베라2차",
@@ -11853,7 +11970,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "금호어울림레이크",
@@ -12065,7 +12185,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.141g",
+    "energy_grade": "1"
   },
   {
     "name": "동탄역센트럴푸르지오",
@@ -12269,7 +12392,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "반도유보라아이비파크3",
@@ -12485,7 +12611,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄역푸르지오",
@@ -12697,7 +12826,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "수원 SK SKY VIEW",
@@ -12973,7 +13105,10 @@
     "subway_line": "1호선",
     "subway_station": "성균관대역",
     "education": "초등학교(다솔초 등) 중학교(대평중, 천천중 등) 고등학교(천천고, 대평고 등) 대학교(동남보건대,성균관대학교)",
-    "energy": null
+    "energy": null,
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": "2"
   },
   {
     "name": "더샵광교산퍼스트파크",
@@ -13135,7 +13270,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "화서역푸르지오더에듀포레",
@@ -13505,7 +13643,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "수원하늘채더퍼스트1단지",
@@ -13829,7 +13970,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "VII-0.204g",
+    "energy_grade": "1+"
   },
   {
     "name": "수원모아미래도센트럴타운2단지",
@@ -14029,7 +14173,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.176g",
+    "energy_grade": null
   },
   {
     "name": "호반베르디움더센트럴",
@@ -14331,7 +14478,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": "1"
   },
   {
     "name": "호반 써밋 수원",
@@ -14571,7 +14721,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": "1"
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -14953,7 +15106,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "수원센트럴아이파크자이",
@@ -15251,7 +15407,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "래미안노블클래스2단지",
@@ -15363,7 +15522,10 @@
     "subway_line": "분당선",
     "subway_station": null,
     "education": "초등학교() 중학교() 고등학교() 대학교()",
-    "energy": null
+    "energy": null,
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "래미안노블클래스1단지",
@@ -15523,7 +15685,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "광교더포레스트",
@@ -15825,7 +15990,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": "2"
   },
   {
     "name": "매탄위브하늘채",
@@ -16359,7 +16527,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "영흥숲푸르지오파크비엔",
@@ -16545,7 +16716,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "영통롯데캐슬엘클래스2단지",
@@ -16753,7 +16927,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.225g",
+    "energy_grade": "1++"
   },
   {
     "name": "영통롯데캐슬엘클래스1단지",
@@ -16981,7 +17158,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169g",
+    "energy_grade": "1++"
   },
   {
     "name": "한양수자인",
@@ -17131,7 +17311,10 @@
     "subway_line": "분당선",
     "subway_station": null,
     "education": "초등학교(태장초교,잠원초교,대선초교) 중학교(영동중교,잠원중교, 망포중교) 고등학교(태장고교,망포고교)",
-    "energy": null
+    "energy": null,
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "가천대역두산위브",
@@ -17293,7 +17476,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "성남자이",
@@ -17449,7 +17635,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "신흥덕롯데캐슬레이시티",
@@ -17713,7 +17902,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169g",
+    "energy_grade": null
   },
   {
     "name": "용인동백두산위브더제니스",
@@ -17937,7 +18129,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169",
+    "energy_grade": "1"
   },
   {
     "name": "흥덕마을7단지힐스테이트",
@@ -18211,7 +18406,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "광교호수아델리움",
@@ -18397,7 +18595,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "힐스테이트서천",
@@ -18695,7 +18896,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "기흥역파크푸르지오",
@@ -19025,7 +19229,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169",
+    "energy_grade": null
   },
   {
     "name": "흥덕마을동원로얄듀크",
@@ -19291,7 +19498,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "흥덕마을자연앤스위첸",
@@ -19519,7 +19729,10 @@
     "subway_line": null,
     "subway_station": null,
     "education": "초등학교(흥덕초,청곡초) 중학교(흥덕중) 고등학교(흥덕고)",
-    "energy": null
+    "energy": null,
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": "2"
   },
   {
     "name": "기흥더샵프라임뷰",
@@ -19735,7 +19948,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "성동마을수지자이",
@@ -19901,7 +20117,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "대명강변타운",
@@ -20215,7 +20434,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": false,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "미사강변한신휴플러스",
@@ -20365,7 +20587,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": "2"
   },
   {
     "name": "병점역아이파크캐슬",
@@ -20903,7 +21128,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.218g",
+    "energy_grade": "1+"
   },
   {
     "name": "반정아이파크캐슬4단지",
@@ -21185,7 +21413,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169g",
+    "energy_grade": "1+"
   },
   {
     "name": "반정아이파크캐슬5단지",
@@ -21629,7 +21860,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.204g",
+    "energy_grade": "1+"
   },
   {
     "name": "나노시티역롯데캐슬",
@@ -21897,7 +22131,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169g",
+    "energy_grade": null
   },
   {
     "name": "솔빛마을쌍용예가",
@@ -22173,7 +22410,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "푸르지오",
@@ -22325,7 +22565,10 @@
     "subway_line": "1호선",
     "subway_station": "병점역",
     "education": "초등학교(석우) 중학교(석우) 고등학교(석우)",
-    "energy": null
+    "energy": null,
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "시범다은마을우남퍼스트빌",
@@ -22506,7 +22749,10 @@
     "subway_line": "1호선, 분당선",
     "subway_station": null,
     "education": "초등학교(금곡초등학교) 중학교(석우중학교,솔빛중학교) 고등학교(동탄고등학교,동탄국제고)",
-    "energy": null
+    "energy": null,
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄역대원칸타빌포레지움",
@@ -22758,7 +23004,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄역신안인스빌리베라1차",
@@ -22994,7 +23243,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "솔빛마을신도브래뉴",
@@ -23180,7 +23432,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄2엘에이치26단지아파트(에이65블록)",
@@ -23338,7 +23593,10 @@
     "subway_line": "1호선",
     "subway_station": null,
     "education": "초등학교(방교초등학교) 중학교(방교중학교)",
-    "energy": null
+    "energy": null,
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -23548,7 +23806,10 @@
     "subway_line": null,
     "subway_station": null,
     "education": "초등학교(방교초등학교) 중학교(방교중학교)",
-    "energy": null
+    "energy": null,
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "시범한빛마을한화꿈에그린",
@@ -23750,7 +24011,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "더레이크시티부영1단지",
@@ -23932,7 +24196,10 @@
     "subway_line": "신분당선, 용인에버라인",
     "subway_station": null,
     "education": "초등학교(정현초등학교) 중학교(청림중학교)",
-    "energy": null
+    "energy": null,
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.141g",
+    "energy_grade": null
   },
   {
     "name": "KCC스위첸아파트",
@@ -24366,7 +24633,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "반도유보라아이비파크3",
@@ -24594,7 +24864,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "시범한빛마을삼부르네상스",
@@ -24890,7 +25163,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄호수자이파밀리에",
@@ -25100,7 +25376,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄역더샵센트럴시티2차",
@@ -25366,7 +25645,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "시범한빛마을금호어울림",
@@ -25588,7 +25870,10 @@
     "subway_line": "1호선",
     "subway_station": "병점,서동탄",
     "education": "초등학교(학동) 중학교(석우) 고등학교(동탄)",
-    "energy": null
+    "energy": null,
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "더레이크시티부영5단지",
@@ -25888,7 +26173,10 @@
     "subway_line": "1호선",
     "subway_station": "1호선: 오산대역",
     "education": "초등학교(정현초등학교) 중학교(청림중학교) 고등학교(청림고등학교)",
-    "energy": null
+    "energy": null,
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄역 호반 써밋",
@@ -26120,7 +26408,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "힐스테이트동탄",
@@ -26572,7 +26863,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "동탄역이지더원",
@@ -26778,7 +27072,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": null,
+    "energy_grade": null
   },
   {
     "name": "더레이크시티부영2단지",
@@ -26974,7 +27271,10 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.141g",
+    "energy_grade": null
   },
   {
     "name": "한화 포레나 동탄호수",
@@ -27178,6 +27478,9 @@
       "elect": 0,
       "waterCool": 0,
       "gas": 0
-    }
+    },
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169g",
+    "energy_grade": "1+"
   }
 ]
