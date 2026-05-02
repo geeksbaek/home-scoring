@@ -25,8 +25,7 @@
 
   .table-wrap { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-  th { background: var(--surface); position: sticky; top: 0; z-index: 2; cursor: pointer; user-select: none; }
-  th:hover { background: var(--border); }
+  th { background: var(--surface); position: sticky; top: 0; z-index: 2; }
   th, td { padding: 8px 10px; text-align: center; border-bottom: 1px solid var(--border); white-space: nowrap; }
   .col-name { text-align: left; min-width: 140px; }
   .col-region { text-align: left; color: var(--muted); font-size: 0.78rem; }
@@ -128,17 +127,16 @@
   <div class="table-wrap">
     <table>
       <thead><tr>
-        <th data-sort="rank">#</th>
-        <th class="col-name" data-sort="name">단지명</th>
-        <th data-sort="avg">현재가</th>
-        <th data-sort="accel">가속도</th>
-        <th data-sort="liquidity">환금</th>
-        <th data-sort="morning">출근</th>
-        <th data-sort="evening">퇴근</th>
-        <th data-sort="pedScore">소아과<br>접근성</th>
-        <th data-sort="slope">고저차</th>
-        <th data-sort="build">건축</th>
-        <th data-sort="score">점수</th>
+        <th>#</th>
+        <th class="col-name">단지명</th>
+        <th>현재가</th>
+        <th>가속도</th>
+        <th>환금</th>
+        <th>출근</th>
+        <th>퇴근</th>
+        <th>소아과<br>접근성</th>
+        <th>고저차</th>
+        <th>점수</th>
       </tr></thead>
       <tbody id="tbody"></tbody>
     </table>
@@ -182,15 +180,6 @@ async function init() {
   document.getElementById('sortField').onchange = e => { currentSort = e.target.value; sortAsc = false; render(); };
   document.getElementById('regionFilter').onchange = render;
   document.getElementById('commuteFilter').onchange = render;
-  document.querySelectorAll('th[data-sort]').forEach(th => {
-    th.onclick = () => {
-      const field = th.dataset.sort;
-      if (currentSort === field) sortAsc = !sortAsc;
-      else { currentSort = field; sortAsc = false; }
-      document.getElementById('sortField').value = field;
-      render();
-    };
-  });
 
   document.getElementById('infoToggle').onclick = () => {
     const box = document.getElementById('infoBox');
@@ -278,7 +267,7 @@ function renderRow(d, i) {
 
   return `<tr>
     <td>${i+1}</td>
-    <td class="col-name has-tip">${d.name}${area}${links}<div class="tooltip" style="min-width:120px"><div style="color:var(--text)">${d.region} ${d.dong}</div></div></td>
+    <td class="col-name has-tip">${d.name}${area} <span style="color:var(--muted);font-size:0.7rem">(${d.build})</span>${links}<div class="tooltip" style="min-width:120px"><div style="color:var(--text)">${d.region} ${d.dong}</div></div></td>
     <td class="has-tip">${(d.avg/10000).toFixed(1)}억${tradeTip}</td>
     <td class="has-tip ${accelClass(d.accel)}">${d.accel > 0 ? '+' : ''}${d.accel}%${accelTip}</td>
     <td>${d.liquidity ? d.liquidity + '%' + (d.liq_approx ? '*' : '') : '-'}</td>
@@ -286,7 +275,6 @@ function renderRow(d, i) {
     <td class="${commuteClass(d.evening, 30, 50)}">${d.evening ? d.evening + '분' + ec : '-'}</td>
     <td class="has-tip ${pedCls}">${pedLbl}${pedTip}</td>
     <td class="hide-mobile ${d.slope != null ? (d.slope <= 10 ? 'good' : d.slope >= 30 ? 'bad' : '') : ''}">${d.slope != null ? d.slope + 'm' + (d.slope_method === 'grid' ? '*' : '') : '-'}</td>
-    <td>${d.build}</td>
     <td><span class="score-bar" style="width:${scoreW}px"></span> ${d.score}</td>
   </tr>`;
 }
