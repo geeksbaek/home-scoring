@@ -7,21 +7,26 @@
 <style>
   :root { --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff; --green: #3fb950; --red: #f85149; --yellow: #d29922; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; -webkit-text-size-adjust: 100%; }
   .container { max-width: 1400px; margin: 0 auto; padding: 16px; }
   h1 { font-size: 1.4rem; margin-bottom: 4px; }
   .meta { color: var(--muted); font-size: 0.8rem; margin-bottom: 12px; }
+
+  /* 정보 박스 */
   .info-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+  .info-toggle { display: none; }
   .info-box .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; margin-right: 4px; }
   .info-box .tag-filter { background: #f8514933; color: #f85149; }
   .info-box .tag-score { background: #58a6ff22; color: #58a6ff; }
   .info-box .tag-ref { background: #3fb95022; color: #3fb950; }
+
+  /* 필터 */
   .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
   .filters label { color: var(--muted); font-size: 0.85rem; }
   .filters select, .filters input { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-size: 0.85rem; }
-  .tab-bar { display: flex; gap: 4px; margin-bottom: 12px; }
-  .tab { padding: 8px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px 6px 0 0; cursor: pointer; color: var(--muted); font-size: 0.9rem; }
-  .tab.active { background: var(--border); color: var(--text); border-bottom-color: var(--border); }
+
+  /* 테이블 (데스크톱) */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
   th { background: var(--surface); position: sticky; top: 0; z-index: 1; cursor: pointer; user-select: none; }
   th:hover { background: var(--border); }
@@ -38,16 +43,57 @@
   .badge { display: inline-block; padding: 2px 6px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; }
   .badge-84 { background: #1f6feb33; color: #58a6ff; }
   .badge-sm { background: #23863533; color: #3fb950; }
+
+  /* 툴팁 */
   .price-cell { position: relative; cursor: pointer; }
   .price-cell:hover .tooltip { display: block; }
   .tooltip { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 8px; z-index: 10; min-width: 220px; box-shadow: 0 4px 12px rgba(0,0,0,0.4); font-size: 0.75rem; text-align: left; white-space: normal; }
   .tooltip table { width: 100%; font-size: 0.72rem; }
   .tooltip th { background: transparent; font-weight: 600; color: var(--muted); padding: 2px 4px; cursor: default; }
   .tooltip td { padding: 2px 4px; border: none; }
+
+  /* 카드 (모바일) */
+  .cards { display: none; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 10px; }
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .card-title { font-size: 0.95rem; font-weight: 600; }
+  .card-title a { color: var(--text); }
+  .card-score { font-size: 0.85rem; font-weight: 700; color: var(--accent); white-space: nowrap; margin-left: 8px; }
+  .card-region { color: var(--muted); font-size: 0.78rem; margin-bottom: 10px; }
+  .card-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
+  .card-metric { text-align: center; }
+  .card-metric-label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .card-metric-value { font-size: 0.9rem; font-weight: 600; }
+  .card-detail { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 12px; font-size: 0.78rem; color: var(--muted); padding-top: 10px; border-top: 1px solid var(--border); }
+  .card-detail-item { display: flex; justify-content: space-between; }
+  .card-detail-label { color: var(--muted); }
+  .card-detail-value { color: var(--text); font-weight: 500; }
+  .card-trades { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+  .card-trades-toggle { font-size: 0.75rem; color: var(--accent); cursor: pointer; }
+  .card-trades-content { display: none; margin-top: 6px; }
+  .card-trades-content.open { display: block; }
+  .card-trades table { font-size: 0.72rem; }
+  .card-trades th { background: transparent; font-weight: 600; color: var(--muted); padding: 3px 6px; }
+  .card-trades td { padding: 3px 6px; border: none; }
+
+  /* 반응형 */
+  @media (max-width: 1024px) {
+    .table-wrap table { font-size: 0.78rem; }
+    th, td { padding: 6px 6px; }
+  }
+
   @media (max-width: 768px) {
-    .container { padding: 8px; }
-    table { font-size: 0.75rem; }
-    th, td { padding: 6px 4px; }
+    .container { padding: 10px; }
+    h1 { font-size: 1.2rem; }
+    .info-toggle { display: block; color: var(--accent); font-size: 0.8rem; cursor: pointer; margin-bottom: 12px; }
+    .info-box { display: none; }
+    .info-box.open { display: block; }
+    .filters { gap: 6px; }
+    .filters label { font-size: 0.78rem; }
+    .filters select { padding: 5px 8px; font-size: 0.8rem; flex: 1; min-width: 0; }
+    .table-wrap { display: none; }
+    .cards { display: block; }
+    #count { font-size: 0.78rem; }
   }
 </style>
 </head>
@@ -56,7 +102,8 @@
   <h1>아파트 매수 후보 스코어링</h1>
   <div class="meta" id="meta"></div>
 
-  <div class="info-box">
+  <div class="info-toggle" id="infoToggle">필터/스코어링 기준 보기 ▼</div>
+  <div class="info-box" id="infoBox">
     <div style="margin-bottom:6px;font-weight:600;color:var(--text);">필터 조건</div>
     <span class="tag tag-filter">가격</span> 최근 1개월 평균 7~9억 &nbsp;
     <span class="tag tag-filter">세대수</span> 500세대 이상 &nbsp;
@@ -107,42 +154,51 @@
   </div>
 
   <div id="count" style="color:var(--muted);font-size:0.8rem;margin-bottom:8px;"></div>
-  <table>
-    <thead>
-      <tr>
-        <th data-sort="rank">#</th>
-        <th data-sort="name">단지명</th>
-        <th data-sort="region">지역</th>
-        <th data-sort="avg">현재가</th>
-        <th data-sort="accel">가속도</th>
-        <th data-sort="liquidity">환금</th>
-        <th data-sort="morning">출근</th>
-        <th data-sort="evening">퇴근</th>
-        <th data-sort="pedia1">소아과1</th>
-        <th data-sort="pedia2">소아과2</th>
-        <th data-sort="slope">고저차</th>
-        <th data-sort="build">건축</th>
-        <th data-sort="score">점수</th>
-      </tr>
-    </thead>
-    <tbody id="tbody"></tbody>
-  </table>
+
+  <!-- 데스크톱: 테이블 -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th data-sort="rank">#</th>
+          <th data-sort="name">단지명</th>
+          <th data-sort="region">지역</th>
+          <th data-sort="avg">현재가</th>
+          <th data-sort="accel">가속도</th>
+          <th data-sort="liquidity">환금</th>
+          <th data-sort="morning">출근</th>
+          <th data-sort="evening">퇴근</th>
+          <th data-sort="pedia1">소아과1</th>
+          <th data-sort="pedia2">소아과2</th>
+          <th data-sort="slope">고저차</th>
+          <th data-sort="build">건축</th>
+          <th data-sort="score">점수</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <!-- 모바일: 카드 -->
+  <div class="cards" id="cards"></div>
 </div>
 
 <script>
 let DATA = [];
 let currentSort = 'score';
 let sortAsc = false;
+const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+const naverMap = (q) => isMobile
+  ? `nmap://search?query=${encodeURIComponent(q)}&appname=com.nhn.NaverMap`
+  : `https://map.naver.com/v5/search/${encodeURIComponent(q)}`;
 
 async function init() {
   const r = await fetch('data.json');
   DATA = await r.json();
 
-  // 스코어 계산
   calcScores('84');
   calcScores('small');
 
-  // 지역 필터 옵션
   const regions = [...new Set(DATA.map(d => d.region.split(' ')[0]))].sort();
   const sel = document.getElementById('regionFilter');
   regions.forEach(r => { const o = document.createElement('option'); o.value = r; o.textContent = r; sel.appendChild(o); });
@@ -165,28 +221,33 @@ async function init() {
       render();
     };
   });
+
+  // 모바일 정보박스 토글
+  document.getElementById('infoToggle').onclick = () => {
+    const box = document.getElementById('infoBox');
+    const toggle = document.getElementById('infoToggle');
+    box.classList.toggle('open');
+    toggle.textContent = box.classList.contains('open') ? '필터/스코어링 기준 접기 ▲' : '필터/스코어링 기준 보기 ▼';
+  };
 }
 
 function calcScores(type) {
   const subset = DATA.filter(d => type === '84' ? d.atype === '84' : d.atype !== '84');
   const n = subset.length;
   if (n === 0) return;
-
   const rank = (arr) => {
     const sorted = [...arr].sort((a, b) => a - b);
     return arr.map(v => (sorted.indexOf(v) + 1) / n);
   };
-
   const accels = rank(subset.map(d => d.accel));
   const liqs = rank(subset.map(d => d.liquidity || 0));
   const builds = rank(subset.map(d => d.build));
-
   subset.forEach((d, i) => {
     d.score = Math.round((accels[i] * 35 + liqs[i] * 25 + builds[i] * 20) * 10) / 10;
   });
 }
 
-function render() {
+function getFiltered() {
   const type = document.getElementById('typeFilter').value;
   const region = document.getElementById('regionFilter').value;
   const commute = document.getElementById('commuteFilter').value;
@@ -196,63 +257,134 @@ function render() {
     if (type === 'small') return d.atype !== '84';
     return true;
   });
-
   if (region) filtered = filtered.filter(d => d.region.includes(region));
   if (commute) filtered = filtered.filter(d => d.morning && d.morning <= parseInt(commute));
 
-  // 정렬
   const sortKey = currentSort;
   filtered.sort((a, b) => {
     let va = a[sortKey], vb = b[sortKey];
     if (va == null) va = sortAsc ? Infinity : -Infinity;
     if (vb == null) vb = sortAsc ? Infinity : -Infinity;
-    if (sortKey === 'name' || sortKey === 'region') {
+    if (sortKey === 'name' || sortKey === 'region')
       return sortAsc ? String(va).localeCompare(String(vb)) : String(vb).localeCompare(String(va));
-    }
-    // 출근/퇴근/소아과/고저차: 낮을수록 좋음 → 기본 오름차순
-    if (['morning','evening','pedia1','pedia2','slope','avg'].includes(sortKey)) {
+    if (['morning','evening','pedia1','pedia2','slope','avg'].includes(sortKey))
       return sortAsc ? vb - va : va - vb;
-    }
     return sortAsc ? va - vb : vb - va;
   });
+  return filtered;
+}
 
+function render() {
+  const filtered = getFiltered();
   document.getElementById('count').textContent = `${filtered.length}개 단지`;
+  renderTable(filtered);
+  renderCards(filtered);
+}
 
-  const tbody = document.getElementById('tbody');
-  tbody.innerHTML = filtered.map((d, i) => {
+// ── 헬퍼 ──
+
+function accelClass(v) { return v > 5 ? 'good' : v < 0 ? 'bad' : ''; }
+function commuteClass(v, thLow, thHigh) { return v ? (v <= thLow ? 'good' : v >= thHigh ? 'bad' : '') : ''; }
+function pedClass(v) { return v ? (v <= 5 ? 'good' : v >= 20 ? 'bad' : '') : ''; }
+function slopeColor(v) {
+  if (v == null) return '';
+  return Math.abs(v) >= 10 ? '#f87171' : Math.abs(v) >= 5 ? '#fbbf24' : '#4ade80';
+}
+
+function tradesTooltip(d) {
+  if (!d.recent_trades || !d.recent_trades.length) return '';
+  return `<div class="tooltip"><div style="font-weight:600;margin-bottom:4px;color:var(--text)">최근 거래 (4월~)</div><table><tr><th>날짜</th><th>가격</th><th>층</th><th>면적</th></tr>${d.recent_trades.map(t => `<tr><td>${t.date.slice(5)}</td><td>${t.price}억</td><td>${t.floor}층</td><td>${t.area}㎡</td></tr>`).join('')}</table></div>`;
+}
+
+function slopeTag(v) {
+  if (v == null) return '';
+  return `<sub style="color:${slopeColor(v)};font-size:0.65rem">${v > 0 ? '+' : ''}${v}m</sub>`;
+}
+
+function pedLink(min, name, dong, slope) {
+  if (!min) return '-';
+  const cls = pedClass(min);
+  const link = name ? `<a href="${naverMap(name + ' ' + dong)}" target="_blank" class="${cls}">${min}분</a>` : `<span class="${cls}">${min}분</span>`;
+  return link + slopeTag(slope);
+}
+
+// ── 데스크톱 테이블 렌더 ──
+
+function renderTable(filtered) {
+  document.getElementById('tbody').innerHTML = filtered.map((d, i) => {
     const link = d.hcode ? `<a href="https://hogangnono.com/apt/${d.hcode}" target="_blank">${d.name}</a>` : d.name;
     const area = d.atype !== '84' ? ` <span class="badge badge-sm">${d.area}㎡</span>` : '';
-    const accelClass = d.accel > 5 ? 'good' : d.accel < 0 ? 'bad' : '';
-    const morningClass = d.morning ? (d.morning <= 25 ? 'good' : d.morning >= 40 ? 'bad' : '') : '';
-    const eveningClass = d.evening ? (d.evening <= 30 ? 'good' : d.evening >= 50 ? 'bad' : '') : '';
-    const pedClass = (v) => v ? (v <= 5 ? 'good' : v >= 20 ? 'bad' : '') : '';
-    const slopeClass = d.slope != null ? (d.slope <= 10 ? 'good' : d.slope >= 30 ? 'bad' : '') : '';
-    const scoreWidth = Math.min(d.score / 80 * 60, 60);
-
-    const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
-    const naverMap = (q) => isMobile
-      ? `nmap://search?query=${encodeURIComponent(q)}&appname=com.nhn.NaverMap`
-      : `https://map.naver.com/v5/search/${encodeURIComponent(q)}`;
     const regionLink = `<a href="${naverMap(d.name + ' ' + d.dong)}" target="_blank">${d.region} ${d.dong}</a>`;
-    const slopeTag = (v) => v != null ? `<sub style="color:${Math.abs(v) >= 10 ? '#f87171' : Math.abs(v) >= 5 ? '#fbbf24' : '#4ade80'};font-size:0.65rem">${v > 0 ? '+' : ''}${v}m</sub>` : '';
-    const ped1Link = d.pedia1 && d.pedia1_name ? `<a href="${naverMap(d.pedia1_name + ' ' + d.dong)}" target="_blank" class="${pedClass(d.pedia1)}">${d.pedia1}분</a>${slopeTag(d.pedia1_slope)}` : (d.pedia1 ? `<span class="${pedClass(d.pedia1)}">${d.pedia1}분</span>` : '-');
-    const ped2Link = d.pedia2 && d.pedia2_name ? `<a href="${naverMap(d.pedia2_name + ' ' + d.dong)}" target="_blank" class="${pedClass(d.pedia2)}">${d.pedia2}분</a>${slopeTag(d.pedia2_slope)}` : (d.pedia2 ? `<span class="${pedClass(d.pedia2)}">${d.pedia2}분</span>` : '-');
+    const scoreWidth = Math.min(d.score / 80 * 60, 60);
+    const mc = d.morning_cnt > 1 ? `<sub style="color:var(--muted);font-size:0.65rem">(${d.morning_cnt})</sub>` : '';
+    const ec = d.evening_cnt > 1 ? `<sub style="color:var(--muted);font-size:0.65rem">(${d.evening_cnt})</sub>` : '';
 
     return `<tr>
       <td>${i+1}</td>
       <td>${link}${area}</td>
       <td>${regionLink}</td>
-      <td class="price-cell">${(d.avg/10000).toFixed(1)}억${d.recent_trades && d.recent_trades.length > 0 ? `<div class="tooltip"><div style="font-weight:600;margin-bottom:4px;color:var(--text)">최근 거래 (4월~)</div><table><tr><th>날짜</th><th>가격</th><th>층</th><th>면적</th></tr>${d.recent_trades.map(t => `<tr><td>${t.date.slice(5)}</td><td>${t.price}억</td><td>${t.floor}층</td><td>${t.area}㎡</td></tr>`).join('')}</table></div>` : ''}</td>
-      <td class="price-cell ${accelClass}">${d.accel > 0 ? '+' : ''}${d.accel}%<div class="tooltip" style="min-width:180px"><div style="font-weight:600;margin-bottom:4px;color:var(--text)">가속도 계산</div><div>(최근3개월 - 이전3개월) / 이전3개월</div><div style="margin-top:4px">최근3개월 평균: ${(d.r3_avg/10000).toFixed(1)}억</div><div>이전3개월 평균: ${(d.p3_avg/10000).toFixed(1)}억</div></div></td>
+      <td class="price-cell">${(d.avg/10000).toFixed(1)}억${tradesTooltip(d)}</td>
+      <td class="price-cell ${accelClass(d.accel)}">${d.accel > 0 ? '+' : ''}${d.accel}%<div class="tooltip" style="min-width:180px"><div style="font-weight:600;margin-bottom:4px;color:var(--text)">가속도 계산</div><div>(최근3개월 - 이전3개월) / 이전3개월</div><div style="margin-top:4px">최근3개월 평균: ${(d.r3_avg/10000).toFixed(1)}억</div><div>이전3개월 평균: ${(d.p3_avg/10000).toFixed(1)}억</div></div></td>
       <td>${d.liquidity ? d.liquidity + '%' + (d.liq_approx ? '*' : '') : '-'}</td>
-      <td class="${morningClass}">${d.morning ? d.morning + '분' + (d.morning_cnt > 1 ? '<sub style="color:var(--muted);font-size:0.65rem">(' + d.morning_cnt + ')</sub>' : '') : '-'}</td>
-      <td class="${eveningClass}">${d.evening ? d.evening + '분' + (d.evening_cnt > 1 ? '<sub style="color:var(--muted);font-size:0.65rem">(' + d.evening_cnt + ')</sub>' : '') : '-'}</td>
-      <td>${ped1Link}</td>
-      <td>${ped2Link}</td>
-      <td class="${slopeClass}">${d.slope != null ? d.slope + 'm' + (d.slope_method === 'grid' ? '*' : '') : '-'}</td>
+      <td class="${commuteClass(d.morning, 25, 40)}">${d.morning ? d.morning + '분' + mc : '-'}</td>
+      <td class="${commuteClass(d.evening, 30, 50)}">${d.evening ? d.evening + '분' + ec : '-'}</td>
+      <td>${pedLink(d.pedia1, d.pedia1_name, d.dong, d.pedia1_slope)}</td>
+      <td>${pedLink(d.pedia2, d.pedia2_name, d.dong, d.pedia2_slope)}</td>
+      <td class="${d.slope != null ? (d.slope <= 10 ? 'good' : d.slope >= 30 ? 'bad' : '') : ''}">${d.slope != null ? d.slope + 'm' + (d.slope_method === 'grid' ? '*' : '') : '-'}</td>
       <td>${d.build}</td>
       <td><span class="score-bar" style="width:${scoreWidth}px"></span> ${d.score}</td>
     </tr>`;
+  }).join('');
+}
+
+// ── 모바일 카드 렌더 ──
+
+function renderCards(filtered) {
+  document.getElementById('cards').innerHTML = filtered.map((d, i) => {
+    const link = d.hcode ? `<a href="https://hogangnono.com/apt/${d.hcode}" target="_blank">${d.name}</a>` : d.name;
+    const area = d.atype !== '84' ? ` <span class="badge badge-sm">${d.area}㎡</span>` : '';
+    const regionLink = `<a href="${naverMap(d.name + ' ' + d.dong)}" target="_blank">${d.region} ${d.dong}</a>`;
+
+    const tradesHtml = d.recent_trades?.length ? `
+      <div class="card-trades">
+        <span class="card-trades-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'최근 거래 접기 ▲':'최근 거래 보기 ▼'">최근 거래 보기 ▼</span>
+        <div class="card-trades-content">
+          <table><tr><th>날짜</th><th>가격</th><th>층</th><th>면적</th></tr>${d.recent_trades.map(t => `<tr><td>${t.date.slice(5)}</td><td>${t.price}억</td><td>${t.floor}층</td><td>${t.area}㎡</td></tr>`).join('')}</table>
+        </div>
+      </div>` : '';
+
+    return `<div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">${i+1}. ${link}${area}</div>
+          <div class="card-region">${regionLink}</div>
+        </div>
+        <div class="card-score">${d.score}점</div>
+      </div>
+      <div class="card-metrics">
+        <div class="card-metric">
+          <div class="card-metric-label">현재가</div>
+          <div class="card-metric-value">${(d.avg/10000).toFixed(1)}억</div>
+        </div>
+        <div class="card-metric">
+          <div class="card-metric-label">가속도</div>
+          <div class="card-metric-value ${accelClass(d.accel)}">${d.accel > 0 ? '+' : ''}${d.accel}%</div>
+        </div>
+        <div class="card-metric">
+          <div class="card-metric-label">환금성</div>
+          <div class="card-metric-value">${d.liquidity ? d.liquidity + '%' + (d.liq_approx ? '*' : '') : '-'}</div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-detail-item"><span class="card-detail-label">출근</span><span class="card-detail-value ${commuteClass(d.morning, 25, 40)}">${d.morning ? d.morning + '분' : '-'}</span></div>
+        <div class="card-detail-item"><span class="card-detail-label">퇴근</span><span class="card-detail-value ${commuteClass(d.evening, 30, 50)}">${d.evening ? d.evening + '분' : '-'}</span></div>
+        <div class="card-detail-item"><span class="card-detail-label">소아과1</span><span class="card-detail-value">${d.pedia1 ? d.pedia1 + '분' + (d.pedia1_slope != null ? ' <span style="color:' + slopeColor(d.pedia1_slope) + '">' + (d.pedia1_slope > 0 ? '+' : '') + d.pedia1_slope + 'm</span>' : '') : '-'}</span></div>
+        <div class="card-detail-item"><span class="card-detail-label">소아과2</span><span class="card-detail-value">${d.pedia2 ? d.pedia2 + '분' + (d.pedia2_slope != null ? ' <span style="color:' + slopeColor(d.pedia2_slope) + '">' + (d.pedia2_slope > 0 ? '+' : '') + d.pedia2_slope + 'm</span>' : '') : '-'}</span></div>
+        <div class="card-detail-item"><span class="card-detail-label">고저차</span><span class="card-detail-value">${d.slope != null ? d.slope + 'm' : '-'}</span></div>
+        <div class="card-detail-item"><span class="card-detail-label">건축</span><span class="card-detail-value">${d.build}년</span></div>
+      </div>
+      ${tradesHtml}
+    </div>`;
   }).join('');
 }
 
