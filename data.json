@@ -21,8 +21,10 @@
     "slope_method": "dong_naver",
     "pedia1": 15,
     "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -16.5,
     "pedia2": 15,
     "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -16.6,
     "hcode": "9J848",
     "recent_trades": [
       {
@@ -67,8 +69,10 @@
     "slope_method": "dong",
     "pedia1": 8,
     "pedia1_name": "장소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 8,
     "pedia2_name": "이메디정형외과",
+    "pedia2_slope": null,
     "hcode": "aWCcc",
     "recent_trades": [
       {
@@ -107,8 +111,10 @@
     "slope_method": "dong",
     "pedia1": 8,
     "pedia1_name": "장소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 8,
     "pedia2_name": "이메디정형외과",
+    "pedia2_slope": null,
     "hcode": "aWCcc",
     "recent_trades": []
   },
@@ -134,8 +140,10 @@
     "slope_method": "dong_naver",
     "pedia1": 34,
     "pedia1_name": "수지온케어365의원",
+    "pedia1_slope": 16.8,
     "pedia2": 30,
     "pedia2_name": "호호소아청소년과의원",
+    "pedia2_slope": 17.0,
     "hcode": "58Y78",
     "recent_trades": [
       {
@@ -186,8 +194,10 @@
     "slope_method": "dong_naver",
     "pedia1": 34,
     "pedia1_name": "수지온케어365의원",
+    "pedia1_slope": 16.8,
     "pedia2": 30,
     "pedia2_name": "호호소아청소년과의원",
+    "pedia2_slope": 17.0,
     "hcode": "58Y78",
     "recent_trades": [
       {
@@ -226,8 +236,10 @@
     "slope_method": "dong_naver",
     "pedia1": 5,
     "pedia1_name": "연세이룬소아청소년과의원",
+    "pedia1_slope": 0.3,
     "pedia2": 9,
     "pedia2_name": "동탄호수소아청소년과의원",
+    "pedia2_slope": -10.3,
     "hcode": "dy537",
     "recent_trades": [
       {
@@ -272,8 +284,10 @@
     "slope_method": "dong_naver",
     "pedia1": 3,
     "pedia1_name": "배소아청소년과의원",
+    "pedia1_slope": -0.8,
     "pedia2": 16,
     "pedia2_name": "강남병원 소아청소년센터",
+    "pedia2_slope": -29.0,
     "hcode": null,
     "recent_trades": []
   },
@@ -299,8 +313,10 @@
     "slope_method": "dong_naver",
     "pedia1": 9,
     "pedia1_name": "꿈이든소아청소년과의원",
+    "pedia1_slope": -9.6,
     "pedia2": 8,
     "pedia2_name": "미래소아청소년과의원",
+    "pedia2_slope": -15.5,
     "hcode": null,
     "recent_trades": [
       {
@@ -333,8 +349,10 @@
     "slope_method": "dong_naver",
     "pedia1": 12,
     "pedia1_name": "꿈이든소아청소년과의원",
+    "pedia1_slope": -8.2,
     "pedia2": 11,
     "pedia2_name": "미래소아청소년과의원",
+    "pedia2_slope": -14.1,
     "hcode": "aIR4d",
     "recent_trades": []
   },
@@ -360,8 +378,10 @@
     "slope_method": "dong_naver",
     "pedia1": 12,
     "pedia1_name": "꿈이든소아청소년과의원",
+    "pedia1_slope": -8.2,
     "pedia2": 11,
     "pedia2_name": "미래소아청소년과의원",
+    "pedia2_slope": -14.1,
     "hcode": "aIR4d",
     "recent_trades": []
   },
@@ -387,8 +407,10 @@
     "slope_method": "dong_naver",
     "pedia1": 6,
     "pedia1_name": "아이편한소아청소년과의원",
+    "pedia1_slope": 2.9,
     "pedia2": 23,
     "pedia2_name": "온새미로",
+    "pedia2_slope": 8.4,
     "hcode": "dqq24",
     "recent_trades": [
       {
@@ -427,8 +449,10 @@
     "slope_method": "dong_naver",
     "pedia1": 12,
     "pedia1_name": "하남드림 소아청소년과의원",
+    "pedia1_slope": -0.8,
     "pedia2": 29,
     "pedia2_name": "연세웰소아청소년과의원",
+    "pedia2_slope": 0.1,
     "hcode": null,
     "recent_trades": [
       {
@@ -473,8 +497,10 @@
     "slope_method": "dong_naver",
     "pedia1": 17,
     "pedia1_name": "연세키즈365소아청소년과의원",
+    "pedia1_slope": 11.3,
     "pedia2": 17,
     "pedia2_name": "동탄이소아청소년과의원",
+    "pedia2_slope": 11.3,
     "hcode": "b0g10",
     "recent_trades": [
       {
@@ -513,8 +539,10 @@
     "slope_method": "dong_naver",
     "pedia1": 12,
     "pedia1_name": "연세키즈365소아청소년과의원",
+    "pedia1_slope": 13.1,
     "pedia2": 12,
     "pedia2_name": "동탄이소아청소년과의원",
+    "pedia2_slope": 13.1,
     "hcode": "b0he4",
     "recent_trades": [
       {
@@ -553,8 +581,10 @@
     "slope_method": "dong_naver",
     "pedia1": 9,
     "pedia1_name": "동탄성모병원",
+    "pedia1_slope": -12.2,
     "pedia2": 9,
     "pedia2_name": "하늘한방소아과한방재활의학과한의원",
+    "pedia2_slope": -12.2,
     "hcode": "b0keb",
     "recent_trades": [
       {
@@ -611,8 +641,10 @@
     "slope_method": "dong_naver",
     "pedia1": 22,
     "pedia1_name": "박소아청소년과의원",
+    "pedia1_slope": -21.5,
     "pedia2": 40,
     "pedia2_name": "김경신소아과의원",
+    "pedia2_slope": -23.1,
     "hcode": null,
     "recent_trades": []
   },
@@ -638,8 +670,10 @@
     "slope_method": "",
     "pedia1": null,
     "pedia1_name": null,
+    "pedia1_slope": null,
     "pedia2": null,
     "pedia2_name": null,
+    "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
       {
@@ -672,8 +706,10 @@
     "slope_method": "",
     "pedia1": null,
     "pedia1_name": null,
+    "pedia1_slope": null,
     "pedia2": null,
     "pedia2_name": null,
+    "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
       {
@@ -712,8 +748,10 @@
     "slope_method": "dong_naver",
     "pedia1": 27,
     "pedia1_name": "동탄성모병원",
+    "pedia1_slope": null,
     "pedia2": 27,
     "pedia2_name": "하늘한방소아과한방재활의학과한의원",
+    "pedia2_slope": null,
     "hcode": "b2L97",
     "recent_trades": [
       {
@@ -788,8 +826,10 @@
     "slope_method": "dong_naver",
     "pedia1": 27,
     "pedia1_name": "동탄성모병원",
+    "pedia1_slope": null,
     "pedia2": 27,
     "pedia2_name": "하늘한방소아과한방재활의학과한의원",
+    "pedia2_slope": null,
     "hcode": "b2L97",
     "recent_trades": [
       {
@@ -846,8 +886,10 @@
     "slope_method": "dong_naver",
     "pedia1": 27,
     "pedia1_name": "동탄성모병원",
+    "pedia1_slope": null,
     "pedia2": 27,
     "pedia2_name": "하늘한방소아과한방재활의학과한의원",
+    "pedia2_slope": null,
     "hcode": "b2L97",
     "recent_trades": []
   },
@@ -873,8 +915,10 @@
     "slope_method": "dong_naver",
     "pedia1": 10,
     "pedia1_name": "코끼리소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 10,
     "pedia2_name": "동탄미소소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "ayKcb",
     "recent_trades": [
       {
@@ -943,8 +987,10 @@
     "slope_method": "dong_naver",
     "pedia1": 10,
     "pedia1_name": "코끼리소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 10,
     "pedia2_name": "동탄미소소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "ayKcb",
     "recent_trades": [
       {
@@ -995,8 +1041,10 @@
     "slope_method": "dong_naver",
     "pedia1": 18,
     "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -27.5,
     "pedia2": 18,
     "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -27.6,
     "hcode": "alpee",
     "recent_trades": [
       {
@@ -1083,8 +1131,10 @@
     "slope_method": "dong_naver",
     "pedia1": 22,
     "pedia1_name": "남승우소아청소년과의원",
+    "pedia1_slope": 22.2,
     "pedia2": 30,
     "pedia2_name": "반디소아청소년과의원",
+    "pedia2_slope": 16.0,
     "hcode": "aV671",
     "recent_trades": [
       {
@@ -1129,8 +1179,10 @@
     "slope_method": "dong_naver",
     "pedia1": 22,
     "pedia1_name": "남승우소아청소년과의원",
+    "pedia1_slope": 22.2,
     "pedia2": 30,
     "pedia2_name": "반디소아청소년과의원",
+    "pedia2_slope": 16.0,
     "hcode": "aV671",
     "recent_trades": [
       {
@@ -1163,8 +1215,10 @@
     "slope_method": "dong_naver",
     "pedia1": 7,
     "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -10.3,
     "pedia2": 7,
     "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -10.4,
     "hcode": "ayI44",
     "recent_trades": [
       {
@@ -1245,8 +1299,10 @@
     "slope_method": "dong_naver",
     "pedia1": 7,
     "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -10.3,
     "pedia2": 7,
     "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -10.4,
     "hcode": "ayI44",
     "recent_trades": [
       {
@@ -1285,8 +1341,10 @@
     "slope_method": "dong_naver",
     "pedia1": 13,
     "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -24.8,
     "pedia2": 13,
     "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -24.9,
     "hcode": "ayH06",
     "recent_trades": [
       {
@@ -1331,8 +1389,10 @@
     "slope_method": "dong_naver",
     "pedia1": 15,
     "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -16.3,
     "pedia2": 15,
     "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -16.4,
     "hcode": "aCh0b",
     "recent_trades": [
       {
@@ -1377,8 +1437,10 @@
     "slope_method": "dong_naver",
     "pedia1": 15,
     "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -16.3,
     "pedia2": 15,
     "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -16.4,
     "hcode": "aCh0b",
     "recent_trades": []
   },
@@ -1404,8 +1466,10 @@
     "slope_method": "",
     "pedia1": null,
     "pedia1_name": null,
+    "pedia1_slope": null,
     "pedia2": null,
     "pedia2_name": null,
+    "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
       {
@@ -1444,8 +1508,10 @@
     "slope_method": "dong",
     "pedia1": 14,
     "pedia1_name": "코벤트더웰의원",
+    "pedia1_slope": null,
     "pedia2": 17,
     "pedia2_name": "반디소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "aDW27",
     "recent_trades": [
       {
@@ -1490,8 +1556,10 @@
     "slope_method": "dong_naver",
     "pedia1": 10,
     "pedia1_name": "연세이룬소아청소년과의원",
+    "pedia1_slope": 12.8,
     "pedia2": 15,
     "pedia2_name": "동탄호수소아청소년과의원",
+    "pedia2_slope": 2.2,
     "hcode": "dy7e4",
     "recent_trades": [
       {
@@ -1530,8 +1598,10 @@
     "slope_method": "dong",
     "pedia1": 20,
     "pedia1_name": "삼성귀요미소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 19,
     "pedia2_name": "구소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "5c072",
     "recent_trades": [
       {
@@ -1564,8 +1634,10 @@
     "slope_method": "dong_naver",
     "pedia1": 7,
     "pedia1_name": "굿닥터소아과의원",
+    "pedia1_slope": 2.7,
     "pedia2": 20,
     "pedia2_name": "조은이웃연세아주소아청소년과의원",
+    "pedia2_slope": -4.7,
     "hcode": null,
     "recent_trades": [
       {
@@ -1604,8 +1676,10 @@
     "slope_method": "",
     "pedia1": null,
     "pedia1_name": null,
+    "pedia1_slope": null,
     "pedia2": null,
     "pedia2_name": null,
+    "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
       {
@@ -1638,8 +1712,10 @@
     "slope_method": "dong",
     "pedia1": 18,
     "pedia1_name": "온가족소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 13,
     "pedia2_name": "연세로이소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dGbe5",
     "recent_trades": [
       {
@@ -1756,8 +1832,10 @@
     "slope_method": "dong",
     "pedia1": 18,
     "pedia1_name": "온가족소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 13,
     "pedia2_name": "연세로이소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dGbe5",
     "recent_trades": [
       {
@@ -1820,8 +1898,10 @@
     "slope_method": "dong",
     "pedia1": 4,
     "pedia1_name": "아주맑은 소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 4,
     "pedia2_name": "김민희의원",
+    "pedia2_slope": null,
     "hcode": "58bb8",
     "recent_trades": [
       {
@@ -1908,8 +1988,10 @@
     "slope_method": "dong_naver",
     "pedia1": 11,
     "pedia1_name": "플러스맘소아청소년과의원",
+    "pedia1_slope": -0.3,
     "pedia2": 30,
     "pedia2_name": "연세더자람소아청소년과의원",
+    "pedia2_slope": -3.2,
     "hcode": null,
     "recent_trades": []
   },
@@ -1935,8 +2017,10 @@
     "slope_method": "",
     "pedia1": null,
     "pedia1_name": null,
+    "pedia1_slope": null,
     "pedia2": null,
     "pedia2_name": null,
+    "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
       {
@@ -1969,8 +2053,10 @@
     "slope_method": "dong_naver",
     "pedia1": 33,
     "pedia1_name": "올바른소아청소년과의원",
+    "pedia1_slope": 8.3,
     "pedia2": 32,
     "pedia2_name": "동탄S소아청소년과 발달클리닉",
+    "pedia2_slope": 9.2,
     "hcode": "aBY7b",
     "recent_trades": [
       {
@@ -2003,8 +2089,10 @@
     "slope_method": "dong_naver",
     "pedia1": 33,
     "pedia1_name": "올바른소아청소년과의원",
+    "pedia1_slope": 8.3,
     "pedia2": 32,
     "pedia2_name": "동탄S소아청소년과 발달클리닉",
+    "pedia2_slope": 9.2,
     "hcode": "aBY7b",
     "recent_trades": [
       {
@@ -2043,8 +2131,10 @@
     "slope_method": "dong_naver",
     "pedia1": 12,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": -0.7,
     "pedia2": 21,
     "pedia2_name": "성모바른소아청소년과의원",
+    "pedia2_slope": -2.1,
     "hcode": "dKS83",
     "recent_trades": [
       {
@@ -2137,8 +2227,10 @@
     "slope_method": "dong_naver",
     "pedia1": 13,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": -1.6,
     "pedia2": 16,
     "pedia2_name": "튼튼사랑소아청소년과의원",
+    "pedia2_slope": 4.7,
     "hcode": "dKT1f",
     "recent_trades": [
       {
@@ -2219,8 +2311,10 @@
     "slope_method": "dong_naver",
     "pedia1": 13,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": -1.6,
     "pedia2": 16,
     "pedia2_name": "튼튼사랑소아청소년과의원",
+    "pedia2_slope": 4.7,
     "hcode": "dKT1f",
     "recent_trades": [
       {
@@ -2271,8 +2365,10 @@
     "slope_method": "dong_naver",
     "pedia1": 7,
     "pedia1_name": "아이언소아청소년과의원",
+    "pedia1_slope": 0.8,
     "pedia2": 33,
     "pedia2_name": "굿모닝소아청소년과의원",
+    "pedia2_slope": 8.9,
     "hcode": "dzz14",
     "recent_trades": [
       {
@@ -2305,8 +2401,10 @@
     "slope_method": "dong_naver",
     "pedia1": 7,
     "pedia1_name": "아이언소아청소년과의원",
+    "pedia1_slope": 0.8,
     "pedia2": 33,
     "pedia2_name": "굿모닝소아청소년과의원",
+    "pedia2_slope": 8.9,
     "hcode": "dzz14",
     "recent_trades": [
       {
@@ -2369,8 +2467,10 @@
     "slope_method": "dong_naver",
     "pedia1": 39,
     "pedia1_name": "광교이안소아청소년과의원",
+    "pedia1_slope": -29.3,
     "pedia2": 36,
     "pedia2_name": "늘푸른소아과의원",
+    "pedia2_slope": -46.1,
     "hcode": "dPJ58",
     "recent_trades": [
       {
@@ -2403,8 +2503,10 @@
     "slope_method": "dong_naver",
     "pedia1": 39,
     "pedia1_name": "광교이안소아청소년과의원",
+    "pedia1_slope": -29.3,
     "pedia2": 36,
     "pedia2_name": "늘푸른소아과의원",
+    "pedia2_slope": -46.1,
     "hcode": "dPJ58",
     "recent_trades": []
   },
@@ -2430,8 +2532,10 @@
     "slope_method": "dong_naver",
     "pedia1": 8,
     "pedia1_name": "사랑의내과소아청소년과의원",
+    "pedia1_slope": -13.4,
     "pedia2": 15,
     "pedia2_name": "베스트소아과의원",
+    "pedia2_slope": 5.6,
     "hcode": null,
     "recent_trades": [
       {
@@ -2464,8 +2568,10 @@
     "slope_method": "dong_naver",
     "pedia1": 20,
     "pedia1_name": "아산이뮨플러스의원",
+    "pedia1_slope": -21.7,
     "pedia2": 26,
     "pedia2_name": "이레소아청소년과의원",
+    "pedia2_slope": -9.4,
     "hcode": "6n062",
     "recent_trades": []
   },
@@ -2491,8 +2597,10 @@
     "slope_method": "dong_naver",
     "pedia1": 5,
     "pedia1_name": "삼성제일소아청소년과의원",
+    "pedia1_slope": -3.8,
     "pedia2": 10,
     "pedia2_name": "솔빛소아청소년과의원",
+    "pedia2_slope": 0.7,
     "hcode": "6xQae",
     "recent_trades": [
       {
@@ -2525,8 +2633,10 @@
     "slope_method": "dong_naver",
     "pedia1": 11,
     "pedia1_name": "솔빛소아청소년과의원",
+    "pedia1_slope": 2.0,
     "pedia2": 6,
     "pedia2_name": "삼성제일소아청소년과의원",
+    "pedia2_slope": -2.5,
     "hcode": "6xR56",
     "recent_trades": [
       {
@@ -2565,8 +2675,10 @@
     "slope_method": "dong_naver",
     "pedia1": 19,
     "pedia1_name": "SK메디모아소아청소년과의원",
+    "pedia1_slope": 0.3,
     "pedia2": 18,
     "pedia2_name": "자이소아청소년과의원",
+    "pedia2_slope": -1.9,
     "hcode": null,
     "recent_trades": [
       {
@@ -2599,8 +2711,10 @@
     "slope_method": "dong_naver",
     "pedia1": 11,
     "pedia1_name": "성모수소아청소년과의원",
+    "pedia1_slope": -4.0,
     "pedia2": 10,
     "pedia2_name": "아이온연합소아청소년과의원",
+    "pedia2_slope": -5.6,
     "hcode": null,
     "recent_trades": [
       {
@@ -2639,8 +2753,10 @@
     "slope_method": "dong",
     "pedia1": 10,
     "pedia1_name": "온가족소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 23,
     "pedia2_name": "연세로이소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dtd2d",
     "recent_trades": [
       {
@@ -2691,8 +2807,10 @@
     "slope_method": "dong",
     "pedia1": 10,
     "pedia1_name": "온가족소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 23,
     "pedia2_name": "연세로이소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dtd2d",
     "recent_trades": [
       {
@@ -2731,8 +2849,10 @@
     "slope_method": "dong",
     "pedia1": 12,
     "pedia1_name": "성모바른소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 13,
     "pedia2_name": "하나소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dted4",
     "recent_trades": [
       {
@@ -2771,8 +2891,10 @@
     "slope_method": "dong",
     "pedia1": 12,
     "pedia1_name": "성모바른소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 13,
     "pedia2_name": "하나소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dted4",
     "recent_trades": [
       {
@@ -2829,8 +2951,10 @@
     "slope_method": "dong_naver",
     "pedia1": 11,
     "pedia1_name": "동탄연세소아청소년과웰빙",
+    "pedia1_slope": -10.4,
     "pedia2": 11,
     "pedia2_name": "동탄연세소아청소년과의원",
+    "pedia2_slope": -8.4,
     "hcode": null,
     "recent_trades": [
       {
@@ -2863,8 +2987,10 @@
     "slope_method": "dong_naver",
     "pedia1": 5,
     "pedia1_name": "성모플러스 내과소아과",
+    "pedia1_slope": -4.2,
     "pedia2": 11,
     "pedia2_name": "우리아이소아청소년과의원",
+    "pedia2_slope": -5.4,
     "hcode": "6xZ52",
     "recent_trades": [
       {
@@ -2909,8 +3035,10 @@
     "slope_method": "dong_naver",
     "pedia1": 9,
     "pedia1_name": "우리아이소아청소년과의원",
+    "pedia1_slope": 0.4,
     "pedia2": 18,
     "pedia2_name": "성모플러스 내과소아과",
+    "pedia2_slope": 1.7,
     "hcode": "6y038",
     "recent_trades": [
       {
@@ -2949,8 +3077,10 @@
     "slope_method": "dong_naver",
     "pedia1": 12,
     "pedia1_name": "성모플러스 내과소아과",
+    "pedia1_slope": -4.4,
     "pedia2": 20,
     "pedia2_name": "우리아이소아청소년과의원",
+    "pedia2_slope": -5.6,
     "hcode": null,
     "recent_trades": [
       {
@@ -2995,8 +3125,10 @@
     "slope_method": "dong",
     "pedia1": 13,
     "pedia1_name": "온새미로",
+    "pedia1_slope": null,
     "pedia2": 27,
     "pedia2_name": "영통아이언소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dNLc1",
     "recent_trades": [
       {
@@ -3053,8 +3185,10 @@
     "slope_method": "dong",
     "pedia1": 13,
     "pedia1_name": "온새미로",
+    "pedia1_slope": null,
     "pedia2": 27,
     "pedia2_name": "영통아이언소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dNLc1",
     "recent_trades": [
       {
@@ -3105,8 +3239,10 @@
     "slope_method": "dong_naver",
     "pedia1": 24,
     "pedia1_name": "하나소아청소년과의원",
+    "pedia1_slope": -38.5,
     "pedia2": 22,
     "pedia2_name": "강남병원 소아청소년센터",
+    "pedia2_slope": -3.5,
     "hcode": "aZw7e",
     "recent_trades": [
       {
@@ -3163,8 +3299,10 @@
     "slope_method": "dong_naver",
     "pedia1": 13,
     "pedia1_name": "영통아이언소아청소년과의원",
+    "pedia1_slope": -3.9,
     "pedia2": 19,
     "pedia2_name": "홍진희소아청소년과의원",
+    "pedia2_slope": -11.5,
     "hcode": "aA22d",
     "recent_trades": [
       {
@@ -3203,8 +3341,10 @@
     "slope_method": "",
     "pedia1": null,
     "pedia1_name": null,
+    "pedia1_slope": null,
     "pedia2": null,
     "pedia2_name": null,
+    "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
       {
@@ -3237,8 +3377,10 @@
     "slope_method": "dong_naver",
     "pedia1": 11,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": 0.9,
     "pedia2": 13,
     "pedia2_name": "성모바른소아청소년과의원",
+    "pedia2_slope": -0.5,
     "hcode": "dUDd4",
     "recent_trades": [
       {
@@ -3295,8 +3437,10 @@
     "slope_method": "dong_naver",
     "pedia1": 18,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": 1.0,
     "pedia2": 10,
     "pedia2_name": "성모바른소아청소년과의원",
+    "pedia2_slope": -0.4,
     "hcode": "dUEb9",
     "recent_trades": [
       {
@@ -3329,8 +3473,10 @@
     "slope_method": "dong",
     "pedia1": 1,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 16,
     "pedia2_name": "튼튼사랑소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "aZvfa",
     "recent_trades": [
       {
@@ -3381,8 +3527,10 @@
     "slope_method": "dong",
     "pedia1": 9,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 16,
     "pedia2_name": "성모바른소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dKR50",
     "recent_trades": [
       {
@@ -3415,8 +3563,10 @@
     "slope_method": "dong",
     "pedia1": 9,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 16,
     "pedia2_name": "성모바른소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dKR50",
     "recent_trades": []
   },
@@ -3442,8 +3592,10 @@
     "slope_method": "",
     "pedia1": null,
     "pedia1_name": null,
+    "pedia1_slope": null,
     "pedia2": null,
     "pedia2_name": null,
+    "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
       {
@@ -3476,8 +3628,10 @@
     "slope_method": "dong_naver",
     "pedia1": 32,
     "pedia1_name": "삼성키즈소아청소년과의원",
+    "pedia1_slope": -13.6,
     "pedia2": 22,
     "pedia2_name": "기린웰소아청소년과의원",
+    "pedia2_slope": -32.0,
     "hcode": "dwBa6",
     "recent_trades": [
       {
@@ -3516,8 +3670,10 @@
     "slope_method": "dong_naver",
     "pedia1": 32,
     "pedia1_name": "삼성키즈소아청소년과의원",
+    "pedia1_slope": -13.6,
     "pedia2": 22,
     "pedia2_name": "기린웰소아청소년과의원",
+    "pedia2_slope": -32.0,
     "hcode": "dwBa6",
     "recent_trades": [
       {
@@ -3556,8 +3712,10 @@
     "slope_method": "dong",
     "pedia1": 14,
     "pedia1_name": "코벤트더웰의원",
+    "pedia1_slope": null,
     "pedia2": 17,
     "pedia2_name": "반디소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "aDW27",
     "recent_trades": [
       {
@@ -3590,8 +3748,10 @@
     "slope_method": "dong",
     "pedia1": 6,
     "pedia1_name": "삼성365소아청소년과",
+    "pedia1_slope": null,
     "pedia2": 13,
     "pedia2_name": "동탄에스소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "aVLf7",
     "recent_trades": [
       {
@@ -3630,8 +3790,10 @@
     "slope_method": "dong_naver",
     "pedia1": 20,
     "pedia1_name": "서울소아청소년과의원",
+    "pedia1_slope": -16.3,
     "pedia2": 18,
     "pedia2_name": "친구들소아청소년과의원",
+    "pedia2_slope": 6.5,
     "hcode": "5aac4",
     "recent_trades": [
       {
@@ -3676,8 +3838,10 @@
     "slope_method": "dong_naver",
     "pedia1": 20,
     "pedia1_name": "서울소아청소년과의원",
+    "pedia1_slope": -16.3,
     "pedia2": 18,
     "pedia2_name": "친구들소아청소년과의원",
+    "pedia2_slope": 6.5,
     "hcode": "5aac4",
     "recent_trades": [
       {
@@ -3710,8 +3874,10 @@
     "slope_method": "dong_naver",
     "pedia1": 17,
     "pedia1_name": "삼성귀요미소아청소년과의원",
+    "pedia1_slope": -26.0,
     "pedia2": 24,
     "pedia2_name": "예사랑소아청소년과의원",
+    "pedia2_slope": 10.5,
     "hcode": "b6Sc3",
     "recent_trades": [
       {
@@ -3756,8 +3922,10 @@
     "slope_method": "dong_naver",
     "pedia1": 11,
     "pedia1_name": "원소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 17,
     "pedia2_name": "동탄호수소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dwh52",
     "recent_trades": [
       {
@@ -3808,8 +3976,10 @@
     "slope_method": "dong_naver",
     "pedia1": 11,
     "pedia1_name": "원소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 17,
     "pedia2_name": "동탄호수소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dwh52",
     "recent_trades": [
       {
@@ -3860,8 +4030,10 @@
     "slope_method": "dong",
     "pedia1": 4,
     "pedia1_name": "레인보우소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 9,
     "pedia2_name": "제이엠베스트소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "aDAce",
     "recent_trades": [
       {
@@ -3894,8 +4066,10 @@
     "slope_method": "dong_naver",
     "pedia1": 7,
     "pedia1_name": "레인보우소아청소년과의원",
+    "pedia1_slope": 37.9,
     "pedia2": 13,
     "pedia2_name": "제이엠베스트소아청소년과의원",
+    "pedia2_slope": 35.8,
     "hcode": "aEaa3",
     "recent_trades": [
       {
@@ -3928,8 +4102,10 @@
     "slope_method": "dong",
     "pedia1": 2,
     "pedia1_name": "서울소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 5,
     "pedia2_name": "누가소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "52p72",
     "recent_trades": [
       {
@@ -3986,8 +4162,10 @@
     "slope_method": "dong_naver",
     "pedia1": 10,
     "pedia1_name": "서울소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 8,
     "pedia2_name": "마트소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "6hS86",
     "recent_trades": [
       {
@@ -4032,8 +4210,10 @@
     "slope_method": "",
     "pedia1": null,
     "pedia1_name": null,
+    "pedia1_slope": null,
     "pedia2": null,
     "pedia2_name": null,
+    "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
       {
@@ -4072,8 +4252,10 @@
     "slope_method": "dong_naver",
     "pedia1": 11,
     "pedia1_name": "서울소아청소년과의원",
+    "pedia1_slope": -24.9,
     "pedia2": 12,
     "pedia2_name": "친구들소아청소년과의원",
+    "pedia2_slope": -2.1,
     "hcode": "6hZ56",
     "recent_trades": [
       {
@@ -4112,8 +4294,10 @@
     "slope_method": "dong",
     "pedia1": 20,
     "pedia1_name": "이레소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 27,
     "pedia2_name": "봄소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "b4Pda",
     "recent_trades": [
       {
@@ -4152,8 +4336,10 @@
     "slope_method": "dong",
     "pedia1": 20,
     "pedia1_name": "이레소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 27,
     "pedia2_name": "봄소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "b4Pda",
     "recent_trades": [
       {
@@ -4192,8 +4378,10 @@
     "slope_method": "dong",
     "pedia1": 8,
     "pedia1_name": "박진녕소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 9,
     "pedia2_name": "우리들소아청소년과",
+    "pedia2_slope": null,
     "hcode": "dtr58",
     "recent_trades": [
       {
@@ -4250,8 +4438,10 @@
     "slope_method": "dong",
     "pedia1": 15,
     "pedia1_name": "동탄S소아청소년과 발달클리닉",
+    "pedia1_slope": null,
     "pedia2": 19,
     "pedia2_name": "올바른소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "aWkba",
     "recent_trades": [
       {
@@ -4302,8 +4492,10 @@
     "slope_method": "dong",
     "pedia1": 15,
     "pedia1_name": "동탄S소아청소년과 발달클리닉",
+    "pedia1_slope": null,
     "pedia2": 19,
     "pedia2_name": "올바른소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "aWkba",
     "recent_trades": [
       {
@@ -4384,8 +4576,10 @@
     "slope_method": "dong_naver",
     "pedia1": 13,
     "pedia1_name": "아이웰봄 소아청소년과의원",
+    "pedia1_slope": -5.2,
     "pedia2": 12,
     "pedia2_name": "연세뉴키즈 소아청소년과의원",
+    "pedia2_slope": -5.6,
     "hcode": null,
     "recent_trades": [
       {
@@ -4460,8 +4654,10 @@
     "slope_method": "dong",
     "pedia1": 21,
     "pedia1_name": "온가족소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 18,
     "pedia2_name": "연세로이소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dD2de",
     "recent_trades": [
       {
@@ -4512,8 +4708,10 @@
     "slope_method": "dong",
     "pedia1": 21,
     "pedia1_name": "온가족소아청소년과의원",
+    "pedia1_slope": null,
     "pedia2": 18,
     "pedia2_name": "연세로이소아청소년과의원",
+    "pedia2_slope": null,
     "hcode": "dD2de",
     "recent_trades": [
       {
