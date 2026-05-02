@@ -21,24 +21,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 21
+        "minutes": 21,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 19
+        "minutes": 19,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 40
+        "minutes": 40,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 25
+        "minutes": 25,
+        "time": "16:33"
       }
     ],
     "slope": 5.1,
@@ -112,24 +116,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 21
+        "minutes": 21,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 19
+        "minutes": 19,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 40
+        "minutes": 40,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 25
+        "minutes": 25,
+        "time": "16:33"
       }
     ],
     "slope": 5.1,
@@ -210,39 +218,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 43
+        "minutes": 43,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 40
+        "minutes": 40,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 42
+        "minutes": 42,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 33
+        "minutes": 33,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 43
+        "minutes": 43,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 64
+        "minutes": 64,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 39
+        "minutes": 39,
+        "time": "16:33"
       }
     ],
     "slope": 4.3,
@@ -373,39 +388,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 37
+        "minutes": 37,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 34
+        "minutes": 34,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 37
+        "minutes": 37,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 30
+        "minutes": 30,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 43
+        "minutes": 43,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 55
+        "minutes": 55,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 42
+        "minutes": 42,
+        "time": "16:33"
       }
     ],
     "slope": 14.2,
@@ -618,34 +640,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 30
+        "minutes": 30,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 31
+        "minutes": 31,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 28
+        "minutes": 28,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 40
+        "minutes": 40,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 54
+        "minutes": 54,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       }
     ],
     "slope": 14.6,
@@ -822,39 +850,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 33
+        "minutes": 33,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 30
+        "minutes": 30,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 32
+        "minutes": 32,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 27
+        "minutes": 27,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 40
+        "minutes": 40,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 54
+        "minutes": 54,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       }
     ],
     "slope": 12.8,
@@ -1191,39 +1226,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 33
+        "minutes": 33,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 30
+        "minutes": 30,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 32
+        "minutes": 32,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 27
+        "minutes": 27,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 40
+        "minutes": 40,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 54
+        "minutes": 54,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       }
     ],
     "slope": 12.8,
@@ -1506,39 +1548,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 37
+        "minutes": 37,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 34
+        "minutes": 34,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 37
+        "minutes": 37,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 30
+        "minutes": 30,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 43
+        "minutes": 43,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 55
+        "minutes": 55,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 42
+        "minutes": 42,
+        "time": "16:33"
       }
     ],
     "slope": 14.2,
@@ -1727,24 +1776,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 34
+        "minutes": 34,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 48
+        "minutes": 48,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 36
+        "minutes": 36,
+        "time": "16:33"
       }
     ],
     "slope": 2.9,
@@ -1827,39 +1880,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 41
+        "minutes": 41,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 36
+        "minutes": 36,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 37
+        "minutes": 37,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 38
+        "minutes": 38,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 53
+        "minutes": 53,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 41
+        "minutes": 41,
+        "time": "16:33"
       }
     ],
     "slope": 1.6,
@@ -1940,34 +2000,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 28
+        "minutes": 28,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 28
+        "minutes": 28,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 23
+        "minutes": 23,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 33
+        "minutes": 33,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 43
+        "minutes": 43,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 30
+        "minutes": 30,
+        "time": "16:33"
       }
     ],
     "slope": 24,
@@ -2094,39 +2160,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 38
+        "minutes": 38,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 34
+        "minutes": 34,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 35
+        "minutes": 35,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 28
+        "minutes": 28,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 42
+        "minutes": 42,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 56
+        "minutes": 56,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 39
+        "minutes": 39,
+        "time": "16:33"
       }
     ],
     "slope": 2.9,
@@ -2229,24 +2302,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 30
+        "minutes": 30,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 24
+        "minutes": 24,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 45
+        "minutes": 45,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 32
+        "minutes": 32,
+        "time": "16:33"
       }
     ],
     "slope": 3.2,
@@ -2391,39 +2468,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 41
+        "minutes": 41,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 36
+        "minutes": 36,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 37
+        "minutes": 37,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 38
+        "minutes": 38,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 53
+        "minutes": 53,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 41
+        "minutes": 41,
+        "time": "16:33"
       }
     ],
     "slope": 1.6,
@@ -2497,39 +2581,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 20
+        "minutes": 20,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 20
+        "minutes": 20,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 21
+        "minutes": 21,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 18
+        "minutes": 18,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 22
+        "minutes": 22,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 24
+        "minutes": 24,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 20
+        "minutes": 20,
+        "time": "16:33"
       }
     ],
     "slope": 9.1,
@@ -2612,34 +2703,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 27
+        "minutes": 27,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 28
+        "minutes": 28,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 24
+        "minutes": 24,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 29
+        "minutes": 29,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 34
+        "minutes": 34,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 27
+        "minutes": 27,
+        "time": "16:33"
       }
     ],
     "slope": 42,
@@ -2728,39 +2825,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 26
+        "minutes": 26,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 26
+        "minutes": 26,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 27
+        "minutes": 27,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 23
+        "minutes": 23,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 28
+        "minutes": 28,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 33
+        "minutes": 33,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 26
+        "minutes": 26,
+        "time": "16:33"
       }
     ],
     "slope": 26.7,
@@ -2845,39 +2949,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 28
+        "minutes": 28,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 30
+        "minutes": 30,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 29
+        "minutes": 29,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 24
+        "minutes": 24,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 32
+        "minutes": 32,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 31
+        "minutes": 31,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 28
+        "minutes": 28,
+        "time": "16:33"
       }
     ],
     "slope": 3.9,
@@ -2978,24 +3089,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 34
+        "minutes": 34,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 28
+        "minutes": 28,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       }
     ],
     "slope": 33,
@@ -3086,14 +3201,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 19
+        "minutes": 19,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "16:33"
       }
     ],
     "slope": 10.8,
@@ -3162,34 +3279,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 25
+        "minutes": 25,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 20
+        "minutes": 20,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 30
+        "minutes": 30,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 49
+        "minutes": 49,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 31
+        "minutes": 31,
+        "time": "16:33"
       }
     ],
     "slope": 8.3,
@@ -3247,39 +3370,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 27
+        "minutes": 27,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 25
+        "minutes": 25,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 18
+        "minutes": 18,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 28
+        "minutes": 28,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 43
+        "minutes": 43,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 25
+        "minutes": 25,
+        "time": "16:33"
       }
     ],
     "slope": 43.4,
@@ -3370,39 +3500,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 27
+        "minutes": 27,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 25
+        "minutes": 25,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 18
+        "minutes": 18,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 28
+        "minutes": 28,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 43
+        "minutes": 43,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 25
+        "minutes": 25,
+        "time": "16:33"
       }
     ],
     "slope": 43.4,
@@ -3493,14 +3630,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 30
+        "minutes": 30,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       }
     ],
     "slope": 0.2,
@@ -3562,34 +3701,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 38
+        "minutes": 38,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 40
+        "minutes": 40,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 31
+        "minutes": 31,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 36
+        "minutes": 36,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 51
+        "minutes": 51,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       }
     ],
     "slope": 7.2,
@@ -3762,39 +3907,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 35
+        "minutes": 35,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 31
+        "minutes": 31,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 33
+        "minutes": 33,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 23
+        "minutes": 23,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 34
+        "minutes": 34,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 49
+        "minutes": 49,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 33
+        "minutes": 33,
+        "time": "16:33"
       }
     ],
     "slope": 5.8,
@@ -3905,39 +4057,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 35
+        "minutes": 35,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 31
+        "minutes": 31,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 33
+        "minutes": 33,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 23
+        "minutes": 23,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 34
+        "minutes": 34,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 49
+        "minutes": 49,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 33
+        "minutes": 33,
+        "time": "16:33"
       }
     ],
     "slope": 5.8,
@@ -4054,24 +4213,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 41
+        "minutes": 41,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 32
+        "minutes": 32,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 59
+        "minutes": 59,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 41
+        "minutes": 41,
+        "time": "16:33"
       }
     ],
     "slope": 1.9,
@@ -4224,39 +4387,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 42
+        "minutes": 42,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 38
+        "minutes": 38,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 42
+        "minutes": 42,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 42
+        "minutes": 42,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 57
+        "minutes": 57,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 42
+        "minutes": 42,
+        "time": "16:33"
       }
     ],
     "slope": 13.3,
@@ -4351,14 +4521,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 33
+        "minutes": 33,
+        "time": "07:01"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 30
+        "minutes": 30,
+        "time": "16:33"
       }
     ],
     "slope": 3.5,
@@ -4447,39 +4619,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 43
+        "minutes": 43,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 38
+        "minutes": 38,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 44
+        "minutes": 44,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 44
+        "minutes": 44,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 57
+        "minutes": 57,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 44
+        "minutes": 44,
+        "time": "16:33"
       }
     ],
     "slope": 12.9,
@@ -4598,24 +4777,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 34
+        "minutes": 34,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 25
+        "minutes": 25,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 48
+        "minutes": 48,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 36
+        "minutes": 36,
+        "time": "16:33"
       }
     ],
     "slope": 3.4,
@@ -4704,34 +4887,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 34
+        "minutes": 34,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 37
+        "minutes": 37,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 27
+        "minutes": 27,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 38
+        "minutes": 38,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 57
+        "minutes": 57,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 39
+        "minutes": 39,
+        "time": "16:33"
       }
     ],
     "slope": 2.1,
@@ -4828,39 +5017,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 40
+        "minutes": 40,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 39
+        "minutes": 39,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 40
+        "minutes": 40,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 40
+        "minutes": 40,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 54
+        "minutes": 54,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 40
+        "minutes": 40,
+        "time": "16:33"
       }
     ],
     "slope": 12.8,
@@ -4987,14 +5183,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 31
+        "minutes": 31,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 41
+        "minutes": 41,
+        "time": "16:33"
       }
     ],
     "slope": 11.5,
@@ -5089,24 +5287,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 36
+        "minutes": 36,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 51
+        "minutes": 51,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 38
+        "minutes": 38,
+        "time": "16:33"
       }
     ],
     "slope": 7.4,
@@ -5223,39 +5425,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 43
+        "minutes": 43,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 38
+        "minutes": 38,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 44
+        "minutes": 44,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 44
+        "minutes": 44,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 57
+        "minutes": 57,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 44
+        "minutes": 44,
+        "time": "16:33"
       }
     ],
     "slope": 12.9,
@@ -5398,39 +5607,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 36
+        "minutes": 36,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 34
+        "minutes": 34,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 36
+        "minutes": 36,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 36
+        "minutes": 36,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 51
+        "minutes": 51,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 37
+        "minutes": 37,
+        "time": "16:33"
       }
     ],
     "slope": 10.8,
@@ -5567,24 +5783,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 34
+        "minutes": 34,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 25
+        "minutes": 25,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 48
+        "minutes": 48,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 36
+        "minutes": 36,
+        "time": "16:33"
       }
     ],
     "slope": 3.4,
@@ -5654,39 +5874,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 49
+        "minutes": 49,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 45
+        "minutes": 45,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 47
+        "minutes": 47,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 33
+        "minutes": 33,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 45
+        "minutes": 45,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 60
+        "minutes": 60,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 49
+        "minutes": 49,
+        "time": "16:33"
       }
     ],
     "slope": 5.6,
@@ -5783,39 +6010,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 36
+        "minutes": 36,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 34
+        "minutes": 34,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 36
+        "minutes": 36,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 36
+        "minutes": 36,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 51
+        "minutes": 51,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 37
+        "minutes": 37,
+        "time": "16:33"
       }
     ],
     "slope": 10.8,
@@ -5910,39 +6144,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 40
+        "minutes": 40,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 36
+        "minutes": 36,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 41
+        "minutes": 41,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 27
+        "minutes": 27,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 42
+        "minutes": 42,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 55
+        "minutes": 55,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 42
+        "minutes": 42,
+        "time": "16:33"
       }
     ],
     "slope": 5.9,
@@ -6055,34 +6296,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 27
+        "minutes": 27,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 30
+        "minutes": 30,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 22
+        "minutes": 22,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 33
+        "minutes": 33,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 46
+        "minutes": 46,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 33
+        "minutes": 33,
+        "time": "16:33"
       }
     ],
     "slope": 2,
@@ -6179,14 +6426,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 23
+        "minutes": 23,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "16:33"
       }
     ],
     "slope": 5.1,
@@ -6335,14 +6584,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 23
+        "minutes": 23,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 30
+        "minutes": 30,
+        "time": "16:33"
       }
     ],
     "slope": 14,
@@ -6412,34 +6663,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 33
+        "minutes": 33,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 39
+        "minutes": 39,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 41
+        "minutes": 41,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 46
+        "minutes": 46,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 36
+        "minutes": 36,
+        "time": "16:33"
       }
     ],
     "slope": 13.6,
@@ -6640,39 +6897,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 43
+        "minutes": 43,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 40
+        "minutes": 40,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 42
+        "minutes": 42,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 33
+        "minutes": 33,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 43
+        "minutes": 43,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 64
+        "minutes": 64,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 39
+        "minutes": 39,
+        "time": "16:33"
       }
     ],
     "slope": 4.3,
@@ -6821,14 +7085,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 34
+        "minutes": 34,
+        "time": "16:33"
       }
     ],
     "slope": 3.4,
@@ -6907,24 +7173,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 47
+        "minutes": 47,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 49
+        "minutes": 49,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 38
+        "minutes": 38,
+        "time": "16:33"
       }
     ],
     "slope": 6,
@@ -7021,34 +7291,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 43
+        "minutes": 43,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 47
+        "minutes": 47,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 44
+        "minutes": 44,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 52
+        "minutes": 52,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 38
+        "minutes": 38,
+        "time": "16:33"
       }
     ],
     "slope": 2.6,
@@ -7125,39 +7401,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 37
+        "minutes": 37,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 34
+        "minutes": 34,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 37
+        "minutes": 37,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 30
+        "minutes": 30,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 43
+        "minutes": 43,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 55
+        "minutes": 55,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 42
+        "minutes": 42,
+        "time": "16:33"
       }
     ],
     "slope": 14.2,
@@ -7352,34 +7635,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 30
+        "minutes": 30,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 31
+        "minutes": 31,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 28
+        "minutes": 28,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 40
+        "minutes": 40,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 54
+        "minutes": 54,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       }
     ],
     "slope": 14.6,
@@ -7622,14 +7911,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 24
+        "minutes": 24,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "16:33"
       }
     ],
     "slope": 3.5,
@@ -7740,34 +8031,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 28
+        "minutes": 28,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 28
+        "minutes": 28,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 23
+        "minutes": 23,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 33
+        "minutes": 33,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 43
+        "minutes": 43,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 30
+        "minutes": 30,
+        "time": "16:33"
       }
     ],
     "slope": 24,
@@ -7882,34 +8179,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 30
+        "minutes": 30,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 32
+        "minutes": 32,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 27
+        "minutes": 27,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 37
+        "minutes": 37,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 45
+        "minutes": 45,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 34
+        "minutes": 34,
+        "time": "16:33"
       }
     ],
     "slope": 5.6,
@@ -8240,14 +8543,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 30
+        "minutes": 30,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 41
+        "minutes": 41,
+        "time": "16:33"
       }
     ],
     "slope": 2.8,
@@ -8328,14 +8633,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 30
+        "minutes": 30,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 41
+        "minutes": 41,
+        "time": "16:33"
       }
     ],
     "slope": 3.5,
@@ -8436,24 +8743,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 30
+        "minutes": 30,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 24
+        "minutes": 24,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 45
+        "minutes": 45,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 32
+        "minutes": 32,
+        "time": "16:33"
       }
     ],
     "slope": 3.2,
@@ -8530,39 +8841,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 20
+        "minutes": 20,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 20
+        "minutes": 20,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 21
+        "minutes": 21,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 18
+        "minutes": 18,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 22
+        "minutes": 22,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 24
+        "minutes": 24,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 20
+        "minutes": 20,
+        "time": "16:33"
       }
     ],
     "slope": 9.1,
@@ -8632,14 +8950,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 18
+        "minutes": 18,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 22
+        "minutes": 22,
+        "time": "16:33"
       }
     ],
     "slope": 50.5,
@@ -8740,39 +9060,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 25
+        "minutes": 25,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 22
+        "minutes": 22,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 21
+        "minutes": 21,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 16
+        "minutes": 16,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 26
+        "minutes": 26,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 38
+        "minutes": 38,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 26
+        "minutes": 26,
+        "time": "16:33"
       }
     ],
     "slope": 14,
@@ -8885,24 +9212,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 34
+        "minutes": 34,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 28
+        "minutes": 28,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       }
     ],
     "slope": 33,
@@ -8993,24 +9324,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 28
+        "minutes": 28,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 21
+        "minutes": 21,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 28
+        "minutes": 28,
+        "time": "16:33"
       }
     ],
     "slope": 25.8,
@@ -9164,14 +9499,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 24
+        "minutes": 24,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 32
+        "minutes": 32,
+        "time": "16:33"
       }
     ],
     "slope": 6.6,
@@ -9306,34 +9643,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 25
+        "minutes": 25,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 20
+        "minutes": 20,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 30
+        "minutes": 30,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 49
+        "minutes": 49,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 31
+        "minutes": 31,
+        "time": "16:33"
       }
     ],
     "slope": 8.3,
@@ -9473,24 +9816,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 32
+        "minutes": 32,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 21
+        "minutes": 21,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 34
+        "minutes": 34,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 28
+        "minutes": 28,
+        "time": "16:33"
       }
     ],
     "slope": 17.2,
@@ -9585,14 +9932,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 21
+        "minutes": 21,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 31
+        "minutes": 31,
+        "time": "16:33"
       }
     ],
     "slope": 3.6,
@@ -9662,14 +10011,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 20
+        "minutes": 20,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 27
+        "minutes": 27,
+        "time": "16:33"
       }
     ],
     "slope": 21.3,
@@ -9755,14 +10106,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 25
+        "minutes": 25,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 45
+        "minutes": 45,
+        "time": "16:33"
       }
     ],
     "slope": 1.1,
@@ -9975,24 +10328,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 41
+        "minutes": 41,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 32
+        "minutes": 32,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 59
+        "minutes": 59,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 41
+        "minutes": 41,
+        "time": "16:33"
       }
     ],
     "slope": 1.9,
@@ -10175,29 +10532,34 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 43
+        "minutes": 43,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 39
+        "minutes": 39,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 31
+        "minutes": 31,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 51
+        "minutes": 51,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 36
+        "minutes": 36,
+        "time": "16:33"
       }
     ],
     "slope": 3.3,
@@ -10352,34 +10714,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 38
+        "minutes": 38,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 40
+        "minutes": 40,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 31
+        "minutes": 31,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 36
+        "minutes": 36,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 51
+        "minutes": 51,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       }
     ],
     "slope": 7.2,
@@ -10522,24 +10890,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 31
+        "minutes": 31,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 23
+        "minutes": 23,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 42
+        "minutes": 42,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 32
+        "minutes": 32,
+        "time": "16:33"
       }
     ],
     "slope": 4.8,
@@ -10638,24 +11010,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 35
+        "minutes": 35,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 49
+        "minutes": 49,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 36
+        "minutes": 36,
+        "time": "16:33"
       }
     ],
     "slope": 8,
@@ -10838,24 +11214,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 34
+        "minutes": 34,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 25
+        "minutes": 25,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 51
+        "minutes": 51,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 37
+        "minutes": 37,
+        "time": "16:33"
       }
     ],
     "slope": 7.7,
@@ -10986,24 +11366,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 35
+        "minutes": 35,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 25
+        "minutes": 25,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 51
+        "minutes": 51,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 37
+        "minutes": 37,
+        "time": "16:33"
       }
     ],
     "slope": 6.1,
@@ -11112,24 +11496,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 34
+        "minutes": 34,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 49
+        "minutes": 49,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 36
+        "minutes": 36,
+        "time": "16:33"
       }
     ],
     "slope": 4.1,
@@ -11312,39 +11700,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 43
+        "minutes": 43,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 38
+        "minutes": 38,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 44
+        "minutes": 44,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 44
+        "minutes": 44,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 57
+        "minutes": 57,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 44
+        "minutes": 44,
+        "time": "16:33"
       }
     ],
     "slope": 12.9,
@@ -11438,14 +11833,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 23
+        "minutes": 23,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "16:33"
       }
     ],
     "slope": 1.9,
@@ -11526,14 +11923,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 32
+        "minutes": 32,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 44
+        "minutes": 44,
+        "time": "16:33"
       }
     ],
     "slope": 10.5,
@@ -11612,34 +12011,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 32
+        "minutes": 32,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 34
+        "minutes": 34,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 25
+        "minutes": 25,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 35
+        "minutes": 35,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 49
+        "minutes": 49,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 37
+        "minutes": 37,
+        "time": "16:33"
       }
     ],
     "slope": 8.3,
@@ -11724,39 +12129,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 40
+        "minutes": 40,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 36
+        "minutes": 36,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 41
+        "minutes": 41,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 27
+        "minutes": 27,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 42
+        "minutes": 42,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 55
+        "minutes": 55,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 42
+        "minutes": 42,
+        "time": "16:33"
       }
     ],
     "slope": 5.9,
@@ -11875,14 +12287,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 21
+        "minutes": 21,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "16:33"
       }
     ],
     "slope": 2.4,
@@ -11973,14 +12387,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 33
+        "minutes": 33,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 49
+        "minutes": 49,
+        "time": "16:33"
       }
     ],
     "slope": 10.3,
@@ -12075,34 +12491,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 34
+        "minutes": 34,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 37
+        "minutes": 37,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 27
+        "minutes": 27,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 38
+        "minutes": 38,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 57
+        "minutes": 57,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 39
+        "minutes": 39,
+        "time": "16:33"
       }
     ],
     "slope": 2.1,
@@ -12187,14 +12609,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 22
+        "minutes": 22,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "16:33"
       }
     ],
     "slope": 0.5,
@@ -12259,34 +12683,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 43
+        "minutes": 43,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 48
+        "minutes": 48,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 32
+        "minutes": 32,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 44
+        "minutes": 44,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 60
+        "minutes": 60,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 47
+        "minutes": 47,
+        "time": "16:33"
       }
     ],
     "slope": 21.6,
@@ -12399,24 +12829,28 @@
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 36
+        "minutes": 36,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 26
+        "minutes": 26,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 51
+        "minutes": 51,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 38
+        "minutes": 38,
+        "time": "16:33"
       }
     ],
     "slope": 7.4,
@@ -12515,39 +12949,46 @@
       {
         "date": "2026-04-28",
         "weekday": "화",
-        "minutes": 40
+        "minutes": 40,
+        "time": "07:00"
       },
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 39
+        "minutes": 39,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 40
+        "minutes": 40,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 29
+        "minutes": 29,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 40
+        "minutes": 40,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 54
+        "minutes": 54,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 40
+        "minutes": 40,
+        "time": "16:33"
       }
     ],
     "slope": 12.8,
@@ -12798,34 +13239,40 @@
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 42
+        "minutes": 42,
+        "time": "07:00"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 46
+        "minutes": 46,
+        "time": "06:58"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 31
+        "minutes": 31,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-04-29",
         "weekday": "수",
-        "minutes": 42
+        "minutes": 42,
+        "time": "16:33"
       },
       {
         "date": "2026-04-30",
         "weekday": "목",
-        "minutes": 58
+        "minutes": 58,
+        "time": "16:33"
       },
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 45
+        "minutes": 45,
+        "time": "16:33"
       }
     ],
     "slope": 10.2,
@@ -12900,14 +13347,16 @@
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 31
+        "minutes": 31,
+        "time": "06:58"
       }
     ],
     "evening_details": [
       {
         "date": "2026-05-01",
         "weekday": "금",
-        "minutes": 41
+        "minutes": 41,
+        "time": "16:33"
       }
     ],
     "slope": 11.5,
