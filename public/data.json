@@ -41,7 +41,7 @@
         "minutes": 25
       }
     ],
-    "slope": 6.2,
+    "slope": 5.1,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -50,15 +50,15 @@
       },
       {
         "dong": 102,
-        "elev": 96.1
+        "elev": 96.2
       },
       {
         "dong": 103,
-        "elev": 96.4
+        "elev": 96.8
       },
       {
         "dong": 104,
-        "elev": 96.4
+        "elev": 96.3
       },
       {
         "dong": 105,
@@ -66,19 +66,19 @@
       },
       {
         "dong": 106,
-        "elev": 90.5
+        "elev": 92.2
       },
       {
         "dong": 107,
-        "elev": 90.6
+        "elev": 92.4
       },
       {
         "dong": 108,
-        "elev": 90.9
+        "elev": 92.3
       },
       {
         "dong": 109,
-        "elev": 90.3
+        "elev": 91.7
       }
     ],
     "pedia1": 36,
@@ -132,7 +132,7 @@
         "minutes": 25
       }
     ],
-    "slope": 6.2,
+    "slope": 5.1,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -141,15 +141,15 @@
       },
       {
         "dong": 102,
-        "elev": 96.1
+        "elev": 96.2
       },
       {
         "dong": 103,
-        "elev": 96.4
+        "elev": 96.8
       },
       {
         "dong": 104,
-        "elev": 96.4
+        "elev": 96.3
       },
       {
         "dong": 105,
@@ -157,19 +157,19 @@
       },
       {
         "dong": 106,
-        "elev": 90.5
+        "elev": 92.2
       },
       {
         "dong": 107,
-        "elev": 90.6
+        "elev": 92.4
       },
       {
         "dong": 108,
-        "elev": 90.9
+        "elev": 92.3
       },
       {
         "dong": 109,
-        "elev": 90.3
+        "elev": 91.7
       }
     ],
     "pedia1": 36,
@@ -245,12 +245,12 @@
         "minutes": 39
       }
     ],
-    "slope": 4.6,
+    "slope": 4.3,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 23.9
+        "elev": 23.4
       },
       {
         "dong": 102,
@@ -258,31 +258,31 @@
       },
       {
         "dong": 103,
-        "elev": 25.4
+        "elev": 25.2
       },
       {
         "dong": 104,
-        "elev": 24
+        "elev": 23.7
       },
       {
         "dong": 105,
-        "elev": 23.5
+        "elev": 23.6
       },
       {
         "dong": 106,
-        "elev": 24
+        "elev": 24.5
       },
       {
         "dong": 107,
-        "elev": 24.2
+        "elev": 24.4
       },
       {
         "dong": 108,
-        "elev": 23.9
+        "elev": 23.8
       },
       {
         "dong": 109,
-        "elev": 23.7
+        "elev": 23.6
       },
       {
         "dong": 110,
@@ -294,31 +294,31 @@
       },
       {
         "dong": 112,
-        "elev": 23.2
+        "elev": 23.1
       },
       {
         "dong": 113,
-        "elev": 23.8
+        "elev": 23.5
       },
       {
         "dong": 114,
-        "elev": 24.3
+        "elev": 24.1
       },
       {
         "dong": 115,
-        "elev": 25.1
+        "elev": 25.7
       },
       {
         "dong": 116,
-        "elev": 26.4
+        "elev": 27.4
       },
       {
         "dong": 117,
-        "elev": 24.5
+        "elev": 25.7
       },
       {
         "dong": 118,
-        "elev": 24.3
+        "elev": 24
       },
       {
         "dong": 119,
@@ -326,7 +326,7 @@
       },
       {
         "dong": 120,
-        "elev": 24.3
+        "elev": 24.7
       }
     ],
     "pedia1": 6,
@@ -408,28 +408,28 @@
         "minutes": 42
       }
     ],
-    "slope": 12.1,
+    "slope": 14.2,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 38.3
+        "elev": 38.1
       },
       {
         "dong": 102,
-        "elev": 40.5
+        "elev": 41.9
       },
       {
         "dong": 103,
-        "elev": 45
-      },
-      {
-        "dong": 104,
         "elev": 45.4
       },
       {
+        "dong": 104,
+        "elev": 45.3
+      },
+      {
         "dong": 105,
-        "elev": 46.4
+        "elev": 46.5
       },
       {
         "dong": 106,
@@ -437,55 +437,55 @@
       },
       {
         "dong": 107,
-        "elev": 47.5
-      },
-      {
-        "dong": 108,
         "elev": 47.4
       },
       {
+        "dong": 108,
+        "elev": 48.5
+      },
+      {
         "dong": 109,
-        "elev": 45
+        "elev": 47.4
       },
       {
         "dong": 110,
-        "elev": 39
+        "elev": 39.9
       },
       {
         "dong": 111,
-        "elev": 37.2
+        "elev": 37.1
       },
       {
         "dong": 112,
-        "elev": 37.9
+        "elev": 37.5
       },
       {
         "dong": 113,
-        "elev": 39.7
+        "elev": 39.5
       },
       {
         "dong": 114,
-        "elev": 48.6
+        "elev": 48
       },
       {
         "dong": 115,
-        "elev": 49.2
+        "elev": 49.5
       },
       {
         "dong": 116,
-        "elev": 48.9
+        "elev": 48.6
       },
       {
         "dong": 117,
-        "elev": 42
+        "elev": 40.3
       },
       {
         "dong": 118,
-        "elev": 38.7
+        "elev": 38.9
       },
       {
         "dong": 119,
-        "elev": 38.1
+        "elev": 38.5
       },
       {
         "dong": 120,
@@ -497,19 +497,51 @@
       },
       {
         "dong": 122,
-        "elev": 39.5
+        "elev": 38.1
       },
       {
         "dong": 123,
-        "elev": 44.4
+        "elev": 44.3
       },
       {
         "dong": 124,
-        "elev": 41.5
+        "elev": 41.3
       },
       {
         "dong": 125,
         "elev": 38.6
+      },
+      {
+        "dong": 201,
+        "elev": 35.6
+      },
+      {
+        "dong": 202,
+        "elev": 36
+      },
+      {
+        "dong": 203,
+        "elev": 36.3
+      },
+      {
+        "dong": 204,
+        "elev": 36.6
+      },
+      {
+        "dong": 205,
+        "elev": 35.3
+      },
+      {
+        "dong": 206,
+        "elev": 37.1
+      },
+      {
+        "dong": 207,
+        "elev": 37.3
+      },
+      {
+        "dong": 208,
+        "elev": 36.9
       }
     ],
     "pedia1": 8,
@@ -616,7 +648,7 @@
         "minutes": 35
       }
     ],
-    "slope": 13.5,
+    "slope": 14.6,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -625,31 +657,31 @@
       },
       {
         "dong": 102,
-        "elev": 45.5
+        "elev": 45.7
       },
       {
         "dong": 103,
-        "elev": 47.1
+        "elev": 48.1
       },
       {
         "dong": 104,
-        "elev": 49.9
+        "elev": 49.5
       },
       {
         "dong": 105,
-        "elev": 47.1
+        "elev": 46.7
       },
       {
         "dong": 106,
-        "elev": 46.9
+        "elev": 47.1
       },
       {
         "dong": 107,
-        "elev": 47.2
+        "elev": 47.7
       },
       {
         "dong": 108,
-        "elev": 46.7
+        "elev": 46.8
       },
       {
         "dong": 109,
@@ -657,19 +689,19 @@
       },
       {
         "dong": 110,
-        "elev": 48.3
+        "elev": 47.9
       },
       {
         "dong": 111,
-        "elev": 45.4
+        "elev": 44.2
       },
       {
         "dong": 112,
-        "elev": 43.4
+        "elev": 43.3
       },
       {
         "dong": 113,
-        "elev": 42.3
+        "elev": 40.4
       },
       {
         "dong": 114,
@@ -677,11 +709,11 @@
       },
       {
         "dong": 115,
-        "elev": 45.1
+        "elev": 44
       },
       {
         "dong": 116,
-        "elev": 53.9
+        "elev": 54.2
       },
       {
         "dong": 117,
@@ -693,31 +725,31 @@
       },
       {
         "dong": 119,
-        "elev": 49.5
+        "elev": 49.4
       },
       {
         "dong": 120,
-        "elev": 53.6
+        "elev": 54
       },
       {
         "dong": 121,
-        "elev": 55
+        "elev": 54.8
       },
       {
         "dong": 122,
-        "elev": 49.3
+        "elev": 48
       },
       {
         "dong": 123,
-        "elev": 45.3
+        "elev": 44.3
       },
       {
         "dong": 124,
-        "elev": 46.8
+        "elev": 46.1
       },
       {
         "dong": 125,
-        "elev": 46.2
+        "elev": 46.1
       },
       {
         "dong": 126,
@@ -725,19 +757,19 @@
       },
       {
         "dong": 127,
-        "elev": 54.5
+        "elev": 55
       },
       {
         "dong": 128,
-        "elev": 49.7
+        "elev": 49.5
       },
       {
         "dong": 129,
-        "elev": 50.9
+        "elev": 51.1
       },
       {
         "dong": 130,
-        "elev": 48.6
+        "elev": 51.7
       }
     ],
     "pedia1": 10,
@@ -825,56 +857,56 @@
         "minutes": 35
       }
     ],
-    "slope": 13.5,
+    "slope": 12.8,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 44.9
+        "elev": 43.8
       },
       {
         "dong": 102,
-        "elev": 48.7
+        "elev": 48.6
       },
       {
         "dong": 103,
-        "elev": 47.7
+        "elev": 47.3
       },
       {
         "dong": 104,
-        "elev": 46.3
+        "elev": 45.3
       },
       {
         "dong": 105,
-        "elev": 45.7
+        "elev": 45.2
       },
       {
         "dong": 106,
-        "elev": 44.3
+        "elev": 44.2
       },
       {
         "dong": 107,
-        "elev": 42.5
+        "elev": 42.7
       },
       {
         "dong": 108,
-        "elev": 44.9
+        "elev": 44
       },
       {
         "dong": 109,
-        "elev": 47.4
+        "elev": 47.8
       },
       {
         "dong": 110,
-        "elev": 50
+        "elev": 51.4
       },
       {
         "dong": 111,
-        "elev": 52.3
+        "elev": 53
       },
       {
         "dong": 112,
-        "elev": 50.5
+        "elev": 50.7
       },
       {
         "dong": 113,
@@ -882,59 +914,59 @@
       },
       {
         "dong": 114,
-        "elev": 50.5
+        "elev": 50.1
       },
       {
         "dong": 115,
-        "elev": 51.3
+        "elev": 51.7
       },
       {
         "dong": 116,
-        "elev": 49.6
+        "elev": 50.4
       },
       {
         "dong": 117,
-        "elev": 47.2
+        "elev": 47.4
       },
       {
         "dong": 118,
-        "elev": 47.1
+        "elev": 47.4
       },
       {
         "dong": 119,
-        "elev": 48.1
+        "elev": 48
       },
       {
         "dong": 120,
-        "elev": 49.8
+        "elev": 49.6
       },
       {
         "dong": 121,
-        "elev": 49.1
+        "elev": 49.2
       },
       {
         "dong": 122,
-        "elev": 48.6
+        "elev": 48.5
       },
       {
         "dong": 123,
-        "elev": 47.6
+        "elev": 47.5
       },
       {
         "dong": 124,
-        "elev": 47.9
+        "elev": 48
       },
       {
         "dong": 125,
-        "elev": 47.9
+        "elev": 48.4
       },
       {
         "dong": 126,
-        "elev": 47.1
+        "elev": 47.4
       },
       {
         "dong": 127,
-        "elev": 44.3
+        "elev": 44.6
       },
       {
         "dong": 128,
@@ -942,27 +974,27 @@
       },
       {
         "dong": 129,
-        "elev": 46.2
+        "elev": 46.6
       },
       {
         "dong": 130,
-        "elev": 46.8
+        "elev": 46.9
       },
       {
         "dong": 131,
-        "elev": 45.8
+        "elev": 45.9
       },
       {
         "dong": 132,
-        "elev": 44.7
+        "elev": 45.2
       },
       {
         "dong": 133,
-        "elev": 44
+        "elev": 44.1
       },
       {
         "dong": 134,
-        "elev": 44.2
+        "elev": 44.3
       },
       {
         "dong": 135,
@@ -970,15 +1002,15 @@
       },
       {
         "dong": 136,
-        "elev": 42.1
+        "elev": 42
       },
       {
         "dong": 137,
-        "elev": 43.5
+        "elev": 44
       },
       {
         "dong": 138,
-        "elev": 42.9
+        "elev": 43.3
       },
       {
         "dong": 139,
@@ -986,11 +1018,11 @@
       },
       {
         "dong": 140,
-        "elev": 41.1
+        "elev": 41.6
       },
       {
         "dong": 141,
-        "elev": 40.3
+        "elev": 40.5
       },
       {
         "dong": 142,
@@ -998,35 +1030,31 @@
       },
       {
         "dong": 143,
-        "elev": 44.2
+        "elev": 44
       },
       {
         "dong": 144,
-        "elev": 45.2
+        "elev": 45
       },
       {
         "dong": 145,
-        "elev": 45.6
+        "elev": 45.5
       },
       {
         "dong": 146,
-        "elev": 42.8
+        "elev": 43.5
       },
       {
         "dong": 147,
-        "elev": 41.2
-      },
-      {
-        "dong": 148,
-        "elev": 39.2
+        "elev": 41.5
       },
       {
         "dong": 149,
-        "elev": 41.8
+        "elev": 41.7
       },
       {
         "dong": 150,
-        "elev": 44.2
+        "elev": 44.1
       },
       {
         "dong": 151,
@@ -1034,7 +1062,11 @@
       },
       {
         "dong": 152,
-        "elev": 42.4
+        "elev": 42.7
+      },
+      {
+        "dong": 148,
+        "elev": 40.2
       }
     ],
     "pedia1": 8,
@@ -1194,56 +1226,56 @@
         "minutes": 35
       }
     ],
-    "slope": 13.5,
+    "slope": 12.8,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 44.9
+        "elev": 43.8
       },
       {
         "dong": 102,
-        "elev": 48.7
+        "elev": 48.6
       },
       {
         "dong": 103,
-        "elev": 47.7
+        "elev": 47.3
       },
       {
         "dong": 104,
-        "elev": 46.3
+        "elev": 45.3
       },
       {
         "dong": 105,
-        "elev": 45.7
+        "elev": 45.2
       },
       {
         "dong": 106,
-        "elev": 44.3
+        "elev": 44.2
       },
       {
         "dong": 107,
-        "elev": 42.5
+        "elev": 42.7
       },
       {
         "dong": 108,
-        "elev": 44.9
+        "elev": 44
       },
       {
         "dong": 109,
-        "elev": 47.4
+        "elev": 47.8
       },
       {
         "dong": 110,
-        "elev": 50
+        "elev": 51.4
       },
       {
         "dong": 111,
-        "elev": 52.3
+        "elev": 53
       },
       {
         "dong": 112,
-        "elev": 50.5
+        "elev": 50.7
       },
       {
         "dong": 113,
@@ -1251,59 +1283,59 @@
       },
       {
         "dong": 114,
-        "elev": 50.5
+        "elev": 50.1
       },
       {
         "dong": 115,
-        "elev": 51.3
+        "elev": 51.7
       },
       {
         "dong": 116,
-        "elev": 49.6
+        "elev": 50.4
       },
       {
         "dong": 117,
-        "elev": 47.2
+        "elev": 47.4
       },
       {
         "dong": 118,
-        "elev": 47.1
+        "elev": 47.4
       },
       {
         "dong": 119,
-        "elev": 48.1
+        "elev": 48
       },
       {
         "dong": 120,
-        "elev": 49.8
+        "elev": 49.6
       },
       {
         "dong": 121,
-        "elev": 49.1
+        "elev": 49.2
       },
       {
         "dong": 122,
-        "elev": 48.6
+        "elev": 48.5
       },
       {
         "dong": 123,
-        "elev": 47.6
+        "elev": 47.5
       },
       {
         "dong": 124,
-        "elev": 47.9
+        "elev": 48
       },
       {
         "dong": 125,
-        "elev": 47.9
+        "elev": 48.4
       },
       {
         "dong": 126,
-        "elev": 47.1
+        "elev": 47.4
       },
       {
         "dong": 127,
-        "elev": 44.3
+        "elev": 44.6
       },
       {
         "dong": 128,
@@ -1311,27 +1343,27 @@
       },
       {
         "dong": 129,
-        "elev": 46.2
+        "elev": 46.6
       },
       {
         "dong": 130,
-        "elev": 46.8
+        "elev": 46.9
       },
       {
         "dong": 131,
-        "elev": 45.8
+        "elev": 45.9
       },
       {
         "dong": 132,
-        "elev": 44.7
+        "elev": 45.2
       },
       {
         "dong": 133,
-        "elev": 44
+        "elev": 44.1
       },
       {
         "dong": 134,
-        "elev": 44.2
+        "elev": 44.3
       },
       {
         "dong": 135,
@@ -1339,15 +1371,15 @@
       },
       {
         "dong": 136,
-        "elev": 42.1
+        "elev": 42
       },
       {
         "dong": 137,
-        "elev": 43.5
+        "elev": 44
       },
       {
         "dong": 138,
-        "elev": 42.9
+        "elev": 43.3
       },
       {
         "dong": 139,
@@ -1355,11 +1387,11 @@
       },
       {
         "dong": 140,
-        "elev": 41.1
+        "elev": 41.6
       },
       {
         "dong": 141,
-        "elev": 40.3
+        "elev": 40.5
       },
       {
         "dong": 142,
@@ -1367,35 +1399,31 @@
       },
       {
         "dong": 143,
-        "elev": 44.2
+        "elev": 44
       },
       {
         "dong": 144,
-        "elev": 45.2
+        "elev": 45
       },
       {
         "dong": 145,
-        "elev": 45.6
+        "elev": 45.5
       },
       {
         "dong": 146,
-        "elev": 42.8
+        "elev": 43.5
       },
       {
         "dong": 147,
-        "elev": 41.2
-      },
-      {
-        "dong": 148,
-        "elev": 39.2
+        "elev": 41.5
       },
       {
         "dong": 149,
-        "elev": 41.8
+        "elev": 41.7
       },
       {
         "dong": 150,
-        "elev": 44.2
+        "elev": 44.1
       },
       {
         "dong": 151,
@@ -1403,7 +1431,11 @@
       },
       {
         "dong": 152,
-        "elev": 42.4
+        "elev": 42.7
+      },
+      {
+        "dong": 148,
+        "elev": 40.2
       }
     ],
     "pedia1": 8,
@@ -1509,28 +1541,28 @@
         "minutes": 42
       }
     ],
-    "slope": 12.1,
+    "slope": 14.2,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 38.3
+        "elev": 38.1
       },
       {
         "dong": 102,
-        "elev": 40.5
+        "elev": 41.9
       },
       {
         "dong": 103,
-        "elev": 45
-      },
-      {
-        "dong": 104,
         "elev": 45.4
       },
       {
+        "dong": 104,
+        "elev": 45.3
+      },
+      {
         "dong": 105,
-        "elev": 46.4
+        "elev": 46.5
       },
       {
         "dong": 106,
@@ -1538,55 +1570,55 @@
       },
       {
         "dong": 107,
-        "elev": 47.5
-      },
-      {
-        "dong": 108,
         "elev": 47.4
       },
       {
+        "dong": 108,
+        "elev": 48.5
+      },
+      {
         "dong": 109,
-        "elev": 45
+        "elev": 47.4
       },
       {
         "dong": 110,
-        "elev": 39
+        "elev": 39.9
       },
       {
         "dong": 111,
-        "elev": 37.2
+        "elev": 37.1
       },
       {
         "dong": 112,
-        "elev": 37.9
+        "elev": 37.5
       },
       {
         "dong": 113,
-        "elev": 39.7
+        "elev": 39.5
       },
       {
         "dong": 114,
-        "elev": 48.6
+        "elev": 48
       },
       {
         "dong": 115,
-        "elev": 49.2
+        "elev": 49.5
       },
       {
         "dong": 116,
-        "elev": 48.9
+        "elev": 48.6
       },
       {
         "dong": 117,
-        "elev": 42
+        "elev": 40.3
       },
       {
         "dong": 118,
-        "elev": 38.7
+        "elev": 38.9
       },
       {
         "dong": 119,
-        "elev": 38.1
+        "elev": 38.5
       },
       {
         "dong": 120,
@@ -1598,19 +1630,51 @@
       },
       {
         "dong": 122,
-        "elev": 39.5
+        "elev": 38.1
       },
       {
         "dong": 123,
-        "elev": 44.4
+        "elev": 44.3
       },
       {
         "dong": 124,
-        "elev": 41.5
+        "elev": 41.3
       },
       {
         "dong": 125,
         "elev": 38.6
+      },
+      {
+        "dong": 201,
+        "elev": 35.6
+      },
+      {
+        "dong": 202,
+        "elev": 36
+      },
+      {
+        "dong": 203,
+        "elev": 36.3
+      },
+      {
+        "dong": 204,
+        "elev": 36.6
+      },
+      {
+        "dong": 205,
+        "elev": 35.3
+      },
+      {
+        "dong": 206,
+        "elev": 37.1
+      },
+      {
+        "dong": 207,
+        "elev": 37.3
+      },
+      {
+        "dong": 208,
+        "elev": 36.9
       }
     ],
     "pedia1": 8,
@@ -1683,7 +1747,7 @@
         "minutes": 36
       }
     ],
-    "slope": 2.7,
+    "slope": 2.9,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -1700,11 +1764,11 @@
       },
       {
         "dong": 104,
-        "elev": 45.2
+        "elev": 45.5
       },
       {
         "dong": 105,
-        "elev": 44.1
+        "elev": 44.2
       },
       {
         "dong": 106,
@@ -1712,11 +1776,11 @@
       },
       {
         "dong": 107,
-        "elev": 47
+        "elev": 47.1
       },
       {
         "dong": 108,
-        "elev": 46.9
+        "elev": 46.8
       }
     ],
     "pedia1": 6,
@@ -1798,28 +1862,28 @@
         "minutes": 41
       }
     ],
-    "slope": 1.7,
+    "slope": 1.6,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 301,
-        "elev": 23.8
+        "elev": 23.9
       },
       {
         "dong": 302,
-        "elev": 23.5
-      },
-      {
-        "dong": 303,
-        "elev": 23.6
-      },
-      {
-        "dong": 304,
         "elev": 23.3
       },
       {
+        "dong": 303,
+        "elev": 23.7
+      },
+      {
+        "dong": 304,
+        "elev": 23.4
+      },
+      {
         "dong": 305,
-        "elev": 23.2
+        "elev": 23.1
       },
       {
         "dong": 306,
@@ -1827,7 +1891,7 @@
       },
       {
         "dong": 307,
-        "elev": 25.1
+        "elev": 24.7
       },
       {
         "dong": 308,
@@ -1835,7 +1899,7 @@
       },
       {
         "dong": 309,
-        "elev": 24
+        "elev": 24.3
       }
     ],
     "pedia1": 7,
@@ -1906,36 +1970,72 @@
         "minutes": 30
       }
     ],
-    "slope": 12.2,
+    "slope": 24,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 4001,
-        "elev": 69.3
+        "elev": 68.5
       },
       {
         "dong": 4002,
-        "elev": 67.8
+        "elev": 67.6
       },
       {
         "dong": 4003,
-        "elev": 70
+        "elev": 69.5
       },
       {
         "dong": 4004,
-        "elev": 74.1
+        "elev": 72.3
       },
       {
         "dong": 4005,
-        "elev": 75.5
+        "elev": 75.7
       },
       {
         "dong": 4006,
-        "elev": 77.8
+        "elev": 77.9
       },
       {
         "dong": 4007,
-        "elev": 79.7
+        "elev": 79.6
+      },
+      {
+        "dong": 4008,
+        "elev": 83.2
+      },
+      {
+        "dong": 4009,
+        "elev": 89.1
+      },
+      {
+        "dong": 4010,
+        "elev": 91.6
+      },
+      {
+        "dong": 4011,
+        "elev": 83.8
+      },
+      {
+        "dong": 4012,
+        "elev": 80.3
+      },
+      {
+        "dong": 4013,
+        "elev": 79.5
+      },
+      {
+        "dong": 4014,
+        "elev": 78.2
+      },
+      {
+        "dong": 4015,
+        "elev": 74.6
+      },
+      {
+        "dong": 4016,
+        "elev": 71.7
       }
     ],
     "pedia1": 26,
@@ -2034,15 +2134,15 @@
     "slope_dongs": [
       {
         "dong": 201,
-        "elev": 24.2
+        "elev": 23.8
       },
       {
         "dong": 202,
-        "elev": 25.4
+        "elev": 25
       },
       {
         "dong": 203,
-        "elev": 24.5
+        "elev": 24.6
       },
       {
         "dong": 204,
@@ -2050,15 +2150,15 @@
       },
       {
         "dong": 205,
-        "elev": 25.6
+        "elev": 25.5
       },
       {
         "dong": 206,
-        "elev": 24.7
+        "elev": 24.3
       },
       {
         "dong": 207,
-        "elev": 25.6
+        "elev": 25
       },
       {
         "dong": 208,
@@ -2066,11 +2166,11 @@
       },
       {
         "dong": 209,
-        "elev": 26.2
+        "elev": 26.3
       },
       {
         "dong": 210,
-        "elev": 26.5
+        "elev": 26.7
       }
     ],
     "pedia1": 2,
@@ -2149,32 +2249,32 @@
         "minutes": 32
       }
     ],
-    "slope": 3.4,
+    "slope": 3.2,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 40.9
+        "elev": 41.7
       },
       {
         "dong": 102,
-        "elev": 40.8
+        "elev": 40.7
       },
       {
         "dong": 103,
-        "elev": 40.5
+        "elev": 40.8
       },
       {
         "dong": 104,
-        "elev": 41.1
+        "elev": 40.8
       },
       {
         "dong": 105,
-        "elev": 43.8
+        "elev": 43.3
       },
       {
         "dong": 106,
-        "elev": 43.3
+        "elev": 43.6
       },
       {
         "dong": 107,
@@ -2233,24 +2333,24 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 4.7,
+    "slope": 6.2,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 41.3
+        "elev": 40.7
       },
       {
         "dong": 102,
-        "elev": 43.4
+        "elev": 43.1
       },
       {
         "dong": 103,
-        "elev": 42.8
+        "elev": 43.6
       },
       {
         "dong": 104,
-        "elev": 46.1
+        "elev": 46.9
       }
     ],
     "pedia1": 10,
@@ -2326,28 +2426,28 @@
         "minutes": 41
       }
     ],
-    "slope": 1.7,
+    "slope": 1.6,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 301,
-        "elev": 23.8
+        "elev": 23.9
       },
       {
         "dong": 302,
-        "elev": 23.5
-      },
-      {
-        "dong": 303,
-        "elev": 23.6
-      },
-      {
-        "dong": 304,
         "elev": 23.3
       },
       {
+        "dong": 303,
+        "elev": 23.7
+      },
+      {
+        "dong": 304,
+        "elev": 23.4
+      },
+      {
         "dong": 305,
-        "elev": 23.2
+        "elev": 23.1
       },
       {
         "dong": 306,
@@ -2355,7 +2455,7 @@
       },
       {
         "dong": 307,
-        "elev": 25.1
+        "elev": 24.7
       },
       {
         "dong": 308,
@@ -2363,7 +2463,7 @@
       },
       {
         "dong": 309,
-        "elev": 24
+        "elev": 24.3
       }
     ],
     "pedia1": 7,
@@ -2432,40 +2532,40 @@
         "minutes": 20
       }
     ],
-    "slope": 9.4,
+    "slope": 9.1,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 96
+        "elev": 95.1
       },
       {
         "dong": 102,
-        "elev": 94.2
+        "elev": 95.1
       },
       {
         "dong": 103,
-        "elev": 94.8
+        "elev": 95.2
       },
       {
         "dong": 104,
-        "elev": 94.5
+        "elev": 93.8
       },
       {
         "dong": 105,
-        "elev": 96.8
+        "elev": 97.7
       },
       {
         "dong": 106,
-        "elev": 97.1
-      },
-      {
-        "dong": 107,
         "elev": 97.9
       },
       {
+        "dong": 107,
+        "elev": 99.7
+      },
+      {
         "dong": 108,
-        "elev": 102.8
+        "elev": 102.9
       }
     ],
     "pedia1": 9,
@@ -2542,7 +2642,7 @@
         "minutes": 27
       }
     ],
-    "slope": 42.3,
+    "slope": 42,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -2555,15 +2655,15 @@
       },
       {
         "dong": 103,
-        "elev": 125.2
+        "elev": 124.9
       },
       {
         "dong": 104,
-        "elev": 134.3
+        "elev": 133.8
       },
       {
         "dong": 105,
-        "elev": 145
+        "elev": 144.2
       },
       {
         "dong": 106,
@@ -2571,15 +2671,15 @@
       },
       {
         "dong": 107,
-        "elev": 136.5
+        "elev": 137
       },
       {
         "dong": 108,
-        "elev": 143.4
+        "elev": 143.7
       },
       {
         "dong": 109,
-        "elev": 148.4
+        "elev": 147.9
       },
       {
         "dong": 110,
@@ -2587,7 +2687,7 @@
       },
       {
         "dong": 111,
-        "elev": 158.4
+        "elev": 159.3
       }
     ],
     "pedia1": 15,
@@ -2663,36 +2763,36 @@
         "minutes": 26
       }
     ],
-    "slope": 28.1,
+    "slope": 26.7,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 301,
-        "elev": 97.5
+        "elev": 97.7
       },
       {
         "dong": 302,
-        "elev": 104.6
+        "elev": 105.1
       },
       {
         "dong": 303,
-        "elev": 108.9
+        "elev": 109.9
       },
       {
         "dong": 304,
-        "elev": 113.3
+        "elev": 109.8
       },
       {
         "dong": 305,
-        "elev": 124.4
+        "elev": 119
       },
       {
         "dong": 306,
-        "elev": 125.6
+        "elev": 124.4
       },
       {
         "dong": 307,
-        "elev": 116.8
+        "elev": 112.2
       }
     ],
     "pedia1": 11,
@@ -2780,24 +2880,24 @@
         "minutes": 28
       }
     ],
-    "slope": 4.5,
+    "slope": 3.9,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 95
+        "elev": 94.9
       },
       {
         "dong": 102,
-        "elev": 94.1
-      },
-      {
-        "dong": 103,
         "elev": 95.3
       },
       {
+        "dong": 103,
+        "elev": 95.6
+      },
+      {
         "dong": 104,
-        "elev": 96.4
+        "elev": 96.5
       },
       {
         "dong": 105,
@@ -2805,15 +2905,15 @@
       },
       {
         "dong": 106,
-        "elev": 97.4
+        "elev": 97.5
       },
       {
         "dong": 107,
-        "elev": 98.6
+        "elev": 98.8
       },
       {
         "dong": 108,
-        "elev": 96.2
+        "elev": 96.4
       }
     ],
     "pedia1": 8,
@@ -2898,48 +2998,48 @@
         "minutes": 35
       }
     ],
-    "slope": 31.5,
+    "slope": 33,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 113.3
+        "elev": 112.9
       },
       {
         "dong": 102,
-        "elev": 119.1
+        "elev": 118.9
       },
       {
         "dong": 103,
-        "elev": 111
+        "elev": 112.1
       },
       {
         "dong": 104,
-        "elev": 111.9
+        "elev": 110.9
       },
       {
         "dong": 105,
-        "elev": 114.3
+        "elev": 116.9
       },
       {
         "dong": 106,
-        "elev": 127.4
+        "elev": 129.6
       },
       {
         "dong": 107,
-        "elev": 132.1
+        "elev": 131.9
       },
       {
         "dong": 108,
-        "elev": 125.5
+        "elev": 125
       },
       {
         "dong": 109,
-        "elev": 140.9
+        "elev": 143.9
       },
       {
         "dong": 110,
-        "elev": 137.4
+        "elev": 135.2
       }
     ],
     "pedia1": 12,
@@ -3001,23 +3101,27 @@
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 80
+        "elev": 79.9
       },
       {
         "dong": 102,
-        "elev": 72.7
+        "elev": 72.2
       },
       {
         "dong": 103,
-        "elev": 77.1
+        "elev": 77.7
       },
       {
         "dong": 104,
-        "elev": 79.2
+        "elev": 78.5
       },
       {
         "dong": 105,
-        "elev": 82.9
+        "elev": 83
+      },
+      {
+        "dong": 106,
+        "elev": 81.5
       }
     ],
     "pedia1": 3,
@@ -3088,32 +3192,28 @@
         "minutes": 31
       }
     ],
-    "slope": 8.2,
+    "slope": 8.3,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 301,
-        "elev": 82.9
+        "elev": 83
       },
       {
         "dong": 302,
-        "elev": 80.8
+        "elev": 81.4
       },
       {
         "dong": 303,
-        "elev": 77.5
+        "elev": 78.4
       },
       {
         "dong": 304,
-        "elev": 74
+        "elev": 74.7
       },
       {
         "dong": 305,
-        "elev": 75.6
-      },
-      {
-        "dong": 306,
-        "elev": 78.1
+        "elev": 77
       }
     ],
     "pedia1": 6,
@@ -3182,48 +3282,48 @@
         "minutes": 25
       }
     ],
-    "slope": 42.8,
+    "slope": 43.4,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 134.1
+        "elev": 145.7
       },
       {
         "dong": 102,
-        "elev": 154.2
+        "elev": 154.1
       },
       {
         "dong": 103,
-        "elev": 160.4
+        "elev": 165.4
       },
       {
         "dong": 104,
-        "elev": 166.7
-      },
-      {
-        "dong": 105,
         "elev": 167.9
       },
       {
+        "dong": 105,
+        "elev": 169.3
+      },
+      {
         "dong": 106,
-        "elev": 154.6
+        "elev": 155
       },
       {
         "dong": 107,
-        "elev": 152.6
+        "elev": 154.8
       },
       {
         "dong": 108,
-        "elev": 132.2
+        "elev": 130.4
       },
       {
         "dong": 109,
-        "elev": 128.8
+        "elev": 127.9
       },
       {
         "dong": 110,
-        "elev": 126.4
+        "elev": 125.9
       }
     ],
     "pedia1": 12,
@@ -3305,48 +3405,48 @@
         "minutes": 25
       }
     ],
-    "slope": 42.8,
+    "slope": 43.4,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 134.1
+        "elev": 145.7
       },
       {
         "dong": 102,
-        "elev": 154.2
+        "elev": 154.1
       },
       {
         "dong": 103,
-        "elev": 160.4
+        "elev": 165.4
       },
       {
         "dong": 104,
-        "elev": 166.7
-      },
-      {
-        "dong": 105,
         "elev": 167.9
       },
       {
+        "dong": 105,
+        "elev": 169.3
+      },
+      {
         "dong": 106,
-        "elev": 154.6
+        "elev": 155
       },
       {
         "dong": 107,
-        "elev": 152.6
+        "elev": 154.8
       },
       {
         "dong": 108,
-        "elev": 132.2
+        "elev": 130.4
       },
       {
         "dong": 109,
-        "elev": 128.8
+        "elev": 127.9
       },
       {
         "dong": 110,
-        "elev": 126.4
+        "elev": 125.9
       }
     ],
     "pedia1": 12,
@@ -3403,7 +3503,7 @@
         "minutes": 35
       }
     ],
-    "slope": 0.3,
+    "slope": 0.2,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -3416,7 +3516,7 @@
       },
       {
         "dong": 1603,
-        "elev": 24.3
+        "elev": 24.2
       },
       {
         "dong": 1604,
@@ -3492,44 +3592,44 @@
         "minutes": 35
       }
     ],
-    "slope": 6.5,
+    "slope": 7.2,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 501,
-        "elev": 23.4
+        "elev": 23.3
       },
       {
         "dong": 502,
-        "elev": 24.3
+        "elev": 23.6
       },
       {
         "dong": 503,
-        "elev": 24.5
+        "elev": 24.6
       },
       {
         "dong": 504,
-        "elev": 26
+        "elev": 26.5
       },
       {
         "dong": 505,
-        "elev": 25.8
+        "elev": 25.7
       },
       {
         "dong": 506,
-        "elev": 26.1
+        "elev": 26
       },
       {
         "dong": 507,
-        "elev": 26.3
+        "elev": 26.1
       },
       {
         "dong": 508,
-        "elev": 26.8
+        "elev": 26.5
       },
       {
         "dong": 509,
-        "elev": 25.5
+        "elev": 25.6
       },
       {
         "dong": 510,
@@ -3541,7 +3641,7 @@
       },
       {
         "dong": 512,
-        "elev": 27
+        "elev": 26.3
       },
       {
         "dong": 513,
@@ -3549,11 +3649,11 @@
       },
       {
         "dong": 514,
-        "elev": 27.7
+        "elev": 27.6
       },
       {
         "dong": 515,
-        "elev": 27.1
+        "elev": 26.3
       },
       {
         "dong": 516,
@@ -3561,19 +3661,19 @@
       },
       {
         "dong": 517,
-        "elev": 28.1
+        "elev": 28.2
       },
       {
         "dong": 518,
-        "elev": 28.6
+        "elev": 28.8
       },
       {
         "dong": 519,
-        "elev": 29.8
+        "elev": 30.5
       },
       {
         "dong": 520,
-        "elev": 28.8
+        "elev": 28.9
       }
     ],
     "pedia1": 13,
@@ -3697,36 +3797,36 @@
         "minutes": 33
       }
     ],
-    "slope": 6,
+    "slope": 5.8,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 37.9
+        "elev": 37.4
       },
       {
         "dong": 102,
-        "elev": 38.4
+        "elev": 38.1
       },
       {
         "dong": 103,
-        "elev": 38.9
+        "elev": 37.2
       },
       {
         "dong": 104,
-        "elev": 38.6
+        "elev": 38.5
       },
       {
         "dong": 105,
-        "elev": 40.6
+        "elev": 40.7
       },
       {
         "dong": 106,
-        "elev": 37.7
+        "elev": 37.3
       },
       {
         "dong": 107,
-        "elev": 36.4
+        "elev": 36.3
       },
       {
         "dong": 108,
@@ -3734,19 +3834,19 @@
       },
       {
         "dong": 109,
-        "elev": 36.1
+        "elev": 36.2
       },
       {
         "dong": 110,
-        "elev": 35.6
+        "elev": 36
       },
       {
         "dong": 111,
-        "elev": 34.5
+        "elev": 34.9
       },
       {
         "dong": 112,
-        "elev": 35.4
+        "elev": 36.3
       }
     ],
     "pedia1": 11,
@@ -3840,36 +3940,36 @@
         "minutes": 33
       }
     ],
-    "slope": 6,
+    "slope": 5.8,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 37.9
+        "elev": 37.4
       },
       {
         "dong": 102,
-        "elev": 38.4
+        "elev": 38.1
       },
       {
         "dong": 103,
-        "elev": 38.9
+        "elev": 37.2
       },
       {
         "dong": 104,
-        "elev": 38.6
+        "elev": 38.5
       },
       {
         "dong": 105,
-        "elev": 40.6
+        "elev": 40.7
       },
       {
         "dong": 106,
-        "elev": 37.7
+        "elev": 37.3
       },
       {
         "dong": 107,
-        "elev": 36.4
+        "elev": 36.3
       },
       {
         "dong": 108,
@@ -3877,19 +3977,19 @@
       },
       {
         "dong": 109,
-        "elev": 36.1
+        "elev": 36.2
       },
       {
         "dong": 110,
-        "elev": 35.6
+        "elev": 36
       },
       {
         "dong": 111,
-        "elev": 34.5
+        "elev": 34.9
       },
       {
         "dong": 112,
-        "elev": 35.4
+        "elev": 36.3
       }
     ],
     "pedia1": 11,
@@ -3974,16 +4074,16 @@
         "minutes": 41
       }
     ],
-    "slope": 1.4,
+    "slope": 1.9,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 17.6
+        "elev": 17.7
       },
       {
         "dong": 102,
-        "elev": 17.4
+        "elev": 17.3
       },
       {
         "dong": 103,
@@ -3991,11 +4091,11 @@
       },
       {
         "dong": 104,
-        "elev": 17.7
+        "elev": 17.8
       },
       {
         "dong": 105,
-        "elev": 17.5
+        "elev": 17.6
       },
       {
         "dong": 106,
@@ -4003,23 +4103,23 @@
       },
       {
         "dong": 107,
-        "elev": 18.4
+        "elev": 18.6
       },
       {
         "dong": 108,
-        "elev": 18.4
+        "elev": 18.2
       },
       {
         "dong": 109,
-        "elev": 18.3
+        "elev": 18.8
       },
       {
         "dong": 110,
-        "elev": 17.2
+        "elev": 17.3
       },
       {
         "dong": 111,
-        "elev": 17.2
+        "elev": 17.3
       },
       {
         "dong": 112,
@@ -4027,7 +4127,7 @@
       },
       {
         "dong": 113,
-        "elev": 17
+        "elev": 17.1
       },
       {
         "dong": 114,
@@ -4035,7 +4135,7 @@
       },
       {
         "dong": 115,
-        "elev": 16.8
+        "elev": 17.2
       },
       {
         "dong": 116,
@@ -4047,14 +4147,42 @@
       },
       {
         "dong": 118,
-        "elev": 18.3
+        "elev": 18.2
       },
       {
         "dong": 119,
-        "elev": 17.5
+        "elev": 17.2
       },
       {
         "dong": 120,
+        "elev": 17.4
+      },
+      {
+        "dong": 121,
+        "elev": 17.1
+      },
+      {
+        "dong": 122,
+        "elev": 17.3
+      },
+      {
+        "dong": 123,
+        "elev": 18.5
+      },
+      {
+        "dong": 124,
+        "elev": 18.3
+      },
+      {
+        "dong": 125,
+        "elev": 17.3
+      },
+      {
+        "dong": 126,
+        "elev": 16.9
+      },
+      {
+        "dong": 127,
         "elev": 17.2
       }
     ],
@@ -4131,20 +4259,52 @@
         "minutes": 42
       }
     ],
-    "slope": 7.8,
+    "slope": 13.3,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
-        "dong": 101,
-        "elev": 55.1
+        "dong": 2211,
+        "elev": 71.9
       },
       {
-        "dong": 102,
-        "elev": 58.5
+        "dong": 2212,
+        "elev": 69.9
       },
       {
-        "dong": 103,
-        "elev": 61.3
+        "dong": 2213,
+        "elev": 69.7
+      },
+      {
+        "dong": 2214,
+        "elev": 65.1
+      },
+      {
+        "dong": 2215,
+        "elev": 66.2
+      },
+      {
+        "dong": 2216,
+        "elev": 70.1
+      },
+      {
+        "dong": 2217,
+        "elev": 74.1
+      },
+      {
+        "dong": 2218,
+        "elev": 75.3
+      },
+      {
+        "dong": 2219,
+        "elev": 78.4
+      },
+      {
+        "dong": 2220,
+        "elev": 76.8
+      },
+      {
+        "dong": 2221,
+        "elev": 74.7
       }
     ],
     "pedia1": 6,
@@ -4201,16 +4361,16 @@
         "minutes": 30
       }
     ],
-    "slope": 3.6,
+    "slope": 3.5,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 221,
-        "elev": 57.3
+        "elev": 58.4
       },
       {
         "dong": 222,
-        "elev": 57.2
+        "elev": 57.5
       },
       {
         "dong": 223,
@@ -4218,11 +4378,11 @@
       },
       {
         "dong": 224,
-        "elev": 55.5
+        "elev": 55.4
       },
       {
         "dong": 225,
-        "elev": 55.8
+        "elev": 55.7
       },
       {
         "dong": 226,
@@ -4230,11 +4390,11 @@
       },
       {
         "dong": 227,
-        "elev": 58.1
+        "elev": 58.4
       },
       {
         "dong": 228,
-        "elev": 57.4
+        "elev": 58.1
       }
     ],
     "pedia1": 4,
@@ -4327,59 +4487,59 @@
     "slope_dongs": [
       {
         "dong": 2621,
-        "elev": 54.6
+        "elev": 56.3
       },
       {
         "dong": 2622,
-        "elev": 52.9
+        "elev": 51
       },
       {
         "dong": 2623,
-        "elev": 53.4
+        "elev": 54.4
       },
       {
         "dong": 2624,
-        "elev": 50.4
+        "elev": 49.5
       },
       {
         "dong": 2625,
-        "elev": 57.2
+        "elev": 56.3
       },
       {
         "dong": 2626,
-        "elev": 55.6
+        "elev": 56.9
       },
       {
         "dong": 2627,
-        "elev": 57.7
+        "elev": 57.2
       },
       {
         "dong": 2628,
-        "elev": 57.6
+        "elev": 57.4
       },
       {
         "dong": 2629,
-        "elev": 59.9
+        "elev": 58.1
       },
       {
         "dong": 2630,
-        "elev": 62
+        "elev": 62.4
       },
       {
         "dong": 2631,
-        "elev": 63.5
+        "elev": 62
       },
       {
         "dong": 2632,
-        "elev": 58.8
+        "elev": 59.3
       },
       {
         "dong": 2633,
-        "elev": 60.2
+        "elev": 61.6
       },
       {
         "dong": 2634,
-        "elev": 59.7
+        "elev": 59.4
       }
     ],
     "pedia1": 16,
@@ -4467,31 +4627,31 @@
       },
       {
         "dong": 1112,
-        "elev": 75.8
+        "elev": 78.8
       },
       {
         "dong": 1113,
-        "elev": 78.3
+        "elev": 78.8
       },
       {
         "dong": 1114,
-        "elev": 79.2
+        "elev": 79.7
       },
       {
         "dong": 1115,
-        "elev": 80
+        "elev": 79.2
       },
       {
         "dong": 1116,
-        "elev": 80.1
+        "elev": 80.8
       },
       {
         "dong": 1117,
-        "elev": 81.7
+        "elev": 82.1
       },
       {
         "dong": 1118,
-        "elev": 81.1
+        "elev": 81.5
       }
     ],
     "pedia1": 6,
@@ -4574,48 +4734,48 @@
         "minutes": 39
       }
     ],
-    "slope": 1.2,
+    "slope": 2.1,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 1611,
-        "elev": 28.9
+        "elev": 29
       },
       {
         "dong": 1612,
-        "elev": 28.8
+        "elev": 28.6
       },
       {
         "dong": 1613,
-        "elev": 29.2
+        "elev": 29.4
       },
       {
         "dong": 1614,
-        "elev": 29.4
+        "elev": 29.5
       },
       {
         "dong": 1615,
-        "elev": 29.8
+        "elev": 29.6
       },
       {
         "dong": 1616,
-        "elev": 29.3
+        "elev": 30.6
       },
       {
         "dong": 1617,
-        "elev": 28.9
+        "elev": 29.3
       },
       {
         "dong": 1618,
-        "elev": 29.9
+        "elev": 30.4
       },
       {
         "dong": 1619,
-        "elev": 30.1
+        "elev": 30.7
       },
       {
         "dong": 1620,
-        "elev": 29.4
+        "elev": 29.2
       }
     ],
     "pedia1": 21,
@@ -4708,35 +4868,35 @@
     "slope_dongs": [
       {
         "dong": 2021,
-        "elev": 65.5
+        "elev": 65.4
       },
       {
         "dong": 2022,
-        "elev": 68.8
+        "elev": 68.3
       },
       {
         "dong": 2023,
-        "elev": 67.5
+        "elev": 68.4
       },
       {
         "dong": 2024,
-        "elev": 65.2
+        "elev": 65
       },
       {
         "dong": 2025,
-        "elev": 63.3
+        "elev": 62.4
       },
       {
         "dong": 2026,
-        "elev": 62.6
+        "elev": 62.5
       },
       {
         "dong": 2027,
-        "elev": 65.2
+        "elev": 66
       },
       {
         "dong": 2028,
-        "elev": 66.1
+        "elev": 65.4
       },
       {
         "dong": 2029,
@@ -4744,23 +4904,23 @@
       },
       {
         "dong": 2030,
-        "elev": 62.3
+        "elev": 62.7
       },
       {
         "dong": 2031,
-        "elev": 60.4
+        "elev": 60.5
       },
       {
         "dong": 2032,
-        "elev": 57
+        "elev": 56.3
       },
       {
         "dong": 2033,
-        "elev": 58.5
+        "elev": 59.3
       },
       {
         "dong": 2034,
-        "elev": 56.9
+        "elev": 57.7
       },
       {
         "dong": 2035,
@@ -4842,35 +5002,35 @@
     "slope_dongs": [
       {
         "dong": 2831,
-        "elev": 47.3
+        "elev": 46.8
       },
       {
         "dong": 2832,
-        "elev": 50.8
+        "elev": 50.6
       },
       {
         "dong": 2833,
-        "elev": 55.3
+        "elev": 53.7
       },
       {
         "dong": 2834,
-        "elev": 58.1
+        "elev": 57.3
       },
       {
         "dong": 2835,
-        "elev": 58.4
+        "elev": 58.3
       },
       {
         "dong": 2836,
-        "elev": 57.5
+        "elev": 55.7
       },
       {
         "dong": 2837,
-        "elev": 53.1
+        "elev": 52.6
       },
       {
         "dong": 2838,
-        "elev": 49
+        "elev": 48.9
       }
     ],
     "pedia1": 4,
@@ -4954,39 +5114,39 @@
     "slope_dongs": [
       {
         "dong": 1201,
-        "elev": 87.2
+        "elev": 87.5
       },
       {
         "dong": 1202,
-        "elev": 87
+        "elev": 87.1
       },
       {
         "dong": 1203,
-        "elev": 85.2
+        "elev": 85.3
       },
       {
         "dong": 1204,
-        "elev": 83.2
+        "elev": 83.4
       },
       {
         "dong": 1205,
-        "elev": 79.5
+        "elev": 80.1
       },
       {
         "dong": 1206,
-        "elev": 82
+        "elev": 82.5
       },
       {
         "dong": 1207,
-        "elev": 84.2
+        "elev": 84.8
       },
       {
         "dong": 1208,
-        "elev": 85
+        "elev": 85.6
       },
       {
         "dong": 1209,
-        "elev": 86.2
+        "elev": 86.9
       }
     ],
     "pedia1": 8,
@@ -5103,59 +5263,59 @@
     "slope_dongs": [
       {
         "dong": 2621,
-        "elev": 54.6
+        "elev": 56.3
       },
       {
         "dong": 2622,
-        "elev": 52.9
+        "elev": 51
       },
       {
         "dong": 2623,
-        "elev": 53.4
+        "elev": 54.4
       },
       {
         "dong": 2624,
-        "elev": 50.4
+        "elev": 49.5
       },
       {
         "dong": 2625,
-        "elev": 57.2
+        "elev": 56.3
       },
       {
         "dong": 2626,
-        "elev": 55.6
+        "elev": 56.9
       },
       {
         "dong": 2627,
-        "elev": 57.7
+        "elev": 57.2
       },
       {
         "dong": 2628,
-        "elev": 57.6
+        "elev": 57.4
       },
       {
         "dong": 2629,
-        "elev": 59.9
+        "elev": 58.1
       },
       {
         "dong": 2630,
-        "elev": 62
+        "elev": 62.4
       },
       {
         "dong": 2631,
-        "elev": 63.5
+        "elev": 62
       },
       {
         "dong": 2632,
-        "elev": 58.8
+        "elev": 59.3
       },
       {
         "dong": 2633,
-        "elev": 60.2
+        "elev": 61.6
       },
       {
         "dong": 2634,
-        "elev": 59.7
+        "elev": 59.4
       }
     ],
     "pedia1": 16,
@@ -5278,47 +5438,47 @@
     "slope_dongs": [
       {
         "dong": 1321,
-        "elev": 74.7
+        "elev": 75.9
       },
       {
         "dong": 1322,
-        "elev": 76.2
+        "elev": 76.4
       },
       {
         "dong": 1323,
-        "elev": 78.6
+        "elev": 77.7
       },
       {
         "dong": 1324,
-        "elev": 78.7
+        "elev": 78
       },
       {
         "dong": 1325,
-        "elev": 82.8
+        "elev": 81.9
       },
       {
         "dong": 1326,
-        "elev": 81.7
+        "elev": 82.1
       },
       {
         "dong": 1327,
-        "elev": 79.7
+        "elev": 81.6
       },
       {
         "dong": 1328,
-        "elev": 79.1
+        "elev": 78.3
       },
       {
         "dong": 1329,
-        "elev": 76.1
+        "elev": 76.7
       },
       {
         "dong": 1330,
-        "elev": 74.3
+        "elev": 73
       },
       {
         "dong": 1331,
-        "elev": 70.3
+        "elev": 71.3
       }
     ],
     "pedia1": 8,
@@ -5436,31 +5596,31 @@
       },
       {
         "dong": 1112,
-        "elev": 75.8
+        "elev": 78.8
       },
       {
         "dong": 1113,
-        "elev": 78.3
+        "elev": 78.8
       },
       {
         "dong": 1114,
-        "elev": 79.2
+        "elev": 79.7
       },
       {
         "dong": 1115,
-        "elev": 80
+        "elev": 79.2
       },
       {
         "dong": 1116,
-        "elev": 80.1
+        "elev": 80.8
       },
       {
         "dong": 1117,
-        "elev": 81.7
+        "elev": 82.1
       },
       {
         "dong": 1118,
-        "elev": 81.1
+        "elev": 81.5
       }
     ],
     "pedia1": 6,
@@ -5534,15 +5694,15 @@
     "slope_dongs": [
       {
         "dong": 3101,
-        "elev": 61.1
+        "elev": 60.8
       },
       {
         "dong": 3102,
-        "elev": 62
+        "elev": 60.1
       },
       {
         "dong": 3103,
-        "elev": 63.8
+        "elev": 63.9
       },
       {
         "dong": 3104,
@@ -5550,27 +5710,27 @@
       },
       {
         "dong": 3105,
-        "elev": 62.2
+        "elev": 62.3
       },
       {
         "dong": 3106,
-        "elev": 63.3
+        "elev": 63.5
       },
       {
         "dong": 3107,
-        "elev": 61.7
+        "elev": 62.3
       },
       {
         "dong": 3108,
-        "elev": 59.1
+        "elev": 59.7
       },
       {
         "dong": 3109,
-        "elev": 58.1
+        "elev": 58.3
       },
       {
         "dong": 3110,
-        "elev": 59.6
+        "elev": 59.7
       }
     ],
     "pedia1": 4,
@@ -5663,47 +5823,47 @@
     "slope_dongs": [
       {
         "dong": 1321,
-        "elev": 74.7
+        "elev": 75.9
       },
       {
         "dong": 1322,
-        "elev": 76.2
+        "elev": 76.4
       },
       {
         "dong": 1323,
-        "elev": 78.6
+        "elev": 77.7
       },
       {
         "dong": 1324,
-        "elev": 78.7
+        "elev": 78
       },
       {
         "dong": 1325,
-        "elev": 82.8
+        "elev": 81.9
       },
       {
         "dong": 1326,
-        "elev": 81.7
+        "elev": 82.1
       },
       {
         "dong": 1327,
-        "elev": 79.7
+        "elev": 81.6
       },
       {
         "dong": 1328,
-        "elev": 79.1
+        "elev": 78.3
       },
       {
         "dong": 1329,
-        "elev": 76.1
+        "elev": 76.7
       },
       {
         "dong": 1330,
-        "elev": 74.3
+        "elev": 73
       },
       {
         "dong": 1331,
-        "elev": 70.3
+        "elev": 71.3
       }
     ],
     "pedia1": 8,
@@ -5785,28 +5945,28 @@
         "minutes": 42
       }
     ],
-    "slope": 6,
+    "slope": 5.9,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 1801,
-        "elev": 47.1
+        "elev": 47.8
       },
       {
         "dong": 1802,
-        "elev": 47.5
+        "elev": 47.6
       },
       {
         "dong": 1803,
-        "elev": 47.3
+        "elev": 47
       },
       {
         "dong": 1804,
-        "elev": 46.7
+        "elev": 46.5
       },
       {
         "dong": 1805,
-        "elev": 46
+        "elev": 45.7
       },
       {
         "dong": 1806,
@@ -5814,47 +5974,47 @@
       },
       {
         "dong": 1807,
-        "elev": 42.6
-      },
-      {
-        "dong": 1808,
-        "elev": 41.9
-      },
-      {
-        "dong": 1809,
-        "elev": 41.5
-      },
-      {
-        "dong": 1810,
-        "elev": 42.6
-      },
-      {
-        "dong": 1811,
-        "elev": 41.1
-      },
-      {
-        "dong": 1812,
         "elev": 42.7
       },
       {
+        "dong": 1808,
+        "elev": 42.4
+      },
+      {
+        "dong": 1809,
+        "elev": 43.3
+      },
+      {
+        "dong": 1810,
+        "elev": 43.6
+      },
+      {
+        "dong": 1811,
+        "elev": 41.9
+      },
+      {
+        "dong": 1812,
+        "elev": 43.5
+      },
+      {
         "dong": 1813,
-        "elev": 45
+        "elev": 45.1
       },
       {
         "dong": 1814,
-        "elev": 42.8
+        "elev": 45.3
       },
       {
         "dong": 1815,
-        "elev": 41.3
+        "elev": 44.6
       },
       {
         "dong": 1816,
-        "elev": 46.2
+        "elev": 46.9
       },
       {
         "dong": 1817,
-        "elev": 46.6
+        "elev": 46.9
       }
     ],
     "pedia1": 33,
@@ -5930,43 +6090,43 @@
     "slope_dongs": [
       {
         "dong": 701,
-        "elev": 37.5
+        "elev": 36.7
       },
       {
         "dong": 702,
-        "elev": 37.1
+        "elev": 37.2
       },
       {
         "dong": 703,
-        "elev": 36.6
+        "elev": 35.9
       },
       {
         "dong": 704,
-        "elev": 35.7
+        "elev": 36.6
       },
       {
         "dong": 705,
-        "elev": 37.3
+        "elev": 36.6
       },
       {
         "dong": 706,
-        "elev": 37.6
+        "elev": 36.7
       },
       {
         "dong": 707,
-        "elev": 38.3
+        "elev": 37.2
       },
       {
         "dong": 708,
-        "elev": 38.2
+        "elev": 37.7
       },
       {
         "dong": 709,
-        "elev": 38.2
+        "elev": 37.9
       },
       {
         "dong": 710,
-        "elev": 37.2
+        "elev": 37.7
       }
     ],
     "pedia1": 8,
@@ -6029,100 +6189,108 @@
         "minutes": 29
       }
     ],
-    "slope": 4.1,
+    "slope": 5.1,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 56
+        "elev": 56.1
       },
       {
         "dong": 102,
-        "elev": 55.8
+        "elev": 55.9
       },
       {
         "dong": 103,
-        "elev": 55.8
+        "elev": 55.9
       },
       {
         "dong": 104,
-        "elev": 56.7
+        "elev": 56.6
       },
       {
         "dong": 105,
-        "elev": 56.9
+        "elev": 56.5
+      },
+      {
+        "dong": 106,
+        "elev": 55.9
       },
       {
         "dong": 107,
-        "elev": 55.8
+        "elev": 55.9
       },
       {
         "dong": 108,
-        "elev": 56.4
+        "elev": 56.2
       },
       {
         "dong": 109,
-        "elev": 56.9
+        "elev": 58
+      },
+      {
+        "dong": 110,
+        "elev": 55.7
       },
       {
         "dong": 111,
-        "elev": 55.2
+        "elev": 55.6
       },
       {
         "dong": 112,
-        "elev": 54.5
-      },
-      {
-        "dong": 113,
-        "elev": 54.9
-      },
-      {
-        "dong": 114,
         "elev": 54.7
       },
       {
-        "dong": 115,
+        "dong": 113,
         "elev": 54.6
       },
       {
+        "dong": 114,
+        "elev": 54.5
+      },
+      {
+        "dong": 115,
+        "elev": 55.3
+      },
+      {
         "dong": 116,
-        "elev": 53.6
+        "elev": 54.1
       },
       {
         "dong": 117,
-        "elev": 53.2
+        "elev": 53.3
       },
       {
         "dong": 118,
-        "elev": 52.9
+        "elev": 53
       },
       {
         "dong": 119,
-        "elev": 53.3
+        "elev": 53.4
       },
       {
         "dong": 120,
-        "elev": 53.1
+        "elev": 52.9
       },
       {
         "dong": 121,
-        "elev": 53.2
+        "elev": 53
       },
       {
         "dong": 122,
-        "elev": 53.5
+        "elev": 53.9
       },
       {
         "dong": 123,
-        "elev": 53.8
-      },
-      {
-        "dong": 124,
         "elev": 53.6
       },
       {
+        "dong": 124,
+        "elev": 53.4
+      },
+      {
         "dong": 125,
-        "elev": 53.3
+        "elev": 53.4
       },
       {
         "dong": 126,
@@ -6177,40 +6345,40 @@
         "minutes": 30
       }
     ],
-    "slope": 12.6,
+    "slope": 14,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 71.3
+        "elev": 70.3
       },
       {
         "dong": 102,
-        "elev": 74.1
+        "elev": 73.4
       },
       {
         "dong": 103,
-        "elev": 78.7
+        "elev": 79.9
       },
       {
         "dong": 104,
-        "elev": 83.7
-      },
-      {
-        "dong": 105,
-        "elev": 83.8
-      },
-      {
-        "dong": 106,
         "elev": 81.9
       },
       {
+        "dong": 105,
+        "elev": 84.3
+      },
+      {
+        "dong": 106,
+        "elev": 83
+      },
+      {
         "dong": 107,
-        "elev": 77.9
+        "elev": 77.7
       },
       {
         "dong": 108,
-        "elev": 74.9
+        "elev": 74.3
       }
     ],
     "pedia1": 18,
@@ -6274,52 +6442,52 @@
         "minutes": 36
       }
     ],
-    "slope": 11.9,
+    "slope": 13.6,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 49.7
+        "elev": 50.1
       },
       {
         "dong": 102,
-        "elev": 48.1
+        "elev": 48.2
       },
       {
         "dong": 103,
-        "elev": 48
+        "elev": 48.1
       },
       {
         "dong": 104,
-        "elev": 44.9
+        "elev": 44.8
       },
       {
         "dong": 105,
-        "elev": 43.9
+        "elev": 43.8
       },
       {
         "dong": 106,
-        "elev": 43.2
+        "elev": 43.9
       },
       {
         "dong": 107,
-        "elev": 43.2
+        "elev": 43.9
       },
       {
         "dong": 108,
-        "elev": 53.5
+        "elev": 54.7
       },
       {
         "dong": 109,
-        "elev": 47.2
+        "elev": 46.5
       },
       {
         "dong": 110,
-        "elev": 46.1
+        "elev": 43.7
       },
       {
         "dong": 111,
-        "elev": 43
+        "elev": 43.1
       },
       {
         "dong": 112,
@@ -6331,15 +6499,15 @@
       },
       {
         "dong": 114,
-        "elev": 43.2
+        "elev": 43.1
       },
       {
         "dong": 115,
-        "elev": 43.2
+        "elev": 42.9
       },
       {
         "dong": 116,
-        "elev": 43.2
+        "elev": 43.3
       },
       {
         "dong": 117,
@@ -6347,11 +6515,11 @@
       },
       {
         "dong": 118,
-        "elev": 42.9
+        "elev": 43
       },
       {
         "dong": 119,
-        "elev": 43.8
+        "elev": 43.1
       },
       {
         "dong": 120,
@@ -6359,47 +6527,47 @@
       },
       {
         "dong": 121,
-        "elev": 42.8
+        "elev": 43.3
       },
       {
         "dong": 122,
-        "elev": 45.7
+        "elev": 45.5
       },
       {
         "dong": 123,
-        "elev": 43.9
+        "elev": 44.1
       },
       {
         "dong": 124,
-        "elev": 54.8
+        "elev": 55.4
       },
       {
         "dong": 125,
-        "elev": 54.1
+        "elev": 56.5
       },
       {
         "dong": 126,
-        "elev": 51.1
-      },
-      {
-        "dong": 127,
         "elev": 49.3
       },
       {
+        "dong": 127,
+        "elev": 51.1
+      },
+      {
         "dong": 128,
-        "elev": 48.9
+        "elev": 51.9
       },
       {
         "dong": 129,
-        "elev": 49.2
+        "elev": 51.5
       },
       {
         "dong": 130,
-        "elev": 46.6
+        "elev": 47
       },
       {
         "dong": 131,
-        "elev": 44.7
+        "elev": 44.9
       },
       {
         "dong": 132,
@@ -6407,7 +6575,7 @@
       },
       {
         "dong": 133,
-        "elev": 43.1
+        "elev": 43.2
       }
     ],
     "pedia1": 4,
@@ -6507,12 +6675,12 @@
         "minutes": 39
       }
     ],
-    "slope": 4.6,
+    "slope": 4.3,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 23.9
+        "elev": 23.4
       },
       {
         "dong": 102,
@@ -6520,31 +6688,31 @@
       },
       {
         "dong": 103,
-        "elev": 25.4
+        "elev": 25.2
       },
       {
         "dong": 104,
-        "elev": 24
+        "elev": 23.7
       },
       {
         "dong": 105,
-        "elev": 23.5
+        "elev": 23.6
       },
       {
         "dong": 106,
-        "elev": 24
+        "elev": 24.5
       },
       {
         "dong": 107,
-        "elev": 24.2
+        "elev": 24.4
       },
       {
         "dong": 108,
-        "elev": 23.9
+        "elev": 23.8
       },
       {
         "dong": 109,
-        "elev": 23.7
+        "elev": 23.6
       },
       {
         "dong": 110,
@@ -6556,31 +6724,31 @@
       },
       {
         "dong": 112,
-        "elev": 23.2
+        "elev": 23.1
       },
       {
         "dong": 113,
-        "elev": 23.8
+        "elev": 23.5
       },
       {
         "dong": 114,
-        "elev": 24.3
+        "elev": 24.1
       },
       {
         "dong": 115,
-        "elev": 25.1
+        "elev": 25.7
       },
       {
         "dong": 116,
-        "elev": 26.4
+        "elev": 27.4
       },
       {
         "dong": 117,
-        "elev": 24.5
+        "elev": 25.7
       },
       {
         "dong": 118,
-        "elev": 24.3
+        "elev": 24
       },
       {
         "dong": 119,
@@ -6588,7 +6756,7 @@
       },
       {
         "dong": 120,
-        "elev": 24.3
+        "elev": 24.7
       }
     ],
     "pedia1": 6,
@@ -6663,36 +6831,36 @@
         "minutes": 34
       }
     ],
-    "slope": 3.3,
+    "slope": 3.4,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 201,
-        "elev": 50
+        "elev": 49.8
       },
       {
         "dong": 202,
-        "elev": 50.1
+        "elev": 49.5
       },
       {
         "dong": 203,
-        "elev": 49.9
+        "elev": 49.2
       },
       {
         "dong": 204,
-        "elev": 48.3
+        "elev": 47.4
       },
       {
         "dong": 205,
-        "elev": 46.8
+        "elev": 46.4
       },
       {
         "dong": 206,
-        "elev": 47.5
+        "elev": 47.7
       },
       {
         "dong": 207,
-        "elev": 48.6
+        "elev": 48.5
       }
     ],
     "pedia1": 6,
@@ -6804,7 +6972,7 @@
       },
       {
         "dong": 211,
-        "elev": 39
+        "elev": 38.9
       },
       {
         "dong": 212,
@@ -6888,31 +7056,31 @@
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 37.3
+        "elev": 37.5
       },
       {
         "dong": 102,
-        "elev": 36.5
+        "elev": 36.4
       },
       {
         "dong": 103,
-        "elev": 35.5
+        "elev": 35.4
       },
       {
         "dong": 104,
-        "elev": 35.5
+        "elev": 36
       },
       {
         "dong": 105,
-        "elev": 35.7
+        "elev": 35.5
       },
       {
         "dong": 106,
-        "elev": 36.8
+        "elev": 36.3
       },
       {
         "dong": 107,
-        "elev": 36.9
+        "elev": 38
       },
       {
         "dong": 108,
@@ -6992,28 +7160,28 @@
         "minutes": 42
       }
     ],
-    "slope": 12.1,
+    "slope": 14.2,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 38.3
+        "elev": 38.1
       },
       {
         "dong": 102,
-        "elev": 40.5
+        "elev": 41.9
       },
       {
         "dong": 103,
-        "elev": 45
-      },
-      {
-        "dong": 104,
         "elev": 45.4
       },
       {
+        "dong": 104,
+        "elev": 45.3
+      },
+      {
         "dong": 105,
-        "elev": 46.4
+        "elev": 46.5
       },
       {
         "dong": 106,
@@ -7021,55 +7189,55 @@
       },
       {
         "dong": 107,
-        "elev": 47.5
-      },
-      {
-        "dong": 108,
         "elev": 47.4
       },
       {
+        "dong": 108,
+        "elev": 48.5
+      },
+      {
         "dong": 109,
-        "elev": 45
+        "elev": 47.4
       },
       {
         "dong": 110,
-        "elev": 39
+        "elev": 39.9
       },
       {
         "dong": 111,
-        "elev": 37.2
+        "elev": 37.1
       },
       {
         "dong": 112,
-        "elev": 37.9
+        "elev": 37.5
       },
       {
         "dong": 113,
-        "elev": 39.7
+        "elev": 39.5
       },
       {
         "dong": 114,
-        "elev": 48.6
+        "elev": 48
       },
       {
         "dong": 115,
-        "elev": 49.2
+        "elev": 49.5
       },
       {
         "dong": 116,
-        "elev": 48.9
+        "elev": 48.6
       },
       {
         "dong": 117,
-        "elev": 42
+        "elev": 40.3
       },
       {
         "dong": 118,
-        "elev": 38.7
+        "elev": 38.9
       },
       {
         "dong": 119,
-        "elev": 38.1
+        "elev": 38.5
       },
       {
         "dong": 120,
@@ -7081,19 +7249,51 @@
       },
       {
         "dong": 122,
-        "elev": 39.5
+        "elev": 38.1
       },
       {
         "dong": 123,
-        "elev": 44.4
+        "elev": 44.3
       },
       {
         "dong": 124,
-        "elev": 41.5
+        "elev": 41.3
       },
       {
         "dong": 125,
         "elev": 38.6
+      },
+      {
+        "dong": 201,
+        "elev": 35.6
+      },
+      {
+        "dong": 202,
+        "elev": 36
+      },
+      {
+        "dong": 203,
+        "elev": 36.3
+      },
+      {
+        "dong": 204,
+        "elev": 36.6
+      },
+      {
+        "dong": 205,
+        "elev": 35.3
+      },
+      {
+        "dong": 206,
+        "elev": 37.1
+      },
+      {
+        "dong": 207,
+        "elev": 37.3
+      },
+      {
+        "dong": 208,
+        "elev": 36.9
       }
     ],
     "pedia1": 8,
@@ -7182,7 +7382,7 @@
         "minutes": 35
       }
     ],
-    "slope": 13.5,
+    "slope": 14.6,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -7191,31 +7391,31 @@
       },
       {
         "dong": 102,
-        "elev": 45.5
+        "elev": 45.7
       },
       {
         "dong": 103,
-        "elev": 47.1
+        "elev": 48.1
       },
       {
         "dong": 104,
-        "elev": 49.9
+        "elev": 49.5
       },
       {
         "dong": 105,
-        "elev": 47.1
+        "elev": 46.7
       },
       {
         "dong": 106,
-        "elev": 46.9
+        "elev": 47.1
       },
       {
         "dong": 107,
-        "elev": 47.2
+        "elev": 47.7
       },
       {
         "dong": 108,
-        "elev": 46.7
+        "elev": 46.8
       },
       {
         "dong": 109,
@@ -7223,19 +7423,19 @@
       },
       {
         "dong": 110,
-        "elev": 48.3
+        "elev": 47.9
       },
       {
         "dong": 111,
-        "elev": 45.4
+        "elev": 44.2
       },
       {
         "dong": 112,
-        "elev": 43.4
+        "elev": 43.3
       },
       {
         "dong": 113,
-        "elev": 42.3
+        "elev": 40.4
       },
       {
         "dong": 114,
@@ -7243,11 +7443,11 @@
       },
       {
         "dong": 115,
-        "elev": 45.1
+        "elev": 44
       },
       {
         "dong": 116,
-        "elev": 53.9
+        "elev": 54.2
       },
       {
         "dong": 117,
@@ -7259,31 +7459,31 @@
       },
       {
         "dong": 119,
-        "elev": 49.5
+        "elev": 49.4
       },
       {
         "dong": 120,
-        "elev": 53.6
+        "elev": 54
       },
       {
         "dong": 121,
-        "elev": 55
+        "elev": 54.8
       },
       {
         "dong": 122,
-        "elev": 49.3
+        "elev": 48
       },
       {
         "dong": 123,
-        "elev": 45.3
+        "elev": 44.3
       },
       {
         "dong": 124,
-        "elev": 46.8
+        "elev": 46.1
       },
       {
         "dong": 125,
-        "elev": 46.2
+        "elev": 46.1
       },
       {
         "dong": 126,
@@ -7291,19 +7491,19 @@
       },
       {
         "dong": 127,
-        "elev": 54.5
+        "elev": 55
       },
       {
         "dong": 128,
-        "elev": 49.7
+        "elev": 49.5
       },
       {
         "dong": 129,
-        "elev": 50.9
+        "elev": 51.1
       },
       {
         "dong": 130,
-        "elev": 48.6
+        "elev": 51.7
       }
     ],
     "pedia1": 10,
@@ -7348,24 +7548,24 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 0.9,
+    "slope": 1.2,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 201,
-        "elev": 52.2
+        "elev": 52.5
       },
       {
         "dong": 202,
-        "elev": 51.6
+        "elev": 51.7
       },
       {
         "dong": 203,
-        "elev": 51.5
+        "elev": 51.9
       },
       {
         "dong": 204,
-        "elev": 51.5
+        "elev": 51.3
       },
       {
         "dong": 205,
@@ -7373,11 +7573,11 @@
       },
       {
         "dong": 206,
-        "elev": 51.9
+        "elev": 52
       },
       {
         "dong": 207,
-        "elev": 52.4
+        "elev": 51.8
       },
       {
         "dong": 208,
@@ -7432,16 +7632,16 @@
         "minutes": 29
       }
     ],
-    "slope": 3.3,
+    "slope": 3.5,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 52.1
+        "elev": 52.5
       },
       {
         "dong": 102,
-        "elev": 52.9
+        "elev": 53
       },
       {
         "dong": 103,
@@ -7453,27 +7653,27 @@
       },
       {
         "dong": 105,
-        "elev": 53.1
+        "elev": 52.7
       },
       {
         "dong": 106,
-        "elev": 54.3
+        "elev": 54.8
       },
       {
         "dong": 107,
-        "elev": 54.5
+        "elev": 54
       },
       {
         "dong": 108,
-        "elev": 54.2
+        "elev": 54
       },
       {
         "dong": 109,
-        "elev": 54.2
+        "elev": 54
       },
       {
         "dong": 110,
-        "elev": 53.2
+        "elev": 52.9
       },
       {
         "dong": 111,
@@ -7481,11 +7681,11 @@
       },
       {
         "dong": 112,
-        "elev": 52.2
+        "elev": 52.3
       },
       {
         "dong": 113,
-        "elev": 51.9
+        "elev": 52
       },
       {
         "dong": 114,
@@ -7493,7 +7693,7 @@
       },
       {
         "dong": 115,
-        "elev": 51.2
+        "elev": 51.3
       }
     ],
     "pedia1": 5,
@@ -7570,36 +7770,72 @@
         "minutes": 30
       }
     ],
-    "slope": 12.2,
+    "slope": 24,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 4001,
-        "elev": 69.3
+        "elev": 68.5
       },
       {
         "dong": 4002,
-        "elev": 67.8
+        "elev": 67.6
       },
       {
         "dong": 4003,
-        "elev": 70
+        "elev": 69.5
       },
       {
         "dong": 4004,
-        "elev": 74.1
+        "elev": 72.3
       },
       {
         "dong": 4005,
-        "elev": 75.5
+        "elev": 75.7
       },
       {
         "dong": 4006,
-        "elev": 77.8
+        "elev": 77.9
       },
       {
         "dong": 4007,
-        "elev": 79.7
+        "elev": 79.6
+      },
+      {
+        "dong": 4008,
+        "elev": 83.2
+      },
+      {
+        "dong": 4009,
+        "elev": 89.1
+      },
+      {
+        "dong": 4010,
+        "elev": 91.6
+      },
+      {
+        "dong": 4011,
+        "elev": 83.8
+      },
+      {
+        "dong": 4012,
+        "elev": 80.3
+      },
+      {
+        "dong": 4013,
+        "elev": 79.5
+      },
+      {
+        "dong": 4014,
+        "elev": 78.2
+      },
+      {
+        "dong": 4015,
+        "elev": 74.6
+      },
+      {
+        "dong": 4016,
+        "elev": 71.7
       }
     ],
     "pedia1": 26,
@@ -7676,52 +7912,52 @@
         "minutes": 34
       }
     ],
-    "slope": 5.2,
+    "slope": 5.6,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 40.1
-      },
-      {
-        "dong": 102,
-        "elev": 41
-      },
-      {
-        "dong": 103,
         "elev": 40
       },
       {
+        "dong": 102,
+        "elev": 41.6
+      },
+      {
+        "dong": 103,
+        "elev": 39.9
+      },
+      {
         "dong": 104,
-        "elev": 39.7
+        "elev": 39.6
       },
       {
         "dong": 105,
-        "elev": 39.4
+        "elev": 39.3
       },
       {
         "dong": 106,
-        "elev": 39.8
+        "elev": 39.7
       },
       {
         "dong": 107,
-        "elev": 39.1
+        "elev": 39
       },
       {
         "dong": 108,
-        "elev": 38.6
-      },
-      {
-        "dong": 109,
         "elev": 38.7
       },
       {
+        "dong": 109,
+        "elev": 38.5
+      },
+      {
         "dong": 110,
-        "elev": 38.8
+        "elev": 38.7
       },
       {
         "dong": 111,
-        "elev": 39
+        "elev": 38.9
       },
       {
         "dong": 112,
@@ -7729,23 +7965,23 @@
       },
       {
         "dong": 113,
-        "elev": 38.2
-      },
-      {
-        "dong": 114,
         "elev": 38.1
       },
       {
+        "dong": 114,
+        "elev": 38
+      },
+      {
         "dong": 115,
-        "elev": 38.9
+        "elev": 38.5
       },
       {
         "dong": 116,
-        "elev": 36.5
+        "elev": 37.5
       },
       {
         "dong": 117,
-        "elev": 37.7
+        "elev": 38.1
       },
       {
         "dong": 118,
@@ -7769,7 +8005,7 @@
       },
       {
         "dong": 123,
-        "elev": 37.9
+        "elev": 37.8
       },
       {
         "dong": 124,
@@ -7777,7 +8013,7 @@
       },
       {
         "dong": 125,
-        "elev": 37.5
+        "elev": 37.6
       },
       {
         "dong": 126,
@@ -7785,11 +8021,11 @@
       },
       {
         "dong": 127,
-        "elev": 37.3
+        "elev": 37.2
       },
       {
         "dong": 128,
-        "elev": 36.9
+        "elev": 36.8
       },
       {
         "dong": 129,
@@ -7797,23 +8033,23 @@
       },
       {
         "dong": 130,
-        "elev": 37.2
+        "elev": 37.5
       },
       {
         "dong": 131,
-        "elev": 36.3
+        "elev": 36.6
       },
       {
         "dong": 132,
-        "elev": 35.7
+        "elev": 36
       },
       {
         "dong": 133,
-        "elev": 35.7
+        "elev": 36.4
       },
       {
         "dong": 134,
-        "elev": 36.3
+        "elev": 36.5
       },
       {
         "dong": 135,
@@ -7910,60 +8146,60 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 20.8,
+    "slope": 28.1,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 73.1
+        "elev": 76.3
       },
       {
         "dong": 102,
-        "elev": 74.6
+        "elev": 81.1
       },
       {
         "dong": 103,
-        "elev": 72.2
+        "elev": 62.6
       },
       {
         "dong": 104,
-        "elev": 60.8
+        "elev": 58.2
       },
       {
         "dong": 105,
-        "elev": 61.8
+        "elev": 61.1
       },
       {
         "dong": 106,
-        "elev": 53.8
+        "elev": 53
       },
       {
         "dong": 107,
-        "elev": 59.6
+        "elev": 59.4
       },
       {
         "dong": 108,
-        "elev": 63.1
+        "elev": 62.9
       },
       {
         "dong": 109,
-        "elev": 69.1
+        "elev": 66.4
       },
       {
         "dong": 110,
-        "elev": 69
+        "elev": 66.8
       },
       {
         "dong": 111,
-        "elev": 65.4
+        "elev": 64.4
       },
       {
         "dong": 112,
-        "elev": 62.3
+        "elev": 62.7
       },
       {
         "dong": 113,
-        "elev": 56.9
+        "elev": 56.2
       }
     ],
     "pedia1": 17,
@@ -8102,7 +8338,7 @@
         "minutes": 41
       }
     ],
-    "slope": 2.3,
+    "slope": 3.5,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -8111,7 +8347,7 @@
       },
       {
         "dong": 102,
-        "elev": 24.1
+        "elev": 24
       },
       {
         "dong": 103,
@@ -8119,7 +8355,7 @@
       },
       {
         "dong": 104,
-        "elev": 24.6
+        "elev": 25.1
       },
       {
         "dong": 105,
@@ -8131,7 +8367,11 @@
       },
       {
         "dong": 107,
-        "elev": 25.6
+        "elev": 25.9
+      },
+      {
+        "dong": 108,
+        "elev": 27.2
       }
     ],
     "pedia1": 5,
@@ -8216,32 +8456,32 @@
         "minutes": 32
       }
     ],
-    "slope": 3.4,
+    "slope": 3.2,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 40.9
+        "elev": 41.7
       },
       {
         "dong": 102,
-        "elev": 40.8
+        "elev": 40.7
       },
       {
         "dong": 103,
-        "elev": 40.5
+        "elev": 40.8
       },
       {
         "dong": 104,
-        "elev": 41.1
+        "elev": 40.8
       },
       {
         "dong": 105,
-        "elev": 43.8
+        "elev": 43.3
       },
       {
         "dong": 106,
-        "elev": 43.3
+        "elev": 43.6
       },
       {
         "dong": 107,
@@ -8325,40 +8565,40 @@
         "minutes": 20
       }
     ],
-    "slope": 9.4,
+    "slope": 9.1,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 96
+        "elev": 95.1
       },
       {
         "dong": 102,
-        "elev": 94.2
+        "elev": 95.1
       },
       {
         "dong": 103,
-        "elev": 94.8
+        "elev": 95.2
       },
       {
         "dong": 104,
-        "elev": 94.5
+        "elev": 93.8
       },
       {
         "dong": 105,
-        "elev": 96.8
+        "elev": 97.7
       },
       {
         "dong": 106,
-        "elev": 97.1
-      },
-      {
-        "dong": 107,
         "elev": 97.9
       },
       {
+        "dong": 107,
+        "elev": 99.7
+      },
+      {
         "dong": 108,
-        "elev": 102.8
+        "elev": 102.9
       }
     ],
     "pedia1": 9,
@@ -8402,48 +8642,64 @@
         "minutes": 22
       }
     ],
-    "slope": 31.7,
+    "slope": 50.5,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 77.7
+        "elev": 62.2
       },
       {
         "dong": 102,
-        "elev": 64.1
+        "elev": 64.3
       },
       {
         "dong": 103,
-        "elev": 76.2
+        "elev": 72.8
       },
       {
         "dong": 104,
-        "elev": 72.9
+        "elev": 72.2
       },
       {
         "dong": 105,
-        "elev": 79.3
+        "elev": 76.8
       },
       {
         "dong": 106,
-        "elev": 79.9
+        "elev": 79.2
       },
       {
         "dong": 107,
-        "elev": 82.7
+        "elev": 81.6
       },
       {
         "dong": 108,
-        "elev": 89.3
+        "elev": 89.2
       },
       {
         "dong": 109,
-        "elev": 90.2
+        "elev": 89.3
       },
       {
         "dong": 110,
-        "elev": 94.9
+        "elev": 93.7
+      },
+      {
+        "dong": 111,
+        "elev": 97.4
+      },
+      {
+        "dong": 112,
+        "elev": 103.6
+      },
+      {
+        "dong": 113,
+        "elev": 105.9
+      },
+      {
+        "dong": 114,
+        "elev": 112.7
       }
     ],
     "pedia1": 7,
@@ -8519,16 +8775,16 @@
         "minutes": 26
       }
     ],
-    "slope": 11.6,
+    "slope": 14,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 68.7
+        "elev": 66.1
       },
       {
         "dong": 102,
-        "elev": 63.1
+        "elev": 62.6
       },
       {
         "dong": 103,
@@ -8536,35 +8792,35 @@
       },
       {
         "dong": 104,
-        "elev": 71.4
+        "elev": 71
       },
       {
         "dong": 105,
-        "elev": 60.9
+        "elev": 60.1
       },
       {
         "dong": 106,
-        "elev": 70
+        "elev": 67.5
       },
       {
         "dong": 107,
-        "elev": 59.9
+        "elev": 58.1
       },
       {
         "dong": 108,
-        "elev": 66.9
+        "elev": 64.4
       },
       {
         "dong": 109,
-        "elev": 64
+        "elev": 63.7
       },
       {
         "dong": 110,
-        "elev": 61.2
+        "elev": 61.1
       },
       {
         "dong": 111,
-        "elev": 57.1
+        "elev": 57
       }
     ],
     "pedia1": 17,
@@ -8649,48 +8905,48 @@
         "minutes": 35
       }
     ],
-    "slope": 31.5,
+    "slope": 33,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 113.3
+        "elev": 112.9
       },
       {
         "dong": 102,
-        "elev": 119.1
+        "elev": 118.9
       },
       {
         "dong": 103,
-        "elev": 111
+        "elev": 112.1
       },
       {
         "dong": 104,
-        "elev": 111.9
+        "elev": 110.9
       },
       {
         "dong": 105,
-        "elev": 114.3
+        "elev": 116.9
       },
       {
         "dong": 106,
-        "elev": 127.4
+        "elev": 129.6
       },
       {
         "dong": 107,
-        "elev": 132.1
+        "elev": 131.9
       },
       {
         "dong": 108,
-        "elev": 125.5
+        "elev": 125
       },
       {
         "dong": 109,
-        "elev": 140.9
+        "elev": 143.9
       },
       {
         "dong": 110,
-        "elev": 137.4
+        "elev": 135.2
       }
     ],
     "pedia1": 12,
@@ -8757,7 +9013,7 @@
         "minutes": 28
       }
     ],
-    "slope": 26.8,
+    "slope": 25.8,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -8845,36 +9101,36 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 18.6,
+    "slope": 15.6,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 801,
-        "elev": 63.8
+        "elev": 62.9
       },
       {
         "dong": 802,
-        "elev": 60.4
+        "elev": 59.4
       },
       {
         "dong": 803,
-        "elev": 70.2
+        "elev": 70.3
       },
       {
         "dong": 804,
-        "elev": 67.4
+        "elev": 66.6
       },
       {
         "dong": 805,
-        "elev": 74.3
+        "elev": 74.5
       },
       {
         "dong": 806,
-        "elev": 75.2
+        "elev": 75
       },
       {
         "dong": 807,
-        "elev": 74.5
+        "elev": 73.7
       }
     ],
     "pedia1": 10,
@@ -8918,28 +9174,24 @@
         "minutes": 32
       }
     ],
-    "slope": 6.3,
+    "slope": 6.6,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
-        "dong": 500,
-        "elev": 49.8
-      },
-      {
         "dong": 501,
-        "elev": 50.5
+        "elev": 50.7
       },
       {
         "dong": 502,
-        "elev": 49.8
+        "elev": 50.4
       },
       {
         "dong": 503,
-        "elev": 49
+        "elev": 49.1
       },
       {
         "dong": 504,
-        "elev": 48.3
+        "elev": 48.5
       },
       {
         "dong": 505,
@@ -8951,23 +9203,23 @@
       },
       {
         "dong": 507,
-        "elev": 47.9
+        "elev": 47.8
       },
       {
         "dong": 508,
-        "elev": 51.5
+        "elev": 51.3
       },
       {
         "dong": 509,
-        "elev": 54
+        "elev": 53.8
       },
       {
         "dong": 510,
-        "elev": 50.3
+        "elev": 50.1
       },
       {
         "dong": 511,
-        "elev": 51.5
+        "elev": 51.3
       },
       {
         "dong": 512,
@@ -9084,32 +9336,28 @@
         "minutes": 31
       }
     ],
-    "slope": 8.2,
+    "slope": 8.3,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 301,
-        "elev": 82.9
+        "elev": 83
       },
       {
         "dong": 302,
-        "elev": 80.8
+        "elev": 81.4
       },
       {
         "dong": 303,
-        "elev": 77.5
+        "elev": 78.4
       },
       {
         "dong": 304,
-        "elev": 74
+        "elev": 74.7
       },
       {
         "dong": 305,
-        "elev": 75.6
-      },
-      {
-        "dong": 306,
-        "elev": 78.1
+        "elev": 77
       }
     ],
     "pedia1": 6,
@@ -9245,7 +9493,7 @@
         "minutes": 28
       }
     ],
-    "slope": 16.6,
+    "slope": 17.2,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -9347,7 +9595,7 @@
         "minutes": 31
       }
     ],
-    "slope": 3.5,
+    "slope": 3.6,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -9364,23 +9612,23 @@
       },
       {
         "dong": 104,
-        "elev": 92.2
+        "elev": 91.9
       },
       {
         "dong": 105,
-        "elev": 92
+        "elev": 91.2
       },
       {
         "dong": 106,
-        "elev": 91.4
+        "elev": 90.9
       },
       {
         "dong": 107,
-        "elev": 91.7
+        "elev": 90.9
       },
       {
         "dong": 108,
-        "elev": 90.4
+        "elev": 90.1
       }
     ],
     "pedia1": 4,
@@ -9424,48 +9672,56 @@
         "minutes": 27
       }
     ],
-    "slope": 14.7,
+    "slope": 21.3,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 108.1
+        "elev": 108.2
       },
       {
         "dong": 102,
-        "elev": 108.3
+        "elev": 108.5
       },
       {
         "dong": 103,
-        "elev": 112.5
+        "elev": 112.3
       },
       {
         "dong": 104,
-        "elev": 113.3
+        "elev": 112.6
       },
       {
         "dong": 105,
-        "elev": 115.9
+        "elev": 116.1
       },
       {
         "dong": 106,
-        "elev": 116.4
+        "elev": 116.3
       },
       {
         "dong": 107,
-        "elev": 119.7
+        "elev": 119.4
       },
       {
         "dong": 108,
-        "elev": 120
+        "elev": 119.4
       },
       {
         "dong": 109,
-        "elev": 122.9
+        "elev": 122.7
       },
       {
         "dong": 110,
-        "elev": 121.8
+        "elev": 121.5
+      },
+      {
+        "dong": 111,
+        "elev": 129.5
+      },
+      {
+        "dong": 112,
+        "elev": 128.5
       }
     ],
     "pedia1": 15,
@@ -9509,7 +9765,7 @@
         "minutes": 45
       }
     ],
-    "slope": 0.4,
+    "slope": 1.1,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -9527,6 +9783,66 @@
       {
         "dong": 104,
         "elev": 24.2
+      },
+      {
+        "dong": 105,
+        "elev": 24.2
+      },
+      {
+        "dong": 106,
+        "elev": 23.9
+      },
+      {
+        "dong": 107,
+        "elev": 23.7
+      },
+      {
+        "dong": 108,
+        "elev": 23.6
+      },
+      {
+        "dong": 109,
+        "elev": 23.6
+      },
+      {
+        "dong": 110,
+        "elev": 23.6
+      },
+      {
+        "dong": 111,
+        "elev": 23.5
+      },
+      {
+        "dong": 112,
+        "elev": 23.4
+      },
+      {
+        "dong": 113,
+        "elev": 23.4
+      },
+      {
+        "dong": 114,
+        "elev": 23.5
+      },
+      {
+        "dong": 115,
+        "elev": 23.4
+      },
+      {
+        "dong": 116,
+        "elev": 23.3
+      },
+      {
+        "dong": 117,
+        "elev": 23.4
+      },
+      {
+        "dong": 118,
+        "elev": 23.3
+      },
+      {
+        "dong": 119,
+        "elev": 23.1
       }
     ],
     "pedia1": 9,
@@ -9577,16 +9893,16 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 0.6,
+    "slope": 0.7,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 1101,
-        "elev": 23.6
+        "elev": 23.5
       },
       {
         "dong": 1102,
-        "elev": 24
+        "elev": 24.1
       },
       {
         "dong": 1103,
@@ -9602,7 +9918,7 @@
       },
       {
         "dong": 1106,
-        "elev": 24.1
+        "elev": 24
       },
       {
         "dong": 1107,
@@ -9610,7 +9926,7 @@
       },
       {
         "dong": 1108,
-        "elev": 24.1
+        "elev": 24
       },
       {
         "dong": 1109,
@@ -9679,16 +9995,16 @@
         "minutes": 41
       }
     ],
-    "slope": 1.4,
+    "slope": 1.9,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 17.6
+        "elev": 17.7
       },
       {
         "dong": 102,
-        "elev": 17.4
+        "elev": 17.3
       },
       {
         "dong": 103,
@@ -9696,11 +10012,11 @@
       },
       {
         "dong": 104,
-        "elev": 17.7
+        "elev": 17.8
       },
       {
         "dong": 105,
-        "elev": 17.5
+        "elev": 17.6
       },
       {
         "dong": 106,
@@ -9708,23 +10024,23 @@
       },
       {
         "dong": 107,
-        "elev": 18.4
+        "elev": 18.6
       },
       {
         "dong": 108,
-        "elev": 18.4
+        "elev": 18.2
       },
       {
         "dong": 109,
-        "elev": 18.3
+        "elev": 18.8
       },
       {
         "dong": 110,
-        "elev": 17.2
+        "elev": 17.3
       },
       {
         "dong": 111,
-        "elev": 17.2
+        "elev": 17.3
       },
       {
         "dong": 112,
@@ -9732,7 +10048,7 @@
       },
       {
         "dong": 113,
-        "elev": 17
+        "elev": 17.1
       },
       {
         "dong": 114,
@@ -9740,7 +10056,7 @@
       },
       {
         "dong": 115,
-        "elev": 16.8
+        "elev": 17.2
       },
       {
         "dong": 116,
@@ -9752,14 +10068,42 @@
       },
       {
         "dong": 118,
-        "elev": 18.3
+        "elev": 18.2
       },
       {
         "dong": 119,
-        "elev": 17.5
+        "elev": 17.2
       },
       {
         "dong": 120,
+        "elev": 17.4
+      },
+      {
+        "dong": 121,
+        "elev": 17.1
+      },
+      {
+        "dong": 122,
+        "elev": 17.3
+      },
+      {
+        "dong": 123,
+        "elev": 18.5
+      },
+      {
+        "dong": 124,
+        "elev": 18.3
+      },
+      {
+        "dong": 125,
+        "elev": 17.3
+      },
+      {
+        "dong": 126,
+        "elev": 16.9
+      },
+      {
+        "dong": 127,
         "elev": 17.2
       }
     ],
@@ -9856,36 +10200,64 @@
         "minutes": 36
       }
     ],
-    "slope": 2.9,
+    "slope": 3.3,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
-        "dong": 4001,
-        "elev": 25
+        "dong": 401,
+        "elev": 24.7
       },
       {
-        "dong": 4002,
-        "elev": 25.5
+        "dong": 402,
+        "elev": 25.4
       },
       {
-        "dong": 4003,
-        "elev": 25.9
+        "dong": 403,
+        "elev": 25.7
       },
       {
-        "dong": 4005,
-        "elev": 26.1
+        "dong": 404,
+        "elev": 26.4
       },
       {
-        "dong": 4006,
-        "elev": 24
+        "dong": 405,
+        "elev": 26.2
       },
       {
-        "dong": 4008,
+        "dong": 406,
+        "elev": 23.8
+      },
+      {
+        "dong": 407,
+        "elev": 24.1
+      },
+      {
+        "dong": 408,
         "elev": 23.1
       },
       {
-        "dong": 4009,
-        "elev": 23.2
+        "dong": 409,
+        "elev": 23.4
+      },
+      {
+        "dong": 410,
+        "elev": 23.8
+      },
+      {
+        "dong": 411,
+        "elev": 23.1
+      },
+      {
+        "dong": 412,
+        "elev": 23.3
+      },
+      {
+        "dong": 413,
+        "elev": 23.5
+      },
+      {
+        "dong": 414,
+        "elev": 23.4
       }
     ],
     "pedia1": 12,
@@ -10010,44 +10382,44 @@
         "minutes": 35
       }
     ],
-    "slope": 6.5,
+    "slope": 7.2,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 501,
-        "elev": 23.4
+        "elev": 23.3
       },
       {
         "dong": 502,
-        "elev": 24.3
+        "elev": 23.6
       },
       {
         "dong": 503,
-        "elev": 24.5
+        "elev": 24.6
       },
       {
         "dong": 504,
-        "elev": 26
+        "elev": 26.5
       },
       {
         "dong": 505,
-        "elev": 25.8
+        "elev": 25.7
       },
       {
         "dong": 506,
-        "elev": 26.1
+        "elev": 26
       },
       {
         "dong": 507,
-        "elev": 26.3
+        "elev": 26.1
       },
       {
         "dong": 508,
-        "elev": 26.8
+        "elev": 26.5
       },
       {
         "dong": 509,
-        "elev": 25.5
+        "elev": 25.6
       },
       {
         "dong": 510,
@@ -10059,7 +10431,7 @@
       },
       {
         "dong": 512,
-        "elev": 27
+        "elev": 26.3
       },
       {
         "dong": 513,
@@ -10067,11 +10439,11 @@
       },
       {
         "dong": 514,
-        "elev": 27.7
+        "elev": 27.6
       },
       {
         "dong": 515,
-        "elev": 27.1
+        "elev": 26.3
       },
       {
         "dong": 516,
@@ -10079,19 +10451,19 @@
       },
       {
         "dong": 517,
-        "elev": 28.1
+        "elev": 28.2
       },
       {
         "dong": 518,
-        "elev": 28.6
+        "elev": 28.8
       },
       {
         "dong": 519,
-        "elev": 29.8
+        "elev": 30.5
       },
       {
         "dong": 520,
-        "elev": 28.8
+        "elev": 28.9
       }
     ],
     "pedia1": 13,
@@ -10170,7 +10542,7 @@
         "minutes": 32
       }
     ],
-    "slope": 4.1,
+    "slope": 4.8,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -10183,11 +10555,11 @@
       },
       {
         "dong": 103,
-        "elev": 36.8
+        "elev": 36.6
       },
       {
         "dong": 104,
-        "elev": 38.8
+        "elev": 38.6
       },
       {
         "dong": 105,
@@ -10212,6 +10584,14 @@
       {
         "dong": 110,
         "elev": 33.8
+      },
+      {
+        "dong": 111,
+        "elev": 33.8
+      },
+      {
+        "dong": 112,
+        "elev": 36.6
       }
     ],
     "pedia1": 7,
@@ -10278,7 +10658,7 @@
         "minutes": 36
       }
     ],
-    "slope": 7.7,
+    "slope": 8,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -10380,44 +10760,44 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 4.5,
+    "slope": 3.9,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 101,
-        "elev": 45.5
+        "elev": 45.4
       },
       {
         "dong": 102,
-        "elev": 45.3
+        "elev": 45.1
       },
       {
         "dong": 103,
-        "elev": 44.8
+        "elev": 44.6
       },
       {
         "dong": 104,
-        "elev": 45.9
+        "elev": 46
       },
       {
         "dong": 105,
-        "elev": 46.6
+        "elev": 46.4
       },
       {
         "dong": 106,
-        "elev": 46.3
+        "elev": 46.2
       },
       {
         "dong": 107,
-        "elev": 47.2
+        "elev": 46.5
       },
       {
         "dong": 108,
-        "elev": 48.8
+        "elev": 48.5
       },
       {
         "dong": 109,
-        "elev": 47.6
+        "elev": 47
       }
     ],
     "pedia1": 8,
@@ -10478,7 +10858,7 @@
         "minutes": 37
       }
     ],
-    "slope": 7.4,
+    "slope": 7.7,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -10626,7 +11006,7 @@
         "minutes": 37
       }
     ],
-    "slope": 6.6,
+    "slope": 6.1,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -10752,7 +11132,7 @@
         "minutes": 36
       }
     ],
-    "slope": 4.3,
+    "slope": 4.1,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -10824,7 +11204,7 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 17.2,
+    "slope": 16.9,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -10972,59 +11352,59 @@
     "slope_dongs": [
       {
         "dong": 2621,
-        "elev": 54.6
+        "elev": 56.3
       },
       {
         "dong": 2622,
-        "elev": 52.9
+        "elev": 51
       },
       {
         "dong": 2623,
-        "elev": 53.4
+        "elev": 54.4
       },
       {
         "dong": 2624,
-        "elev": 50.4
+        "elev": 49.5
       },
       {
         "dong": 2625,
-        "elev": 57.2
+        "elev": 56.3
       },
       {
         "dong": 2626,
-        "elev": 55.6
+        "elev": 56.9
       },
       {
         "dong": 2627,
-        "elev": 57.7
+        "elev": 57.2
       },
       {
         "dong": 2628,
-        "elev": 57.6
+        "elev": 57.4
       },
       {
         "dong": 2629,
-        "elev": 59.9
+        "elev": 58.1
       },
       {
         "dong": 2630,
-        "elev": 62
+        "elev": 62.4
       },
       {
         "dong": 2631,
-        "elev": 63.5
+        "elev": 62
       },
       {
         "dong": 2632,
-        "elev": 58.8
+        "elev": 59.3
       },
       {
         "dong": 2633,
-        "elev": 60.2
+        "elev": 61.6
       },
       {
         "dong": 2634,
-        "elev": 59.7
+        "elev": 59.4
       }
     ],
     "pedia1": 16,
@@ -11068,7 +11448,7 @@
         "minutes": 29
       }
     ],
-    "slope": 1.6,
+    "slope": 1.9,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -11156,7 +11536,7 @@
         "minutes": 44
       }
     ],
-    "slope": 10.7,
+    "slope": 10.5,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -11262,16 +11642,16 @@
         "minutes": 37
       }
     ],
-    "slope": 6.2,
+    "slope": 8.3,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 1121,
-        "elev": 84
+        "elev": 83.9
       },
       {
         "dong": 1122,
-        "elev": 82.8
+        "elev": 82.7
       },
       {
         "dong": 1123,
@@ -11279,15 +11659,15 @@
       },
       {
         "dong": 1124,
-        "elev": 76.1
+        "elev": 75.6
       },
       {
         "dong": 1125,
-        "elev": 79.9
+        "elev": 79.2
       },
       {
         "dong": 1126,
-        "elev": 77.9
+        "elev": 77.8
       },
       {
         "dong": 1127,
@@ -11379,28 +11759,28 @@
         "minutes": 42
       }
     ],
-    "slope": 6,
+    "slope": 5.9,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 1801,
-        "elev": 47.1
+        "elev": 47.8
       },
       {
         "dong": 1802,
-        "elev": 47.5
+        "elev": 47.6
       },
       {
         "dong": 1803,
-        "elev": 47.3
+        "elev": 47
       },
       {
         "dong": 1804,
-        "elev": 46.7
+        "elev": 46.5
       },
       {
         "dong": 1805,
-        "elev": 46
+        "elev": 45.7
       },
       {
         "dong": 1806,
@@ -11408,47 +11788,47 @@
       },
       {
         "dong": 1807,
-        "elev": 42.6
-      },
-      {
-        "dong": 1808,
-        "elev": 41.9
-      },
-      {
-        "dong": 1809,
-        "elev": 41.5
-      },
-      {
-        "dong": 1810,
-        "elev": 42.6
-      },
-      {
-        "dong": 1811,
-        "elev": 41.1
-      },
-      {
-        "dong": 1812,
         "elev": 42.7
       },
       {
+        "dong": 1808,
+        "elev": 42.4
+      },
+      {
+        "dong": 1809,
+        "elev": 43.3
+      },
+      {
+        "dong": 1810,
+        "elev": 43.6
+      },
+      {
+        "dong": 1811,
+        "elev": 41.9
+      },
+      {
+        "dong": 1812,
+        "elev": 43.5
+      },
+      {
         "dong": 1813,
-        "elev": 45
+        "elev": 45.1
       },
       {
         "dong": 1814,
-        "elev": 42.8
+        "elev": 45.3
       },
       {
         "dong": 1815,
-        "elev": 41.3
+        "elev": 44.6
       },
       {
         "dong": 1816,
-        "elev": 46.2
+        "elev": 46.9
       },
       {
         "dong": 1817,
-        "elev": 46.6
+        "elev": 46.9
       }
     ],
     "pedia1": 33,
@@ -11603,7 +11983,7 @@
         "minutes": 49
       }
     ],
-    "slope": 10.1,
+    "slope": 10.3,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -11725,48 +12105,48 @@
         "minutes": 39
       }
     ],
-    "slope": 1.2,
+    "slope": 2.1,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 1611,
-        "elev": 28.9
+        "elev": 29
       },
       {
         "dong": 1612,
-        "elev": 28.8
+        "elev": 28.6
       },
       {
         "dong": 1613,
-        "elev": 29.2
+        "elev": 29.4
       },
       {
         "dong": 1614,
-        "elev": 29.4
+        "elev": 29.5
       },
       {
         "dong": 1615,
-        "elev": 29.8
+        "elev": 29.6
       },
       {
         "dong": 1616,
-        "elev": 29.3
+        "elev": 30.6
       },
       {
         "dong": 1617,
-        "elev": 28.9
+        "elev": 29.3
       },
       {
         "dong": 1618,
-        "elev": 29.9
+        "elev": 30.4
       },
       {
         "dong": 1619,
-        "elev": 30.1
+        "elev": 30.7
       },
       {
         "dong": 1620,
-        "elev": 29.4
+        "elev": 29.2
       }
     ],
     "pedia1": 21,
@@ -11817,7 +12197,7 @@
         "minutes": 29
       }
     ],
-    "slope": 0.8,
+    "slope": 0.5,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -11909,7 +12289,7 @@
         "minutes": 47
       }
     ],
-    "slope": 21.7,
+    "slope": 21.6,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
@@ -11930,27 +12310,27 @@
       },
       {
         "dong": 3035,
-        "elev": 60.9
+        "elev": 61
       },
       {
         "dong": 3036,
-        "elev": 63.2
+        "elev": 63
       },
       {
         "dong": 3037,
-        "elev": 65.7
+        "elev": 65.5
       },
       {
         "dong": 3038,
-        "elev": 67.5
+        "elev": 67.4
       },
       {
         "dong": 3039,
-        "elev": 70
+        "elev": 70.3
       },
       {
         "dong": 3040,
-        "elev": 73.3
+        "elev": 73.4
       },
       {
         "dong": 3041,
@@ -12044,39 +12424,39 @@
     "slope_dongs": [
       {
         "dong": 1201,
-        "elev": 87.2
+        "elev": 87.5
       },
       {
         "dong": 1202,
-        "elev": 87
+        "elev": 87.1
       },
       {
         "dong": 1203,
-        "elev": 85.2
+        "elev": 85.3
       },
       {
         "dong": 1204,
-        "elev": 83.2
+        "elev": 83.4
       },
       {
         "dong": 1205,
-        "elev": 79.5
+        "elev": 80.1
       },
       {
         "dong": 1206,
-        "elev": 82
+        "elev": 82.5
       },
       {
         "dong": 1207,
-        "elev": 84.2
+        "elev": 84.8
       },
       {
         "dong": 1208,
-        "elev": 85
+        "elev": 85.6
       },
       {
         "dong": 1209,
-        "elev": 86.2
+        "elev": 86.9
       }
     ],
     "pedia1": 8,
@@ -12175,35 +12555,35 @@
     "slope_dongs": [
       {
         "dong": 2021,
-        "elev": 65.5
+        "elev": 65.4
       },
       {
         "dong": 2022,
-        "elev": 68.8
+        "elev": 68.3
       },
       {
         "dong": 2023,
-        "elev": 67.5
+        "elev": 68.4
       },
       {
         "dong": 2024,
-        "elev": 65.2
+        "elev": 65
       },
       {
         "dong": 2025,
-        "elev": 63.3
+        "elev": 62.4
       },
       {
         "dong": 2026,
-        "elev": 62.6
+        "elev": 62.5
       },
       {
         "dong": 2027,
-        "elev": 65.2
+        "elev": 66
       },
       {
         "dong": 2028,
-        "elev": 66.1
+        "elev": 65.4
       },
       {
         "dong": 2029,
@@ -12211,23 +12591,23 @@
       },
       {
         "dong": 2030,
-        "elev": 62.3
+        "elev": 62.7
       },
       {
         "dong": 2031,
-        "elev": 60.4
+        "elev": 60.5
       },
       {
         "dong": 2032,
-        "elev": 57
+        "elev": 56.3
       },
       {
         "dong": 2033,
-        "elev": 58.5
+        "elev": 59.3
       },
       {
         "dong": 2034,
-        "elev": 56.9
+        "elev": 57.7
       },
       {
         "dong": 2035,
@@ -12322,52 +12702,52 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 10.2,
+    "slope": 12.3,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 301,
-        "elev": 71
+        "elev": 70.1
       },
       {
         "dong": 302,
-        "elev": 74.6
+        "elev": 74.2
       },
       {
         "dong": 303,
-        "elev": 79.7
+        "elev": 78.9
       },
       {
         "dong": 304,
-        "elev": 81.5
+        "elev": 82.4
       },
       {
         "dong": 305,
-        "elev": 72.1
+        "elev": 71.7
       },
       {
         "dong": 306,
-        "elev": 74.8
+        "elev": 74.6
       },
       {
         "dong": 307,
-        "elev": 77.2
+        "elev": 77.3
       },
       {
         "dong": 308,
-        "elev": 79.1
+        "elev": 78.9
       },
       {
         "dong": 309,
-        "elev": 81.2
+        "elev": 81.6
       },
       {
         "dong": 310,
-        "elev": 81.3
+        "elev": 81.8
       },
       {
         "dong": 311,
-        "elev": 72.9
+        "elev": 72.6
       },
       {
         "dong": 312,
@@ -12448,16 +12828,16 @@
         "minutes": 45
       }
     ],
-    "slope": 10.1,
+    "slope": 10.2,
     "slope_method": "dong_naver",
     "slope_dongs": [
       {
         "dong": 2481,
-        "elev": 63.1
+        "elev": 62.1
       },
       {
         "dong": 2482,
-        "elev": 68.4
+        "elev": 68.6
       },
       {
         "dong": 2483,
@@ -12465,15 +12845,15 @@
       },
       {
         "dong": 2484,
-        "elev": 65.4
+        "elev": 65.2
       },
       {
         "dong": 2485,
-        "elev": 58.1
+        "elev": 58.4
       },
       {
         "dong": 2486,
-        "elev": 61.6
+        "elev": 61.3
       }
     ],
     "pedia1": 6,
@@ -12535,35 +12915,35 @@
     "slope_dongs": [
       {
         "dong": 2831,
-        "elev": 47.3
+        "elev": 46.8
       },
       {
         "dong": 2832,
-        "elev": 50.8
+        "elev": 50.6
       },
       {
         "dong": 2833,
-        "elev": 55.3
+        "elev": 53.7
       },
       {
         "dong": 2834,
-        "elev": 58.1
+        "elev": 57.3
       },
       {
         "dong": 2835,
-        "elev": 58.4
+        "elev": 58.3
       },
       {
         "dong": 2836,
-        "elev": 57.5
+        "elev": 55.7
       },
       {
         "dong": 2837,
-        "elev": 53.1
+        "elev": 52.6
       },
       {
         "dong": 2838,
-        "elev": 49
+        "elev": 48.9
       }
     ],
     "pedia1": 4,
