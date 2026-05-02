@@ -108,7 +108,7 @@
       <option value="liquidity">환금성</option>
       <option value="morning">출근</option>
       <option value="evening">퇴근</option>
-      <option value="pedScore">소아과</option>
+      <option value="pedScore">소아과 접근성</option>
       <option value="slope">고저차</option>
       <option value="avg">현재가</option>
       <option value="build">건축년도</option>
@@ -136,7 +136,7 @@
         <th data-sort="liquidity">환금</th>
         <th data-sort="morning">출근</th>
         <th data-sort="evening">퇴근</th>
-        <th data-sort="pedScore">소아과</th>
+        <th data-sort="pedScore">소아과<br>접근성</th>
         <th data-sort="slope">고저차</th>
         <th data-sort="build">건축</th>
         <th data-sort="score">점수</th>
@@ -269,7 +269,7 @@ function renderRow(d, i) {
     </div>`;
   }
 
-  const pedCls = d.pedScore ? (d.pedScore <= 8 ? 'good' : d.pedScore >= 18 ? 'bad' : '') : '';
+  const [pedLbl, pedCls] = pedLabel(d.pedScore);
 
   // 거래 툴팁
   const tradeTip = d.recent_trades?.length ? `<div class="tooltip"><div style="font-weight:600;margin-bottom:4px;color:var(--text)">최근 거래 (4월~)</div><table><tr><th>날짜</th><th>가격</th><th>층</th><th>면적</th></tr>${d.recent_trades.map(t => `<tr><td>${t.date.slice(5)}</td><td>${t.price}억</td><td>${t.floor}층</td><td>${t.area}㎡</td></tr>`).join('')}</table></div>` : '';
@@ -286,7 +286,7 @@ function renderRow(d, i) {
     <td>${d.liquidity ? d.liquidity + '%' + (d.liq_approx ? '*' : '') : '-'}</td>
     <td class="${commuteClass(d.morning, 25, 40)}">${d.morning ? d.morning + '분' + mc : '-'}</td>
     <td class="${commuteClass(d.evening, 30, 50)}">${d.evening ? d.evening + '분' + ec : '-'}</td>
-    <td class="has-tip ${pedCls}">${d.pedScore != null ? d.pedScore + '분' : '-'}${pedTip}</td>
+    <td class="has-tip ${pedCls}">${pedLbl}${pedTip}</td>
     <td class="hide-mobile ${d.slope != null ? (d.slope <= 10 ? 'good' : d.slope >= 30 ? 'bad' : '') : ''}">${d.slope != null ? d.slope + 'm' + (d.slope_method === 'grid' ? '*' : '') : '-'}</td>
     <td>${d.build}</td>
     <td><span class="score-bar" style="width:${scoreW}px"></span> ${d.score}</td>
@@ -296,6 +296,14 @@ function renderRow(d, i) {
 function accelClass(v) { return v > 5 ? 'good' : v < 0 ? 'bad' : ''; }
 function commuteClass(v, lo, hi) { return v ? (v <= lo ? 'good' : v >= hi ? 'bad' : '') : ''; }
 function slopeColor(v) { return v == null ? '' : Math.abs(v) >= 10 ? '#f87171' : Math.abs(v) >= 5 ? '#fbbf24' : '#4ade80'; }
+function pedLabel(v) {
+  if (v == null) return ['-', ''];
+  if (v <= 6) return ['매우좋음', 'good'];
+  if (v <= 10) return ['좋음', 'good'];
+  if (v <= 15) return ['보통', ''];
+  if (v <= 20) return ['나쁨', 'bad'];
+  return ['매우나쁨', 'bad'];
+}
 
 init();
 </script>
