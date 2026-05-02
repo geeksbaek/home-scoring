@@ -139,6 +139,18 @@ export default function App() {
   const [regionFilter, setRegionFilter] = useState("all");
   const [commuteFilter, setCommuteFilter] = useState("all");
   const [infoOpen, setInfoOpen] = useState(false);
+  const [favorites, setFavorites] = useState<Set<string>>(() => {
+    try { return new Set(JSON.parse(localStorage.getItem("favorites") ?? "[]")); } catch { return new Set(); }
+  });
+
+  const toggleFav = (key: string) => {
+    setFavorites((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key); else next.add(key);
+      localStorage.setItem("favorites", JSON.stringify([...next]));
+      return next;
+    });
+  };
 
   useEffect(() => {
     fetch(import.meta.env.BASE_URL + "data.json")
@@ -163,6 +175,11 @@ export default function App() {
     else if (commuteFilter === "ok") f = f.filter((d) => d.commuteScore != null && d.commuteScore <= 40);
 
     f.sort((a, b) => {
+      // 즐겨찾기 상단 pin
+      const aFav = favorites.has(`${a.name}|${a.atype}`) ? 1 : 0;
+      const bFav = favorites.has(`${b.name}|${b.atype}`) ? 1 : 0;
+      if (aFav !== bFav) return bFav - aFav;
+
       const va = a[sortField] ?? (["commuteScore", "pedScore", "slope", "avg"].includes(sortField) ? Infinity : -Infinity);
       const vb = b[sortField] ?? (["commuteScore", "pedScore", "slope", "avg"].includes(sortField) ? Infinity : -Infinity);
       if (sortField === "name") return String(va).localeCompare(String(vb));
@@ -170,7 +187,7 @@ export default function App() {
       return (vb as number) - (va as number);
     });
     return f;
-  }, [data, typeFilter, sortField, regionFilter, commuteFilter]);
+  }, [data, typeFilter, sortField, regionFilter, commuteFilter, favorites]);
 
   return (
     <div className="dark min-h-screen bg-background text-foreground">
@@ -252,6 +269,7 @@ export default function App() {
           <Table>
             <TableHeader>
               <TableRow className="bg-muted/50">
+                <TableHead className="w-6 text-center"></TableHead>
                 <TableHead className="w-8 text-center">#</TableHead>
                 <TableHead className="min-w-[160px]">단지명</TableHead>
                 <TableHead className="text-center">현재가</TableHead>
@@ -270,8 +288,11 @@ export default function App() {
                   ?.slice()
                   .reverse()
                   .map((t) => ({ date: t.date, price: t.price })) ?? [];
+                const favKey = `${d.name}|${d.atype}`;
+                const isFav = favorites.has(favKey);
                 return (
-                  <TableRow key={`${d.name}-${d.atype}`}>
+                  <TableRow key={favKey} className={isFav ? "bg-primary/5" : ""}>
+                    <TableCell className="text-center cursor-pointer" onClick={() => toggleFav(favKey)}>{isFav ? "★" : "☆"}</TableCell>
                     <TableCell className="text-center text-muted-foreground text-xs">{i + 1}</TableCell>
                     <TableCell>
                       <div className="flex flex-col gap-0.5">
