@@ -154,6 +154,7 @@
     "mgmt_cost": 27.21,
     "mgmt_summer": 25.37,
     "mgmt_winter": 32.43,
+    "naver_place_id": "1094429641",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.197g",
     "energy_grade": "1+"
@@ -379,6 +380,7 @@
     "mgmt_cost": 21.43,
     "mgmt_summer": 19.98,
     "mgmt_winter": 25.54,
+    "naver_place_id": "1094429641",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.197g",
     "energy_grade": "1+"
@@ -648,6 +650,7 @@
     "mgmt_cost": 27.83,
     "mgmt_summer": 26.91,
     "mgmt_winter": 33.26,
+    "naver_place_id": "1123628133",
     "eq_design": true,
     "eq_capacity": "VII-0.204g",
     "energy_grade": "1+"
@@ -1197,6 +1200,7 @@
     "mgmt_cost": 23.35,
     "mgmt_summer": 23.32,
     "mgmt_winter": 27.25,
+    "naver_place_id": "1022680920",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1"
@@ -1578,6 +1582,7 @@
     "mgmt_cost": 26.45,
     "mgmt_summer": 27.54,
     "mgmt_winter": 33.09,
+    "naver_place_id": "1977879080",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": "1+"
@@ -2371,6 +2376,7 @@
     "mgmt_cost": 22.81,
     "mgmt_summer": 22.07,
     "mgmt_winter": 26.52,
+    "naver_place_id": "1518086424",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1"
@@ -2745,6 +2751,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -3274,6 +3281,7 @@
     "mgmt_cost": 28.52,
     "mgmt_summer": 27.6,
     "mgmt_winter": 33.16,
+    "naver_place_id": "1518086424",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1"
@@ -3613,6 +3621,7 @@
     "mgmt_cost": 29.24,
     "mgmt_summer": 29.2,
     "mgmt_winter": 34.12,
+    "naver_place_id": "1022680920",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1"
@@ -3801,6 +3810,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -3944,6 +3954,7 @@
     "mgmt_cost": 25.13,
     "mgmt_summer": 23.8,
     "mgmt_winter": 30.29,
+    "naver_place_id": "38538401",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": "2"
@@ -4193,6 +4204,7 @@
     "mgmt_cost": 21.33,
     "mgmt_summer": 19.89,
     "mgmt_winter": 25.79,
+    "naver_place_id": "1306235298",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
     "energy_grade": "1+"
@@ -4315,6 +4327,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -4604,6 +4617,7 @@
     "mgmt_cost": 27.87,
     "mgmt_summer": 23.36,
     "mgmt_winter": 34.46,
+    "naver_place_id": "20815791",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": "2"
@@ -4851,6 +4865,7 @@
     "mgmt_cost": 22.94,
     "mgmt_summer": 21.89,
     "mgmt_winter": 27.67,
+    "naver_place_id": "38684770",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.218g",
     "energy_grade": "1"
@@ -5006,6 +5021,7 @@
     "mgmt_cost": 23.21,
     "mgmt_summer": 21.48,
     "mgmt_winter": 29.08,
+    "naver_place_id": "37411916",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
@@ -5207,6 +5223,7 @@
     "mgmt_cost": 27.08,
     "mgmt_summer": 25.24,
     "mgmt_winter": 32.74,
+    "naver_place_id": "1306235298",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
     "energy_grade": "1+"
@@ -5482,6 +5499,7 @@
     "mgmt_cost": 21.02,
     "mgmt_summer": 20.87,
     "mgmt_winter": 21.97,
+    "naver_place_id": "38655154",
     "eq_design": true,
     "eq_capacity": "VII-0.141g",
     "energy_grade": "2"
@@ -5757,6 +5775,7 @@
     "mgmt_cost": 20.3,
     "mgmt_summer": 22.02,
     "mgmt_winter": 20.41,
+    "naver_place_id": "19220843",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
@@ -5944,6 +5963,7 @@
     "mgmt_cost": 20.72,
     "mgmt_summer": 21.24,
     "mgmt_winter": 20.57,
+    "naver_place_id": "1150649395",
     "eq_design": true,
     "eq_capacity": "VII-0.169g",
     "energy_grade": "1"
@@ -6381,6 +6401,7 @@
     "mgmt_cost": 19.05,
     "mgmt_summer": 19.88,
     "mgmt_winter": 19.56,
+    "naver_place_id": "1946716060",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.1971g",
     "energy_grade": null
@@ -6682,6 +6703,7 @@
     "mgmt_cost": 27.62,
     "mgmt_summer": 25.72,
     "mgmt_winter": 33.65,
+    "naver_place_id": "1088441482",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169",
     "energy_grade": "1"
@@ -6877,6 +6899,7 @@
     "mgmt_cost": 26.37,
     "mgmt_summer": 23.99,
     "mgmt_winter": 32.16,
+    "naver_place_id": "1883052842",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
     "energy_grade": "2"
@@ -7092,6 +7115,7 @@
     "mgmt_cost": 26.65,
     "mgmt_summer": 25.8,
     "mgmt_winter": 34.27,
+    "naver_place_id": "37406203",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169",
     "energy_grade": "1"
@@ -7285,6 +7309,7 @@
     "mgmt_cost": 24.12,
     "mgmt_summer": 23.01,
     "mgmt_winter": 29.75,
+    "naver_place_id": "1444692298",
     "eq_design": true,
     "eq_capacity": "VII-0.197g",
     "energy_grade": "1++"
@@ -7484,6 +7509,7 @@
     "mgmt_cost": 30.83,
     "mgmt_summer": 29.41,
     "mgmt_winter": 38.04,
+    "naver_place_id": "1444692298",
     "eq_design": true,
     "eq_capacity": "VII-0.197g",
     "energy_grade": "1++"
@@ -7582,6 +7608,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -7722,6 +7749,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -7838,6 +7866,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -7979,6 +8008,7 @@
     "mgmt_cost": 23.22,
     "mgmt_summer": 22.71,
     "mgmt_winter": 24.85,
+    "naver_place_id": "35069988",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": "1"
@@ -8380,6 +8410,7 @@
     "mgmt_cost": 26.72,
     "mgmt_summer": 25.6,
     "mgmt_winter": 31.85,
+    "naver_place_id": "1025760688",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
     "energy_grade": "1+"
@@ -8671,6 +8702,7 @@
     "mgmt_cost": 30.12,
     "mgmt_summer": 26.98,
     "mgmt_winter": 33.26,
+    "naver_place_id": "1481069447",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
     "energy_grade": "1+"
@@ -8974,6 +9006,7 @@
     "mgmt_cost": 24.16,
     "mgmt_summer": 21.64,
     "mgmt_winter": 26.68,
+    "naver_place_id": "1481069447",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
     "energy_grade": "1+"
@@ -9265,6 +9298,7 @@
     "mgmt_cost": 26.04,
     "mgmt_summer": 24.31,
     "mgmt_winter": 31.28,
+    "naver_place_id": "1716012036",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.218g",
     "energy_grade": "1+"
@@ -9615,6 +9649,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -9932,6 +9967,7 @@
     "mgmt_cost": 34.19,
     "mgmt_summer": 31.21,
     "mgmt_winter": 42.49,
+    "naver_place_id": "1767651518",
     "eq_design": true,
     "eq_capacity": "VII-0.169g",
     "energy_grade": "1+"
@@ -10069,6 +10105,7 @@
     "mgmt_cost": 26.64,
     "mgmt_summer": 23.07,
     "mgmt_winter": 33.35,
+    "naver_place_id": "19118520",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -10404,6 +10441,7 @@
     "mgmt_cost": 28.64,
     "mgmt_summer": 23.35,
     "mgmt_winter": 35.5,
+    "naver_place_id": "35958893",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -10703,6 +10741,7 @@
     "mgmt_cost": 26.54,
     "mgmt_summer": 22.07,
     "mgmt_winter": 33.52,
+    "naver_place_id": "36606052",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -10867,6 +10906,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -11091,6 +11131,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -11368,6 +11409,7 @@
     "mgmt_cost": 29.38,
     "mgmt_summer": 27.2,
     "mgmt_winter": 35.34,
+    "naver_place_id": "37918909",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.16896g",
     "energy_grade": "1+"
@@ -11687,6 +11729,7 @@
     "mgmt_cost": 29.07,
     "mgmt_summer": 27.59,
     "mgmt_winter": 34.42,
+    "naver_place_id": "37899188",
     "eq_design": true,
     "eq_capacity": "VII-0.176g",
     "energy_grade": null
@@ -11926,6 +11969,7 @@
     "mgmt_cost": 26.78,
     "mgmt_summer": 24.74,
     "mgmt_winter": 32.8,
+    "naver_place_id": "1502126939",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1+"
@@ -12277,6 +12321,7 @@
     "mgmt_cost": 24.99,
     "mgmt_summer": 22.62,
     "mgmt_winter": 31.45,
+    "naver_place_id": "1643889840",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -12888,6 +12933,7 @@
     "mgmt_cost": 22.94,
     "mgmt_summer": 18.7,
     "mgmt_winter": 28.44,
+    "naver_place_id": "35958893",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -13445,6 +13491,7 @@
     "mgmt_cost": 23.23,
     "mgmt_summer": 20.51,
     "mgmt_winter": 31.45,
+    "naver_place_id": "31683836",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -13642,6 +13689,7 @@
     "mgmt_cost": 32.29,
     "mgmt_summer": 26.85,
     "mgmt_winter": 40.78,
+    "naver_place_id": "36606052",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -13854,6 +13902,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -14071,6 +14120,7 @@
     "mgmt_cost": 29.3,
     "mgmt_summer": 27.49,
     "mgmt_winter": 34.73,
+    "naver_place_id": "37824819",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
     "energy_grade": "1"
@@ -14280,6 +14330,7 @@
     "mgmt_cost": 29.29,
     "mgmt_summer": 25.86,
     "mgmt_winter": 39.66,
+    "naver_place_id": "31683836",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -14396,6 +14447,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -14617,6 +14669,7 @@
     "mgmt_cost": 31.47,
     "mgmt_summer": 24.95,
     "mgmt_winter": 38.69,
+    "naver_place_id": "34827717",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -14834,6 +14887,7 @@
     "mgmt_cost": 29.01,
     "mgmt_summer": 26.02,
     "mgmt_winter": 35.78,
+    "naver_place_id": "36391789",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
@@ -15115,6 +15169,7 @@
     "mgmt_cost": 33.72,
     "mgmt_summer": 31.23,
     "mgmt_winter": 43.37,
+    "naver_place_id": "1009478228",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": "2"
@@ -15282,6 +15337,7 @@
     "mgmt_cost": 34.35,
     "mgmt_summer": 31.44,
     "mgmt_winter": 40.13,
+    "naver_place_id": "1990115072",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
@@ -15657,6 +15713,7 @@
     "mgmt_cost": 31.05,
     "mgmt_summer": 28.24,
     "mgmt_winter": 40.41,
+    "naver_place_id": "19198500",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
@@ -15986,6 +16043,7 @@
     "mgmt_cost": 31.59,
     "mgmt_summer": 30.54,
     "mgmt_winter": 37.75,
+    "naver_place_id": "1123628133",
     "eq_design": true,
     "eq_capacity": "VII-0.204g",
     "energy_grade": "1+"
@@ -16191,6 +16249,7 @@
     "mgmt_cost": 27.15,
     "mgmt_summer": 25.78,
     "mgmt_winter": 36.44,
+    "naver_place_id": "36996146",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.176g",
     "energy_grade": null
@@ -16498,6 +16557,7 @@
     "mgmt_cost": 31.68,
     "mgmt_summer": 27.91,
     "mgmt_winter": 39.34,
+    "naver_place_id": "37225381",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": "1"
@@ -16743,6 +16803,7 @@
     "mgmt_cost": 31.87,
     "mgmt_summer": 26.45,
     "mgmt_winter": 39.33,
+    "naver_place_id": "1577083205",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": "1"
@@ -17130,6 +17191,7 @@
     "mgmt_cost": 33.1,
     "mgmt_summer": 33.05,
     "mgmt_winter": 38.62,
+    "naver_place_id": "1022680920",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1"
@@ -17433,6 +17495,7 @@
     "mgmt_cost": 30.38,
     "mgmt_summer": 31.63,
     "mgmt_winter": 38.01,
+    "naver_place_id": "1977879080",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": "1+"
@@ -17651,6 +17714,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -17768,6 +17832,7 @@
     "mgmt_cost": 30.71,
     "mgmt_summer": 26.83,
     "mgmt_winter": 40.1,
+    "naver_place_id": "19210657",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
@@ -17926,6 +17991,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -18091,6 +18157,7 @@
     "mgmt_cost": 32.39,
     "mgmt_summer": 26.83,
     "mgmt_winter": 40.1,
+    "naver_place_id": "19211690",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
@@ -18267,6 +18334,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -18574,6 +18642,7 @@
     "mgmt_cost": 31.51,
     "mgmt_summer": 26.41,
     "mgmt_winter": 38.96,
+    "naver_place_id": "20815791",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": "2"
@@ -19113,6 +19182,7 @@
     "mgmt_cost": 30.24,
     "mgmt_summer": 25.41,
     "mgmt_winter": 38.61,
+    "naver_place_id": "19212623",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
@@ -19304,6 +19374,7 @@
     "mgmt_cost": 28.8,
     "mgmt_summer": 28.51,
     "mgmt_winter": 33.89,
+    "naver_place_id": "1020641276",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1+"
@@ -19517,6 +19588,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": "1231409221",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.225g",
     "energy_grade": "1++"
@@ -19699,6 +19771,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -19932,6 +20005,7 @@
     "mgmt_cost": 29.6,
     "mgmt_summer": 27.01,
     "mgmt_winter": 34.52,
+    "naver_place_id": "1732696090",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1++"
@@ -20087,6 +20161,7 @@
     "mgmt_cost": 32.88,
     "mgmt_summer": 30.43,
     "mgmt_winter": 41.2,
+    "naver_place_id": "37411916",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
@@ -20233,6 +20308,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -20373,6 +20449,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -20489,6 +20566,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -20587,6 +20665,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -20754,6 +20833,7 @@
     "mgmt_cost": 29.64,
     "mgmt_summer": 29.42,
     "mgmt_winter": 30.97,
+    "naver_place_id": "38655154",
     "eq_design": true,
     "eq_capacity": "VII-0.141g",
     "energy_grade": "2"
@@ -20915,6 +20995,7 @@
     "mgmt_cost": 30.28,
     "mgmt_summer": 25.77,
     "mgmt_winter": 37.32,
+    "naver_place_id": "19223455",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
@@ -21184,6 +21265,7 @@
     "mgmt_cost": 24.21,
     "mgmt_summer": 27.6,
     "mgmt_winter": 23.81,
+    "naver_place_id": "483476723",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": null
@@ -21413,6 +21495,7 @@
     "mgmt_cost": 30.02,
     "mgmt_summer": 27.96,
     "mgmt_winter": 36.58,
+    "naver_place_id": "1088441482",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169",
     "energy_grade": "1"
@@ -21571,6 +21654,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -21729,6 +21813,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -22008,6 +22093,7 @@
     "mgmt_cost": 36.5,
     "mgmt_summer": 28.56,
     "mgmt_winter": 46.64,
+    "naver_place_id": "19295756",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -22311,6 +22397,7 @@
     "mgmt_cost": 33.32,
     "mgmt_summer": 29.83,
     "mgmt_winter": 41.12,
+    "naver_place_id": "35797334",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": "1"
@@ -22646,6 +22733,7 @@
     "mgmt_cost": 30.78,
     "mgmt_summer": 29.8,
     "mgmt_winter": 39.58,
+    "naver_place_id": "37406203",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169",
     "energy_grade": "1"
@@ -22840,6 +22928,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -22968,6 +23057,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -23239,6 +23329,7 @@
     "mgmt_cost": 34,
     "mgmt_summer": 26.81,
     "mgmt_winter": 44.35,
+    "naver_place_id": "19295805",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -23472,6 +23563,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": "19295705",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": "2"
@@ -23660,6 +23752,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -23881,6 +23974,7 @@
     "mgmt_cost": 31.68,
     "mgmt_summer": 24.49,
     "mgmt_winter": 38.07,
+    "naver_place_id": "31249188",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -24021,6 +24115,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -24143,6 +24238,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -24314,6 +24410,7 @@
     "mgmt_cost": 30.17,
     "mgmt_summer": 25.18,
     "mgmt_winter": 38.35,
+    "naver_place_id": "19301588",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -24502,6 +24599,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -24600,6 +24698,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -24698,6 +24797,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -25017,6 +25117,7 @@
     "mgmt_cost": 20.7,
     "mgmt_summer": 21.94,
     "mgmt_winter": 20.03,
+    "naver_place_id": "19277705",
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
@@ -25172,6 +25273,7 @@
     "mgmt_cost": 33.83,
     "mgmt_summer": 29.45,
     "mgmt_winter": 45.75,
+    "naver_place_id": "32875533",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": "2"
@@ -25715,6 +25817,7 @@
     "mgmt_cost": 29.13,
     "mgmt_summer": 27.19,
     "mgmt_winter": 34.98,
+    "naver_place_id": "1716012036",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.218g",
     "energy_grade": "1+"
@@ -26002,6 +26105,7 @@
     "mgmt_cost": 32.81,
     "mgmt_summer": 31.37,
     "mgmt_winter": 38.47,
+    "naver_place_id": "1651538963",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1+"
@@ -26451,6 +26555,7 @@
     "mgmt_cost": 29.94,
     "mgmt_summer": 28.68,
     "mgmt_winter": 35.68,
+    "naver_place_id": "1025760688",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
     "energy_grade": "1+"
@@ -26724,6 +26829,7 @@
     "mgmt_cost": 30.51,
     "mgmt_summer": 28.75,
     "mgmt_winter": 35.14,
+    "naver_place_id": "1918899788",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": null
@@ -26942,6 +27048,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -27223,6 +27330,7 @@
     "mgmt_cost": 33.44,
     "mgmt_summer": 28.6,
     "mgmt_winter": 43.31,
+    "naver_place_id": "1625212541",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -27380,6 +27488,7 @@
     "mgmt_cost": 35.84,
     "mgmt_summer": 29.68,
     "mgmt_winter": 47.16,
+    "naver_place_id": "33799607",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -27566,6 +27675,7 @@
     "mgmt_cost": 41.55,
     "mgmt_summer": 31.99,
     "mgmt_winter": 55.25,
+    "naver_place_id": "19117781",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -27823,6 +27933,7 @@
     "mgmt_cost": 33.28,
     "mgmt_summer": 33.06,
     "mgmt_winter": 43.81,
+    "naver_place_id": "32490122",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -28064,6 +28175,7 @@
     "mgmt_cost": 33.42,
     "mgmt_summer": 26.64,
     "mgmt_winter": 43.15,
+    "naver_place_id": "33306565",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -28186,6 +28298,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -28377,6 +28490,7 @@
     "mgmt_cost": 38.01,
     "mgmt_summer": 32.33,
     "mgmt_winter": 48.14,
+    "naver_place_id": "19118534",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -28540,6 +28654,7 @@
     "mgmt_cost": 26.22,
     "mgmt_summer": 21.6,
     "mgmt_winter": 33.89,
+    "naver_place_id": null,
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -28755,6 +28870,7 @@
     "mgmt_cost": 32.47,
     "mgmt_summer": 26.47,
     "mgmt_winter": 40.25,
+    "naver_place_id": "35958893",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -28962,6 +29078,7 @@
     "mgmt_cost": 35.81,
     "mgmt_summer": 30.7,
     "mgmt_winter": 44.89,
+    "naver_place_id": "1367484317",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -29149,6 +29266,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": "1188986611",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
     "energy_grade": null
@@ -29588,6 +29706,7 @@
     "mgmt_cost": 34.07,
     "mgmt_summer": 30.96,
     "mgmt_winter": 42.06,
+    "naver_place_id": "38759778",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": "1"
@@ -29764,6 +29883,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -29997,6 +30117,7 @@
     "mgmt_cost": 35.62,
     "mgmt_summer": 28.25,
     "mgmt_winter": 43.8,
+    "naver_place_id": "34827717",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -30298,6 +30419,7 @@
     "mgmt_cost": 32.76,
     "mgmt_summer": 28.03,
     "mgmt_winter": 42.02,
+    "naver_place_id": "19117842",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -30486,6 +30608,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -30701,6 +30824,7 @@
     "mgmt_cost": 31.52,
     "mgmt_summer": 28.24,
     "mgmt_winter": 38.74,
+    "naver_place_id": "37648784",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
     "energy_grade": "1"
@@ -30961,6 +31085,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -31232,6 +31357,7 @@
     "mgmt_cost": 33.34,
     "mgmt_summer": 30.87,
     "mgmt_winter": 40.11,
+    "naver_place_id": "37918909",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.16896g",
     "energy_grade": "1+"
@@ -31459,6 +31585,7 @@
     "mgmt_cost": 32.85,
     "mgmt_summer": 28.74,
     "mgmt_winter": 41.93,
+    "naver_place_id": "19118522",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -31629,6 +31756,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -31934,6 +32062,7 @@
     "mgmt_cost": 32.89,
     "mgmt_summer": 29.95,
     "mgmt_winter": 40.58,
+    "naver_place_id": "998099338",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
     "energy_grade": null
@@ -32171,6 +32300,7 @@
     "mgmt_cost": 35.76,
     "mgmt_summer": 32.37,
     "mgmt_winter": 45.01,
+    "naver_place_id": "1643889840",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -32628,6 +32758,7 @@
     "mgmt_cost": 32.87,
     "mgmt_summer": 31.2,
     "mgmt_winter": 38.91,
+    "naver_place_id": "37899188",
     "eq_design": true,
     "eq_capacity": "VII-0.176g",
     "energy_grade": null
@@ -32839,6 +32970,7 @@
     "mgmt_cost": 34.04,
     "mgmt_summer": 31.86,
     "mgmt_winter": 41.76,
+    "naver_place_id": "33675568",
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
@@ -32985,6 +33117,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -33149,6 +33282,7 @@
     "mgmt_cost": null,
     "mgmt_summer": null,
     "mgmt_winter": null,
+    "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
     "energy_grade": null
@@ -33350,6 +33484,7 @@
     "mgmt_cost": 31.27,
     "mgmt_summer": 29.13,
     "mgmt_winter": 36.44,
+    "naver_place_id": "1447531855",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
     "energy_grade": null
@@ -33559,6 +33694,7 @@
     "mgmt_cost": 30.36,
     "mgmt_summer": 28.04,
     "mgmt_winter": 37.18,
+    "naver_place_id": "1502126939",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1+"
