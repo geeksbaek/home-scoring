@@ -92,7 +92,13 @@
     "pedia2_name": "늘푸른소아과의원",
     "pedia2_slope": -46.1,
     "hcode": "dPJ58",
-    "recent_trades": []
+    "recent_trades": [],
+    "parking": 1541,
+    "parking_per_hh": 1.36,
+    "elevator": 27,
+    "households": 1130,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "서광교파크스위첸",
@@ -194,7 +200,13 @@
         "floor": 14,
         "area": 59.4
       }
-    ]
+    ],
+    "parking": 1541,
+    "parking_per_hh": 1.36,
+    "elevator": 27,
+    "households": 1130,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "수원하늘채더퍼스트1단지",
@@ -364,7 +376,13 @@
         "floor": 11,
         "area": 74.9
       }
-    ]
+    ],
+    "parking": 1838,
+    "parking_per_hh": 1.31,
+    "elevator": 41,
+    "households": 1403,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -616,7 +634,13 @@
         "floor": 3,
         "area": 60
       }
-    ]
+    ],
+    "parking": 3307,
+    "parking_per_hh": 1.28,
+    "elevator": 182,
+    "households": 2586,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "수원센트럴아이파크자이",
@@ -826,7 +850,13 @@
         "floor": 2,
         "area": 74
       }
-    ]
+    ],
+    "parking": 4539,
+    "parking_per_hh": 1.32,
+    "elevator": 83,
+    "households": 3432,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "매교역푸르지오SKVIEW",
@@ -1202,7 +1232,13 @@
         "floor": 5,
         "area": 59.9
       }
-    ]
+    ],
+    "parking": 4695,
+    "parking_per_hh": 1.3,
+    "elevator": 115,
+    "households": 3603,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "매교역푸르지오SKVIEW",
@@ -1524,7 +1560,13 @@
         "floor": 14,
         "area": 74.7
       }
-    ]
+    ],
+    "parking": 4695,
+    "parking_per_hh": 1.3,
+    "elevator": 115,
+    "households": 3603,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -1752,7 +1794,13 @@
         "floor": 8,
         "area": 75
       }
-    ]
+    ],
+    "parking": 3307,
+    "parking_per_hh": 1.28,
+    "elevator": 182,
+    "households": 2586,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "영통SKVIEW",
@@ -1856,7 +1904,13 @@
         "floor": 5,
         "area": 59.5
       }
-    ]
+    ],
+    "parking": 924,
+    "parking_per_hh": 1.3,
+    "elevator": 21,
+    "households": 710,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "영통아이파크캐슬3단지",
@@ -1976,7 +2030,13 @@
         "floor": 3,
         "area": 59.8
       }
-    ]
+    ],
+    "parking": 206,
+    "parking_per_hh": 0.97,
+    "elevator": 4,
+    "households": 212,
+    "heat_type": "개별난방",
+    "repair_fund": null
   },
   {
     "name": "광교더포레스트",
@@ -2136,7 +2196,13 @@
         "floor": 8,
         "area": 75
       }
-    ]
+    ],
+    "parking": 2617,
+    "parking_per_hh": 1.54,
+    "elevator": 36,
+    "households": 1702,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "영통아이파크캐슬2단지",
@@ -2278,7 +2344,13 @@
         "floor": 2,
         "area": 59.8
       }
-    ]
+    ],
+    "parking": 206,
+    "parking_per_hh": 0.97,
+    "elevator": 4,
+    "households": 212,
+    "heat_type": "개별난방",
+    "repair_fund": null
   },
   {
     "name": "한양수자인",
@@ -2388,7 +2460,13 @@
         "floor": 18,
         "area": 60
       }
-    ]
+    ],
+    "parking": 1721,
+    "parking_per_hh": 1.23,
+    "elevator": 33,
+    "households": 1394,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "영통라온프라이빗",
@@ -2444,7 +2522,13 @@
         "floor": 4,
         "area": 59.8
       }
-    ]
+    ],
+    "parking": 389,
+    "parking_per_hh": 1.11,
+    "elevator": 9,
+    "households": 351,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "영통아이파크캐슬3단지",
@@ -2557,7 +2641,13 @@
     "pedia2_name": "성모바른소아청소년과의원",
     "pedia2_slope": -0.4,
     "hcode": "dKR50",
-    "recent_trades": []
+    "recent_trades": [],
+    "parking": 206,
+    "parking_per_hh": 0.97,
+    "elevator": 4,
+    "households": 212,
+    "heat_type": "개별난방",
+    "repair_fund": null
   },
   {
     "name": "가천대역두산위브",
@@ -2679,7 +2769,13 @@
         "floor": 12,
         "area": 59.6
       }
-    ]
+    ],
+    "parking": 582,
+    "parking_per_hh": 1.16,
+    "elevator": 16,
+    "households": 503,
+    "heat_type": "개별난방",
+    "repair_fund": null
   },
   {
     "name": "래미안금광",
@@ -2801,7 +2897,13 @@
         "floor": 7,
         "area": 83.2
       }
-    ]
+    ],
+    "parking": 129,
+    "parking_per_hh": 0.12,
+    "elevator": 23,
+    "households": 1098,
+    "heat_type": "개별난방",
+    "repair_fund": null
   },
   {
     "name": "한양수자인성남마크뷰",
@@ -2925,7 +3027,13 @@
         "floor": 9,
         "area": 59.9
       }
-    ]
+    ],
+    "parking": 696,
+    "parking_per_hh": 0.98,
+    "elevator": 22,
+    "households": 711,
+    "heat_type": "개별난방",
+    "repair_fund": null
   },
   {
     "name": "힐스테이트구성",
@@ -3065,7 +3173,13 @@
         "floor": 23,
         "area": 60
       }
-    ]
+    ],
+    "parking": 757,
+    "parking_per_hh": 1.08,
+    "elevator": 16,
+    "households": 699,
+    "heat_type": "개별난방",
+    "repair_fund": 380548370
   },
   {
     "name": "용인동백두산위브더제니스",
@@ -3177,7 +3291,13 @@
         "floor": 30,
         "area": 78.1
       }
-    ]
+    ],
+    "parking": 1434,
+    "parking_per_hh": 1.21,
+    "elevator": 32,
+    "households": 1187,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "기흥역더샵",
@@ -3255,7 +3375,13 @@
         "floor": 3,
         "area": 73
       }
-    ]
+    ],
+    "parking": 1587,
+    "parking_per_hh": 1.3,
+    "elevator": 26,
+    "households": 1219,
+    "heat_type": "중앙난방",
+    "repair_fund": null
   },
   {
     "name": "기흥역파크푸르지오",
@@ -3346,7 +3472,13 @@
     "pedia2_name": "미래소아청소년과의원",
     "pedia2_slope": -14.1,
     "hcode": "aIR4d",
-    "recent_trades": []
+    "recent_trades": [],
+    "parking": 791,
+    "parking_per_hh": 1.03,
+    "elevator": 22,
+    "households": 768,
+    "heat_type": "지역난방",
+    "repair_fund": 858776908
   },
   {
     "name": "힐스테이트광교산",
@@ -3476,7 +3608,13 @@
         "floor": 7,
         "area": 60
       }
-    ]
+    ],
+    "parking": 1101,
+    "parking_per_hh": 1.4,
+    "elevator": 28,
+    "households": 789,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "힐스테이트광교산",
@@ -3606,7 +3744,13 @@
         "floor": 14,
         "area": 76.8
       }
-    ]
+    ],
+    "parking": 1101,
+    "parking_per_hh": 1.4,
+    "elevator": 28,
+    "households": 789,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "미사강변트래지안",
@@ -3677,7 +3821,13 @@
     "pedia2_name": "연세더자람소아청소년과의원",
     "pedia2_slope": -3.2,
     "hcode": "effc5",
-    "recent_trades": []
+    "recent_trades": [],
+    "parking": 644,
+    "parking_per_hh": 1.04,
+    "elevator": 17,
+    "households": 620,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "반정아이파크캐슬5단지",
@@ -3883,7 +4033,13 @@
         "floor": 13,
         "area": 75.6
       }
-    ]
+    ],
+    "parking": 1724,
+    "parking_per_hh": 1.25,
+    "elevator": 49,
+    "households": 1378,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "신동탄포레자이",
@@ -4033,7 +4189,13 @@
         "floor": 13,
         "area": 74.8
       }
-    ]
+    ],
+    "parking": 1740,
+    "parking_per_hh": 1.34,
+    "elevator": 32,
+    "households": 1297,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "신동탄포레자이",
@@ -4189,7 +4351,13 @@
         "floor": 13,
         "area": 60
       }
-    ]
+    ],
+    "parking": 1740,
+    "parking_per_hh": 1.34,
+    "elevator": 32,
+    "households": 1297,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "병점역아이파크캐슬",
@@ -4363,7 +4531,13 @@
         "floor": 11,
         "area": 76
       }
-    ]
+    ],
+    "parking": 3437,
+    "parking_per_hh": 1.29,
+    "elevator": 75,
+    "households": 2666,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "한신더휴",
@@ -4497,7 +4671,13 @@
         "floor": 14,
         "area": 83.7
       }
-    ]
+    ],
+    "parking": 211,
+    "parking_per_hh": 1.07,
+    "elevator": 12,
+    "households": 198,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "시범한빛마을동탄아이파크",
@@ -4595,7 +4775,13 @@
         "floor": 9,
         "area": 61.7
       }
-    ]
+    ],
+    "parking": 588,
+    "parking_per_hh": 1.1,
+    "elevator": 13,
+    "households": 534,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -4753,7 +4939,13 @@
         "floor": 15,
         "area": 74.9
       }
-    ]
+    ],
+    "parking": 881,
+    "parking_per_hh": 1.01,
+    "elevator": 26,
+    "households": 872,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄역신안인스빌리베라2차",
@@ -4863,7 +5055,13 @@
         "floor": 11,
         "area": 60
       }
-    ]
+    ],
+    "parking": 1419,
+    "parking_per_hh": 1.55,
+    "elevator": 56,
+    "households": 913,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄역더샵센트럴시티2차",
@@ -4993,7 +5191,13 @@
         "floor": 14,
         "area": 74.9
       }
-    ]
+    ],
+    "parking": 972,
+    "parking_per_hh": 1.3,
+    "elevator": 20,
+    "households": 745,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "힐스테이트동탄",
@@ -5159,7 +5363,13 @@
         "floor": 29,
         "area": 75
       }
-    ]
+    ],
+    "parking": 1820,
+    "parking_per_hh": 1.23,
+    "elevator": 74,
+    "households": 1479,
+    "heat_type": "지역난방",
+    "repair_fund": 450455057
   },
   {
     "name": "한화 포레나 동탄호수",
@@ -5263,7 +5473,13 @@
         "floor": 19,
         "area": 74.2
       }
-    ]
+    ],
+    "parking": 956,
+    "parking_per_hh": 1.2,
+    "elevator": 19,
+    "households": 800,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄역 호반 써밋",
@@ -5401,7 +5617,13 @@
         "floor": 20,
         "area": 59.4
       }
-    ]
+    ],
+    "parking": 1079,
+    "parking_per_hh": 1.17,
+    "elevator": 19,
+    "households": 922,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -5583,7 +5805,13 @@
         "floor": 10,
         "area": 60
       }
-    ]
+    ],
+    "parking": 881,
+    "parking_per_hh": 1.01,
+    "elevator": 26,
+    "households": 872,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄역센트럴푸르지오",
@@ -5759,7 +5987,13 @@
         "floor": 12,
         "area": 59.3
       }
-    ]
+    ],
+    "parking": 1332,
+    "parking_per_hh": 0.99,
+    "elevator": 28,
+    "households": 1348,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄역신안인스빌리베라2차",
@@ -5850,7 +6084,13 @@
     "pedia2_name": "코끼리소아청소년과의원",
     "pedia2_slope": -16.4,
     "hcode": "aCh0b",
-    "recent_trades": []
+    "recent_trades": [],
+    "parking": 1419,
+    "parking_per_hh": 1.55,
+    "elevator": 56,
+    "households": 913,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "금호어울림레이크",
@@ -5986,7 +6226,13 @@
         "floor": 5,
         "area": 75
       }
-    ]
+    ],
+    "parking": 838,
+    "parking_per_hh": 1.23,
+    "elevator": 19,
+    "households": 681,
+    "heat_type": "중앙난방",
+    "repair_fund": null
   },
   {
     "name": "동탄역센트럴푸르지오",
@@ -6120,7 +6366,13 @@
         "floor": 7,
         "area": 74.9
       }
-    ]
+    ],
+    "parking": 1332,
+    "parking_per_hh": 0.99,
+    "elevator": 28,
+    "households": 1348,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "반도유보라아이비파크3",
@@ -6272,7 +6524,13 @@
         "floor": 14,
         "area": 74.4
       }
-    ]
+    ],
+    "parking": 1491,
+    "parking_per_hh": 1.52,
+    "elevator": 24,
+    "households": 980,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄역푸르지오",
@@ -6402,7 +6660,13 @@
         "floor": 7,
         "area": 74.9
       }
-    ]
+    ],
+    "parking": 1032,
+    "parking_per_hh": 1.24,
+    "elevator": 23,
+    "households": 832,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "수원 SK SKY VIEW",
@@ -6560,7 +6824,13 @@
         "floor": 26,
         "area": 84.9
       }
-    ]
+    ],
+    "parking": null,
+    "parking_per_hh": null,
+    "elevator": null,
+    "households": null,
+    "heat_type": null,
+    "repair_fund": null
   },
   {
     "name": "더샵광교산퍼스트파크",
@@ -6639,7 +6909,13 @@
     "pedia2_name": "김경신소아과의원",
     "pedia2_slope": -23.1,
     "hcode": "dCVec",
-    "recent_trades": []
+    "recent_trades": [],
+    "parking": 813,
+    "parking_per_hh": 1.22,
+    "elevator": 18,
+    "households": 666,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "화서역푸르지오더에듀포레",
@@ -6873,7 +7149,13 @@
         "floor": 4,
         "area": 84.9
       }
-    ]
+    ],
+    "parking": 4010,
+    "parking_per_hh": 1.56,
+    "elevator": 65,
+    "households": 2571,
+    "heat_type": "지역난방",
+    "repair_fund": 1525967785
   },
   {
     "name": "수원하늘채더퍼스트1단지",
@@ -7061,7 +7343,13 @@
         "floor": 15,
         "area": 85
       }
-    ]
+    ],
+    "parking": 1838,
+    "parking_per_hh": 1.31,
+    "elevator": 41,
+    "households": 1403,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "수원모아미래도센트럴타운2단지",
@@ -7149,7 +7437,13 @@
         "floor": 11,
         "area": 84.9
       }
-    ]
+    ],
+    "parking": 1955,
+    "parking_per_hh": 1.35,
+    "elevator": 32,
+    "households": 1452,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "호반베르디움더센트럴",
@@ -7267,7 +7561,13 @@
         "floor": 3,
         "area": 85
       }
-    ]
+    ],
+    "parking": 1312,
+    "parking_per_hh": 1.19,
+    "elevator": 27,
+    "households": 1100,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "호반 써밋 수원",
@@ -7377,7 +7677,13 @@
         "floor": 3,
         "area": 85
       }
-    ]
+    ],
+    "parking": 656,
+    "parking_per_hh": 1.16,
+    "elevator": 41,
+    "households": 567,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -7611,7 +7917,13 @@
         "floor": 12,
         "area": 84.9
       }
-    ]
+    ],
+    "parking": 3307,
+    "parking_per_hh": 1.28,
+    "elevator": 182,
+    "households": 2586,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "수원센트럴아이파크자이",
@@ -7815,7 +8127,13 @@
         "floor": 19,
         "area": 85
       }
-    ]
+    ],
+    "parking": 4539,
+    "parking_per_hh": 1.32,
+    "elevator": 83,
+    "households": 3432,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "래미안노블클래스2단지",
@@ -7887,7 +8205,13 @@
         "floor": 23,
         "area": 85
       }
-    ]
+    ],
+    "parking": 1813,
+    "parking_per_hh": 1.34,
+    "elevator": 33,
+    "households": 1351,
+    "heat_type": "",
+    "repair_fund": null
   },
   {
     "name": "래미안노블클래스1단지",
@@ -8007,7 +8331,13 @@
         "floor": 12,
         "area": 85
       }
-    ]
+    ],
+    "parking": 1813,
+    "parking_per_hh": 1.34,
+    "elevator": 33,
+    "households": 1351,
+    "heat_type": "",
+    "repair_fund": null
   },
   {
     "name": "광교더포레스트",
@@ -8155,7 +8485,13 @@
         "floor": 11,
         "area": 84.8
       }
-    ]
+    ],
+    "parking": 2617,
+    "parking_per_hh": 1.54,
+    "elevator": 36,
+    "households": 1702,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "매탄위브하늘채",
@@ -8427,7 +8763,13 @@
         "floor": 21,
         "area": 84.8
       }
-    ]
+    ],
+    "parking": 3293,
+    "parking_per_hh": 0.97,
+    "elevator": 144,
+    "households": 3391,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "영흥숲푸르지오파크비엔",
@@ -8519,7 +8861,13 @@
         "floor": 3,
         "area": 85
       }
-    ]
+    ],
+    "parking": 2129,
+    "parking_per_hh": 1.41,
+    "elevator": 81,
+    "households": 1509,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "영통롯데캐슬엘클래스2단지",
@@ -8609,7 +8957,13 @@
         "floor": 2,
         "area": 85
       }
-    ]
+    ],
+    "parking": 778,
+    "parking_per_hh": 1.28,
+    "elevator": 24,
+    "households": 609,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "영통롯데캐슬엘클래스1단지",
@@ -8719,7 +9073,13 @@
         "floor": 12,
         "area": 85
       }
-    ]
+    ],
+    "parking": 821,
+    "parking_per_hh": 1.28,
+    "elevator": 22,
+    "households": 642,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "한양수자인",
@@ -8817,7 +9177,13 @@
         "floor": 2,
         "area": 85
       }
-    ]
+    ],
+    "parking": 1721,
+    "parking_per_hh": 1.23,
+    "elevator": 33,
+    "households": 1394,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "가천대역두산위브",
@@ -8926,7 +9292,13 @@
     "pedia2_name": "이메디정형외과",
     "pedia2_slope": -43,
     "hcode": "aWCcc",
-    "recent_trades": []
+    "recent_trades": [],
+    "parking": 582,
+    "parking_per_hh": 1.16,
+    "elevator": 16,
+    "households": 503,
+    "heat_type": "개별난방",
+    "repair_fund": null
   },
   {
     "name": "성남자이",
@@ -9036,7 +9408,13 @@
         "floor": 11,
         "area": 85
       }
-    ]
+    ],
+    "parking": 873,
+    "parking_per_hh": 0.96,
+    "elevator": 84,
+    "households": 910,
+    "heat_type": "개별난방",
+    "repair_fund": null
   },
   {
     "name": "신흥덕롯데캐슬레이시티",
@@ -9188,7 +9566,13 @@
         "floor": 24,
         "area": 84.9
       }
-    ]
+    ],
+    "parking": 1804,
+    "parking_per_hh": 1.13,
+    "elevator": 31,
+    "households": 1597,
+    "heat_type": "개별난방",
+    "repair_fund": null
   },
   {
     "name": "용인동백두산위브더제니스",
@@ -9300,7 +9684,13 @@
         "floor": 7,
         "area": 84.9
       }
-    ]
+    ],
+    "parking": 1434,
+    "parking_per_hh": 1.21,
+    "elevator": 32,
+    "households": 1187,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "흥덕마을7단지힐스테이트",
@@ -9414,7 +9804,13 @@
         "floor": 17,
         "area": 85
       }
-    ]
+    ],
+    "parking": 2,
+    "parking_per_hh": 0,
+    "elevator": 17,
+    "households": 570,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "광교호수아델리움",
@@ -9475,7 +9871,13 @@
     "pedia2_name": "서울소아청소년과의원",
     "pedia2_slope": -44.7,
     "hcode": "6hWf9",
-    "recent_trades": []
+    "recent_trades": [],
+    "parking": 523,
+    "parking_per_hh": 1.1,
+    "elevator": 28,
+    "households": 474,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "힐스테이트서천",
@@ -9619,7 +10021,13 @@
         "floor": 8,
         "area": 85
       }
-    ]
+    ],
+    "parking": 908,
+    "parking_per_hh": 1.2,
+    "elevator": 24,
+    "households": 754,
+    "heat_type": "지역난방",
+    "repair_fund": 455622244
   },
   {
     "name": "기흥역파크푸르지오",
@@ -9710,7 +10118,13 @@
     "pedia2_name": "미래소아청소년과의원",
     "pedia2_slope": -14.1,
     "hcode": "aIR4d",
-    "recent_trades": []
+    "recent_trades": [],
+    "parking": 791,
+    "parking_per_hh": 1.03,
+    "elevator": 22,
+    "households": 768,
+    "heat_type": "지역난방",
+    "repair_fund": 858776908
   },
   {
     "name": "흥덕마을동원로얄듀크",
@@ -9792,7 +10206,13 @@
         "floor": 4,
         "area": 84.9
       }
-    ]
+    ],
+    "parking": null,
+    "parking_per_hh": null,
+    "elevator": null,
+    "households": null,
+    "heat_type": null,
+    "repair_fund": null
   },
   {
     "name": "흥덕마을자연앤스위첸",
@@ -9908,7 +10328,13 @@
         "floor": 18,
         "area": 84.8
       }
-    ]
+    ],
+    "parking": null,
+    "parking_per_hh": null,
+    "elevator": null,
+    "households": null,
+    "heat_type": null,
+    "repair_fund": null
   },
   {
     "name": "기흥더샵프라임뷰",
@@ -9987,7 +10413,13 @@
     "pedia2_name": "강남병원 소아청소년센터",
     "pedia2_slope": -29,
     "hcode": "6gb6f",
-    "recent_trades": []
+    "recent_trades": [],
+    "parking": 775,
+    "parking_per_hh": 1.27,
+    "elevator": 15,
+    "households": 612,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "성동마을수지자이",
@@ -10082,7 +10514,13 @@
     "pedia2_name": "이레소아청소년과의원",
     "pedia2_slope": -9.4,
     "hcode": "6n062",
-    "recent_trades": []
+    "recent_trades": [],
+    "parking": null,
+    "parking_per_hh": null,
+    "elevator": null,
+    "households": null,
+    "heat_type": null,
+    "repair_fund": null
   },
   {
     "name": "대명강변타운",
@@ -10224,7 +10662,13 @@
         "floor": 22,
         "area": 84.8
       }
-    ]
+    ],
+    "parking": 1112,
+    "parking_per_hh": 0.81,
+    "elevator": 31,
+    "households": 1369,
+    "heat_type": "개별난방",
+    "repair_fund": null
   },
   {
     "name": "미사강변한신휴플러스",
@@ -10304,7 +10748,13 @@
         "floor": 12,
         "area": 85
       }
-    ]
+    ],
+    "parking": 920,
+    "parking_per_hh": 1.21,
+    "elevator": 21,
+    "households": 763,
+    "heat_type": "지역난방",
+    "repair_fund": 573639780
   },
   {
     "name": "병점역아이파크캐슬",
@@ -10508,7 +10958,13 @@
         "floor": 16,
         "area": 85
       }
-    ]
+    ],
+    "parking": 3437,
+    "parking_per_hh": 1.29,
+    "elevator": 75,
+    "households": 2666,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "반정아이파크캐슬4단지",
@@ -10690,7 +11146,13 @@
         "floor": 10,
         "area": 84.7
       }
-    ]
+    ],
+    "parking": 1230,
+    "parking_per_hh": 1.25,
+    "elevator": 39,
+    "households": 986,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "반정아이파크캐슬5단지",
@@ -10866,7 +11328,13 @@
         "floor": 12,
         "area": 84.7
       }
-    ]
+    ],
+    "parking": 1724,
+    "parking_per_hh": 1.25,
+    "elevator": 49,
+    "households": 1378,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "나노시티역롯데캐슬",
@@ -10986,7 +11454,13 @@
         "floor": 7,
         "area": 85
       }
-    ]
+    ],
+    "parking": 1205,
+    "parking_per_hh": 1.21,
+    "elevator": 24,
+    "households": 999,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "솔빛마을쌍용예가",
@@ -11114,7 +11588,13 @@
         "floor": 6,
         "area": 85
       }
-    ]
+    ],
+    "parking": 1075,
+    "parking_per_hh": 1.15,
+    "elevator": 46,
+    "households": 938,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "푸르지오",
@@ -11190,7 +11670,13 @@
         "floor": 21,
         "area": 84.1
       }
-    ]
+    ],
+    "parking": 940,
+    "parking_per_hh": 1.41,
+    "elevator": 29,
+    "households": 665,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄역대원칸타빌포레지움",
@@ -11342,7 +11828,13 @@
         "floor": 20,
         "area": 84.7
       }
-    ]
+    ],
+    "parking": null,
+    "parking_per_hh": null,
+    "elevator": null,
+    "households": null,
+    "heat_type": null,
+    "repair_fund": null
   },
   {
     "name": "동탄역신안인스빌리베라1차",
@@ -11472,7 +11964,13 @@
         "floor": 15,
         "area": 85
       }
-    ]
+    ],
+    "parking": 1419,
+    "parking_per_hh": 1.55,
+    "elevator": 56,
+    "households": 913,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "솔빛마을신도브래뉴",
@@ -11570,7 +12068,13 @@
         "floor": 6,
         "area": 84.8
       }
-    ]
+    ],
+    "parking": 682,
+    "parking_per_hh": 1.17,
+    "elevator": 24,
+    "households": 584,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄2엘에이치26단지아파트(에이65블록)",
@@ -11676,7 +12180,13 @@
         "floor": 22,
         "area": 85
       }
-    ]
+    ],
+    "parking": null,
+    "parking_per_hh": null,
+    "elevator": null,
+    "households": null,
+    "heat_type": null,
+    "repair_fund": null
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -11809,7 +12319,13 @@
     "pedia2_name": "하늘한방소아과한방재활의학과한의원",
     "pedia2_slope": -8.1,
     "hcode": "b2L97",
-    "recent_trades": []
+    "recent_trades": [],
+    "parking": 881,
+    "parking_per_hh": 1.01,
+    "elevator": 26,
+    "households": 872,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "시범한빛마을한화꿈에그린",
@@ -11899,7 +12415,13 @@
         "floor": 7,
         "area": 84.8
       }
-    ]
+    ],
+    "parking": 588,
+    "parking_per_hh": 1.1,
+    "elevator": 13,
+    "households": 534,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "더레이크시티부영1단지",
@@ -11987,7 +12509,13 @@
         "floor": 8,
         "area": 84.5
       }
-    ]
+    ],
+    "parking": 810,
+    "parking_per_hh": 1.56,
+    "elevator": 25,
+    "households": 520,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "KCC스위첸아파트",
@@ -12105,7 +12633,13 @@
         "floor": 13,
         "area": 84
       }
-    ]
+    ],
+    "parking": 379,
+    "parking_per_hh": 1.23,
+    "elevator": 10,
+    "households": 308,
+    "heat_type": "개별난방",
+    "repair_fund": null
   },
   {
     "name": "반도유보라아이비파크3",
@@ -12263,7 +12797,13 @@
         "floor": 11,
         "area": 85
       }
-    ]
+    ],
+    "parking": 1491,
+    "parking_per_hh": 1.52,
+    "elevator": 24,
+    "households": 980,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "시범한빛마을삼부르네상스",
@@ -12363,7 +12903,13 @@
         "floor": 20,
         "area": 84.8
       }
-    ]
+    ],
+    "parking": 588,
+    "parking_per_hh": 1.1,
+    "elevator": 13,
+    "households": 534,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄호수자이파밀리에",
@@ -12467,7 +13013,13 @@
         "floor": 19,
         "area": 84.8
       }
-    ]
+    ],
+    "parking": 1208,
+    "parking_per_hh": 1.13,
+    "elevator": 25,
+    "households": 1067,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄역더샵센트럴시티2차",
@@ -12585,7 +13137,13 @@
         "floor": 13,
         "area": 85
       }
-    ]
+    ],
+    "parking": 972,
+    "parking_per_hh": 1.3,
+    "elevator": 20,
+    "households": 745,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "시범한빛마을금호어울림",
@@ -12659,7 +13217,13 @@
         "floor": 9,
         "area": 84.6
       }
-    ]
+    ],
+    "parking": 588,
+    "parking_per_hh": 1.1,
+    "elevator": 13,
+    "households": 534,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "더레이크시티부영5단지",
@@ -12805,7 +13369,13 @@
         "floor": 21,
         "area": 84.5
       }
-    ]
+    ],
+    "parking": 810,
+    "parking_per_hh": 1.56,
+    "elevator": 25,
+    "households": 520,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "동탄역 호반 써밋",
@@ -12925,7 +13495,13 @@
         "floor": 11,
         "area": 85
       }
-    ]
+    ],
+    "parking": 1079,
+    "parking_per_hh": 1.17,
+    "elevator": 19,
+    "households": 922,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "힐스테이트동탄",
@@ -13121,7 +13697,13 @@
         "floor": 20,
         "area": 84.8
       }
-    ]
+    ],
+    "parking": 1820,
+    "parking_per_hh": 1.23,
+    "elevator": 74,
+    "households": 1479,
+    "heat_type": "지역난방",
+    "repair_fund": 450455057
   },
   {
     "name": "동탄역이지더원",
@@ -13215,7 +13797,13 @@
         "floor": 2,
         "area": 85
       }
-    ]
+    ],
+    "parking": 667,
+    "parking_per_hh": 1.04,
+    "elevator": 21,
+    "households": 642,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "더레이크시티부영2단지",
@@ -13323,7 +13911,13 @@
         "floor": 19,
         "area": 84.5
       }
-    ]
+    ],
+    "parking": 810,
+    "parking_per_hh": 1.56,
+    "elevator": 25,
+    "households": 520,
+    "heat_type": "지역난방",
+    "repair_fund": null
   },
   {
     "name": "한화 포레나 동탄호수",
@@ -13427,6 +14021,12 @@
         "floor": 15,
         "area": 84.1
       }
-    ]
+    ],
+    "parking": 956,
+    "parking_per_hh": 1.2,
+    "elevator": 19,
+    "households": 800,
+    "heat_type": "지역난방",
+    "repair_fund": null
   }
 ]
