@@ -23,7 +23,7 @@
   .filters label { color: var(--muted); font-size: 0.85rem; }
   .filters select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-size: 0.85rem; }
 
-  .table-wrap { overflow: auto; -webkit-overflow-scrolling: touch; max-height: calc(100vh - 60px); }
+  .table-wrap { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
   th { background: var(--surface); position: sticky; top: 0; z-index: 2; cursor: pointer; user-select: none; }
   th:hover { background: var(--border); }
@@ -63,11 +63,9 @@
     .filters select { padding: 4px 6px; font-size: 0.78rem; }
     table { font-size: 0.72rem; }
     th, td { padding: 5px 4px; }
-    .col-name { min-width: 100px; position: sticky; left: 0; z-index: 1; background: var(--bg); }
-    th.col-name { z-index: 3; background: var(--surface); }
+    .col-name { min-width: 90px; }
     .col-links { font-size: 0.6rem; }
     .col-links a { margin-right: 4px; }
-    .hide-mobile { display: none; }
     .score-bar { display: none; }
   }
 </style>
@@ -132,14 +130,14 @@
       <thead><tr>
         <th data-sort="rank">#</th>
         <th class="col-name" data-sort="name">단지명</th>
-        <th data-sort="region" class="hide-mobile">지역</th>
+        <th data-sort="region">지역</th>
         <th data-sort="avg">현재가</th>
         <th data-sort="accel">가속도</th>
         <th data-sort="liquidity">환금</th>
         <th data-sort="morning">출근</th>
         <th data-sort="evening">퇴근</th>
         <th data-sort="pedScore">소아과</th>
-        <th data-sort="slope" class="hide-mobile">고저차</th>
+        <th data-sort="slope">고저차</th>
         <th data-sort="build">건축</th>
         <th data-sort="score">점수</th>
       </tr></thead>
