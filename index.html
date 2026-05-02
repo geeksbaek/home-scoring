@@ -234,8 +234,9 @@ function render() {
       ? `nmap://search?query=${encodeURIComponent(q)}&appname=com.nhn.NaverMap`
       : `https://map.naver.com/v5/search/${encodeURIComponent(q)}`;
     const regionLink = `<a href="${naverMap(d.name + ' ' + d.dong)}" target="_blank">${d.region} ${d.dong}</a>`;
-    const ped1Link = d.pedia1 && d.pedia1_name ? `<a href="${naverMap(d.pedia1_name + ' ' + d.dong)}" target="_blank" class="${pedClass(d.pedia1)}">${d.pedia1}분</a>` : (d.pedia1 ? `<span class="${pedClass(d.pedia1)}">${d.pedia1}분</span>` : '-');
-    const ped2Link = d.pedia2 && d.pedia2_name ? `<a href="${naverMap(d.pedia2_name + ' ' + d.dong)}" target="_blank" class="${pedClass(d.pedia2)}">${d.pedia2}분</a>` : (d.pedia2 ? `<span class="${pedClass(d.pedia2)}">${d.pedia2}분</span>` : '-');
+    const slopeTag = (v) => v != null ? `<sub style="color:${v > 0 ? '#f87171' : '#60a5fa'};font-size:0.65rem">${v > 0 ? '↑' : '↓'}${Math.abs(v)}m</sub>` : '';
+    const ped1Link = d.pedia1 && d.pedia1_name ? `<a href="${naverMap(d.pedia1_name + ' ' + d.dong)}" target="_blank" class="${pedClass(d.pedia1)}">${d.pedia1}분</a>${slopeTag(d.pedia1_slope)}` : (d.pedia1 ? `<span class="${pedClass(d.pedia1)}">${d.pedia1}분</span>` : '-');
+    const ped2Link = d.pedia2 && d.pedia2_name ? `<a href="${naverMap(d.pedia2_name + ' ' + d.dong)}" target="_blank" class="${pedClass(d.pedia2)}">${d.pedia2}분</a>${slopeTag(d.pedia2_slope)}` : (d.pedia2 ? `<span class="${pedClass(d.pedia2)}">${d.pedia2}분</span>` : '-');
 
     return `<tr>
       <td>${i+1}</td>
