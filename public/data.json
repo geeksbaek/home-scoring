@@ -43,6 +43,44 @@
     ],
     "slope": 6.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 95.7
+      },
+      {
+        "dong": 102,
+        "elev": 96.1
+      },
+      {
+        "dong": 103,
+        "elev": 96.4
+      },
+      {
+        "dong": 104,
+        "elev": 96.4
+      },
+      {
+        "dong": 105,
+        "elev": 94.8
+      },
+      {
+        "dong": 106,
+        "elev": 90.5
+      },
+      {
+        "dong": 107,
+        "elev": 90.6
+      },
+      {
+        "dong": 108,
+        "elev": 90.9
+      },
+      {
+        "dong": 109,
+        "elev": 90.3
+      }
+    ],
     "pedia1": 36,
     "pedia1_name": "광교이안소아청소년과의원",
     "pedia1_slope": -29.3,
@@ -96,6 +134,44 @@
     ],
     "slope": 6.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 95.7
+      },
+      {
+        "dong": 102,
+        "elev": 96.1
+      },
+      {
+        "dong": 103,
+        "elev": 96.4
+      },
+      {
+        "dong": 104,
+        "elev": 96.4
+      },
+      {
+        "dong": 105,
+        "elev": 94.8
+      },
+      {
+        "dong": 106,
+        "elev": 90.5
+      },
+      {
+        "dong": 107,
+        "elev": 90.6
+      },
+      {
+        "dong": 108,
+        "elev": 90.9
+      },
+      {
+        "dong": 109,
+        "elev": 90.3
+      }
+    ],
     "pedia1": 36,
     "pedia1_name": "광교이안소아청소년과의원",
     "pedia1_slope": -29.3,
@@ -171,6 +247,88 @@
     ],
     "slope": 4.6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 23.9
+      },
+      {
+        "dong": 102,
+        "elev": 23.9
+      },
+      {
+        "dong": 103,
+        "elev": 25.4
+      },
+      {
+        "dong": 104,
+        "elev": 24
+      },
+      {
+        "dong": 105,
+        "elev": 23.5
+      },
+      {
+        "dong": 106,
+        "elev": 24
+      },
+      {
+        "dong": 107,
+        "elev": 24.2
+      },
+      {
+        "dong": 108,
+        "elev": 23.9
+      },
+      {
+        "dong": 109,
+        "elev": 23.7
+      },
+      {
+        "dong": 110,
+        "elev": 23.3
+      },
+      {
+        "dong": 111,
+        "elev": 23.2
+      },
+      {
+        "dong": 112,
+        "elev": 23.2
+      },
+      {
+        "dong": 113,
+        "elev": 23.8
+      },
+      {
+        "dong": 114,
+        "elev": 24.3
+      },
+      {
+        "dong": 115,
+        "elev": 25.1
+      },
+      {
+        "dong": 116,
+        "elev": 26.4
+      },
+      {
+        "dong": 117,
+        "elev": 24.5
+      },
+      {
+        "dong": 118,
+        "elev": 24.3
+      },
+      {
+        "dong": 119,
+        "elev": 23.4
+      },
+      {
+        "dong": 120,
+        "elev": 24.3
+      }
+    ],
     "pedia1": 6,
     "pedia1_name": "성모바른소아청소년과의원",
     "pedia1_slope": -0.8,
@@ -252,6 +410,108 @@
     ],
     "slope": 12.1,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 38.3
+      },
+      {
+        "dong": 102,
+        "elev": 40.5
+      },
+      {
+        "dong": 103,
+        "elev": 45
+      },
+      {
+        "dong": 104,
+        "elev": 45.4
+      },
+      {
+        "dong": 105,
+        "elev": 46.4
+      },
+      {
+        "dong": 106,
+        "elev": 47
+      },
+      {
+        "dong": 107,
+        "elev": 47.5
+      },
+      {
+        "dong": 108,
+        "elev": 47.4
+      },
+      {
+        "dong": 109,
+        "elev": 45
+      },
+      {
+        "dong": 110,
+        "elev": 39
+      },
+      {
+        "dong": 111,
+        "elev": 37.2
+      },
+      {
+        "dong": 112,
+        "elev": 37.9
+      },
+      {
+        "dong": 113,
+        "elev": 39.7
+      },
+      {
+        "dong": 114,
+        "elev": 48.6
+      },
+      {
+        "dong": 115,
+        "elev": 49.2
+      },
+      {
+        "dong": 116,
+        "elev": 48.9
+      },
+      {
+        "dong": 117,
+        "elev": 42
+      },
+      {
+        "dong": 118,
+        "elev": 38.7
+      },
+      {
+        "dong": 119,
+        "elev": 38.1
+      },
+      {
+        "dong": 120,
+        "elev": 37.8
+      },
+      {
+        "dong": 121,
+        "elev": 37.7
+      },
+      {
+        "dong": 122,
+        "elev": 39.5
+      },
+      {
+        "dong": 123,
+        "elev": 44.4
+      },
+      {
+        "dong": 124,
+        "elev": 41.5
+      },
+      {
+        "dong": 125,
+        "elev": 38.6
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -1.9,
@@ -358,6 +618,128 @@
     ],
     "slope": 13.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 45.1
+      },
+      {
+        "dong": 102,
+        "elev": 45.5
+      },
+      {
+        "dong": 103,
+        "elev": 47.1
+      },
+      {
+        "dong": 104,
+        "elev": 49.9
+      },
+      {
+        "dong": 105,
+        "elev": 47.1
+      },
+      {
+        "dong": 106,
+        "elev": 46.9
+      },
+      {
+        "dong": 107,
+        "elev": 47.2
+      },
+      {
+        "dong": 108,
+        "elev": 46.7
+      },
+      {
+        "dong": 109,
+        "elev": 50.8
+      },
+      {
+        "dong": 110,
+        "elev": 48.3
+      },
+      {
+        "dong": 111,
+        "elev": 45.4
+      },
+      {
+        "dong": 112,
+        "elev": 43.4
+      },
+      {
+        "dong": 113,
+        "elev": 42.3
+      },
+      {
+        "dong": 114,
+        "elev": 43.3
+      },
+      {
+        "dong": 115,
+        "elev": 45.1
+      },
+      {
+        "dong": 116,
+        "elev": 53.9
+      },
+      {
+        "dong": 117,
+        "elev": 52.2
+      },
+      {
+        "dong": 118,
+        "elev": 47.4
+      },
+      {
+        "dong": 119,
+        "elev": 49.5
+      },
+      {
+        "dong": 120,
+        "elev": 53.6
+      },
+      {
+        "dong": 121,
+        "elev": 55
+      },
+      {
+        "dong": 122,
+        "elev": 49.3
+      },
+      {
+        "dong": 123,
+        "elev": 45.3
+      },
+      {
+        "dong": 124,
+        "elev": 46.8
+      },
+      {
+        "dong": 125,
+        "elev": 46.2
+      },
+      {
+        "dong": 126,
+        "elev": 51.2
+      },
+      {
+        "dong": 127,
+        "elev": 54.5
+      },
+      {
+        "dong": 128,
+        "elev": 49.7
+      },
+      {
+        "dong": 129,
+        "elev": 50.9
+      },
+      {
+        "dong": 130,
+        "elev": 48.6
+      }
+    ],
     "pedia1": 10,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -6.3,
@@ -445,6 +827,216 @@
     ],
     "slope": 13.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 44.9
+      },
+      {
+        "dong": 102,
+        "elev": 48.7
+      },
+      {
+        "dong": 103,
+        "elev": 47.7
+      },
+      {
+        "dong": 104,
+        "elev": 46.3
+      },
+      {
+        "dong": 105,
+        "elev": 45.7
+      },
+      {
+        "dong": 106,
+        "elev": 44.3
+      },
+      {
+        "dong": 107,
+        "elev": 42.5
+      },
+      {
+        "dong": 108,
+        "elev": 44.9
+      },
+      {
+        "dong": 109,
+        "elev": 47.4
+      },
+      {
+        "dong": 110,
+        "elev": 50
+      },
+      {
+        "dong": 111,
+        "elev": 52.3
+      },
+      {
+        "dong": 112,
+        "elev": 50.5
+      },
+      {
+        "dong": 113,
+        "elev": 49.7
+      },
+      {
+        "dong": 114,
+        "elev": 50.5
+      },
+      {
+        "dong": 115,
+        "elev": 51.3
+      },
+      {
+        "dong": 116,
+        "elev": 49.6
+      },
+      {
+        "dong": 117,
+        "elev": 47.2
+      },
+      {
+        "dong": 118,
+        "elev": 47.1
+      },
+      {
+        "dong": 119,
+        "elev": 48.1
+      },
+      {
+        "dong": 120,
+        "elev": 49.8
+      },
+      {
+        "dong": 121,
+        "elev": 49.1
+      },
+      {
+        "dong": 122,
+        "elev": 48.6
+      },
+      {
+        "dong": 123,
+        "elev": 47.6
+      },
+      {
+        "dong": 124,
+        "elev": 47.9
+      },
+      {
+        "dong": 125,
+        "elev": 47.9
+      },
+      {
+        "dong": 126,
+        "elev": 47.1
+      },
+      {
+        "dong": 127,
+        "elev": 44.3
+      },
+      {
+        "dong": 128,
+        "elev": 45.2
+      },
+      {
+        "dong": 129,
+        "elev": 46.2
+      },
+      {
+        "dong": 130,
+        "elev": 46.8
+      },
+      {
+        "dong": 131,
+        "elev": 45.8
+      },
+      {
+        "dong": 132,
+        "elev": 44.7
+      },
+      {
+        "dong": 133,
+        "elev": 44
+      },
+      {
+        "dong": 134,
+        "elev": 44.2
+      },
+      {
+        "dong": 135,
+        "elev": 43.1
+      },
+      {
+        "dong": 136,
+        "elev": 42.1
+      },
+      {
+        "dong": 137,
+        "elev": 43.5
+      },
+      {
+        "dong": 138,
+        "elev": 42.9
+      },
+      {
+        "dong": 139,
+        "elev": 41.8
+      },
+      {
+        "dong": 140,
+        "elev": 41.1
+      },
+      {
+        "dong": 141,
+        "elev": 40.3
+      },
+      {
+        "dong": 142,
+        "elev": 42.2
+      },
+      {
+        "dong": 143,
+        "elev": 44.2
+      },
+      {
+        "dong": 144,
+        "elev": 45.2
+      },
+      {
+        "dong": 145,
+        "elev": 45.6
+      },
+      {
+        "dong": 146,
+        "elev": 42.8
+      },
+      {
+        "dong": 147,
+        "elev": 41.2
+      },
+      {
+        "dong": 148,
+        "elev": 39.2
+      },
+      {
+        "dong": 149,
+        "elev": 41.8
+      },
+      {
+        "dong": 150,
+        "elev": 44.2
+      },
+      {
+        "dong": 151,
+        "elev": 44.9
+      },
+      {
+        "dong": 152,
+        "elev": 42.4
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -10.2,
@@ -604,6 +1196,216 @@
     ],
     "slope": 13.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 44.9
+      },
+      {
+        "dong": 102,
+        "elev": 48.7
+      },
+      {
+        "dong": 103,
+        "elev": 47.7
+      },
+      {
+        "dong": 104,
+        "elev": 46.3
+      },
+      {
+        "dong": 105,
+        "elev": 45.7
+      },
+      {
+        "dong": 106,
+        "elev": 44.3
+      },
+      {
+        "dong": 107,
+        "elev": 42.5
+      },
+      {
+        "dong": 108,
+        "elev": 44.9
+      },
+      {
+        "dong": 109,
+        "elev": 47.4
+      },
+      {
+        "dong": 110,
+        "elev": 50
+      },
+      {
+        "dong": 111,
+        "elev": 52.3
+      },
+      {
+        "dong": 112,
+        "elev": 50.5
+      },
+      {
+        "dong": 113,
+        "elev": 49.7
+      },
+      {
+        "dong": 114,
+        "elev": 50.5
+      },
+      {
+        "dong": 115,
+        "elev": 51.3
+      },
+      {
+        "dong": 116,
+        "elev": 49.6
+      },
+      {
+        "dong": 117,
+        "elev": 47.2
+      },
+      {
+        "dong": 118,
+        "elev": 47.1
+      },
+      {
+        "dong": 119,
+        "elev": 48.1
+      },
+      {
+        "dong": 120,
+        "elev": 49.8
+      },
+      {
+        "dong": 121,
+        "elev": 49.1
+      },
+      {
+        "dong": 122,
+        "elev": 48.6
+      },
+      {
+        "dong": 123,
+        "elev": 47.6
+      },
+      {
+        "dong": 124,
+        "elev": 47.9
+      },
+      {
+        "dong": 125,
+        "elev": 47.9
+      },
+      {
+        "dong": 126,
+        "elev": 47.1
+      },
+      {
+        "dong": 127,
+        "elev": 44.3
+      },
+      {
+        "dong": 128,
+        "elev": 45.2
+      },
+      {
+        "dong": 129,
+        "elev": 46.2
+      },
+      {
+        "dong": 130,
+        "elev": 46.8
+      },
+      {
+        "dong": 131,
+        "elev": 45.8
+      },
+      {
+        "dong": 132,
+        "elev": 44.7
+      },
+      {
+        "dong": 133,
+        "elev": 44
+      },
+      {
+        "dong": 134,
+        "elev": 44.2
+      },
+      {
+        "dong": 135,
+        "elev": 43.1
+      },
+      {
+        "dong": 136,
+        "elev": 42.1
+      },
+      {
+        "dong": 137,
+        "elev": 43.5
+      },
+      {
+        "dong": 138,
+        "elev": 42.9
+      },
+      {
+        "dong": 139,
+        "elev": 41.8
+      },
+      {
+        "dong": 140,
+        "elev": 41.1
+      },
+      {
+        "dong": 141,
+        "elev": 40.3
+      },
+      {
+        "dong": 142,
+        "elev": 42.2
+      },
+      {
+        "dong": 143,
+        "elev": 44.2
+      },
+      {
+        "dong": 144,
+        "elev": 45.2
+      },
+      {
+        "dong": 145,
+        "elev": 45.6
+      },
+      {
+        "dong": 146,
+        "elev": 42.8
+      },
+      {
+        "dong": 147,
+        "elev": 41.2
+      },
+      {
+        "dong": 148,
+        "elev": 39.2
+      },
+      {
+        "dong": 149,
+        "elev": 41.8
+      },
+      {
+        "dong": 150,
+        "elev": 44.2
+      },
+      {
+        "dong": 151,
+        "elev": 44.9
+      },
+      {
+        "dong": 152,
+        "elev": 42.4
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -10.2,
@@ -709,6 +1511,108 @@
     ],
     "slope": 12.1,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 38.3
+      },
+      {
+        "dong": 102,
+        "elev": 40.5
+      },
+      {
+        "dong": 103,
+        "elev": 45
+      },
+      {
+        "dong": 104,
+        "elev": 45.4
+      },
+      {
+        "dong": 105,
+        "elev": 46.4
+      },
+      {
+        "dong": 106,
+        "elev": 47
+      },
+      {
+        "dong": 107,
+        "elev": 47.5
+      },
+      {
+        "dong": 108,
+        "elev": 47.4
+      },
+      {
+        "dong": 109,
+        "elev": 45
+      },
+      {
+        "dong": 110,
+        "elev": 39
+      },
+      {
+        "dong": 111,
+        "elev": 37.2
+      },
+      {
+        "dong": 112,
+        "elev": 37.9
+      },
+      {
+        "dong": 113,
+        "elev": 39.7
+      },
+      {
+        "dong": 114,
+        "elev": 48.6
+      },
+      {
+        "dong": 115,
+        "elev": 49.2
+      },
+      {
+        "dong": 116,
+        "elev": 48.9
+      },
+      {
+        "dong": 117,
+        "elev": 42
+      },
+      {
+        "dong": 118,
+        "elev": 38.7
+      },
+      {
+        "dong": 119,
+        "elev": 38.1
+      },
+      {
+        "dong": 120,
+        "elev": 37.8
+      },
+      {
+        "dong": 121,
+        "elev": 37.7
+      },
+      {
+        "dong": 122,
+        "elev": 39.5
+      },
+      {
+        "dong": 123,
+        "elev": 44.4
+      },
+      {
+        "dong": 124,
+        "elev": 41.5
+      },
+      {
+        "dong": 125,
+        "elev": 38.6
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -1.9,
@@ -781,6 +1685,40 @@
     ],
     "slope": 2.7,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 45.5
+      },
+      {
+        "dong": 102,
+        "elev": 46.1
+      },
+      {
+        "dong": 103,
+        "elev": 46.2
+      },
+      {
+        "dong": 104,
+        "elev": 45.2
+      },
+      {
+        "dong": 105,
+        "elev": 44.1
+      },
+      {
+        "dong": 106,
+        "elev": 47.1
+      },
+      {
+        "dong": 107,
+        "elev": 47
+      },
+      {
+        "dong": 108,
+        "elev": 46.9
+      }
+    ],
     "pedia1": 6,
     "pedia1_name": "영통아이언소아청소년과의원",
     "pedia1_slope": -3.9,
@@ -862,6 +1800,44 @@
     ],
     "slope": 1.7,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 301,
+        "elev": 23.8
+      },
+      {
+        "dong": 302,
+        "elev": 23.5
+      },
+      {
+        "dong": 303,
+        "elev": 23.6
+      },
+      {
+        "dong": 304,
+        "elev": 23.3
+      },
+      {
+        "dong": 305,
+        "elev": 23.2
+      },
+      {
+        "dong": 306,
+        "elev": 24.2
+      },
+      {
+        "dong": 307,
+        "elev": 25.1
+      },
+      {
+        "dong": 308,
+        "elev": 23.8
+      },
+      {
+        "dong": 309,
+        "elev": 24
+      }
+    ],
     "pedia1": 7,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia1_slope": 1,
@@ -932,6 +1908,36 @@
     ],
     "slope": 12.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 4001,
+        "elev": 69.3
+      },
+      {
+        "dong": 4002,
+        "elev": 67.8
+      },
+      {
+        "dong": 4003,
+        "elev": 70
+      },
+      {
+        "dong": 4004,
+        "elev": 74.1
+      },
+      {
+        "dong": 4005,
+        "elev": 75.5
+      },
+      {
+        "dong": 4006,
+        "elev": 77.8
+      },
+      {
+        "dong": 4007,
+        "elev": 79.7
+      }
+    ],
     "pedia1": 26,
     "pedia1_name": "수지온케어365의원",
     "pedia1_slope": 16.8,
@@ -1025,6 +2031,48 @@
     ],
     "slope": 2.9,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 201,
+        "elev": 24.2
+      },
+      {
+        "dong": 202,
+        "elev": 25.4
+      },
+      {
+        "dong": 203,
+        "elev": 24.5
+      },
+      {
+        "dong": 204,
+        "elev": 23.9
+      },
+      {
+        "dong": 205,
+        "elev": 25.6
+      },
+      {
+        "dong": 206,
+        "elev": 24.7
+      },
+      {
+        "dong": 207,
+        "elev": 25.6
+      },
+      {
+        "dong": 208,
+        "elev": 24.4
+      },
+      {
+        "dong": 209,
+        "elev": 26.2
+      },
+      {
+        "dong": 210,
+        "elev": 26.5
+      }
+    ],
     "pedia1": 2,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia1_slope": 0.1,
@@ -1103,6 +2151,40 @@
     ],
     "slope": 3.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 40.9
+      },
+      {
+        "dong": 102,
+        "elev": 40.8
+      },
+      {
+        "dong": 103,
+        "elev": 40.5
+      },
+      {
+        "dong": 104,
+        "elev": 41.1
+      },
+      {
+        "dong": 105,
+        "elev": 43.8
+      },
+      {
+        "dong": 106,
+        "elev": 43.3
+      },
+      {
+        "dong": 107,
+        "elev": 43.2
+      },
+      {
+        "dong": 108,
+        "elev": 43.9
+      }
+    ],
     "pedia1": 10,
     "pedia1_name": "서울소아청소년과의원",
     "pedia1_slope": -16.3,
@@ -1153,6 +2235,24 @@
     "evening_details": [],
     "slope": 4.7,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 41.3
+      },
+      {
+        "dong": 102,
+        "elev": 43.4
+      },
+      {
+        "dong": 103,
+        "elev": 42.8
+      },
+      {
+        "dong": 104,
+        "elev": 46.1
+      }
+    ],
     "pedia1": 10,
     "pedia1_name": "영통아이언소아청소년과의원",
     "pedia1_slope": -1.4,
@@ -1228,6 +2328,44 @@
     ],
     "slope": 1.7,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 301,
+        "elev": 23.8
+      },
+      {
+        "dong": 302,
+        "elev": 23.5
+      },
+      {
+        "dong": 303,
+        "elev": 23.6
+      },
+      {
+        "dong": 304,
+        "elev": 23.3
+      },
+      {
+        "dong": 305,
+        "elev": 23.2
+      },
+      {
+        "dong": 306,
+        "elev": 24.2
+      },
+      {
+        "dong": 307,
+        "elev": 25.1
+      },
+      {
+        "dong": 308,
+        "elev": 23.8
+      },
+      {
+        "dong": 309,
+        "elev": 24
+      }
+    ],
     "pedia1": 7,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia1_slope": 1,
@@ -1296,6 +2434,40 @@
     ],
     "slope": 9.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 96
+      },
+      {
+        "dong": 102,
+        "elev": 94.2
+      },
+      {
+        "dong": 103,
+        "elev": 94.8
+      },
+      {
+        "dong": 104,
+        "elev": 94.5
+      },
+      {
+        "dong": 105,
+        "elev": 96.8
+      },
+      {
+        "dong": 106,
+        "elev": 97.1
+      },
+      {
+        "dong": 107,
+        "elev": 97.9
+      },
+      {
+        "dong": 108,
+        "elev": 102.8
+      }
+    ],
     "pedia1": 9,
     "pedia1_name": "장소아청소년과의원",
     "pedia1_slope": -39.8,
@@ -1372,6 +2544,52 @@
     ],
     "slope": 42.3,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 117.3
+      },
+      {
+        "dong": 102,
+        "elev": 127.8
+      },
+      {
+        "dong": 103,
+        "elev": 125.2
+      },
+      {
+        "dong": 104,
+        "elev": 134.3
+      },
+      {
+        "dong": 105,
+        "elev": 145
+      },
+      {
+        "dong": 106,
+        "elev": 137
+      },
+      {
+        "dong": 107,
+        "elev": 136.5
+      },
+      {
+        "dong": 108,
+        "elev": 143.4
+      },
+      {
+        "dong": 109,
+        "elev": 148.4
+      },
+      {
+        "dong": 110,
+        "elev": 147.6
+      },
+      {
+        "dong": 111,
+        "elev": 158.4
+      }
+    ],
     "pedia1": 15,
     "pedia1_name": "삼성귀요미소아청소년과의원",
     "pedia1_slope": -52.1,
@@ -1447,6 +2665,36 @@
     ],
     "slope": 28.1,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 301,
+        "elev": 97.5
+      },
+      {
+        "dong": 302,
+        "elev": 104.6
+      },
+      {
+        "dong": 303,
+        "elev": 108.9
+      },
+      {
+        "dong": 304,
+        "elev": 113.3
+      },
+      {
+        "dong": 305,
+        "elev": 124.4
+      },
+      {
+        "dong": 306,
+        "elev": 125.6
+      },
+      {
+        "dong": 307,
+        "elev": 116.8
+      }
+    ],
     "pedia1": 11,
     "pedia1_name": "삼성귀요미소아청소년과의원",
     "pedia1_slope": -26,
@@ -1534,6 +2782,40 @@
     ],
     "slope": 4.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 95
+      },
+      {
+        "dong": 102,
+        "elev": 94.1
+      },
+      {
+        "dong": 103,
+        "elev": 95.3
+      },
+      {
+        "dong": 104,
+        "elev": 96.4
+      },
+      {
+        "dong": 105,
+        "elev": 96.9
+      },
+      {
+        "dong": 106,
+        "elev": 97.4
+      },
+      {
+        "dong": 107,
+        "elev": 98.6
+      },
+      {
+        "dong": 108,
+        "elev": 96.2
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "박진녕소아청소년과의원",
     "pedia1_slope": -4,
@@ -1618,6 +2900,48 @@
     ],
     "slope": 31.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 113.3
+      },
+      {
+        "dong": 102,
+        "elev": 119.1
+      },
+      {
+        "dong": 103,
+        "elev": 111
+      },
+      {
+        "dong": 104,
+        "elev": 111.9
+      },
+      {
+        "dong": 105,
+        "elev": 114.3
+      },
+      {
+        "dong": 106,
+        "elev": 127.4
+      },
+      {
+        "dong": 107,
+        "elev": 132.1
+      },
+      {
+        "dong": 108,
+        "elev": 125.5
+      },
+      {
+        "dong": 109,
+        "elev": 140.9
+      },
+      {
+        "dong": 110,
+        "elev": 137.4
+      }
+    ],
     "pedia1": 12,
     "pedia1_name": "삼성키즈소아청소년과의원",
     "pedia1_slope": -13.6,
@@ -1674,6 +2998,28 @@
     ],
     "slope": 10.8,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 80
+      },
+      {
+        "dong": 102,
+        "elev": 72.7
+      },
+      {
+        "dong": 103,
+        "elev": 77.1
+      },
+      {
+        "dong": 104,
+        "elev": 79.2
+      },
+      {
+        "dong": 105,
+        "elev": 82.9
+      }
+    ],
     "pedia1": 3,
     "pedia1_name": "꿈이든소아청소년과의원",
     "pedia1_slope": -9.6,
@@ -1744,6 +3090,32 @@
     ],
     "slope": 8.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 301,
+        "elev": 82.9
+      },
+      {
+        "dong": 302,
+        "elev": 80.8
+      },
+      {
+        "dong": 303,
+        "elev": 77.5
+      },
+      {
+        "dong": 304,
+        "elev": 74
+      },
+      {
+        "dong": 305,
+        "elev": 75.6
+      },
+      {
+        "dong": 306,
+        "elev": 78.1
+      }
+    ],
     "pedia1": 6,
     "pedia1_name": "꿈이든소아청소년과의원",
     "pedia1_slope": -8.2,
@@ -1812,6 +3184,48 @@
     ],
     "slope": 42.8,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 134.1
+      },
+      {
+        "dong": 102,
+        "elev": 154.2
+      },
+      {
+        "dong": 103,
+        "elev": 160.4
+      },
+      {
+        "dong": 104,
+        "elev": 166.7
+      },
+      {
+        "dong": 105,
+        "elev": 167.9
+      },
+      {
+        "dong": 106,
+        "elev": 154.6
+      },
+      {
+        "dong": 107,
+        "elev": 152.6
+      },
+      {
+        "dong": 108,
+        "elev": 132.2
+      },
+      {
+        "dong": 109,
+        "elev": 128.8
+      },
+      {
+        "dong": 110,
+        "elev": 126.4
+      }
+    ],
     "pedia1": 12,
     "pedia1_name": "이레소아청소년과의원",
     "pedia1_slope": -44.8,
@@ -1893,6 +3307,48 @@
     ],
     "slope": 42.8,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 134.1
+      },
+      {
+        "dong": 102,
+        "elev": 154.2
+      },
+      {
+        "dong": 103,
+        "elev": 160.4
+      },
+      {
+        "dong": 104,
+        "elev": 166.7
+      },
+      {
+        "dong": 105,
+        "elev": 167.9
+      },
+      {
+        "dong": 106,
+        "elev": 154.6
+      },
+      {
+        "dong": 107,
+        "elev": 152.6
+      },
+      {
+        "dong": 108,
+        "elev": 132.2
+      },
+      {
+        "dong": 109,
+        "elev": 128.8
+      },
+      {
+        "dong": 110,
+        "elev": 126.4
+      }
+    ],
     "pedia1": 12,
     "pedia1_name": "이레소아청소년과의원",
     "pedia1_slope": -44.8,
@@ -1949,6 +3405,32 @@
     ],
     "slope": 0.3,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1601,
+        "elev": 24
+      },
+      {
+        "dong": 1602,
+        "elev": 24.1
+      },
+      {
+        "dong": 1603,
+        "elev": 24.3
+      },
+      {
+        "dong": 1604,
+        "elev": 24.2
+      },
+      {
+        "dong": 1605,
+        "elev": 24
+      },
+      {
+        "dong": 1606,
+        "elev": 24
+      }
+    ],
     "pedia1": 9,
     "pedia1_name": "플러스맘소아청소년과의원",
     "pedia1_slope": -0.3,
@@ -2012,6 +3494,88 @@
     ],
     "slope": 6.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 501,
+        "elev": 23.4
+      },
+      {
+        "dong": 502,
+        "elev": 24.3
+      },
+      {
+        "dong": 503,
+        "elev": 24.5
+      },
+      {
+        "dong": 504,
+        "elev": 26
+      },
+      {
+        "dong": 505,
+        "elev": 25.8
+      },
+      {
+        "dong": 506,
+        "elev": 26.1
+      },
+      {
+        "dong": 507,
+        "elev": 26.3
+      },
+      {
+        "dong": 508,
+        "elev": 26.8
+      },
+      {
+        "dong": 509,
+        "elev": 25.5
+      },
+      {
+        "dong": 510,
+        "elev": 26.2
+      },
+      {
+        "dong": 511,
+        "elev": 25.8
+      },
+      {
+        "dong": 512,
+        "elev": 27
+      },
+      {
+        "dong": 513,
+        "elev": 26.8
+      },
+      {
+        "dong": 514,
+        "elev": 27.7
+      },
+      {
+        "dong": 515,
+        "elev": 27.1
+      },
+      {
+        "dong": 516,
+        "elev": 28.1
+      },
+      {
+        "dong": 517,
+        "elev": 28.1
+      },
+      {
+        "dong": 518,
+        "elev": 28.6
+      },
+      {
+        "dong": 519,
+        "elev": 29.8
+      },
+      {
+        "dong": 520,
+        "elev": 28.8
+      }
+    ],
     "pedia1": 13,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia1_slope": -1.6,
@@ -2135,6 +3699,56 @@
     ],
     "slope": 6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 37.9
+      },
+      {
+        "dong": 102,
+        "elev": 38.4
+      },
+      {
+        "dong": 103,
+        "elev": 38.9
+      },
+      {
+        "dong": 104,
+        "elev": 38.6
+      },
+      {
+        "dong": 105,
+        "elev": 40.6
+      },
+      {
+        "dong": 106,
+        "elev": 37.7
+      },
+      {
+        "dong": 107,
+        "elev": 36.4
+      },
+      {
+        "dong": 108,
+        "elev": 35.8
+      },
+      {
+        "dong": 109,
+        "elev": 36.1
+      },
+      {
+        "dong": 110,
+        "elev": 35.6
+      },
+      {
+        "dong": 111,
+        "elev": 34.5
+      },
+      {
+        "dong": 112,
+        "elev": 35.4
+      }
+    ],
     "pedia1": 11,
     "pedia1_name": "온새미로",
     "pedia1_slope": 9,
@@ -2228,6 +3842,56 @@
     ],
     "slope": 6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 37.9
+      },
+      {
+        "dong": 102,
+        "elev": 38.4
+      },
+      {
+        "dong": 103,
+        "elev": 38.9
+      },
+      {
+        "dong": 104,
+        "elev": 38.6
+      },
+      {
+        "dong": 105,
+        "elev": 40.6
+      },
+      {
+        "dong": 106,
+        "elev": 37.7
+      },
+      {
+        "dong": 107,
+        "elev": 36.4
+      },
+      {
+        "dong": 108,
+        "elev": 35.8
+      },
+      {
+        "dong": 109,
+        "elev": 36.1
+      },
+      {
+        "dong": 110,
+        "elev": 35.6
+      },
+      {
+        "dong": 111,
+        "elev": 34.5
+      },
+      {
+        "dong": 112,
+        "elev": 35.4
+      }
+    ],
     "pedia1": 11,
     "pedia1_name": "온새미로",
     "pedia1_slope": 9,
@@ -2312,6 +3976,88 @@
     ],
     "slope": 1.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 17.6
+      },
+      {
+        "dong": 102,
+        "elev": 17.4
+      },
+      {
+        "dong": 103,
+        "elev": 17.2
+      },
+      {
+        "dong": 104,
+        "elev": 17.7
+      },
+      {
+        "dong": 105,
+        "elev": 17.5
+      },
+      {
+        "dong": 106,
+        "elev": 18.3
+      },
+      {
+        "dong": 107,
+        "elev": 18.4
+      },
+      {
+        "dong": 108,
+        "elev": 18.4
+      },
+      {
+        "dong": 109,
+        "elev": 18.3
+      },
+      {
+        "dong": 110,
+        "elev": 17.2
+      },
+      {
+        "dong": 111,
+        "elev": 17.2
+      },
+      {
+        "dong": 112,
+        "elev": 17.2
+      },
+      {
+        "dong": 113,
+        "elev": 17
+      },
+      {
+        "dong": 114,
+        "elev": 17.3
+      },
+      {
+        "dong": 115,
+        "elev": 16.8
+      },
+      {
+        "dong": 116,
+        "elev": 17.2
+      },
+      {
+        "dong": 117,
+        "elev": 18.1
+      },
+      {
+        "dong": 118,
+        "elev": 18.3
+      },
+      {
+        "dong": 119,
+        "elev": 17.5
+      },
+      {
+        "dong": 120,
+        "elev": 17.2
+      }
+    ],
     "pedia1": 5,
     "pedia1_name": "아이언소아청소년과의원",
     "pedia1_slope": 0.8,
@@ -2387,6 +4133,20 @@
     ],
     "slope": 7.8,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 55.1
+      },
+      {
+        "dong": 102,
+        "elev": 58.5
+      },
+      {
+        "dong": 103,
+        "elev": 61.3
+      }
+    ],
     "pedia1": 6,
     "pedia1_name": "삼성365소아청소년과",
     "pedia1_slope": 12.7,
@@ -2443,6 +4203,40 @@
     ],
     "slope": 3.6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 221,
+        "elev": 57.3
+      },
+      {
+        "dong": 222,
+        "elev": 57.2
+      },
+      {
+        "dong": 223,
+        "elev": 54.9
+      },
+      {
+        "dong": 224,
+        "elev": 55.5
+      },
+      {
+        "dong": 225,
+        "elev": 55.8
+      },
+      {
+        "dong": 226,
+        "elev": 56.1
+      },
+      {
+        "dong": 227,
+        "elev": 58.1
+      },
+      {
+        "dong": 228,
+        "elev": 57.4
+      }
+    ],
     "pedia1": 4,
     "pedia1_name": "성모플러스 내과소아과",
     "pedia1_slope": -4.2,
@@ -2530,6 +4324,64 @@
     ],
     "slope": 12.9,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 2621,
+        "elev": 54.6
+      },
+      {
+        "dong": 2622,
+        "elev": 52.9
+      },
+      {
+        "dong": 2623,
+        "elev": 53.4
+      },
+      {
+        "dong": 2624,
+        "elev": 50.4
+      },
+      {
+        "dong": 2625,
+        "elev": 57.2
+      },
+      {
+        "dong": 2626,
+        "elev": 55.6
+      },
+      {
+        "dong": 2627,
+        "elev": 57.7
+      },
+      {
+        "dong": 2628,
+        "elev": 57.6
+      },
+      {
+        "dong": 2629,
+        "elev": 59.9
+      },
+      {
+        "dong": 2630,
+        "elev": 62
+      },
+      {
+        "dong": 2631,
+        "elev": 63.5
+      },
+      {
+        "dong": 2632,
+        "elev": 58.8
+      },
+      {
+        "dong": 2633,
+        "elev": 60.2
+      },
+      {
+        "dong": 2634,
+        "elev": 59.7
+      }
+    ],
     "pedia1": 16,
     "pedia1_name": "동탄성모병원",
     "pedia1_slope": -8.1,
@@ -2608,6 +4460,40 @@
     ],
     "slope": 3.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1111,
+        "elev": 78.7
+      },
+      {
+        "dong": 1112,
+        "elev": 75.8
+      },
+      {
+        "dong": 1113,
+        "elev": 78.3
+      },
+      {
+        "dong": 1114,
+        "elev": 79.2
+      },
+      {
+        "dong": 1115,
+        "elev": 80
+      },
+      {
+        "dong": 1116,
+        "elev": 80.1
+      },
+      {
+        "dong": 1117,
+        "elev": 81.7
+      },
+      {
+        "dong": 1118,
+        "elev": 81.1
+      }
+    ],
     "pedia1": 6,
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia1_slope": -16.3,
@@ -2690,6 +4576,48 @@
     ],
     "slope": 1.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1611,
+        "elev": 28.9
+      },
+      {
+        "dong": 1612,
+        "elev": 28.8
+      },
+      {
+        "dong": 1613,
+        "elev": 29.2
+      },
+      {
+        "dong": 1614,
+        "elev": 29.4
+      },
+      {
+        "dong": 1615,
+        "elev": 29.8
+      },
+      {
+        "dong": 1616,
+        "elev": 29.3
+      },
+      {
+        "dong": 1617,
+        "elev": 28.9
+      },
+      {
+        "dong": 1618,
+        "elev": 29.9
+      },
+      {
+        "dong": 1619,
+        "elev": 30.1
+      },
+      {
+        "dong": 1620,
+        "elev": 29.4
+      }
+    ],
     "pedia1": 21,
     "pedia1_name": "남승우소아청소년과의원",
     "pedia1_slope": 22.2,
@@ -2777,6 +4705,72 @@
     ],
     "slope": 12.8,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 2021,
+        "elev": 65.5
+      },
+      {
+        "dong": 2022,
+        "elev": 68.8
+      },
+      {
+        "dong": 2023,
+        "elev": 67.5
+      },
+      {
+        "dong": 2024,
+        "elev": 65.2
+      },
+      {
+        "dong": 2025,
+        "elev": 63.3
+      },
+      {
+        "dong": 2026,
+        "elev": 62.6
+      },
+      {
+        "dong": 2027,
+        "elev": 65.2
+      },
+      {
+        "dong": 2028,
+        "elev": 66.1
+      },
+      {
+        "dong": 2029,
+        "elev": 61.4
+      },
+      {
+        "dong": 2030,
+        "elev": 62.3
+      },
+      {
+        "dong": 2031,
+        "elev": 60.4
+      },
+      {
+        "dong": 2032,
+        "elev": 57
+      },
+      {
+        "dong": 2033,
+        "elev": 58.5
+      },
+      {
+        "dong": 2034,
+        "elev": 56.9
+      },
+      {
+        "dong": 2035,
+        "elev": 55.6
+      },
+      {
+        "dong": 2036,
+        "elev": 59.3
+      }
+    ],
     "pedia1": 5,
     "pedia1_name": "동탄S소아청소년과 발달클리닉",
     "pedia1_slope": -8.3,
@@ -2845,6 +4839,40 @@
     ],
     "slope": 11.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 2831,
+        "elev": 47.3
+      },
+      {
+        "dong": 2832,
+        "elev": 50.8
+      },
+      {
+        "dong": 2833,
+        "elev": 55.3
+      },
+      {
+        "dong": 2834,
+        "elev": 58.1
+      },
+      {
+        "dong": 2835,
+        "elev": 58.4
+      },
+      {
+        "dong": 2836,
+        "elev": 57.5
+      },
+      {
+        "dong": 2837,
+        "elev": 53.1
+      },
+      {
+        "dong": 2838,
+        "elev": 49
+      }
+    ],
     "pedia1": 4,
     "pedia1_name": "원소아청소년과의원",
     "pedia1_slope": -4.6,
@@ -2923,6 +4951,44 @@
     ],
     "slope": 7.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1201,
+        "elev": 87.2
+      },
+      {
+        "dong": 1202,
+        "elev": 87
+      },
+      {
+        "dong": 1203,
+        "elev": 85.2
+      },
+      {
+        "dong": 1204,
+        "elev": 83.2
+      },
+      {
+        "dong": 1205,
+        "elev": 79.5
+      },
+      {
+        "dong": 1206,
+        "elev": 82
+      },
+      {
+        "dong": 1207,
+        "elev": 84.2
+      },
+      {
+        "dong": 1208,
+        "elev": 85
+      },
+      {
+        "dong": 1209,
+        "elev": 86.2
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "코끼리소아청소년과의원",
     "pedia1_slope": 6.7,
@@ -3034,6 +5100,64 @@
     ],
     "slope": 12.9,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 2621,
+        "elev": 54.6
+      },
+      {
+        "dong": 2622,
+        "elev": 52.9
+      },
+      {
+        "dong": 2623,
+        "elev": 53.4
+      },
+      {
+        "dong": 2624,
+        "elev": 50.4
+      },
+      {
+        "dong": 2625,
+        "elev": 57.2
+      },
+      {
+        "dong": 2626,
+        "elev": 55.6
+      },
+      {
+        "dong": 2627,
+        "elev": 57.7
+      },
+      {
+        "dong": 2628,
+        "elev": 57.6
+      },
+      {
+        "dong": 2629,
+        "elev": 59.9
+      },
+      {
+        "dong": 2630,
+        "elev": 62
+      },
+      {
+        "dong": 2631,
+        "elev": 63.5
+      },
+      {
+        "dong": 2632,
+        "elev": 58.8
+      },
+      {
+        "dong": 2633,
+        "elev": 60.2
+      },
+      {
+        "dong": 2634,
+        "elev": 59.7
+      }
+    ],
     "pedia1": 16,
     "pedia1_name": "동탄성모병원",
     "pedia1_slope": -8.1,
@@ -3151,6 +5275,52 @@
     ],
     "slope": 10.8,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1321,
+        "elev": 74.7
+      },
+      {
+        "dong": 1322,
+        "elev": 76.2
+      },
+      {
+        "dong": 1323,
+        "elev": 78.6
+      },
+      {
+        "dong": 1324,
+        "elev": 78.7
+      },
+      {
+        "dong": 1325,
+        "elev": 82.8
+      },
+      {
+        "dong": 1326,
+        "elev": 81.7
+      },
+      {
+        "dong": 1327,
+        "elev": 79.7
+      },
+      {
+        "dong": 1328,
+        "elev": 79.1
+      },
+      {
+        "dong": 1329,
+        "elev": 76.1
+      },
+      {
+        "dong": 1330,
+        "elev": 74.3
+      },
+      {
+        "dong": 1331,
+        "elev": 70.3
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia1_slope": -10.3,
@@ -3259,6 +5429,40 @@
     ],
     "slope": 3.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1111,
+        "elev": 78.7
+      },
+      {
+        "dong": 1112,
+        "elev": 75.8
+      },
+      {
+        "dong": 1113,
+        "elev": 78.3
+      },
+      {
+        "dong": 1114,
+        "elev": 79.2
+      },
+      {
+        "dong": 1115,
+        "elev": 80
+      },
+      {
+        "dong": 1116,
+        "elev": 80.1
+      },
+      {
+        "dong": 1117,
+        "elev": 81.7
+      },
+      {
+        "dong": 1118,
+        "elev": 81.1
+      }
+    ],
     "pedia1": 6,
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia1_slope": -16.3,
@@ -3327,6 +5531,48 @@
     ],
     "slope": 5.6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 3101,
+        "elev": 61.1
+      },
+      {
+        "dong": 3102,
+        "elev": 62
+      },
+      {
+        "dong": 3103,
+        "elev": 63.8
+      },
+      {
+        "dong": 3104,
+        "elev": 62.8
+      },
+      {
+        "dong": 3105,
+        "elev": 62.2
+      },
+      {
+        "dong": 3106,
+        "elev": 63.3
+      },
+      {
+        "dong": 3107,
+        "elev": 61.7
+      },
+      {
+        "dong": 3108,
+        "elev": 59.1
+      },
+      {
+        "dong": 3109,
+        "elev": 58.1
+      },
+      {
+        "dong": 3110,
+        "elev": 59.6
+      }
+    ],
     "pedia1": 4,
     "pedia1_name": "연세이룬소아청소년과의원",
     "pedia1_slope": 0.3,
@@ -3414,6 +5660,52 @@
     ],
     "slope": 10.8,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1321,
+        "elev": 74.7
+      },
+      {
+        "dong": 1322,
+        "elev": 76.2
+      },
+      {
+        "dong": 1323,
+        "elev": 78.6
+      },
+      {
+        "dong": 1324,
+        "elev": 78.7
+      },
+      {
+        "dong": 1325,
+        "elev": 82.8
+      },
+      {
+        "dong": 1326,
+        "elev": 81.7
+      },
+      {
+        "dong": 1327,
+        "elev": 79.7
+      },
+      {
+        "dong": 1328,
+        "elev": 79.1
+      },
+      {
+        "dong": 1329,
+        "elev": 76.1
+      },
+      {
+        "dong": 1330,
+        "elev": 74.3
+      },
+      {
+        "dong": 1331,
+        "elev": 70.3
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia1_slope": -10.3,
@@ -3495,6 +5787,76 @@
     ],
     "slope": 6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1801,
+        "elev": 47.1
+      },
+      {
+        "dong": 1802,
+        "elev": 47.5
+      },
+      {
+        "dong": 1803,
+        "elev": 47.3
+      },
+      {
+        "dong": 1804,
+        "elev": 46.7
+      },
+      {
+        "dong": 1805,
+        "elev": 46
+      },
+      {
+        "dong": 1806,
+        "elev": 44.9
+      },
+      {
+        "dong": 1807,
+        "elev": 42.6
+      },
+      {
+        "dong": 1808,
+        "elev": 41.9
+      },
+      {
+        "dong": 1809,
+        "elev": 41.5
+      },
+      {
+        "dong": 1810,
+        "elev": 42.6
+      },
+      {
+        "dong": 1811,
+        "elev": 41.1
+      },
+      {
+        "dong": 1812,
+        "elev": 42.7
+      },
+      {
+        "dong": 1813,
+        "elev": 45
+      },
+      {
+        "dong": 1814,
+        "elev": 42.8
+      },
+      {
+        "dong": 1815,
+        "elev": 41.3
+      },
+      {
+        "dong": 1816,
+        "elev": 46.2
+      },
+      {
+        "dong": 1817,
+        "elev": 46.6
+      }
+    ],
     "pedia1": 33,
     "pedia1_name": "올바른소아청소년과의원",
     "pedia1_slope": 8.3,
@@ -3565,6 +5927,48 @@
     ],
     "slope": 2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 701,
+        "elev": 37.5
+      },
+      {
+        "dong": 702,
+        "elev": 37.1
+      },
+      {
+        "dong": 703,
+        "elev": 36.6
+      },
+      {
+        "dong": 704,
+        "elev": 35.7
+      },
+      {
+        "dong": 705,
+        "elev": 37.3
+      },
+      {
+        "dong": 706,
+        "elev": 37.6
+      },
+      {
+        "dong": 707,
+        "elev": 38.3
+      },
+      {
+        "dong": 708,
+        "elev": 38.2
+      },
+      {
+        "dong": 709,
+        "elev": 38.2
+      },
+      {
+        "dong": 710,
+        "elev": 37.2
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "코벤트더웰의원",
     "pedia1_slope": -4.5,
@@ -3627,6 +6031,104 @@
     ],
     "slope": 4.1,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 56
+      },
+      {
+        "dong": 102,
+        "elev": 55.8
+      },
+      {
+        "dong": 103,
+        "elev": 55.8
+      },
+      {
+        "dong": 104,
+        "elev": 56.7
+      },
+      {
+        "dong": 105,
+        "elev": 56.9
+      },
+      {
+        "dong": 107,
+        "elev": 55.8
+      },
+      {
+        "dong": 108,
+        "elev": 56.4
+      },
+      {
+        "dong": 109,
+        "elev": 56.9
+      },
+      {
+        "dong": 111,
+        "elev": 55.2
+      },
+      {
+        "dong": 112,
+        "elev": 54.5
+      },
+      {
+        "dong": 113,
+        "elev": 54.9
+      },
+      {
+        "dong": 114,
+        "elev": 54.7
+      },
+      {
+        "dong": 115,
+        "elev": 54.6
+      },
+      {
+        "dong": 116,
+        "elev": 53.6
+      },
+      {
+        "dong": 117,
+        "elev": 53.2
+      },
+      {
+        "dong": 118,
+        "elev": 52.9
+      },
+      {
+        "dong": 119,
+        "elev": 53.3
+      },
+      {
+        "dong": 120,
+        "elev": 53.1
+      },
+      {
+        "dong": 121,
+        "elev": 53.2
+      },
+      {
+        "dong": 122,
+        "elev": 53.5
+      },
+      {
+        "dong": 123,
+        "elev": 53.8
+      },
+      {
+        "dong": 124,
+        "elev": 53.6
+      },
+      {
+        "dong": 125,
+        "elev": 53.3
+      },
+      {
+        "dong": 126,
+        "elev": 53.9
+      }
+    ],
     "pedia1": 5,
     "pedia1_name": "SK메디모아소아청소년과의원",
     "pedia1_slope": 0.3,
@@ -3677,6 +6179,40 @@
     ],
     "slope": 12.6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 71.3
+      },
+      {
+        "dong": 102,
+        "elev": 74.1
+      },
+      {
+        "dong": 103,
+        "elev": 78.7
+      },
+      {
+        "dong": 104,
+        "elev": 83.7
+      },
+      {
+        "dong": 105,
+        "elev": 83.8
+      },
+      {
+        "dong": 106,
+        "elev": 81.9
+      },
+      {
+        "dong": 107,
+        "elev": 77.9
+      },
+      {
+        "dong": 108,
+        "elev": 74.9
+      }
+    ],
     "pedia1": 18,
     "pedia1_name": "박소아청소년과의원",
     "pedia1_slope": -21.5,
@@ -3740,6 +6276,140 @@
     ],
     "slope": 11.9,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 49.7
+      },
+      {
+        "dong": 102,
+        "elev": 48.1
+      },
+      {
+        "dong": 103,
+        "elev": 48
+      },
+      {
+        "dong": 104,
+        "elev": 44.9
+      },
+      {
+        "dong": 105,
+        "elev": 43.9
+      },
+      {
+        "dong": 106,
+        "elev": 43.2
+      },
+      {
+        "dong": 107,
+        "elev": 43.2
+      },
+      {
+        "dong": 108,
+        "elev": 53.5
+      },
+      {
+        "dong": 109,
+        "elev": 47.2
+      },
+      {
+        "dong": 110,
+        "elev": 46.1
+      },
+      {
+        "dong": 111,
+        "elev": 43
+      },
+      {
+        "dong": 112,
+        "elev": 43.4
+      },
+      {
+        "dong": 113,
+        "elev": 43.1
+      },
+      {
+        "dong": 114,
+        "elev": 43.2
+      },
+      {
+        "dong": 115,
+        "elev": 43.2
+      },
+      {
+        "dong": 116,
+        "elev": 43.2
+      },
+      {
+        "dong": 117,
+        "elev": 43
+      },
+      {
+        "dong": 118,
+        "elev": 42.9
+      },
+      {
+        "dong": 119,
+        "elev": 43.8
+      },
+      {
+        "dong": 120,
+        "elev": 43.3
+      },
+      {
+        "dong": 121,
+        "elev": 42.8
+      },
+      {
+        "dong": 122,
+        "elev": 45.7
+      },
+      {
+        "dong": 123,
+        "elev": 43.9
+      },
+      {
+        "dong": 124,
+        "elev": 54.8
+      },
+      {
+        "dong": 125,
+        "elev": 54.1
+      },
+      {
+        "dong": 126,
+        "elev": 51.1
+      },
+      {
+        "dong": 127,
+        "elev": 49.3
+      },
+      {
+        "dong": 128,
+        "elev": 48.9
+      },
+      {
+        "dong": 129,
+        "elev": 49.2
+      },
+      {
+        "dong": 130,
+        "elev": 46.6
+      },
+      {
+        "dong": 131,
+        "elev": 44.7
+      },
+      {
+        "dong": 132,
+        "elev": 43.7
+      },
+      {
+        "dong": 133,
+        "elev": 43.1
+      }
+    ],
     "pedia1": 4,
     "pedia1_name": "서울소아청소년과의원",
     "pedia1_slope": -17.2,
@@ -3839,6 +6509,88 @@
     ],
     "slope": 4.6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 23.9
+      },
+      {
+        "dong": 102,
+        "elev": 23.9
+      },
+      {
+        "dong": 103,
+        "elev": 25.4
+      },
+      {
+        "dong": 104,
+        "elev": 24
+      },
+      {
+        "dong": 105,
+        "elev": 23.5
+      },
+      {
+        "dong": 106,
+        "elev": 24
+      },
+      {
+        "dong": 107,
+        "elev": 24.2
+      },
+      {
+        "dong": 108,
+        "elev": 23.9
+      },
+      {
+        "dong": 109,
+        "elev": 23.7
+      },
+      {
+        "dong": 110,
+        "elev": 23.3
+      },
+      {
+        "dong": 111,
+        "elev": 23.2
+      },
+      {
+        "dong": 112,
+        "elev": 23.2
+      },
+      {
+        "dong": 113,
+        "elev": 23.8
+      },
+      {
+        "dong": 114,
+        "elev": 24.3
+      },
+      {
+        "dong": 115,
+        "elev": 25.1
+      },
+      {
+        "dong": 116,
+        "elev": 26.4
+      },
+      {
+        "dong": 117,
+        "elev": 24.5
+      },
+      {
+        "dong": 118,
+        "elev": 24.3
+      },
+      {
+        "dong": 119,
+        "elev": 23.4
+      },
+      {
+        "dong": 120,
+        "elev": 24.3
+      }
+    ],
     "pedia1": 6,
     "pedia1_name": "성모바른소아청소년과의원",
     "pedia1_slope": -0.8,
@@ -3913,6 +6665,36 @@
     ],
     "slope": 3.3,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 201,
+        "elev": 50
+      },
+      {
+        "dong": 202,
+        "elev": 50.1
+      },
+      {
+        "dong": 203,
+        "elev": 49.9
+      },
+      {
+        "dong": 204,
+        "elev": 48.3
+      },
+      {
+        "dong": 205,
+        "elev": 46.8
+      },
+      {
+        "dong": 206,
+        "elev": 47.5
+      },
+      {
+        "dong": 207,
+        "elev": 48.6
+      }
+    ],
     "pedia1": 6,
     "pedia1_name": "성모수소아청소년과의원",
     "pedia1_slope": -4,
@@ -3979,6 +6761,52 @@
     ],
     "slope": 31.1,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 100,
+        "elev": 36.2
+      },
+      {
+        "dong": 101,
+        "elev": 5.4
+      },
+      {
+        "dong": 102,
+        "elev": 5.1
+      },
+      {
+        "dong": 103,
+        "elev": 6.5
+      },
+      {
+        "dong": 104,
+        "elev": 5.9
+      },
+      {
+        "dong": 105,
+        "elev": 5.8
+      },
+      {
+        "dong": 106,
+        "elev": 5.4
+      },
+      {
+        "dong": 107,
+        "elev": 5.6
+      },
+      {
+        "dong": 108,
+        "elev": 7.2
+      },
+      {
+        "dong": 109,
+        "elev": 6.6
+      },
+      {
+        "dong": 110,
+        "elev": 7.2
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "레인보우소아청소년과의원",
     "pedia1_slope": 37.9,
@@ -4049,6 +6877,40 @@
     ],
     "slope": 2.6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 37.3
+      },
+      {
+        "dong": 102,
+        "elev": 36.5
+      },
+      {
+        "dong": 103,
+        "elev": 35.5
+      },
+      {
+        "dong": 104,
+        "elev": 35.5
+      },
+      {
+        "dong": 105,
+        "elev": 35.7
+      },
+      {
+        "dong": 106,
+        "elev": 36.8
+      },
+      {
+        "dong": 107,
+        "elev": 36.9
+      },
+      {
+        "dong": 108,
+        "elev": 37.2
+      }
+    ],
     "pedia1": 3,
     "pedia1_name": "레인보우소아청소년과의원",
     "pedia1_slope": 1.1,
@@ -4124,6 +6986,108 @@
     ],
     "slope": 12.1,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 38.3
+      },
+      {
+        "dong": 102,
+        "elev": 40.5
+      },
+      {
+        "dong": 103,
+        "elev": 45
+      },
+      {
+        "dong": 104,
+        "elev": 45.4
+      },
+      {
+        "dong": 105,
+        "elev": 46.4
+      },
+      {
+        "dong": 106,
+        "elev": 47
+      },
+      {
+        "dong": 107,
+        "elev": 47.5
+      },
+      {
+        "dong": 108,
+        "elev": 47.4
+      },
+      {
+        "dong": 109,
+        "elev": 45
+      },
+      {
+        "dong": 110,
+        "elev": 39
+      },
+      {
+        "dong": 111,
+        "elev": 37.2
+      },
+      {
+        "dong": 112,
+        "elev": 37.9
+      },
+      {
+        "dong": 113,
+        "elev": 39.7
+      },
+      {
+        "dong": 114,
+        "elev": 48.6
+      },
+      {
+        "dong": 115,
+        "elev": 49.2
+      },
+      {
+        "dong": 116,
+        "elev": 48.9
+      },
+      {
+        "dong": 117,
+        "elev": 42
+      },
+      {
+        "dong": 118,
+        "elev": 38.7
+      },
+      {
+        "dong": 119,
+        "elev": 38.1
+      },
+      {
+        "dong": 120,
+        "elev": 37.8
+      },
+      {
+        "dong": 121,
+        "elev": 37.7
+      },
+      {
+        "dong": 122,
+        "elev": 39.5
+      },
+      {
+        "dong": 123,
+        "elev": 44.4
+      },
+      {
+        "dong": 124,
+        "elev": 41.5
+      },
+      {
+        "dong": 125,
+        "elev": 38.6
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -1.9,
@@ -4212,6 +7176,128 @@
     ],
     "slope": 13.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 45.1
+      },
+      {
+        "dong": 102,
+        "elev": 45.5
+      },
+      {
+        "dong": 103,
+        "elev": 47.1
+      },
+      {
+        "dong": 104,
+        "elev": 49.9
+      },
+      {
+        "dong": 105,
+        "elev": 47.1
+      },
+      {
+        "dong": 106,
+        "elev": 46.9
+      },
+      {
+        "dong": 107,
+        "elev": 47.2
+      },
+      {
+        "dong": 108,
+        "elev": 46.7
+      },
+      {
+        "dong": 109,
+        "elev": 50.8
+      },
+      {
+        "dong": 110,
+        "elev": 48.3
+      },
+      {
+        "dong": 111,
+        "elev": 45.4
+      },
+      {
+        "dong": 112,
+        "elev": 43.4
+      },
+      {
+        "dong": 113,
+        "elev": 42.3
+      },
+      {
+        "dong": 114,
+        "elev": 43.3
+      },
+      {
+        "dong": 115,
+        "elev": 45.1
+      },
+      {
+        "dong": 116,
+        "elev": 53.9
+      },
+      {
+        "dong": 117,
+        "elev": 52.2
+      },
+      {
+        "dong": 118,
+        "elev": 47.4
+      },
+      {
+        "dong": 119,
+        "elev": 49.5
+      },
+      {
+        "dong": 120,
+        "elev": 53.6
+      },
+      {
+        "dong": 121,
+        "elev": 55
+      },
+      {
+        "dong": 122,
+        "elev": 49.3
+      },
+      {
+        "dong": 123,
+        "elev": 45.3
+      },
+      {
+        "dong": 124,
+        "elev": 46.8
+      },
+      {
+        "dong": 125,
+        "elev": 46.2
+      },
+      {
+        "dong": 126,
+        "elev": 51.2
+      },
+      {
+        "dong": 127,
+        "elev": 54.5
+      },
+      {
+        "dong": 128,
+        "elev": 49.7
+      },
+      {
+        "dong": 129,
+        "elev": 50.9
+      },
+      {
+        "dong": 130,
+        "elev": 48.6
+      }
+    ],
     "pedia1": 10,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -6.3,
@@ -4256,6 +7342,40 @@
     "evening_details": [],
     "slope": 0.9,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 201,
+        "elev": 52.2
+      },
+      {
+        "dong": 202,
+        "elev": 51.6
+      },
+      {
+        "dong": 203,
+        "elev": 51.5
+      },
+      {
+        "dong": 204,
+        "elev": 51.5
+      },
+      {
+        "dong": 205,
+        "elev": 51.8
+      },
+      {
+        "dong": 206,
+        "elev": 51.9
+      },
+      {
+        "dong": 207,
+        "elev": 52.4
+      },
+      {
+        "dong": 208,
+        "elev": 52.1
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "굿닥터소아과의원",
     "pedia1_slope": 3.2,
@@ -4306,6 +7426,68 @@
     ],
     "slope": 3.3,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 52.1
+      },
+      {
+        "dong": 102,
+        "elev": 52.9
+      },
+      {
+        "dong": 103,
+        "elev": 53.7
+      },
+      {
+        "dong": 104,
+        "elev": 52.9
+      },
+      {
+        "dong": 105,
+        "elev": 53.1
+      },
+      {
+        "dong": 106,
+        "elev": 54.3
+      },
+      {
+        "dong": 107,
+        "elev": 54.5
+      },
+      {
+        "dong": 108,
+        "elev": 54.2
+      },
+      {
+        "dong": 109,
+        "elev": 54.2
+      },
+      {
+        "dong": 110,
+        "elev": 53.2
+      },
+      {
+        "dong": 111,
+        "elev": 52.4
+      },
+      {
+        "dong": 112,
+        "elev": 52.2
+      },
+      {
+        "dong": 113,
+        "elev": 51.9
+      },
+      {
+        "dong": 114,
+        "elev": 51.7
+      },
+      {
+        "dong": 115,
+        "elev": 51.2
+      }
+    ],
     "pedia1": 5,
     "pedia1_name": "굿닥터소아과의원",
     "pedia1_slope": 2.7,
@@ -4382,6 +7564,36 @@
     ],
     "slope": 12.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 4001,
+        "elev": 69.3
+      },
+      {
+        "dong": 4002,
+        "elev": 67.8
+      },
+      {
+        "dong": 4003,
+        "elev": 70
+      },
+      {
+        "dong": 4004,
+        "elev": 74.1
+      },
+      {
+        "dong": 4005,
+        "elev": 75.5
+      },
+      {
+        "dong": 4006,
+        "elev": 77.8
+      },
+      {
+        "dong": 4007,
+        "elev": 79.7
+      }
+    ],
     "pedia1": 26,
     "pedia1_name": "수지온케어365의원",
     "pedia1_slope": 16.8,
@@ -4458,6 +7670,148 @@
     ],
     "slope": 5.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 40.1
+      },
+      {
+        "dong": 102,
+        "elev": 41
+      },
+      {
+        "dong": 103,
+        "elev": 40
+      },
+      {
+        "dong": 104,
+        "elev": 39.7
+      },
+      {
+        "dong": 105,
+        "elev": 39.4
+      },
+      {
+        "dong": 106,
+        "elev": 39.8
+      },
+      {
+        "dong": 107,
+        "elev": 39.1
+      },
+      {
+        "dong": 108,
+        "elev": 38.6
+      },
+      {
+        "dong": 109,
+        "elev": 38.7
+      },
+      {
+        "dong": 110,
+        "elev": 38.8
+      },
+      {
+        "dong": 111,
+        "elev": 39
+      },
+      {
+        "dong": 112,
+        "elev": 38.5
+      },
+      {
+        "dong": 113,
+        "elev": 38.2
+      },
+      {
+        "dong": 114,
+        "elev": 38.1
+      },
+      {
+        "dong": 115,
+        "elev": 38.9
+      },
+      {
+        "dong": 116,
+        "elev": 36.5
+      },
+      {
+        "dong": 117,
+        "elev": 37.7
+      },
+      {
+        "dong": 118,
+        "elev": 38.3
+      },
+      {
+        "dong": 119,
+        "elev": 38
+      },
+      {
+        "dong": 120,
+        "elev": 38.4
+      },
+      {
+        "dong": 121,
+        "elev": 38.2
+      },
+      {
+        "dong": 122,
+        "elev": 38.1
+      },
+      {
+        "dong": 123,
+        "elev": 37.9
+      },
+      {
+        "dong": 124,
+        "elev": 37.5
+      },
+      {
+        "dong": 125,
+        "elev": 37.5
+      },
+      {
+        "dong": 126,
+        "elev": 37.8
+      },
+      {
+        "dong": 127,
+        "elev": 37.3
+      },
+      {
+        "dong": 128,
+        "elev": 36.9
+      },
+      {
+        "dong": 129,
+        "elev": 36.7
+      },
+      {
+        "dong": 130,
+        "elev": 37.2
+      },
+      {
+        "dong": 131,
+        "elev": 36.3
+      },
+      {
+        "dong": 132,
+        "elev": 35.7
+      },
+      {
+        "dong": 133,
+        "elev": 35.7
+      },
+      {
+        "dong": 134,
+        "elev": 36.3
+      },
+      {
+        "dong": 135,
+        "elev": 36
+      }
+    ],
     "pedia1": 4,
     "pedia1_name": "아주맑은 소아청소년과의원",
     "pedia1_slope": 0.6,
@@ -4550,6 +7904,60 @@
     "evening_details": [],
     "slope": 20.8,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 73.1
+      },
+      {
+        "dong": 102,
+        "elev": 74.6
+      },
+      {
+        "dong": 103,
+        "elev": 72.2
+      },
+      {
+        "dong": 104,
+        "elev": 60.8
+      },
+      {
+        "dong": 105,
+        "elev": 61.8
+      },
+      {
+        "dong": 106,
+        "elev": 53.8
+      },
+      {
+        "dong": 107,
+        "elev": 59.6
+      },
+      {
+        "dong": 108,
+        "elev": 63.1
+      },
+      {
+        "dong": 109,
+        "elev": 69.1
+      },
+      {
+        "dong": 110,
+        "elev": 69
+      },
+      {
+        "dong": 111,
+        "elev": 65.4
+      },
+      {
+        "dong": 112,
+        "elev": 62.3
+      },
+      {
+        "dong": 113,
+        "elev": 56.9
+      }
+    ],
     "pedia1": 17,
     "pedia1_name": "연세소아청소년과의원",
     "pedia1_slope": -50.4,
@@ -4600,6 +8008,44 @@
     ],
     "slope": 2.8,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 201,
+        "elev": 25.7
+      },
+      {
+        "dong": 202,
+        "elev": 25.1
+      },
+      {
+        "dong": 203,
+        "elev": 22.9
+      },
+      {
+        "dong": 204,
+        "elev": 23.3
+      },
+      {
+        "dong": 205,
+        "elev": 23.5
+      },
+      {
+        "dong": 206,
+        "elev": 25.6
+      },
+      {
+        "dong": 207,
+        "elev": 25.4
+      },
+      {
+        "dong": 208,
+        "elev": 23.4
+      },
+      {
+        "dong": 209,
+        "elev": 23.3
+      }
+    ],
     "pedia1": 9,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia1_slope": 1,
@@ -4650,6 +8096,36 @@
     ],
     "slope": 2.3,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 24.1
+      },
+      {
+        "dong": 102,
+        "elev": 24.1
+      },
+      {
+        "dong": 103,
+        "elev": 25.6
+      },
+      {
+        "dong": 104,
+        "elev": 24.6
+      },
+      {
+        "dong": 105,
+        "elev": 23.7
+      },
+      {
+        "dong": 106,
+        "elev": 23.8
+      },
+      {
+        "dong": 107,
+        "elev": 25.6
+      }
+    ],
     "pedia1": 5,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia1_slope": 0.9,
@@ -4734,6 +8210,40 @@
     ],
     "slope": 3.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 40.9
+      },
+      {
+        "dong": 102,
+        "elev": 40.8
+      },
+      {
+        "dong": 103,
+        "elev": 40.5
+      },
+      {
+        "dong": 104,
+        "elev": 41.1
+      },
+      {
+        "dong": 105,
+        "elev": 43.8
+      },
+      {
+        "dong": 106,
+        "elev": 43.3
+      },
+      {
+        "dong": 107,
+        "elev": 43.2
+      },
+      {
+        "dong": 108,
+        "elev": 43.9
+      }
+    ],
     "pedia1": 10,
     "pedia1_name": "서울소아청소년과의원",
     "pedia1_slope": -16.3,
@@ -4809,6 +8319,40 @@
     ],
     "slope": 9.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 96
+      },
+      {
+        "dong": 102,
+        "elev": 94.2
+      },
+      {
+        "dong": 103,
+        "elev": 94.8
+      },
+      {
+        "dong": 104,
+        "elev": 94.5
+      },
+      {
+        "dong": 105,
+        "elev": 96.8
+      },
+      {
+        "dong": 106,
+        "elev": 97.1
+      },
+      {
+        "dong": 107,
+        "elev": 97.9
+      },
+      {
+        "dong": 108,
+        "elev": 102.8
+      }
+    ],
     "pedia1": 9,
     "pedia1_name": "장소아청소년과의원",
     "pedia1_slope": -39.8,
@@ -4852,6 +8396,48 @@
     ],
     "slope": 31.7,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 77.7
+      },
+      {
+        "dong": 102,
+        "elev": 64.1
+      },
+      {
+        "dong": 103,
+        "elev": 76.2
+      },
+      {
+        "dong": 104,
+        "elev": 72.9
+      },
+      {
+        "dong": 105,
+        "elev": 79.3
+      },
+      {
+        "dong": 106,
+        "elev": 79.9
+      },
+      {
+        "dong": 107,
+        "elev": 82.7
+      },
+      {
+        "dong": 108,
+        "elev": 89.3
+      },
+      {
+        "dong": 109,
+        "elev": 90.2
+      },
+      {
+        "dong": 110,
+        "elev": 94.9
+      }
+    ],
     "pedia1": 7,
     "pedia1_name": "사랑의내과소아청소년과의원",
     "pedia1_slope": -13.4,
@@ -4927,6 +8513,52 @@
     ],
     "slope": 11.6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 68.7
+      },
+      {
+        "dong": 102,
+        "elev": 63.1
+      },
+      {
+        "dong": 103,
+        "elev": 61.2
+      },
+      {
+        "dong": 104,
+        "elev": 71.4
+      },
+      {
+        "dong": 105,
+        "elev": 60.9
+      },
+      {
+        "dong": 106,
+        "elev": 70
+      },
+      {
+        "dong": 107,
+        "elev": 59.9
+      },
+      {
+        "dong": 108,
+        "elev": 66.9
+      },
+      {
+        "dong": 109,
+        "elev": 64
+      },
+      {
+        "dong": 110,
+        "elev": 61.2
+      },
+      {
+        "dong": 111,
+        "elev": 57.1
+      }
+    ],
     "pedia1": 17,
     "pedia1_name": "하나소아청소년과의원",
     "pedia1_slope": -38.5,
@@ -5011,6 +8643,48 @@
     ],
     "slope": 31.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 113.3
+      },
+      {
+        "dong": 102,
+        "elev": 119.1
+      },
+      {
+        "dong": 103,
+        "elev": 111
+      },
+      {
+        "dong": 104,
+        "elev": 111.9
+      },
+      {
+        "dong": 105,
+        "elev": 114.3
+      },
+      {
+        "dong": 106,
+        "elev": 127.4
+      },
+      {
+        "dong": 107,
+        "elev": 132.1
+      },
+      {
+        "dong": 108,
+        "elev": 125.5
+      },
+      {
+        "dong": 109,
+        "elev": 140.9
+      },
+      {
+        "dong": 110,
+        "elev": 137.4
+      }
+    ],
     "pedia1": 12,
     "pedia1_name": "삼성키즈소아청소년과의원",
     "pedia1_slope": -13.6,
@@ -5077,6 +8751,44 @@
     ],
     "slope": 26.8,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 701,
+        "elev": 46.9
+      },
+      {
+        "dong": 702,
+        "elev": 50.4
+      },
+      {
+        "dong": 703,
+        "elev": 48.6
+      },
+      {
+        "dong": 704,
+        "elev": 48.4
+      },
+      {
+        "dong": 705,
+        "elev": 53.7
+      },
+      {
+        "dong": 706,
+        "elev": 72.7
+      },
+      {
+        "dong": 707,
+        "elev": 58.8
+      },
+      {
+        "dong": 708,
+        "elev": 52.4
+      },
+      {
+        "dong": 709,
+        "elev": 51.1
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "서울소아청소년과의원",
     "pedia1_slope": -28.3,
@@ -5127,6 +8839,36 @@
     "evening_details": [],
     "slope": 18.6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 801,
+        "elev": 63.8
+      },
+      {
+        "dong": 802,
+        "elev": 60.4
+      },
+      {
+        "dong": 803,
+        "elev": 70.2
+      },
+      {
+        "dong": 804,
+        "elev": 67.4
+      },
+      {
+        "dong": 805,
+        "elev": 74.3
+      },
+      {
+        "dong": 806,
+        "elev": 75.2
+      },
+      {
+        "dong": 807,
+        "elev": 74.5
+      }
+    ],
     "pedia1": 10,
     "pedia1_name": "마트소아청소년과의원",
     "pedia1_slope": -13.8,
@@ -5170,6 +8912,60 @@
     ],
     "slope": 6.3,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 500,
+        "elev": 49.8
+      },
+      {
+        "dong": 501,
+        "elev": 50.5
+      },
+      {
+        "dong": 502,
+        "elev": 49.8
+      },
+      {
+        "dong": 503,
+        "elev": 49
+      },
+      {
+        "dong": 504,
+        "elev": 48.3
+      },
+      {
+        "dong": 505,
+        "elev": 48.6
+      },
+      {
+        "dong": 506,
+        "elev": 47.2
+      },
+      {
+        "dong": 507,
+        "elev": 47.9
+      },
+      {
+        "dong": 508,
+        "elev": 51.5
+      },
+      {
+        "dong": 509,
+        "elev": 54
+      },
+      {
+        "dong": 510,
+        "elev": 50.3
+      },
+      {
+        "dong": 511,
+        "elev": 51.5
+      },
+      {
+        "dong": 512,
+        "elev": 50.9
+      }
+    ],
     "pedia1": 5,
     "pedia1_name": "아이웰봄 소아청소년과의원",
     "pedia1_slope": -5.2,
@@ -5282,6 +9078,32 @@
     ],
     "slope": 8.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 301,
+        "elev": 82.9
+      },
+      {
+        "dong": 302,
+        "elev": 80.8
+      },
+      {
+        "dong": 303,
+        "elev": 77.5
+      },
+      {
+        "dong": 304,
+        "elev": 74
+      },
+      {
+        "dong": 305,
+        "elev": 75.6
+      },
+      {
+        "dong": 306,
+        "elev": 78.1
+      }
+    ],
     "pedia1": 6,
     "pedia1_name": "꿈이든소아청소년과의원",
     "pedia1_slope": -8.2,
@@ -5313,6 +9135,44 @@
     "evening_details": [],
     "slope": 4.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1001,
+        "elev": 76.4
+      },
+      {
+        "dong": 1002,
+        "elev": 77.3
+      },
+      {
+        "dong": 1003,
+        "elev": 78.7
+      },
+      {
+        "dong": 1004,
+        "elev": 77.6
+      },
+      {
+        "dong": 1005,
+        "elev": 79.3
+      },
+      {
+        "dong": 1006,
+        "elev": 80.5
+      },
+      {
+        "dong": 1007,
+        "elev": 80.5
+      },
+      {
+        "dong": 1008,
+        "elev": 80.6
+      },
+      {
+        "dong": 1009,
+        "elev": 80.6
+      }
+    ],
     "pedia1": 14,
     "pedia1_name": "마트소아청소년과의원",
     "pedia1_slope": -24.1,
@@ -5379,6 +9239,52 @@
     ],
     "slope": 16.6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 301,
+        "elev": 61.3
+      },
+      {
+        "dong": 302,
+        "elev": 64
+      },
+      {
+        "dong": 303,
+        "elev": 65.1
+      },
+      {
+        "dong": 304,
+        "elev": 73.1
+      },
+      {
+        "dong": 305,
+        "elev": 69.8
+      },
+      {
+        "dong": 306,
+        "elev": 68.7
+      },
+      {
+        "dong": 307,
+        "elev": 78.2
+      },
+      {
+        "dong": 308,
+        "elev": 66.9
+      },
+      {
+        "dong": 309,
+        "elev": 63.1
+      },
+      {
+        "dong": 310,
+        "elev": 63
+      },
+      {
+        "dong": 311,
+        "elev": 61
+      }
+    ],
     "pedia1": 5,
     "pedia1_name": "서울소아청소년과의원",
     "pedia1_slope": -24.9,
@@ -5435,6 +9341,40 @@
     ],
     "slope": 3.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 88.3
+      },
+      {
+        "dong": 102,
+        "elev": 88.4
+      },
+      {
+        "dong": 103,
+        "elev": 89
+      },
+      {
+        "dong": 104,
+        "elev": 92.2
+      },
+      {
+        "dong": 105,
+        "elev": 92
+      },
+      {
+        "dong": 106,
+        "elev": 91.4
+      },
+      {
+        "dong": 107,
+        "elev": 91.7
+      },
+      {
+        "dong": 108,
+        "elev": 90.4
+      }
+    ],
     "pedia1": 4,
     "pedia1_name": "배소아청소년과의원",
     "pedia1_slope": -0.8,
@@ -5478,6 +9418,48 @@
     ],
     "slope": 14.7,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 108.1
+      },
+      {
+        "dong": 102,
+        "elev": 108.3
+      },
+      {
+        "dong": 103,
+        "elev": 112.5
+      },
+      {
+        "dong": 104,
+        "elev": 113.3
+      },
+      {
+        "dong": 105,
+        "elev": 115.9
+      },
+      {
+        "dong": 106,
+        "elev": 116.4
+      },
+      {
+        "dong": 107,
+        "elev": 119.7
+      },
+      {
+        "dong": 108,
+        "elev": 120
+      },
+      {
+        "dong": 109,
+        "elev": 122.9
+      },
+      {
+        "dong": 110,
+        "elev": 121.8
+      }
+    ],
     "pedia1": 15,
     "pedia1_name": "아산이뮨플러스의원",
     "pedia1_slope": -21.7,
@@ -5521,6 +9503,24 @@
     ],
     "slope": 0.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 23.8
+      },
+      {
+        "dong": 102,
+        "elev": 23.7
+      },
+      {
+        "dong": 103,
+        "elev": 24.1
+      },
+      {
+        "dong": 104,
+        "elev": 24.2
+      }
+    ],
     "pedia1": 9,
     "pedia1_name": "하남드림 소아청소년과의원",
     "pedia1_slope": -0.8,
@@ -5571,6 +9571,48 @@
     "evening_details": [],
     "slope": 0.6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1101,
+        "elev": 23.6
+      },
+      {
+        "dong": 1102,
+        "elev": 24
+      },
+      {
+        "dong": 1103,
+        "elev": 23.9
+      },
+      {
+        "dong": 1104,
+        "elev": 24.1
+      },
+      {
+        "dong": 1105,
+        "elev": 24.1
+      },
+      {
+        "dong": 1106,
+        "elev": 24.1
+      },
+      {
+        "dong": 1107,
+        "elev": 24.1
+      },
+      {
+        "dong": 1108,
+        "elev": 24.1
+      },
+      {
+        "dong": 1109,
+        "elev": 24
+      },
+      {
+        "dong": 1110,
+        "elev": 24.2
+      }
+    ],
     "pedia1": 12,
     "pedia1_name": "플러스맘소아청소년과의원",
     "pedia1_slope": -0.6,
@@ -5631,6 +9673,88 @@
     ],
     "slope": 1.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 17.6
+      },
+      {
+        "dong": 102,
+        "elev": 17.4
+      },
+      {
+        "dong": 103,
+        "elev": 17.2
+      },
+      {
+        "dong": 104,
+        "elev": 17.7
+      },
+      {
+        "dong": 105,
+        "elev": 17.5
+      },
+      {
+        "dong": 106,
+        "elev": 18.3
+      },
+      {
+        "dong": 107,
+        "elev": 18.4
+      },
+      {
+        "dong": 108,
+        "elev": 18.4
+      },
+      {
+        "dong": 109,
+        "elev": 18.3
+      },
+      {
+        "dong": 110,
+        "elev": 17.2
+      },
+      {
+        "dong": 111,
+        "elev": 17.2
+      },
+      {
+        "dong": 112,
+        "elev": 17.2
+      },
+      {
+        "dong": 113,
+        "elev": 17
+      },
+      {
+        "dong": 114,
+        "elev": 17.3
+      },
+      {
+        "dong": 115,
+        "elev": 16.8
+      },
+      {
+        "dong": 116,
+        "elev": 17.2
+      },
+      {
+        "dong": 117,
+        "elev": 18.1
+      },
+      {
+        "dong": 118,
+        "elev": 18.3
+      },
+      {
+        "dong": 119,
+        "elev": 17.5
+      },
+      {
+        "dong": 120,
+        "elev": 17.2
+      }
+    ],
     "pedia1": 5,
     "pedia1_name": "아이언소아청소년과의원",
     "pedia1_slope": 0.8,
@@ -5726,6 +9850,36 @@
     ],
     "slope": 2.9,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 4001,
+        "elev": 25
+      },
+      {
+        "dong": 4002,
+        "elev": 25.5
+      },
+      {
+        "dong": 4003,
+        "elev": 25.9
+      },
+      {
+        "dong": 4005,
+        "elev": 26.1
+      },
+      {
+        "dong": 4006,
+        "elev": 24
+      },
+      {
+        "dong": 4008,
+        "elev": 23.1
+      },
+      {
+        "dong": 4009,
+        "elev": 23.2
+      }
+    ],
     "pedia1": 12,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia1_slope": -0.7,
@@ -5850,6 +10004,88 @@
     ],
     "slope": 6.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 501,
+        "elev": 23.4
+      },
+      {
+        "dong": 502,
+        "elev": 24.3
+      },
+      {
+        "dong": 503,
+        "elev": 24.5
+      },
+      {
+        "dong": 504,
+        "elev": 26
+      },
+      {
+        "dong": 505,
+        "elev": 25.8
+      },
+      {
+        "dong": 506,
+        "elev": 26.1
+      },
+      {
+        "dong": 507,
+        "elev": 26.3
+      },
+      {
+        "dong": 508,
+        "elev": 26.8
+      },
+      {
+        "dong": 509,
+        "elev": 25.5
+      },
+      {
+        "dong": 510,
+        "elev": 26.2
+      },
+      {
+        "dong": 511,
+        "elev": 25.8
+      },
+      {
+        "dong": 512,
+        "elev": 27
+      },
+      {
+        "dong": 513,
+        "elev": 26.8
+      },
+      {
+        "dong": 514,
+        "elev": 27.7
+      },
+      {
+        "dong": 515,
+        "elev": 27.1
+      },
+      {
+        "dong": 516,
+        "elev": 28.1
+      },
+      {
+        "dong": 517,
+        "elev": 28.1
+      },
+      {
+        "dong": 518,
+        "elev": 28.6
+      },
+      {
+        "dong": 519,
+        "elev": 29.8
+      },
+      {
+        "dong": 520,
+        "elev": 28.8
+      }
+    ],
     "pedia1": 13,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia1_slope": -1.6,
@@ -5928,6 +10164,48 @@
     ],
     "slope": 4.1,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 37.4
+      },
+      {
+        "dong": 102,
+        "elev": 38.1
+      },
+      {
+        "dong": 103,
+        "elev": 36.8
+      },
+      {
+        "dong": 104,
+        "elev": 38.8
+      },
+      {
+        "dong": 105,
+        "elev": 38.4
+      },
+      {
+        "dong": 106,
+        "elev": 37.6
+      },
+      {
+        "dong": 107,
+        "elev": 37.2
+      },
+      {
+        "dong": 108,
+        "elev": 36.3
+      },
+      {
+        "dong": 109,
+        "elev": 36.1
+      },
+      {
+        "dong": 110,
+        "elev": 33.8
+      }
+    ],
     "pedia1": 7,
     "pedia1_name": "아이편한소아청소년과의원",
     "pedia1_slope": 2.9,
@@ -5994,6 +10272,64 @@
     ],
     "slope": 7.7,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 441,
+        "elev": 41.8
+      },
+      {
+        "dong": 442,
+        "elev": 41.9
+      },
+      {
+        "dong": 443,
+        "elev": 42.6
+      },
+      {
+        "dong": 444,
+        "elev": 43.3
+      },
+      {
+        "dong": 445,
+        "elev": 43.9
+      },
+      {
+        "dong": 446,
+        "elev": 46.9
+      },
+      {
+        "dong": 447,
+        "elev": 47.4
+      },
+      {
+        "dong": 448,
+        "elev": 48.6
+      },
+      {
+        "dong": 449,
+        "elev": 49.2
+      },
+      {
+        "dong": 450,
+        "elev": 49.8
+      },
+      {
+        "dong": 451,
+        "elev": 48
+      },
+      {
+        "dong": 452,
+        "elev": 45.9
+      },
+      {
+        "dong": 453,
+        "elev": 45.4
+      },
+      {
+        "dong": 454,
+        "elev": 42.8
+      }
+    ],
     "pedia1": 2,
     "pedia1_name": "솔빛소아청소년과의원",
     "pedia1_slope": 2,
@@ -6038,6 +10374,44 @@
     "evening_details": [],
     "slope": 4.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 101,
+        "elev": 45.5
+      },
+      {
+        "dong": 102,
+        "elev": 45.3
+      },
+      {
+        "dong": 103,
+        "elev": 44.8
+      },
+      {
+        "dong": 104,
+        "elev": 45.9
+      },
+      {
+        "dong": 105,
+        "elev": 46.6
+      },
+      {
+        "dong": 106,
+        "elev": 46.3
+      },
+      {
+        "dong": 107,
+        "elev": 47.2
+      },
+      {
+        "dong": 108,
+        "elev": 48.8
+      },
+      {
+        "dong": 109,
+        "elev": 47.6
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "코벤트더웰의원",
     "pedia1_slope": -4.5,
@@ -6098,6 +10472,40 @@
     ],
     "slope": 7.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1221,
+        "elev": 92.4
+      },
+      {
+        "dong": 1222,
+        "elev": 96.1
+      },
+      {
+        "dong": 1223,
+        "elev": 95.6
+      },
+      {
+        "dong": 1224,
+        "elev": 98.3
+      },
+      {
+        "dong": 1225,
+        "elev": 98.5
+      },
+      {
+        "dong": 1226,
+        "elev": 96.2
+      },
+      {
+        "dong": 1227,
+        "elev": 92.5
+      },
+      {
+        "dong": 1228,
+        "elev": 90.8
+      }
+    ],
     "pedia1": 18,
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia1_slope": -27.5,
@@ -6212,6 +10620,60 @@
     ],
     "slope": 6.6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1341,
+        "elev": 89.5
+      },
+      {
+        "dong": 1342,
+        "elev": 91.5
+      },
+      {
+        "dong": 1343,
+        "elev": 95
+      },
+      {
+        "dong": 1344,
+        "elev": 95.1
+      },
+      {
+        "dong": 1345,
+        "elev": 92.5
+      },
+      {
+        "dong": 1346,
+        "elev": 89.9
+      },
+      {
+        "dong": 1347,
+        "elev": 89.7
+      },
+      {
+        "dong": 1348,
+        "elev": 94.8
+      },
+      {
+        "dong": 1349,
+        "elev": 94.5
+      },
+      {
+        "dong": 1350,
+        "elev": 94.4
+      },
+      {
+        "dong": 1351,
+        "elev": 94
+      },
+      {
+        "dong": 1352,
+        "elev": 89.1
+      },
+      {
+        "dong": 1353,
+        "elev": 89
+      }
+    ],
     "pedia1": 16,
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia1_slope": -24.8,
@@ -6284,6 +10746,40 @@
     ],
     "slope": 4.3,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 431,
+        "elev": 41.3
+      },
+      {
+        "dong": 432,
+        "elev": 41.1
+      },
+      {
+        "dong": 433,
+        "elev": 43.6
+      },
+      {
+        "dong": 434,
+        "elev": 43.4
+      },
+      {
+        "dong": 435,
+        "elev": 44
+      },
+      {
+        "dong": 436,
+        "elev": 45
+      },
+      {
+        "dong": 437,
+        "elev": 44.6
+      },
+      {
+        "dong": 438,
+        "elev": 45.2
+      }
+    ],
     "pedia1": 4,
     "pedia1_name": "삼성제일소아청소년과의원",
     "pedia1_slope": -3.8,
@@ -6322,6 +10818,68 @@
     "evening_details": [],
     "slope": 17.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 2601,
+        "elev": 60.7
+      },
+      {
+        "dong": 2602,
+        "elev": 55.2
+      },
+      {
+        "dong": 2603,
+        "elev": 50.3
+      },
+      {
+        "dong": 2604,
+        "elev": 48.4
+      },
+      {
+        "dong": 2605,
+        "elev": 46.5
+      },
+      {
+        "dong": 2606,
+        "elev": 45.8
+      },
+      {
+        "dong": 2607,
+        "elev": 50.3
+      },
+      {
+        "dong": 2608,
+        "elev": 56.1
+      },
+      {
+        "dong": 2609,
+        "elev": 60.9
+      },
+      {
+        "dong": 2610,
+        "elev": 62.3
+      },
+      {
+        "dong": 2611,
+        "elev": 62.7
+      },
+      {
+        "dong": 2612,
+        "elev": 57.2
+      },
+      {
+        "dong": 2613,
+        "elev": 53.9
+      },
+      {
+        "dong": 2614,
+        "elev": 52.3
+      },
+      {
+        "dong": 2615,
+        "elev": 57.4
+      }
+    ],
     "pedia1": 22,
     "pedia1_name": "동탄성모병원",
     "pedia1_slope": null,
@@ -6403,6 +10961,64 @@
     ],
     "slope": 12.9,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 2621,
+        "elev": 54.6
+      },
+      {
+        "dong": 2622,
+        "elev": 52.9
+      },
+      {
+        "dong": 2623,
+        "elev": 53.4
+      },
+      {
+        "dong": 2624,
+        "elev": 50.4
+      },
+      {
+        "dong": 2625,
+        "elev": 57.2
+      },
+      {
+        "dong": 2626,
+        "elev": 55.6
+      },
+      {
+        "dong": 2627,
+        "elev": 57.7
+      },
+      {
+        "dong": 2628,
+        "elev": 57.6
+      },
+      {
+        "dong": 2629,
+        "elev": 59.9
+      },
+      {
+        "dong": 2630,
+        "elev": 62
+      },
+      {
+        "dong": 2631,
+        "elev": 63.5
+      },
+      {
+        "dong": 2632,
+        "elev": 58.8
+      },
+      {
+        "dong": 2633,
+        "elev": 60.2
+      },
+      {
+        "dong": 2634,
+        "elev": 59.7
+      }
+    ],
     "pedia1": 16,
     "pedia1_name": "동탄성모병원",
     "pedia1_slope": -8.1,
@@ -6446,6 +11062,32 @@
     ],
     "slope": 1.6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 231,
+        "elev": 58.3
+      },
+      {
+        "dong": 232,
+        "elev": 57.6
+      },
+      {
+        "dong": 233,
+        "elev": 57.3
+      },
+      {
+        "dong": 234,
+        "elev": 57.6
+      },
+      {
+        "dong": 235,
+        "elev": 59.2
+      },
+      {
+        "dong": 236,
+        "elev": 58.8
+      }
+    ],
     "pedia1": 10,
     "pedia1_name": "성모플러스 내과소아과",
     "pedia1_slope": -4.4,
@@ -6508,6 +11150,36 @@
     ],
     "slope": 10.7,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 2451,
+        "elev": 69.8
+      },
+      {
+        "dong": 2452,
+        "elev": 71.6
+      },
+      {
+        "dong": 2453,
+        "elev": 64.4
+      },
+      {
+        "dong": 2454,
+        "elev": 64
+      },
+      {
+        "dong": 2455,
+        "elev": 68.8
+      },
+      {
+        "dong": 2456,
+        "elev": 61.1
+      },
+      {
+        "dong": 2457,
+        "elev": 65.3
+      }
+    ],
     "pedia1": 3,
     "pedia1_name": "연세키즈365소아청소년과의원",
     "pedia1_slope": 11.3,
@@ -6584,6 +11256,36 @@
     ],
     "slope": 6.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1121,
+        "elev": 84
+      },
+      {
+        "dong": 1122,
+        "elev": 82.8
+      },
+      {
+        "dong": 1123,
+        "elev": 81.1
+      },
+      {
+        "dong": 1124,
+        "elev": 76.1
+      },
+      {
+        "dong": 1125,
+        "elev": 79.9
+      },
+      {
+        "dong": 1126,
+        "elev": 77.9
+      },
+      {
+        "dong": 1127,
+        "elev": 80.8
+      }
+    ],
     "pedia1": 10,
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia1_slope": -16.5,
@@ -6671,6 +11373,76 @@
     ],
     "slope": 6,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1801,
+        "elev": 47.1
+      },
+      {
+        "dong": 1802,
+        "elev": 47.5
+      },
+      {
+        "dong": 1803,
+        "elev": 47.3
+      },
+      {
+        "dong": 1804,
+        "elev": 46.7
+      },
+      {
+        "dong": 1805,
+        "elev": 46
+      },
+      {
+        "dong": 1806,
+        "elev": 44.9
+      },
+      {
+        "dong": 1807,
+        "elev": 42.6
+      },
+      {
+        "dong": 1808,
+        "elev": 41.9
+      },
+      {
+        "dong": 1809,
+        "elev": 41.5
+      },
+      {
+        "dong": 1810,
+        "elev": 42.6
+      },
+      {
+        "dong": 1811,
+        "elev": 41.1
+      },
+      {
+        "dong": 1812,
+        "elev": 42.7
+      },
+      {
+        "dong": 1813,
+        "elev": 45
+      },
+      {
+        "dong": 1814,
+        "elev": 42.8
+      },
+      {
+        "dong": 1815,
+        "elev": 41.3
+      },
+      {
+        "dong": 1816,
+        "elev": 46.2
+      },
+      {
+        "dong": 1817,
+        "elev": 46.6
+      }
+    ],
     "pedia1": 33,
     "pedia1_name": "올바른소아청소년과의원",
     "pedia1_slope": 8.3,
@@ -6727,6 +11499,48 @@
     ],
     "slope": 2.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 201,
+        "elev": 52.6
+      },
+      {
+        "dong": 202,
+        "elev": 53.1
+      },
+      {
+        "dong": 203,
+        "elev": 53.2
+      },
+      {
+        "dong": 204,
+        "elev": 53.6
+      },
+      {
+        "dong": 205,
+        "elev": 52
+      },
+      {
+        "dong": 206,
+        "elev": 52.4
+      },
+      {
+        "dong": 207,
+        "elev": 51.2
+      },
+      {
+        "dong": 208,
+        "elev": 51.6
+      },
+      {
+        "dong": 209,
+        "elev": 52.2
+      },
+      {
+        "dong": 210,
+        "elev": 53.4
+      }
+    ],
     "pedia1": 4,
     "pedia1_name": "우리아이소아청소년과의원",
     "pedia1_slope": 0.4,
@@ -6783,6 +11597,52 @@
     ],
     "slope": 10.1,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 3201,
+        "elev": 52.2
+      },
+      {
+        "dong": 3202,
+        "elev": 51
+      },
+      {
+        "dong": 3203,
+        "elev": 53.1
+      },
+      {
+        "dong": 3204,
+        "elev": 57
+      },
+      {
+        "dong": 3205,
+        "elev": 57.9
+      },
+      {
+        "dong": 3206,
+        "elev": 56.9
+      },
+      {
+        "dong": 3207,
+        "elev": 51.6
+      },
+      {
+        "dong": 3208,
+        "elev": 57.2
+      },
+      {
+        "dong": 3209,
+        "elev": 52.6
+      },
+      {
+        "dong": 3210,
+        "elev": 47.6
+      },
+      {
+        "dong": 3211,
+        "elev": 48.2
+      }
+    ],
     "pedia1": 7,
     "pedia1_name": "연세이룬소아청소년과의원",
     "pedia1_slope": 12.8,
@@ -6859,6 +11719,48 @@
     ],
     "slope": 1.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1611,
+        "elev": 28.9
+      },
+      {
+        "dong": 1612,
+        "elev": 28.8
+      },
+      {
+        "dong": 1613,
+        "elev": 29.2
+      },
+      {
+        "dong": 1614,
+        "elev": 29.4
+      },
+      {
+        "dong": 1615,
+        "elev": 29.8
+      },
+      {
+        "dong": 1616,
+        "elev": 29.3
+      },
+      {
+        "dong": 1617,
+        "elev": 28.9
+      },
+      {
+        "dong": 1618,
+        "elev": 29.9
+      },
+      {
+        "dong": 1619,
+        "elev": 30.1
+      },
+      {
+        "dong": 1620,
+        "elev": 29.4
+      }
+    ],
     "pedia1": 21,
     "pedia1_name": "남승우소아청소년과의원",
     "pedia1_slope": 22.2,
@@ -6909,6 +11811,28 @@
     ],
     "slope": 0.8,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 241,
+        "elev": 59
+      },
+      {
+        "dong": 242,
+        "elev": 59.4
+      },
+      {
+        "dong": 243,
+        "elev": 59.2
+      },
+      {
+        "dong": 244,
+        "elev": 59.5
+      },
+      {
+        "dong": 245,
+        "elev": 59.3
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "동탄연세소아청소년과웰빙",
     "pedia1_slope": -10.4,
@@ -6979,6 +11903,52 @@
     ],
     "slope": 21.7,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 3031,
+        "elev": 54.1
+      },
+      {
+        "dong": 3032,
+        "elev": 58.3
+      },
+      {
+        "dong": 3033,
+        "elev": 60.7
+      },
+      {
+        "dong": 3034,
+        "elev": 56.1
+      },
+      {
+        "dong": 3035,
+        "elev": 60.9
+      },
+      {
+        "dong": 3036,
+        "elev": 63.2
+      },
+      {
+        "dong": 3037,
+        "elev": 65.7
+      },
+      {
+        "dong": 3038,
+        "elev": 67.5
+      },
+      {
+        "dong": 3039,
+        "elev": 70
+      },
+      {
+        "dong": 3040,
+        "elev": 73.3
+      },
+      {
+        "dong": 3041,
+        "elev": 75.7
+      }
+    ],
     "pedia1": 10,
     "pedia1_name": "동탄성모병원",
     "pedia1_slope": -12.2,
@@ -7063,6 +12033,44 @@
     ],
     "slope": 7.4,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 1201,
+        "elev": 87.2
+      },
+      {
+        "dong": 1202,
+        "elev": 87
+      },
+      {
+        "dong": 1203,
+        "elev": 85.2
+      },
+      {
+        "dong": 1204,
+        "elev": 83.2
+      },
+      {
+        "dong": 1205,
+        "elev": 79.5
+      },
+      {
+        "dong": 1206,
+        "elev": 82
+      },
+      {
+        "dong": 1207,
+        "elev": 84.2
+      },
+      {
+        "dong": 1208,
+        "elev": 85
+      },
+      {
+        "dong": 1209,
+        "elev": 86.2
+      }
+    ],
     "pedia1": 8,
     "pedia1_name": "코끼리소아청소년과의원",
     "pedia1_slope": 6.7,
@@ -7156,6 +12164,72 @@
     ],
     "slope": 12.8,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 2021,
+        "elev": 65.5
+      },
+      {
+        "dong": 2022,
+        "elev": 68.8
+      },
+      {
+        "dong": 2023,
+        "elev": 67.5
+      },
+      {
+        "dong": 2024,
+        "elev": 65.2
+      },
+      {
+        "dong": 2025,
+        "elev": 63.3
+      },
+      {
+        "dong": 2026,
+        "elev": 62.6
+      },
+      {
+        "dong": 2027,
+        "elev": 65.2
+      },
+      {
+        "dong": 2028,
+        "elev": 66.1
+      },
+      {
+        "dong": 2029,
+        "elev": 61.4
+      },
+      {
+        "dong": 2030,
+        "elev": 62.3
+      },
+      {
+        "dong": 2031,
+        "elev": 60.4
+      },
+      {
+        "dong": 2032,
+        "elev": 57
+      },
+      {
+        "dong": 2033,
+        "elev": 58.5
+      },
+      {
+        "dong": 2034,
+        "elev": 56.9
+      },
+      {
+        "dong": 2035,
+        "elev": 55.6
+      },
+      {
+        "dong": 2036,
+        "elev": 59.3
+      }
+    ],
     "pedia1": 5,
     "pedia1_name": "동탄S소아청소년과 발달클리닉",
     "pedia1_slope": -8.3,
@@ -7242,6 +12316,56 @@
     "evening_details": [],
     "slope": 10.2,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 301,
+        "elev": 71
+      },
+      {
+        "dong": 302,
+        "elev": 74.6
+      },
+      {
+        "dong": 303,
+        "elev": 79.7
+      },
+      {
+        "dong": 304,
+        "elev": 81.5
+      },
+      {
+        "dong": 305,
+        "elev": 72.1
+      },
+      {
+        "dong": 306,
+        "elev": 74.8
+      },
+      {
+        "dong": 307,
+        "elev": 77.2
+      },
+      {
+        "dong": 308,
+        "elev": 79.1
+      },
+      {
+        "dong": 309,
+        "elev": 81.2
+      },
+      {
+        "dong": 310,
+        "elev": 81.3
+      },
+      {
+        "dong": 311,
+        "elev": 72.9
+      },
+      {
+        "dong": 312,
+        "elev": 75.1
+      }
+    ],
     "pedia1": 4,
     "pedia1_name": "동탄해와달소아청소년과의원",
     "pedia1_slope": -11.9,
@@ -7318,6 +12442,32 @@
     ],
     "slope": 10.1,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 2481,
+        "elev": 63.1
+      },
+      {
+        "dong": 2482,
+        "elev": 68.4
+      },
+      {
+        "dong": 2483,
+        "elev": 59.7
+      },
+      {
+        "dong": 2484,
+        "elev": 65.4
+      },
+      {
+        "dong": 2485,
+        "elev": 58.1
+      },
+      {
+        "dong": 2486,
+        "elev": 61.6
+      }
+    ],
     "pedia1": 6,
     "pedia1_name": "연세키즈365소아청소년과의원",
     "pedia1_slope": 13.1,
@@ -7374,6 +12524,40 @@
     ],
     "slope": 11.5,
     "slope_method": "dong_naver",
+    "slope_dongs": [
+      {
+        "dong": 2831,
+        "elev": 47.3
+      },
+      {
+        "dong": 2832,
+        "elev": 50.8
+      },
+      {
+        "dong": 2833,
+        "elev": 55.3
+      },
+      {
+        "dong": 2834,
+        "elev": 58.1
+      },
+      {
+        "dong": 2835,
+        "elev": 58.4
+      },
+      {
+        "dong": 2836,
+        "elev": 57.5
+      },
+      {
+        "dong": 2837,
+        "elev": 53.1
+      },
+      {
+        "dong": 2838,
+        "elev": 49
+      }
+    ],
     "pedia1": 4,
     "pedia1_name": "원소아청소년과의원",
     "pedia1_slope": -4.6,
