@@ -21,7 +21,27 @@
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia2": 15,
     "pedia2_name": "코끼리소아청소년과의원",
-    "hcode": "9J848"
+    "hcode": "9J848",
+    "recent_trades": [
+      {
+        "date": "2026-04-10",
+        "price": 8.0,
+        "floor": 21,
+        "area": 84.0
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.0,
+        "floor": 13,
+        "area": 84.0
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.7,
+        "floor": 4,
+        "area": 84.0
+      }
+    ]
   },
   {
     "name": "가천대역두산위브",
@@ -45,7 +65,21 @@
     "pedia1_name": "장소아청소년과의원",
     "pedia2": 8,
     "pedia2_name": "이메디정형외과",
-    "hcode": "aWCcc"
+    "hcode": "aWCcc",
+    "recent_trades": [
+      {
+        "date": "2026-04-10",
+        "price": 7.2,
+        "floor": 2,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-05",
+        "price": 7.5,
+        "floor": 12,
+        "area": 59.6
+      }
+    ]
   },
   {
     "name": "가천대역두산위브",
@@ -69,7 +103,8 @@
     "pedia1_name": "장소아청소년과의원",
     "pedia2": 8,
     "pedia2_name": "이메디정형외과",
-    "hcode": "aWCcc"
+    "hcode": "aWCcc",
+    "recent_trades": []
   },
   {
     "name": "광교더포레스트",
@@ -93,7 +128,33 @@
     "pedia1_name": "수지온케어365의원",
     "pedia2": 30,
     "pedia2_name": "호호소아청소년과의원",
-    "hcode": "58Y78"
+    "hcode": "58Y78",
+    "recent_trades": [
+      {
+        "date": "2026-04-13",
+        "price": 8.6,
+        "floor": 28,
+        "area": 75.0
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.5,
+        "floor": 19,
+        "area": 75.0
+      },
+      {
+        "date": "2026-04-06",
+        "price": 8.5,
+        "floor": 6,
+        "area": 75.0
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.6,
+        "floor": 8,
+        "area": 75.0
+      }
+    ]
   },
   {
     "name": "광교더포레스트",
@@ -117,7 +178,21 @@
     "pedia1_name": "수지온케어365의원",
     "pedia2": 30,
     "pedia2_name": "호호소아청소년과의원",
-    "hcode": "58Y78"
+    "hcode": "58Y78",
+    "recent_trades": [
+      {
+        "date": "2026-04-27",
+        "price": 8.9,
+        "floor": 21,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-17",
+        "price": 9.0,
+        "floor": 11,
+        "area": 84.8
+      }
+    ]
   },
   {
     "name": "금호어울림레이크",
@@ -141,7 +216,33 @@
     "pedia1_name": "연세이룬소아청소년과의원",
     "pedia2": 9,
     "pedia2_name": "동탄호수소아청소년과의원",
-    "hcode": "dy537"
+    "hcode": "dy537",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.5,
+        "floor": 8,
+        "area": 75.0
+      },
+      {
+        "date": "2026-04-15",
+        "price": 7.6,
+        "floor": 10,
+        "area": 75.0
+      },
+      {
+        "date": "2026-04-06",
+        "price": 5.9,
+        "floor": 18,
+        "area": 75.0
+      },
+      {
+        "date": "2026-04-02",
+        "price": 7.6,
+        "floor": 5,
+        "area": 75.0
+      }
+    ]
   },
   {
     "name": "기흥더샵프라임뷰",
@@ -165,7 +266,15 @@
     "pedia1_name": "배소아청소년과의원",
     "pedia2": 16,
     "pedia2_name": "강남병원 소아청소년센터",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-13",
+        "price": 7.0,
+        "floor": 14,
+        "area": 84.5
+      }
+    ]
   },
   {
     "name": "기흥역더샵",
@@ -189,7 +298,15 @@
     "pedia1_name": "꿈이든소아청소년과의원",
     "pedia2": 8,
     "pedia2_name": "미래소아청소년과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-05",
+        "price": 8.8,
+        "floor": 3,
+        "area": 73.0
+      }
+    ]
   },
   {
     "name": "기흥역파크푸르지오",
@@ -213,7 +330,8 @@
     "pedia1_name": "꿈이든소아청소년과의원",
     "pedia2": 11,
     "pedia2_name": "미래소아청소년과의원",
-    "hcode": "aIR4d"
+    "hcode": "aIR4d",
+    "recent_trades": []
   },
   {
     "name": "기흥역파크푸르지오",
@@ -237,7 +355,8 @@
     "pedia1_name": "꿈이든소아청소년과의원",
     "pedia2": 11,
     "pedia2_name": "미래소아청소년과의원",
-    "hcode": "aIR4d"
+    "hcode": "aIR4d",
+    "recent_trades": []
   },
   {
     "name": "나노시티역롯데캐슬",
@@ -261,7 +380,21 @@
     "pedia1_name": "아이편한소아청소년과의원",
     "pedia2": 23,
     "pedia2_name": "온새미로",
-    "hcode": "dqq24"
+    "hcode": "dqq24",
+    "recent_trades": [
+      {
+        "date": "2026-04-28",
+        "price": 7.3,
+        "floor": 14,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-06",
+        "price": 7.2,
+        "floor": 7,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "대명강변타운",
@@ -285,7 +418,33 @@
     "pedia1_name": "하남드림 소아청소년과의원",
     "pedia2": 29,
     "pedia2_name": "연세웰소아청소년과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-27",
+        "price": 8.5,
+        "floor": 19,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-16",
+        "price": 8.6,
+        "floor": 6,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-15",
+        "price": 8.3,
+        "floor": 10,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-10",
+        "price": 9.4,
+        "floor": 22,
+        "area": 84.8
+      }
+    ]
   },
   {
     "name": "더레이크시티부영1단지",
@@ -309,7 +468,21 @@
     "pedia1_name": "연세키즈365소아청소년과의원",
     "pedia2": 17,
     "pedia2_name": "동탄이소아청소년과의원",
-    "hcode": "b0g10"
+    "hcode": "b0g10",
+    "recent_trades": [
+      {
+        "date": "2026-04-14",
+        "price": 7.5,
+        "floor": 15,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.8,
+        "floor": 8,
+        "area": 84.5
+      }
+    ]
   },
   {
     "name": "더레이크시티부영2단지",
@@ -333,7 +506,21 @@
     "pedia1_name": "연세키즈365소아청소년과의원",
     "pedia2": 12,
     "pedia2_name": "동탄이소아청소년과의원",
-    "hcode": "b0he4"
+    "hcode": "b0he4",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 8.5,
+        "floor": 16,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-10",
+        "price": 9.0,
+        "floor": 19,
+        "area": 84.5
+      }
+    ]
   },
   {
     "name": "더레이크시티부영5단지",
@@ -357,7 +544,39 @@
     "pedia1_name": "동탄성모병원",
     "pedia2": 9,
     "pedia2_name": "하늘한방소아과한방재활의학과한의원",
-    "hcode": "b0keb"
+    "hcode": "b0keb",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.8,
+        "floor": 23,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-13",
+        "price": 7.8,
+        "floor": 20,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.7,
+        "floor": 19,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-02",
+        "price": 8.3,
+        "floor": 16,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7.6,
+        "floor": 21,
+        "area": 84.5
+      }
+    ]
   },
   {
     "name": "더샵광교산퍼스트파크",
@@ -381,7 +600,8 @@
     "pedia1_name": "박소아청소년과의원",
     "pedia2": 40,
     "pedia2_name": "김경신소아과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": []
   },
   {
     "name": "더샵동천포레스트",
@@ -405,7 +625,27 @@
     "pedia1_name": "동천이안 소아청소년과의원",
     "pedia2": 20,
     "pedia2_name": "동천연세소아청소년과의원",
-    "hcode": "aI8de"
+    "hcode": "aI8de",
+    "recent_trades": [
+      {
+        "date": "2026-04-11",
+        "price": 9.1,
+        "floor": 9,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-09",
+        "price": 9.1,
+        "floor": 19,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-01",
+        "price": 9.0,
+        "floor": 11,
+        "area": 84.9
+      }
+    ]
   },
   {
     "name": "동백호수공원두산위브더제니스",
@@ -429,7 +669,15 @@
     "pedia1_name": "남형근소아과의원",
     "pedia2": 26,
     "pedia2_name": "성남키즈소아청소년과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7.0,
+        "floor": 5,
+        "area": 75.9
+      }
+    ]
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -453,7 +701,63 @@
     "pedia1_name": "동탄성모병원",
     "pedia2": 27,
     "pedia2_name": "하늘한방소아과한방재활의학과한의원",
-    "hcode": "b2L97"
+    "hcode": "b2L97",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7.2,
+        "floor": 2,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-22",
+        "price": 7.6,
+        "floor": 12,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-14",
+        "price": 7.9,
+        "floor": 20,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.9,
+        "floor": 20,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.5,
+        "floor": 4,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.9,
+        "floor": 23,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.5,
+        "floor": 23,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-07",
+        "price": 7.4,
+        "floor": 19,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.6,
+        "floor": 10,
+        "area": 60.0
+      }
+    ]
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -477,7 +781,39 @@
     "pedia1_name": "동탄성모병원",
     "pedia2": 27,
     "pedia2_name": "하늘한방소아과한방재활의학과한의원",
-    "hcode": "b2L97"
+    "hcode": "b2L97",
+    "recent_trades": [
+      {
+        "date": "2026-04-29",
+        "price": 8.2,
+        "floor": 4,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-28",
+        "price": 8.5,
+        "floor": 8,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-22",
+        "price": 7.5,
+        "floor": 1,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.8,
+        "floor": 25,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.6,
+        "floor": 15,
+        "area": 74.9
+      }
+    ]
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -501,7 +837,8 @@
     "pedia1_name": "동탄성모병원",
     "pedia2": 27,
     "pedia2_name": "하늘한방소아과한방재활의학과한의원",
-    "hcode": "b2L97"
+    "hcode": "b2L97",
+    "recent_trades": []
   },
   {
     "name": "동탄레이크자연앤푸르지오",
@@ -525,7 +862,21 @@
     "pedia1_name": "동탄호수소아청소년과의원",
     "pedia2": 14,
     "pedia2_name": "동탄성모병원",
-    "hcode": "cNodc"
+    "hcode": "cNodc",
+    "recent_trades": [
+      {
+        "date": "2026-04-20",
+        "price": 9.5,
+        "floor": 21,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-04",
+        "price": 9.4,
+        "floor": 12,
+        "area": 84.8
+      }
+    ]
   },
   {
     "name": "동탄역 호반 써밋",
@@ -549,7 +900,51 @@
     "pedia1_name": "코끼리소아청소년과의원",
     "pedia2": 10,
     "pedia2_name": "동탄미소소아청소년과의원",
-    "hcode": "ayKcb"
+    "hcode": "ayKcb",
+    "recent_trades": [
+      {
+        "date": "2026-04-29",
+        "price": 6.3,
+        "floor": 22,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-28",
+        "price": 7.8,
+        "floor": 10,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-24",
+        "price": 7.8,
+        "floor": 14,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-09",
+        "price": 7.8,
+        "floor": 17,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.6,
+        "floor": 17,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7.7,
+        "floor": 20,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7.9,
+        "floor": 18,
+        "area": 59.2
+      }
+    ]
   },
   {
     "name": "동탄역 호반 써밋",
@@ -573,7 +968,33 @@
     "pedia1_name": "코끼리소아청소년과의원",
     "pedia2": 10,
     "pedia2_name": "동탄미소소아청소년과의원",
-    "hcode": "ayKcb"
+    "hcode": "ayKcb",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 8.8,
+        "floor": 21,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-12",
+        "price": 8.9,
+        "floor": 17,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.8,
+        "floor": 5,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-09",
+        "price": 8.9,
+        "floor": 11,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "동탄역대원칸타빌포레지움",
@@ -597,7 +1018,69 @@
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia2": 18,
     "pedia2_name": "코끼리소아청소년과의원",
-    "hcode": "alpee"
+    "hcode": "alpee",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7.1,
+        "floor": 4,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-24",
+        "price": 7.0,
+        "floor": 6,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-22",
+        "price": 6.7,
+        "floor": 11,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.1,
+        "floor": 13,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.2,
+        "floor": 19,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-17",
+        "price": 7.0,
+        "floor": 4,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-14",
+        "price": 7.3,
+        "floor": 7,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-11",
+        "price": 6.9,
+        "floor": 4,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.2,
+        "floor": 20,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-02",
+        "price": 6.8,
+        "floor": 20,
+        "area": 84.7
+      }
+    ]
   },
   {
     "name": "동탄역더샵센트럴시티2차",
@@ -621,7 +1104,27 @@
     "pedia1_name": "남승우소아청소년과의원",
     "pedia2": 30,
     "pedia2_name": "반디소아청소년과의원",
-    "hcode": "aV671"
+    "hcode": "aV671",
+    "recent_trades": [
+      {
+        "date": "2026-04-04",
+        "price": 7.3,
+        "floor": 10,
+        "area": 74.8
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.2,
+        "floor": 11,
+        "area": 74.8
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7.5,
+        "floor": 14,
+        "area": 74.9
+      }
+    ]
   },
   {
     "name": "동탄역더샵센트럴시티2차",
@@ -645,7 +1148,15 @@
     "pedia1_name": "남승우소아청소년과의원",
     "pedia2": 30,
     "pedia2_name": "반디소아청소년과의원",
-    "hcode": "aV671"
+    "hcode": "aV671",
+    "recent_trades": [
+      {
+        "date": "2026-04-04",
+        "price": 8.0,
+        "floor": 13,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "동탄역센트럴푸르지오",
@@ -669,7 +1180,63 @@
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia2": 7,
     "pedia2_name": "코끼리소아청소년과의원",
-    "hcode": "ayI44"
+    "hcode": "ayI44",
+    "recent_trades": [
+      {
+        "date": "2026-04-25",
+        "price": 8.3,
+        "floor": 16,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-23",
+        "price": 8.3,
+        "floor": 15,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-22",
+        "price": 8.4,
+        "floor": 9,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.0,
+        "floor": 22,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-07",
+        "price": 8.2,
+        "floor": 11,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.8,
+        "floor": 21,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.1,
+        "floor": 12,
+        "area": 59.3
+      },
+      {
+        "date": "2026-04-03",
+        "price": 8.0,
+        "floor": 20,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-02",
+        "price": 8.0,
+        "floor": 12,
+        "area": 59.3
+      }
+    ]
   },
   {
     "name": "동탄역센트럴푸르지오",
@@ -693,7 +1260,21 @@
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia2": 7,
     "pedia2_name": "코끼리소아청소년과의원",
-    "hcode": "ayI44"
+    "hcode": "ayI44",
+    "recent_trades": [
+      {
+        "date": "2026-04-20",
+        "price": 8.4,
+        "floor": 3,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-10",
+        "price": 8.6,
+        "floor": 7,
+        "area": 74.9
+      }
+    ]
   },
   {
     "name": "동탄역센트럴푸르지오",
@@ -717,7 +1298,8 @@
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia2": 7,
     "pedia2_name": "코끼리소아청소년과의원",
-    "hcode": "ayI44"
+    "hcode": "ayI44",
+    "recent_trades": []
   },
   {
     "name": "동탄역신안인스빌리베라1차",
@@ -741,7 +1323,27 @@
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia2": 13,
     "pedia2_name": "코끼리소아청소년과의원",
-    "hcode": "ayH06"
+    "hcode": "ayH06",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7.5,
+        "floor": 18,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-15",
+        "price": 7.2,
+        "floor": 5,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-03",
+        "price": 7.3,
+        "floor": 15,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "동탄역신안인스빌리베라2차",
@@ -765,7 +1367,27 @@
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia2": 15,
     "pedia2_name": "코끼리소아청소년과의원",
-    "hcode": "aCh0b"
+    "hcode": "aCh0b",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.5,
+        "floor": 19,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-21",
+        "price": 7.7,
+        "floor": 15,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.4,
+        "floor": 11,
+        "area": 60.0
+      }
+    ]
   },
   {
     "name": "동탄역신안인스빌리베라2차",
@@ -789,7 +1411,8 @@
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia2": 15,
     "pedia2_name": "코끼리소아청소년과의원",
-    "hcode": "aCh0b"
+    "hcode": "aCh0b",
+    "recent_trades": []
   },
   {
     "name": "동탄역신안인스빌리베라2차",
@@ -813,7 +1436,21 @@
     "pedia1_name": "동탄미소소아청소년과의원",
     "pedia2": 15,
     "pedia2_name": "코끼리소아청소년과의원",
-    "hcode": "aCh0b"
+    "hcode": "aCh0b",
+    "recent_trades": [
+      {
+        "date": "2026-04-17",
+        "price": 9.4,
+        "floor": 20,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-02",
+        "price": 8.8,
+        "floor": 18,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "동탄역푸르지오",
@@ -837,7 +1474,27 @@
     "pedia1_name": "코벤트더웰의원",
     "pedia2": 17,
     "pedia2_name": "반디소아청소년과의원",
-    "hcode": "aDW27"
+    "hcode": "aDW27",
+    "recent_trades": [
+      {
+        "date": "2026-04-21",
+        "price": 8.5,
+        "floor": 4,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-15",
+        "price": 8.8,
+        "floor": 7,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-08",
+        "price": 9.0,
+        "floor": 7,
+        "area": 74.9
+      }
+    ]
   },
   {
     "name": "동탄역푸르지오",
@@ -861,7 +1518,27 @@
     "pedia1_name": "코벤트더웰의원",
     "pedia2": 17,
     "pedia2_name": "반디소아청소년과의원",
-    "hcode": "aDW27"
+    "hcode": "aDW27",
+    "recent_trades": [
+      {
+        "date": "2026-04-09",
+        "price": 9.2,
+        "floor": 15,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-04",
+        "price": 9.8,
+        "floor": 17,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-03",
+        "price": 9.0,
+        "floor": 4,
+        "area": 84.9
+      }
+    ]
   },
   {
     "name": "동탄호수자이파밀리에",
@@ -885,7 +1562,21 @@
     "pedia1_name": "연세이룬소아청소년과의원",
     "pedia2": 15,
     "pedia2_name": "동탄호수소아청소년과의원",
-    "hcode": "dy7e4"
+    "hcode": "dy7e4",
+    "recent_trades": [
+      {
+        "date": "2026-04-20",
+        "price": 7.4,
+        "floor": 9,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.2,
+        "floor": 19,
+        "area": 84.8
+      }
+    ]
   },
   {
     "name": "래미안금광",
@@ -909,7 +1600,15 @@
     "pedia1_name": "삼성귀요미소아청소년과의원",
     "pedia2": 19,
     "pedia2_name": "구소아청소년과의원",
-    "hcode": "5c072"
+    "hcode": "5c072",
+    "recent_trades": [
+      {
+        "date": "2026-04-07",
+        "price": 7.5,
+        "floor": 7,
+        "area": 83.2
+      }
+    ]
   },
   {
     "name": "래미안노블클래스1단지",
@@ -933,7 +1632,21 @@
     "pedia1_name": "굿닥터소아과의원",
     "pedia2": 20,
     "pedia2_name": "조은이웃연세아주소아청소년과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-04",
+        "price": 7.3,
+        "floor": 12,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.2,
+        "floor": 16,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "래미안노블클래스2단지",
@@ -957,7 +1670,15 @@
     "pedia1_name": null,
     "pedia2": null,
     "pedia2_name": null,
-    "hcode": null
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-14",
+        "price": 7.3,
+        "floor": 23,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "매교역푸르지오SKVIEW",
@@ -981,7 +1702,99 @@
     "pedia1_name": "온가족소아청소년과의원",
     "pedia2": 13,
     "pedia2_name": "연세로이소아청소년과의원",
-    "hcode": "dGbe5"
+    "hcode": "dGbe5",
+    "recent_trades": [
+      {
+        "date": "2026-04-20",
+        "price": 8.2,
+        "floor": 13,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-18",
+        "price": 8.0,
+        "floor": 18,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-18",
+        "price": 8.0,
+        "floor": 4,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-17",
+        "price": 8.1,
+        "floor": 14,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-13",
+        "price": 8.2,
+        "floor": 4,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-12",
+        "price": 8.0,
+        "floor": 8,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-10",
+        "price": 8.5,
+        "floor": 15,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.7,
+        "floor": 2,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.1,
+        "floor": 11,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-06",
+        "price": 8.2,
+        "floor": 11,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-06",
+        "price": 8.4,
+        "floor": 11,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.2,
+        "floor": 6,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-03",
+        "price": 8.0,
+        "floor": 18,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-02",
+        "price": 7.0,
+        "floor": 2,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-01",
+        "price": 8.1,
+        "floor": 5,
+        "area": 59.9
+      }
+    ]
   },
   {
     "name": "매교역푸르지오SKVIEW",
@@ -1005,7 +1818,45 @@
     "pedia1_name": "온가족소아청소년과의원",
     "pedia2": 13,
     "pedia2_name": "연세로이소아청소년과의원",
-    "hcode": "dGbe5"
+    "hcode": "dGbe5",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 8.8,
+        "floor": 4,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-17",
+        "price": 8.7,
+        "floor": 10,
+        "area": 74.7
+      },
+      {
+        "date": "2026-04-16",
+        "price": 8.9,
+        "floor": 7,
+        "area": 74.7
+      },
+      {
+        "date": "2026-04-13",
+        "price": 9.0,
+        "floor": 11,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 9.1,
+        "floor": 16,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.8,
+        "floor": 14,
+        "area": 74.7
+      }
+    ]
   },
   {
     "name": "매탄위브하늘채",
@@ -1029,7 +1880,69 @@
     "pedia1_name": "아주맑은 소아청소년과의원",
     "pedia2": 4,
     "pedia2_name": "김민희의원",
-    "hcode": "58bb8"
+    "hcode": "58bb8",
+    "recent_trades": [
+      {
+        "date": "2026-04-28",
+        "price": 7.6,
+        "floor": 5,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-24",
+        "price": 7.7,
+        "floor": 20,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-23",
+        "price": 7.3,
+        "floor": 12,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-20",
+        "price": 7.8,
+        "floor": 11,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.3,
+        "floor": 26,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.2,
+        "floor": 9,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-13",
+        "price": 7.5,
+        "floor": 28,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.5,
+        "floor": 28,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-06",
+        "price": 7.5,
+        "floor": 8,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.8,
+        "floor": 21,
+        "area": 84.8
+      }
+    ]
   },
   {
     "name": "미사강변트래지안",
@@ -1053,7 +1966,8 @@
     "pedia1_name": "플러스맘소아청소년과의원",
     "pedia2": 30,
     "pedia2_name": "연세더자람소아청소년과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": []
   },
   {
     "name": "반도유보라아이비파크3",
@@ -1077,7 +1991,15 @@
     "pedia1_name": "올바른소아청소년과의원",
     "pedia2": 32,
     "pedia2_name": "동탄S소아청소년과 발달클리닉",
-    "hcode": "aBY7b"
+    "hcode": "aBY7b",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 7.5,
+        "floor": 14,
+        "area": 74.4
+      }
+    ]
   },
   {
     "name": "반도유보라아이비파크3",
@@ -1101,7 +2023,21 @@
     "pedia1_name": "올바른소아청소년과의원",
     "pedia2": 32,
     "pedia2_name": "동탄S소아청소년과 발달클리닉",
-    "hcode": "aBY7b"
+    "hcode": "aBY7b",
+    "recent_trades": [
+      {
+        "date": "2026-04-20",
+        "price": 8.5,
+        "floor": 9,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.4,
+        "floor": 11,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "반정아이파크캐슬4단지",
@@ -1125,7 +2061,75 @@
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia2": 21,
     "pedia2_name": "성모바른소아청소년과의원",
-    "hcode": "dKS83"
+    "hcode": "dKS83",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.6,
+        "floor": 3,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.3,
+        "floor": 11,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-17",
+        "price": 8.1,
+        "floor": 12,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-13",
+        "price": 7.7,
+        "floor": 16,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-12",
+        "price": 7.2,
+        "floor": 1,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-09",
+        "price": 8.0,
+        "floor": 10,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.5,
+        "floor": 3,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-07",
+        "price": 7.8,
+        "floor": 9,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-06",
+        "price": 7.5,
+        "floor": 8,
+        "area": 84.3
+      },
+      {
+        "date": "2026-04-05",
+        "price": 8.1,
+        "floor": 11,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-03",
+        "price": 7.8,
+        "floor": 10,
+        "area": 84.7
+      }
+    ]
   },
   {
     "name": "반정아이파크캐슬5단지",
@@ -1149,7 +2153,63 @@
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia2": 16,
     "pedia2_name": "튼튼사랑소아청소년과의원",
-    "hcode": "dKT1f"
+    "hcode": "dKT1f",
+    "recent_trades": [
+      {
+        "date": "2026-04-29",
+        "price": 7.3,
+        "floor": 5,
+        "area": 75.5
+      },
+      {
+        "date": "2026-04-28",
+        "price": 7.3,
+        "floor": 8,
+        "area": 75.6
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.5,
+        "floor": 2,
+        "area": 75.9
+      },
+      {
+        "date": "2026-04-17",
+        "price": 7.5,
+        "floor": 5,
+        "area": 75.9
+      },
+      {
+        "date": "2026-04-13",
+        "price": 7.6,
+        "floor": 6,
+        "area": 75.9
+      },
+      {
+        "date": "2026-04-13",
+        "price": 7.7,
+        "floor": 6,
+        "area": 75.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.7,
+        "floor": 14,
+        "area": 75.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 6.9,
+        "floor": 3,
+        "area": 75.6
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7.0,
+        "floor": 13,
+        "area": 75.6
+      }
+    ]
   },
   {
     "name": "반정아이파크캐슬5단지",
@@ -1173,7 +2233,33 @@
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia2": 16,
     "pedia2_name": "튼튼사랑소아청소년과의원",
-    "hcode": "dKT1f"
+    "hcode": "dKT1f",
+    "recent_trades": [
+      {
+        "date": "2026-04-27",
+        "price": 7.8,
+        "floor": 2,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-23",
+        "price": 7.8,
+        "floor": 6,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-20",
+        "price": 7.4,
+        "floor": 2,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-17",
+        "price": 7.9,
+        "floor": 12,
+        "area": 84.7
+      }
+    ]
   },
   {
     "name": "병점역아이파크캐슬",
@@ -1197,7 +2283,45 @@
     "pedia1_name": "아이언소아청소년과의원",
     "pedia2": 33,
     "pedia2_name": "굿모닝소아청소년과의원",
-    "hcode": "dzz14"
+    "hcode": "dzz14",
+    "recent_trades": [
+      {
+        "date": "2026-04-28",
+        "price": 7.5,
+        "floor": 7,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-28",
+        "price": 7.3,
+        "floor": 19,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-25",
+        "price": 7.2,
+        "floor": 8,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-21",
+        "price": 6.6,
+        "floor": 4,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-20",
+        "price": 7.5,
+        "floor": 17,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.9,
+        "floor": 16,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "서광교파크스위첸",
@@ -1221,7 +2345,15 @@
     "pedia1_name": "광교이안소아청소년과의원",
     "pedia2": 36,
     "pedia2_name": "늘푸른소아과의원",
-    "hcode": "dPJ58"
+    "hcode": "dPJ58",
+    "recent_trades": [
+      {
+        "date": "2026-04-04",
+        "price": 7.2,
+        "floor": 14,
+        "area": 59.4
+      }
+    ]
   },
   {
     "name": "서광교파크스위첸",
@@ -1245,7 +2377,8 @@
     "pedia1_name": "광교이안소아청소년과의원",
     "pedia2": 36,
     "pedia2_name": "늘푸른소아과의원",
-    "hcode": "dPJ58"
+    "hcode": "dPJ58",
+    "recent_trades": []
   },
   {
     "name": "서광교파크스위첸",
@@ -1269,7 +2402,21 @@
     "pedia1_name": "광교이안소아청소년과의원",
     "pedia2": 36,
     "pedia2_name": "늘푸른소아과의원",
-    "hcode": "dPJ58"
+    "hcode": "dPJ58",
+    "recent_trades": [
+      {
+        "date": "2026-04-17",
+        "price": 9.3,
+        "floor": 8,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-01",
+        "price": 9.2,
+        "floor": 14,
+        "area": 84.9
+      }
+    ]
   },
   {
     "name": "성남자이",
@@ -1293,7 +2440,15 @@
     "pedia1_name": "사랑의내과소아청소년과의원",
     "pedia2": 15,
     "pedia2_name": "베스트소아과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-11",
+        "price": 8.0,
+        "floor": 11,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "성동마을수지자이",
@@ -1317,7 +2472,8 @@
     "pedia1_name": "아산이뮨플러스의원",
     "pedia2": 26,
     "pedia2_name": "이레소아청소년과의원",
-    "hcode": "6n062"
+    "hcode": "6n062",
+    "recent_trades": []
   },
   {
     "name": "솔빛마을신도브래뉴",
@@ -1341,7 +2497,15 @@
     "pedia1_name": "삼성제일소아청소년과의원",
     "pedia2": 10,
     "pedia2_name": "솔빛소아청소년과의원",
-    "hcode": "6xQae"
+    "hcode": "6xQae",
+    "recent_trades": [
+      {
+        "date": "2026-04-27",
+        "price": 8.2,
+        "floor": 6,
+        "area": 84.8
+      }
+    ]
   },
   {
     "name": "솔빛마을쌍용예가",
@@ -1365,7 +2529,21 @@
     "pedia1_name": "솔빛소아청소년과의원",
     "pedia2": 6,
     "pedia2_name": "삼성제일소아청소년과의원",
-    "hcode": "6xR56"
+    "hcode": "6xR56",
+    "recent_trades": [
+      {
+        "date": "2026-04-19",
+        "price": 8.1,
+        "floor": 5,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.5,
+        "floor": 6,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "수원 SK SKY VIEW",
@@ -1389,7 +2567,21 @@
     "pedia1_name": "SK메디모아소아청소년과의원",
     "pedia2": 18,
     "pedia2_name": "자이소아청소년과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-12",
+        "price": 5.5,
+        "floor": 28,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.4,
+        "floor": 26,
+        "area": 84.9
+      }
+    ]
   },
   {
     "name": "수원모아미래도센트럴타운1단지",
@@ -1413,7 +2605,8 @@
     "pedia1_name": "성모수소아청소년과의원",
     "pedia2": 16,
     "pedia2_name": "행복소아청소년과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": []
   },
   {
     "name": "수원모아미래도센트럴타운2단지",
@@ -1437,7 +2630,21 @@
     "pedia1_name": "성모수소아청소년과의원",
     "pedia2": 10,
     "pedia2_name": "아이온연합소아청소년과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-25",
+        "price": 7.4,
+        "floor": 25,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.6,
+        "floor": 11,
+        "area": 84.9
+      }
+    ]
   },
   {
     "name": "수원센트럴아이파크자이",
@@ -1461,7 +2668,33 @@
     "pedia1_name": "온가족소아청소년과의원",
     "pedia2": 23,
     "pedia2_name": "연세로이소아청소년과의원",
-    "hcode": "dtd2d"
+    "hcode": "dtd2d",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 7.5,
+        "floor": 4,
+        "area": 73.9
+      },
+      {
+        "date": "2026-04-15",
+        "price": 7.2,
+        "floor": 1,
+        "area": 74.0
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.6,
+        "floor": 18,
+        "area": 74.0
+      },
+      {
+        "date": "2026-04-03",
+        "price": 7.1,
+        "floor": 2,
+        "area": 74.0
+      }
+    ]
   },
   {
     "name": "수원센트럴아이파크자이",
@@ -1485,7 +2718,21 @@
     "pedia1_name": "온가족소아청소년과의원",
     "pedia2": 23,
     "pedia2_name": "연세로이소아청소년과의원",
-    "hcode": "dtd2d"
+    "hcode": "dtd2d",
+    "recent_trades": [
+      {
+        "date": "2026-04-21",
+        "price": 6.5,
+        "floor": 5,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.9,
+        "floor": 19,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "수원하늘채더퍼스트1단지",
@@ -1509,7 +2756,39 @@
     "pedia1_name": "성모바른소아청소년과의원",
     "pedia2": 13,
     "pedia2_name": "하나소아청소년과의원",
-    "hcode": "dted4"
+    "hcode": "dted4",
+    "recent_trades": [
+      {
+        "date": "2026-04-29",
+        "price": 7.9,
+        "floor": 13,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-23",
+        "price": 7.5,
+        "floor": 4,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.8,
+        "floor": 14,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.4,
+        "floor": 14,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-07",
+        "price": 7.9,
+        "floor": 15,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "시범한빛마을금호어울림",
@@ -1533,7 +2812,15 @@
     "pedia1_name": "동탄연세소아청소년과웰빙",
     "pedia2": 11,
     "pedia2_name": "동탄연세소아청소년과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-08",
+        "price": 8.5,
+        "floor": 9,
+        "area": 84.6
+      }
+    ]
   },
   {
     "name": "시범한빛마을동탄아이파크",
@@ -1557,7 +2844,27 @@
     "pedia1_name": "성모플러스 내과소아과",
     "pedia2": 11,
     "pedia2_name": "우리아이소아청소년과의원",
-    "hcode": "6xZ52"
+    "hcode": "6xZ52",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7.9,
+        "floor": 10,
+        "area": 61.7
+      },
+      {
+        "date": "2026-04-14",
+        "price": 7.8,
+        "floor": 10,
+        "area": 61.7
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.9,
+        "floor": 9,
+        "area": 61.7
+      }
+    ]
   },
   {
     "name": "시범한빛마을동탄아이파크",
@@ -1581,7 +2888,33 @@
     "pedia1_name": "성모플러스 내과소아과",
     "pedia2": 11,
     "pedia2_name": "우리아이소아청소년과의원",
-    "hcode": "6xZ52"
+    "hcode": "6xZ52",
+    "recent_trades": [
+      {
+        "date": "2026-04-09",
+        "price": 9.7,
+        "floor": 19,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.9,
+        "floor": 7,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-06",
+        "price": 9.3,
+        "floor": 14,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-01",
+        "price": 10.2,
+        "floor": 14,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "시범한빛마을삼부르네상스",
@@ -1605,7 +2938,21 @@
     "pedia1_name": "우리아이소아청소년과의원",
     "pedia2": 18,
     "pedia2_name": "성모플러스 내과소아과",
-    "hcode": "6y038"
+    "hcode": "6y038",
+    "recent_trades": [
+      {
+        "date": "2026-04-23",
+        "price": 7.4,
+        "floor": 19,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-02",
+        "price": 6.6,
+        "floor": 20,
+        "area": 84.8
+      }
+    ]
   },
   {
     "name": "시범한빛마을한화꿈에그린",
@@ -1629,7 +2976,27 @@
     "pedia1_name": "성모플러스 내과소아과",
     "pedia2": 20,
     "pedia2_name": "우리아이소아청소년과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-25",
+        "price": 8.3,
+        "floor": 11,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-18",
+        "price": 8.1,
+        "floor": 17,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-16",
+        "price": 7.8,
+        "floor": 7,
+        "area": 84.8
+      }
+    ]
   },
   {
     "name": "신동탄포레자이",
@@ -1653,7 +3020,45 @@
     "pedia1_name": "온새미로",
     "pedia2": 27,
     "pedia2_name": "영통아이언소아청소년과의원",
-    "hcode": "dNLc1"
+    "hcode": "dNLc1",
+    "recent_trades": [
+      {
+        "date": "2026-04-23",
+        "price": 7.5,
+        "floor": 10,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-21",
+        "price": 7.1,
+        "floor": 17,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.0,
+        "floor": 10,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-13",
+        "price": 4.8,
+        "floor": 14,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.8,
+        "floor": 18,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7.7,
+        "floor": 13,
+        "area": 60.0
+      }
+    ]
   },
   {
     "name": "신동탄포레자이",
@@ -1677,7 +3082,33 @@
     "pedia1_name": "온새미로",
     "pedia2": 27,
     "pedia2_name": "영통아이언소아청소년과의원",
-    "hcode": "dNLc1"
+    "hcode": "dNLc1",
+    "recent_trades": [
+      {
+        "date": "2026-04-26",
+        "price": 8.5,
+        "floor": 23,
+        "area": 74.8
+      },
+      {
+        "date": "2026-04-15",
+        "price": 8.5,
+        "floor": 23,
+        "area": 74.8
+      },
+      {
+        "date": "2026-04-13",
+        "price": 8.6,
+        "floor": 27,
+        "area": 74.8
+      },
+      {
+        "date": "2026-04-07",
+        "price": 7.9,
+        "floor": 13,
+        "area": 74.8
+      }
+    ]
   },
   {
     "name": "신동탄포레자이",
@@ -1701,7 +3132,33 @@
     "pedia1_name": "온새미로",
     "pedia2": 27,
     "pedia2_name": "영통아이언소아청소년과의원",
-    "hcode": "dNLc1"
+    "hcode": "dNLc1",
+    "recent_trades": [
+      {
+        "date": "2026-04-28",
+        "price": 9.3,
+        "floor": 18,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-20",
+        "price": 9.4,
+        "floor": 6,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-06",
+        "price": 9.1,
+        "floor": 19,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-03",
+        "price": 8.8,
+        "floor": 21,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "신흥덕롯데캐슬레이시티",
@@ -1725,7 +3182,39 @@
     "pedia1_name": "하나소아청소년과의원",
     "pedia2": 22,
     "pedia2_name": "강남병원 소아청소년센터",
-    "hcode": "aZw7e"
+    "hcode": "aZw7e",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 7.8,
+        "floor": 28,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-16",
+        "price": 7.5,
+        "floor": 27,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-12",
+        "price": 7.2,
+        "floor": 22,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-09",
+        "price": 7.2,
+        "floor": 33,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.5,
+        "floor": 24,
+        "area": 84.9
+      }
+    ]
   },
   {
     "name": "영통SKVIEW",
@@ -1749,7 +3238,21 @@
     "pedia1_name": "영통아이언소아청소년과의원",
     "pedia2": 19,
     "pedia2_name": "홍진희소아청소년과의원",
-    "hcode": "aA22d"
+    "hcode": "aA22d",
+    "recent_trades": [
+      {
+        "date": "2026-04-20",
+        "price": 8.3,
+        "floor": 4,
+        "area": 59.5
+      },
+      {
+        "date": "2026-04-18",
+        "price": 8.6,
+        "floor": 5,
+        "area": 59.5
+      }
+    ]
   },
   {
     "name": "영통롯데캐슬엘클래스1단지",
@@ -1773,7 +3276,39 @@
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia2": 13,
     "pedia2_name": "성모바른소아청소년과의원",
-    "hcode": "dUDd4"
+    "hcode": "dUDd4",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 8.8,
+        "floor": 6,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-10",
+        "price": 9.0,
+        "floor": 8,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-07",
+        "price": 9.3,
+        "floor": 6,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-06",
+        "price": 8.6,
+        "floor": 5,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-04",
+        "price": 9.0,
+        "floor": 12,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "영통롯데캐슬엘클래스2단지",
@@ -1797,7 +3332,15 @@
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia2": 10,
     "pedia2_name": "성모바른소아청소년과의원",
-    "hcode": "dUEb9"
+    "hcode": "dUEb9",
+    "recent_trades": [
+      {
+        "date": "2026-04-15",
+        "price": 8.0,
+        "floor": 2,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "영통아이파크캐슬1단지",
@@ -1821,7 +3364,33 @@
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia2": 16,
     "pedia2_name": "튼튼사랑소아청소년과의원",
-    "hcode": "aZu7b"
+    "hcode": "aZu7b",
+    "recent_trades": [
+      {
+        "date": "2026-04-16",
+        "price": 9.1,
+        "floor": 8,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-13",
+        "price": 9.6,
+        "floor": 25,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-04",
+        "price": 9.2,
+        "floor": 7,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-03",
+        "price": 9.6,
+        "floor": 21,
+        "area": 59.8
+      }
+    ]
   },
   {
     "name": "영통아이파크캐슬2단지",
@@ -1845,7 +3414,33 @@
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia2": 16,
     "pedia2_name": "튼튼사랑소아청소년과의원",
-    "hcode": "aZvfa"
+    "hcode": "aZvfa",
+    "recent_trades": [
+      {
+        "date": "2026-04-16",
+        "price": 8.2,
+        "floor": 13,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.7,
+        "floor": 3,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-07",
+        "price": 8.0,
+        "floor": 2,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-07",
+        "price": 8.4,
+        "floor": 7,
+        "area": 59.8
+      }
+    ]
   },
   {
     "name": "영통아이파크캐슬2단지",
@@ -1869,7 +3464,15 @@
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia2": 16,
     "pedia2_name": "튼튼사랑소아청소년과의원",
-    "hcode": "aZvfa"
+    "hcode": "aZvfa",
+    "recent_trades": [
+      {
+        "date": "2026-04-16",
+        "price": 9.3,
+        "floor": 19,
+        "area": 75.9
+      }
+    ]
   },
   {
     "name": "영통아이파크캐슬3단지",
@@ -1893,7 +3496,15 @@
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia2": 16,
     "pedia2_name": "성모바른소아청소년과의원",
-    "hcode": "dKR50"
+    "hcode": "dKR50",
+    "recent_trades": [
+      {
+        "date": "2026-04-07",
+        "price": 7.3,
+        "floor": 3,
+        "area": 59.8
+      }
+    ]
   },
   {
     "name": "영통아이파크캐슬3단지",
@@ -1917,7 +3528,8 @@
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia2": 16,
     "pedia2_name": "성모바른소아청소년과의원",
-    "hcode": "dKR50"
+    "hcode": "dKR50",
+    "recent_trades": []
   },
   {
     "name": "용인동백두산위브더제니스",
@@ -1941,7 +3553,21 @@
     "pedia1_name": "삼성키즈소아청소년과의원",
     "pedia2": 22,
     "pedia2_name": "기린웰소아청소년과의원",
-    "hcode": "dwBa6"
+    "hcode": "dwBa6",
+    "recent_trades": [
+      {
+        "date": "2026-04-25",
+        "price": 7.0,
+        "floor": 22,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-24",
+        "price": 7.5,
+        "floor": 7,
+        "area": 84.9
+      }
+    ]
   },
   {
     "name": "한양수자인",
@@ -1965,7 +3591,27 @@
     "pedia1_name": "서울소아청소년과의원",
     "pedia2": 18,
     "pedia2_name": "친구들소아청소년과의원",
-    "hcode": "5aac4"
+    "hcode": "5aac4",
+    "recent_trades": [
+      {
+        "date": "2026-04-28",
+        "price": 7.7,
+        "floor": 12,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.1,
+        "floor": 6,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-03",
+        "price": 7.5,
+        "floor": 18,
+        "area": 60.0
+      }
+    ]
   },
   {
     "name": "한양수자인",
@@ -1989,7 +3635,15 @@
     "pedia1_name": "서울소아청소년과의원",
     "pedia2": 18,
     "pedia2_name": "친구들소아청소년과의원",
-    "hcode": "5aac4"
+    "hcode": "5aac4",
+    "recent_trades": [
+      {
+        "date": "2026-04-04",
+        "price": 8.1,
+        "floor": 2,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "한양수자인성남마크뷰",
@@ -2013,7 +3667,27 @@
     "pedia1_name": "삼성귀요미소아청소년과의원",
     "pedia2": 24,
     "pedia2_name": "예사랑소아청소년과의원",
-    "hcode": "b6Sc3"
+    "hcode": "b6Sc3",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 8.0,
+        "floor": 19,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-09",
+        "price": 6.0,
+        "floor": 11,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-07",
+        "price": 8.2,
+        "floor": 9,
+        "area": 59.9
+      }
+    ]
   },
   {
     "name": "한화 포레나 동탄호수",
@@ -2037,7 +3711,33 @@
     "pedia1_name": "원소아청소년과의원",
     "pedia2": 17,
     "pedia2_name": "동탄호수소아청소년과의원",
-    "hcode": "dwh52"
+    "hcode": "dwh52",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7.0,
+        "floor": 5,
+        "area": 74.2
+      },
+      {
+        "date": "2026-04-23",
+        "price": 7.2,
+        "floor": 7,
+        "area": 74.2
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.0,
+        "floor": 5,
+        "area": 74.2
+      },
+      {
+        "date": "2026-04-09",
+        "price": 7.2,
+        "floor": 19,
+        "area": 74.2
+      }
+    ]
   },
   {
     "name": "한화 포레나 동탄호수",
@@ -2061,7 +3761,33 @@
     "pedia1_name": "원소아청소년과의원",
     "pedia2": 17,
     "pedia2_name": "동탄호수소아청소년과의원",
-    "hcode": "dwh52"
+    "hcode": "dwh52",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.9,
+        "floor": 22,
+        "area": 84.0
+      },
+      {
+        "date": "2026-04-10",
+        "price": 8.1,
+        "floor": 16,
+        "area": 84.0
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.8,
+        "floor": 7,
+        "area": 84.0
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.1,
+        "floor": 15,
+        "area": 84.0
+      }
+    ]
   },
   {
     "name": "호반 써밋 수원",
@@ -2085,7 +3811,15 @@
     "pedia1_name": "레인보우소아청소년과의원",
     "pedia2": 9,
     "pedia2_name": "제이엠베스트소아청소년과의원",
-    "hcode": "aDAce"
+    "hcode": "aDAce",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 8.4,
+        "floor": 3,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "호반베르디움더센트럴",
@@ -2109,7 +3843,15 @@
     "pedia1_name": "레인보우소아청소년과의원",
     "pedia2": 13,
     "pedia2_name": "제이엠베스트소아청소년과의원",
-    "hcode": "aEaa3"
+    "hcode": "aEaa3",
+    "recent_trades": [
+      {
+        "date": "2026-04-21",
+        "price": 7.3,
+        "floor": 3,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "호반써밋레이크파크",
@@ -2133,7 +3875,51 @@
     "pedia1_name": "서울소아청소년과의원",
     "pedia2": 13,
     "pedia2_name": "친구들소아청소년과의원",
-    "hcode": "6hV74"
+    "hcode": "6hV74",
+    "recent_trades": [
+      {
+        "date": "2026-04-23",
+        "price": 9.0,
+        "floor": 10,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-22",
+        "price": 8.9,
+        "floor": 16,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-21",
+        "price": 9.0,
+        "floor": 13,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-18",
+        "price": 9.0,
+        "floor": 11,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-15",
+        "price": 9.8,
+        "floor": 9,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-14",
+        "price": 8.9,
+        "floor": 17,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-01",
+        "price": 8.9,
+        "floor": 13,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "호수공원역 센트럴시티",
@@ -2157,7 +3943,69 @@
     "pedia1_name": "동탄성모병원",
     "pedia2": 9,
     "pedia2_name": "하늘한방소아과한방재활의학과한의원",
-    "hcode": "b0jf2"
+    "hcode": "b0jf2",
+    "recent_trades": [
+      {
+        "date": "2026-04-28",
+        "price": 9.2,
+        "floor": 27,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-24",
+        "price": 9.3,
+        "floor": 23,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-22",
+        "price": 9.6,
+        "floor": 9,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-20",
+        "price": 9.5,
+        "floor": 6,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-11",
+        "price": 9.6,
+        "floor": 14,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.3,
+        "floor": 3,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-04",
+        "price": 9.0,
+        "floor": 14,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-02",
+        "price": 9.1,
+        "floor": 11,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-01",
+        "price": 8.7,
+        "floor": 13,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-01",
+        "price": 9.1,
+        "floor": 7,
+        "area": 84.5
+      }
+    ]
   },
   {
     "name": "화서역푸르지오더에듀포레",
@@ -2181,7 +4029,39 @@
     "pedia1_name": "서울소아청소년과의원",
     "pedia2": 5,
     "pedia2_name": "누가소아청소년과의원",
-    "hcode": "52p72"
+    "hcode": "52p72",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.8,
+        "floor": 9,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-09",
+        "price": 7.3,
+        "floor": 22,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-09",
+        "price": 6.8,
+        "floor": 3,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-07",
+        "price": 6.7,
+        "floor": 2,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.1,
+        "floor": 4,
+        "area": 84.9
+      }
+    ]
   },
   {
     "name": "흥덕마을7단지힐스테이트",
@@ -2205,7 +4085,27 @@
     "pedia1_name": "서울소아청소년과의원",
     "pedia2": 8,
     "pedia2_name": "마트소아청소년과의원",
-    "hcode": "6hS86"
+    "hcode": "6hS86",
+    "recent_trades": [
+      {
+        "date": "2026-04-29",
+        "price": 8.4,
+        "floor": 5,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.4,
+        "floor": 11,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.8,
+        "floor": 17,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "흥덕마을자연앤스위첸",
@@ -2229,7 +4129,21 @@
     "pedia1_name": "서울소아청소년과의원",
     "pedia2": 12,
     "pedia2_name": "친구들소아청소년과의원",
-    "hcode": "6hZ56"
+    "hcode": "6hZ56",
+    "recent_trades": [
+      {
+        "date": "2026-04-15",
+        "price": 7.4,
+        "floor": 17,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-03",
+        "price": 8.1,
+        "floor": 18,
+        "area": 84.8
+      }
+    ]
   },
   {
     "name": "힐스테이트광교산",
@@ -2253,7 +4167,21 @@
     "pedia1_name": "이레소아청소년과의원",
     "pedia2": 27,
     "pedia2_name": "봄소아청소년과의원",
-    "hcode": "b4Pda"
+    "hcode": "b4Pda",
+    "recent_trades": [
+      {
+        "date": "2026-04-06",
+        "price": 7.5,
+        "floor": 10,
+        "area": 60.0
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.5,
+        "floor": 7,
+        "area": 60.0
+      }
+    ]
   },
   {
     "name": "힐스테이트광교산",
@@ -2277,7 +4205,21 @@
     "pedia1_name": "이레소아청소년과의원",
     "pedia2": 27,
     "pedia2_name": "봄소아청소년과의원",
-    "hcode": "b4Pda"
+    "hcode": "b4Pda",
+    "recent_trades": [
+      {
+        "date": "2026-04-11",
+        "price": 8.6,
+        "floor": 8,
+        "area": 76.7
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.7,
+        "floor": 14,
+        "area": 76.8
+      }
+    ]
   },
   {
     "name": "힐스테이트구성",
@@ -2301,7 +4243,21 @@
     "pedia1_name": "박진녕소아청소년과의원",
     "pedia2": 9,
     "pedia2_name": "우리들소아청소년과",
-    "hcode": "dtr58"
+    "hcode": "dtr58",
+    "recent_trades": [
+      {
+        "date": "2026-04-16",
+        "price": 9.7,
+        "floor": 14,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-10",
+        "price": 9.7,
+        "floor": 16,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "힐스테이트동탄",
@@ -2325,7 +4281,33 @@
     "pedia1_name": "동탄S소아청소년과 발달클리닉",
     "pedia2": 19,
     "pedia2_name": "올바른소아청소년과의원",
-    "hcode": "aWkba"
+    "hcode": "aWkba",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7.8,
+        "floor": 15,
+        "area": 75.0
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.5,
+        "floor": 7,
+        "area": 75.0
+      },
+      {
+        "date": "2026-04-12",
+        "price": 7.5,
+        "floor": 20,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.9,
+        "floor": 29,
+        "area": 75.0
+      }
+    ]
   },
   {
     "name": "힐스테이트동탄",
@@ -2349,7 +4331,63 @@
     "pedia1_name": "동탄S소아청소년과 발달클리닉",
     "pedia2": 19,
     "pedia2_name": "올바른소아청소년과의원",
-    "hcode": "aWkba"
+    "hcode": "aWkba",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 8.1,
+        "floor": 6,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-20",
+        "price": 8.7,
+        "floor": 10,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-19",
+        "price": 8.7,
+        "floor": 8,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.1,
+        "floor": 5,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.2,
+        "floor": 18,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.7,
+        "floor": 20,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.7,
+        "floor": 21,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.2,
+        "floor": 20,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-02",
+        "price": 8.4,
+        "floor": 20,
+        "area": 84.8
+      }
+    ]
   },
   {
     "name": "힐스테이트서천",
@@ -2373,7 +4411,57 @@
     "pedia1_name": "아이웰봄 소아청소년과의원",
     "pedia2": 12,
     "pedia2_name": "연세뉴키즈 소아청소년과의원",
-    "hcode": null
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.6,
+        "floor": 6,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-20",
+        "price": 7.9,
+        "floor": 2,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-16",
+        "price": 7.5,
+        "floor": 5,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.8,
+        "floor": 11,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.8,
+        "floor": 6,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-02",
+        "price": 7.6,
+        "floor": 4,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-02",
+        "price": 7.4,
+        "floor": 3,
+        "area": 85.0
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7.6,
+        "floor": 8,
+        "area": 85.0
+      }
+    ]
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -2397,7 +4485,33 @@
     "pedia1_name": "온가족소아청소년과의원",
     "pedia2": 18,
     "pedia2_name": "연세로이소아청소년과의원",
-    "hcode": "dD2de"
+    "hcode": "dD2de",
+    "recent_trades": [
+      {
+        "date": "2026-04-23",
+        "price": 8.1,
+        "floor": 11,
+        "area": 75.0
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.7,
+        "floor": 4,
+        "area": 75.0
+      },
+      {
+        "date": "2026-04-09",
+        "price": 8.0,
+        "floor": 8,
+        "area": 75.0
+      },
+      {
+        "date": "2026-04-06",
+        "price": 7.5,
+        "floor": 1,
+        "area": 75.0
+      }
+    ]
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -2421,6 +4535,32 @@
     "pedia1_name": "온가족소아청소년과의원",
     "pedia2": 18,
     "pedia2_name": "연세로이소아청소년과의원",
-    "hcode": "dD2de"
+    "hcode": "dD2de",
+    "recent_trades": [
+      {
+        "date": "2026-04-13",
+        "price": 8.1,
+        "floor": 2,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.9,
+        "floor": 7,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.3,
+        "floor": 4,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-02",
+        "price": 8.9,
+        "floor": 12,
+        "area": 84.9
+      }
+    ]
   }
 ]
