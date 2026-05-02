@@ -20,6 +20,7 @@ export interface AptData {
   evening_details: { date: string; weekday: string; minutes: number }[];
   slope: number | null;
   slope_method: string;
+  slope_dongs: { dong: number; elev: number }[];
   pedia1: number | null;
   pedia1_name: string | null;
   pedia1_slope: number | null;

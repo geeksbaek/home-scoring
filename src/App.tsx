@@ -130,6 +130,40 @@ function AccelPopover({ data }: { data: AptData }) {
   );
 }
 
+function SlopePopover({ data }: { data: AptData }) {
+  if (data.slope == null) return <span className="text-muted-foreground">-</span>;
+  const cls = data.slope <= 10 ? "text-emerald-500" : data.slope >= 30 ? "text-red-500" : "";
+  const dongs = data.slope_dongs ?? [];
+  if (!dongs.length) return <span className={cn("text-xs", cls)}>{data.slope}m</span>;
+  const sorted = [...dongs].sort((a, b) => a.elev - b.elev);
+  const minE = sorted[0].elev;
+  const maxE = sorted[sorted.length - 1].elev;
+  return (
+    <Popover>
+      <PopoverTrigger className={cn("cursor-pointer text-xs font-medium", cls)}>{data.slope}m</PopoverTrigger>
+      <PopoverContent className="w-56 text-xs max-h-64 overflow-y-auto">
+        <p className="font-semibold mb-2">동별 고도 ({dongs.length}동)</p>
+        <div className="flex justify-between mb-1"><span className="text-muted-foreground">최저</span><span>{minE}m</span></div>
+        <div className="flex justify-between mb-2"><span className="text-muted-foreground">최고</span><span>{maxE}m</span></div>
+        <div className="space-y-0.5">
+          {sorted.map((d) => {
+            const pct = maxE === minE ? 0 : ((d.elev - minE) / (maxE - minE)) * 100;
+            return (
+              <div key={d.dong} className="flex items-center gap-2">
+                <span className="w-10 text-muted-foreground text-right">{d.dong}동</span>
+                <div className="flex-1 h-2 rounded bg-muted overflow-hidden">
+                  <div className="h-full rounded bg-primary" style={{ width: `${Math.max(pct, 4)}%` }} />
+                </div>
+                <span className="w-12 text-right">{d.elev}m</span>
+              </div>
+            );
+          })}
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
 type SortKey = "score" | "accel" | "liquidity" | "commuteScore" | "pedScore" | "slope" | "avg" | "build" | "name";
 
 export default function App() {
@@ -317,9 +351,7 @@ export default function App() {
                     <TableCell className="text-center text-xs">{d.liquidity ? `${d.liquidity}%${d.liq_approx ? "*" : ""}` : "-"}</TableCell>
                     <TableCell className="text-center"><CommutePopover data={d} /></TableCell>
                     <TableCell className="text-center"><PedPopover data={d} /></TableCell>
-                    <TableCell className={cn("text-center text-xs hidden sm:table-cell", d.slope != null && d.slope <= 10 ? "text-emerald-500" : d.slope != null && d.slope >= 30 ? "text-red-500" : "")}>
-                      {d.slope != null ? `${d.slope}m` : "-"}
-                    </TableCell>
+                    <TableCell className="text-center hidden sm:table-cell"><SlopePopover data={d} /></TableCell>
                     <TableCell className="text-center">
                       <div className="flex items-center justify-center gap-1">
                         <div className="h-1.5 w-12 rounded-full bg-muted overflow-hidden">
