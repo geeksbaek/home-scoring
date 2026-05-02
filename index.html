@@ -254,9 +254,10 @@ function renderRow(d, i) {
   const links = `<div class="col-links">${hLink}${hLink ? ' ' : ''}${nLink}</div>`;
 
   const [commLbl, commCls] = commuteLabel(d.commuteScore);
+  const commColor = (m) => m <= 20 ? 'var(--green)' : m <= 30 ? 'var(--green)' : m <= 40 ? 'var(--text)' : m <= 50 ? 'var(--yellow)' : 'var(--red)';
   const commTipRows = (label, details) => {
     if (!details || !details.length) return '';
-    return `<div style="margin-top:4px"><div style="font-weight:600;color:var(--text)">${label}</div><table><tr><th>날짜</th><th>요일</th><th>소요</th></tr>${details.map(t => `<tr><td>${t.date.slice(5)}</td><td>${t.weekday}</td><td>${t.minutes}분</td></tr>`).join('')}</table></div>`;
+    return `<div style="margin-top:4px"><div style="font-weight:600;color:var(--text)">${label}</div><table><tr><th>날짜</th><th>요일</th><th>소요</th></tr>${details.map(t => `<tr><td>${t.date.slice(5)}</td><td>${t.weekday}</td><td style="color:${commColor(t.minutes)}">${t.minutes}분</td></tr>`).join('')}</table></div>`;
   };
   const commTip = (d.morning || d.evening) ? `<div class="tooltip" style="min-width:200px"><div style="font-weight:600;margin-bottom:4px;color:var(--text)">출퇴근 상세</div><div class="tip-row"><span class="tip-label">출근 평균</span><span>${d.morning ? d.morning + '분' : '-'}</span></div><div class="tip-row"><span class="tip-label">퇴근 평균</span><span>${d.evening ? d.evening + '분' : '-'}</span></div>${commTipRows('출근 기록', d.morning_details)}${commTipRows('퇴근 기록', d.evening_details)}<div style="margin-top:6px;padding-top:4px;border-top:1px solid var(--border);color:var(--muted);font-size:0.68rem">점수 = (출근 + 퇴근) / 2</div></div>` : '';
   const scoreW = Math.min(d.score / 80 * 60, 60);
