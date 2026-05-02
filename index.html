@@ -58,7 +58,7 @@
 
   <div class="info-box">
     <div style="margin-bottom:6px;font-weight:600;color:var(--text);">필터 조건</div>
-    <span class="tag tag-filter">가격</span> 최근 6개월 평균 7~9억 &nbsp;
+    <span class="tag tag-filter">가격</span> 최근 1개월 평균 7~9억 &nbsp;
     <span class="tag tag-filter">세대수</span> 500세대 이상 &nbsp;
     <span class="tag tag-filter">스프링클러</span> 2005년 이후 준공 (전 층 설치 의무) &nbsp;
     <span class="tag tag-filter">거래량</span> 최근 6개월 3건+, 최근/이전 각 2건+
@@ -229,7 +229,10 @@ function render() {
     const slopeClass = d.slope != null ? (d.slope <= 10 ? 'good' : d.slope >= 30 ? 'bad' : '') : '';
     const scoreWidth = Math.min(d.score / 80 * 60, 60);
 
-    const naverMap = (q) => `https://map.naver.com/v5/search/${encodeURIComponent(q)}`;
+    const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+    const naverMap = (q) => isMobile
+      ? `nmap://search?query=${encodeURIComponent(q)}&appname=com.nhn.NaverMap`
+      : `https://map.naver.com/v5/search/${encodeURIComponent(q)}`;
     const regionLink = `<a href="${naverMap(d.name + ' ' + d.dong)}" target="_blank">${d.region} ${d.dong}</a>`;
     const ped1Link = d.pedia1 && d.pedia1_name ? `<a href="${naverMap(d.pedia1_name + ' ' + d.dong)}" target="_blank" class="${pedClass(d.pedia1)}">${d.pedia1}분</a>` : (d.pedia1 ? `<span class="${pedClass(d.pedia1)}">${d.pedia1}분</span>` : '-');
     const ped2Link = d.pedia2 && d.pedia2_name ? `<a href="${naverMap(d.pedia2_name + ' ' + d.dong)}" target="_blank" class="${pedClass(d.pedia2)}">${d.pedia2}분</a>` : (d.pedia2 ? `<span class="${pedClass(d.pedia2)}">${d.pedia2}분</span>` : '-');
