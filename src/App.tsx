@@ -39,17 +39,24 @@ function Sparkline({ data }: { data: { date: string; price: number }[] }) {
   const max = Math.max(...prices);
   const range = max - min || 1;
   const w = 80, h = 24, pad = 2;
-  const points = data.map((d, i) => {
-    const x = pad + (i / Math.max(data.length - 1, 1)) * (w - pad * 2);
-    const y = h - pad - ((d.price - min) / range) * (h - pad * 2);
-    return `${x},${y}`;
-  }).join(" ");
+  const pts = data.map((d, i) => ({
+    x: pad + (i / Math.max(data.length - 1, 1)) * (w - pad * 2),
+    y: h - pad - ((d.price - min) / range) * (h - pad * 2),
+    date: d.date,
+    price: d.price,
+  }));
+  const points = pts.map((p) => `${p.x},${p.y}`).join(" ");
   const last = prices[prices.length - 1];
   const first = prices[0];
   const color = last >= first ? "#4ade80" : "#f87171";
   return (
     <svg width={w} height={h} className="inline-block">
       <polyline points={points} fill="none" stroke={color} strokeWidth="1.5" strokeLinejoin="round" />
+      {pts.map((p, i) => (
+        <circle key={i} cx={p.x} cy={p.y} r={3} fill="transparent" stroke="none">
+          <title>{p.date.slice(2)} {p.price}억</title>
+        </circle>
+      ))}
     </svg>
   );
 }
