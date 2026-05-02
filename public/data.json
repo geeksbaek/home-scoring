@@ -169,8 +169,8 @@
         "minutes": 39
       }
     ],
-    "slope": 4.8,
-    "slope_method": "dong",
+    "slope": 4.6,
+    "slope_method": "dong_naver",
     "pedia1": 6,
     "pedia1_name": "성모바른소아청소년과의원",
     "pedia1_slope": -0.8,
@@ -250,8 +250,8 @@
         "minutes": 42
       }
     ],
-    "slope": 12,
-    "slope_method": "dong",
+    "slope": 12.1,
+    "slope_method": "dong_naver",
     "pedia1": 8,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -1.9,
@@ -356,8 +356,8 @@
         "minutes": 35
       }
     ],
-    "slope": 13.1,
-    "slope_method": "dong",
+    "slope": 13.5,
+    "slope_method": "dong_naver",
     "pedia1": 10,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -6.3,
@@ -443,8 +443,8 @@
         "minutes": 35
       }
     ],
-    "slope": 13.4,
-    "slope_method": "dong",
+    "slope": 13.5,
+    "slope_method": "dong_naver",
     "pedia1": 8,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -10.2,
@@ -602,8 +602,8 @@
         "minutes": 35
       }
     ],
-    "slope": 13.4,
-    "slope_method": "dong",
+    "slope": 13.5,
+    "slope_method": "dong_naver",
     "pedia1": 8,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -10.2,
@@ -707,8 +707,8 @@
         "minutes": 42
       }
     ],
-    "slope": 12,
-    "slope_method": "dong",
+    "slope": 12.1,
+    "slope_method": "dong_naver",
     "pedia1": 8,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -1.9,
@@ -860,8 +860,8 @@
         "minutes": 41
       }
     ],
-    "slope": 19.2,
-    "slope_method": "dong",
+    "slope": 1.7,
+    "slope_method": "dong_naver",
     "pedia1": 7,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia1_slope": 1,
@@ -1023,8 +1023,8 @@
         "minutes": 39
       }
     ],
-    "slope": 22.1,
-    "slope_method": "dong",
+    "slope": 2.9,
+    "slope_method": "dong_naver",
     "pedia1": 2,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia1_slope": 0.1,
@@ -1151,7 +1151,7 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 1.8,
+    "slope": 4.7,
     "slope_method": "dong_naver",
     "pedia1": 10,
     "pedia1_name": "영통아이언소아청소년과의원",
@@ -1226,8 +1226,8 @@
         "minutes": 41
       }
     ],
-    "slope": 19.2,
-    "slope_method": "dong",
+    "slope": 1.7,
+    "slope_method": "dong_naver",
     "pedia1": 7,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
     "pedia1_slope": 1,
@@ -1294,8 +1294,8 @@
         "minutes": 20
       }
     ],
-    "slope": 8,
-    "slope_method": "dong",
+    "slope": 9.4,
+    "slope_method": "dong_naver",
     "pedia1": 9,
     "pedia1_name": "장소아청소년과의원",
     "pedia1_slope": -39.8,
@@ -1370,8 +1370,8 @@
         "minutes": 27
       }
     ],
-    "slope": 42.4,
-    "slope_method": "dong",
+    "slope": 42.3,
+    "slope_method": "dong_naver",
     "pedia1": 15,
     "pedia1_name": "삼성귀요미소아청소년과의원",
     "pedia1_slope": -52.1,
@@ -1532,8 +1532,8 @@
         "minutes": 28
       }
     ],
-    "slope": 3.7,
-    "slope_method": "dong",
+    "slope": 4.5,
+    "slope_method": "dong_naver",
     "pedia1": 8,
     "pedia1_name": "박진녕소아청소년과의원",
     "pedia1_slope": -4,
@@ -1616,7 +1616,7 @@
         "minutes": 35
       }
     ],
-    "slope": 31.7,
+    "slope": 31.5,
     "slope_method": "dong_naver",
     "pedia1": 12,
     "pedia1_name": "삼성키즈소아청소년과의원",
@@ -1672,7 +1672,7 @@
         "minutes": 29
       }
     ],
-    "slope": 10.7,
+    "slope": 10.8,
     "slope_method": "dong_naver",
     "pedia1": 3,
     "pedia1_name": "꿈이든소아청소년과의원",
@@ -1810,8 +1810,8 @@
         "minutes": 25
       }
     ],
-    "slope": 42.4,
-    "slope_method": "dong",
+    "slope": 42.8,
+    "slope_method": "dong_naver",
     "pedia1": 12,
     "pedia1_name": "이레소아청소년과의원",
     "pedia1_slope": -44.8,
@@ -1891,8 +1891,8 @@
         "minutes": 25
       }
     ],
-    "slope": 42.4,
-    "slope_method": "dong",
+    "slope": 42.8,
+    "slope_method": "dong_naver",
     "pedia1": 12,
     "pedia1_name": "이레소아청소년과의원",
     "pedia1_slope": -44.8,
@@ -2010,7 +2010,7 @@
         "minutes": 35
       }
     ],
-    "slope": 6.3,
+    "slope": 6.5,
     "slope_method": "dong_naver",
     "pedia1": 13,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
@@ -2133,8 +2133,8 @@
         "minutes": 33
       }
     ],
-    "slope": 5.8,
-    "slope_method": "dong",
+    "slope": 6,
+    "slope_method": "dong_naver",
     "pedia1": 11,
     "pedia1_name": "온새미로",
     "pedia1_slope": 9,
@@ -2226,8 +2226,8 @@
         "minutes": 33
       }
     ],
-    "slope": 5.8,
-    "slope_method": "dong",
+    "slope": 6,
+    "slope_method": "dong_naver",
     "pedia1": 11,
     "pedia1_name": "온새미로",
     "pedia1_slope": 9,
@@ -2385,8 +2385,8 @@
         "minutes": 42
       }
     ],
-    "slope": 8.2,
-    "slope_method": "dong",
+    "slope": 7.7,
+    "slope_method": "dong_naver",
     "pedia1": 6,
     "pedia1_name": "삼성365소아청소년과",
     "pedia1_slope": 12.7,
@@ -2688,7 +2688,7 @@
         "minutes": 39
       }
     ],
-    "slope": 0.5,
+    "slope": 1.2,
     "slope_method": "dong_naver",
     "pedia1": 21,
     "pedia1_name": "남승우소아청소년과의원",
@@ -3625,7 +3625,7 @@
         "minutes": 29
       }
     ],
-    "slope": 0.7,
+    "slope": 4.1,
     "slope_method": "dong_naver",
     "pedia1": 5,
     "pedia1_name": "SK메디모아소아청소년과의원",
@@ -3675,7 +3675,7 @@
         "minutes": 30
       }
     ],
-    "slope": 14.1,
+    "slope": 12.6,
     "slope_method": "dong_naver",
     "pedia1": 18,
     "pedia1_name": "박소아청소년과의원",
@@ -3738,8 +3738,8 @@
         "minutes": 36
       }
     ],
-    "slope": 13.1,
-    "slope_method": "dong",
+    "slope": 11.9,
+    "slope_method": "dong_naver",
     "pedia1": 4,
     "pedia1_name": "서울소아청소년과의원",
     "pedia1_slope": -17.2,
@@ -3837,8 +3837,8 @@
         "minutes": 39
       }
     ],
-    "slope": 4.8,
-    "slope_method": "dong",
+    "slope": 4.6,
+    "slope_method": "dong_naver",
     "pedia1": 6,
     "pedia1_name": "성모바른소아청소년과의원",
     "pedia1_slope": -0.8,
@@ -3911,7 +3911,7 @@
         "minutes": 34
       }
     ],
-    "slope": 1.4,
+    "slope": 3.3,
     "slope_method": "dong_naver",
     "pedia1": 6,
     "pedia1_name": "성모수소아청소년과의원",
@@ -3977,7 +3977,7 @@
         "minutes": 38
       }
     ],
-    "slope": 32.6,
+    "slope": 31.1,
     "slope_method": "dong_naver",
     "pedia1": 8,
     "pedia1_name": "레인보우소아청소년과의원",
@@ -4122,8 +4122,8 @@
         "minutes": 42
       }
     ],
-    "slope": 12,
-    "slope_method": "dong",
+    "slope": 12.1,
+    "slope_method": "dong_naver",
     "pedia1": 8,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -1.9,
@@ -4210,8 +4210,8 @@
         "minutes": 35
       }
     ],
-    "slope": 13.1,
-    "slope_method": "dong",
+    "slope": 13.5,
+    "slope_method": "dong_naver",
     "pedia1": 10,
     "pedia1_name": "온가족소아청소년과의원",
     "pedia1_slope": -6.3,
@@ -4254,7 +4254,7 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 1.3,
+    "slope": 0.9,
     "slope_method": "dong_naver",
     "pedia1": 8,
     "pedia1_name": "굿닥터소아과의원",
@@ -4304,7 +4304,7 @@
         "minutes": 29
       }
     ],
-    "slope": 0.1,
+    "slope": 3.3,
     "slope_method": "dong_naver",
     "pedia1": 5,
     "pedia1_name": "굿닥터소아과의원",
@@ -4456,8 +4456,8 @@
         "minutes": 34
       }
     ],
-    "slope": 5.7,
-    "slope_method": "dong",
+    "slope": 5.2,
+    "slope_method": "dong_naver",
     "pedia1": 4,
     "pedia1_name": "아주맑은 소아청소년과의원",
     "pedia1_slope": 0.6,
@@ -4548,7 +4548,7 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 16.2,
+    "slope": 20.8,
     "slope_method": "dong_naver",
     "pedia1": 17,
     "pedia1_name": "연세소아청소년과의원",
@@ -4598,7 +4598,7 @@
         "minutes": 41
       }
     ],
-    "slope": 4.1,
+    "slope": 2.8,
     "slope_method": "dong_naver",
     "pedia1": 9,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
@@ -4648,7 +4648,7 @@
         "minutes": 41
       }
     ],
-    "slope": 1.7,
+    "slope": 2.3,
     "slope_method": "dong_naver",
     "pedia1": 5,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
@@ -4807,8 +4807,8 @@
         "minutes": 20
       }
     ],
-    "slope": 8,
-    "slope_method": "dong",
+    "slope": 9.4,
+    "slope_method": "dong_naver",
     "pedia1": 9,
     "pedia1_name": "장소아청소년과의원",
     "pedia1_slope": -39.8,
@@ -4850,7 +4850,7 @@
         "minutes": 22
       }
     ],
-    "slope": 32,
+    "slope": 31.7,
     "slope_method": "dong_naver",
     "pedia1": 7,
     "pedia1_name": "사랑의내과소아청소년과의원",
@@ -4925,7 +4925,7 @@
         "minutes": 26
       }
     ],
-    "slope": 15.7,
+    "slope": 11.6,
     "slope_method": "dong_naver",
     "pedia1": 17,
     "pedia1_name": "하나소아청소년과의원",
@@ -5009,7 +5009,7 @@
         "minutes": 35
       }
     ],
-    "slope": 31.7,
+    "slope": 31.5,
     "slope_method": "dong_naver",
     "pedia1": 12,
     "pedia1_name": "삼성키즈소아청소년과의원",
@@ -5125,7 +5125,7 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 8.5,
+    "slope": 18.6,
     "slope_method": "dong_naver",
     "pedia1": 10,
     "pedia1_name": "마트소아청소년과의원",
@@ -5168,7 +5168,7 @@
         "minutes": 32
       }
     ],
-    "slope": 6.9,
+    "slope": 6.3,
     "slope_method": "dong_naver",
     "pedia1": 5,
     "pedia1_name": "아이웰봄 소아청소년과의원",
@@ -5433,7 +5433,7 @@
         "minutes": 31
       }
     ],
-    "slope": 4.4,
+    "slope": 3.5,
     "slope_method": "dong_naver",
     "pedia1": 4,
     "pedia1_name": "배소아청소년과의원",
@@ -5476,7 +5476,7 @@
         "minutes": 27
       }
     ],
-    "slope": 15.3,
+    "slope": 14.7,
     "slope_method": "dong_naver",
     "pedia1": 15,
     "pedia1_name": "아산이뮨플러스의원",
@@ -5519,7 +5519,7 @@
         "minutes": 45
       }
     ],
-    "slope": 0.3,
+    "slope": 0.4,
     "slope_method": "dong_naver",
     "pedia1": 9,
     "pedia1_name": "하남드림 소아청소년과의원",
@@ -5569,7 +5569,7 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 0.3,
+    "slope": 0.6,
     "slope_method": "dong_naver",
     "pedia1": 12,
     "pedia1_name": "플러스맘소아청소년과의원",
@@ -5724,7 +5724,7 @@
         "minutes": 36
       }
     ],
-    "slope": 3.3,
+    "slope": 2.9,
     "slope_method": "dong_naver",
     "pedia1": 12,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
@@ -5848,7 +5848,7 @@
         "minutes": 35
       }
     ],
-    "slope": 6.3,
+    "slope": 6.5,
     "slope_method": "dong_naver",
     "pedia1": 13,
     "pedia1_name": "연세슬기로운 소아청소년과의원",
@@ -5926,7 +5926,7 @@
         "minutes": 32
       }
     ],
-    "slope": 5.4,
+    "slope": 4.1,
     "slope_method": "dong_naver",
     "pedia1": 7,
     "pedia1_name": "아이편한소아청소년과의원",
@@ -6036,8 +6036,8 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 38.3,
-    "slope_method": "dong",
+    "slope": 4.5,
+    "slope_method": "dong_naver",
     "pedia1": 8,
     "pedia1_name": "코벤트더웰의원",
     "pedia1_slope": -4.5,
@@ -6582,7 +6582,7 @@
         "minutes": 37
       }
     ],
-    "slope": 7.2,
+    "slope": 6.2,
     "slope_method": "dong_naver",
     "pedia1": 10,
     "pedia1_name": "동탄미소소아청소년과의원",
@@ -6857,7 +6857,7 @@
         "minutes": 39
       }
     ],
-    "slope": 0.5,
+    "slope": 1.2,
     "slope_method": "dong_naver",
     "pedia1": 21,
     "pedia1_name": "남승우소아청소년과의원",
@@ -7240,7 +7240,7 @@
     "evening_cnt": 0,
     "morning_details": [],
     "evening_details": [],
-    "slope": 4.4,
+    "slope": 10.2,
     "slope_method": "dong_naver",
     "pedia1": 4,
     "pedia1_name": "동탄해와달소아청소년과의원",
