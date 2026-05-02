@@ -3712,10 +3712,10 @@
     "slope_method": "dong",
     "pedia1": 14,
     "pedia1_name": "코벤트더웰의원",
-    "pedia1_slope": null,
+    "pedia1_slope": -4.5,
     "pedia2": 17,
     "pedia2_name": "반디소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": 7.5,
     "hcode": "aDW27",
     "recent_trades": [
       {
