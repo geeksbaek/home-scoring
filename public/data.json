@@ -6725,7 +6725,7 @@
         "minutes": 29
       }
     ],
-    "slope": 1,
+    "slope": 0.7,
     "slope_method": "dong_naver",
     "pedia1": 4,
     "pedia1_name": "우리아이소아청소년과의원",
