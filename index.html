@@ -23,7 +23,7 @@
   .filters label { color: var(--muted); font-size: 0.85rem; }
   .filters select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-size: 0.85rem; }
 
-  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .table-wrap { overflow: auto; -webkit-overflow-scrolling: touch; max-height: calc(100vh - 60px); }
   table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
   th { background: var(--surface); position: sticky; top: 0; z-index: 2; cursor: pointer; user-select: none; }
   th:hover { background: var(--border); }
