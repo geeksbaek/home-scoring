@@ -152,9 +152,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.197g",
+    "energy_grade": "1+"
   },
   {
     "name": "서광교파크스위첸",
@@ -375,9 +375,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.197g",
+    "energy_grade": "1+"
   },
   {
     "name": "수원하늘채더퍼스트1단지",
@@ -1189,9 +1189,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169g",
+    "energy_grade": "1"
   },
   {
     "name": "수원센트럴아이파크자이",
@@ -1568,9 +1568,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
+    "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": "1+"
   },
   {
     "name": "매교역푸르지오SKVIEW",
@@ -2359,9 +2359,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169g",
+    "energy_grade": "1"
   },
   {
     "name": "매교역푸르지오SKVIEW",
@@ -2886,9 +2886,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169g",
+    "energy_grade": "1"
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -3223,9 +3223,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169g",
+    "energy_grade": "1"
   },
   {
     "name": "영통SKVIEW",
@@ -3364,7 +3364,7 @@
     "subway_station": null,
     "education": "초등학교()",
     "energy": null,
-    "eq_design": null,
+    "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
   },
@@ -4951,8 +4951,8 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
+    "eq_design": true,
+    "eq_capacity": "VII-0.141g",
     "energy_grade": null
   },
   {
@@ -5844,8 +5844,8 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.1971g",
     "energy_grade": null
   },
   {
@@ -6336,9 +6336,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.141g",
+    "energy_grade": "2"
   },
   {
     "name": "기흥역파크푸르지오",
@@ -6740,9 +6740,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "VII-0.197g",
+    "energy_grade": "1++"
   },
   {
     "name": "힐스테이트광교산",
@@ -6937,9 +6937,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "VII-0.197g",
+    "energy_grade": "1++"
   },
   {
     "name": "미사강변트래지안",
@@ -8669,9 +8669,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "VII-0.169g",
+    "energy_grade": "1+"
   },
   {
     "name": "시범한빛마을동탄아이파크",
@@ -9709,9 +9709,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.16896g",
+    "energy_grade": "1+"
   },
   {
     "name": "힐스테이트동탄",
@@ -10026,8 +10026,8 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
+    "eq_design": true,
+    "eq_capacity": "VII-0.176g",
     "energy_grade": null
   },
   {
@@ -10612,7 +10612,7 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
+    "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
   },
@@ -11776,7 +11776,7 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
+    "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
   },
@@ -12393,7 +12393,7 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
+    "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
   },
@@ -12612,7 +12612,7 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
+    "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
   },
@@ -12827,7 +12827,7 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
+    "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
   },
@@ -13271,7 +13271,7 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
+    "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null
   },
@@ -15107,9 +15107,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169g",
+    "energy_grade": "1"
   },
   {
     "name": "수원센트럴아이파크자이",
@@ -15408,9 +15408,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
+    "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": "1+"
   },
   {
     "name": "래미안노블클래스2단지",
@@ -16717,9 +16717,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.169g",
+    "energy_grade": "1+"
   },
   {
     "name": "영통롯데캐슬엘클래스2단지",
@@ -17477,8 +17477,8 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
+    "eq_design": true,
+    "eq_capacity": "VII-0.141g",
     "energy_grade": null
   },
   {
@@ -23005,7 +23005,7 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
+    "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
   },
@@ -24634,7 +24634,7 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
+    "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
   },
@@ -24865,7 +24865,7 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
+    "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
   },
@@ -25377,9 +25377,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.141g",
+    "energy_grade": "1"
   },
   {
     "name": "동탄역더샵센트럴시티2차",
@@ -25646,9 +25646,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
-    "energy_grade": null
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.16896g",
+    "energy_grade": "1+"
   },
   {
     "name": "시범한빛마을금호어울림",
@@ -26174,8 +26174,8 @@
     "subway_station": "1호선: 오산대역",
     "education": "초등학교(정현초등학교) 중학교(청림중학교) 고등학교(청림고등학교)",
     "energy": null,
-    "eq_design": null,
-    "eq_capacity": null,
+    "eq_design": true,
+    "eq_capacity": "Ⅶ-0.141g",
     "energy_grade": null
   },
   {
@@ -26409,7 +26409,7 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
+    "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null
   },
@@ -26864,8 +26864,8 @@
       "waterCool": 0,
       "gas": 0
     },
-    "eq_design": null,
-    "eq_capacity": null,
+    "eq_design": true,
+    "eq_capacity": "VII-0.176g",
     "energy_grade": null
   },
   {
