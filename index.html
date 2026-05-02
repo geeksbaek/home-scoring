@@ -294,7 +294,7 @@ function renderRow(d, i) {
 }
 
 function accelClass(v) { return v > 5 ? 'good' : v < 0 ? 'bad' : ''; }
-function commuteClass(v, lo, hi) { return v ? (v <= lo ? 'good' : v >= hi ? 'bad' : '') : ''; }
+function commuteClass(v, lo, hi) { return v ? (v <= lo ? 'good' : v >= hi ? 'bad' : v >= 40 ? 'warn' : '') : ''; }
 function slopeColor(v) { return v == null ? '' : Math.abs(v) >= 10 ? '#f87171' : Math.abs(v) >= 5 ? '#fbbf24' : '#4ade80'; }
 function pedLabel(v) {
   if (v == null) return ['-', ''];
