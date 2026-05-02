@@ -1,127 +1,487 @@
 [
   {
-    "name": "KCC스위첸아파트",
-    "atype": "84",
-    "area": 84.0,
-    "avg": 78833,
-    "accel": 4.1,
-    "r3_avg": 74970,
-    "p3_avg": 72018,
-    "count": 52,
-    "build": 2015,
-    "region": "화성시",
-    "dong": "청계동",
-    "liquidity": 8.1,
+    "name": "서광교파크스위첸",
+    "atype": "74",
+    "area": 75.8,
+    "avg": 81883,
+    "accel": 1.9,
+    "r3_avg": 82667,
+    "p3_avg": 81100,
+    "count": 6,
+    "build": 2023,
+    "region": "수원시 장안구",
+    "dong": "연무동",
+    "liquidity": 1.3,
+    "liq_approx": true,
+    "morning": 20,
+    "evening": 33,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 6.2,
+    "slope_method": "dong_naver",
+    "pedia1": 39,
+    "pedia1_name": "광교이안소아청소년과의원",
+    "pedia1_slope": -29.3,
+    "pedia2": 36,
+    "pedia2_name": "늘푸른소아과의원",
+    "pedia2_slope": -46.1,
+    "hcode": "dPJ58",
+    "recent_trades": []
+  },
+  {
+    "name": "서광교파크스위첸",
+    "atype": "59",
+    "area": 59.7,
+    "avg": 72000,
+    "accel": 2.7,
+    "r3_avg": 72609,
+    "p3_avg": 70700,
+    "count": 17,
+    "build": 2023,
+    "region": "수원시 장안구",
+    "dong": "연무동",
+    "liquidity": 2.5,
     "liq_approx": false,
+    "morning": 20,
+    "evening": 33,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 6.2,
+    "slope_method": "dong_naver",
+    "pedia1": 39,
+    "pedia1_name": "광교이안소아청소년과의원",
+    "pedia1_slope": -29.3,
+    "pedia2": 36,
+    "pedia2_name": "늘푸른소아과의원",
+    "pedia2_slope": -46.1,
+    "hcode": "dPJ58",
+    "recent_trades": [
+      {
+        "date": "2026-04-04",
+        "price": 7.2,
+        "floor": 14,
+        "area": 59.4
+      }
+    ]
+  },
+  {
+    "name": "수원하늘채더퍼스트1단지",
+    "atype": "74",
+    "area": 74.9,
+    "avg": 71050,
+    "accel": 3.5,
+    "r3_avg": 70413,
+    "p3_avg": 68029,
+    "count": 15,
+    "build": 2022,
+    "region": "수원시 권선구",
+    "dong": "곡반정동",
+    "liquidity": 1.1,
+    "liq_approx": true,
+    "morning": 38,
+    "evening": 49,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 4.8,
+    "slope_method": "dong",
+    "pedia1": 12,
+    "pedia1_name": "성모바른소아청소년과의원",
+    "pedia1_slope": -0.8,
+    "pedia2": 13,
+    "pedia2_name": "하나소아청소년과의원",
+    "pedia2_slope": 1,
+    "hcode": "dted4",
+    "recent_trades": [
+      {
+        "date": "2026-04-16",
+        "price": 7.2,
+        "floor": 9,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-07",
+        "price": 7,
+        "floor": 11,
+        "area": 74.9
+      }
+    ]
+  },
+  {
+    "name": "수원센트럴아이파크자이",
+    "atype": "74",
+    "area": 74,
+    "avg": 73575,
+    "accel": 0.8,
+    "r3_avg": 75713,
+    "p3_avg": 75146,
+    "count": 28,
+    "build": 2024,
+    "region": "수원시 팔달구",
+    "dong": "인계동",
+    "liquidity": 1.7,
+    "liq_approx": true,
     "morning": 29,
-    "evening": 40,
+    "evening": 43,
     "morning_cnt": 6,
     "evening_cnt": 3,
-    "slope": 7.2,
-    "slope_method": "dong_naver",
-    "pedia1": 15,
-    "pedia1_name": "동탄미소소아청소년과의원",
-    "pedia1_slope": -16.5,
-    "pedia2": 15,
-    "pedia2_name": "코끼리소아청소년과의원",
-    "pedia2_slope": -16.6,
-    "hcode": "9J848",
+    "slope": 13.1,
+    "slope_method": "dong",
+    "pedia1": 10,
+    "pedia1_name": "온가족소아청소년과의원",
+    "pedia1_slope": -6.3,
+    "pedia2": 23,
+    "pedia2_name": "연세로이소아청소년과의원",
+    "pedia2_slope": -4.8,
+    "hcode": "dtd2d",
     "recent_trades": [
       {
-        "date": "2026-04-10",
-        "price": 8.0,
-        "floor": 21,
-        "area": 84.0
+        "date": "2026-04-18",
+        "price": 7.5,
+        "floor": 4,
+        "area": 73.9
       },
       {
-        "date": "2026-04-04",
-        "price": 8.0,
+        "date": "2026-04-15",
+        "price": 7.3,
+        "floor": 1,
+        "area": 74
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.6,
+        "floor": 18,
+        "area": 74
+      },
+      {
+        "date": "2026-04-03",
+        "price": 7.1,
+        "floor": 2,
+        "area": 74
+      }
+    ]
+  },
+  {
+    "name": "매교역푸르지오SKVIEW",
+    "atype": "59",
+    "area": 59.9,
+    "avg": 80321,
+    "accel": 4.3,
+    "r3_avg": 77595,
+    "p3_avg": 74394,
+    "count": 89,
+    "build": 2023,
+    "region": "수원시 팔달구",
+    "dong": "매교동",
+    "liquidity": 6.2,
+    "liq_approx": false,
+    "morning": 30,
+    "evening": 43,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 13.4,
+    "slope_method": "dong",
+    "pedia1": 18,
+    "pedia1_name": "온가족소아청소년과의원",
+    "pedia1_slope": -10.2,
+    "pedia2": 13,
+    "pedia2_name": "연세로이소아청소년과의원",
+    "pedia2_slope": -8.7,
+    "hcode": "dGbe5",
+    "recent_trades": [
+      {
+        "date": "2026-04-20",
+        "price": 8.2,
         "floor": 13,
-        "area": 84.0
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-18",
+        "price": 8,
+        "floor": 18,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-18",
+        "price": 8,
+        "floor": 4,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-17",
+        "price": 8.1,
+        "floor": 14,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-13",
+        "price": 8.2,
+        "floor": 4,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-12",
+        "price": 8,
+        "floor": 8,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.7,
+        "floor": 2,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-10",
+        "price": 8.5,
+        "floor": 15,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.1,
+        "floor": 11,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-06",
+        "price": 8.4,
+        "floor": 11,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-06",
+        "price": 8.2,
+        "floor": 11,
+        "area": 59.9
       },
       {
         "date": "2026-04-04",
+        "price": 8.2,
+        "floor": 6,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-03",
+        "price": 8,
+        "floor": 18,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-02",
+        "price": 7,
+        "floor": 2,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-01",
+        "price": 8.1,
+        "floor": 5,
+        "area": 59.9
+      }
+    ]
+  },
+  {
+    "name": "매교역푸르지오SKVIEW",
+    "atype": "74",
+    "area": 74.9,
+    "avg": 88833,
+    "accel": 1.8,
+    "r3_avg": 86652,
+    "p3_avg": 85118,
+    "count": 36,
+    "build": 2023,
+    "region": "수원시 팔달구",
+    "dong": "매교동",
+    "liquidity": 1.8,
+    "liq_approx": true,
+    "morning": 30,
+    "evening": 43,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 13.4,
+    "slope_method": "dong",
+    "pedia1": 18,
+    "pedia1_name": "온가족소아청소년과의원",
+    "pedia1_slope": -10.2,
+    "pedia2": 13,
+    "pedia2_name": "연세로이소아청소년과의원",
+    "pedia2_slope": -8.7,
+    "hcode": "dGbe5",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 8.8,
+        "floor": 4,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-17",
+        "price": 8.7,
+        "floor": 10,
+        "area": 74.7
+      },
+      {
+        "date": "2026-04-16",
+        "price": 8.9,
+        "floor": 7,
+        "area": 74.7
+      },
+      {
+        "date": "2026-04-13",
+        "price": 9,
+        "floor": 11,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 9.1,
+        "floor": 16,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.8,
+        "floor": 14,
+        "area": 74.7
+      }
+    ]
+  },
+  {
+    "name": "힐스테이트푸르지오수원",
+    "atype": "74",
+    "area": 75,
+    "avg": 78313,
+    "accel": 3.2,
+    "r3_avg": 77125,
+    "p3_avg": 74744,
+    "count": 18,
+    "build": 2023,
+    "region": "수원시 팔달구",
+    "dong": "매교동",
+    "liquidity": 2,
+    "liq_approx": true,
+    "morning": 33,
+    "evening": 47,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 12,
+    "slope_method": "dong",
+    "pedia1": 21,
+    "pedia1_name": "온가족소아청소년과의원",
+    "pedia1_slope": -1.9,
+    "pedia2": 18,
+    "pedia2_name": "연세로이소아청소년과의원",
+    "pedia2_slope": -0.4,
+    "hcode": "dD2de",
+    "recent_trades": [
+      {
+        "date": "2026-04-23",
+        "price": 8.1,
+        "floor": 11,
+        "area": 75
+      },
+      {
+        "date": "2026-04-11",
         "price": 7.7,
         "floor": 4,
-        "area": 84.0
-      }
-    ]
-  },
-  {
-    "name": "가천대역두산위브",
-    "atype": "59",
-    "area": 60.0,
-    "avg": 73100,
-    "accel": 4.0,
-    "r3_avg": 73560,
-    "p3_avg": 70742,
-    "count": 23,
-    "build": 2018,
-    "region": "성남시 중원구",
-    "dong": "태평동",
-    "liquidity": 5.5,
-    "liq_approx": false,
-    "morning": 19,
-    "evening": 22,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 8.0,
-    "slope_method": "dong",
-    "pedia1": 8,
-    "pedia1_name": "장소아청소년과의원",
-    "pedia1_slope": -39.8,
-    "pedia2": 8,
-    "pedia2_name": "이메디정형외과",
-    "pedia2_slope": -43.0,
-    "hcode": "aWCcc",
-    "recent_trades": [
-      {
-        "date": "2026-04-10",
-        "price": 7.2,
-        "floor": 2,
-        "area": 60.0
+        "area": 75
       },
       {
-        "date": "2026-04-05",
+        "date": "2026-04-09",
+        "price": 8,
+        "floor": 8,
+        "area": 75
+      },
+      {
+        "date": "2026-04-06",
         "price": 7.5,
-        "floor": 12,
-        "area": 59.6
+        "floor": 1,
+        "area": 75
       }
     ]
   },
   {
-    "name": "가천대역두산위브",
-    "atype": "84",
-    "area": 84.6,
-    "avg": 82400,
-    "accel": -8.6,
-    "r3_avg": 78000,
-    "p3_avg": 85333,
+    "name": "영통SKVIEW",
+    "atype": "59",
+    "area": 59.5,
+    "avg": 84500,
+    "accel": 11.9,
+    "r3_avg": 83667,
+    "p3_avg": 74750,
     "count": 5,
-    "build": 2018,
-    "region": "성남시 중원구",
-    "dong": "태평동",
-    "liquidity": 6.0,
+    "build": 2016,
+    "region": "수원시 영통구",
+    "dong": "망포동",
+    "liquidity": 2.3,
     "liq_approx": false,
-    "morning": 19,
-    "evening": 22,
+    "morning": 29,
+    "evening": 42,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 2.7,
+    "slope_method": "dong_naver",
+    "pedia1": 13,
+    "pedia1_name": "영통아이언소아청소년과의원",
+    "pedia1_slope": -3.9,
+    "pedia2": 19,
+    "pedia2_name": "홍진희소아청소년과의원",
+    "pedia2_slope": -11.5,
+    "hcode": "aA22d",
+    "recent_trades": [
+      {
+        "date": "2026-04-20",
+        "price": 8.4,
+        "floor": 4,
+        "area": 59.5
+      },
+      {
+        "date": "2026-04-18",
+        "price": 8.6,
+        "floor": 5,
+        "area": 59.5
+      }
+    ]
+  },
+  {
+    "name": "영통아이파크캐슬3단지",
+    "atype": "59",
+    "area": 59.8,
+    "avg": 73000,
+    "accel": 5,
+    "r3_avg": 73667,
+    "p3_avg": 70187,
+    "count": 18,
+    "build": 2022,
+    "region": "수원시 영통구",
+    "dong": "망포동",
+    "liquidity": 7.5,
+    "liq_approx": false,
+    "morning": 34,
+    "evening": 44,
     "morning_cnt": 7,
     "evening_cnt": 3,
-    "slope": 8.0,
+    "slope": 19.2,
     "slope_method": "dong",
-    "pedia1": 8,
-    "pedia1_name": "장소아청소년과의원",
-    "pedia1_slope": -39.8,
-    "pedia2": 8,
-    "pedia2_name": "이메디정형외과",
-    "pedia2_slope": -43.0,
-    "hcode": "aWCcc",
-    "recent_trades": []
+    "pedia1": 9,
+    "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": 1,
+    "pedia2": 16,
+    "pedia2_name": "성모바른소아청소년과의원",
+    "pedia2_slope": -0.4,
+    "hcode": "dKR50",
+    "recent_trades": [
+      {
+        "date": "2026-04-07",
+        "price": 7.3,
+        "floor": 3,
+        "area": 59.8
+      }
+    ]
   },
   {
     "name": "광교더포레스트",
     "atype": "74",
-    "area": 75.0,
+    "area": 75,
     "avg": 85375,
     "accel": 8.3,
     "r3_avg": 87800,
@@ -143,153 +503,429 @@
     "pedia1_slope": 16.8,
     "pedia2": 30,
     "pedia2_name": "호호소아청소년과의원",
-    "pedia2_slope": 17.0,
+    "pedia2_slope": 17,
     "hcode": "58Y78",
     "recent_trades": [
       {
         "date": "2026-04-13",
         "price": 8.6,
         "floor": 28,
-        "area": 75.0
+        "area": 75
       },
       {
         "date": "2026-04-11",
         "price": 8.5,
         "floor": 19,
-        "area": 75.0
+        "area": 75
       },
       {
         "date": "2026-04-06",
         "price": 8.5,
         "floor": 6,
-        "area": 75.0
+        "area": 75
       },
       {
         "date": "2026-04-04",
         "price": 8.6,
         "floor": 8,
-        "area": 75.0
+        "area": 75
       }
     ]
   },
   {
-    "name": "광교더포레스트",
-    "atype": "84",
-    "area": 84.8,
-    "avg": 89750,
-    "accel": 7.3,
-    "r3_avg": 90364,
-    "p3_avg": 84250,
-    "count": 25,
-    "build": 2013,
+    "name": "영통아이파크캐슬2단지",
+    "atype": "59",
+    "area": 60,
+    "avg": 80625,
+    "accel": 7.2,
+    "r3_avg": 80393,
+    "p3_avg": 75000,
+    "count": 18,
+    "build": 2019,
     "region": "수원시 영통구",
-    "dong": "하동",
-    "liquidity": 2.2,
-    "liq_approx": true,
-    "morning": 26,
-    "evening": 35,
-    "morning_cnt": 6,
-    "evening_cnt": 3,
-    "slope": 12.2,
-    "slope_method": "dong_naver",
-    "pedia1": 34,
-    "pedia1_name": "수지온케어365의원",
-    "pedia1_slope": 16.8,
-    "pedia2": 30,
-    "pedia2_name": "호호소아청소년과의원",
-    "pedia2_slope": 17.0,
-    "hcode": "58Y78",
-    "recent_trades": [
-      {
-        "date": "2026-04-27",
-        "price": 8.9,
-        "floor": 21,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-17",
-        "price": 9.0,
-        "floor": 11,
-        "area": 84.8
-      }
-    ]
-  },
-  {
-    "name": "금호어울림레이크",
-    "atype": "74",
-    "area": 75.0,
-    "avg": 75667,
-    "accel": 1.9,
-    "r3_avg": 77000,
-    "p3_avg": 75600,
-    "count": 12,
-    "build": 2018,
-    "region": "화성시",
-    "dong": "장지동",
-    "liquidity": 1.8,
-    "liq_approx": true,
-    "morning": 41,
-    "evening": 51,
+    "dong": "망포동",
+    "liquidity": 7.5,
+    "liq_approx": false,
+    "morning": 32,
+    "evening": 46,
     "morning_cnt": 7,
     "evening_cnt": 3,
-    "slope": 2.6,
+    "slope": 22.1,
+    "slope_method": "dong",
+    "pedia1": 1,
+    "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": 0.1,
+    "pedia2": 16,
+    "pedia2_name": "튼튼사랑소아청소년과의원",
+    "pedia2_slope": 6.4,
+    "hcode": "aZvfa",
+    "recent_trades": [
+      {
+        "date": "2026-04-16",
+        "price": 8.2,
+        "floor": 13,
+        "area": 60
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.7,
+        "floor": 3,
+        "area": 60
+      },
+      {
+        "date": "2026-04-07",
+        "price": 8.4,
+        "floor": 7,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-07",
+        "price": 8,
+        "floor": 2,
+        "area": 59.8
+      }
+    ]
+  },
+  {
+    "name": "한양수자인",
+    "atype": "59",
+    "area": 60,
+    "avg": 74333,
+    "accel": 11.8,
+    "r3_avg": 75000,
+    "p3_avg": 67075,
+    "count": 8,
+    "build": 2013,
+    "region": "수원시 영통구",
+    "dong": "망포동",
+    "liquidity": 7.4,
+    "liq_approx": false,
+    "morning": 27,
+    "evening": 39,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 3.4,
     "slope_method": "dong_naver",
-    "pedia1": 5,
-    "pedia1_name": "연세이룬소아청소년과의원",
-    "pedia1_slope": 0.3,
-    "pedia2": 9,
-    "pedia2_name": "동탄호수소아청소년과의원",
-    "pedia2_slope": -10.3,
-    "hcode": "dy537",
+    "pedia1": 20,
+    "pedia1_name": "서울소아청소년과의원",
+    "pedia1_slope": -16.3,
+    "pedia2": 18,
+    "pedia2_name": "친구들소아청소년과의원",
+    "pedia2_slope": 6.5,
+    "hcode": "5aac4",
+    "recent_trades": [
+      {
+        "date": "2026-04-28",
+        "price": 7.7,
+        "floor": 12,
+        "area": 60
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.1,
+        "floor": 6,
+        "area": 60
+      },
+      {
+        "date": "2026-04-03",
+        "price": 7.6,
+        "floor": 18,
+        "area": 60
+      }
+    ]
+  },
+  {
+    "name": "영통라온프라이빗",
+    "atype": "59",
+    "area": 59.8,
+    "avg": 71000,
+    "accel": 5.5,
+    "r3_avg": 69000,
+    "p3_avg": 65407,
+    "count": 18,
+    "build": 2017,
+    "region": "수원시 영통구",
+    "dong": "영통동",
+    "liquidity": null,
+    "liq_approx": true,
+    "morning": null,
+    "evening": null,
+    "morning_cnt": 0,
+    "evening_cnt": 0,
+    "slope": null,
+    "slope_method": "",
+    "pedia1": null,
+    "pedia1_name": null,
+    "pedia1_slope": null,
+    "pedia2": null,
+    "pedia2_name": null,
+    "pedia2_slope": null,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-15",
+        "price": 7.1,
+        "floor": 4,
+        "area": 59.8
+      }
+    ]
+  },
+  {
+    "name": "영통아이파크캐슬3단지",
+    "atype": "74",
+    "area": 75.9,
+    "avg": 84920,
+    "accel": 8.2,
+    "r3_avg": 88260,
+    "p3_avg": 81580,
+    "count": 10,
+    "build": 2022,
+    "region": "수원시 영통구",
+    "dong": "망포동",
+    "liquidity": 3,
+    "liq_approx": true,
+    "morning": 34,
+    "evening": 44,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 19.2,
+    "slope_method": "dong",
+    "pedia1": 9,
+    "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": 1,
+    "pedia2": 16,
+    "pedia2_name": "성모바른소아청소년과의원",
+    "pedia2_slope": -0.4,
+    "hcode": "dKR50",
+    "recent_trades": []
+  },
+  {
+    "name": "가천대역두산위브",
+    "atype": "59",
+    "area": 60,
+    "avg": 73100,
+    "accel": 4,
+    "r3_avg": 73560,
+    "p3_avg": 70742,
+    "count": 23,
+    "build": 2018,
+    "region": "성남시 중원구",
+    "dong": "태평동",
+    "liquidity": 5.5,
+    "liq_approx": false,
+    "morning": 19,
+    "evening": 22,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 8,
+    "slope_method": "dong",
+    "pedia1": 8,
+    "pedia1_name": "장소아청소년과의원",
+    "pedia1_slope": -39.8,
+    "pedia2": 8,
+    "pedia2_name": "이메디정형외과",
+    "pedia2_slope": -43,
+    "hcode": "aWCcc",
+    "recent_trades": [
+      {
+        "date": "2026-04-10",
+        "price": 7.2,
+        "floor": 2,
+        "area": 60
+      },
+      {
+        "date": "2026-04-05",
+        "price": 7.5,
+        "floor": 12,
+        "area": 59.6
+      }
+    ]
+  },
+  {
+    "name": "래미안금광",
+    "atype": "84",
+    "area": 83.2,
+    "avg": 75000,
+    "accel": 4.6,
+    "r3_avg": 72855,
+    "p3_avg": 69662,
+    "count": 24,
+    "build": 2006,
+    "region": "성남시 수정구",
+    "dong": "금광동",
+    "liquidity": 3.6,
+    "liq_approx": false,
+    "morning": 26,
+    "evening": 30,
+    "morning_cnt": 6,
+    "evening_cnt": 3,
+    "slope": 42.4,
+    "slope_method": "dong",
+    "pedia1": 20,
+    "pedia1_name": "삼성귀요미소아청소년과의원",
+    "pedia1_slope": -52.1,
+    "pedia2": 19,
+    "pedia2_name": "구소아청소년과의원",
+    "pedia2_slope": -66.6,
+    "hcode": "5c072",
+    "recent_trades": [
+      {
+        "date": "2026-04-07",
+        "price": 7.5,
+        "floor": 7,
+        "area": 83.2
+      }
+    ]
+  },
+  {
+    "name": "한양수자인성남마크뷰",
+    "atype": "59",
+    "area": 59.8,
+    "avg": 73833,
+    "accel": 2.9,
+    "r3_avg": 76617,
+    "p3_avg": 74425,
+    "count": 10,
+    "build": 2021,
+    "region": "성남시 수정구",
+    "dong": "금광동",
+    "liquidity": 1.5,
+    "liq_approx": false,
+    "morning": 25,
+    "evening": 29,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 28.1,
+    "slope_method": "dong_naver",
+    "pedia1": 17,
+    "pedia1_name": "삼성귀요미소아청소년과의원",
+    "pedia1_slope": -26,
+    "pedia2": 24,
+    "pedia2_name": "예사랑소아청소년과의원",
+    "pedia2_slope": 10.5,
+    "hcode": "b6Sc3",
     "recent_trades": [
       {
         "date": "2026-04-22",
-        "price": 7.5,
-        "floor": 8,
-        "area": 75.0
+        "price": 8,
+        "floor": 19,
+        "area": 59.8
       },
       {
-        "date": "2026-04-15",
-        "price": 7.6,
-        "floor": 10,
-        "area": 75.0
+        "date": "2026-04-09",
+        "price": 6,
+        "floor": 11,
+        "area": 59.8
       },
       {
-        "date": "2026-04-02",
-        "price": 7.6,
-        "floor": 5,
-        "area": 75.0
+        "date": "2026-04-07",
+        "price": 8.2,
+        "floor": 9,
+        "area": 59.9
       }
     ]
   },
   {
-    "name": "기흥더샵프라임뷰",
-    "atype": "84",
-    "area": 84.5,
-    "avg": 82150,
-    "accel": 2.0,
-    "r3_avg": 82864,
-    "p3_avg": 81278,
-    "count": 20,
-    "build": 2013,
+    "name": "힐스테이트구성",
+    "atype": "59",
+    "area": 60,
+    "avg": 74180,
+    "accel": 10.2,
+    "r3_avg": 72584,
+    "p3_avg": 65884,
+    "count": 51,
+    "build": 2023,
     "region": "용인시 기흥구",
-    "dong": "신갈동",
-    "liquidity": 4.3,
+    "dong": "언남동",
+    "liquidity": 11.1,
     "liq_approx": false,
-    "morning": 21,
-    "evening": 31,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 4.4,
+    "morning": 27,
+    "evening": 30,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 3.7,
+    "slope_method": "dong",
+    "pedia1": 8,
+    "pedia1_name": "박진녕소아청소년과의원",
+    "pedia1_slope": -4,
+    "pedia2": 9,
+    "pedia2_name": "우리들소아청소년과",
+    "pedia2_slope": -2.9,
+    "hcode": "dtr58",
+    "recent_trades": [
+      {
+        "date": "2026-04-20",
+        "price": 7.5,
+        "floor": 16,
+        "area": 60
+      },
+      {
+        "date": "2026-04-17",
+        "price": 7.6,
+        "floor": 16,
+        "area": 60
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7,
+        "floor": 4,
+        "area": 60
+      },
+      {
+        "date": "2026-04-06",
+        "price": 7.5,
+        "floor": 25,
+        "area": 60
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.5,
+        "floor": 23,
+        "area": 60
+      }
+    ]
+  },
+  {
+    "name": "용인동백두산위브더제니스",
+    "atype": "74",
+    "area": 78.1,
+    "avg": 70250,
+    "accel": 4,
+    "r3_avg": 68587,
+    "p3_avg": 65940,
+    "count": 30,
+    "build": 2021,
+    "region": "용인시 기흥구",
+    "dong": "동백동",
+    "liquidity": 2.5,
+    "liq_approx": true,
+    "morning": 30,
+    "evening": 35,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 31.7,
     "slope_method": "dong_naver",
-    "pedia1": 3,
-    "pedia1_name": "배소아청소년과의원",
-    "pedia1_slope": -0.8,
-    "pedia2": 16,
-    "pedia2_name": "강남병원 소아청소년센터",
-    "pedia2_slope": -29.0,
-    "hcode": null,
-    "recent_trades": []
+    "pedia1": 32,
+    "pedia1_name": "삼성키즈소아청소년과의원",
+    "pedia1_slope": -13.6,
+    "pedia2": 22,
+    "pedia2_name": "기린웰소아청소년과의원",
+    "pedia2_slope": -32,
+    "hcode": "dwBa6",
+    "recent_trades": [
+      {
+        "date": "2026-04-10",
+        "price": 7,
+        "floor": 21,
+        "area": 78.1
+      },
+      {
+        "date": "2026-04-02",
+        "price": 7.1,
+        "floor": 30,
+        "area": 78.1
+      }
+    ]
   },
   {
     "name": "기흥역더샵",
@@ -323,7 +959,7 @@
         "date": "2026-04-05",
         "price": 8.8,
         "floor": 3,
-        "area": 73.0
+        "area": 73
       }
     ]
   },
@@ -357,9 +993,2249 @@
     "recent_trades": []
   },
   {
+    "name": "한양수자인",
+    "atype": "84",
+    "area": 85,
+    "avg": 81000,
+    "accel": 8.1,
+    "r3_avg": 81850,
+    "p3_avg": 75717,
+    "count": 8,
+    "build": 2013,
+    "region": "용인시 기흥구",
+    "dong": "망포동",
+    "liquidity": 5.1,
+    "liq_approx": false,
+    "morning": 27,
+    "evening": 39,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 3.4,
+    "slope_method": "dong_naver",
+    "pedia1": 20,
+    "pedia1_name": "서울소아청소년과의원",
+    "pedia1_slope": -16.3,
+    "pedia2": 18,
+    "pedia2_name": "친구들소아청소년과의원",
+    "pedia2_slope": 6.5,
+    "hcode": "5aac4",
+    "recent_trades": [
+      {
+        "date": "2026-04-04",
+        "price": 8.1,
+        "floor": 2,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "힐스테이트광교산",
+    "atype": "59",
+    "area": 60,
+    "avg": 74900,
+    "accel": 5.9,
+    "r3_avg": 73400,
+    "p3_avg": 69333,
+    "count": 8,
+    "build": 2022,
+    "region": "용인시 수지구",
+    "dong": "신봉동",
+    "liquidity": 3.9,
+    "liq_approx": false,
+    "morning": 22,
+    "evening": 32,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 42.4,
+    "slope_method": "dong",
+    "pedia1": 20,
+    "pedia1_name": "이레소아청소년과의원",
+    "pedia1_slope": -44.8,
+    "pedia2": 27,
+    "pedia2_name": "봄소아청소년과의원",
+    "pedia2_slope": -59.9,
+    "hcode": "b4Pda",
+    "recent_trades": [
+      {
+        "date": "2026-04-06",
+        "price": 7.5,
+        "floor": 10,
+        "area": 60
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.5,
+        "floor": 7,
+        "area": 60
+      }
+    ]
+  },
+  {
+    "name": "힐스테이트광교산",
+    "atype": "74",
+    "area": 76.7,
+    "avg": 86500,
+    "accel": 3.8,
+    "r3_avg": 85700,
+    "p3_avg": 82538,
+    "count": 9,
+    "build": 2022,
+    "region": "용인시 수지구",
+    "dong": "신봉동",
+    "liquidity": 1.5,
+    "liq_approx": true,
+    "morning": 22,
+    "evening": 32,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 42.4,
+    "slope_method": "dong",
+    "pedia1": 20,
+    "pedia1_name": "이레소아청소년과의원",
+    "pedia1_slope": -44.8,
+    "pedia2": 27,
+    "pedia2_name": "봄소아청소년과의원",
+    "pedia2_slope": -59.9,
+    "hcode": "b4Pda",
+    "recent_trades": [
+      {
+        "date": "2026-04-11",
+        "price": 8.6,
+        "floor": 8,
+        "area": 76.7
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.7,
+        "floor": 14,
+        "area": 76.8
+      }
+    ]
+  },
+  {
+    "name": "더샵동천이스트포레",
+    "atype": "74",
+    "area": 78.2,
+    "avg": 70000,
+    "accel": -3.2,
+    "r3_avg": 100300,
+    "p3_avg": 103567,
+    "count": 8,
+    "build": 2020,
+    "region": "용인시 수지구",
+    "dong": "동천동",
+    "liquidity": null,
+    "liq_approx": true,
+    "morning": null,
+    "evening": null,
+    "morning_cnt": 0,
+    "evening_cnt": 0,
+    "slope": null,
+    "slope_method": "",
+    "pedia1": null,
+    "pedia1_name": null,
+    "pedia1_slope": null,
+    "pedia2": null,
+    "pedia2_name": null,
+    "pedia2_slope": null,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-25",
+        "price": 7,
+        "floor": 1,
+        "area": 78.2
+      }
+    ]
+  },
+  {
+    "name": "미사강변트래지안",
+    "atype": "59",
+    "area": 59.7,
+    "avg": 87436,
+    "accel": 1.2,
+    "r3_avg": 87900,
+    "p3_avg": 86817,
+    "count": 7,
+    "build": 2015,
+    "region": "하남시",
+    "dong": "망월동",
+    "liquidity": 0.5,
+    "liq_approx": false,
+    "morning": 30,
+    "evening": 35,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 0.1,
+    "slope_method": "dong_naver",
+    "pedia1": 11,
+    "pedia1_name": "플러스맘소아청소년과의원",
+    "pedia1_slope": -0.3,
+    "pedia2": 30,
+    "pedia2_name": "연세더자람소아청소년과의원",
+    "pedia2_slope": -3.2,
+    "hcode": null,
+    "recent_trades": []
+  },
+  {
+    "name": "신동탄포레자이",
+    "atype": "59",
+    "area": 60,
+    "avg": 73250,
+    "accel": 4.3,
+    "r3_avg": 73646,
+    "p3_avg": 70636,
+    "count": 27,
+    "build": 2023,
+    "region": "화성시",
+    "dong": "반월동",
+    "liquidity": 5.7,
+    "liq_approx": false,
+    "morning": 29,
+    "evening": 39,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 5.8,
+    "slope_method": "dong",
+    "pedia1": 13,
+    "pedia1_name": "온새미로",
+    "pedia1_slope": 9,
+    "pedia2": 27,
+    "pedia2_name": "영통아이언소아청소년과의원",
+    "pedia2_slope": 6.7,
+    "hcode": "dNLc1",
+    "recent_trades": [
+      {
+        "date": "2026-04-23",
+        "price": 7.5,
+        "floor": 10,
+        "area": 60
+      },
+      {
+        "date": "2026-04-21",
+        "price": 7.1,
+        "floor": 17,
+        "area": 60
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7,
+        "floor": 10,
+        "area": 60
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.8,
+        "floor": 18,
+        "area": 60
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7.7,
+        "floor": 13,
+        "area": 60
+      }
+    ]
+  },
+  {
+    "name": "반정아이파크캐슬5단지",
+    "atype": "74",
+    "area": 75.6,
+    "avg": 74288,
+    "accel": 5.2,
+    "r3_avg": 71823,
+    "p3_avg": 68275,
+    "count": 38,
+    "build": 2022,
+    "region": "화성시",
+    "dong": "반정동",
+    "liquidity": 6.3,
+    "liq_approx": true,
+    "morning": 35,
+    "evening": 41,
+    "morning_cnt": 6,
+    "evening_cnt": 3,
+    "slope": 6.3,
+    "slope_method": "dong_naver",
+    "pedia1": 13,
+    "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": -1.6,
+    "pedia2": 16,
+    "pedia2_name": "튼튼사랑소아청소년과의원",
+    "pedia2_slope": 4.7,
+    "hcode": "dKT1f",
+    "recent_trades": [
+      {
+        "date": "2026-04-29",
+        "price": 7.4,
+        "floor": 5,
+        "area": 75.5
+      },
+      {
+        "date": "2026-04-28",
+        "price": 7.3,
+        "floor": 8,
+        "area": 75.6
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.5,
+        "floor": 2,
+        "area": 75.9
+      },
+      {
+        "date": "2026-04-17",
+        "price": 7.6,
+        "floor": 5,
+        "area": 75.9
+      },
+      {
+        "date": "2026-04-13",
+        "price": 7.7,
+        "floor": 6,
+        "area": 75.9
+      },
+      {
+        "date": "2026-04-13",
+        "price": 7.6,
+        "floor": 6,
+        "area": 75.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.7,
+        "floor": 14,
+        "area": 75.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 6.9,
+        "floor": 3,
+        "area": 75.6
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7,
+        "floor": 13,
+        "area": 75.6
+      }
+    ]
+  },
+  {
+    "name": "신동탄포레자이",
+    "atype": "74",
+    "area": 74.8,
+    "avg": 83700,
+    "accel": 3.9,
+    "r3_avg": 83908,
+    "p3_avg": 80764,
+    "count": 24,
+    "build": 2023,
+    "region": "화성시",
+    "dong": "반월동",
+    "liquidity": 2.9,
+    "liq_approx": true,
+    "morning": 29,
+    "evening": 39,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 5.8,
+    "slope_method": "dong",
+    "pedia1": 13,
+    "pedia1_name": "온새미로",
+    "pedia1_slope": 9,
+    "pedia2": 27,
+    "pedia2_name": "영통아이언소아청소년과의원",
+    "pedia2_slope": 6.7,
+    "hcode": "dNLc1",
+    "recent_trades": [
+      {
+        "date": "2026-04-26",
+        "price": 8.5,
+        "floor": 23,
+        "area": 74.8
+      },
+      {
+        "date": "2026-04-15",
+        "price": 8.5,
+        "floor": 23,
+        "area": 74.8
+      },
+      {
+        "date": "2026-04-13",
+        "price": 8.6,
+        "floor": 27,
+        "area": 74.8
+      },
+      {
+        "date": "2026-04-07",
+        "price": 7.9,
+        "floor": 13,
+        "area": 74.8
+      }
+    ]
+  },
+  {
+    "name": "병점역아이파크캐슬",
+    "atype": "74",
+    "area": 76,
+    "avg": 71000,
+    "accel": 3.2,
+    "r3_avg": 70333,
+    "p3_avg": 68160,
+    "count": 16,
+    "build": 2021,
+    "region": "화성시",
+    "dong": "병점동",
+    "liquidity": 0.7,
+    "liq_approx": true,
+    "morning": 35,
+    "evening": 50,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 1.4,
+    "slope_method": "dong_naver",
+    "pedia1": 7,
+    "pedia1_name": "아이언소아청소년과의원",
+    "pedia1_slope": 0.8,
+    "pedia2": 33,
+    "pedia2_name": "굿모닝소아청소년과의원",
+    "pedia2_slope": 8.9,
+    "hcode": "dzz14",
+    "recent_trades": [
+      {
+        "date": "2026-04-21",
+        "price": 7.1,
+        "floor": 11,
+        "area": 76
+      }
+    ]
+  },
+  {
+    "name": "한신더휴",
+    "atype": "84",
+    "area": 83.7,
+    "avg": 72750,
+    "accel": 1.7,
+    "r3_avg": 70089,
+    "p3_avg": 68929,
+    "count": 28,
+    "build": 2018,
+    "region": "화성시",
+    "dong": "목동",
+    "liquidity": null,
+    "liq_approx": true,
+    "morning": 36,
+    "evening": 47,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 8.2,
+    "slope_method": "dong",
+    "pedia1": 6,
+    "pedia1_name": "삼성365소아청소년과",
+    "pedia1_slope": 12.7,
+    "pedia2": 13,
+    "pedia2_name": "동탄에스소아청소년과의원",
+    "pedia2_slope": 49.6,
+    "hcode": "aVLf7",
+    "recent_trades": [
+      {
+        "date": "2026-04-28",
+        "price": 7.3,
+        "floor": 21,
+        "area": 83.4
+      },
+      {
+        "date": "2026-04-07",
+        "price": 7.3,
+        "floor": 14,
+        "area": 83.7
+      }
+    ]
+  },
+  {
+    "name": "시범한빛마을동탄아이파크",
+    "atype": "59",
+    "area": 61.7,
+    "avg": 78800,
+    "accel": 14.5,
+    "r3_avg": 79575,
+    "p3_avg": 69500,
+    "count": 7,
+    "build": 2007,
+    "region": "화성시",
+    "dong": "반송동",
+    "liquidity": 1.3,
+    "liq_approx": true,
+    "morning": 33,
+    "evening": 30,
+    "morning_cnt": 1,
+    "evening_cnt": 1,
+    "slope": 0.6,
+    "slope_method": "dong_naver",
+    "pedia1": 5,
+    "pedia1_name": "성모플러스 내과소아과",
+    "pedia1_slope": -4.2,
+    "pedia2": 11,
+    "pedia2_name": "우리아이소아청소년과의원",
+    "pedia2_slope": -5.4,
+    "hcode": "6xZ52",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7.9,
+        "floor": 10,
+        "area": 61.7
+      },
+      {
+        "date": "2026-04-14",
+        "price": 7.8,
+        "floor": 10,
+        "area": 61.7
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.9,
+        "floor": 9,
+        "area": 61.7
+      }
+    ]
+  },
+  {
+    "name": "동탄2하우스디더레이크",
+    "atype": "74",
+    "area": 74.9,
+    "avg": 83220,
+    "accel": 4,
+    "r3_avg": 80968,
+    "p3_avg": 77836,
+    "count": 33,
+    "build": 2016,
+    "region": "화성시",
+    "dong": "송동",
+    "liquidity": 9,
+    "liq_approx": true,
+    "morning": 37,
+    "evening": 48,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 14.4,
+    "slope_method": "dong_naver",
+    "pedia1": 27,
+    "pedia1_name": "동탄성모병원",
+    "pedia1_slope": -8.1,
+    "pedia2": 27,
+    "pedia2_name": "하늘한방소아과한방재활의학과한의원",
+    "pedia2_slope": -8.1,
+    "hcode": "b2L97",
+    "recent_trades": [
+      {
+        "date": "2026-04-29",
+        "price": 8.2,
+        "floor": 4,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-28",
+        "price": 8.5,
+        "floor": 8,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-22",
+        "price": 7.5,
+        "floor": 1,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.8,
+        "floor": 25,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.6,
+        "floor": 15,
+        "area": 74.9
+      }
+    ]
+  },
+  {
+    "name": "동탄역신안인스빌리베라2차",
+    "atype": "59",
+    "area": 60,
+    "avg": 75067,
+    "accel": 5.1,
+    "r3_avg": 72167,
+    "p3_avg": 68633,
+    "count": 30,
+    "build": 2016,
+    "region": "화성시",
+    "dong": "청계동",
+    "liquidity": 8,
+    "liq_approx": false,
+    "morning": 29,
+    "evening": 42,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 2.6,
+    "slope_method": "dong_naver",
+    "pedia1": 15,
+    "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -16.3,
+    "pedia2": 15,
+    "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -16.4,
+    "hcode": "aCh0b",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.5,
+        "floor": 19,
+        "area": 60
+      },
+      {
+        "date": "2026-04-21",
+        "price": 7.7,
+        "floor": 15,
+        "area": 60
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.4,
+        "floor": 11,
+        "area": 60
+      }
+    ]
+  },
+  {
+    "name": "동탄역더샵센트럴시티2차",
+    "atype": "74",
+    "area": 74.9,
+    "avg": 72850,
+    "accel": 1.2,
+    "r3_avg": 70708,
+    "p3_avg": 69854,
+    "count": 24,
+    "build": 2018,
+    "region": "화성시",
+    "dong": "여울동",
+    "liquidity": 3.2,
+    "liq_approx": true,
+    "morning": 32,
+    "evening": 45,
+    "morning_cnt": 6,
+    "evening_cnt": 3,
+    "slope": 0.5,
+    "slope_method": "dong_naver",
+    "pedia1": 22,
+    "pedia1_name": "남승우소아청소년과의원",
+    "pedia1_slope": 22.2,
+    "pedia2": 30,
+    "pedia2_name": "반디소아청소년과의원",
+    "pedia2_slope": 16,
+    "hcode": "aV671",
+    "recent_trades": [
+      {
+        "date": "2026-04-04",
+        "price": 7.3,
+        "floor": 11,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.3,
+        "floor": 10,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7.5,
+        "floor": 14,
+        "area": 74.9
+      }
+    ]
+  },
+  {
+    "name": "힐스테이트동탄",
+    "atype": "74",
+    "area": 75,
+    "avg": 77100,
+    "accel": 3.6,
+    "r3_avg": 74447,
+    "p3_avg": 71890,
+    "count": 25,
+    "build": 2019,
+    "region": "화성시",
+    "dong": "목동",
+    "liquidity": 7.1,
+    "liq_approx": true,
+    "morning": 35,
+    "evening": 45,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 0.8,
+    "slope_method": "dong",
+    "pedia1": 15,
+    "pedia1_name": "동탄S소아청소년과 발달클리닉",
+    "pedia1_slope": -8.3,
+    "pedia2": 19,
+    "pedia2_name": "올바른소아청소년과의원",
+    "pedia2_slope": -9.2,
+    "hcode": "aWkba",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7.9,
+        "floor": 15,
+        "area": 75
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.5,
+        "floor": 7,
+        "area": 75
+      },
+      {
+        "date": "2026-04-12",
+        "price": 7.6,
+        "floor": 20,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.9,
+        "floor": 29,
+        "area": 75
+      }
+    ]
+  },
+  {
+    "name": "한화 포레나 동탄호수",
+    "atype": "74",
+    "area": 74.2,
+    "avg": 71250,
+    "accel": 0.7,
+    "r3_avg": 70955,
+    "p3_avg": 70427,
+    "count": 22,
+    "build": 2020,
+    "region": "화성시",
+    "dong": "장지동",
+    "liquidity": 2.8,
+    "liq_approx": true,
+    "morning": 31,
+    "evening": 41,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 1.6,
+    "slope_method": "dong_naver",
+    "pedia1": 11,
+    "pedia1_name": "원소아청소년과의원",
+    "pedia1_slope": -4.6,
+    "pedia2": 17,
+    "pedia2_name": "동탄호수소아청소년과의원",
+    "pedia2_slope": 0.1,
+    "hcode": "dwh52",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7,
+        "floor": 5,
+        "area": 74.2
+      },
+      {
+        "date": "2026-04-23",
+        "price": 7.3,
+        "floor": 7,
+        "area": 74.2
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7,
+        "floor": 5,
+        "area": 74.2
+      },
+      {
+        "date": "2026-04-09",
+        "price": 7.3,
+        "floor": 19,
+        "area": 74.2
+      }
+    ]
+  },
+  {
+    "name": "반도유보라아이비파크3",
+    "atype": "74",
+    "area": 75,
+    "avg": 75500,
+    "accel": 11.9,
+    "r3_avg": 74775,
+    "p3_avg": 66800,
+    "count": 9,
+    "build": 2016,
+    "region": "화성시",
+    "dong": "여울동",
+    "liquidity": 1.8,
+    "liq_approx": true,
+    "morning": 34,
+    "evening": 46,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 0.8,
+    "slope_method": "dong_naver",
+    "pedia1": 33,
+    "pedia1_name": "올바른소아청소년과의원",
+    "pedia1_slope": 8.3,
+    "pedia2": 32,
+    "pedia2_name": "동탄S소아청소년과 발달클리닉",
+    "pedia2_slope": 9.2,
+    "hcode": "aBY7b",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 7.6,
+        "floor": 14,
+        "area": 74.4
+      }
+    ]
+  },
+  {
+    "name": "동탄역 호반 써밋",
+    "atype": "59",
+    "area": 59.4,
+    "avg": 74560,
+    "accel": 6.9,
+    "r3_avg": 74972,
+    "p3_avg": 70133,
+    "count": 39,
+    "build": 2015,
+    "region": "화성시",
+    "dong": "청계동",
+    "liquidity": 7.3,
+    "liq_approx": false,
+    "morning": 30,
+    "evening": 45,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 1.8,
+    "slope_method": "dong_naver",
+    "pedia1": 10,
+    "pedia1_name": "코끼리소아청소년과의원",
+    "pedia1_slope": 6.7,
+    "pedia2": 10,
+    "pedia2_name": "동탄미소소아청소년과의원",
+    "pedia2_slope": 6.8,
+    "hcode": "ayKcb",
+    "recent_trades": [
+      {
+        "date": "2026-04-29",
+        "price": 6.3,
+        "floor": 22,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-28",
+        "price": 7.9,
+        "floor": 10,
+        "area": 59.8
+      },
+      {
+        "date": "2026-04-24",
+        "price": 7.8,
+        "floor": 14,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-09",
+        "price": 7.8,
+        "floor": 17,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.6,
+        "floor": 17,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7.9,
+        "floor": 18,
+        "area": 59.2
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7.7,
+        "floor": 20,
+        "area": 59.4
+      }
+    ]
+  },
+  {
+    "name": "동탄2하우스디더레이크",
+    "atype": "59",
+    "area": 60,
+    "avg": 76275,
+    "accel": 5.4,
+    "r3_avg": 72568,
+    "p3_avg": 68859,
+    "count": 80,
+    "build": 2016,
+    "region": "화성시",
+    "dong": "송동",
+    "liquidity": 15.8,
+    "liq_approx": false,
+    "morning": 37,
+    "evening": 48,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 14.4,
+    "slope_method": "dong_naver",
+    "pedia1": 27,
+    "pedia1_name": "동탄성모병원",
+    "pedia1_slope": -8.1,
+    "pedia2": 27,
+    "pedia2_name": "하늘한방소아과한방재활의학과한의원",
+    "pedia2_slope": -8.1,
+    "hcode": "b2L97",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7.2,
+        "floor": 2,
+        "area": 60
+      },
+      {
+        "date": "2026-04-22",
+        "price": 7.6,
+        "floor": 12,
+        "area": 60
+      },
+      {
+        "date": "2026-04-14",
+        "price": 7.9,
+        "floor": 20,
+        "area": 60
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.9,
+        "floor": 23,
+        "area": 60
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.5,
+        "floor": 4,
+        "area": 60
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.9,
+        "floor": 20,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.5,
+        "floor": 23,
+        "area": 59.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.6,
+        "floor": 10,
+        "area": 60
+      }
+    ]
+  },
+  {
+    "name": "동탄역센트럴푸르지오",
+    "atype": "59",
+    "area": 59.4,
+    "avg": 81200,
+    "accel": 9,
+    "r3_avg": 78788,
+    "p3_avg": 72287,
+    "count": 71,
+    "build": 2015,
+    "region": "화성시",
+    "dong": "청계동",
+    "liquidity": 9.1,
+    "liq_approx": false,
+    "morning": 31,
+    "evening": 41,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 1.7,
+    "slope_method": "dong_naver",
+    "pedia1": 7,
+    "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -10.3,
+    "pedia2": 7,
+    "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -10.4,
+    "hcode": "ayI44",
+    "recent_trades": [
+      {
+        "date": "2026-04-25",
+        "price": 8.3,
+        "floor": 16,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-23",
+        "price": 8.4,
+        "floor": 15,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-22",
+        "price": 8.4,
+        "floor": 9,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8,
+        "floor": 22,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-07",
+        "price": 8.2,
+        "floor": 11,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.1,
+        "floor": 12,
+        "area": 59.3
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.8,
+        "floor": 21,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-03",
+        "price": 8,
+        "floor": 20,
+        "area": 59.4
+      },
+      {
+        "date": "2026-04-02",
+        "price": 8,
+        "floor": 12,
+        "area": 59.3
+      }
+    ]
+  },
+  {
+    "name": "동탄역신안인스빌리베라2차",
+    "atype": "74",
+    "area": 73,
+    "avg": 75900,
+    "accel": 4.1,
+    "r3_avg": 77300,
+    "p3_avg": 74267,
+    "count": 13,
+    "build": 2016,
+    "region": "화성시",
+    "dong": "청계동",
+    "liquidity": 4.8,
+    "liq_approx": true,
+    "morning": 29,
+    "evening": 42,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 2.6,
+    "slope_method": "dong_naver",
+    "pedia1": 15,
+    "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -16.3,
+    "pedia2": 15,
+    "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -16.4,
+    "hcode": "aCh0b",
+    "recent_trades": []
+  },
+  {
+    "name": "금호어울림레이크",
+    "atype": "74",
+    "area": 75,
+    "avg": 75667,
+    "accel": 1.9,
+    "r3_avg": 77000,
+    "p3_avg": 75600,
+    "count": 12,
+    "build": 2018,
+    "region": "화성시",
+    "dong": "장지동",
+    "liquidity": 1.8,
+    "liq_approx": true,
+    "morning": 41,
+    "evening": 51,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 2.6,
+    "slope_method": "dong_naver",
+    "pedia1": 5,
+    "pedia1_name": "연세이룬소아청소년과의원",
+    "pedia1_slope": 0.3,
+    "pedia2": 9,
+    "pedia2_name": "동탄호수소아청소년과의원",
+    "pedia2_slope": -10.3,
+    "hcode": "dy537",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.5,
+        "floor": 8,
+        "area": 75
+      },
+      {
+        "date": "2026-04-15",
+        "price": 7.6,
+        "floor": 10,
+        "area": 75
+      },
+      {
+        "date": "2026-04-02",
+        "price": 7.6,
+        "floor": 5,
+        "area": 75
+      }
+    ]
+  },
+  {
+    "name": "동탄역센트럴푸르지오",
+    "atype": "74",
+    "area": 74.9,
+    "avg": 85350,
+    "accel": 4.4,
+    "r3_avg": 86700,
+    "p3_avg": 83033,
+    "count": 10,
+    "build": 2015,
+    "region": "화성시",
+    "dong": "청계동",
+    "liquidity": 1.8,
+    "liq_approx": true,
+    "morning": 31,
+    "evening": 41,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 1.7,
+    "slope_method": "dong_naver",
+    "pedia1": 7,
+    "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -10.3,
+    "pedia2": 7,
+    "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -10.4,
+    "hcode": "ayI44",
+    "recent_trades": [
+      {
+        "date": "2026-04-20",
+        "price": 8.5,
+        "floor": 3,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-10",
+        "price": 8.6,
+        "floor": 7,
+        "area": 74.9
+      }
+    ]
+  },
+  {
+    "name": "동탄역푸르지오",
+    "atype": "74",
+    "area": 74.9,
+    "avg": 87767,
+    "accel": 7.1,
+    "r3_avg": 84782,
+    "p3_avg": 79150,
+    "count": 13,
+    "build": 2017,
+    "region": "화성시",
+    "dong": "영천동",
+    "liquidity": 1.6,
+    "liq_approx": true,
+    "morning": 25,
+    "evening": 37,
+    "morning_cnt": 6,
+    "evening_cnt": 3,
+    "slope": 38.3,
+    "slope_method": "dong",
+    "pedia1": 14,
+    "pedia1_name": "코벤트더웰의원",
+    "pedia1_slope": -4.5,
+    "pedia2": 17,
+    "pedia2_name": "반디소아청소년과의원",
+    "pedia2_slope": 7.5,
+    "hcode": "aDW27",
+    "recent_trades": [
+      {
+        "date": "2026-04-21",
+        "price": 8.5,
+        "floor": 4,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-15",
+        "price": 8.9,
+        "floor": 7,
+        "area": 74.9
+      },
+      {
+        "date": "2026-04-08",
+        "price": 9,
+        "floor": 7,
+        "area": 74.9
+      }
+    ]
+  },
+  {
+    "name": "수원 SK SKY VIEW",
+    "atype": "84",
+    "area": 84.9,
+    "avg": 84000,
+    "accel": 2,
+    "r3_avg": 84022,
+    "p3_avg": 82364,
+    "count": 20,
+    "build": 2013,
+    "region": "수원시 장안구",
+    "dong": "정자동",
+    "liquidity": 1.1,
+    "liq_approx": false,
+    "morning": 23,
+    "evening": 29,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 0.7,
+    "slope_method": "dong_naver",
+    "pedia1": 19,
+    "pedia1_name": "SK메디모아소아청소년과의원",
+    "pedia1_slope": 0.3,
+    "pedia2": 18,
+    "pedia2_name": "자이소아청소년과의원",
+    "pedia2_slope": -1.9,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-08",
+        "price": 8.4,
+        "floor": 26,
+        "area": 84.9
+      }
+    ]
+  },
+  {
+    "name": "더샵광교산퍼스트파크",
+    "atype": "84",
+    "area": 85,
+    "avg": 74025,
+    "accel": 1.8,
+    "r3_avg": 74429,
+    "p3_avg": 73083,
+    "count": 10,
+    "build": 2022,
+    "region": "수원시 장안구",
+    "dong": "조원동",
+    "liquidity": 2.5,
+    "liq_approx": true,
+    "morning": 23,
+    "evening": 30,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 14.1,
+    "slope_method": "dong_naver",
+    "pedia1": 22,
+    "pedia1_name": "박소아청소년과의원",
+    "pedia1_slope": -21.5,
+    "pedia2": 40,
+    "pedia2_name": "김경신소아과의원",
+    "pedia2_slope": -23.1,
+    "hcode": null,
+    "recent_trades": []
+  },
+  {
+    "name": "화서역푸르지오더에듀포레",
+    "atype": "84",
+    "area": 84.9,
+    "avg": 73460,
+    "accel": 5,
+    "r3_avg": 75639,
+    "p3_avg": 72050,
+    "count": 24,
+    "build": 2009,
+    "region": "수원시 장안구",
+    "dong": "천천동",
+    "liquidity": 2.3,
+    "liq_approx": false,
+    "morning": 31,
+    "evening": 41,
+    "morning_cnt": 6,
+    "evening_cnt": 3,
+    "slope": 13.1,
+    "slope_method": "dong",
+    "pedia1": 2,
+    "pedia1_name": "서울소아청소년과의원",
+    "pedia1_slope": -17.2,
+    "pedia2": 5,
+    "pedia2_name": "누가소아청소년과의원",
+    "pedia2_slope": 4.9,
+    "hcode": "52p72",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.8,
+        "floor": 9,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-09",
+        "price": 6.8,
+        "floor": 3,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-09",
+        "price": 7.3,
+        "floor": 22,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-07",
+        "price": 6.7,
+        "floor": 2,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.1,
+        "floor": 4,
+        "area": 84.9
+      }
+    ]
+  },
+  {
+    "name": "수원하늘채더퍼스트1단지",
+    "atype": "84",
+    "area": 85,
+    "avg": 77040,
+    "accel": 5.4,
+    "r3_avg": 77308,
+    "p3_avg": 73345,
+    "count": 24,
+    "build": 2022,
+    "region": "수원시 권선구",
+    "dong": "곡반정동",
+    "liquidity": 1.8,
+    "liq_approx": true,
+    "morning": 38,
+    "evening": 49,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 4.8,
+    "slope_method": "dong",
+    "pedia1": 12,
+    "pedia1_name": "성모바른소아청소년과의원",
+    "pedia1_slope": -0.8,
+    "pedia2": 13,
+    "pedia2_name": "하나소아청소년과의원",
+    "pedia2_slope": 1,
+    "hcode": "dted4",
+    "recent_trades": [
+      {
+        "date": "2026-04-29",
+        "price": 7.9,
+        "floor": 13,
+        "area": 85
+      },
+      {
+        "date": "2026-04-23",
+        "price": 7.6,
+        "floor": 4,
+        "area": 85
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.4,
+        "floor": 14,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.8,
+        "floor": 14,
+        "area": 85
+      },
+      {
+        "date": "2026-04-07",
+        "price": 7.9,
+        "floor": 15,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "수원모아미래도센트럴타운2단지",
+    "atype": "84",
+    "area": 84.9,
+    "avg": 74850,
+    "accel": 2.1,
+    "r3_avg": 73450,
+    "p3_avg": 71944,
+    "count": 17,
+    "build": 2017,
+    "region": "수원시 권선구",
+    "dong": "금곡동",
+    "liquidity": 2.3,
+    "liq_approx": false,
+    "morning": 26,
+    "evening": 34,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 1.4,
+    "slope_method": "dong_naver",
+    "pedia1": 11,
+    "pedia1_name": "성모수소아청소년과의원",
+    "pedia1_slope": -4,
+    "pedia2": 10,
+    "pedia2_name": "아이온연합소아청소년과의원",
+    "pedia2_slope": -5.6,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-25",
+        "price": 7.4,
+        "floor": 25,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.6,
+        "floor": 11,
+        "area": 84.9
+      }
+    ]
+  },
+  {
+    "name": "호반베르디움더센트럴",
+    "atype": "84",
+    "area": 85,
+    "avg": 73000,
+    "accel": 5.9,
+    "r3_avg": 81062,
+    "p3_avg": 76520,
+    "count": 28,
+    "build": 2017,
+    "region": "수원시 권선구",
+    "dong": "금곡동",
+    "liquidity": 2.5,
+    "liq_approx": false,
+    "morning": 36,
+    "evening": 44,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 32.6,
+    "slope_method": "dong_naver",
+    "pedia1": 7,
+    "pedia1_name": "레인보우소아청소년과의원",
+    "pedia1_slope": 37.9,
+    "pedia2": 13,
+    "pedia2_name": "제이엠베스트소아청소년과의원",
+    "pedia2_slope": 35.8,
+    "hcode": "aEaa3",
+    "recent_trades": [
+      {
+        "date": "2026-04-21",
+        "price": 7.3,
+        "floor": 3,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "호반 써밋 수원",
+    "atype": "84",
+    "area": 85,
+    "avg": 84000,
+    "accel": 6.1,
+    "r3_avg": 82790,
+    "p3_avg": 78038,
+    "count": 21,
+    "build": 2017,
+    "region": "수원시 권선구",
+    "dong": "금곡동",
+    "liquidity": 3.7,
+    "liq_approx": false,
+    "morning": 37,
+    "evening": 45,
+    "morning_cnt": 6,
+    "evening_cnt": 3,
+    "slope": 2.1,
+    "slope_method": "dong",
+    "pedia1": 4,
+    "pedia1_name": "레인보우소아청소년과의원",
+    "pedia1_slope": 1.1,
+    "pedia2": 9,
+    "pedia2_name": "제이엠베스트소아청소년과의원",
+    "pedia2_slope": -1,
+    "hcode": "aDAce",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 8.4,
+        "floor": 3,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "힐스테이트푸르지오수원",
+    "atype": "84",
+    "area": 84.9,
+    "avg": 85563,
+    "accel": 2,
+    "r3_avg": 84385,
+    "p3_avg": 82725,
+    "count": 25,
+    "build": 2023,
+    "region": "수원시 팔달구",
+    "dong": "매교동",
+    "liquidity": 2.8,
+    "liq_approx": true,
+    "morning": 33,
+    "evening": 47,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 12,
+    "slope_method": "dong",
+    "pedia1": 21,
+    "pedia1_name": "온가족소아청소년과의원",
+    "pedia1_slope": -1.9,
+    "pedia2": 18,
+    "pedia2_name": "연세로이소아청소년과의원",
+    "pedia2_slope": -0.4,
+    "hcode": "dD2de",
+    "recent_trades": [
+      {
+        "date": "2026-04-13",
+        "price": 8.1,
+        "floor": 2,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.3,
+        "floor": 4,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.9,
+        "floor": 7,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-02",
+        "price": 8.9,
+        "floor": 12,
+        "area": 84.9
+      }
+    ]
+  },
+  {
+    "name": "수원센트럴아이파크자이",
+    "atype": "84",
+    "area": 85,
+    "avg": 77000,
+    "accel": -4.3,
+    "r3_avg": 83844,
+    "p3_avg": 87583,
+    "count": 15,
+    "build": 2024,
+    "region": "수원시 팔달구",
+    "dong": "인계동",
+    "liquidity": 0.9,
+    "liq_approx": true,
+    "morning": 29,
+    "evening": 43,
+    "morning_cnt": 6,
+    "evening_cnt": 3,
+    "slope": 13.1,
+    "slope_method": "dong",
+    "pedia1": 10,
+    "pedia1_name": "온가족소아청소년과의원",
+    "pedia1_slope": -6.3,
+    "pedia2": 23,
+    "pedia2_name": "연세로이소아청소년과의원",
+    "pedia2_slope": -4.8,
+    "hcode": "dtd2d",
+    "recent_trades": [
+      {
+        "date": "2026-04-21",
+        "price": 6.5,
+        "floor": 5,
+        "area": 85
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.9,
+        "floor": 19,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "래미안노블클래스2단지",
+    "atype": "84",
+    "area": 85,
+    "avg": 72900,
+    "accel": 2.6,
+    "r3_avg": 72700,
+    "p3_avg": 70867,
+    "count": 5,
+    "build": 2009,
+    "region": "수원시 팔달구",
+    "dong": "인계동",
+    "liquidity": 0.9,
+    "liq_approx": false,
+    "morning": null,
+    "evening": null,
+    "morning_cnt": 0,
+    "evening_cnt": 0,
+    "slope": null,
+    "slope_method": "",
+    "pedia1": null,
+    "pedia1_name": null,
+    "pedia1_slope": null,
+    "pedia2": null,
+    "pedia2_name": null,
+    "pedia2_slope": null,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-14",
+        "price": 7.3,
+        "floor": 23,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "래미안노블클래스1단지",
+    "atype": "84",
+    "area": 85,
+    "avg": 72650,
+    "accel": 3.3,
+    "r3_avg": 72650,
+    "p3_avg": 70333,
+    "count": 5,
+    "build": 2009,
+    "region": "수원시 팔달구",
+    "dong": "인계동",
+    "liquidity": 0.9,
+    "liq_approx": false,
+    "morning": 24,
+    "evening": 29,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 0.1,
+    "slope_method": "dong_naver",
+    "pedia1": 7,
+    "pedia1_name": "굿닥터소아과의원",
+    "pedia1_slope": 2.7,
+    "pedia2": 20,
+    "pedia2_name": "조은이웃연세아주소아청소년과의원",
+    "pedia2_slope": -4.7,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-04",
+        "price": 7.2,
+        "floor": 16,
+        "area": 85
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.3,
+        "floor": 12,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "광교더포레스트",
+    "atype": "84",
+    "area": 84.8,
+    "avg": 89750,
+    "accel": 7.3,
+    "r3_avg": 90364,
+    "p3_avg": 84250,
+    "count": 25,
+    "build": 2013,
+    "region": "수원시 영통구",
+    "dong": "하동",
+    "liquidity": 2.2,
+    "liq_approx": true,
+    "morning": 26,
+    "evening": 35,
+    "morning_cnt": 6,
+    "evening_cnt": 3,
+    "slope": 12.2,
+    "slope_method": "dong_naver",
+    "pedia1": 34,
+    "pedia1_name": "수지온케어365의원",
+    "pedia1_slope": 16.8,
+    "pedia2": 30,
+    "pedia2_name": "호호소아청소년과의원",
+    "pedia2_slope": 17,
+    "hcode": "58Y78",
+    "recent_trades": [
+      {
+        "date": "2026-04-27",
+        "price": 9,
+        "floor": 21,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-17",
+        "price": 9,
+        "floor": 11,
+        "area": 84.8
+      }
+    ]
+  },
+  {
+    "name": "매탄위브하늘채",
+    "atype": "84",
+    "area": 84.8,
+    "avg": 75300,
+    "accel": 1.5,
+    "r3_avg": 75652,
+    "p3_avg": 74539,
+    "count": 50,
+    "build": 2008,
+    "region": "수원시 영통구",
+    "dong": "매탄동",
+    "liquidity": 2.9,
+    "liq_approx": true,
+    "morning": 29,
+    "evening": 39,
+    "morning_cnt": 6,
+    "evening_cnt": 3,
+    "slope": 5.7,
+    "slope_method": "dong",
+    "pedia1": 4,
+    "pedia1_name": "아주맑은 소아청소년과의원",
+    "pedia1_slope": 0.6,
+    "pedia2": 4,
+    "pedia2_name": "김민희의원",
+    "pedia2_slope": 0.9,
+    "hcode": "58bb8",
+    "recent_trades": [
+      {
+        "date": "2026-04-28",
+        "price": 7.6,
+        "floor": 5,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-24",
+        "price": 7.7,
+        "floor": 20,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-23",
+        "price": 7.3,
+        "floor": 12,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-20",
+        "price": 7.8,
+        "floor": 11,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.2,
+        "floor": 9,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.3,
+        "floor": 26,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-13",
+        "price": 7.6,
+        "floor": 28,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.6,
+        "floor": 28,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-06",
+        "price": 7.5,
+        "floor": 8,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.9,
+        "floor": 21,
+        "area": 84.8
+      }
+    ]
+  },
+  {
+    "name": "영흥숲푸르지오파크비엔",
+    "atype": "84",
+    "area": 85,
+    "avg": 90000,
+    "accel": 2,
+    "r3_avg": 93420,
+    "p3_avg": 91575,
+    "count": 13,
+    "build": 2023,
+    "region": "수원시 영통구",
+    "dong": "원천동",
+    "liquidity": null,
+    "liq_approx": true,
+    "morning": null,
+    "evening": null,
+    "morning_cnt": 0,
+    "evening_cnt": 0,
+    "slope": null,
+    "slope_method": "",
+    "pedia1": null,
+    "pedia1_name": null,
+    "pedia1_slope": null,
+    "pedia2": null,
+    "pedia2_name": null,
+    "pedia2_slope": null,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-25",
+        "price": 9,
+        "floor": 3,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "영통롯데캐슬엘클래스2단지",
+    "atype": "84",
+    "area": 85,
+    "avg": 80000,
+    "accel": 2.4,
+    "r3_avg": 82256,
+    "p3_avg": 80300,
+    "count": 17,
+    "build": 2022,
+    "region": "수원시 영통구",
+    "dong": "망포동",
+    "liquidity": 3.1,
+    "liq_approx": true,
+    "morning": 30,
+    "evening": 41,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 4.1,
+    "slope_method": "dong_naver",
+    "pedia1": 18,
+    "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": 1,
+    "pedia2": 10,
+    "pedia2_name": "성모바른소아청소년과의원",
+    "pedia2_slope": -0.4,
+    "hcode": "dUEb9",
+    "recent_trades": [
+      {
+        "date": "2026-04-15",
+        "price": 8,
+        "floor": 2,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "영통롯데캐슬엘클래스1단지",
+    "atype": "84",
+    "area": 85,
+    "avg": 89400,
+    "accel": 2.6,
+    "r3_avg": 88030,
+    "p3_avg": 85832,
+    "count": 21,
+    "build": 2022,
+    "region": "수원시 영통구",
+    "dong": "망포동",
+    "liquidity": 3.8,
+    "liq_approx": false,
+    "morning": 30,
+    "evening": 41,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 1.7,
+    "slope_method": "dong_naver",
+    "pedia1": 11,
+    "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": 0.9,
+    "pedia2": 13,
+    "pedia2_name": "성모바른소아청소년과의원",
+    "pedia2_slope": -0.5,
+    "hcode": "dUDd4",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 8.8,
+        "floor": 6,
+        "area": 85
+      },
+      {
+        "date": "2026-04-10",
+        "price": 9,
+        "floor": 8,
+        "area": 85
+      },
+      {
+        "date": "2026-04-07",
+        "price": 9.4,
+        "floor": 6,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-06",
+        "price": 8.6,
+        "floor": 5,
+        "area": 85
+      },
+      {
+        "date": "2026-04-04",
+        "price": 9,
+        "floor": 12,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "가천대역두산위브",
+    "atype": "84",
+    "area": 84.6,
+    "avg": 82400,
+    "accel": -8.6,
+    "r3_avg": 78000,
+    "p3_avg": 85333,
+    "count": 5,
+    "build": 2018,
+    "region": "성남시 중원구",
+    "dong": "태평동",
+    "liquidity": 6,
+    "liq_approx": false,
+    "morning": 19,
+    "evening": 22,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 8,
+    "slope_method": "dong",
+    "pedia1": 8,
+    "pedia1_name": "장소아청소년과의원",
+    "pedia1_slope": -39.8,
+    "pedia2": 8,
+    "pedia2_name": "이메디정형외과",
+    "pedia2_slope": -43,
+    "hcode": "aWCcc",
+    "recent_trades": []
+  },
+  {
+    "name": "성남자이",
+    "atype": "84",
+    "area": 85,
+    "avg": 80000,
+    "accel": -2,
+    "r3_avg": 77900,
+    "p3_avg": 79500,
+    "count": 7,
+    "build": 2007,
+    "region": "성남시 수정구",
+    "dong": "하대원동",
+    "liquidity": 1.2,
+    "liq_approx": false,
+    "morning": 18,
+    "evening": 22,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 32,
+    "slope_method": "dong_naver",
+    "pedia1": 8,
+    "pedia1_name": "사랑의내과소아청소년과의원",
+    "pedia1_slope": -13.4,
+    "pedia2": 15,
+    "pedia2_name": "베스트소아과의원",
+    "pedia2_slope": 5.6,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-11",
+        "price": 8,
+        "floor": 11,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "신흥덕롯데캐슬레이시티",
+    "atype": "84",
+    "area": 84.9,
+    "avg": 74220,
+    "accel": 3.6,
+    "r3_avg": 72415,
+    "p3_avg": 69900,
+    "count": 20,
+    "build": 2019,
+    "region": "용인시 기흥구",
+    "dong": "신갈동",
+    "liquidity": 4,
+    "liq_approx": true,
+    "morning": 20,
+    "evening": 30,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 15.7,
+    "slope_method": "dong_naver",
+    "pedia1": 24,
+    "pedia1_name": "하나소아청소년과의원",
+    "pedia1_slope": -38.5,
+    "pedia2": 22,
+    "pedia2_name": "강남병원 소아청소년센터",
+    "pedia2_slope": -3.5,
+    "hcode": "aZw7e",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 7.8,
+        "floor": 28,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-16",
+        "price": 7.5,
+        "floor": 27,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-12",
+        "price": 7.2,
+        "floor": 22,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-09",
+        "price": 7.2,
+        "floor": 33,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.5,
+        "floor": 24,
+        "area": 84.9
+      }
+    ]
+  },
+  {
+    "name": "용인동백두산위브더제니스",
+    "atype": "84",
+    "area": 84.9,
+    "avg": 72650,
+    "accel": 4,
+    "r3_avg": 72171,
+    "p3_avg": 69410,
+    "count": 17,
+    "build": 2021,
+    "region": "용인시 기흥구",
+    "dong": "동백동",
+    "liquidity": 1.4,
+    "liq_approx": true,
+    "morning": 30,
+    "evening": 35,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 31.7,
+    "slope_method": "dong_naver",
+    "pedia1": 32,
+    "pedia1_name": "삼성키즈소아청소년과의원",
+    "pedia1_slope": -13.6,
+    "pedia2": 22,
+    "pedia2_name": "기린웰소아청소년과의원",
+    "pedia2_slope": -32,
+    "hcode": "dwBa6",
+    "recent_trades": [
+      {
+        "date": "2026-04-25",
+        "price": 7.1,
+        "floor": 22,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-24",
+        "price": 7.5,
+        "floor": 7,
+        "area": 84.9
+      }
+    ]
+  },
+  {
+    "name": "흥덕마을7단지힐스테이트",
+    "atype": "84",
+    "area": 85,
+    "avg": 85333,
+    "accel": 6.1,
+    "r3_avg": 86725,
+    "p3_avg": 81711,
+    "count": 27,
+    "build": 2010,
+    "region": "용인시 기흥구",
+    "dong": "영덕동",
+    "liquidity": 4.7,
+    "liq_approx": false,
+    "morning": 24,
+    "evening": 32,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 23.5,
+    "slope_method": "dong_naver",
+    "pedia1": 10,
+    "pedia1_name": "서울소아청소년과의원",
+    "pedia1_slope": -28.3,
+    "pedia2": 8,
+    "pedia2_name": "마트소아청소년과의원",
+    "pedia2_slope": 2.5,
+    "hcode": "6hS86",
+    "recent_trades": [
+      {
+        "date": "2026-04-29",
+        "price": 8.4,
+        "floor": 5,
+        "area": 85
+      },
+      {
+        "date": "2026-04-08",
+        "price": 8.5,
+        "floor": 11,
+        "area": 85
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8.8,
+        "floor": 17,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "힐스테이트서천",
+    "atype": "84",
+    "area": 85,
+    "avg": 76671,
+    "accel": 1.9,
+    "r3_avg": 76729,
+    "p3_avg": 75306,
+    "count": 30,
+    "build": 2016,
+    "region": "용인시 기흥구",
+    "dong": "서천동",
+    "liquidity": 4.6,
+    "liq_approx": false,
+    "morning": 24,
+    "evening": 32,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 6.9,
+    "slope_method": "dong_naver",
+    "pedia1": 13,
+    "pedia1_name": "아이웰봄 소아청소년과의원",
+    "pedia1_slope": -5.2,
+    "pedia2": 12,
+    "pedia2_name": "연세뉴키즈 소아청소년과의원",
+    "pedia2_slope": -5.6,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.6,
+        "floor": 6,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-20",
+        "price": 7.9,
+        "floor": 2,
+        "area": 85
+      },
+      {
+        "date": "2026-04-16",
+        "price": 7.6,
+        "floor": 5,
+        "area": 85
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.8,
+        "floor": 11,
+        "area": 85
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.8,
+        "floor": 6,
+        "area": 85
+      },
+      {
+        "date": "2026-04-02",
+        "price": 7.4,
+        "floor": 3,
+        "area": 85
+      },
+      {
+        "date": "2026-04-02",
+        "price": 7.6,
+        "floor": 4,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-01",
+        "price": 7.6,
+        "floor": 8,
+        "area": 85
+      }
+    ]
+  },
+  {
     "name": "기흥역파크푸르지오",
     "atype": "84",
-    "area": 85.0,
+    "area": 85,
     "avg": 81725,
     "accel": 5.4,
     "r3_avg": 84978,
@@ -386,9 +3262,451 @@
     "recent_trades": []
   },
   {
+    "name": "흥덕마을동원로얄듀크",
+    "atype": "84",
+    "area": 84.7,
+    "avg": 71000,
+    "accel": 4.7,
+    "r3_avg": 70175,
+    "p3_avg": 67021,
+    "count": 30,
+    "build": 2010,
+    "region": "용인시 기흥구",
+    "dong": "영덕동",
+    "liquidity": null,
+    "liq_approx": true,
+    "morning": null,
+    "evening": null,
+    "morning_cnt": 0,
+    "evening_cnt": 0,
+    "slope": null,
+    "slope_method": "",
+    "pedia1": null,
+    "pedia1_name": null,
+    "pedia1_slope": null,
+    "pedia2": null,
+    "pedia2_name": null,
+    "pedia2_slope": null,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-15",
+        "price": 7.4,
+        "floor": 16,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-06",
+        "price": 6.8,
+        "floor": 4,
+        "area": 84.9
+      }
+    ]
+  },
+  {
+    "name": "흥덕마을자연앤스위첸",
+    "atype": "84",
+    "area": 84.9,
+    "avg": 77450,
+    "accel": 2.6,
+    "r3_avg": 80630,
+    "p3_avg": 78563,
+    "count": 18,
+    "build": 2009,
+    "region": "용인시 기흥구",
+    "dong": "영덕동",
+    "liquidity": 3.6,
+    "liq_approx": false,
+    "morning": 25,
+    "evening": 31,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 0.8,
+    "slope_method": "dong_naver",
+    "pedia1": 11,
+    "pedia1_name": "서울소아청소년과의원",
+    "pedia1_slope": -24.9,
+    "pedia2": 12,
+    "pedia2_name": "친구들소아청소년과의원",
+    "pedia2_slope": -2.1,
+    "hcode": "6hZ56",
+    "recent_trades": [
+      {
+        "date": "2026-04-15",
+        "price": 7.4,
+        "floor": 17,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-03",
+        "price": 8.1,
+        "floor": 18,
+        "area": 84.8
+      }
+    ]
+  },
+  {
+    "name": "기흥더샵프라임뷰",
+    "atype": "84",
+    "area": 84.5,
+    "avg": 82150,
+    "accel": 2,
+    "r3_avg": 82864,
+    "p3_avg": 81278,
+    "count": 20,
+    "build": 2013,
+    "region": "용인시 기흥구",
+    "dong": "신갈동",
+    "liquidity": 4.3,
+    "liq_approx": false,
+    "morning": 21,
+    "evening": 31,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 4.4,
+    "slope_method": "dong_naver",
+    "pedia1": 3,
+    "pedia1_name": "배소아청소년과의원",
+    "pedia1_slope": -0.8,
+    "pedia2": 16,
+    "pedia2_name": "강남병원 소아청소년센터",
+    "pedia2_slope": -29,
+    "hcode": null,
+    "recent_trades": []
+  },
+  {
+    "name": "성동마을수지자이",
+    "atype": "84",
+    "area": 85,
+    "avg": 79256,
+    "accel": 10.4,
+    "r3_avg": 83625,
+    "p3_avg": 75760,
+    "count": 9,
+    "build": 2006,
+    "region": "용인시 수지구",
+    "dong": "성복동",
+    "liquidity": 4.9,
+    "liq_approx": false,
+    "morning": 20,
+    "evening": 27,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 15.3,
+    "slope_method": "dong_naver",
+    "pedia1": 20,
+    "pedia1_name": "아산이뮨플러스의원",
+    "pedia1_slope": -21.7,
+    "pedia2": 26,
+    "pedia2_name": "이레소아청소년과의원",
+    "pedia2_slope": -9.4,
+    "hcode": "6n062",
+    "recent_trades": []
+  },
+  {
+    "name": "대명강변타운",
+    "atype": "84",
+    "area": 84.8,
+    "avg": 87833,
+    "accel": 2.3,
+    "r3_avg": 88857,
+    "p3_avg": 86838,
+    "count": 28,
+    "build": 2007,
+    "region": "하남시",
+    "dong": "신장동",
+    "liquidity": 2,
+    "liq_approx": false,
+    "morning": 25,
+    "evening": 45,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 0.3,
+    "slope_method": "dong_naver",
+    "pedia1": 12,
+    "pedia1_name": "하남드림 소아청소년과의원",
+    "pedia1_slope": -0.8,
+    "pedia2": 29,
+    "pedia2_name": "연세웰소아청소년과의원",
+    "pedia2_slope": 0.1,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-16",
+        "price": 8.6,
+        "floor": 6,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-15",
+        "price": 8.4,
+        "floor": 10,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-10",
+        "price": 9.4,
+        "floor": 22,
+        "area": 84.8
+      }
+    ]
+  },
+  {
+    "name": "미사강변한신휴플러스",
+    "atype": "84",
+    "area": 85,
+    "avg": 90000,
+    "accel": 6.6,
+    "r3_avg": 103450,
+    "p3_avg": 97040,
+    "count": 9,
+    "build": 2015,
+    "region": "하남시",
+    "dong": "망월동",
+    "liquidity": null,
+    "liq_approx": true,
+    "morning": null,
+    "evening": null,
+    "morning_cnt": 0,
+    "evening_cnt": 0,
+    "slope": null,
+    "slope_method": "",
+    "pedia1": null,
+    "pedia1_name": null,
+    "pedia1_slope": null,
+    "pedia2": null,
+    "pedia2_name": null,
+    "pedia2_slope": null,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-03",
+        "price": 9,
+        "floor": 12,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "병점역아이파크캐슬",
+    "atype": "84",
+    "area": 85,
+    "avg": 73300,
+    "accel": 1.5,
+    "r3_avg": 73802,
+    "p3_avg": 72695,
+    "count": 59,
+    "build": 2021,
+    "region": "화성시",
+    "dong": "병점동",
+    "liquidity": 2.6,
+    "liq_approx": true,
+    "morning": 35,
+    "evening": 50,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 1.4,
+    "slope_method": "dong_naver",
+    "pedia1": 7,
+    "pedia1_name": "아이언소아청소년과의원",
+    "pedia1_slope": 0.8,
+    "pedia2": 33,
+    "pedia2_name": "굿모닝소아청소년과의원",
+    "pedia2_slope": 8.9,
+    "hcode": "dzz14",
+    "recent_trades": [
+      {
+        "date": "2026-04-28",
+        "price": 7.4,
+        "floor": 19,
+        "area": 85
+      },
+      {
+        "date": "2026-04-28",
+        "price": 7.5,
+        "floor": 7,
+        "area": 85
+      },
+      {
+        "date": "2026-04-25",
+        "price": 7.2,
+        "floor": 8,
+        "area": 85
+      },
+      {
+        "date": "2026-04-21",
+        "price": 6.6,
+        "floor": 4,
+        "area": 85
+      },
+      {
+        "date": "2026-04-20",
+        "price": 7.5,
+        "floor": 17,
+        "area": 85
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.9,
+        "floor": 16,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "반정아이파크캐슬4단지",
+    "atype": "84",
+    "area": 84.7,
+    "avg": 76864,
+    "accel": 2.9,
+    "r3_avg": 76593,
+    "p3_avg": 74427,
+    "count": 25,
+    "build": 2022,
+    "region": "화성시",
+    "dong": "반정동",
+    "liquidity": 4.2,
+    "liq_approx": true,
+    "morning": 36,
+    "evening": 44,
+    "morning_cnt": 6,
+    "evening_cnt": 2,
+    "slope": 3.3,
+    "slope_method": "dong_naver",
+    "pedia1": 12,
+    "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": -0.7,
+    "pedia2": 21,
+    "pedia2_name": "성모바른소아청소년과의원",
+    "pedia2_slope": -2.1,
+    "hcode": "dKS83",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.6,
+        "floor": 3,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.3,
+        "floor": 11,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-17",
+        "price": 8.1,
+        "floor": 12,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-13",
+        "price": 7.7,
+        "floor": 16,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-12",
+        "price": 7.2,
+        "floor": 1,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-09",
+        "price": 8,
+        "floor": 10,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-08",
+        "price": 7.6,
+        "floor": 3,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-07",
+        "price": 7.8,
+        "floor": 9,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-06",
+        "price": 7.5,
+        "floor": 8,
+        "area": 84.3
+      },
+      {
+        "date": "2026-04-05",
+        "price": 8.1,
+        "floor": 11,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-03",
+        "price": 7.8,
+        "floor": 10,
+        "area": 84.7
+      }
+    ]
+  },
+  {
+    "name": "반정아이파크캐슬5단지",
+    "atype": "84",
+    "area": 84.7,
+    "avg": 77088,
+    "accel": 1.2,
+    "r3_avg": 77519,
+    "p3_avg": 76617,
+    "count": 45,
+    "build": 2022,
+    "region": "화성시",
+    "dong": "반정동",
+    "liquidity": 7.5,
+    "liq_approx": true,
+    "morning": 35,
+    "evening": 41,
+    "morning_cnt": 6,
+    "evening_cnt": 3,
+    "slope": 6.3,
+    "slope_method": "dong_naver",
+    "pedia1": 13,
+    "pedia1_name": "연세슬기로운 소아청소년과의원",
+    "pedia1_slope": -1.6,
+    "pedia2": 16,
+    "pedia2_name": "튼튼사랑소아청소년과의원",
+    "pedia2_slope": 4.7,
+    "hcode": "dKT1f",
+    "recent_trades": [
+      {
+        "date": "2026-04-27",
+        "price": 7.8,
+        "floor": 2,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-23",
+        "price": 7.8,
+        "floor": 6,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-20",
+        "price": 7.4,
+        "floor": 2,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-17",
+        "price": 7.9,
+        "floor": 12,
+        "area": 84.7
+      }
+    ]
+  },
+  {
     "name": "나노시티역롯데캐슬",
     "atype": "84",
-    "area": 85.0,
+    "area": 85,
     "avg": 72750,
     "accel": 0.8,
     "r3_avg": 73156,
@@ -417,60 +3735,383 @@
         "date": "2026-04-28",
         "price": 7.3,
         "floor": 14,
-        "area": 85.0
+        "area": 85
       },
       {
         "date": "2026-04-06",
-        "price": 7.2,
+        "price": 7.3,
         "floor": 7,
-        "area": 85.0
+        "area": 85
       }
     ]
   },
   {
-    "name": "대명강변타운",
+    "name": "솔빛마을쌍용예가",
     "atype": "84",
-    "area": 84.8,
-    "avg": 87833,
-    "accel": 2.3,
-    "r3_avg": 88857,
-    "p3_avg": 86838,
-    "count": 28,
+    "area": 85,
+    "avg": 77650,
+    "accel": 6.7,
+    "r3_avg": 78400,
+    "p3_avg": 73505,
+    "count": 24,
     "build": 2007,
-    "region": "하남시",
-    "dong": "신장동",
-    "liquidity": 2.0,
-    "liq_approx": false,
-    "morning": 25,
-    "evening": 45,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 0.3,
+    "region": "화성시",
+    "dong": "반송동",
+    "liquidity": 2.6,
+    "liq_approx": true,
+    "morning": 29,
+    "evening": 43,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 2,
     "slope_method": "dong_naver",
-    "pedia1": 12,
-    "pedia1_name": "하남드림 소아청소년과의원",
-    "pedia1_slope": -0.8,
-    "pedia2": 29,
-    "pedia2_name": "연세웰소아청소년과의원",
-    "pedia2_slope": 0.1,
-    "hcode": null,
+    "pedia1": 11,
+    "pedia1_name": "솔빛소아청소년과의원",
+    "pedia1_slope": 2,
+    "pedia2": 6,
+    "pedia2_name": "삼성제일소아청소년과의원",
+    "pedia2_slope": -2.5,
+    "hcode": "6xR56",
     "recent_trades": [
       {
-        "date": "2026-04-16",
-        "price": 8.6,
+        "date": "2026-04-19",
+        "price": 8.1,
+        "floor": 5,
+        "area": 85
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.5,
         "floor": 6,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "푸르지오",
+    "atype": "84",
+    "area": 84.1,
+    "avg": 70000,
+    "accel": 3.3,
+    "r3_avg": 68508,
+    "p3_avg": 66350,
+    "count": 11,
+    "build": 2008,
+    "region": "화성시",
+    "dong": "석우동",
+    "liquidity": null,
+    "liq_approx": true,
+    "morning": null,
+    "evening": null,
+    "morning_cnt": 0,
+    "evening_cnt": 0,
+    "slope": 38.3,
+    "slope_method": "dong",
+    "pedia1": 14,
+    "pedia1_name": "코벤트더웰의원",
+    "pedia1_slope": -4.5,
+    "pedia2": 17,
+    "pedia2_name": "반디소아청소년과의원",
+    "pedia2_slope": 7.5,
+    "hcode": "aDW27",
+    "recent_trades": [
+      {
+        "date": "2026-04-09",
+        "price": 7,
+        "floor": 21,
+        "area": 84.1
+      }
+    ]
+  },
+  {
+    "name": "동탄역대원칸타빌포레지움",
+    "atype": "84",
+    "area": 84.8,
+    "avg": 70250,
+    "accel": 0.3,
+    "r3_avg": 70231,
+    "p3_avg": 70014,
+    "count": 23,
+    "build": 2015,
+    "region": "화성시",
+    "dong": "청계동",
+    "liquidity": 5.8,
+    "liq_approx": false,
+    "morning": 29,
+    "evening": 44,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 2,
+    "slope_method": "dong_naver",
+    "pedia1": 18,
+    "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -27.5,
+    "pedia2": 18,
+    "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -27.6,
+    "hcode": "alpee",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7,
+        "floor": 6,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-24",
+        "price": 7.1,
+        "floor": 4,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-22",
+        "price": 6.7,
+        "floor": 11,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.2,
+        "floor": 19,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-18",
+        "price": 7.1,
+        "floor": 13,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-17",
+        "price": 7,
+        "floor": 4,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-14",
+        "price": 7.4,
+        "floor": 7,
         "area": 84.8
+      },
+      {
+        "date": "2026-04-11",
+        "price": 6.9,
+        "floor": 4,
+        "area": 84.2
+      },
+      {
+        "date": "2026-04-04",
+        "price": 7.3,
+        "floor": 20,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-02",
+        "price": 6.8,
+        "floor": 20,
+        "area": 84.7
+      }
+    ]
+  },
+  {
+    "name": "동탄역신안인스빌리베라1차",
+    "atype": "84",
+    "area": 85,
+    "avg": 73433,
+    "accel": 2.7,
+    "r3_avg": 72829,
+    "p3_avg": 70882,
+    "count": 18,
+    "build": 2015,
+    "region": "화성시",
+    "dong": "청계동",
+    "liquidity": 6.7,
+    "liq_approx": false,
+    "morning": 29,
+    "evening": 44,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 4.7,
+    "slope_method": "dong_naver",
+    "pedia1": 13,
+    "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -24.8,
+    "pedia2": 13,
+    "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -24.9,
+    "hcode": "ayH06",
+    "recent_trades": [
+      {
+        "date": "2026-04-24",
+        "price": 7.5,
+        "floor": 18,
+        "area": 85
       },
       {
         "date": "2026-04-15",
-        "price": 8.3,
-        "floor": 10,
+        "price": 7.2,
+        "floor": 5,
+        "area": 85
+      },
+      {
+        "date": "2026-04-03",
+        "price": 7.4,
+        "floor": 15,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "솔빛마을신도브래뉴",
+    "atype": "84",
+    "area": 84.9,
+    "avg": 82400,
+    "accel": 8.6,
+    "r3_avg": 79400,
+    "p3_avg": 73100,
+    "count": 13,
+    "build": 2007,
+    "region": "화성시",
+    "dong": "반송동",
+    "liquidity": 2.2,
+    "liq_approx": true,
+    "morning": 29,
+    "evening": 43,
+    "morning_cnt": 5,
+    "evening_cnt": 2,
+    "slope": 3.8,
+    "slope_method": "dong_naver",
+    "pedia1": 5,
+    "pedia1_name": "삼성제일소아청소년과의원",
+    "pedia1_slope": -3.8,
+    "pedia2": 10,
+    "pedia2_name": "솔빛소아청소년과의원",
+    "pedia2_slope": 0.7,
+    "hcode": "6xQae",
+    "recent_trades": [
+      {
+        "date": "2026-04-27",
+        "price": 8.2,
+        "floor": 6,
+        "area": 84.8
+      }
+    ]
+  },
+  {
+    "name": "동탄2엘에이치26단지아파트(에이65블록)",
+    "atype": "84",
+    "area": 85,
+    "avg": 70500,
+    "accel": 5.2,
+    "r3_avg": 69060,
+    "p3_avg": 65667,
+    "count": 8,
+    "build": 2016,
+    "region": "화성시",
+    "dong": "송동",
+    "liquidity": null,
+    "liq_approx": true,
+    "morning": null,
+    "evening": null,
+    "morning_cnt": 0,
+    "evening_cnt": 0,
+    "slope": null,
+    "slope_method": "",
+    "pedia1": null,
+    "pedia1_name": null,
+    "pedia1_slope": null,
+    "pedia2": null,
+    "pedia2_name": null,
+    "pedia2_slope": null,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 6.8,
+        "floor": 3,
+        "area": 84.6
+      },
+      {
+        "date": "2026-04-15",
+        "price": 7.3,
+        "floor": 22,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "동탄2하우스디더레이크",
+    "atype": "84",
+    "area": 84.9,
+    "avg": 84430,
+    "accel": 6.8,
+    "r3_avg": 88950,
+    "p3_avg": 83300,
+    "count": 10,
+    "build": 2016,
+    "region": "화성시",
+    "dong": "송동",
+    "liquidity": 2.7,
+    "liq_approx": true,
+    "morning": 37,
+    "evening": 48,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 14.4,
+    "slope_method": "dong_naver",
+    "pedia1": 27,
+    "pedia1_name": "동탄성모병원",
+    "pedia1_slope": -8.1,
+    "pedia2": 27,
+    "pedia2_name": "하늘한방소아과한방재활의학과한의원",
+    "pedia2_slope": -8.1,
+    "hcode": "b2L97",
+    "recent_trades": []
+  },
+  {
+    "name": "시범한빛마을한화꿈에그린",
+    "atype": "84",
+    "area": 84.8,
+    "avg": 80667,
+    "accel": 2.6,
+    "r3_avg": 79418,
+    "p3_avg": 77389,
+    "count": 18,
+    "build": 2007,
+    "region": "화성시",
+    "dong": "반송동",
+    "liquidity": 3.4,
+    "liq_approx": false,
+    "morning": 23,
+    "evening": 29,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 0.5,
+    "slope_method": "dong_naver",
+    "pedia1": 12,
+    "pedia1_name": "성모플러스 내과소아과",
+    "pedia1_slope": -4.4,
+    "pedia2": 20,
+    "pedia2_name": "우리아이소아청소년과의원",
+    "pedia2_slope": -5.6,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-25",
+        "price": 8.4,
+        "floor": 11,
         "area": 84.8
       },
       {
-        "date": "2026-04-10",
-        "price": 9.4,
-        "floor": 22,
+        "date": "2026-04-18",
+        "price": 8.1,
+        "floor": 17,
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-16",
+        "price": 7.8,
+        "floor": 7,
         "area": 84.8
       }
     ]
@@ -487,7 +4128,7 @@
     "build": 2018,
     "region": "화성시",
     "dong": "산척동",
-    "liquidity": 7.0,
+    "liquidity": 7,
     "liq_approx": false,
     "morning": 32,
     "evening": 44,
@@ -518,44 +4159,248 @@
     ]
   },
   {
-    "name": "더레이크시티부영2단지",
+    "name": "KCC스위첸아파트",
     "atype": "84",
-    "area": 84.5,
-    "avg": 87500,
-    "accel": -2.2,
-    "r3_avg": 78222,
-    "p3_avg": 79975,
-    "count": 13,
-    "build": 2018,
+    "area": 84,
+    "avg": 78833,
+    "accel": 4.1,
+    "r3_avg": 74970,
+    "p3_avg": 72018,
+    "count": 52,
+    "build": 2015,
     "region": "화성시",
-    "dong": "산척동",
-    "liquidity": 5.7,
+    "dong": "청계동",
+    "liquidity": 8.1,
     "liq_approx": false,
-    "morning": 38,
-    "evening": 48,
+    "morning": 29,
+    "evening": 40,
     "morning_cnt": 6,
     "evening_cnt": 3,
-    "slope": 1.4,
+    "slope": 7.2,
     "slope_method": "dong_naver",
-    "pedia1": 12,
-    "pedia1_name": "연세키즈365소아청소년과의원",
-    "pedia1_slope": 13.1,
-    "pedia2": 12,
-    "pedia2_name": "동탄이소아청소년과의원",
-    "pedia2_slope": 13.1,
-    "hcode": "b0he4",
+    "pedia1": 15,
+    "pedia1_name": "동탄미소소아청소년과의원",
+    "pedia1_slope": -16.5,
+    "pedia2": 15,
+    "pedia2_name": "코끼리소아청소년과의원",
+    "pedia2_slope": -16.6,
+    "hcode": "9J848",
     "recent_trades": [
       {
-        "date": "2026-04-18",
-        "price": 8.5,
-        "floor": 16,
-        "area": 84.5
+        "date": "2026-04-10",
+        "price": 8,
+        "floor": 21,
+        "area": 84
       },
       {
-        "date": "2026-04-10",
-        "price": 9.0,
+        "date": "2026-04-04",
+        "price": 7.7,
+        "floor": 4,
+        "area": 84
+      },
+      {
+        "date": "2026-04-04",
+        "price": 8,
+        "floor": 13,
+        "area": 84
+      }
+    ]
+  },
+  {
+    "name": "반도유보라아이비파크3",
+    "atype": "84",
+    "area": 84.9,
+    "avg": 84700,
+    "accel": 6.4,
+    "r3_avg": 84025,
+    "p3_avg": 78950,
+    "count": 10,
+    "build": 2016,
+    "region": "화성시",
+    "dong": "여울동",
+    "liquidity": 2,
+    "liq_approx": true,
+    "morning": 34,
+    "evening": 46,
+    "morning_cnt": 7,
+    "evening_cnt": 3,
+    "slope": 0.8,
+    "slope_method": "dong_naver",
+    "pedia1": 33,
+    "pedia1_name": "올바른소아청소년과의원",
+    "pedia1_slope": 8.3,
+    "pedia2": 32,
+    "pedia2_name": "동탄S소아청소년과 발달클리닉",
+    "pedia2_slope": 9.2,
+    "hcode": "aBY7b",
+    "recent_trades": [
+      {
+        "date": "2026-04-20",
+        "price": 8.5,
+        "floor": 9,
+        "area": 84.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.4,
+        "floor": 11,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "시범한빛마을삼부르네상스",
+    "atype": "84",
+    "area": 84.7,
+    "avg": 70000,
+    "accel": 4.3,
+    "r3_avg": 72571,
+    "p3_avg": 69605,
+    "count": 33,
+    "build": 2007,
+    "region": "화성시",
+    "dong": "반송동",
+    "liquidity": 6.2,
+    "liq_approx": false,
+    "morning": 21,
+    "evening": 29,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 1,
+    "slope_method": "dong_naver",
+    "pedia1": 9,
+    "pedia1_name": "우리아이소아청소년과의원",
+    "pedia1_slope": 0.4,
+    "pedia2": 18,
+    "pedia2_name": "성모플러스 내과소아과",
+    "pedia2_slope": 1.7,
+    "hcode": "6y038",
+    "recent_trades": [
+      {
+        "date": "2026-04-23",
+        "price": 7.4,
         "floor": 19,
-        "area": 84.5
+        "area": 84.7
+      },
+      {
+        "date": "2026-04-02",
+        "price": 6.6,
+        "floor": 20,
+        "area": 84.8
+      }
+    ]
+  },
+  {
+    "name": "동탄호수자이파밀리에",
+    "atype": "84",
+    "area": 84.8,
+    "avg": 73200,
+    "accel": 3.8,
+    "r3_avg": 72960,
+    "p3_avg": 70259,
+    "count": 16,
+    "build": 2018,
+    "region": "화성시",
+    "dong": "장지동",
+    "liquidity": 3.6,
+    "liq_approx": true,
+    "morning": 33,
+    "evening": 49,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 4.1,
+    "slope_method": "dong_naver",
+    "pedia1": 10,
+    "pedia1_name": "연세이룬소아청소년과의원",
+    "pedia1_slope": 12.8,
+    "pedia2": 15,
+    "pedia2_name": "동탄호수소아청소년과의원",
+    "pedia2_slope": 2.2,
+    "hcode": "dy7e4",
+    "recent_trades": [
+      {
+        "date": "2026-04-20",
+        "price": 7.4,
+        "floor": 9,
+        "area": 84.8
+      },
+      {
+        "date": "2026-04-11",
+        "price": 7.3,
+        "floor": 19,
+        "area": 84.8
+      }
+    ]
+  },
+  {
+    "name": "동탄역더샵센트럴시티2차",
+    "atype": "84",
+    "area": 85,
+    "avg": 79500,
+    "accel": 1.8,
+    "r3_avg": 77450,
+    "p3_avg": 76110,
+    "count": 22,
+    "build": 2018,
+    "region": "화성시",
+    "dong": "여울동",
+    "liquidity": 3,
+    "liq_approx": true,
+    "morning": 32,
+    "evening": 45,
+    "morning_cnt": 6,
+    "evening_cnt": 3,
+    "slope": 0.5,
+    "slope_method": "dong_naver",
+    "pedia1": 22,
+    "pedia1_name": "남승우소아청소년과의원",
+    "pedia1_slope": 22.2,
+    "pedia2": 30,
+    "pedia2_name": "반디소아청소년과의원",
+    "pedia2_slope": 16,
+    "hcode": "aV671",
+    "recent_trades": [
+      {
+        "date": "2026-04-04",
+        "price": 8,
+        "floor": 13,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "시범한빛마을금호어울림",
+    "atype": "84",
+    "area": 84.5,
+    "avg": 84700,
+    "accel": 4.2,
+    "r3_avg": 81341,
+    "p3_avg": 78088,
+    "count": 24,
+    "build": 2007,
+    "region": "화성시",
+    "dong": "반송동",
+    "liquidity": 4.5,
+    "liq_approx": false,
+    "morning": 22,
+    "evening": 29,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 0.4,
+    "slope_method": "dong_naver",
+    "pedia1": 11,
+    "pedia1_name": "동탄연세소아청소년과웰빙",
+    "pedia1_slope": -10.4,
+    "pedia2": 11,
+    "pedia2_name": "동탄연세소아청소년과의원",
+    "pedia2_slope": -8.4,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-04-08",
+        "price": 8.5,
+        "floor": 9,
+        "area": 84.6
       }
     ]
   },
@@ -620,355 +4465,9 @@
     ]
   },
   {
-    "name": "더샵광교산퍼스트파크",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 74025,
-    "accel": 1.8,
-    "r3_avg": 74429,
-    "p3_avg": 73083,
-    "count": 10,
-    "build": 2022,
-    "region": "수원시 장안구",
-    "dong": "조원동",
-    "liquidity": 2.5,
-    "liq_approx": true,
-    "morning": 23,
-    "evening": 30,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 14.1,
-    "slope_method": "dong_naver",
-    "pedia1": 22,
-    "pedia1_name": "박소아청소년과의원",
-    "pedia1_slope": -21.5,
-    "pedia2": 40,
-    "pedia2_name": "김경신소아과의원",
-    "pedia2_slope": -23.1,
-    "hcode": null,
-    "recent_trades": []
-  },
-  {
-    "name": "더샵동천이스트포레",
-    "atype": "74",
-    "area": 78.2,
-    "avg": 70000,
-    "accel": -3.2,
-    "r3_avg": 100300,
-    "p3_avg": 103567,
-    "count": 8,
-    "build": 2020,
-    "region": "용인시 수지구",
-    "dong": "동천동",
-    "liquidity": null,
-    "liq_approx": true,
-    "morning": null,
-    "evening": null,
-    "morning_cnt": 0,
-    "evening_cnt": 0,
-    "slope": null,
-    "slope_method": "",
-    "pedia1": null,
-    "pedia1_name": null,
-    "pedia1_slope": null,
-    "pedia2": null,
-    "pedia2_name": null,
-    "pedia2_slope": null,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-25",
-        "price": 7.0,
-        "floor": 1,
-        "area": 78.2
-      }
-    ]
-  },
-  {
-    "name": "동탄2엘에이치26단지아파트(에이65블록)",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 70500,
-    "accel": 5.2,
-    "r3_avg": 69060,
-    "p3_avg": 65667,
-    "count": 8,
-    "build": 2016,
-    "region": "화성시",
-    "dong": "송동",
-    "liquidity": null,
-    "liq_approx": true,
-    "morning": null,
-    "evening": null,
-    "morning_cnt": 0,
-    "evening_cnt": 0,
-    "slope": null,
-    "slope_method": "",
-    "pedia1": null,
-    "pedia1_name": null,
-    "pedia1_slope": null,
-    "pedia2": null,
-    "pedia2_name": null,
-    "pedia2_slope": null,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-18",
-        "price": 6.8,
-        "floor": 3,
-        "area": 84.6
-      },
-      {
-        "date": "2026-04-15",
-        "price": 7.3,
-        "floor": 22,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "동탄2하우스디더레이크",
-    "atype": "59",
-    "area": 60.0,
-    "avg": 76275,
-    "accel": 5.4,
-    "r3_avg": 72568,
-    "p3_avg": 68859,
-    "count": 80,
-    "build": 2016,
-    "region": "화성시",
-    "dong": "송동",
-    "liquidity": 15.8,
-    "liq_approx": false,
-    "morning": 37,
-    "evening": 48,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 14.4,
-    "slope_method": "dong_naver",
-    "pedia1": 27,
-    "pedia1_name": "동탄성모병원",
-    "pedia1_slope": -8.1,
-    "pedia2": 27,
-    "pedia2_name": "하늘한방소아과한방재활의학과한의원",
-    "pedia2_slope": -8.1,
-    "hcode": "b2L97",
-    "recent_trades": [
-      {
-        "date": "2026-04-24",
-        "price": 7.2,
-        "floor": 2,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-22",
-        "price": 7.6,
-        "floor": 12,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-14",
-        "price": 7.9,
-        "floor": 20,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-11",
-        "price": 7.9,
-        "floor": 20,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-11",
-        "price": 7.5,
-        "floor": 4,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-11",
-        "price": 7.9,
-        "floor": 23,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-08",
-        "price": 7.5,
-        "floor": 23,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.6,
-        "floor": 10,
-        "area": 60.0
-      }
-    ]
-  },
-  {
-    "name": "동탄2하우스디더레이크",
-    "atype": "74",
-    "area": 74.9,
-    "avg": 83220,
-    "accel": 4.0,
-    "r3_avg": 80968,
-    "p3_avg": 77836,
-    "count": 33,
-    "build": 2016,
-    "region": "화성시",
-    "dong": "송동",
-    "liquidity": 9.0,
-    "liq_approx": true,
-    "morning": 37,
-    "evening": 48,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 14.4,
-    "slope_method": "dong_naver",
-    "pedia1": 27,
-    "pedia1_name": "동탄성모병원",
-    "pedia1_slope": -8.1,
-    "pedia2": 27,
-    "pedia2_name": "하늘한방소아과한방재활의학과한의원",
-    "pedia2_slope": -8.1,
-    "hcode": "b2L97",
-    "recent_trades": [
-      {
-        "date": "2026-04-29",
-        "price": 8.2,
-        "floor": 4,
-        "area": 74.9
-      },
-      {
-        "date": "2026-04-28",
-        "price": 8.5,
-        "floor": 8,
-        "area": 74.9
-      },
-      {
-        "date": "2026-04-22",
-        "price": 7.5,
-        "floor": 1,
-        "area": 74.9
-      },
-      {
-        "date": "2026-04-08",
-        "price": 8.8,
-        "floor": 25,
-        "area": 74.9
-      },
-      {
-        "date": "2026-04-04",
-        "price": 8.6,
-        "floor": 15,
-        "area": 74.9
-      }
-    ]
-  },
-  {
-    "name": "동탄2하우스디더레이크",
-    "atype": "84",
-    "area": 84.9,
-    "avg": 84430,
-    "accel": 6.8,
-    "r3_avg": 88950,
-    "p3_avg": 83300,
-    "count": 10,
-    "build": 2016,
-    "region": "화성시",
-    "dong": "송동",
-    "liquidity": 2.7,
-    "liq_approx": true,
-    "morning": 37,
-    "evening": 48,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 14.4,
-    "slope_method": "dong_naver",
-    "pedia1": 27,
-    "pedia1_name": "동탄성모병원",
-    "pedia1_slope": -8.1,
-    "pedia2": 27,
-    "pedia2_name": "하늘한방소아과한방재활의학과한의원",
-    "pedia2_slope": -8.1,
-    "hcode": "b2L97",
-    "recent_trades": []
-  },
-  {
-    "name": "동탄역 호반 써밋",
-    "atype": "59",
-    "area": 59.4,
-    "avg": 74560,
-    "accel": 6.9,
-    "r3_avg": 74972,
-    "p3_avg": 70133,
-    "count": 39,
-    "build": 2015,
-    "region": "화성시",
-    "dong": "청계동",
-    "liquidity": 7.3,
-    "liq_approx": false,
-    "morning": 30,
-    "evening": 44,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 1.8,
-    "slope_method": "dong_naver",
-    "pedia1": 10,
-    "pedia1_name": "코끼리소아청소년과의원",
-    "pedia1_slope": 6.7,
-    "pedia2": 10,
-    "pedia2_name": "동탄미소소아청소년과의원",
-    "pedia2_slope": 6.8,
-    "hcode": "ayKcb",
-    "recent_trades": [
-      {
-        "date": "2026-04-29",
-        "price": 6.3,
-        "floor": 22,
-        "area": 59.8
-      },
-      {
-        "date": "2026-04-28",
-        "price": 7.8,
-        "floor": 10,
-        "area": 59.8
-      },
-      {
-        "date": "2026-04-24",
-        "price": 7.8,
-        "floor": 14,
-        "area": 59.4
-      },
-      {
-        "date": "2026-04-09",
-        "price": 7.8,
-        "floor": 17,
-        "area": 59.4
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.6,
-        "floor": 17,
-        "area": 59.4
-      },
-      {
-        "date": "2026-04-01",
-        "price": 7.7,
-        "floor": 20,
-        "area": 59.4
-      },
-      {
-        "date": "2026-04-01",
-        "price": 7.9,
-        "floor": 18,
-        "area": 59.2
-      }
-    ]
-  },
-  {
     "name": "동탄역 호반 써밋",
     "atype": "84",
-    "area": 85.0,
+    "area": 85,
     "avg": 88175,
     "accel": 5.4,
     "r3_avg": 87586,
@@ -980,7 +4479,7 @@
     "liquidity": 5.1,
     "liq_approx": false,
     "morning": 30,
-    "evening": 44,
+    "evening": 45,
     "morning_cnt": 5,
     "evening_cnt": 2,
     "slope": 1.8,
@@ -997,3476 +4496,25 @@
         "date": "2026-04-22",
         "price": 8.8,
         "floor": 21,
-        "area": 85.0
+        "area": 85
       },
       {
         "date": "2026-04-12",
         "price": 8.9,
         "floor": 17,
-        "area": 85.0
+        "area": 85
       },
       {
         "date": "2026-04-11",
         "price": 8.8,
         "floor": 5,
-        "area": 85.0
+        "area": 85
       },
       {
         "date": "2026-04-09",
         "price": 8.9,
         "floor": 11,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "동탄역대원칸타빌포레지움",
-    "atype": "84",
-    "area": 84.8,
-    "avg": 70250,
-    "accel": 0.3,
-    "r3_avg": 70231,
-    "p3_avg": 70014,
-    "count": 23,
-    "build": 2015,
-    "region": "화성시",
-    "dong": "청계동",
-    "liquidity": 5.8,
-    "liq_approx": false,
-    "morning": 29,
-    "evening": 44,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 2.0,
-    "slope_method": "dong_naver",
-    "pedia1": 18,
-    "pedia1_name": "동탄미소소아청소년과의원",
-    "pedia1_slope": -27.5,
-    "pedia2": 18,
-    "pedia2_name": "코끼리소아청소년과의원",
-    "pedia2_slope": -27.6,
-    "hcode": "alpee",
-    "recent_trades": [
-      {
-        "date": "2026-04-24",
-        "price": 7.1,
-        "floor": 4,
-        "area": 84.2
-      },
-      {
-        "date": "2026-04-24",
-        "price": 7.0,
-        "floor": 6,
-        "area": 84.2
-      },
-      {
-        "date": "2026-04-22",
-        "price": 6.7,
-        "floor": 11,
-        "area": 84.2
-      },
-      {
-        "date": "2026-04-18",
-        "price": 7.1,
-        "floor": 13,
-        "area": 84.2
-      },
-      {
-        "date": "2026-04-18",
-        "price": 7.2,
-        "floor": 19,
-        "area": 84.2
-      },
-      {
-        "date": "2026-04-17",
-        "price": 7.0,
-        "floor": 4,
-        "area": 84.2
-      },
-      {
-        "date": "2026-04-14",
-        "price": 7.3,
-        "floor": 7,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-11",
-        "price": 6.9,
-        "floor": 4,
-        "area": 84.2
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.2,
-        "floor": 20,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-02",
-        "price": 6.8,
-        "floor": 20,
-        "area": 84.7
-      }
-    ]
-  },
-  {
-    "name": "동탄역더샵센트럴시티2차",
-    "atype": "74",
-    "area": 74.9,
-    "avg": 72850,
-    "accel": 1.2,
-    "r3_avg": 70708,
-    "p3_avg": 69854,
-    "count": 24,
-    "build": 2018,
-    "region": "화성시",
-    "dong": "여울동",
-    "liquidity": 3.2,
-    "liq_approx": true,
-    "morning": 32,
-    "evening": 45,
-    "morning_cnt": 6,
-    "evening_cnt": 3,
-    "slope": 0.5,
-    "slope_method": "dong_naver",
-    "pedia1": 22,
-    "pedia1_name": "남승우소아청소년과의원",
-    "pedia1_slope": 22.2,
-    "pedia2": 30,
-    "pedia2_name": "반디소아청소년과의원",
-    "pedia2_slope": 16.0,
-    "hcode": "aV671",
-    "recent_trades": [
-      {
-        "date": "2026-04-04",
-        "price": 7.3,
-        "floor": 10,
-        "area": 74.8
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.2,
-        "floor": 11,
-        "area": 74.8
-      },
-      {
-        "date": "2026-04-01",
-        "price": 7.5,
-        "floor": 14,
-        "area": 74.9
-      }
-    ]
-  },
-  {
-    "name": "동탄역더샵센트럴시티2차",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 79500,
-    "accel": 1.8,
-    "r3_avg": 77450,
-    "p3_avg": 76110,
-    "count": 22,
-    "build": 2018,
-    "region": "화성시",
-    "dong": "여울동",
-    "liquidity": 3.0,
-    "liq_approx": true,
-    "morning": 32,
-    "evening": 45,
-    "morning_cnt": 6,
-    "evening_cnt": 3,
-    "slope": 0.5,
-    "slope_method": "dong_naver",
-    "pedia1": 22,
-    "pedia1_name": "남승우소아청소년과의원",
-    "pedia1_slope": 22.2,
-    "pedia2": 30,
-    "pedia2_name": "반디소아청소년과의원",
-    "pedia2_slope": 16.0,
-    "hcode": "aV671",
-    "recent_trades": [
-      {
-        "date": "2026-04-04",
-        "price": 8.0,
-        "floor": 13,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "동탄역센트럴푸르지오",
-    "atype": "59",
-    "area": 59.4,
-    "avg": 81200,
-    "accel": 9.0,
-    "r3_avg": 78788,
-    "p3_avg": 72287,
-    "count": 71,
-    "build": 2015,
-    "region": "화성시",
-    "dong": "청계동",
-    "liquidity": 9.1,
-    "liq_approx": false,
-    "morning": 31,
-    "evening": 41,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 1.7,
-    "slope_method": "dong_naver",
-    "pedia1": 7,
-    "pedia1_name": "동탄미소소아청소년과의원",
-    "pedia1_slope": -10.3,
-    "pedia2": 7,
-    "pedia2_name": "코끼리소아청소년과의원",
-    "pedia2_slope": -10.4,
-    "hcode": "ayI44",
-    "recent_trades": [
-      {
-        "date": "2026-04-25",
-        "price": 8.3,
-        "floor": 16,
-        "area": 59.4
-      },
-      {
-        "date": "2026-04-23",
-        "price": 8.3,
-        "floor": 15,
-        "area": 59.4
-      },
-      {
-        "date": "2026-04-22",
-        "price": 8.4,
-        "floor": 9,
-        "area": 59.4
-      },
-      {
-        "date": "2026-04-08",
-        "price": 8.0,
-        "floor": 22,
-        "area": 59.4
-      },
-      {
-        "date": "2026-04-07",
-        "price": 8.2,
-        "floor": 11,
-        "area": 59.4
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.8,
-        "floor": 21,
-        "area": 59.4
-      },
-      {
-        "date": "2026-04-04",
-        "price": 8.1,
-        "floor": 12,
-        "area": 59.3
-      },
-      {
-        "date": "2026-04-03",
-        "price": 8.0,
-        "floor": 20,
-        "area": 59.4
-      },
-      {
-        "date": "2026-04-02",
-        "price": 8.0,
-        "floor": 12,
-        "area": 59.3
-      }
-    ]
-  },
-  {
-    "name": "동탄역센트럴푸르지오",
-    "atype": "74",
-    "area": 74.9,
-    "avg": 85350,
-    "accel": 4.4,
-    "r3_avg": 86700,
-    "p3_avg": 83033,
-    "count": 10,
-    "build": 2015,
-    "region": "화성시",
-    "dong": "청계동",
-    "liquidity": 1.8,
-    "liq_approx": true,
-    "morning": 31,
-    "evening": 41,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 1.7,
-    "slope_method": "dong_naver",
-    "pedia1": 7,
-    "pedia1_name": "동탄미소소아청소년과의원",
-    "pedia1_slope": -10.3,
-    "pedia2": 7,
-    "pedia2_name": "코끼리소아청소년과의원",
-    "pedia2_slope": -10.4,
-    "hcode": "ayI44",
-    "recent_trades": [
-      {
-        "date": "2026-04-20",
-        "price": 8.4,
-        "floor": 3,
-        "area": 74.9
-      },
-      {
-        "date": "2026-04-10",
-        "price": 8.6,
-        "floor": 7,
-        "area": 74.9
-      }
-    ]
-  },
-  {
-    "name": "동탄역신안인스빌리베라1차",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 73433,
-    "accel": 2.7,
-    "r3_avg": 72829,
-    "p3_avg": 70882,
-    "count": 18,
-    "build": 2015,
-    "region": "화성시",
-    "dong": "청계동",
-    "liquidity": 6.7,
-    "liq_approx": false,
-    "morning": 29,
-    "evening": 44,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 4.7,
-    "slope_method": "dong_naver",
-    "pedia1": 13,
-    "pedia1_name": "동탄미소소아청소년과의원",
-    "pedia1_slope": -24.8,
-    "pedia2": 13,
-    "pedia2_name": "코끼리소아청소년과의원",
-    "pedia2_slope": -24.9,
-    "hcode": "ayH06",
-    "recent_trades": [
-      {
-        "date": "2026-04-24",
-        "price": 7.5,
-        "floor": 18,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-15",
-        "price": 7.2,
-        "floor": 5,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-03",
-        "price": 7.3,
-        "floor": 15,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "동탄역신안인스빌리베라2차",
-    "atype": "59",
-    "area": 60.0,
-    "avg": 75067,
-    "accel": 5.1,
-    "r3_avg": 72167,
-    "p3_avg": 68633,
-    "count": 30,
-    "build": 2016,
-    "region": "화성시",
-    "dong": "청계동",
-    "liquidity": 8.0,
-    "liq_approx": false,
-    "morning": 29,
-    "evening": 42,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 2.6,
-    "slope_method": "dong_naver",
-    "pedia1": 15,
-    "pedia1_name": "동탄미소소아청소년과의원",
-    "pedia1_slope": -16.3,
-    "pedia2": 15,
-    "pedia2_name": "코끼리소아청소년과의원",
-    "pedia2_slope": -16.4,
-    "hcode": "aCh0b",
-    "recent_trades": [
-      {
-        "date": "2026-04-22",
-        "price": 7.5,
-        "floor": 19,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-21",
-        "price": 7.7,
-        "floor": 15,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-10",
-        "price": 7.4,
-        "floor": 11,
-        "area": 60.0
-      }
-    ]
-  },
-  {
-    "name": "동탄역신안인스빌리베라2차",
-    "atype": "74",
-    "area": 73.0,
-    "avg": 75900,
-    "accel": 4.1,
-    "r3_avg": 77300,
-    "p3_avg": 74267,
-    "count": 13,
-    "build": 2016,
-    "region": "화성시",
-    "dong": "청계동",
-    "liquidity": 4.8,
-    "liq_approx": true,
-    "morning": 29,
-    "evening": 42,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 2.6,
-    "slope_method": "dong_naver",
-    "pedia1": 15,
-    "pedia1_name": "동탄미소소아청소년과의원",
-    "pedia1_slope": -16.3,
-    "pedia2": 15,
-    "pedia2_name": "코끼리소아청소년과의원",
-    "pedia2_slope": -16.4,
-    "hcode": "aCh0b",
-    "recent_trades": []
-  },
-  {
-    "name": "동탄역이지더원",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 72250,
-    "accel": 5.8,
-    "r3_avg": 71000,
-    "p3_avg": 67120,
-    "count": 19,
-    "build": 2015,
-    "region": "화성시",
-    "dong": "영천동",
-    "liquidity": null,
-    "liq_approx": true,
-    "morning": null,
-    "evening": null,
-    "morning_cnt": 0,
-    "evening_cnt": 0,
-    "slope": null,
-    "slope_method": "",
-    "pedia1": null,
-    "pedia1_name": null,
-    "pedia1_slope": null,
-    "pedia2": null,
-    "pedia2_name": null,
-    "pedia2_slope": null,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-16",
-        "price": 7.4,
-        "floor": 13,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-10",
-        "price": 7.0,
-        "floor": 2,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "동탄역푸르지오",
-    "atype": "74",
-    "area": 74.9,
-    "avg": 87767,
-    "accel": 7.1,
-    "r3_avg": 84782,
-    "p3_avg": 79150,
-    "count": 13,
-    "build": 2017,
-    "region": "화성시",
-    "dong": "영천동",
-    "liquidity": 1.6,
-    "liq_approx": true,
-    "morning": 25,
-    "evening": 37,
-    "morning_cnt": 6,
-    "evening_cnt": 3,
-    "slope": 38.3,
-    "slope_method": "dong",
-    "pedia1": 14,
-    "pedia1_name": "코벤트더웰의원",
-    "pedia1_slope": -4.5,
-    "pedia2": 17,
-    "pedia2_name": "반디소아청소년과의원",
-    "pedia2_slope": 7.5,
-    "hcode": "aDW27",
-    "recent_trades": [
-      {
-        "date": "2026-04-21",
-        "price": 8.5,
-        "floor": 4,
-        "area": 74.9
-      },
-      {
-        "date": "2026-04-15",
-        "price": 8.8,
-        "floor": 7,
-        "area": 74.9
-      },
-      {
-        "date": "2026-04-08",
-        "price": 9.0,
-        "floor": 7,
-        "area": 74.9
-      }
-    ]
-  },
-  {
-    "name": "동탄호수자이파밀리에",
-    "atype": "84",
-    "area": 84.8,
-    "avg": 73200,
-    "accel": 3.8,
-    "r3_avg": 72960,
-    "p3_avg": 70259,
-    "count": 16,
-    "build": 2018,
-    "region": "화성시",
-    "dong": "장지동",
-    "liquidity": 3.6,
-    "liq_approx": true,
-    "morning": 33,
-    "evening": 49,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 4.1,
-    "slope_method": "dong_naver",
-    "pedia1": 10,
-    "pedia1_name": "연세이룬소아청소년과의원",
-    "pedia1_slope": 12.8,
-    "pedia2": 15,
-    "pedia2_name": "동탄호수소아청소년과의원",
-    "pedia2_slope": 2.2,
-    "hcode": "dy7e4",
-    "recent_trades": [
-      {
-        "date": "2026-04-20",
-        "price": 7.4,
-        "floor": 9,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-11",
-        "price": 7.2,
-        "floor": 19,
-        "area": 84.8
-      }
-    ]
-  },
-  {
-    "name": "래미안금광",
-    "atype": "84",
-    "area": 83.2,
-    "avg": 75000,
-    "accel": 4.6,
-    "r3_avg": 72855,
-    "p3_avg": 69662,
-    "count": 24,
-    "build": 2006,
-    "region": "성남시 수정구",
-    "dong": "금광동",
-    "liquidity": 3.6,
-    "liq_approx": false,
-    "morning": 26,
-    "evening": 30,
-    "morning_cnt": 6,
-    "evening_cnt": 3,
-    "slope": 42.4,
-    "slope_method": "dong",
-    "pedia1": 20,
-    "pedia1_name": "삼성귀요미소아청소년과의원",
-    "pedia1_slope": -52.1,
-    "pedia2": 19,
-    "pedia2_name": "구소아청소년과의원",
-    "pedia2_slope": -66.6,
-    "hcode": "5c072",
-    "recent_trades": [
-      {
-        "date": "2026-04-07",
-        "price": 7.5,
-        "floor": 7,
-        "area": 83.2
-      }
-    ]
-  },
-  {
-    "name": "래미안노블클래스1단지",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 72650,
-    "accel": 3.3,
-    "r3_avg": 72650,
-    "p3_avg": 70333,
-    "count": 5,
-    "build": 2009,
-    "region": "수원시 팔달구",
-    "dong": "인계동",
-    "liquidity": 0.9,
-    "liq_approx": false,
-    "morning": 24,
-    "evening": 29,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 0.1,
-    "slope_method": "dong_naver",
-    "pedia1": 7,
-    "pedia1_name": "굿닥터소아과의원",
-    "pedia1_slope": 2.7,
-    "pedia2": 20,
-    "pedia2_name": "조은이웃연세아주소아청소년과의원",
-    "pedia2_slope": -4.7,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-04",
-        "price": 7.3,
-        "floor": 12,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.2,
-        "floor": 16,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "래미안노블클래스2단지",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 72900,
-    "accel": 2.6,
-    "r3_avg": 72700,
-    "p3_avg": 70867,
-    "count": 5,
-    "build": 2009,
-    "region": "수원시 팔달구",
-    "dong": "인계동",
-    "liquidity": 0.9,
-    "liq_approx": false,
-    "morning": null,
-    "evening": null,
-    "morning_cnt": 0,
-    "evening_cnt": 0,
-    "slope": null,
-    "slope_method": "",
-    "pedia1": null,
-    "pedia1_name": null,
-    "pedia1_slope": null,
-    "pedia2": null,
-    "pedia2_name": null,
-    "pedia2_slope": null,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-14",
-        "price": 7.3,
-        "floor": 23,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "매교역푸르지오SKVIEW",
-    "atype": "59",
-    "area": 59.9,
-    "avg": 80321,
-    "accel": 4.3,
-    "r3_avg": 77595,
-    "p3_avg": 74394,
-    "count": 89,
-    "build": 2023,
-    "region": "수원시 팔달구",
-    "dong": "매교동",
-    "liquidity": 6.2,
-    "liq_approx": false,
-    "morning": 30,
-    "evening": 43,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 13.4,
-    "slope_method": "dong",
-    "pedia1": 18,
-    "pedia1_name": "온가족소아청소년과의원",
-    "pedia1_slope": -10.2,
-    "pedia2": 13,
-    "pedia2_name": "연세로이소아청소년과의원",
-    "pedia2_slope": -8.7,
-    "hcode": "dGbe5",
-    "recent_trades": [
-      {
-        "date": "2026-04-20",
-        "price": 8.2,
-        "floor": 13,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-18",
-        "price": 8.0,
-        "floor": 18,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-18",
-        "price": 8.0,
-        "floor": 4,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-17",
-        "price": 8.1,
-        "floor": 14,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-13",
-        "price": 8.2,
-        "floor": 4,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-12",
-        "price": 8.0,
-        "floor": 8,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-10",
-        "price": 8.5,
-        "floor": 15,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-10",
-        "price": 7.7,
-        "floor": 2,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-08",
-        "price": 8.1,
-        "floor": 11,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-06",
-        "price": 8.2,
-        "floor": 11,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-06",
-        "price": 8.4,
-        "floor": 11,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-04",
-        "price": 8.2,
-        "floor": 6,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-03",
-        "price": 8.0,
-        "floor": 18,
-        "area": 59.8
-      },
-      {
-        "date": "2026-04-02",
-        "price": 7.0,
-        "floor": 2,
-        "area": 59.9
-      },
-      {
-        "date": "2026-04-01",
-        "price": 8.1,
-        "floor": 5,
-        "area": 59.9
-      }
-    ]
-  },
-  {
-    "name": "매교역푸르지오SKVIEW",
-    "atype": "74",
-    "area": 74.9,
-    "avg": 88833,
-    "accel": 1.8,
-    "r3_avg": 86652,
-    "p3_avg": 85118,
-    "count": 36,
-    "build": 2023,
-    "region": "수원시 팔달구",
-    "dong": "매교동",
-    "liquidity": 1.8,
-    "liq_approx": true,
-    "morning": 30,
-    "evening": 43,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 13.4,
-    "slope_method": "dong",
-    "pedia1": 18,
-    "pedia1_name": "온가족소아청소년과의원",
-    "pedia1_slope": -10.2,
-    "pedia2": 13,
-    "pedia2_name": "연세로이소아청소년과의원",
-    "pedia2_slope": -8.7,
-    "hcode": "dGbe5",
-    "recent_trades": [
-      {
-        "date": "2026-04-18",
-        "price": 8.8,
-        "floor": 4,
-        "area": 74.9
-      },
-      {
-        "date": "2026-04-17",
-        "price": 8.7,
-        "floor": 10,
-        "area": 74.7
-      },
-      {
-        "date": "2026-04-16",
-        "price": 8.9,
-        "floor": 7,
-        "area": 74.7
-      },
-      {
-        "date": "2026-04-13",
-        "price": 9.0,
-        "floor": 11,
-        "area": 74.9
-      },
-      {
-        "date": "2026-04-11",
-        "price": 9.1,
-        "floor": 16,
-        "area": 74.9
-      },
-      {
-        "date": "2026-04-08",
-        "price": 8.8,
-        "floor": 14,
-        "area": 74.7
-      }
-    ]
-  },
-  {
-    "name": "매탄위브하늘채",
-    "atype": "84",
-    "area": 84.8,
-    "avg": 75300,
-    "accel": 1.5,
-    "r3_avg": 75652,
-    "p3_avg": 74539,
-    "count": 50,
-    "build": 2008,
-    "region": "수원시 영통구",
-    "dong": "매탄동",
-    "liquidity": 2.9,
-    "liq_approx": true,
-    "morning": 29,
-    "evening": 39,
-    "morning_cnt": 6,
-    "evening_cnt": 3,
-    "slope": 5.7,
-    "slope_method": "dong",
-    "pedia1": 4,
-    "pedia1_name": "아주맑은 소아청소년과의원",
-    "pedia1_slope": 0.6,
-    "pedia2": 4,
-    "pedia2_name": "김민희의원",
-    "pedia2_slope": 0.9,
-    "hcode": "58bb8",
-    "recent_trades": [
-      {
-        "date": "2026-04-28",
-        "price": 7.6,
-        "floor": 5,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-24",
-        "price": 7.7,
-        "floor": 20,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-23",
-        "price": 7.3,
-        "floor": 12,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-20",
-        "price": 7.8,
-        "floor": 11,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-18",
-        "price": 7.3,
-        "floor": 26,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-18",
-        "price": 7.2,
-        "floor": 9,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-13",
-        "price": 7.5,
-        "floor": 28,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-10",
-        "price": 7.5,
-        "floor": 28,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-06",
-        "price": 7.5,
-        "floor": 8,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.8,
-        "floor": 21,
-        "area": 84.8
-      }
-    ]
-  },
-  {
-    "name": "미사강변트래지안",
-    "atype": "59",
-    "area": 59.7,
-    "avg": 87436,
-    "accel": 1.2,
-    "r3_avg": 87900,
-    "p3_avg": 86817,
-    "count": 7,
-    "build": 2015,
-    "region": "하남시",
-    "dong": "망월동",
-    "liquidity": 0.5,
-    "liq_approx": false,
-    "morning": 30,
-    "evening": 35,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 0.1,
-    "slope_method": "dong_naver",
-    "pedia1": 11,
-    "pedia1_name": "플러스맘소아청소년과의원",
-    "pedia1_slope": -0.3,
-    "pedia2": 30,
-    "pedia2_name": "연세더자람소아청소년과의원",
-    "pedia2_slope": -3.2,
-    "hcode": null,
-    "recent_trades": []
-  },
-  {
-    "name": "미사강변한신휴플러스",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 90000,
-    "accel": 6.6,
-    "r3_avg": 103450,
-    "p3_avg": 97040,
-    "count": 9,
-    "build": 2015,
-    "region": "하남시",
-    "dong": "망월동",
-    "liquidity": null,
-    "liq_approx": true,
-    "morning": null,
-    "evening": null,
-    "morning_cnt": 0,
-    "evening_cnt": 0,
-    "slope": null,
-    "slope_method": "",
-    "pedia1": null,
-    "pedia1_name": null,
-    "pedia1_slope": null,
-    "pedia2": null,
-    "pedia2_name": null,
-    "pedia2_slope": null,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-03",
-        "price": 9.0,
-        "floor": 12,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "반도유보라아이비파크3",
-    "atype": "74",
-    "area": 75.0,
-    "avg": 75500,
-    "accel": 11.9,
-    "r3_avg": 74775,
-    "p3_avg": 66800,
-    "count": 9,
-    "build": 2016,
-    "region": "화성시",
-    "dong": "여울동",
-    "liquidity": 1.8,
-    "liq_approx": true,
-    "morning": 34,
-    "evening": 46,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 0.8,
-    "slope_method": "dong_naver",
-    "pedia1": 33,
-    "pedia1_name": "올바른소아청소년과의원",
-    "pedia1_slope": 8.3,
-    "pedia2": 32,
-    "pedia2_name": "동탄S소아청소년과 발달클리닉",
-    "pedia2_slope": 9.2,
-    "hcode": "aBY7b",
-    "recent_trades": [
-      {
-        "date": "2026-04-18",
-        "price": 7.5,
-        "floor": 14,
-        "area": 74.4
-      }
-    ]
-  },
-  {
-    "name": "반도유보라아이비파크3",
-    "atype": "84",
-    "area": 84.9,
-    "avg": 84700,
-    "accel": 6.4,
-    "r3_avg": 84025,
-    "p3_avg": 78950,
-    "count": 10,
-    "build": 2016,
-    "region": "화성시",
-    "dong": "여울동",
-    "liquidity": 2.0,
-    "liq_approx": true,
-    "morning": 34,
-    "evening": 46,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 0.8,
-    "slope_method": "dong_naver",
-    "pedia1": 33,
-    "pedia1_name": "올바른소아청소년과의원",
-    "pedia1_slope": 8.3,
-    "pedia2": 32,
-    "pedia2_name": "동탄S소아청소년과 발달클리닉",
-    "pedia2_slope": 9.2,
-    "hcode": "aBY7b",
-    "recent_trades": [
-      {
-        "date": "2026-04-20",
-        "price": 8.5,
-        "floor": 9,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-11",
-        "price": 8.4,
-        "floor": 11,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "반정아이파크캐슬4단지",
-    "atype": "84",
-    "area": 84.7,
-    "avg": 76864,
-    "accel": 2.9,
-    "r3_avg": 76593,
-    "p3_avg": 74427,
-    "count": 25,
-    "build": 2022,
-    "region": "화성시",
-    "dong": "반정동",
-    "liquidity": 4.2,
-    "liq_approx": true,
-    "morning": 36,
-    "evening": 44,
-    "morning_cnt": 6,
-    "evening_cnt": 2,
-    "slope": 3.3,
-    "slope_method": "dong_naver",
-    "pedia1": 12,
-    "pedia1_name": "연세슬기로운 소아청소년과의원",
-    "pedia1_slope": -0.7,
-    "pedia2": 21,
-    "pedia2_name": "성모바른소아청소년과의원",
-    "pedia2_slope": -2.1,
-    "hcode": "dKS83",
-    "recent_trades": [
-      {
-        "date": "2026-04-22",
-        "price": 7.6,
-        "floor": 3,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-18",
-        "price": 7.3,
-        "floor": 11,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-17",
-        "price": 8.1,
-        "floor": 12,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-13",
-        "price": 7.7,
-        "floor": 16,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-12",
-        "price": 7.2,
-        "floor": 1,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-09",
-        "price": 8.0,
-        "floor": 10,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-08",
-        "price": 7.5,
-        "floor": 3,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-07",
-        "price": 7.8,
-        "floor": 9,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-06",
-        "price": 7.5,
-        "floor": 8,
-        "area": 84.3
-      },
-      {
-        "date": "2026-04-05",
-        "price": 8.1,
-        "floor": 11,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-03",
-        "price": 7.8,
-        "floor": 10,
-        "area": 84.7
-      }
-    ]
-  },
-  {
-    "name": "반정아이파크캐슬5단지",
-    "atype": "74",
-    "area": 75.6,
-    "avg": 74288,
-    "accel": 5.2,
-    "r3_avg": 71823,
-    "p3_avg": 68275,
-    "count": 38,
-    "build": 2022,
-    "region": "화성시",
-    "dong": "반정동",
-    "liquidity": 6.3,
-    "liq_approx": true,
-    "morning": 35,
-    "evening": 41,
-    "morning_cnt": 6,
-    "evening_cnt": 3,
-    "slope": 6.3,
-    "slope_method": "dong_naver",
-    "pedia1": 13,
-    "pedia1_name": "연세슬기로운 소아청소년과의원",
-    "pedia1_slope": -1.6,
-    "pedia2": 16,
-    "pedia2_name": "튼튼사랑소아청소년과의원",
-    "pedia2_slope": 4.7,
-    "hcode": "dKT1f",
-    "recent_trades": [
-      {
-        "date": "2026-04-29",
-        "price": 7.3,
-        "floor": 5,
-        "area": 75.5
-      },
-      {
-        "date": "2026-04-28",
-        "price": 7.3,
-        "floor": 8,
-        "area": 75.6
-      },
-      {
-        "date": "2026-04-18",
-        "price": 7.5,
-        "floor": 2,
-        "area": 75.9
-      },
-      {
-        "date": "2026-04-17",
-        "price": 7.5,
-        "floor": 5,
-        "area": 75.9
-      },
-      {
-        "date": "2026-04-13",
-        "price": 7.6,
-        "floor": 6,
-        "area": 75.9
-      },
-      {
-        "date": "2026-04-13",
-        "price": 7.7,
-        "floor": 6,
-        "area": 75.9
-      },
-      {
-        "date": "2026-04-11",
-        "price": 7.7,
-        "floor": 14,
-        "area": 75.9
-      },
-      {
-        "date": "2026-04-04",
-        "price": 6.9,
-        "floor": 3,
-        "area": 75.6
-      },
-      {
-        "date": "2026-04-01",
-        "price": 7.0,
-        "floor": 13,
-        "area": 75.6
-      }
-    ]
-  },
-  {
-    "name": "반정아이파크캐슬5단지",
-    "atype": "84",
-    "area": 84.7,
-    "avg": 77088,
-    "accel": 1.2,
-    "r3_avg": 77519,
-    "p3_avg": 76617,
-    "count": 45,
-    "build": 2022,
-    "region": "화성시",
-    "dong": "반정동",
-    "liquidity": 7.5,
-    "liq_approx": true,
-    "morning": 35,
-    "evening": 41,
-    "morning_cnt": 6,
-    "evening_cnt": 3,
-    "slope": 6.3,
-    "slope_method": "dong_naver",
-    "pedia1": 13,
-    "pedia1_name": "연세슬기로운 소아청소년과의원",
-    "pedia1_slope": -1.6,
-    "pedia2": 16,
-    "pedia2_name": "튼튼사랑소아청소년과의원",
-    "pedia2_slope": 4.7,
-    "hcode": "dKT1f",
-    "recent_trades": [
-      {
-        "date": "2026-04-27",
-        "price": 7.8,
-        "floor": 2,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-23",
-        "price": 7.8,
-        "floor": 6,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-20",
-        "price": 7.4,
-        "floor": 2,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-17",
-        "price": 7.9,
-        "floor": 12,
-        "area": 84.7
-      }
-    ]
-  },
-  {
-    "name": "병점역아이파크캐슬",
-    "atype": "74",
-    "area": 76.0,
-    "avg": 71000,
-    "accel": 3.2,
-    "r3_avg": 70333,
-    "p3_avg": 68160,
-    "count": 16,
-    "build": 2021,
-    "region": "화성시",
-    "dong": "병점동",
-    "liquidity": 0.7,
-    "liq_approx": true,
-    "morning": 35,
-    "evening": 50,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 1.4,
-    "slope_method": "dong_naver",
-    "pedia1": 7,
-    "pedia1_name": "아이언소아청소년과의원",
-    "pedia1_slope": 0.8,
-    "pedia2": 33,
-    "pedia2_name": "굿모닝소아청소년과의원",
-    "pedia2_slope": 8.9,
-    "hcode": "dzz14",
-    "recent_trades": [
-      {
-        "date": "2026-04-21",
-        "price": 7.1,
-        "floor": 11,
-        "area": 76.0
-      }
-    ]
-  },
-  {
-    "name": "병점역아이파크캐슬",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 73300,
-    "accel": 1.5,
-    "r3_avg": 73802,
-    "p3_avg": 72695,
-    "count": 59,
-    "build": 2021,
-    "region": "화성시",
-    "dong": "병점동",
-    "liquidity": 2.6,
-    "liq_approx": true,
-    "morning": 35,
-    "evening": 50,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 1.4,
-    "slope_method": "dong_naver",
-    "pedia1": 7,
-    "pedia1_name": "아이언소아청소년과의원",
-    "pedia1_slope": 0.8,
-    "pedia2": 33,
-    "pedia2_name": "굿모닝소아청소년과의원",
-    "pedia2_slope": 8.9,
-    "hcode": "dzz14",
-    "recent_trades": [
-      {
-        "date": "2026-04-28",
-        "price": 7.5,
-        "floor": 7,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-28",
-        "price": 7.3,
-        "floor": 19,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-25",
-        "price": 7.2,
-        "floor": 8,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-21",
-        "price": 6.6,
-        "floor": 4,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-20",
-        "price": 7.5,
-        "floor": 17,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-18",
-        "price": 7.9,
-        "floor": 16,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "서광교파크스위첸",
-    "atype": "59",
-    "area": 59.7,
-    "avg": 72000,
-    "accel": 2.7,
-    "r3_avg": 72609,
-    "p3_avg": 70700,
-    "count": 17,
-    "build": 2023,
-    "region": "수원시 장안구",
-    "dong": "연무동",
-    "liquidity": 2.5,
-    "liq_approx": false,
-    "morning": 20,
-    "evening": 32,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 6.2,
-    "slope_method": "dong_naver",
-    "pedia1": 39,
-    "pedia1_name": "광교이안소아청소년과의원",
-    "pedia1_slope": -29.3,
-    "pedia2": 36,
-    "pedia2_name": "늘푸른소아과의원",
-    "pedia2_slope": -46.1,
-    "hcode": "dPJ58",
-    "recent_trades": [
-      {
-        "date": "2026-04-04",
-        "price": 7.2,
-        "floor": 14,
-        "area": 59.4
-      }
-    ]
-  },
-  {
-    "name": "서광교파크스위첸",
-    "atype": "74",
-    "area": 75.8,
-    "avg": 81883,
-    "accel": 1.9,
-    "r3_avg": 82667,
-    "p3_avg": 81100,
-    "count": 6,
-    "build": 2023,
-    "region": "수원시 장안구",
-    "dong": "연무동",
-    "liquidity": 1.3,
-    "liq_approx": true,
-    "morning": 20,
-    "evening": 32,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 6.2,
-    "slope_method": "dong_naver",
-    "pedia1": 39,
-    "pedia1_name": "광교이안소아청소년과의원",
-    "pedia1_slope": -29.3,
-    "pedia2": 36,
-    "pedia2_name": "늘푸른소아과의원",
-    "pedia2_slope": -46.1,
-    "hcode": "dPJ58",
-    "recent_trades": []
-  },
-  {
-    "name": "성남자이",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 80000,
-    "accel": -2.0,
-    "r3_avg": 77900,
-    "p3_avg": 79500,
-    "count": 7,
-    "build": 2007,
-    "region": "성남시 수정구",
-    "dong": "하대원동",
-    "liquidity": 1.2,
-    "liq_approx": false,
-    "morning": 18,
-    "evening": 22,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 32.0,
-    "slope_method": "dong_naver",
-    "pedia1": 8,
-    "pedia1_name": "사랑의내과소아청소년과의원",
-    "pedia1_slope": -13.4,
-    "pedia2": 15,
-    "pedia2_name": "베스트소아과의원",
-    "pedia2_slope": 5.6,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-11",
-        "price": 8.0,
-        "floor": 11,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "성동마을수지자이",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 79256,
-    "accel": 10.4,
-    "r3_avg": 83625,
-    "p3_avg": 75760,
-    "count": 9,
-    "build": 2006,
-    "region": "용인시 수지구",
-    "dong": "성복동",
-    "liquidity": 4.9,
-    "liq_approx": false,
-    "morning": 20,
-    "evening": 27,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 15.3,
-    "slope_method": "dong_naver",
-    "pedia1": 20,
-    "pedia1_name": "아산이뮨플러스의원",
-    "pedia1_slope": -21.7,
-    "pedia2": 26,
-    "pedia2_name": "이레소아청소년과의원",
-    "pedia2_slope": -9.4,
-    "hcode": "6n062",
-    "recent_trades": []
-  },
-  {
-    "name": "솔빛마을신도브래뉴",
-    "atype": "84",
-    "area": 84.9,
-    "avg": 82400,
-    "accel": 8.6,
-    "r3_avg": 79400,
-    "p3_avg": 73100,
-    "count": 13,
-    "build": 2007,
-    "region": "화성시",
-    "dong": "반송동",
-    "liquidity": 2.2,
-    "liq_approx": true,
-    "morning": 29,
-    "evening": 42,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 3.8,
-    "slope_method": "dong_naver",
-    "pedia1": 5,
-    "pedia1_name": "삼성제일소아청소년과의원",
-    "pedia1_slope": -3.8,
-    "pedia2": 10,
-    "pedia2_name": "솔빛소아청소년과의원",
-    "pedia2_slope": 0.7,
-    "hcode": "6xQae",
-    "recent_trades": [
-      {
-        "date": "2026-04-27",
-        "price": 8.2,
-        "floor": 6,
-        "area": 84.8
-      }
-    ]
-  },
-  {
-    "name": "솔빛마을쌍용예가",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 77650,
-    "accel": 6.7,
-    "r3_avg": 78400,
-    "p3_avg": 73505,
-    "count": 24,
-    "build": 2007,
-    "region": "화성시",
-    "dong": "반송동",
-    "liquidity": 2.6,
-    "liq_approx": true,
-    "morning": 29,
-    "evening": 42,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 2.0,
-    "slope_method": "dong_naver",
-    "pedia1": 11,
-    "pedia1_name": "솔빛소아청소년과의원",
-    "pedia1_slope": 2.0,
-    "pedia2": 6,
-    "pedia2_name": "삼성제일소아청소년과의원",
-    "pedia2_slope": -2.5,
-    "hcode": "6xR56",
-    "recent_trades": [
-      {
-        "date": "2026-04-19",
-        "price": 8.1,
-        "floor": 5,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.5,
-        "floor": 6,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "수원 SK SKY VIEW",
-    "atype": "84",
-    "area": 84.9,
-    "avg": 84000,
-    "accel": 2.0,
-    "r3_avg": 84022,
-    "p3_avg": 82364,
-    "count": 20,
-    "build": 2013,
-    "region": "수원시 장안구",
-    "dong": "정자동",
-    "liquidity": 1.1,
-    "liq_approx": false,
-    "morning": 23,
-    "evening": 29,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 0.7,
-    "slope_method": "dong_naver",
-    "pedia1": 19,
-    "pedia1_name": "SK메디모아소아청소년과의원",
-    "pedia1_slope": 0.3,
-    "pedia2": 18,
-    "pedia2_name": "자이소아청소년과의원",
-    "pedia2_slope": -1.9,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-08",
-        "price": 8.4,
-        "floor": 26,
-        "area": 84.9
-      }
-    ]
-  },
-  {
-    "name": "수원모아미래도센트럴타운2단지",
-    "atype": "84",
-    "area": 84.9,
-    "avg": 74850,
-    "accel": 2.1,
-    "r3_avg": 73450,
-    "p3_avg": 71944,
-    "count": 17,
-    "build": 2017,
-    "region": "수원시 권선구",
-    "dong": "금곡동",
-    "liquidity": 2.3,
-    "liq_approx": false,
-    "morning": 26,
-    "evening": 34,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 1.4,
-    "slope_method": "dong_naver",
-    "pedia1": 11,
-    "pedia1_name": "성모수소아청소년과의원",
-    "pedia1_slope": -4.0,
-    "pedia2": 10,
-    "pedia2_name": "아이온연합소아청소년과의원",
-    "pedia2_slope": -5.6,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-25",
-        "price": 7.4,
-        "floor": 25,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-08",
-        "price": 7.6,
-        "floor": 11,
-        "area": 84.9
-      }
-    ]
-  },
-  {
-    "name": "수원센트럴아이파크자이",
-    "atype": "74",
-    "area": 74.0,
-    "avg": 73575,
-    "accel": 0.8,
-    "r3_avg": 75713,
-    "p3_avg": 75146,
-    "count": 28,
-    "build": 2024,
-    "region": "수원시 팔달구",
-    "dong": "인계동",
-    "liquidity": 1.7,
-    "liq_approx": true,
-    "morning": 29,
-    "evening": 43,
-    "morning_cnt": 6,
-    "evening_cnt": 3,
-    "slope": 13.1,
-    "slope_method": "dong",
-    "pedia1": 10,
-    "pedia1_name": "온가족소아청소년과의원",
-    "pedia1_slope": -6.3,
-    "pedia2": 23,
-    "pedia2_name": "연세로이소아청소년과의원",
-    "pedia2_slope": -4.8,
-    "hcode": "dtd2d",
-    "recent_trades": [
-      {
-        "date": "2026-04-18",
-        "price": 7.5,
-        "floor": 4,
-        "area": 73.9
-      },
-      {
-        "date": "2026-04-15",
-        "price": 7.2,
-        "floor": 1,
-        "area": 74.0
-      },
-      {
-        "date": "2026-04-11",
-        "price": 7.6,
-        "floor": 18,
-        "area": 74.0
-      },
-      {
-        "date": "2026-04-03",
-        "price": 7.1,
-        "floor": 2,
-        "area": 74.0
-      }
-    ]
-  },
-  {
-    "name": "수원센트럴아이파크자이",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 77000,
-    "accel": -4.3,
-    "r3_avg": 83844,
-    "p3_avg": 87583,
-    "count": 15,
-    "build": 2024,
-    "region": "수원시 팔달구",
-    "dong": "인계동",
-    "liquidity": 0.9,
-    "liq_approx": true,
-    "morning": 29,
-    "evening": 43,
-    "morning_cnt": 6,
-    "evening_cnt": 3,
-    "slope": 13.1,
-    "slope_method": "dong",
-    "pedia1": 10,
-    "pedia1_name": "온가족소아청소년과의원",
-    "pedia1_slope": -6.3,
-    "pedia2": 23,
-    "pedia2_name": "연세로이소아청소년과의원",
-    "pedia2_slope": -4.8,
-    "hcode": "dtd2d",
-    "recent_trades": [
-      {
-        "date": "2026-04-21",
-        "price": 6.5,
-        "floor": 5,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-11",
-        "price": 8.9,
-        "floor": 19,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "수원하늘채더퍼스트1단지",
-    "atype": "74",
-    "area": 74.9,
-    "avg": 71050,
-    "accel": 3.5,
-    "r3_avg": 70412,
-    "p3_avg": 68029,
-    "count": 15,
-    "build": 2022,
-    "region": "수원시 권선구",
-    "dong": "곡반정동",
-    "liquidity": 1.1,
-    "liq_approx": true,
-    "morning": 38,
-    "evening": 49,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 4.8,
-    "slope_method": "dong",
-    "pedia1": 12,
-    "pedia1_name": "성모바른소아청소년과의원",
-    "pedia1_slope": -0.8,
-    "pedia2": 13,
-    "pedia2_name": "하나소아청소년과의원",
-    "pedia2_slope": 1.0,
-    "hcode": "dted4",
-    "recent_trades": [
-      {
-        "date": "2026-04-16",
-        "price": 7.2,
-        "floor": 9,
-        "area": 74.9
-      },
-      {
-        "date": "2026-04-07",
-        "price": 7.0,
-        "floor": 11,
-        "area": 74.9
-      }
-    ]
-  },
-  {
-    "name": "수원하늘채더퍼스트1단지",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 77040,
-    "accel": 5.4,
-    "r3_avg": 77308,
-    "p3_avg": 73345,
-    "count": 24,
-    "build": 2022,
-    "region": "수원시 권선구",
-    "dong": "곡반정동",
-    "liquidity": 1.8,
-    "liq_approx": true,
-    "morning": 38,
-    "evening": 49,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 4.8,
-    "slope_method": "dong",
-    "pedia1": 12,
-    "pedia1_name": "성모바른소아청소년과의원",
-    "pedia1_slope": -0.8,
-    "pedia2": 13,
-    "pedia2_name": "하나소아청소년과의원",
-    "pedia2_slope": 1.0,
-    "hcode": "dted4",
-    "recent_trades": [
-      {
-        "date": "2026-04-29",
-        "price": 7.9,
-        "floor": 13,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-23",
-        "price": 7.5,
-        "floor": 4,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-08",
-        "price": 7.8,
-        "floor": 14,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-08",
-        "price": 7.4,
-        "floor": 14,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-07",
-        "price": 7.9,
-        "floor": 15,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "시범한빛마을금호어울림",
-    "atype": "84",
-    "area": 84.5,
-    "avg": 84700,
-    "accel": 4.2,
-    "r3_avg": 81341,
-    "p3_avg": 78088,
-    "count": 24,
-    "build": 2007,
-    "region": "화성시",
-    "dong": "반송동",
-    "liquidity": 4.5,
-    "liq_approx": false,
-    "morning": 22,
-    "evening": 29,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 0.4,
-    "slope_method": "dong_naver",
-    "pedia1": 11,
-    "pedia1_name": "동탄연세소아청소년과웰빙",
-    "pedia1_slope": -10.4,
-    "pedia2": 11,
-    "pedia2_name": "동탄연세소아청소년과의원",
-    "pedia2_slope": -8.4,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-08",
-        "price": 8.5,
-        "floor": 9,
-        "area": 84.6
-      }
-    ]
-  },
-  {
-    "name": "시범한빛마을동탄아이파크",
-    "atype": "59",
-    "area": 61.7,
-    "avg": 78800,
-    "accel": 14.5,
-    "r3_avg": 79575,
-    "p3_avg": 69500,
-    "count": 7,
-    "build": 2007,
-    "region": "화성시",
-    "dong": "반송동",
-    "liquidity": 1.3,
-    "liq_approx": true,
-    "morning": 33,
-    "evening": 30,
-    "morning_cnt": 1,
-    "evening_cnt": 1,
-    "slope": 0.6,
-    "slope_method": "dong_naver",
-    "pedia1": 5,
-    "pedia1_name": "성모플러스 내과소아과",
-    "pedia1_slope": -4.2,
-    "pedia2": 11,
-    "pedia2_name": "우리아이소아청소년과의원",
-    "pedia2_slope": -5.4,
-    "hcode": "6xZ52",
-    "recent_trades": [
-      {
-        "date": "2026-04-24",
-        "price": 7.9,
-        "floor": 10,
-        "area": 61.7
-      },
-      {
-        "date": "2026-04-14",
-        "price": 7.8,
-        "floor": 10,
-        "area": 61.7
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.9,
-        "floor": 9,
-        "area": 61.7
-      }
-    ]
-  },
-  {
-    "name": "시범한빛마을삼부르네상스",
-    "atype": "84",
-    "area": 84.7,
-    "avg": 70000,
-    "accel": 4.3,
-    "r3_avg": 72571,
-    "p3_avg": 69605,
-    "count": 33,
-    "build": 2007,
-    "region": "화성시",
-    "dong": "반송동",
-    "liquidity": 6.2,
-    "liq_approx": false,
-    "morning": 21,
-    "evening": 29,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 1.0,
-    "slope_method": "dong_naver",
-    "pedia1": 9,
-    "pedia1_name": "우리아이소아청소년과의원",
-    "pedia1_slope": 0.4,
-    "pedia2": 18,
-    "pedia2_name": "성모플러스 내과소아과",
-    "pedia2_slope": 1.7,
-    "hcode": "6y038",
-    "recent_trades": [
-      {
-        "date": "2026-04-23",
-        "price": 7.4,
-        "floor": 19,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-02",
-        "price": 6.6,
-        "floor": 20,
-        "area": 84.8
-      }
-    ]
-  },
-  {
-    "name": "시범한빛마을한화꿈에그린",
-    "atype": "84",
-    "area": 84.8,
-    "avg": 80667,
-    "accel": 2.6,
-    "r3_avg": 79418,
-    "p3_avg": 77389,
-    "count": 18,
-    "build": 2007,
-    "region": "화성시",
-    "dong": "반송동",
-    "liquidity": 3.4,
-    "liq_approx": false,
-    "morning": 23,
-    "evening": 29,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 0.5,
-    "slope_method": "dong_naver",
-    "pedia1": 12,
-    "pedia1_name": "성모플러스 내과소아과",
-    "pedia1_slope": -4.4,
-    "pedia2": 20,
-    "pedia2_name": "우리아이소아청소년과의원",
-    "pedia2_slope": -5.6,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-25",
-        "price": 8.3,
-        "floor": 11,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-18",
-        "price": 8.1,
-        "floor": 17,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-16",
-        "price": 7.8,
-        "floor": 7,
-        "area": 84.8
-      }
-    ]
-  },
-  {
-    "name": "신동탄포레자이",
-    "atype": "59",
-    "area": 60.0,
-    "avg": 73250,
-    "accel": 4.3,
-    "r3_avg": 73646,
-    "p3_avg": 70636,
-    "count": 27,
-    "build": 2023,
-    "region": "화성시",
-    "dong": "반월동",
-    "liquidity": 5.7,
-    "liq_approx": false,
-    "morning": 29,
-    "evening": 39,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 5.8,
-    "slope_method": "dong",
-    "pedia1": 13,
-    "pedia1_name": "온새미로",
-    "pedia1_slope": 9.0,
-    "pedia2": 27,
-    "pedia2_name": "영통아이언소아청소년과의원",
-    "pedia2_slope": 6.7,
-    "hcode": "dNLc1",
-    "recent_trades": [
-      {
-        "date": "2026-04-23",
-        "price": 7.5,
-        "floor": 10,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-21",
-        "price": 7.1,
-        "floor": 17,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-18",
-        "price": 7.0,
-        "floor": 10,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-10",
-        "price": 7.8,
-        "floor": 18,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-01",
-        "price": 7.7,
-        "floor": 13,
-        "area": 60.0
-      }
-    ]
-  },
-  {
-    "name": "신동탄포레자이",
-    "atype": "74",
-    "area": 74.8,
-    "avg": 83700,
-    "accel": 3.9,
-    "r3_avg": 83908,
-    "p3_avg": 80764,
-    "count": 24,
-    "build": 2023,
-    "region": "화성시",
-    "dong": "반월동",
-    "liquidity": 2.9,
-    "liq_approx": true,
-    "morning": 29,
-    "evening": 39,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 5.8,
-    "slope_method": "dong",
-    "pedia1": 13,
-    "pedia1_name": "온새미로",
-    "pedia1_slope": 9.0,
-    "pedia2": 27,
-    "pedia2_name": "영통아이언소아청소년과의원",
-    "pedia2_slope": 6.7,
-    "hcode": "dNLc1",
-    "recent_trades": [
-      {
-        "date": "2026-04-26",
-        "price": 8.5,
-        "floor": 23,
-        "area": 74.8
-      },
-      {
-        "date": "2026-04-15",
-        "price": 8.5,
-        "floor": 23,
-        "area": 74.8
-      },
-      {
-        "date": "2026-04-13",
-        "price": 8.6,
-        "floor": 27,
-        "area": 74.8
-      },
-      {
-        "date": "2026-04-07",
-        "price": 7.9,
-        "floor": 13,
-        "area": 74.8
-      }
-    ]
-  },
-  {
-    "name": "신흥덕롯데캐슬레이시티",
-    "atype": "84",
-    "area": 84.9,
-    "avg": 74220,
-    "accel": 3.6,
-    "r3_avg": 72415,
-    "p3_avg": 69900,
-    "count": 20,
-    "build": 2019,
-    "region": "용인시 기흥구",
-    "dong": "신갈동",
-    "liquidity": 4.0,
-    "liq_approx": true,
-    "morning": 20,
-    "evening": 30,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 15.7,
-    "slope_method": "dong_naver",
-    "pedia1": 24,
-    "pedia1_name": "하나소아청소년과의원",
-    "pedia1_slope": -38.5,
-    "pedia2": 22,
-    "pedia2_name": "강남병원 소아청소년센터",
-    "pedia2_slope": -3.5,
-    "hcode": "aZw7e",
-    "recent_trades": [
-      {
-        "date": "2026-04-18",
-        "price": 7.8,
-        "floor": 28,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-16",
-        "price": 7.5,
-        "floor": 27,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-12",
-        "price": 7.2,
-        "floor": 22,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-09",
-        "price": 7.2,
-        "floor": 33,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.5,
-        "floor": 24,
-        "area": 84.9
-      }
-    ]
-  },
-  {
-    "name": "영통SKVIEW",
-    "atype": "59",
-    "area": 59.5,
-    "avg": 84500,
-    "accel": 11.9,
-    "r3_avg": 83667,
-    "p3_avg": 74750,
-    "count": 5,
-    "build": 2016,
-    "region": "수원시 영통구",
-    "dong": "망포동",
-    "liquidity": 2.3,
-    "liq_approx": false,
-    "morning": 29,
-    "evening": 42,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 2.7,
-    "slope_method": "dong_naver",
-    "pedia1": 13,
-    "pedia1_name": "영통아이언소아청소년과의원",
-    "pedia1_slope": -3.9,
-    "pedia2": 19,
-    "pedia2_name": "홍진희소아청소년과의원",
-    "pedia2_slope": -11.5,
-    "hcode": "aA22d",
-    "recent_trades": [
-      {
-        "date": "2026-04-20",
-        "price": 8.3,
-        "floor": 4,
-        "area": 59.5
-      },
-      {
-        "date": "2026-04-18",
-        "price": 8.6,
-        "floor": 5,
-        "area": 59.5
-      }
-    ]
-  },
-  {
-    "name": "영통라온프라이빗",
-    "atype": "59",
-    "area": 59.8,
-    "avg": 71000,
-    "accel": 5.5,
-    "r3_avg": 69000,
-    "p3_avg": 65407,
-    "count": 18,
-    "build": 2017,
-    "region": "수원시 영통구",
-    "dong": "영통동",
-    "liquidity": null,
-    "liq_approx": true,
-    "morning": null,
-    "evening": null,
-    "morning_cnt": 0,
-    "evening_cnt": 0,
-    "slope": null,
-    "slope_method": "",
-    "pedia1": null,
-    "pedia1_name": null,
-    "pedia1_slope": null,
-    "pedia2": null,
-    "pedia2_name": null,
-    "pedia2_slope": null,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-15",
-        "price": 7.1,
-        "floor": 4,
-        "area": 59.8
-      }
-    ]
-  },
-  {
-    "name": "영통롯데캐슬엘클래스1단지",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 89400,
-    "accel": 2.6,
-    "r3_avg": 88030,
-    "p3_avg": 85832,
-    "count": 21,
-    "build": 2022,
-    "region": "수원시 영통구",
-    "dong": "망포동",
-    "liquidity": 3.8,
-    "liq_approx": false,
-    "morning": 30,
-    "evening": 41,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 1.7,
-    "slope_method": "dong_naver",
-    "pedia1": 11,
-    "pedia1_name": "연세슬기로운 소아청소년과의원",
-    "pedia1_slope": 0.9,
-    "pedia2": 13,
-    "pedia2_name": "성모바른소아청소년과의원",
-    "pedia2_slope": -0.5,
-    "hcode": "dUDd4",
-    "recent_trades": [
-      {
-        "date": "2026-04-18",
-        "price": 8.8,
-        "floor": 6,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-10",
-        "price": 9.0,
-        "floor": 8,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-07",
-        "price": 9.3,
-        "floor": 6,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-06",
-        "price": 8.6,
-        "floor": 5,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-04",
-        "price": 9.0,
-        "floor": 12,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "영통롯데캐슬엘클래스2단지",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 80000,
-    "accel": 2.4,
-    "r3_avg": 82256,
-    "p3_avg": 80300,
-    "count": 17,
-    "build": 2022,
-    "region": "수원시 영통구",
-    "dong": "망포동",
-    "liquidity": 3.1,
-    "liq_approx": true,
-    "morning": 30,
-    "evening": 41,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 4.1,
-    "slope_method": "dong_naver",
-    "pedia1": 18,
-    "pedia1_name": "연세슬기로운 소아청소년과의원",
-    "pedia1_slope": 1.0,
-    "pedia2": 10,
-    "pedia2_name": "성모바른소아청소년과의원",
-    "pedia2_slope": -0.4,
-    "hcode": "dUEb9",
-    "recent_trades": [
-      {
-        "date": "2026-04-15",
-        "price": 8.0,
-        "floor": 2,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "영통아이파크캐슬2단지",
-    "atype": "59",
-    "area": 60.0,
-    "avg": 80625,
-    "accel": 7.2,
-    "r3_avg": 80393,
-    "p3_avg": 75000,
-    "count": 18,
-    "build": 2019,
-    "region": "수원시 영통구",
-    "dong": "망포동",
-    "liquidity": 7.5,
-    "liq_approx": false,
-    "morning": 32,
-    "evening": 46,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 22.1,
-    "slope_method": "dong",
-    "pedia1": 1,
-    "pedia1_name": "연세슬기로운 소아청소년과의원",
-    "pedia1_slope": 0.1,
-    "pedia2": 16,
-    "pedia2_name": "튼튼사랑소아청소년과의원",
-    "pedia2_slope": 6.4,
-    "hcode": "aZvfa",
-    "recent_trades": [
-      {
-        "date": "2026-04-16",
-        "price": 8.2,
-        "floor": 13,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-10",
-        "price": 7.7,
-        "floor": 3,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-07",
-        "price": 8.0,
-        "floor": 2,
-        "area": 59.8
-      },
-      {
-        "date": "2026-04-07",
-        "price": 8.4,
-        "floor": 7,
-        "area": 59.8
-      }
-    ]
-  },
-  {
-    "name": "영통아이파크캐슬3단지",
-    "atype": "59",
-    "area": 59.8,
-    "avg": 73000,
-    "accel": 5.0,
-    "r3_avg": 73667,
-    "p3_avg": 70187,
-    "count": 18,
-    "build": 2022,
-    "region": "수원시 영통구",
-    "dong": "망포동",
-    "liquidity": 7.5,
-    "liq_approx": false,
-    "morning": 34,
-    "evening": 44,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 19.2,
-    "slope_method": "dong",
-    "pedia1": 9,
-    "pedia1_name": "연세슬기로운 소아청소년과의원",
-    "pedia1_slope": 1.0,
-    "pedia2": 16,
-    "pedia2_name": "성모바른소아청소년과의원",
-    "pedia2_slope": -0.4,
-    "hcode": "dKR50",
-    "recent_trades": [
-      {
-        "date": "2026-04-07",
-        "price": 7.3,
-        "floor": 3,
-        "area": 59.8
-      }
-    ]
-  },
-  {
-    "name": "영통아이파크캐슬3단지",
-    "atype": "74",
-    "area": 75.9,
-    "avg": 84920,
-    "accel": 8.2,
-    "r3_avg": 88260,
-    "p3_avg": 81580,
-    "count": 10,
-    "build": 2022,
-    "region": "수원시 영통구",
-    "dong": "망포동",
-    "liquidity": 3.0,
-    "liq_approx": true,
-    "morning": 34,
-    "evening": 44,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 19.2,
-    "slope_method": "dong",
-    "pedia1": 9,
-    "pedia1_name": "연세슬기로운 소아청소년과의원",
-    "pedia1_slope": 1.0,
-    "pedia2": 16,
-    "pedia2_name": "성모바른소아청소년과의원",
-    "pedia2_slope": -0.4,
-    "hcode": "dKR50",
-    "recent_trades": []
-  },
-  {
-    "name": "영흥숲푸르지오파크비엔",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 90000,
-    "accel": 2.0,
-    "r3_avg": 93420,
-    "p3_avg": 91575,
-    "count": 13,
-    "build": 2023,
-    "region": "수원시 영통구",
-    "dong": "원천동",
-    "liquidity": null,
-    "liq_approx": true,
-    "morning": null,
-    "evening": null,
-    "morning_cnt": 0,
-    "evening_cnt": 0,
-    "slope": null,
-    "slope_method": "",
-    "pedia1": null,
-    "pedia1_name": null,
-    "pedia1_slope": null,
-    "pedia2": null,
-    "pedia2_name": null,
-    "pedia2_slope": null,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-25",
-        "price": 9.0,
-        "floor": 3,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "용인동백두산위브더제니스",
-    "atype": "74",
-    "area": 78.1,
-    "avg": 70250,
-    "accel": 4.0,
-    "r3_avg": 68587,
-    "p3_avg": 65940,
-    "count": 30,
-    "build": 2021,
-    "region": "용인시 기흥구",
-    "dong": "동백동",
-    "liquidity": 2.5,
-    "liq_approx": true,
-    "morning": 30,
-    "evening": 35,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 31.7,
-    "slope_method": "dong_naver",
-    "pedia1": 32,
-    "pedia1_name": "삼성키즈소아청소년과의원",
-    "pedia1_slope": -13.6,
-    "pedia2": 22,
-    "pedia2_name": "기린웰소아청소년과의원",
-    "pedia2_slope": -32.0,
-    "hcode": "dwBa6",
-    "recent_trades": [
-      {
-        "date": "2026-04-10",
-        "price": 7.0,
-        "floor": 21,
-        "area": 78.1
-      },
-      {
-        "date": "2026-04-02",
-        "price": 7.0,
-        "floor": 30,
-        "area": 78.1
-      }
-    ]
-  },
-  {
-    "name": "용인동백두산위브더제니스",
-    "atype": "84",
-    "area": 84.9,
-    "avg": 72650,
-    "accel": 4.0,
-    "r3_avg": 72171,
-    "p3_avg": 69410,
-    "count": 17,
-    "build": 2021,
-    "region": "용인시 기흥구",
-    "dong": "동백동",
-    "liquidity": 1.4,
-    "liq_approx": true,
-    "morning": 30,
-    "evening": 35,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 31.7,
-    "slope_method": "dong_naver",
-    "pedia1": 32,
-    "pedia1_name": "삼성키즈소아청소년과의원",
-    "pedia1_slope": -13.6,
-    "pedia2": 22,
-    "pedia2_name": "기린웰소아청소년과의원",
-    "pedia2_slope": -32.0,
-    "hcode": "dwBa6",
-    "recent_trades": [
-      {
-        "date": "2026-04-25",
-        "price": 7.0,
-        "floor": 22,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-24",
-        "price": 7.5,
-        "floor": 7,
-        "area": 84.9
-      }
-    ]
-  },
-  {
-    "name": "푸르지오",
-    "atype": "84",
-    "area": 84.1,
-    "avg": 70000,
-    "accel": 3.3,
-    "r3_avg": 68508,
-    "p3_avg": 66350,
-    "count": 11,
-    "build": 2008,
-    "region": "화성시",
-    "dong": "석우동",
-    "liquidity": null,
-    "liq_approx": true,
-    "morning": null,
-    "evening": null,
-    "morning_cnt": 0,
-    "evening_cnt": 0,
-    "slope": 38.3,
-    "slope_method": "dong",
-    "pedia1": 14,
-    "pedia1_name": "코벤트더웰의원",
-    "pedia1_slope": -4.5,
-    "pedia2": 17,
-    "pedia2_name": "반디소아청소년과의원",
-    "pedia2_slope": 7.5,
-    "hcode": "aDW27",
-    "recent_trades": [
-      {
-        "date": "2026-04-09",
-        "price": 7.0,
-        "floor": 21,
-        "area": 84.1
-      }
-    ]
-  },
-  {
-    "name": "한신더휴",
-    "atype": "84",
-    "area": 83.7,
-    "avg": 72750,
-    "accel": 1.7,
-    "r3_avg": 70089,
-    "p3_avg": 68929,
-    "count": 28,
-    "build": 2018,
-    "region": "화성시",
-    "dong": "목동",
-    "liquidity": null,
-    "liq_approx": true,
-    "morning": 36,
-    "evening": 47,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 8.2,
-    "slope_method": "dong",
-    "pedia1": 6,
-    "pedia1_name": "삼성365소아청소년과",
-    "pedia1_slope": 12.7,
-    "pedia2": 13,
-    "pedia2_name": "동탄에스소아청소년과의원",
-    "pedia2_slope": 49.6,
-    "hcode": "aVLf7",
-    "recent_trades": [
-      {
-        "date": "2026-04-28",
-        "price": 7.2,
-        "floor": 21,
-        "area": 83.4
-      },
-      {
-        "date": "2026-04-07",
-        "price": 7.3,
-        "floor": 14,
-        "area": 83.7
-      }
-    ]
-  },
-  {
-    "name": "한양수자인",
-    "atype": "59",
-    "area": 60.0,
-    "avg": 74333,
-    "accel": 11.8,
-    "r3_avg": 75000,
-    "p3_avg": 67075,
-    "count": 8,
-    "build": 2013,
-    "region": "수원시 영통구",
-    "dong": "망포동",
-    "liquidity": 7.4,
-    "liq_approx": false,
-    "morning": 27,
-    "evening": 38,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 3.4,
-    "slope_method": "dong_naver",
-    "pedia1": 20,
-    "pedia1_name": "서울소아청소년과의원",
-    "pedia1_slope": -16.3,
-    "pedia2": 18,
-    "pedia2_name": "친구들소아청소년과의원",
-    "pedia2_slope": 6.5,
-    "hcode": "5aac4",
-    "recent_trades": [
-      {
-        "date": "2026-04-28",
-        "price": 7.7,
-        "floor": 12,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-18",
-        "price": 7.1,
-        "floor": 6,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-03",
-        "price": 7.5,
-        "floor": 18,
-        "area": 60.0
-      }
-    ]
-  },
-  {
-    "name": "한양수자인",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 81000,
-    "accel": 8.1,
-    "r3_avg": 81850,
-    "p3_avg": 75717,
-    "count": 8,
-    "build": 2013,
-    "region": "용인시 기흥구",
-    "dong": "망포동",
-    "liquidity": 5.1,
-    "liq_approx": false,
-    "morning": 27,
-    "evening": 38,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 3.4,
-    "slope_method": "dong_naver",
-    "pedia1": 20,
-    "pedia1_name": "서울소아청소년과의원",
-    "pedia1_slope": -16.3,
-    "pedia2": 18,
-    "pedia2_name": "친구들소아청소년과의원",
-    "pedia2_slope": 6.5,
-    "hcode": "5aac4",
-    "recent_trades": [
-      {
-        "date": "2026-04-04",
-        "price": 8.1,
-        "floor": 2,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "한양수자인성남마크뷰",
-    "atype": "59",
-    "area": 59.8,
-    "avg": 73833,
-    "accel": 2.9,
-    "r3_avg": 76617,
-    "p3_avg": 74425,
-    "count": 10,
-    "build": 2021,
-    "region": "성남시 수정구",
-    "dong": "금광동",
-    "liquidity": 1.5,
-    "liq_approx": false,
-    "morning": 25,
-    "evening": 29,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 28.1,
-    "slope_method": "dong_naver",
-    "pedia1": 17,
-    "pedia1_name": "삼성귀요미소아청소년과의원",
-    "pedia1_slope": -26.0,
-    "pedia2": 24,
-    "pedia2_name": "예사랑소아청소년과의원",
-    "pedia2_slope": 10.5,
-    "hcode": "b6Sc3",
-    "recent_trades": [
-      {
-        "date": "2026-04-22",
-        "price": 8.0,
-        "floor": 19,
-        "area": 59.8
-      },
-      {
-        "date": "2026-04-09",
-        "price": 6.0,
-        "floor": 11,
-        "area": 59.8
-      },
-      {
-        "date": "2026-04-07",
-        "price": 8.2,
-        "floor": 9,
-        "area": 59.9
-      }
-    ]
-  },
-  {
-    "name": "한화 포레나 동탄호수",
-    "atype": "74",
-    "area": 74.2,
-    "avg": 71250,
-    "accel": 0.7,
-    "r3_avg": 70955,
-    "p3_avg": 70427,
-    "count": 22,
-    "build": 2020,
-    "region": "화성시",
-    "dong": "장지동",
-    "liquidity": 2.8,
-    "liq_approx": true,
-    "morning": 31,
-    "evening": 41,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 1.6,
-    "slope_method": "dong_naver",
-    "pedia1": 11,
-    "pedia1_name": "원소아청소년과의원",
-    "pedia1_slope": -4.6,
-    "pedia2": 17,
-    "pedia2_name": "동탄호수소아청소년과의원",
-    "pedia2_slope": 0.1,
-    "hcode": "dwh52",
-    "recent_trades": [
-      {
-        "date": "2026-04-24",
-        "price": 7.0,
-        "floor": 5,
-        "area": 74.2
-      },
-      {
-        "date": "2026-04-23",
-        "price": 7.2,
-        "floor": 7,
-        "area": 74.2
-      },
-      {
-        "date": "2026-04-18",
-        "price": 7.0,
-        "floor": 5,
-        "area": 74.2
-      },
-      {
-        "date": "2026-04-09",
-        "price": 7.2,
-        "floor": 19,
-        "area": 74.2
-      }
-    ]
-  },
-  {
-    "name": "한화 포레나 동탄호수",
-    "atype": "84",
-    "area": 84.0,
-    "avg": 79600,
-    "accel": 1.6,
-    "r3_avg": 78489,
-    "p3_avg": 77267,
-    "count": 18,
-    "build": 2020,
-    "region": "화성시",
-    "dong": "장지동",
-    "liquidity": 2.2,
-    "liq_approx": true,
-    "morning": 31,
-    "evening": 41,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 1.6,
-    "slope_method": "dong_naver",
-    "pedia1": 11,
-    "pedia1_name": "원소아청소년과의원",
-    "pedia1_slope": -4.6,
-    "pedia2": 17,
-    "pedia2_name": "동탄호수소아청소년과의원",
-    "pedia2_slope": 0.1,
-    "hcode": "dwh52",
-    "recent_trades": [
-      {
-        "date": "2026-04-22",
-        "price": 7.9,
-        "floor": 22,
-        "area": 84.0
-      },
-      {
-        "date": "2026-04-10",
-        "price": 8.1,
-        "floor": 16,
-        "area": 84.0
-      },
-      {
-        "date": "2026-04-10",
-        "price": 7.8,
-        "floor": 7,
-        "area": 84.0
-      },
-      {
-        "date": "2026-04-08",
-        "price": 8.1,
-        "floor": 15,
-        "area": 84.0
-      }
-    ]
-  },
-  {
-    "name": "호반 써밋 수원",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 84000,
-    "accel": 6.1,
-    "r3_avg": 82790,
-    "p3_avg": 78038,
-    "count": 21,
-    "build": 2017,
-    "region": "수원시 권선구",
-    "dong": "금곡동",
-    "liquidity": 3.7,
-    "liq_approx": false,
-    "morning": 37,
-    "evening": 45,
-    "morning_cnt": 6,
-    "evening_cnt": 3,
-    "slope": 2.1,
-    "slope_method": "dong",
-    "pedia1": 4,
-    "pedia1_name": "레인보우소아청소년과의원",
-    "pedia1_slope": 1.1,
-    "pedia2": 9,
-    "pedia2_name": "제이엠베스트소아청소년과의원",
-    "pedia2_slope": -1.0,
-    "hcode": "aDAce",
-    "recent_trades": [
-      {
-        "date": "2026-04-18",
-        "price": 8.4,
-        "floor": 3,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "호반베르디움더센트럴",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 73000,
-    "accel": 5.9,
-    "r3_avg": 81062,
-    "p3_avg": 76520,
-    "count": 28,
-    "build": 2017,
-    "region": "수원시 권선구",
-    "dong": "금곡동",
-    "liquidity": 2.5,
-    "liq_approx": false,
-    "morning": 36,
-    "evening": 44,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 32.6,
-    "slope_method": "dong_naver",
-    "pedia1": 7,
-    "pedia1_name": "레인보우소아청소년과의원",
-    "pedia1_slope": 37.9,
-    "pedia2": 13,
-    "pedia2_name": "제이엠베스트소아청소년과의원",
-    "pedia2_slope": 35.8,
-    "hcode": "aEaa3",
-    "recent_trades": [
-      {
-        "date": "2026-04-21",
-        "price": 7.3,
-        "floor": 3,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "화서역푸르지오더에듀포레",
-    "atype": "84",
-    "area": 84.9,
-    "avg": 73460,
-    "accel": 5.0,
-    "r3_avg": 75639,
-    "p3_avg": 72050,
-    "count": 24,
-    "build": 2009,
-    "region": "수원시 장안구",
-    "dong": "천천동",
-    "liquidity": 2.3,
-    "liq_approx": false,
-    "morning": 31,
-    "evening": 41,
-    "morning_cnt": 6,
-    "evening_cnt": 3,
-    "slope": 13.1,
-    "slope_method": "dong",
-    "pedia1": 2,
-    "pedia1_name": "서울소아청소년과의원",
-    "pedia1_slope": -17.2,
-    "pedia2": 5,
-    "pedia2_name": "누가소아청소년과의원",
-    "pedia2_slope": 4.9,
-    "hcode": "52p72",
-    "recent_trades": [
-      {
-        "date": "2026-04-22",
-        "price": 7.8,
-        "floor": 9,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-09",
-        "price": 7.3,
-        "floor": 22,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-09",
-        "price": 6.8,
-        "floor": 3,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-07",
-        "price": 6.7,
-        "floor": 2,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-04",
-        "price": 8.1,
-        "floor": 4,
-        "area": 84.9
-      }
-    ]
-  },
-  {
-    "name": "흥덕마을7단지힐스테이트",
-    "atype": "84",
-    "area": 85.0,
-    "avg": 85333,
-    "accel": 6.1,
-    "r3_avg": 86725,
-    "p3_avg": 81711,
-    "count": 27,
-    "build": 2010,
-    "region": "용인시 기흥구",
-    "dong": "영덕동",
-    "liquidity": 4.7,
-    "liq_approx": false,
-    "morning": 24,
-    "evening": 32,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 23.5,
-    "slope_method": "dong_naver",
-    "pedia1": 10,
-    "pedia1_name": "서울소아청소년과의원",
-    "pedia1_slope": -28.3,
-    "pedia2": 8,
-    "pedia2_name": "마트소아청소년과의원",
-    "pedia2_slope": 2.5,
-    "hcode": "6hS86",
-    "recent_trades": [
-      {
-        "date": "2026-04-29",
-        "price": 8.4,
-        "floor": 5,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-08",
-        "price": 8.4,
-        "floor": 11,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-04",
-        "price": 8.8,
-        "floor": 17,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "흥덕마을동원로얄듀크",
-    "atype": "84",
-    "area": 84.7,
-    "avg": 71000,
-    "accel": 4.7,
-    "r3_avg": 70175,
-    "p3_avg": 67021,
-    "count": 30,
-    "build": 2010,
-    "region": "용인시 기흥구",
-    "dong": "영덕동",
-    "liquidity": null,
-    "liq_approx": true,
-    "morning": null,
-    "evening": null,
-    "morning_cnt": 0,
-    "evening_cnt": 0,
-    "slope": null,
-    "slope_method": "",
-    "pedia1": null,
-    "pedia1_name": null,
-    "pedia1_slope": null,
-    "pedia2": null,
-    "pedia2_name": null,
-    "pedia2_slope": null,
-    "hcode": null,
-    "recent_trades": [
-      {
-        "date": "2026-04-15",
-        "price": 7.4,
-        "floor": 16,
-        "area": 84.7
-      },
-      {
-        "date": "2026-04-06",
-        "price": 6.8,
-        "floor": 4,
-        "area": 84.9
-      }
-    ]
-  },
-  {
-    "name": "흥덕마을자연앤스위첸",
-    "atype": "84",
-    "area": 84.8,
-    "avg": 77450,
-    "accel": 2.6,
-    "r3_avg": 80630,
-    "p3_avg": 78562,
-    "count": 18,
-    "build": 2009,
-    "region": "용인시 기흥구",
-    "dong": "영덕동",
-    "liquidity": 3.6,
-    "liq_approx": false,
-    "morning": 25,
-    "evening": 31,
-    "morning_cnt": 5,
-    "evening_cnt": 2,
-    "slope": 0.8,
-    "slope_method": "dong_naver",
-    "pedia1": 11,
-    "pedia1_name": "서울소아청소년과의원",
-    "pedia1_slope": -24.9,
-    "pedia2": 12,
-    "pedia2_name": "친구들소아청소년과의원",
-    "pedia2_slope": -2.1,
-    "hcode": "6hZ56",
-    "recent_trades": [
-      {
-        "date": "2026-04-15",
-        "price": 7.4,
-        "floor": 17,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-03",
-        "price": 8.1,
-        "floor": 18,
-        "area": 84.8
-      }
-    ]
-  },
-  {
-    "name": "힐스테이트광교산",
-    "atype": "59",
-    "area": 60.0,
-    "avg": 74900,
-    "accel": 5.9,
-    "r3_avg": 73400,
-    "p3_avg": 69333,
-    "count": 8,
-    "build": 2022,
-    "region": "용인시 수지구",
-    "dong": "신봉동",
-    "liquidity": 3.9,
-    "liq_approx": false,
-    "morning": 22,
-    "evening": 32,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 42.4,
-    "slope_method": "dong",
-    "pedia1": 20,
-    "pedia1_name": "이레소아청소년과의원",
-    "pedia1_slope": -44.8,
-    "pedia2": 27,
-    "pedia2_name": "봄소아청소년과의원",
-    "pedia2_slope": -59.9,
-    "hcode": "b4Pda",
-    "recent_trades": [
-      {
-        "date": "2026-04-06",
-        "price": 7.5,
-        "floor": 10,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.5,
-        "floor": 7,
-        "area": 60.0
-      }
-    ]
-  },
-  {
-    "name": "힐스테이트광교산",
-    "atype": "74",
-    "area": 76.7,
-    "avg": 86500,
-    "accel": 3.8,
-    "r3_avg": 85700,
-    "p3_avg": 82538,
-    "count": 9,
-    "build": 2022,
-    "region": "용인시 수지구",
-    "dong": "신봉동",
-    "liquidity": 1.5,
-    "liq_approx": true,
-    "morning": 22,
-    "evening": 32,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 42.4,
-    "slope_method": "dong",
-    "pedia1": 20,
-    "pedia1_name": "이레소아청소년과의원",
-    "pedia1_slope": -44.8,
-    "pedia2": 27,
-    "pedia2_name": "봄소아청소년과의원",
-    "pedia2_slope": -59.9,
-    "hcode": "b4Pda",
-    "recent_trades": [
-      {
-        "date": "2026-04-11",
-        "price": 8.6,
-        "floor": 8,
-        "area": 76.7
-      },
-      {
-        "date": "2026-04-08",
-        "price": 8.7,
-        "floor": 14,
-        "area": 76.8
-      }
-    ]
-  },
-  {
-    "name": "힐스테이트구성",
-    "atype": "59",
-    "area": 60.0,
-    "avg": 74180,
-    "accel": 10.2,
-    "r3_avg": 72584,
-    "p3_avg": 65884,
-    "count": 51,
-    "build": 2023,
-    "region": "용인시 기흥구",
-    "dong": "언남동",
-    "liquidity": 11.1,
-    "liq_approx": false,
-    "morning": 27,
-    "evening": 30,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 3.7,
-    "slope_method": "dong",
-    "pedia1": 8,
-    "pedia1_name": "박진녕소아청소년과의원",
-    "pedia1_slope": -4.0,
-    "pedia2": 9,
-    "pedia2_name": "우리들소아청소년과",
-    "pedia2_slope": -2.9,
-    "hcode": "dtr58",
-    "recent_trades": [
-      {
-        "date": "2026-04-20",
-        "price": 7.5,
-        "floor": 16,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-17",
-        "price": 7.6,
-        "floor": 16,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-11",
-        "price": 7.0,
-        "floor": 4,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-06",
-        "price": 7.5,
-        "floor": 25,
-        "area": 60.0
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.5,
-        "floor": 23,
-        "area": 60.0
-      }
-    ]
-  },
-  {
-    "name": "힐스테이트동탄",
-    "atype": "74",
-    "area": 75.0,
-    "avg": 77100,
-    "accel": 3.6,
-    "r3_avg": 74447,
-    "p3_avg": 71890,
-    "count": 25,
-    "build": 2019,
-    "region": "화성시",
-    "dong": "목동",
-    "liquidity": 7.1,
-    "liq_approx": true,
-    "morning": 35,
-    "evening": 45,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 0.8,
-    "slope_method": "dong",
-    "pedia1": 15,
-    "pedia1_name": "동탄S소아청소년과 발달클리닉",
-    "pedia1_slope": -8.3,
-    "pedia2": 19,
-    "pedia2_name": "올바른소아청소년과의원",
-    "pedia2_slope": -9.2,
-    "hcode": "aWkba",
-    "recent_trades": [
-      {
-        "date": "2026-04-24",
-        "price": 7.8,
-        "floor": 15,
-        "area": 75.0
-      },
-      {
-        "date": "2026-04-18",
-        "price": 7.5,
-        "floor": 7,
-        "area": 75.0
-      },
-      {
-        "date": "2026-04-12",
-        "price": 7.5,
-        "floor": 20,
-        "area": 74.9
-      },
-      {
-        "date": "2026-04-04",
-        "price": 7.9,
-        "floor": 29,
-        "area": 75.0
+        "area": 85
       }
     ]
   },
@@ -4518,14 +4566,8 @@
       },
       {
         "date": "2026-04-11",
-        "price": 8.1,
-        "floor": 5,
-        "area": 84.8
-      },
-      {
-        "date": "2026-04-11",
-        "price": 8.2,
-        "floor": 18,
+        "price": 8.7,
+        "floor": 21,
         "area": 84.9
       },
       {
@@ -4536,9 +4578,15 @@
       },
       {
         "date": "2026-04-11",
-        "price": 8.7,
-        "floor": 21,
+        "price": 8.3,
+        "floor": 18,
         "area": 84.9
+      },
+      {
+        "date": "2026-04-11",
+        "price": 8.1,
+        "floor": 5,
+        "area": 84.8
       },
       {
         "date": "2026-04-04",
@@ -4555,188 +4603,140 @@
     ]
   },
   {
-    "name": "힐스테이트서천",
+    "name": "동탄역이지더원",
     "atype": "84",
-    "area": 85.0,
-    "avg": 76671,
-    "accel": 1.9,
-    "r3_avg": 76729,
-    "p3_avg": 75306,
-    "count": 30,
-    "build": 2016,
-    "region": "용인시 기흥구",
-    "dong": "서천동",
-    "liquidity": 4.6,
-    "liq_approx": false,
-    "morning": 24,
-    "evening": 32,
-    "morning_cnt": 3,
-    "evening_cnt": 1,
-    "slope": 6.9,
-    "slope_method": "dong_naver",
-    "pedia1": 13,
-    "pedia1_name": "아이웰봄 소아청소년과의원",
-    "pedia1_slope": -5.2,
-    "pedia2": 12,
-    "pedia2_name": "연세뉴키즈 소아청소년과의원",
-    "pedia2_slope": -5.6,
+    "area": 85,
+    "avg": 72250,
+    "accel": 5.8,
+    "r3_avg": 71000,
+    "p3_avg": 67120,
+    "count": 19,
+    "build": 2015,
+    "region": "화성시",
+    "dong": "영천동",
+    "liquidity": null,
+    "liq_approx": true,
+    "morning": null,
+    "evening": null,
+    "morning_cnt": 0,
+    "evening_cnt": 0,
+    "slope": null,
+    "slope_method": "",
+    "pedia1": null,
+    "pedia1_name": null,
+    "pedia1_slope": null,
+    "pedia2": null,
+    "pedia2_name": null,
+    "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
       {
-        "date": "2026-04-22",
-        "price": 7.6,
-        "floor": 6,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-20",
-        "price": 7.9,
-        "floor": 2,
-        "area": 85.0
-      },
-      {
         "date": "2026-04-16",
-        "price": 7.5,
-        "floor": 5,
-        "area": 85.0
+        "price": 7.4,
+        "floor": 13,
+        "area": 85
+      },
+      {
+        "date": "2026-04-10",
+        "price": 7.1,
+        "floor": 2,
+        "area": 85
+      }
+    ]
+  },
+  {
+    "name": "더레이크시티부영2단지",
+    "atype": "84",
+    "area": 84.5,
+    "avg": 87500,
+    "accel": -2.2,
+    "r3_avg": 78222,
+    "p3_avg": 79975,
+    "count": 13,
+    "build": 2018,
+    "region": "화성시",
+    "dong": "산척동",
+    "liquidity": 5.7,
+    "liq_approx": false,
+    "morning": 38,
+    "evening": 48,
+    "morning_cnt": 6,
+    "evening_cnt": 3,
+    "slope": 1.4,
+    "slope_method": "dong_naver",
+    "pedia1": 12,
+    "pedia1_name": "연세키즈365소아청소년과의원",
+    "pedia1_slope": 13.1,
+    "pedia2": 12,
+    "pedia2_name": "동탄이소아청소년과의원",
+    "pedia2_slope": 13.1,
+    "hcode": "b0he4",
+    "recent_trades": [
+      {
+        "date": "2026-04-18",
+        "price": 8.5,
+        "floor": 16,
+        "area": 84.5
+      },
+      {
+        "date": "2026-04-10",
+        "price": 9,
+        "floor": 19,
+        "area": 84.5
+      }
+    ]
+  },
+  {
+    "name": "한화 포레나 동탄호수",
+    "atype": "84",
+    "area": 84.1,
+    "avg": 79600,
+    "accel": 1.6,
+    "r3_avg": 78489,
+    "p3_avg": 77267,
+    "count": 18,
+    "build": 2020,
+    "region": "화성시",
+    "dong": "장지동",
+    "liquidity": 2.3,
+    "liq_approx": true,
+    "morning": 31,
+    "evening": 41,
+    "morning_cnt": 3,
+    "evening_cnt": 1,
+    "slope": 1.6,
+    "slope_method": "dong_naver",
+    "pedia1": 11,
+    "pedia1_name": "원소아청소년과의원",
+    "pedia1_slope": -4.6,
+    "pedia2": 17,
+    "pedia2_name": "동탄호수소아청소년과의원",
+    "pedia2_slope": 0.1,
+    "hcode": "dwh52",
+    "recent_trades": [
+      {
+        "date": "2026-04-22",
+        "price": 7.9,
+        "floor": 22,
+        "area": 84
       },
       {
         "date": "2026-04-10",
         "price": 7.8,
-        "floor": 11,
-        "area": 85.0
+        "floor": 7,
+        "area": 84
+      },
+      {
+        "date": "2026-04-10",
+        "price": 8.1,
+        "floor": 16,
+        "area": 84
       },
       {
         "date": "2026-04-08",
-        "price": 7.8,
-        "floor": 6,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-02",
-        "price": 7.6,
-        "floor": 4,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-02",
-        "price": 7.4,
-        "floor": 3,
-        "area": 85.0
-      },
-      {
-        "date": "2026-04-01",
-        "price": 7.6,
-        "floor": 8,
-        "area": 85.0
-      }
-    ]
-  },
-  {
-    "name": "힐스테이트푸르지오수원",
-    "atype": "74",
-    "area": 75.0,
-    "avg": 78312,
-    "accel": 3.2,
-    "r3_avg": 77125,
-    "p3_avg": 74744,
-    "count": 18,
-    "build": 2023,
-    "region": "수원시 팔달구",
-    "dong": "매교동",
-    "liquidity": 2.0,
-    "liq_approx": true,
-    "morning": 33,
-    "evening": 47,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 12.0,
-    "slope_method": "dong",
-    "pedia1": 21,
-    "pedia1_name": "온가족소아청소년과의원",
-    "pedia1_slope": -1.9,
-    "pedia2": 18,
-    "pedia2_name": "연세로이소아청소년과의원",
-    "pedia2_slope": -0.4,
-    "hcode": "dD2de",
-    "recent_trades": [
-      {
-        "date": "2026-04-23",
         "price": 8.1,
-        "floor": 11,
-        "area": 75.0
-      },
-      {
-        "date": "2026-04-11",
-        "price": 7.7,
-        "floor": 4,
-        "area": 75.0
-      },
-      {
-        "date": "2026-04-09",
-        "price": 8.0,
-        "floor": 8,
-        "area": 75.0
-      },
-      {
-        "date": "2026-04-06",
-        "price": 7.5,
-        "floor": 1,
-        "area": 75.0
-      }
-    ]
-  },
-  {
-    "name": "힐스테이트푸르지오수원",
-    "atype": "84",
-    "area": 84.9,
-    "avg": 85562,
-    "accel": 2.0,
-    "r3_avg": 84385,
-    "p3_avg": 82725,
-    "count": 25,
-    "build": 2023,
-    "region": "수원시 팔달구",
-    "dong": "매교동",
-    "liquidity": 2.8,
-    "liq_approx": true,
-    "morning": 33,
-    "evening": 47,
-    "morning_cnt": 7,
-    "evening_cnt": 3,
-    "slope": 12.0,
-    "slope_method": "dong",
-    "pedia1": 21,
-    "pedia1_name": "온가족소아청소년과의원",
-    "pedia1_slope": -1.9,
-    "pedia2": 18,
-    "pedia2_name": "연세로이소아청소년과의원",
-    "pedia2_slope": -0.4,
-    "hcode": "dD2de",
-    "recent_trades": [
-      {
-        "date": "2026-04-13",
-        "price": 8.1,
-        "floor": 2,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-11",
-        "price": 8.9,
-        "floor": 7,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-11",
-        "price": 8.3,
-        "floor": 4,
-        "area": 84.9
-      },
-      {
-        "date": "2026-04-02",
-        "price": 8.9,
-        "floor": 12,
-        "area": 84.9
+        "floor": 15,
+        "area": 84.1
       }
     ]
   }
