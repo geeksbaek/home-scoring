@@ -105,8 +105,7 @@
       <option value="score">점수</option>
       <option value="accel">가속도</option>
       <option value="liquidity">환금성</option>
-      <option value="morning">출근</option>
-      <option value="evening">퇴근</option>
+      <option value="commuteScore">출퇴근 용이성</option>
       <option value="pedScore">소아과 접근성</option>
       <option value="slope">고저차</option>
       <option value="avg">현재가</option>
@@ -114,12 +113,11 @@
     </select>
     <label>지역:</label>
     <select id="regionFilter"><option value="">전체</option></select>
-    <label>출근:</label>
+    <label>출퇴근:</label>
     <select id="commuteFilter">
       <option value="">전체</option>
-      <option value="20">20분 이내</option>
-      <option value="30">30분 이내</option>
-      <option value="40">40분 이내</option>
+      <option value="good">좋음 이상</option>
+      <option value="ok">보통 이상</option>
     </select>
   </div>
 
@@ -132,8 +130,7 @@
         <th>현재가</th>
         <th>가속도</th>
         <th>환금</th>
-        <th>출근</th>
-        <th>퇴근</th>
+        <th>출퇴근<br>용이성</th>
         <th>소아과<br>접근성</th>
         <th>고저차</th>
         <th>점수</th>
@@ -160,9 +157,28 @@ function pedScore(d) {
   return Math.round(((adj1 + adj2) / 2) * 10) / 10;
 }
 
+function commuteScore(d) {
+  if (!d.morning && !d.evening) return null;
+  const m = d.morning || d.evening;
+  const e = d.evening || d.morning;
+  return Math.round((m + e) / 2);
+}
+
+function commuteLabel(v) {
+  if (v == null) return ['-', ''];
+  if (v <= 20) return ['매우좋음', 'good'];
+  if (v <= 30) return ['좋음', 'good'];
+  if (v <= 40) return ['보통', ''];
+  if (v <= 50) return ['나쁨', 'warn'];
+  return ['매우나쁨', 'bad'];
+}
+
 async function init() {
   DATA = await (await fetch('data.json')).json();
-  DATA.forEach(d => { d.pedScore = pedScore(d); });
+  DATA.forEach(d => {
+    d.pedScore = pedScore(d);
+    d.commuteScore = commuteScore(d);
+  });
 
   calcScores();
 
@@ -214,7 +230,8 @@ function render() {
     return true;
   });
   if (region) filtered = filtered.filter(d => d.region.includes(region));
-  if (commute) filtered = filtered.filter(d => d.morning && d.morning <= parseInt(commute));
+  if (commute === 'good') filtered = filtered.filter(d => d.commuteScore && d.commuteScore <= 30);
+  else if (commute === 'ok') filtered = filtered.filter(d => d.commuteScore && d.commuteScore <= 40);
 
   const sk = currentSort;
   filtered.sort((a, b) => {
@@ -222,7 +239,7 @@ function render() {
     if (va == null) va = sortAsc ? Infinity : -Infinity;
     if (vb == null) vb = sortAsc ? Infinity : -Infinity;
     if (sk === 'name' || sk === 'region') return sortAsc ? String(va).localeCompare(String(vb)) : String(vb).localeCompare(String(va));
-    if (['morning','evening','pedScore','slope','avg'].includes(sk)) return sortAsc ? vb - va : va - vb;
+    if (['commuteScore','pedScore','slope','avg'].includes(sk)) return sortAsc ? vb - va : va - vb;
     return sortAsc ? va - vb : vb - va;
   });
 
@@ -236,12 +253,12 @@ function renderRow(d, i) {
   const nLink = `<a href="${naverMap(d.name + ' ' + d.dong)}" target="_blank">네이버지도</a>`;
   const links = `<div class="col-links">${hLink}${hLink ? ' ' : ''}${nLink}</div>`;
 
-  const mc = d.morning_cnt > 1 ? `<sub style="color:var(--muted);font-size:0.65rem">(${d.morning_cnt})</sub>` : '';
-  const ec = d.evening_cnt > 1 ? `<sub style="color:var(--muted);font-size:0.65rem">(${d.evening_cnt})</sub>` : '';
-  const commTip = (details) => {
+  const [commLbl, commCls] = commuteLabel(d.commuteScore);
+  const commTipRows = (label, details) => {
     if (!details || !details.length) return '';
-    return `<div class="tooltip" style="min-width:180px"><div style="font-weight:600;margin-bottom:4px;color:var(--text)">측정 기록</div><table><tr><th>날짜</th><th>요일</th><th>소요</th></tr>${details.map(t => `<tr><td>${t.date.slice(5)}</td><td>${t.weekday}</td><td>${t.minutes}분</td></tr>`).join('')}</table></div>`;
+    return `<div style="margin-top:4px"><div style="font-weight:600;color:var(--text)">${label}</div><table><tr><th>날짜</th><th>요일</th><th>소요</th></tr>${details.map(t => `<tr><td>${t.date.slice(5)}</td><td>${t.weekday}</td><td>${t.minutes}분</td></tr>`).join('')}</table></div>`;
   };
+  const commTip = (d.morning || d.evening) ? `<div class="tooltip" style="min-width:200px"><div style="font-weight:600;margin-bottom:4px;color:var(--text)">출퇴근 상세</div><div class="tip-row"><span class="tip-label">출근 평균</span><span>${d.morning ? d.morning + '분' : '-'}</span></div><div class="tip-row"><span class="tip-label">퇴근 평균</span><span>${d.evening ? d.evening + '분' : '-'}</span></div>${commTipRows('출근 기록', d.morning_details)}${commTipRows('퇴근 기록', d.evening_details)}<div style="margin-top:6px;padding-top:4px;border-top:1px solid var(--border);color:var(--muted);font-size:0.68rem">점수 = (출근 + 퇴근) / 2</div></div>` : '';
   const scoreW = Math.min(d.score / 80 * 60, 60);
 
   // 소아과 툴팁
@@ -273,8 +290,7 @@ function renderRow(d, i) {
     <td class="has-tip">${(d.avg/10000).toFixed(1)}억${tradeTip}</td>
     <td class="has-tip ${accelClass(d.accel)}">${d.accel > 0 ? '+' : ''}${d.accel}%${accelTip}</td>
     <td>${d.liquidity ? d.liquidity + '%' + (d.liq_approx ? '*' : '') : '-'}</td>
-    <td class="has-tip ${commuteClass(d.morning, 25, 40)}">${d.morning ? d.morning + '분' + mc : '-'}${commTip(d.morning_details)}</td>
-    <td class="has-tip ${commuteClass(d.evening, 30, 50)}">${d.evening ? d.evening + '분' + ec : '-'}${commTip(d.evening_details)}</td>
+    <td class="has-tip ${commCls}">${commLbl}${commTip}</td>
     <td class="has-tip ${pedCls}">${pedLbl}${pedTip}</td>
     <td class="hide-mobile ${d.slope != null ? (d.slope <= 10 ? 'good' : d.slope >= 30 ? 'bad' : '') : ''}">${d.slope != null ? d.slope + 'm' + (d.slope_method === 'grid' ? '*' : '') : '-'}</td>
     <td><span class="score-bar" style="width:${scoreW}px"></span> ${d.score}</td>
@@ -282,7 +298,6 @@ function renderRow(d, i) {
 }
 
 function accelClass(v) { return v > 5 ? 'good' : v < 0 ? 'bad' : ''; }
-function commuteClass(v, lo, hi) { return v ? (v <= lo ? 'good' : v >= hi ? 'bad' : v >= 40 ? 'warn' : '') : ''; }
 function slopeColor(v) { return v == null ? '' : Math.abs(v) >= 10 ? '#f87171' : Math.abs(v) >= 5 ? '#fbbf24' : '#4ade80'; }
 function pedLabel(v) {
   if (v == null) return ['-', ''];
