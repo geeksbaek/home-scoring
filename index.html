@@ -130,7 +130,6 @@
       <thead><tr>
         <th data-sort="rank">#</th>
         <th class="col-name" data-sort="name">단지명</th>
-        <th data-sort="region">지역</th>
         <th data-sort="avg">현재가</th>
         <th data-sort="accel">가속도</th>
         <th data-sort="liquidity">환금</th>
@@ -279,8 +278,7 @@ function renderRow(d, i) {
 
   return `<tr>
     <td>${i+1}</td>
-    <td class="col-name">${d.name}${area}${links}</td>
-    <td class="col-region hide-mobile">${d.region} ${d.dong}</td>
+    <td class="col-name has-tip">${d.name}${area}${links}<div class="tooltip" style="min-width:120px"><div style="color:var(--text)">${d.region} ${d.dong}</div></div></td>
     <td class="has-tip">${(d.avg/10000).toFixed(1)}억${tradeTip}</td>
     <td class="has-tip ${accelClass(d.accel)}">${d.accel > 0 ? '+' : ''}${d.accel}%${accelTip}</td>
     <td>${d.liquidity ? d.liquidity + '%' + (d.liq_approx ? '*' : '') : '-'}</td>
