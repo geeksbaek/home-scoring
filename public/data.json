@@ -377,7 +377,7 @@
         "area": 74.9
       }
     ],
-    "parking": 1838,
+    "parking": 1842,
     "parking_per_hh": 1.31,
     "elevator": 41,
     "households": 1403,
@@ -2031,8 +2031,8 @@
         "area": 59.8
       }
     ],
-    "parking": 206,
-    "parking_per_hh": 0.97,
+    "parking": 219,
+    "parking_per_hh": 1.03,
     "elevator": 4,
     "households": 212,
     "heat_type": "개별난방",
@@ -2197,7 +2197,7 @@
         "area": 75
       }
     ],
-    "parking": 2617,
+    "parking": 2624,
     "parking_per_hh": 1.54,
     "elevator": 36,
     "households": 1702,
@@ -2345,8 +2345,8 @@
         "area": 59.8
       }
     ],
-    "parking": 206,
-    "parking_per_hh": 0.97,
+    "parking": 219,
+    "parking_per_hh": 1.03,
     "elevator": 4,
     "households": 212,
     "heat_type": "개별난방",
@@ -2461,8 +2461,8 @@
         "area": 60
       }
     ],
-    "parking": 1721,
-    "parking_per_hh": 1.23,
+    "parking": 1732,
+    "parking_per_hh": 1.24,
     "elevator": 33,
     "households": 1394,
     "heat_type": "지역난방",
@@ -2642,8 +2642,8 @@
     "pedia2_slope": -0.4,
     "hcode": "dKR50",
     "recent_trades": [],
-    "parking": 206,
-    "parking_per_hh": 0.97,
+    "parking": 219,
+    "parking_per_hh": 1.03,
     "elevator": 4,
     "households": 212,
     "heat_type": "개별난방",
@@ -2898,8 +2898,8 @@
         "area": 83.2
       }
     ],
-    "parking": 129,
-    "parking_per_hh": 0.12,
+    "parking": 1244,
+    "parking_per_hh": 1.13,
     "elevator": 23,
     "households": 1098,
     "heat_type": "개별난방",
@@ -3028,8 +3028,8 @@
         "area": 59.9
       }
     ],
-    "parking": 696,
-    "parking_per_hh": 0.98,
+    "parking": 716,
+    "parking_per_hh": 1.01,
     "elevator": 22,
     "households": 711,
     "heat_type": "개별난방",
@@ -3174,8 +3174,8 @@
         "area": 60
       }
     ],
-    "parking": 757,
-    "parking_per_hh": 1.08,
+    "parking": 874,
+    "parking_per_hh": 1.25,
     "elevator": 16,
     "households": 699,
     "heat_type": "개별난방",
@@ -3473,8 +3473,8 @@
     "pedia2_slope": -14.1,
     "hcode": "aIR4d",
     "recent_trades": [],
-    "parking": 791,
-    "parking_per_hh": 1.03,
+    "parking": 926,
+    "parking_per_hh": 1.21,
     "elevator": 22,
     "households": 768,
     "heat_type": "지역난방",
@@ -4034,8 +4034,8 @@
         "area": 75.6
       }
     ],
-    "parking": 1724,
-    "parking_per_hh": 1.25,
+    "parking": 1736,
+    "parking_per_hh": 1.26,
     "elevator": 49,
     "households": 1378,
     "heat_type": "지역난방",
@@ -4776,8 +4776,8 @@
         "area": 61.7
       }
     ],
-    "parking": 588,
-    "parking_per_hh": 1.1,
+    "parking": 620,
+    "parking_per_hh": 1.16,
     "elevator": 13,
     "households": 534,
     "heat_type": "지역난방",
@@ -4940,8 +4940,8 @@
         "area": 74.9
       }
     ],
-    "parking": 881,
-    "parking_per_hh": 1.01,
+    "parking": 942,
+    "parking_per_hh": 1.08,
     "elevator": 26,
     "households": 872,
     "heat_type": "지역난방",
@@ -5056,8 +5056,8 @@
         "area": 60
       }
     ],
-    "parking": 1419,
-    "parking_per_hh": 1.55,
+    "parking": 1426,
+    "parking_per_hh": 1.56,
     "elevator": 56,
     "households": 913,
     "heat_type": "지역난방",
@@ -5474,8 +5474,8 @@
         "area": 74.2
       }
     ],
-    "parking": 956,
-    "parking_per_hh": 1.2,
+    "parking": 989,
+    "parking_per_hh": 1.24,
     "elevator": 19,
     "households": 800,
     "heat_type": "지역난방",
@@ -5806,8 +5806,8 @@
         "area": 60
       }
     ],
-    "parking": 881,
-    "parking_per_hh": 1.01,
+    "parking": 942,
+    "parking_per_hh": 1.08,
     "elevator": 26,
     "households": 872,
     "heat_type": "지역난방",
@@ -5988,8 +5988,8 @@
         "area": 59.3
       }
     ],
-    "parking": 1332,
-    "parking_per_hh": 0.99,
+    "parking": 1452,
+    "parking_per_hh": 1.08,
     "elevator": 28,
     "households": 1348,
     "heat_type": "지역난방",
@@ -6085,8 +6085,8 @@
     "pedia2_slope": -16.4,
     "hcode": "aCh0b",
     "recent_trades": [],
-    "parking": 1419,
-    "parking_per_hh": 1.55,
+    "parking": 1426,
+    "parking_per_hh": 1.56,
     "elevator": 56,
     "households": 913,
     "heat_type": "지역난방",
@@ -6227,7 +6227,7 @@
         "area": 75
       }
     ],
-    "parking": 838,
+    "parking": 841,
     "parking_per_hh": 1.23,
     "elevator": 19,
     "households": 681,
@@ -6367,8 +6367,8 @@
         "area": 74.9
       }
     ],
-    "parking": 1332,
-    "parking_per_hh": 0.99,
+    "parking": 1452,
+    "parking_per_hh": 1.08,
     "elevator": 28,
     "households": 1348,
     "heat_type": "지역난방",
@@ -6525,8 +6525,8 @@
         "area": 74.4
       }
     ],
-    "parking": 1491,
-    "parking_per_hh": 1.52,
+    "parking": 1502,
+    "parking_per_hh": 1.53,
     "elevator": 24,
     "households": 980,
     "heat_type": "지역난방",
@@ -6661,8 +6661,8 @@
         "area": 74.9
       }
     ],
-    "parking": 1032,
-    "parking_per_hh": 1.24,
+    "parking": 1044,
+    "parking_per_hh": 1.25,
     "elevator": 23,
     "households": 832,
     "heat_type": "지역난방",
@@ -7150,7 +7150,7 @@
         "area": 84.9
       }
     ],
-    "parking": 4010,
+    "parking": 4016,
     "parking_per_hh": 1.56,
     "elevator": 65,
     "households": 2571,
@@ -7344,7 +7344,7 @@
         "area": 85
       }
     ],
-    "parking": 1838,
+    "parking": 1842,
     "parking_per_hh": 1.31,
     "elevator": 41,
     "households": 1403,
@@ -7562,8 +7562,8 @@
         "area": 85
       }
     ],
-    "parking": 1312,
-    "parking_per_hh": 1.19,
+    "parking": 1325,
+    "parking_per_hh": 1.2,
     "elevator": 27,
     "households": 1100,
     "heat_type": "지역난방",
@@ -7678,7 +7678,7 @@
         "area": 85
       }
     ],
-    "parking": 656,
+    "parking": 658,
     "parking_per_hh": 1.16,
     "elevator": 41,
     "households": 567,
@@ -8206,8 +8206,8 @@
         "area": 85
       }
     ],
-    "parking": 1813,
-    "parking_per_hh": 1.34,
+    "parking": 1922,
+    "parking_per_hh": 1.42,
     "elevator": 33,
     "households": 1351,
     "heat_type": "",
@@ -8332,8 +8332,8 @@
         "area": 85
       }
     ],
-    "parking": 1813,
-    "parking_per_hh": 1.34,
+    "parking": 1922,
+    "parking_per_hh": 1.42,
     "elevator": 33,
     "households": 1351,
     "heat_type": "",
@@ -8486,7 +8486,7 @@
         "area": 84.8
       }
     ],
-    "parking": 2617,
+    "parking": 2624,
     "parking_per_hh": 1.54,
     "elevator": 36,
     "households": 1702,
@@ -8764,8 +8764,8 @@
         "area": 84.8
       }
     ],
-    "parking": 3293,
-    "parking_per_hh": 0.97,
+    "parking": 3973,
+    "parking_per_hh": 1.17,
     "elevator": 144,
     "households": 3391,
     "heat_type": "지역난방",
@@ -8958,8 +8958,8 @@
         "area": 85
       }
     ],
-    "parking": 778,
-    "parking_per_hh": 1.28,
+    "parking": 785,
+    "parking_per_hh": 1.29,
     "elevator": 24,
     "households": 609,
     "heat_type": "지역난방",
@@ -9074,8 +9074,8 @@
         "area": 85
       }
     ],
-    "parking": 821,
-    "parking_per_hh": 1.28,
+    "parking": 828,
+    "parking_per_hh": 1.29,
     "elevator": 22,
     "households": 642,
     "heat_type": "지역난방",
@@ -9178,8 +9178,8 @@
         "area": 85
       }
     ],
-    "parking": 1721,
-    "parking_per_hh": 1.23,
+    "parking": 1732,
+    "parking_per_hh": 1.24,
     "elevator": 33,
     "households": 1394,
     "heat_type": "지역난방",
@@ -9409,8 +9409,8 @@
         "area": 85
       }
     ],
-    "parking": 873,
-    "parking_per_hh": 0.96,
+    "parking": 985,
+    "parking_per_hh": 1.08,
     "elevator": 84,
     "households": 910,
     "heat_type": "개별난방",
@@ -9805,8 +9805,8 @@
         "area": 85
       }
     ],
-    "parking": 2,
-    "parking_per_hh": 0,
+    "parking": 631,
+    "parking_per_hh": 1.11,
     "elevator": 17,
     "households": 570,
     "heat_type": "지역난방",
@@ -10022,8 +10022,8 @@
         "area": 85
       }
     ],
-    "parking": 908,
-    "parking_per_hh": 1.2,
+    "parking": 912,
+    "parking_per_hh": 1.21,
     "elevator": 24,
     "households": 754,
     "heat_type": "지역난방",
@@ -10119,8 +10119,8 @@
     "pedia2_slope": -14.1,
     "hcode": "aIR4d",
     "recent_trades": [],
-    "parking": 791,
-    "parking_per_hh": 1.03,
+    "parking": 926,
+    "parking_per_hh": 1.21,
     "elevator": 22,
     "households": 768,
     "heat_type": "지역난방",
@@ -10663,8 +10663,8 @@
         "area": 84.8
       }
     ],
-    "parking": 1112,
-    "parking_per_hh": 0.81,
+    "parking": 1499,
+    "parking_per_hh": 1.09,
     "elevator": 31,
     "households": 1369,
     "heat_type": "개별난방",
@@ -10749,7 +10749,7 @@
         "area": 85
       }
     ],
-    "parking": 920,
+    "parking": 923,
     "parking_per_hh": 1.21,
     "elevator": 21,
     "households": 763,
@@ -11147,8 +11147,8 @@
         "area": 84.7
       }
     ],
-    "parking": 1230,
-    "parking_per_hh": 1.25,
+    "parking": 1245,
+    "parking_per_hh": 1.26,
     "elevator": 39,
     "households": 986,
     "heat_type": "지역난방",
@@ -11329,8 +11329,8 @@
         "area": 84.7
       }
     ],
-    "parking": 1724,
-    "parking_per_hh": 1.25,
+    "parking": 1736,
+    "parking_per_hh": 1.26,
     "elevator": 49,
     "households": 1378,
     "heat_type": "지역난방",
@@ -11589,8 +11589,8 @@
         "area": 85
       }
     ],
-    "parking": 1075,
-    "parking_per_hh": 1.15,
+    "parking": 1101,
+    "parking_per_hh": 1.17,
     "elevator": 46,
     "households": 938,
     "heat_type": "지역난방",
@@ -11965,8 +11965,8 @@
         "area": 85
       }
     ],
-    "parking": 1419,
-    "parking_per_hh": 1.55,
+    "parking": 1426,
+    "parking_per_hh": 1.56,
     "elevator": 56,
     "households": 913,
     "heat_type": "지역난방",
@@ -12069,8 +12069,8 @@
         "area": 84.8
       }
     ],
-    "parking": 682,
-    "parking_per_hh": 1.17,
+    "parking": 708,
+    "parking_per_hh": 1.21,
     "elevator": 24,
     "households": 584,
     "heat_type": "지역난방",
@@ -12320,8 +12320,8 @@
     "pedia2_slope": -8.1,
     "hcode": "b2L97",
     "recent_trades": [],
-    "parking": 881,
-    "parking_per_hh": 1.01,
+    "parking": 942,
+    "parking_per_hh": 1.08,
     "elevator": 26,
     "households": 872,
     "heat_type": "지역난방",
@@ -12416,8 +12416,8 @@
         "area": 84.8
       }
     ],
-    "parking": 588,
-    "parking_per_hh": 1.1,
+    "parking": 620,
+    "parking_per_hh": 1.16,
     "elevator": 13,
     "households": 534,
     "heat_type": "지역난방",
@@ -12510,8 +12510,8 @@
         "area": 84.5
       }
     ],
-    "parking": 810,
-    "parking_per_hh": 1.56,
+    "parking": 823,
+    "parking_per_hh": 1.58,
     "elevator": 25,
     "households": 520,
     "heat_type": "지역난방",
@@ -12634,8 +12634,8 @@
         "area": 84
       }
     ],
-    "parking": 379,
-    "parking_per_hh": 1.23,
+    "parking": 387,
+    "parking_per_hh": 1.26,
     "elevator": 10,
     "households": 308,
     "heat_type": "개별난방",
@@ -12798,8 +12798,8 @@
         "area": 85
       }
     ],
-    "parking": 1491,
-    "parking_per_hh": 1.52,
+    "parking": 1502,
+    "parking_per_hh": 1.53,
     "elevator": 24,
     "households": 980,
     "heat_type": "지역난방",
@@ -12904,8 +12904,8 @@
         "area": 84.8
       }
     ],
-    "parking": 588,
-    "parking_per_hh": 1.1,
+    "parking": 620,
+    "parking_per_hh": 1.16,
     "elevator": 13,
     "households": 534,
     "heat_type": "지역난방",
@@ -13218,8 +13218,8 @@
         "area": 84.6
       }
     ],
-    "parking": 588,
-    "parking_per_hh": 1.1,
+    "parking": 620,
+    "parking_per_hh": 1.16,
     "elevator": 13,
     "households": 534,
     "heat_type": "지역난방",
@@ -13370,8 +13370,8 @@
         "area": 84.5
       }
     ],
-    "parking": 810,
-    "parking_per_hh": 1.56,
+    "parking": 823,
+    "parking_per_hh": 1.58,
     "elevator": 25,
     "households": 520,
     "heat_type": "지역난방",
@@ -13798,8 +13798,8 @@
         "area": 85
       }
     ],
-    "parking": 667,
-    "parking_per_hh": 1.04,
+    "parking": 690,
+    "parking_per_hh": 1.07,
     "elevator": 21,
     "households": 642,
     "heat_type": "지역난방",
@@ -13912,8 +13912,8 @@
         "area": 84.5
       }
     ],
-    "parking": 810,
-    "parking_per_hh": 1.56,
+    "parking": 823,
+    "parking_per_hh": 1.58,
     "elevator": 25,
     "households": 520,
     "heat_type": "지역난방",
@@ -14022,8 +14022,8 @@
         "area": 84.1
       }
     ],
-    "parking": 956,
-    "parking_per_hh": 1.2,
+    "parking": 989,
+    "parking_per_hh": 1.24,
     "elevator": 19,
     "households": 800,
     "heat_type": "지역난방",
