@@ -17,6 +17,45 @@
     "evening": 33,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 21
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 21
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 19
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 19
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 19
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 40
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      }
+    ],
     "slope": 6.2,
     "slope_method": "dong_naver",
     "pedia1": 39,
@@ -46,6 +85,45 @@
     "evening": 33,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 21
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 21
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 19
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 19
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 19
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 40
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      }
+    ],
     "slope": 6.2,
     "slope_method": "dong_naver",
     "pedia1": 39,
@@ -82,6 +160,60 @@
     "evening": 49,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 42
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 41
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 64
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 39
+      }
+    ],
     "slope": 4.8,
     "slope_method": "dong",
     "pedia1": 12,
@@ -124,6 +256,55 @@
     "evening": 43,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 54
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 35
+      }
+    ],
     "slope": 13.1,
     "slope_method": "dong",
     "pedia1": 10,
@@ -178,6 +359,60 @@
     "evening": 43,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 33
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 31
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 54
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 35
+      }
+    ],
     "slope": 13.4,
     "slope_method": "dong",
     "pedia1": 18,
@@ -298,6 +533,60 @@
     "evening": 43,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 33
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 31
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 54
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 35
+      }
+    ],
     "slope": 13.4,
     "slope_method": "dong",
     "pedia1": 18,
@@ -364,6 +653,60 @@
     "evening": 47,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 37
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 37
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 55
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 42
+      }
+    ],
     "slope": 12,
     "slope_method": "dong",
     "pedia1": 21,
@@ -418,6 +761,45 @@
     "evening": 42,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 48
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 36
+      }
+    ],
     "slope": 2.7,
     "slope_method": "dong_naver",
     "pedia1": 13,
@@ -460,6 +842,60 @@
     "evening": 44,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 41
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 37
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 37
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 38
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 53
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 41
+      }
+    ],
     "slope": 19.2,
     "slope_method": "dong",
     "pedia1": 9,
@@ -496,6 +932,55 @@
     "evening": 35,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 28
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 28
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 28
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 33
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 43
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      }
+    ],
     "slope": 12.2,
     "slope_method": "dong_naver",
     "pedia1": 34,
@@ -550,6 +1035,60 @@
     "evening": 46,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 38
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 35
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 35
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 42
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 56
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 39
+      }
+    ],
     "slope": 22.1,
     "slope_method": "dong",
     "pedia1": 1,
@@ -604,6 +1143,45 @@
     "evening": 39,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 45
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      }
+    ],
     "slope": 3.4,
     "slope_method": "dong_naver",
     "pedia1": 20,
@@ -652,6 +1230,8 @@
     "evening": null,
     "morning_cnt": 0,
     "evening_cnt": 0,
+    "morning_details": [],
+    "evening_details": [],
     "slope": null,
     "slope_method": "",
     "pedia1": null,
@@ -688,6 +1268,60 @@
     "evening": 44,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 41
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 37
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 37
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 38
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 53
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 41
+      }
+    ],
     "slope": 19.2,
     "slope_method": "dong",
     "pedia1": 9,
@@ -717,6 +1351,60 @@
     "evening": 22,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 20
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 20
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 20
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 21
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 17
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 22
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 20
+      }
+    ],
     "slope": 8,
     "slope_method": "dong",
     "pedia1": 8,
@@ -759,6 +1447,55 @@
     "evening": 30,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 27
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 28
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 28
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 29
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      }
+    ],
     "slope": 42.4,
     "slope_method": "dong",
     "pedia1": 20,
@@ -795,6 +1532,60 @@
     "evening": 29,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 26
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 26
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 27
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 28
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 33
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      }
+    ],
     "slope": 28.1,
     "slope_method": "dong_naver",
     "pedia1": 17,
@@ -843,6 +1634,60 @@
     "evening": 30,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 28
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 28
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 32
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      }
+    ],
     "slope": 3.7,
     "slope_method": "dong",
     "pedia1": 8,
@@ -903,6 +1748,45 @@
     "evening": 35,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 33
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 35
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 35
+      }
+    ],
     "slope": 31.7,
     "slope_method": "dong_naver",
     "pedia1": 32,
@@ -945,6 +1829,30 @@
     "evening": 29,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 19
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 19
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 19
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
     "slope": 10.7,
     "slope_method": "dong_naver",
     "pedia1": 9,
@@ -981,6 +1889,55 @@
     "evening": 37,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 25
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 26
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 20
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 20
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 21
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 49
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      }
+    ],
     "slope": 8.2,
     "slope_method": "dong_naver",
     "pedia1": 12,
@@ -1010,6 +1967,45 @@
     "evening": 39,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 45
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      }
+    ],
     "slope": 3.4,
     "slope_method": "dong_naver",
     "pedia1": 20,
@@ -1046,6 +2042,60 @@
     "evening": 32,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 27
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 25
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 25
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 28
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 43
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      }
+    ],
     "slope": 42.4,
     "slope_method": "dong",
     "pedia1": 20,
@@ -1088,6 +2138,60 @@
     "evening": 32,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 27
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 25
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 25
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 28
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 43
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      }
+    ],
     "slope": 42.4,
     "slope_method": "dong",
     "pedia1": 20,
@@ -1130,6 +2234,8 @@
     "evening": null,
     "morning_cnt": 0,
     "evening_cnt": 0,
+    "morning_details": [],
+    "evening_details": [],
     "slope": null,
     "slope_method": "",
     "pedia1": null,
@@ -1166,6 +2272,30 @@
     "evening": 35,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 35
+      }
+    ],
     "slope": 0.1,
     "slope_method": "dong_naver",
     "pedia1": 11,
@@ -1195,6 +2325,60 @@
     "evening": 39,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 35
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 31
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 33
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 49
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      }
+    ],
     "slope": 5.8,
     "slope_method": "dong",
     "pedia1": 13,
@@ -1255,6 +2439,55 @@
     "evening": 41,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 38
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 39
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 51
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 35
+      }
+    ],
     "slope": 6.3,
     "slope_method": "dong_naver",
     "pedia1": 13,
@@ -1339,6 +2572,60 @@
     "evening": 39,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 35
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 31
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 33
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 49
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      }
+    ],
     "slope": 5.8,
     "slope_method": "dong",
     "pedia1": 13,
@@ -1393,6 +2680,45 @@
     "evening": 50,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 41
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 41
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 59
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 41
+      }
+    ],
     "slope": 1.4,
     "slope_method": "dong_naver",
     "pedia1": 7,
@@ -1429,6 +2755,60 @@
     "evening": 47,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 42
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 38
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 41
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 42
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 57
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 42
+      }
+    ],
     "slope": 8.2,
     "slope_method": "dong",
     "pedia1": 6,
@@ -1471,6 +2851,20 @@
     "evening": 30,
     "morning_cnt": 1,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      }
+    ],
     "slope": 0.6,
     "slope_method": "dong_naver",
     "pedia1": 5,
@@ -1519,6 +2913,60 @@
     "evening": 48,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 38
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 46
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 42
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 44
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 57
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 44
+      }
+    ],
     "slope": 14.4,
     "slope_method": "dong_naver",
     "pedia1": 27,
@@ -1579,6 +3027,45 @@
     "evening": 42,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 48
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 36
+      }
+    ],
     "slope": 2.6,
     "slope_method": "dong_naver",
     "pedia1": 15,
@@ -1627,6 +3114,55 @@
     "evening": 45,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 37
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 37
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 38
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 57
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 39
+      }
+    ],
     "slope": 0.5,
     "slope_method": "dong_naver",
     "pedia1": 22,
@@ -1675,6 +3211,60 @@
     "evening": 45,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 39
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 41
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 39
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 54
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 40
+      }
+    ],
     "slope": 0.8,
     "slope_method": "dong",
     "pedia1": 15,
@@ -1729,6 +3319,30 @@
     "evening": 41,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 41
+      }
+    ],
     "slope": 1.6,
     "slope_method": "dong_naver",
     "pedia1": 11,
@@ -1783,6 +3397,60 @@
     "evening": 46,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 38
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 42
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 55
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 42
+      }
+    ],
     "slope": 0.8,
     "slope_method": "dong_naver",
     "pedia1": 33,
@@ -1819,6 +3487,45 @@
     "evening": 45,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 35
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 51
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 38
+      }
+    ],
     "slope": 1.8,
     "slope_method": "dong_naver",
     "pedia1": 10,
@@ -1891,6 +3598,60 @@
     "evening": 48,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 38
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 46
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 42
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 44
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 57
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 44
+      }
+    ],
     "slope": 14.4,
     "slope_method": "dong_naver",
     "pedia1": 27,
@@ -1969,6 +3730,60 @@
     "evening": 41,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 35
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 51
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 37
+      }
+    ],
     "slope": 1.7,
     "slope_method": "dong_naver",
     "pedia1": 7,
@@ -2053,6 +3868,45 @@
     "evening": 42,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 48
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 36
+      }
+    ],
     "slope": 2.6,
     "slope_method": "dong_naver",
     "pedia1": 15,
@@ -2082,6 +3936,60 @@
     "evening": 51,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 49
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 45
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 44
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 49
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 34
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 45
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 60
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 49
+      }
+    ],
     "slope": 2.6,
     "slope_method": "dong_naver",
     "pedia1": 5,
@@ -2130,6 +4038,60 @@
     "evening": 41,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 35
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 51
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 37
+      }
+    ],
     "slope": 1.7,
     "slope_method": "dong_naver",
     "pedia1": 7,
@@ -2172,6 +4134,55 @@
     "evening": 37,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 27
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 22
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 22
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 22
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 33
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 46
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      }
+    ],
     "slope": 38.3,
     "slope_method": "dong",
     "pedia1": 14,
@@ -2220,6 +4231,30 @@
     "evening": 29,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
     "slope": 0.7,
     "slope_method": "dong_naver",
     "pedia1": 19,
@@ -2256,6 +4291,30 @@
     "evening": 30,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      }
+    ],
     "slope": 14.1,
     "slope_method": "dong_naver",
     "pedia1": 22,
@@ -2285,6 +4344,55 @@
     "evening": 41,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 33
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 37
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 41
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 46
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 36
+      }
+    ],
     "slope": 13.1,
     "slope_method": "dong",
     "pedia1": 2,
@@ -2345,6 +4453,60 @@
     "evening": 49,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 42
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 41
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 64
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 39
+      }
+    ],
     "slope": 4.8,
     "slope_method": "dong",
     "pedia1": 12,
@@ -2405,6 +4567,30 @@
     "evening": 34,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 34
+      }
+    ],
     "slope": 1.4,
     "slope_method": "dong_naver",
     "pedia1": 11,
@@ -2447,6 +4633,45 @@
     "evening": 44,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 48
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 45
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 49
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 38
+      }
+    ],
     "slope": 32.6,
     "slope_method": "dong_naver",
     "pedia1": 7,
@@ -2483,6 +4708,55 @@
     "evening": 45,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 48
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 45
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 44
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 52
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 38
+      }
+    ],
     "slope": 2.1,
     "slope_method": "dong",
     "pedia1": 4,
@@ -2519,6 +4793,60 @@
     "evening": 47,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 37
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 37
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 55
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 42
+      }
+    ],
     "slope": 12,
     "slope_method": "dong",
     "pedia1": 21,
@@ -2573,6 +4901,55 @@
     "evening": 43,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 54
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 35
+      }
+    ],
     "slope": 13.1,
     "slope_method": "dong",
     "pedia1": 10,
@@ -2615,6 +4992,8 @@
     "evening": null,
     "morning_cnt": 0,
     "evening_cnt": 0,
+    "morning_details": [],
+    "evening_details": [],
     "slope": null,
     "slope_method": "",
     "pedia1": null,
@@ -2651,6 +5030,30 @@
     "evening": 29,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
     "slope": 0.1,
     "slope_method": "dong_naver",
     "pedia1": 7,
@@ -2693,6 +5096,55 @@
     "evening": 35,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 28
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 28
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 28
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 33
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 43
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      }
+    ],
     "slope": 12.2,
     "slope_method": "dong_naver",
     "pedia1": 34,
@@ -2735,6 +5187,55 @@
     "evening": 39,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 37
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 45
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 34
+      }
+    ],
     "slope": 5.7,
     "slope_method": "dong",
     "pedia1": 4,
@@ -2825,6 +5326,8 @@
     "evening": null,
     "morning_cnt": 0,
     "evening_cnt": 0,
+    "morning_details": [],
+    "evening_details": [],
     "slope": null,
     "slope_method": "",
     "pedia1": null,
@@ -2861,6 +5364,30 @@
     "evening": 41,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 41
+      }
+    ],
     "slope": 4.1,
     "slope_method": "dong_naver",
     "pedia1": 18,
@@ -2897,6 +5424,30 @@
     "evening": 41,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 41
+      }
+    ],
     "slope": 1.7,
     "slope_method": "dong_naver",
     "pedia1": 11,
@@ -2957,6 +5508,60 @@
     "evening": 22,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 20
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 20
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 20
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 21
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 17
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 22
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 20
+      }
+    ],
     "slope": 8,
     "slope_method": "dong",
     "pedia1": 8,
@@ -2986,6 +5591,30 @@
     "evening": 22,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 18
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 22
+      }
+    ],
     "slope": 32,
     "slope_method": "dong_naver",
     "pedia1": 8,
@@ -3022,6 +5651,60 @@
     "evening": 30,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 25
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 22
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 21
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 21
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 16
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 16
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 16
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 26
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 38
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      }
+    ],
     "slope": 15.7,
     "slope_method": "dong_naver",
     "pedia1": 24,
@@ -3082,6 +5765,45 @@
     "evening": 35,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 33
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 35
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 35
+      }
+    ],
     "slope": 31.7,
     "slope_method": "dong_naver",
     "pedia1": 32,
@@ -3124,6 +5846,45 @@
     "evening": 32,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 28
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 28
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 21
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 21
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 21
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 35
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      }
+    ],
     "slope": 23.5,
     "slope_method": "dong_naver",
     "pedia1": 10,
@@ -3172,6 +5933,30 @@
     "evening": 32,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 24
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      }
+    ],
     "slope": 6.9,
     "slope_method": "dong_naver",
     "pedia1": 13,
@@ -3250,6 +6035,55 @@
     "evening": 37,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 25
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 26
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 20
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 20
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 21
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 49
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      }
+    ],
     "slope": 8.2,
     "slope_method": "dong_naver",
     "pedia1": 12,
@@ -3279,6 +6113,8 @@
     "evening": null,
     "morning_cnt": 0,
     "evening_cnt": 0,
+    "morning_details": [],
+    "evening_details": [],
     "slope": null,
     "slope_method": "",
     "pedia1": null,
@@ -3321,6 +6157,45 @@
     "evening": 31,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 31
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 21
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 21
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 21
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 28
+      }
+    ],
     "slope": 0.8,
     "slope_method": "dong_naver",
     "pedia1": 11,
@@ -3363,6 +6238,30 @@
     "evening": 31,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 20
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 20
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      }
+    ],
     "slope": 4.4,
     "slope_method": "dong_naver",
     "pedia1": 3,
@@ -3392,6 +6291,30 @@
     "evening": 27,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 20
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 20
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 20
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      }
+    ],
     "slope": 15.3,
     "slope_method": "dong_naver",
     "pedia1": 20,
@@ -3421,6 +6344,30 @@
     "evening": 45,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 45
+      }
+    ],
     "slope": 0.3,
     "slope_method": "dong_naver",
     "pedia1": 12,
@@ -3469,6 +6416,8 @@
     "evening": null,
     "morning_cnt": 0,
     "evening_cnt": 0,
+    "morning_details": [],
+    "evening_details": [],
     "slope": null,
     "slope_method": "",
     "pedia1": null,
@@ -3505,6 +6454,45 @@
     "evening": 50,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 41
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 41
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 59
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 41
+      }
+    ],
     "slope": 1.4,
     "slope_method": "dong_naver",
     "pedia1": 7,
@@ -3571,6 +6559,50 @@
     "evening": 44,
     "morning_cnt": 6,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 39
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 39
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 51
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 36
+      }
+    ],
     "slope": 3.3,
     "slope_method": "dong_naver",
     "pedia1": 12,
@@ -3667,6 +6699,55 @@
     "evening": 41,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 38
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 39
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 51
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 35
+      }
+    ],
     "slope": 6.3,
     "slope_method": "dong_naver",
     "pedia1": 13,
@@ -3721,6 +6802,45 @@
     "evening": 37,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 30
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 42
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      }
+    ],
     "slope": 5.4,
     "slope_method": "dong_naver",
     "pedia1": 6,
@@ -3763,6 +6883,45 @@
     "evening": 43,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 35
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 49
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 36
+      }
+    ],
     "slope": 2,
     "slope_method": "dong_naver",
     "pedia1": 11,
@@ -3805,6 +6964,8 @@
     "evening": null,
     "morning_cnt": 0,
     "evening_cnt": 0,
+    "morning_details": [],
+    "evening_details": [],
     "slope": 38.3,
     "slope_method": "dong",
     "pedia1": 14,
@@ -3841,6 +7002,45 @@
     "evening": 44,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 51
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 37
+      }
+    ],
     "slope": 2,
     "slope_method": "dong_naver",
     "pedia1": 18,
@@ -3931,6 +7131,45 @@
     "evening": 44,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 35
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 51
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 37
+      }
+    ],
     "slope": 4.7,
     "slope_method": "dong_naver",
     "pedia1": 13,
@@ -3979,6 +7218,45 @@
     "evening": 43,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 33
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 49
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 36
+      }
+    ],
     "slope": 3.8,
     "slope_method": "dong_naver",
     "pedia1": 5,
@@ -4015,6 +7293,8 @@
     "evening": null,
     "morning_cnt": 0,
     "evening_cnt": 0,
+    "morning_details": [],
+    "evening_details": [],
     "slope": null,
     "slope_method": "",
     "pedia1": null,
@@ -4057,6 +7337,60 @@
     "evening": 48,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 38
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 46
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 42
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 30
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 44
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 57
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 44
+      }
+    ],
     "slope": 14.4,
     "slope_method": "dong_naver",
     "pedia1": 27,
@@ -4086,6 +7420,30 @@
     "evening": 29,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 23
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
     "slope": 0.5,
     "slope_method": "dong_naver",
     "pedia1": 12,
@@ -4134,6 +7492,30 @@
     "evening": 44,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 44
+      }
+    ],
     "slope": 7.7,
     "slope_method": "dong_naver",
     "pedia1": 17,
@@ -4176,6 +7558,55 @@
     "evening": 40,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 32
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 34
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 25
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 35
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 49
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 37
+      }
+    ],
     "slope": 7.2,
     "slope_method": "dong_naver",
     "pedia1": 15,
@@ -4224,6 +7655,60 @@
     "evening": 46,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 38
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 42
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 55
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 42
+      }
+    ],
     "slope": 0.8,
     "slope_method": "dong_naver",
     "pedia1": 33,
@@ -4266,6 +7751,30 @@
     "evening": 29,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 21
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 21
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 21
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
     "slope": 1,
     "slope_method": "dong_naver",
     "pedia1": 9,
@@ -4308,6 +7817,30 @@
     "evening": 49,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 33
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 49
+      }
+    ],
     "slope": 4.1,
     "slope_method": "dong_naver",
     "pedia1": 10,
@@ -4350,6 +7883,55 @@
     "evening": 45,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 34
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 37
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 37
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 27
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 38
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 57
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 39
+      }
+    ],
     "slope": 0.5,
     "slope_method": "dong_naver",
     "pedia1": 22,
@@ -4386,6 +7968,30 @@
     "evening": 29,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 22
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 22
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 22
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
     "slope": 0.4,
     "slope_method": "dong_naver",
     "pedia1": 11,
@@ -4422,6 +8028,55 @@
     "evening": 50,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 43
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 50
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 46
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 32
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 44
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 60
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 47
+      }
+    ],
     "slope": 14.3,
     "slope_method": "dong_naver",
     "pedia1": 9,
@@ -4482,6 +8137,45 @@
     "evening": 45,
     "morning_cnt": 5,
     "evening_cnt": 2,
+    "morning_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 36
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 35
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 26
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 51
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 38
+      }
+    ],
     "slope": 1.8,
     "slope_method": "dong_naver",
     "pedia1": 10,
@@ -4536,6 +8230,60 @@
     "evening": 45,
     "morning_cnt": 7,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-28",
+        "weekday": "화",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 39
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 41
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 39
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 29
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 40
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 54
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 40
+      }
+    ],
     "slope": 0.8,
     "slope_method": "dong",
     "pedia1": 15,
@@ -4620,6 +8368,8 @@
     "evening": null,
     "morning_cnt": 0,
     "evening_cnt": 0,
+    "morning_details": [],
+    "evening_details": [],
     "slope": null,
     "slope_method": "",
     "pedia1": null,
@@ -4662,6 +8412,55 @@
     "evening": 48,
     "morning_cnt": 6,
     "evening_cnt": 3,
+    "morning_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 42
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 48
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 44
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-04-29",
+        "weekday": "수",
+        "minutes": 42
+      },
+      {
+        "date": "2026-04-30",
+        "weekday": "목",
+        "minutes": 58
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 45
+      }
+    ],
     "slope": 1.4,
     "slope_method": "dong_naver",
     "pedia1": 12,
@@ -4704,6 +8503,30 @@
     "evening": 41,
     "morning_cnt": 3,
     "evening_cnt": 1,
+    "morning_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      },
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 31
+      }
+    ],
+    "evening_details": [
+      {
+        "date": "2026-05-01",
+        "weekday": "금",
+        "minutes": 41
+      }
+    ],
     "slope": 1.6,
     "slope_method": "dong_naver",
     "pedia1": 11,
