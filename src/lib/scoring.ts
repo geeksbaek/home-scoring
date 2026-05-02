@@ -34,8 +34,18 @@ export interface AptData {
   parking_per_hh: number | null;
   elevator: number | null;
   households: number | null;
+  dong_count: number | null;
+  top_floor: number | null;
   heat_type: string | null;
+  structure: string | null;
+  cctv: number | null;
+  doro_juso: string | null;
+  use_date: string | null;
   repair_fund: number | null;
+  subway_line: string | null;
+  subway_station: string | null;
+  education: string | null;
+  energy: { heat: number; waterHot: number; elect: number; waterCool: number; gas: number } | null;
   // computed
   score: number;
   pedScore: number | null;

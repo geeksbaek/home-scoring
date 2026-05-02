@@ -75,6 +75,11 @@ function CommutePopover({ data }: { data: AptData }) {
             {data.evening_details.map((t, i) => <div key={i} className="flex justify-between"><span>{t.date.slice(5)} ({t.weekday}) {t.time ?? ""}</span><span className={color(t.minutes)}>{t.minutes}분</span></div>)}
           </div>
         )}
+        {(data.subway_line || data.subway_station) && (
+          <div className="mt-2 pt-2 border-t">
+            <div className="flex justify-between"><span className="text-muted-foreground">지하철</span><span>{[data.subway_line, data.subway_station].filter(Boolean).join(" ")}</span></div>
+          </div>
+        )}
         <p className="mt-2 pt-2 border-t text-muted-foreground text-[10px]">점수 = (출근 + 퇴근) / 2</p>
       </PopoverContent>
     </Popover>
@@ -177,8 +182,16 @@ function ParkingCell({ data }: { data: AptData }) {
         <div className="flex justify-between"><span className="text-muted-foreground">총 세대수</span><span>{data.households?.toLocaleString()}세대</span></div>
         <div className="flex justify-between"><span className="text-muted-foreground">세대당 주차</span><span>{v}대</span></div>
         {data.elevator != null && <div className="flex justify-between mt-1"><span className="text-muted-foreground">승강기</span><span>{data.elevator}대</span></div>}
-        {data.heat_type && <div className="flex justify-between"><span className="text-muted-foreground">난방</span><span>{data.heat_type}</span></div>}
         {data.repair_fund != null && <div className="flex justify-between mt-1 pt-1 border-t"><span className="text-muted-foreground">장기수선충당금</span><span>{Math.round(data.repair_fund / 10000).toLocaleString()}만원</span></div>}
+        {data.energy && (
+          <div className="mt-1 pt-1 border-t">
+            <p className="font-semibold text-muted-foreground mb-0.5">월 에너지 사용량</p>
+            {data.energy.heat > 0 && <div className="flex justify-between"><span className="text-muted-foreground">난방</span><span>{Math.round(data.energy.heat / 10000).toLocaleString()}만Mcal</span></div>}
+            {data.energy.elect > 0 && <div className="flex justify-between"><span className="text-muted-foreground">전기</span><span>{Math.round(data.energy.elect / 10000).toLocaleString()}만kWh</span></div>}
+            {data.energy.waterCool > 0 && <div className="flex justify-between"><span className="text-muted-foreground">수도</span><span>{data.energy.waterCool.toLocaleString()}톤</span></div>}
+            {data.energy.gas > 0 && <div className="flex justify-between"><span className="text-muted-foreground">가스</span><span>{data.energy.gas.toLocaleString()}m³</span></div>}
+          </div>
+        )}
       </PopoverContent>
     </Popover>
   );
@@ -353,7 +366,28 @@ export default function App() {
                       <div className="flex flex-col gap-0.5">
                         <div>
                           <span className="text-muted-foreground text-[11px] mr-1">{d.region.split(" ")[0]}</span>
-                          <span className="font-medium text-sm">{d.name}</span>
+                          <Popover>
+                            <PopoverTrigger className="cursor-pointer font-medium text-sm hover:underline decoration-dotted underline-offset-4">{d.name}</PopoverTrigger>
+                            <PopoverContent className="w-64 text-xs">
+                              <p className="font-semibold mb-2">단지 정보</p>
+                              {d.doro_juso && <p className="text-muted-foreground mb-2">{d.doro_juso}</p>}
+                              <div className="space-y-0.5">
+                                {d.households != null && <div className="flex justify-between"><span className="text-muted-foreground">세대수</span><span>{d.households.toLocaleString()}세대</span></div>}
+                                {d.dong_count != null && <div className="flex justify-between"><span className="text-muted-foreground">동수</span><span>{d.dong_count}동</span></div>}
+                                {d.top_floor != null && <div className="flex justify-between"><span className="text-muted-foreground">최고층</span><span>{d.top_floor}층</span></div>}
+                                {d.structure && <div className="flex justify-between"><span className="text-muted-foreground">구조</span><span>{d.structure}</span></div>}
+                                {d.heat_type && <div className="flex justify-between"><span className="text-muted-foreground">난방</span><span>{d.heat_type}</span></div>}
+                                {d.use_date && <div className="flex justify-between"><span className="text-muted-foreground">사용승인</span><span>{d.use_date.slice(0, 4)}.{d.use_date.slice(4, 6)}.{d.use_date.slice(6, 8)}</span></div>}
+                                {d.cctv != null && d.cctv > 0 && <div className="flex justify-between"><span className="text-muted-foreground">CCTV</span><span>{d.cctv}대</span></div>}
+                              </div>
+                              {d.education && (
+                                <div className="mt-2 pt-2 border-t">
+                                  <p className="text-muted-foreground">교육시설</p>
+                                  <p className="mt-0.5">{d.education}</p>
+                                </div>
+                              )}
+                            </PopoverContent>
+                          </Popover>
                           {d.atype !== "84" && <Badge variant="outline" className="ml-1 text-[10px] bg-emerald-500/10 text-emerald-500 border-emerald-500/20">{d.area}㎡</Badge>}
                           <span className="text-muted-foreground text-[10px] ml-0.5">({d.build})</span>
                         </div>
