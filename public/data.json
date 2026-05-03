@@ -665,7 +665,9 @@
     "eq_design": true,
     "eq_capacity": "VII-0.204g",
     "energy_grade": "1+",
-    "schools": []
+    "schools": [
+      "곡반초등학교"
+    ]
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -1217,7 +1219,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1",
-    "schools": []
+    "schools": [
+      "매산초등학교"
+    ]
   },
   {
     "name": "수원센트럴아이파크자이",
@@ -2399,7 +2403,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1",
-    "schools": []
+    "schools": [
+      "매교초등학교"
+    ]
   },
   {
     "name": "매교역푸르지오SKVIEW",
@@ -2931,7 +2937,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1",
-    "schools": []
+    "schools": [
+      "매교초등학교"
+    ]
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -3273,7 +3281,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1",
-    "schools": []
+    "schools": [
+      "매산초등학교"
+    ]
   },
   {
     "name": "영통SKVIEW",
@@ -3419,7 +3429,9 @@
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": "2",
-    "schools": []
+    "schools": [
+      "대선초등학교"
+    ]
   },
   {
     "name": "영통아이파크캐슬3단지",
@@ -3671,7 +3683,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
     "energy_grade": "1+",
-    "schools": []
+    "schools": [
+      "글빛초등학교"
+    ]
   },
   {
     "name": "광교더포레스트",
@@ -4583,7 +4597,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
     "energy_grade": "1+",
-    "schools": []
+    "schools": [
+      "글빛초등학교"
+    ]
   },
   {
     "name": "가천대역두산위브",
@@ -4861,7 +4877,9 @@
     "eq_design": true,
     "eq_capacity": "VII-0.141g",
     "energy_grade": "2",
-    "schools": []
+    "schools": [
+      "성남서초등학교"
+    ]
   },
   {
     "name": "래미안금광",
@@ -5331,7 +5349,9 @@
     "eq_design": true,
     "eq_capacity": "VII-0.169g",
     "energy_grade": "1",
-    "schools": []
+    "schools": [
+      "하원초등학교"
+    ]
   },
   {
     "name": "힐스테이트구성",
@@ -5771,7 +5791,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.1971g",
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "교동초등학교"
+    ]
   },
   {
     "name": "용인동백두산위브더제니스",
@@ -6075,7 +6097,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169",
     "energy_grade": "1",
-    "schools": []
+    "schools": [
+      "어정초등학교"
+    ]
   },
   {
     "name": "기흥역더샵",
@@ -6273,7 +6297,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
     "energy_grade": "2",
-    "schools": []
+    "schools": [
+      "한얼초등학교"
+    ]
   },
   {
     "name": "기흥역파크푸르지오",
@@ -6689,7 +6715,9 @@
     "eq_design": true,
     "eq_capacity": "VII-0.197g",
     "energy_grade": "1++",
-    "schools": []
+    "schools": [
+      "신봉초등학교"
+    ]
   },
   {
     "name": "힐스테이트광교산",
@@ -6891,7 +6919,9 @@
     "eq_design": true,
     "eq_capacity": "VII-0.197g",
     "energy_grade": "1++",
-    "schools": []
+    "schools": [
+      "신봉초등학교"
+    ]
   },
   {
     "name": "미사강변트래지안",
@@ -8663,7 +8693,9 @@
     "eq_design": true,
     "eq_capacity": "VII-0.169g",
     "energy_grade": "1+",
-    "schools": []
+    "schools": [
+      "한율초등학교"
+    ]
   },
   {
     "name": "시범한빛마을동탄아이파크",
@@ -9447,7 +9479,9 @@
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "무봉초등학교"
+    ]
   },
   {
     "name": "동탄역더샵센트럴시티2차",
@@ -9727,7 +9761,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.16896g",
     "energy_grade": "1+",
-    "schools": []
+    "schools": [
+      "동탄초등학교"
+    ]
   },
   {
     "name": "힐스테이트동탄",
@@ -10049,7 +10085,9 @@
     "eq_design": true,
     "eq_capacity": "VII-0.176g",
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "한율초등학교"
+    ]
   },
   {
     "name": "한화 포레나 동탄호수",
@@ -10647,7 +10685,9 @@
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "예솔초등학교"
+    ]
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -11823,7 +11863,9 @@
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "청목초등학교"
+    ]
   },
   {
     "name": "동탄역신안인스빌리베라2차",
@@ -12023,7 +12065,9 @@
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "무봉초등학교"
+    ]
   },
   {
     "name": "금호어울림레이크",
@@ -12243,7 +12287,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
     "energy_grade": "1",
-    "schools": []
+    "schools": [
+      "이솔초등학교"
+    ]
   },
   {
     "name": "동탄역센트럴푸르지오",
@@ -12455,7 +12501,9 @@
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "청목초등학교"
+    ]
   },
   {
     "name": "반도유보라아이비파크3",
@@ -14074,7 +14122,9 @@
     "eq_design": true,
     "eq_capacity": "VII-0.204g",
     "energy_grade": "1+",
-    "schools": []
+    "schools": [
+      "곡반초등학교"
+    ]
   },
   {
     "name": "수원모아미래도센트럴타운2단지",
@@ -14594,7 +14644,9 @@
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": "1",
-    "schools": []
+    "schools": [
+      "칠보초등학교"
+    ]
   },
   {
     "name": "호반 써밋 수원",
@@ -15234,7 +15286,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1",
-    "schools": []
+    "schools": [
+      "매산초등학교"
+    ]
   },
   {
     "name": "수원센트럴아이파크자이",
@@ -15662,7 +15716,9 @@
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "매여울초등학교"
+    ]
   },
   {
     "name": "래미안노블클래스1단지",
@@ -15830,7 +15886,9 @@
     "eq_design": false,
     "eq_capacity": null,
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "매여울초등학교"
+    ]
   },
   {
     "name": "광교더포레스트",
@@ -16882,7 +16940,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": "1+",
-    "schools": []
+    "schools": [
+      "영덕초등학교"
+    ]
   },
   {
     "name": "영통롯데캐슬엘클래스2단지",
@@ -17673,7 +17733,9 @@
     "eq_design": true,
     "eq_capacity": "VII-0.141g",
     "energy_grade": "2",
-    "schools": []
+    "schools": [
+      "성남서초등학교"
+    ]
   },
   {
     "name": "성남자이",
@@ -18112,7 +18174,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "신갈초등학교"
+    ]
   },
   {
     "name": "용인동백두산위브더제니스",
@@ -18344,7 +18408,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169",
     "energy_grade": "1",
-    "schools": []
+    "schools": [
+      "어정초등학교"
+    ]
   },
   {
     "name": "흥덕마을7단지힐스테이트",
@@ -18934,7 +19000,9 @@
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": "1",
-    "schools": []
+    "schools": [
+      "서천초등학교"
+    ]
   },
   {
     "name": "기흥역파크푸르지오",
@@ -25435,7 +25503,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
     "energy_grade": "1",
-    "schools": []
+    "schools": [
+      "서연초등학교"
+    ]
   },
   {
     "name": "동탄역더샵센트럴시티2차",
@@ -25709,7 +25779,9 @@
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.16896g",
     "energy_grade": "1+",
-    "schools": []
+    "schools": [
+      "동탄초등학교"
+    ]
   },
   {
     "name": "시범한빛마을금호어울림",
@@ -26491,7 +26563,9 @@
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "예솔초등학교"
+    ]
   },
   {
     "name": "힐스테이트동탄",
@@ -26951,7 +27025,9 @@
     "eq_design": true,
     "eq_capacity": "VII-0.176g",
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "한율초등학교"
+    ]
   },
   {
     "name": "동탄역이지더원",
@@ -27165,7 +27241,9 @@
     "eq_design": true,
     "eq_capacity": null,
     "energy_grade": null,
-    "schools": []
+    "schools": [
+      "다원초등학교"
+    ]
   },
   {
     "name": "더레이크시티부영2단지",
