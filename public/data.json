@@ -158,7 +158,11 @@
     "naver_place_id": "1094429641",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.197g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "창용초등학교",
+      "우만초등학교"
+    ]
   },
   {
     "name": "서광교파크스위첸",
@@ -385,7 +389,11 @@
     "naver_place_id": "1094429641",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.197g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "창용초등학교",
+      "우만초등학교"
+    ]
   },
   {
     "name": "수원하늘채더퍼스트1단지",
@@ -656,7 +664,8 @@
     "naver_place_id": "1123628133",
     "eq_design": true,
     "eq_capacity": "VII-0.204g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": []
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -1207,7 +1216,8 @@
     "naver_place_id": "1022680920",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": []
   },
   {
     "name": "수원센트럴아이파크자이",
@@ -1590,7 +1600,10 @@
     "naver_place_id": "1977879080",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "인계초등학교"
+    ]
   },
   {
     "name": "매교역푸르지오SKVIEW",
@@ -2385,7 +2398,8 @@
     "naver_place_id": "1518086424",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": []
   },
   {
     "name": "매교역푸르지오SKVIEW",
@@ -2916,7 +2930,8 @@
     "naver_place_id": "1518086424",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": []
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -3257,7 +3272,8 @@
     "naver_place_id": "1022680920",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": []
   },
   {
     "name": "영통SKVIEW",
@@ -3402,7 +3418,8 @@
     "naver_place_id": "19215010",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": "2"
+    "energy_grade": "2",
+    "schools": []
   },
   {
     "name": "영통아이파크캐슬3단지",
@@ -3653,7 +3670,8 @@
     "naver_place_id": "1306235298",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": []
   },
   {
     "name": "광교더포레스트",
@@ -3944,7 +3962,10 @@
     "naver_place_id": "20815791",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": "2"
+    "energy_grade": "2",
+    "schools": [
+      "이의초등학교"
+    ]
   },
   {
     "name": "영통아이파크캐슬2단지",
@@ -4193,7 +4214,10 @@
     "naver_place_id": "38684770",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.218g",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": [
+      "망포초등학교"
+    ]
   },
   {
     "name": "한양수자인",
@@ -4350,7 +4374,12 @@
     "naver_place_id": "19215137",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "태장초등학교",
+      "잠원초등학교",
+      "대선초등학교"
+    ]
   },
   {
     "name": "영통아이파크캐슬3단지",
@@ -4553,7 +4582,8 @@
     "naver_place_id": "1306235298",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": []
   },
   {
     "name": "가천대역두산위브",
@@ -4830,7 +4860,8 @@
     "naver_place_id": "38655154",
     "eq_design": true,
     "eq_capacity": "VII-0.141g",
-    "energy_grade": "2"
+    "energy_grade": "2",
+    "schools": []
   },
   {
     "name": "래미안금광",
@@ -5107,7 +5138,10 @@
     "naver_place_id": "19220843",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "하원초등학교"
+    ]
   },
   {
     "name": "한양수자인성남마크뷰",
@@ -5296,7 +5330,8 @@
     "naver_place_id": "1150649395",
     "eq_design": true,
     "eq_capacity": "VII-0.169g",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": []
   },
   {
     "name": "힐스테이트구성",
@@ -5735,7 +5770,8 @@
     "naver_place_id": "1946716060",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.1971g",
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "용인동백두산위브더제니스",
@@ -6038,7 +6074,8 @@
     "naver_place_id": "1088441482",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": []
   },
   {
     "name": "기흥역더샵",
@@ -6235,7 +6272,8 @@
     "naver_place_id": "1883052842",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
-    "energy_grade": "2"
+    "energy_grade": "2",
+    "schools": []
   },
   {
     "name": "기흥역파크푸르지오",
@@ -6452,7 +6490,10 @@
     "naver_place_id": "37406203",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": [
+      "한얼초등학교"
+    ]
   },
   {
     "name": "힐스테이트광교산",
@@ -6647,7 +6688,8 @@
     "naver_place_id": "1444692298",
     "eq_design": true,
     "eq_capacity": "VII-0.197g",
-    "energy_grade": "1++"
+    "energy_grade": "1++",
+    "schools": []
   },
   {
     "name": "힐스테이트광교산",
@@ -6848,7 +6890,8 @@
     "naver_place_id": "1444692298",
     "eq_design": true,
     "eq_capacity": "VII-0.197g",
-    "energy_grade": "1++"
+    "energy_grade": "1++",
+    "schools": []
   },
   {
     "name": "미사강변트래지안",
@@ -6991,7 +7034,10 @@
     "naver_place_id": "35069988",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": [
+      "미사초등학교"
+    ]
   },
   {
     "name": "반정아이파크캐슬5단지",
@@ -7394,7 +7440,10 @@
     "naver_place_id": "1025760688",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "글빛초등학교"
+    ]
   },
   {
     "name": "신동탄포레자이",
@@ -7687,7 +7736,10 @@
     "naver_place_id": "1481069447",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "율목초등학교"
+    ]
   },
   {
     "name": "신동탄포레자이",
@@ -7992,7 +8044,10 @@
     "naver_place_id": "1481069447",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "율목초등학교"
+    ]
   },
   {
     "name": "병점역아이파크캐슬",
@@ -8285,7 +8340,10 @@
     "naver_place_id": "1716012036",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.218g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "새봄초등학교"
+    ]
   },
   {
     "name": "한신더휴",
@@ -8604,7 +8662,8 @@
     "naver_place_id": "1767651518",
     "eq_design": true,
     "eq_capacity": "VII-0.169g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": []
   },
   {
     "name": "시범한빛마을동탄아이파크",
@@ -8743,7 +8802,10 @@
     "naver_place_id": "19118520",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "석우초등학교"
+    ]
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -9080,7 +9142,10 @@
     "naver_place_id": "35958893",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "방교초등학교"
+    ]
   },
   {
     "name": "동탄역신안인스빌리베라2차",
@@ -9381,7 +9446,8 @@
     "naver_place_id": "36606052",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "동탄역더샵센트럴시티2차",
@@ -9660,7 +9726,8 @@
     "naver_place_id": "37918909",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.16896g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": []
   },
   {
     "name": "힐스테이트동탄",
@@ -9981,7 +10048,8 @@
     "naver_place_id": "37899188",
     "eq_design": true,
     "eq_capacity": "VII-0.176g",
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "한화 포레나 동탄호수",
@@ -10222,7 +10290,10 @@
     "naver_place_id": "1502126939",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "화남초등학교"
+    ]
   },
   {
     "name": "동탄역 호반 써밋",
@@ -10575,7 +10646,8 @@
     "naver_place_id": "33142464",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -11188,7 +11260,10 @@
     "naver_place_id": "35958893",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "방교초등학교"
+    ]
   },
   {
     "name": "동탄역센트럴푸르지오",
@@ -11747,7 +11822,8 @@
     "naver_place_id": "31683836",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "동탄역신안인스빌리베라2차",
@@ -11946,7 +12022,8 @@
     "naver_place_id": "36606052",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "금호어울림레이크",
@@ -12165,7 +12242,8 @@
     "naver_place_id": "37824819",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": []
   },
   {
     "name": "동탄역센트럴푸르지오",
@@ -12376,7 +12454,8 @@
     "naver_place_id": "31683836",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "반도유보라아이비파크3",
@@ -12599,7 +12678,10 @@
     "naver_place_id": "34827717",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "영천초등학교"
+    ]
   },
   {
     "name": "동탄역푸르지오",
@@ -12818,7 +12900,10 @@
     "naver_place_id": "36391789",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "치동초등학교"
+    ]
   },
   {
     "name": "수원 SK SKY VIEW",
@@ -13101,7 +13186,10 @@
     "naver_place_id": "19196450",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": "2"
+    "energy_grade": "2",
+    "schools": [
+      "다솔초등학교"
+    ]
   },
   {
     "name": "더샵광교산퍼스트파크",
@@ -13270,7 +13358,10 @@
     "naver_place_id": "1990115072",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "영화초등학교"
+    ]
   },
   {
     "name": "화서역푸르지오더에듀포레",
@@ -13647,7 +13738,11 @@
     "naver_place_id": "19198500",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "정천초등학교",
+      "율현초등학교"
+    ]
   },
   {
     "name": "수원하늘채더퍼스트1단지",
@@ -13978,7 +14073,8 @@
     "naver_place_id": "1123628133",
     "eq_design": true,
     "eq_capacity": "VII-0.204g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": []
   },
   {
     "name": "수원모아미래도센트럴타운2단지",
@@ -14185,7 +14281,10 @@
     "naver_place_id": "36996146",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.176g",
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "가온초등학교"
+    ]
   },
   {
     "name": "호반베르디움더센트럴",
@@ -14494,7 +14593,8 @@
     "naver_place_id": "37225381",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": []
   },
   {
     "name": "호반 써밋 수원",
@@ -14741,7 +14841,10 @@
     "naver_place_id": "1577083205",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": [
+      "금곡초등학교"
+    ]
   },
   {
     "name": "힐스테이트푸르지오수원",
@@ -15130,7 +15233,8 @@
     "naver_place_id": "1022680920",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": []
   },
   {
     "name": "수원센트럴아이파크자이",
@@ -15435,7 +15539,10 @@
     "naver_place_id": "1977879080",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "인계초등학교"
+    ]
   },
   {
     "name": "래미안노블클래스2단지",
@@ -15554,7 +15661,8 @@
     "naver_place_id": "19210657",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "래미안노블클래스1단지",
@@ -15721,7 +15829,8 @@
     "naver_place_id": "19211690",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "광교더포레스트",
@@ -16030,7 +16139,10 @@
     "naver_place_id": "20815791",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": "2"
+    "energy_grade": "2",
+    "schools": [
+      "이의초등학교"
+    ]
   },
   {
     "name": "매탄위브하늘채",
@@ -16571,7 +16683,12 @@
     "naver_place_id": "19212623",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "효원초등학교",
+      "매탄초등학교",
+      "효동초등학교"
+    ]
   },
   {
     "name": "영흥숲푸르지오파크비엔",
@@ -16764,7 +16881,8 @@
     "naver_place_id": "1020641276",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": []
   },
   {
     "name": "영통롯데캐슬엘클래스2단지",
@@ -16979,7 +17097,12 @@
     "naver_place_id": "1231409221",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.225g",
-    "energy_grade": "1++"
+    "energy_grade": "1++",
+    "schools": [
+      "망포초등학교",
+      "곡반초등학교",
+      "수원선일초등학교"
+    ]
   },
   {
     "name": "영통롯데캐슬엘클래스1단지",
@@ -17214,7 +17337,11 @@
     "naver_place_id": "1732696090",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
-    "energy_grade": "1++"
+    "energy_grade": "1++",
+    "schools": [
+      "글빛초등학교",
+      "망포초등학교"
+    ]
   },
   {
     "name": "한양수자인",
@@ -17371,7 +17498,12 @@
     "naver_place_id": "19215137",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "태장초등학교",
+      "잠원초등학교",
+      "대선초등학교"
+    ]
   },
   {
     "name": "가천대역두산위브",
@@ -17540,7 +17672,8 @@
     "naver_place_id": "38655154",
     "eq_design": true,
     "eq_capacity": "VII-0.141g",
-    "energy_grade": "2"
+    "energy_grade": "2",
+    "schools": []
   },
   {
     "name": "성남자이",
@@ -17703,7 +17836,11 @@
     "naver_place_id": "19223455",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "대하초등학교",
+      "대원초등학교"
+    ]
   },
   {
     "name": "신흥덕롯데캐슬레이시티",
@@ -17974,7 +18111,8 @@
     "naver_place_id": "483476723",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "용인동백두산위브더제니스",
@@ -18205,7 +18343,8 @@
     "naver_place_id": "1088441482",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": []
   },
   {
     "name": "흥덕마을7단지힐스테이트",
@@ -18486,7 +18625,10 @@
     "naver_place_id": "19295756",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "흥덕초등학교"
+    ]
   },
   {
     "name": "힐스테이트서천",
@@ -18791,7 +18933,8 @@
     "naver_place_id": "35797334",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": []
   },
   {
     "name": "기흥역파크푸르지오",
@@ -19128,7 +19271,10 @@
     "naver_place_id": "37406203",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": [
+      "한얼초등학교"
+    ]
   },
   {
     "name": "흥덕마을동원로얄듀크",
@@ -19401,7 +19547,12 @@
     "naver_place_id": "19295805",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "샘말초등학교",
+      "석현초등학교",
+      "흥덕초등학교"
+    ]
   },
   {
     "name": "흥덕마을자연앤스위첸",
@@ -19636,7 +19787,11 @@
     "naver_place_id": "19295705",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": "2"
+    "energy_grade": "2",
+    "schools": [
+      "흥덕초등학교",
+      "청곡초등학교"
+    ]
   },
   {
     "name": "기흥더샵프라임뷰",
@@ -19859,7 +20014,11 @@
     "naver_place_id": "31249188",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "산양초등학교",
+      "구갈초등학교"
+    ]
   },
   {
     "name": "성동마을수지자이",
@@ -20032,7 +20191,11 @@
     "naver_place_id": "19301588",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "효자초등학교",
+      "성복초등학교"
+    ]
   },
   {
     "name": "대명강변타운",
@@ -20353,7 +20516,11 @@
     "naver_place_id": "19277705",
     "eq_design": false,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "창우초등학교",
+      "하남초등학교"
+    ]
   },
   {
     "name": "미사강변한신휴플러스",
@@ -20510,7 +20677,10 @@
     "naver_place_id": "32875533",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": "2"
+    "energy_grade": "2",
+    "schools": [
+      "미사초등학교"
+    ]
   },
   {
     "name": "병점역아이파크캐슬",
@@ -21055,7 +21225,10 @@
     "naver_place_id": "1716012036",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.218g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "새봄초등학교"
+    ]
   },
   {
     "name": "반정아이파크캐슬4단지",
@@ -21344,7 +21517,10 @@
     "naver_place_id": "1651538963",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "망포초등학교"
+    ]
   },
   {
     "name": "반정아이파크캐슬5단지",
@@ -21795,7 +21971,10 @@
     "naver_place_id": "1025760688",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.204g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "글빛초등학교"
+    ]
   },
   {
     "name": "나노시티역롯데캐슬",
@@ -22070,7 +22249,10 @@
     "naver_place_id": "1918899788",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "화성반월초등학교"
+    ]
   },
   {
     "name": "솔빛마을쌍용예가",
@@ -22353,7 +22535,11 @@
     "naver_place_id": "19118539",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "솔빛초등학교",
+      "반송초등학교"
+    ]
   },
   {
     "name": "푸르지오",
@@ -22512,7 +22698,10 @@
     "naver_place_id": "19118903",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "석우초등학교"
+    ]
   },
   {
     "name": "시범다은마을우남퍼스트빌",
@@ -22700,7 +22889,10 @@
     "naver_place_id": "19117781",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "금곡초등학교"
+    ]
   },
   {
     "name": "동탄역대원칸타빌포레지움",
@@ -22959,7 +23151,10 @@
     "naver_place_id": "32490122",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "예솔초등학교"
+    ]
   },
   {
     "name": "동탄역신안인스빌리베라1차",
@@ -23202,7 +23397,10 @@
     "naver_place_id": "33306565",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "청목초등학교"
+    ]
   },
   {
     "name": "솔빛마을신도브래뉴",
@@ -23395,7 +23593,11 @@
     "naver_place_id": "19118534",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "솔빛초등학교",
+      "반송초등학교"
+    ]
   },
   {
     "name": "동탄2엘에이치26단지아파트(에이65블록)",
@@ -23560,7 +23762,10 @@
     "naver_place_id": "34787340",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "방교초등학교"
+    ]
   },
   {
     "name": "동탄2하우스디더레이크",
@@ -23777,7 +23982,10 @@
     "naver_place_id": "35958893",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "방교초등학교"
+    ]
   },
   {
     "name": "시범한빛마을한화꿈에그린",
@@ -23986,7 +24194,10 @@
     "naver_place_id": "1367484317",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "석우초등학교"
+    ]
   },
   {
     "name": "더레이크시티부영1단지",
@@ -24175,7 +24386,10 @@
     "naver_place_id": "1188986611",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "정현초등학교"
+    ]
   },
   {
     "name": "KCC스위첸아파트",
@@ -24616,7 +24830,10 @@
     "naver_place_id": "31004565",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": [
+      "무봉초등학교"
+    ]
   },
   {
     "name": "반도유보라아이비파크3",
@@ -24851,7 +25068,10 @@
     "naver_place_id": "34827717",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "영천초등학교"
+    ]
   },
   {
     "name": "시범한빛마을삼부르네상스",
@@ -25154,7 +25374,10 @@
     "naver_place_id": "19117842",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "석우초등학교"
+    ]
   },
   {
     "name": "동탄호수자이파밀리에",
@@ -25371,7 +25594,8 @@
     "naver_place_id": "37648784",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
-    "energy_grade": "1"
+    "energy_grade": "1",
+    "schools": []
   },
   {
     "name": "동탄역더샵센트럴시티2차",
@@ -25644,7 +25868,8 @@
     "naver_place_id": "37918909",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.16896g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": []
   },
   {
     "name": "시범한빛마을금호어울림",
@@ -25873,7 +26098,10 @@
     "naver_place_id": "19118522",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "학동초등학교"
+    ]
   },
   {
     "name": "더레이크시티부영5단지",
@@ -26180,7 +26408,10 @@
     "naver_place_id": "998099338",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "정현초등학교"
+    ]
   },
   {
     "name": "동탄역 호반 써밋",
@@ -26419,7 +26650,8 @@
     "naver_place_id": "33142464",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "힐스테이트동탄",
@@ -26878,7 +27110,8 @@
     "naver_place_id": "37899188",
     "eq_design": true,
     "eq_capacity": "VII-0.176g",
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "동탄역이지더원",
@@ -27091,7 +27324,8 @@
     "naver_place_id": "33675568",
     "eq_design": true,
     "eq_capacity": null,
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": []
   },
   {
     "name": "더레이크시티부영2단지",
@@ -27294,7 +27528,10 @@
     "naver_place_id": "1447531855",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.141g",
-    "energy_grade": null
+    "energy_grade": null,
+    "schools": [
+      "정현초등학교"
+    ]
   },
   {
     "name": "한화 포레나 동탄호수",
@@ -27505,6 +27742,9 @@
     "naver_place_id": "1502126939",
     "eq_design": true,
     "eq_capacity": "Ⅶ-0.169g",
-    "energy_grade": "1+"
+    "energy_grade": "1+",
+    "schools": [
+      "화남초등학교"
+    ]
   }
 ]
