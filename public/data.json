@@ -1224,7 +1224,7 @@
     "display_name": "수원센트럴아이파크자이",
     "atype": "74",
     "area": 74,
-    "avg": 73933,
+    "avg": 75400,
     "accel": 1.1,
     "r3_avg": 75943,
     "p3_avg": 75146,
@@ -1610,7 +1610,7 @@
     "display_name": "매교역푸르지오SKVIEW",
     "atype": "59",
     "area": 59.9,
-    "avg": 81100,
+    "avg": 81233,
     "accel": 4.4,
     "r3_avg": 78433,
     "p3_avg": 75121,
@@ -4224,7 +4224,7 @@
     "display_name": "한양수자인에듀파크",
     "atype": "59",
     "area": 60,
-    "avg": 74333,
+    "avg": 73750,
     "accel": 10.1,
     "r3_avg": 75000,
     "p3_avg": 68100,
@@ -11270,7 +11270,7 @@
     "display_name": "동탄역센트럴푸르지오",
     "atype": "59",
     "area": 59.4,
-    "avg": 81350,
+    "avg": 81614,
     "accel": 7.7,
     "r3_avg": 78788,
     "p3_avg": 73156,
@@ -19559,7 +19559,7 @@
     "display_name": "흥덕마을3단지자연앤스위첸",
     "atype": "84",
     "area": 84.9,
-    "avg": 77450,
+    "avg": 73900,
     "accel": 2.6,
     "r3_avg": 80630,
     "p3_avg": 78563,
@@ -20523,166 +20523,6 @@
     ]
   },
   {
-    "name": "미사강변한신휴플러스",
-    "display_name": "미사강변한신휴플러스",
-    "atype": "84",
-    "area": 85,
-    "avg": 90000,
-    "accel": 6.6,
-    "r3_avg": 103450,
-    "p3_avg": 97040,
-    "count": 9,
-    "build": 2015,
-    "region": "하남시",
-    "dong": "망월동",
-    "liquidity": 1.8,
-    "morning": null,
-    "evening": null,
-    "morning_cnt": 0,
-    "evening_cnt": 0,
-    "morning_details": [],
-    "evening_details": [],
-    "slope": 0.7,
-    "slope_method": "dong_naver",
-    "slope_dongs": [
-      {
-        "dong": 1101,
-        "elev": 23.5
-      },
-      {
-        "dong": 1102,
-        "elev": 24.1
-      },
-      {
-        "dong": 1103,
-        "elev": 23.9
-      },
-      {
-        "dong": 1104,
-        "elev": 24.1
-      },
-      {
-        "dong": 1105,
-        "elev": 24.1
-      },
-      {
-        "dong": 1106,
-        "elev": 24
-      },
-      {
-        "dong": 1107,
-        "elev": 24.1
-      },
-      {
-        "dong": 1108,
-        "elev": 24
-      },
-      {
-        "dong": 1109,
-        "elev": 24
-      },
-      {
-        "dong": 1110,
-        "elev": 24.2
-      }
-    ],
-    "pedia1": 12,
-    "pedia1_name": "플러스맘소아청소년과의원",
-    "pedia1_slope": -0.6,
-    "pedia2": 16,
-    "pedia2_name": "연세365소아청소년과",
-    "pedia2_slope": -3,
-    "hcode": "9IW98",
-    "recent_trades": [
-      {
-        "date": "2026-04-03",
-        "price": 9,
-        "floor": 12,
-        "area": 85
-      },
-      {
-        "date": "2026-03-14",
-        "price": 10.5,
-        "floor": 4,
-        "area": 85
-      },
-      {
-        "date": "2026-03-10",
-        "price": 11,
-        "floor": 6,
-        "area": 85
-      },
-      {
-        "date": "2026-02-09",
-        "price": 11,
-        "floor": 15,
-        "area": 85
-      },
-      {
-        "date": "2026-01-24",
-        "price": 10.4,
-        "floor": 10,
-        "area": 84.9
-      },
-      {
-        "date": "2026-01-21",
-        "price": 9.9,
-        "floor": 3,
-        "area": 84.9
-      },
-      {
-        "date": "2026-01-03",
-        "price": 9.8,
-        "floor": 11,
-        "area": 85
-      },
-      {
-        "date": "2025-12-29",
-        "price": 9,
-        "floor": 2,
-        "area": 84.9
-      },
-      {
-        "date": "2025-12-13",
-        "price": 9.5,
-        "floor": 10,
-        "area": 84.7
-      }
-    ],
-    "parking": 923,
-    "parking_per_hh": 1.21,
-    "elevator": 21,
-    "households": 763,
-    "dong_count": 10,
-    "top_floor": 22,
-    "heat_type": "지역난방",
-    "structure": "철골철근콘크리트구조",
-    "cctv": 294,
-    "doro_juso": "경기도 하남시 미사강변한강로 170",
-    "use_date": "20150116",
-    "repair_fund": 573639780,
-    "subway_line": "5호선",
-    "subway_station": null,
-    "education": "초등학교(미사) 고등학교(미사)",
-    "energy": {
-      "heat": 0,
-      "waterHot": 0,
-      "elect": 0,
-      "waterCool": 0,
-      "gas": 0
-    },
-    "mgmt_cost": 33.83,
-    "mgmt_summer": 29.45,
-    "mgmt_winter": 45.75,
-    "naver_place_id": "32875533",
-    "eq_design": true,
-    "eq_capacity": null,
-    "energy_grade": "2",
-    "schools": [
-      "미사초등학교"
-    ]
-  },
-  {
     "name": "병점역아이파크캐슬",
     "display_name": "병점역아이파크캐슬",
     "atype": "84",
@@ -21235,7 +21075,7 @@
     "display_name": "반정아이파크캐슬4단지",
     "atype": "84",
     "area": 84.7,
-    "avg": 77370,
+    "avg": 77300,
     "accel": 3,
     "r3_avg": 76962,
     "p3_avg": 74690,
@@ -23161,7 +23001,7 @@
     "display_name": "동탄역신안인스빌리베라1차",
     "atype": "84",
     "area": 85,
-    "avg": 73433,
+    "avg": 73400,
     "accel": 1.8,
     "r3_avg": 72829,
     "p3_avg": 71570,
