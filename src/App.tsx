@@ -521,6 +521,7 @@ function SchoolCell({ data }: { data: AptData }) {
                             {labels.map((l, i) => sums[i] > 0 ? (
                               <span key={l} className="rounded bg-destructive/10 text-destructive px-1">{l} {sums[i]}</span>
                             ) : null)}
+                            <span className="text-muted-foreground text-[10px] self-center">유형 중복 포함</span>
                           </div>
                         ) : null;
                       })()}
