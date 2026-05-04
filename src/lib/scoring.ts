@@ -1,5 +1,6 @@
 export interface AptData {
   name: string;
+  display_name: string;
   atype: string;
   area: number;
   avg: number;
@@ -11,7 +12,7 @@ export interface AptData {
   region: string;
   dong: string;
   liquidity: number | null;
-  liq_approx: boolean;
+  liq_approx?: boolean;
   morning: number | null;
   evening: number | null;
   morning_cnt: number;
@@ -46,6 +47,19 @@ export interface AptData {
   subway_station: string | null;
   education: string | null;
   energy: { heat: number; waterHot: number; elect: number; waterCool: number; gas: number } | null;
+  // 네이버
+  naver_place_id: string | null;
+  // 관리비 (만원/월)
+  mgmt_cost: number | null;
+  mgmt_summer: number | null;
+  mgmt_winter: number | null;
+  // 건축물대장
+  eq_design: boolean | null;
+  eq_capacity: string | null;
+  energy_grade: string | null;
+  // 배정 초등학교
+  schools: string[];
+  school_violence: Record<string, { s1: number; s2: number; total: number }>;
   // computed
   score: number;
   pedScore: number | null;
@@ -102,16 +116,36 @@ export function pedLabel(v: number | null): Label {
   return { text: "매우나쁨", variant: "destructive" };
 }
 
+export function liquidityLabel(v: number | null): Label {
+  if (v == null) return { text: "-", variant: "default" };
+  if (v >= 7) return { text: `${v}%`, variant: "success" };
+  if (v >= 4) return { text: `${v}%`, variant: "default" };
+  if (v >= 2) return { text: `${v}%`, variant: "warning" };
+  return { text: `${v}%`, variant: "destructive" };
+}
+
+export function mgmtCostLabel(v: number | null): Label {
+  if (v == null) return { text: "-", variant: "default" };
+  if (v <= 25) return { text: `${v}만`, variant: "success" };
+  if (v <= 30) return { text: `${v}만`, variant: "default" };
+  if (v <= 35) return { text: `${v}만`, variant: "warning" };
+  return { text: `${v}만`, variant: "destructive" };
+}
+
 export function parkingLabel(v: number | null): Label {
   if (v == null) return { text: "-", variant: "default" };
-  if (v >= 1.5) return { text: `${v}대`, variant: "success" };
-  if (v >= 1.2) return { text: `${v}대`, variant: "success" };
-  if (v >= 1.0) return { text: `${v}대`, variant: "default" };
-  if (v >= 0.8) return { text: `${v}대`, variant: "warning" };
+  if (v >= 1.3) return { text: `${v}대`, variant: "success" };
+  if (v >= 1.2) return { text: `${v}대`, variant: "default" };
+  if (v >= 1.1) return { text: `${v}대`, variant: "warning" };
   return { text: `${v}대`, variant: "destructive" };
 }
 
-export function naverMapUrl(query: string, isMobile: boolean): string {
+export function naverMapUrl(placeId: string | null, query: string, isMobile: boolean): string {
+  if (placeId) {
+    return isMobile
+      ? `nmap://place?id=${placeId}&appname=com.nhn.NaverMap`
+      : `https://map.naver.com/v5/entry/place/${placeId}`;
+  }
   return isMobile
     ? `nmap://search?query=${encodeURIComponent(query)}&appname=com.nhn.NaverMap`
     : `https://map.naver.com/v5/search/${encodeURIComponent(query)}`;
