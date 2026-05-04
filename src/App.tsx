@@ -12,7 +12,6 @@ import {
   commuteLabel, pedLabel, parkingLabel, liquidityLabel, mgmtCostLabel, naverMapUrl, type Label,
 } from "@/lib/scoring";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
@@ -486,47 +485,47 @@ function SchoolCell({ data }: { data: AptData }) {
   const sv = data.school_violence ?? {};
   const maxViolence = Math.max(0, ...Object.values(sv).map((v) => v.total));
   return (
-    <TooltipProvider delay={200}>
-      <Tooltip>
-        <TooltipTrigger className="text-xs text-left cursor-default max-w-[80px] truncate block">
+    <Popover>
+      <PopoverTrigger>
+        <span className="cursor-pointer text-xs">
           {data.schools[0].replace("초등학교", "초")}
           {data.schools.length > 1 && <span className="text-muted-foreground"> +{data.schools.length - 1}</span>}
           {maxViolence > 0 && <span className="text-destructive ml-0.5">({maxViolence})</span>}
-        </TooltipTrigger>
-        <TooltipContent className="text-xs max-w-[320px]" side="left">
-          <p className="font-semibold mb-2">배정 초등학교</p>
-          <div className="flex flex-col gap-2">
-            {data.schools.map((s) => {
-              const v = sv[s];
-              return (
-                <div key={s} className="rounded-md bg-background/50 px-2 py-1.5">
-                  <div className="font-medium mb-1">{s}</div>
-                  {v ? (
-                    v.total > 0 ? (
-                      <div className="flex flex-col gap-0.5">
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-destructive font-semibold">학폭 심의 {v.total}건</span>
-                          <span className="text-muted-foreground">(2024학년도)</span>
-                        </div>
-                        <div className="flex gap-3 text-muted-foreground">
-                          <span>1학기 <span className={v.s1 > 0 ? "text-destructive" : ""}>{v.s1}건</span></span>
-                          <span>2학기 <span className={v.s2 > 0 ? "text-destructive" : ""}>{v.s2}건</span></span>
-                        </div>
+        </span>
+      </PopoverTrigger>
+      <PopoverContent className="w-64 text-xs">
+        <p className="font-semibold mb-2">배정 초등학교</p>
+        <div className="flex flex-col gap-2">
+          {data.schools.map((s) => {
+            const v = sv[s];
+            return (
+              <div key={s} className="rounded-md bg-muted/50 px-2 py-1.5">
+                <div className="font-medium mb-1">{s}</div>
+                {v ? (
+                  v.total > 0 ? (
+                    <div className="flex flex-col gap-0.5">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-destructive font-semibold">학폭 심의 {v.total}건</span>
+                        <span className="text-muted-foreground">(2024학년도)</span>
                       </div>
-                    ) : (
-                      <span className="text-green-500">학폭 심의 0건</span>
-                    )
+                      <div className="flex gap-3 text-muted-foreground">
+                        <span>1학기 <span className={v.s1 > 0 ? "text-destructive" : ""}>{v.s1}건</span></span>
+                        <span>2학기 <span className={v.s2 > 0 ? "text-destructive" : ""}>{v.s2}건</span></span>
+                      </div>
+                    </div>
                   ) : (
-                    <span className="text-muted-foreground">데이터 미조회</span>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          <p className="text-muted-foreground mt-2 text-[10px]">출처: 학교알리미 학교폭력대책심의위원회 심의 결과</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+                    <span className="text-green-500">학폭 심의 0건</span>
+                  )
+                ) : (
+                  <span className="text-muted-foreground">데이터 미조회</span>
+                )}
+              </div>
+            );
+          })}
+        </div>
+        <p className="text-muted-foreground mt-2 text-[10px]">출처: 학교알리미 학교폭력대책심의위원회 심의 결과</p>
+      </PopoverContent>
+    </Popover>
   );
 }
 
