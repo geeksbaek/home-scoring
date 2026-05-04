@@ -503,7 +503,7 @@ function SchoolCell({ data }: { data: AptData }) {
                 <div className="font-medium mb-1">{s}</div>
                 {v ? (
                   v.total > 0 ? (
-                    <div className="flex flex-col gap-0.5">
+                    <div className="flex flex-col gap-1">
                       <div className="flex items-center gap-1.5">
                         <span className="text-destructive font-semibold">학폭 심의 {v.total}건</span>
                         <span className="text-muted-foreground">(2024학년도)</span>
@@ -512,6 +512,23 @@ function SchoolCell({ data }: { data: AptData }) {
                         <span>1학기 <span className={v.s1 > 0 ? "text-destructive" : ""}>{v.s1}건</span></span>
                         <span>2학기 <span className={v.s2 > 0 ? "text-destructive" : ""}>{v.s2}건</span></span>
                       </div>
+                      {v.types && (() => {
+                        const labels = ["신체","언어","금품","강요","따돌림","성폭력","사이버","기타"];
+                        const sums = labels.map((_, i) => (v.types!.s1[i] || 0) + (v.types!.s2[i] || 0));
+                        const active = labels.filter((_, i) => sums[i] > 0);
+                        return active.length > 0 ? (
+                          <div className="flex flex-wrap gap-1 mt-0.5">
+                            {labels.map((l, i) => sums[i] > 0 ? (
+                              <span key={l} className="rounded bg-destructive/10 text-destructive px-1">{l} {sums[i]}</span>
+                            ) : null)}
+                          </div>
+                        ) : null;
+                      })()}
+                      {v.victims && (v.victims[0] + v.victims[1] > 0) && (
+                        <div className="text-muted-foreground mt-0.5">
+                          피해 {v.victims[0] + v.victims[1]}명 · 가해 {(v.perps?.[0] || 0) + (v.perps?.[1] || 0)}명
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <span className="text-green-500">학폭 심의 0건</span>
