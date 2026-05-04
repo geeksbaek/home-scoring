@@ -14,9 +14,9 @@
     "dong": "연무동",
     "liquidity": 3.3,
     "morning": 20,
-    "evening": 33,
+    "evening": 31,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -43,6 +43,12 @@
         "weekday": "금",
         "minutes": 25,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 29,
+        "time": "16:30"
       }
     ],
     "slope": 5.1,
@@ -191,9 +197,9 @@
     "dong": "연무동",
     "liquidity": 2.5,
     "morning": 20,
-    "evening": 33,
+    "evening": 31,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -220,6 +226,12 @@
         "weekday": "금",
         "minutes": 25,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 29,
+        "time": "16:30"
       }
     ],
     "slope": 5.1,
@@ -434,9 +446,9 @@
     "dong": "곡반정동",
     "liquidity": 4.2,
     "morning": 38,
-    "evening": 49,
+    "evening": 48,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -481,6 +493,12 @@
         "weekday": "금",
         "minutes": 39,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 47,
+        "time": "16:30"
       }
     ],
     "slope": 4.3,
@@ -715,9 +733,9 @@
     "dong": "매교동",
     "liquidity": 3.2,
     "morning": 33,
-    "evening": 47,
+    "evening": 46,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -762,6 +780,12 @@
         "weekday": "금",
         "minutes": 42,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 45,
+        "time": "16:30"
       }
     ],
     "slope": 14.2,
@@ -1278,7 +1302,7 @@
     "morning": 29,
     "evening": 43,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -1317,6 +1341,12 @@
         "weekday": "금",
         "minutes": 35,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 41,
+        "time": "16:30"
       }
     ],
     "slope": 14.6,
@@ -1671,7 +1701,7 @@
     "morning": 30,
     "evening": 43,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -1716,6 +1746,12 @@
         "weekday": "금",
         "minutes": 35,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 41,
+        "time": "16:30"
       }
     ],
     "slope": 12.8,
@@ -2476,7 +2512,7 @@
     "morning": 30,
     "evening": 43,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -2521,6 +2557,12 @@
         "weekday": "금",
         "minutes": 35,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 41,
+        "time": "16:30"
       }
     ],
     "slope": 12.8,
@@ -3015,9 +3057,9 @@
     "dong": "매교동",
     "liquidity": 4.8,
     "morning": 33,
-    "evening": 47,
+    "evening": 46,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -3062,6 +3104,12 @@
         "weekday": "금",
         "minutes": 42,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 45,
+        "time": "16:30"
       }
     ],
     "slope": 14.2,
@@ -3368,7 +3416,7 @@
     "morning": 29,
     "evening": 42,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -3395,6 +3443,12 @@
         "weekday": "금",
         "minutes": 36,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 41,
+        "time": "16:30"
       }
     ],
     "slope": 2.9,
@@ -3523,7 +3577,7 @@
     "morning": 34,
     "evening": 44,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -3568,6 +3622,12 @@
         "weekday": "금",
         "minutes": 41,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 42,
+        "time": "16:30"
       }
     ],
     "slope": 1.6,
@@ -3784,7 +3844,7 @@
     "morning": 26,
     "evening": 35,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -3823,6 +3883,12 @@
         "weekday": "금",
         "minutes": 30,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 32,
+        "time": "16:30"
       }
     ],
     "slope": 24,
@@ -4085,7 +4151,7 @@
     "morning": 32,
     "evening": 46,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -4130,6 +4196,12 @@
         "weekday": "금",
         "minutes": 39,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 46,
+        "time": "16:30"
       }
     ],
     "slope": 2.9,
@@ -4342,9 +4414,9 @@
     "dong": "망포동",
     "liquidity": 6.5,
     "morning": 27,
-    "evening": 39,
+    "evening": 37,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -4371,6 +4443,12 @@
         "weekday": "금",
         "minutes": 32,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 35,
+        "time": "16:30"
       }
     ],
     "slope": 3.2,
@@ -4523,7 +4601,7 @@
     "morning": 34,
     "evening": 44,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -4568,6 +4646,12 @@
         "weekday": "금",
         "minutes": 41,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 42,
+        "time": "16:30"
       }
     ],
     "slope": 1.6,
@@ -4736,7 +4820,7 @@
     "morning": 19,
     "evening": 22,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -4781,6 +4865,12 @@
         "weekday": "금",
         "minutes": 20,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 22,
+        "time": "16:30"
       }
     ],
     "slope": 9.1,
@@ -5021,9 +5111,9 @@
     "dong": "금광동",
     "liquidity": 2.3,
     "morning": 26,
-    "evening": 30,
+    "evening": 31,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -5062,6 +5152,12 @@
         "weekday": "금",
         "minutes": 27,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 32,
+        "time": "16:30"
       }
     ],
     "slope": 42,
@@ -5308,9 +5404,9 @@
     "dong": "금광동",
     "liquidity": 1.4,
     "morning": 25,
-    "evening": 29,
+    "evening": 30,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -5355,6 +5451,12 @@
         "weekday": "금",
         "minutes": 26,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 31,
+        "time": "16:30"
       }
     ],
     "slope": 26.7,
@@ -5507,9 +5609,9 @@
     "dong": "언남동",
     "liquidity": 10.8,
     "morning": 27,
-    "evening": 30,
+    "evening": 32,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -5554,6 +5656,12 @@
         "weekday": "금",
         "minutes": 28,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 36,
+        "time": "16:30"
       }
     ],
     "slope": 3.9,
@@ -5958,7 +6066,7 @@
     "morning": 30,
     "evening": 35,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -5985,6 +6093,12 @@
         "weekday": "금",
         "minutes": 35,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 36,
+        "time": "16:30"
       }
     ],
     "slope": 33,
@@ -6269,9 +6383,9 @@
     "dong": "구갈동",
     "liquidity": 4.4,
     "morning": 19,
-    "evening": 29,
+    "evening": 31,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -6286,6 +6400,12 @@
         "weekday": "금",
         "minutes": 29,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 32,
+        "time": "16:30"
       }
     ],
     "slope": 10.8,
@@ -6470,9 +6590,9 @@
     "dong": "구갈동",
     "liquidity": 8.5,
     "morning": 23,
-    "evening": 37,
+    "evening": 36,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -6511,6 +6631,12 @@
         "weekday": "금",
         "minutes": 31,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 33,
+        "time": "16:30"
       }
     ],
     "slope": 8.3,
@@ -6693,7 +6819,7 @@
     "morning": 22,
     "evening": 32,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -6738,6 +6864,12 @@
         "weekday": "금",
         "minutes": 25,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 30,
+        "time": "16:30"
       }
     ],
     "slope": 43.4,
@@ -6892,7 +7024,7 @@
     "morning": 22,
     "evening": 32,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -6937,6 +7069,12 @@
         "weekday": "금",
         "minutes": 25,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 30,
+        "time": "16:30"
       }
     ],
     "slope": 43.4,
@@ -7095,9 +7233,9 @@
     "dong": "망월동",
     "liquidity": 1.1,
     "morning": 30,
-    "evening": 35,
+    "evening": 36,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -7112,6 +7250,12 @@
         "weekday": "금",
         "minutes": 35,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 36,
+        "time": "16:30"
       }
     ],
     "slope": 0.2,
@@ -7250,7 +7394,7 @@
     "morning": 35,
     "evening": 41,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -7289,6 +7433,12 @@
         "weekday": "금",
         "minutes": 35,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 40,
+        "time": "16:30"
       }
     ],
     "slope": 7.2,
@@ -7663,7 +7813,7 @@
     "morning": 29,
     "evening": 39,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -7708,6 +7858,12 @@
         "weekday": "금",
         "minutes": 33,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 38,
+        "time": "16:30"
       }
     ],
     "slope": 5.8,
@@ -7966,7 +8122,7 @@
     "morning": 29,
     "evening": 39,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -8011,6 +8167,12 @@
         "weekday": "금",
         "minutes": 33,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 38,
+        "time": "16:30"
       }
     ],
     "slope": 5.8,
@@ -8279,9 +8441,9 @@
     "dong": "병점동",
     "liquidity": 3.6,
     "morning": 35,
-    "evening": 50,
+    "evening": 49,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -8308,6 +8470,12 @@
         "weekday": "금",
         "minutes": 41,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 46,
+        "time": "16:30"
       }
     ],
     "slope": 1.9,
@@ -8584,7 +8752,7 @@
     "morning": 36,
     "evening": 47,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -8629,6 +8797,12 @@
         "weekday": "금",
         "minutes": 42,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 46,
+        "time": "16:30"
       }
     ],
     "slope": 13.3,
@@ -8911,9 +9085,9 @@
     "dong": "반송동",
     "liquidity": 5.3,
     "morning": 33,
-    "evening": 30,
+    "evening": 32,
     "morning_cnt": 1,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -8928,6 +9102,12 @@
         "weekday": "금",
         "minutes": 30,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 34,
+        "time": "16:30"
       }
     ],
     "slope": 3.5,
@@ -9062,7 +9242,7 @@
     "morning": 37,
     "evening": 48,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -9107,6 +9287,12 @@
         "weekday": "금",
         "minutes": 44,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 47,
+        "time": "16:30"
       }
     ],
     "slope": 12.9,
@@ -9407,9 +9593,9 @@
     "dong": "청계동",
     "liquidity": 8,
     "morning": 29,
-    "evening": 42,
+    "evening": 41,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -9436,6 +9622,12 @@
         "weekday": "금",
         "minutes": 36,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 39,
+        "time": "16:30"
       }
     ],
     "slope": 3.4,
@@ -9720,7 +9912,7 @@
     "morning": 32,
     "evening": 45,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -9759,6 +9951,12 @@
         "weekday": "금",
         "minutes": 39,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 45,
+        "time": "16:30"
       }
     ],
     "slope": 2.1,
@@ -10009,7 +10207,7 @@
     "morning": 35,
     "evening": 45,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -10054,6 +10252,12 @@
         "weekday": "금",
         "minutes": 40,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 44,
+        "time": "16:30"
       }
     ],
     "slope": 12.8,
@@ -10338,9 +10542,9 @@
     "dong": "장지동",
     "liquidity": 7.3,
     "morning": 31,
-    "evening": 41,
+    "evening": 43,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -10355,6 +10559,12 @@
         "weekday": "금",
         "minutes": 41,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 44,
+        "time": "16:30"
       }
     ],
     "slope": 11.5,
@@ -10589,9 +10799,9 @@
     "dong": "청계동",
     "liquidity": 7.2,
     "morning": 30,
-    "evening": 45,
+    "evening": 43,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -10618,6 +10828,12 @@
         "weekday": "금",
         "minutes": 38,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 41,
+        "time": "16:30"
       }
     ],
     "slope": 7.4,
@@ -10954,7 +11170,7 @@
     "morning": 37,
     "evening": 48,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -10999,6 +11215,12 @@
         "weekday": "금",
         "minutes": 44,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 47,
+        "time": "16:30"
       }
     ],
     "slope": 12.9,
@@ -11577,7 +11799,7 @@
     "morning": 31,
     "evening": 41,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -11622,6 +11844,12 @@
         "weekday": "금",
         "minutes": 37,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 41,
+        "time": "16:30"
       }
     ],
     "slope": 10.8,
@@ -12144,9 +12372,9 @@
     "dong": "청계동",
     "liquidity": 7.6,
     "morning": 29,
-    "evening": 42,
+    "evening": 41,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -12173,6 +12401,12 @@
         "weekday": "금",
         "minutes": 36,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 39,
+        "time": "16:30"
       }
     ],
     "slope": 3.4,
@@ -12353,9 +12587,9 @@
     "dong": "장지동",
     "liquidity": 6.4,
     "morning": 41,
-    "evening": 51,
+    "evening": 52,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -12400,6 +12634,12 @@
         "weekday": "금",
         "minutes": 49,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 53,
+        "time": "16:30"
       }
     ],
     "slope": 5.6,
@@ -12584,7 +12824,7 @@
     "morning": 31,
     "evening": 41,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -12629,6 +12869,12 @@
         "weekday": "금",
         "minutes": 37,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 41,
+        "time": "16:30"
       }
     ],
     "slope": 10.8,
@@ -12805,7 +13051,7 @@
     "morning": 34,
     "evening": 46,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -12850,6 +13096,12 @@
         "weekday": "금",
         "minutes": 42,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 45,
+        "time": "16:30"
       }
     ],
     "slope": 5.9,
@@ -13038,7 +13290,7 @@
     "morning": 25,
     "evening": 37,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -13077,6 +13329,12 @@
         "weekday": "금",
         "minutes": 33,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 36,
+        "time": "16:30"
       }
     ],
     "slope": 2,
@@ -13265,9 +13523,9 @@
     "dong": "정자동",
     "liquidity": 0.6,
     "morning": 23,
-    "evening": 29,
+    "evening": 31,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -13282,6 +13540,12 @@
         "weekday": "금",
         "minutes": 29,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 33,
+        "time": "16:30"
       }
     ],
     "slope": 5.1,
@@ -13558,9 +13822,9 @@
     "dong": "조원동",
     "liquidity": 3.1,
     "morning": 23,
-    "evening": 30,
+    "evening": 34,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -13575,6 +13839,12 @@
         "weekday": "금",
         "minutes": 30,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 37,
+        "time": "16:30"
       }
     ],
     "slope": 14,
@@ -13739,7 +14009,7 @@
     "morning": 31,
     "evening": 41,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -13778,6 +14048,12 @@
         "weekday": "금",
         "minutes": 36,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 41,
+        "time": "16:30"
       }
     ],
     "slope": 13.6,
@@ -14130,9 +14406,9 @@
     "dong": "곡반정동",
     "liquidity": 3.6,
     "morning": 38,
-    "evening": 49,
+    "evening": 48,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -14177,6 +14453,12 @@
         "weekday": "금",
         "minutes": 39,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 47,
+        "time": "16:30"
       }
     ],
     "slope": 4.3,
@@ -14471,9 +14753,9 @@
     "dong": "금곡동",
     "liquidity": 2.5,
     "morning": 26,
-    "evening": 34,
+    "evening": 38,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -14488,6 +14770,12 @@
         "weekday": "금",
         "minutes": 34,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 42,
+        "time": "16:30"
       }
     ],
     "slope": 3.4,
@@ -14684,7 +14972,7 @@
     "morning": 36,
     "evening": 44,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -14711,6 +14999,12 @@
         "weekday": "금",
         "minutes": 38,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 44,
+        "time": "16:30"
       }
     ],
     "slope": 6,
@@ -15003,7 +15297,7 @@
     "morning": 37,
     "evening": 45,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -15042,6 +15336,12 @@
         "weekday": "금",
         "minutes": 38,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 45,
+        "time": "16:30"
       }
     ],
     "slope": 2.6,
@@ -15252,9 +15552,9 @@
     "dong": "매교동",
     "liquidity": 4.3,
     "morning": 33,
-    "evening": 47,
+    "evening": 46,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -15299,6 +15599,12 @@
         "weekday": "금",
         "minutes": 42,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 45,
+        "time": "16:30"
       }
     ],
     "slope": 14.2,
@@ -15653,7 +15959,7 @@
     "morning": 29,
     "evening": 43,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -15692,6 +15998,12 @@
         "weekday": "금",
         "minutes": 35,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 41,
+        "time": "16:30"
       }
     ],
     "slope": 14.6,
@@ -16095,9 +16407,9 @@
     "dong": "인계동",
     "liquidity": 0.7,
     "morning": 24,
-    "evening": 29,
+    "evening": 31,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -16112,6 +16424,12 @@
         "weekday": "금",
         "minutes": 29,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 33,
+        "time": "16:30"
       }
     ],
     "slope": 3.5,
@@ -16274,7 +16592,7 @@
     "morning": 26,
     "evening": 35,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -16313,6 +16631,12 @@
         "weekday": "금",
         "minutes": 30,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 32,
+        "time": "16:30"
       }
     ],
     "slope": 24,
@@ -16593,7 +16917,7 @@
     "morning": 29,
     "evening": 39,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -16632,6 +16956,12 @@
         "weekday": "금",
         "minutes": 34,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 40,
+        "time": "16:30"
       }
     ],
     "slope": 5.6,
@@ -17357,9 +17687,9 @@
     "dong": "망포동",
     "liquidity": 2.9,
     "morning": 30,
-    "evening": 41,
+    "evening": 42,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -17374,6 +17704,12 @@
         "weekday": "금",
         "minutes": 41,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 43,
+        "time": "16:30"
       }
     ],
     "slope": 2.8,
@@ -17589,9 +17925,9 @@
     "dong": "망포동",
     "liquidity": 3.3,
     "morning": 30,
-    "evening": 41,
+    "evening": 45,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -17606,6 +17942,12 @@
         "weekday": "금",
         "minutes": 41,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 48,
+        "time": "16:30"
       }
     ],
     "slope": 3.5,
@@ -17840,9 +18182,9 @@
     "dong": "망포동",
     "liquidity": 1.7,
     "morning": 27,
-    "evening": 39,
+    "evening": 37,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -17869,6 +18211,12 @@
         "weekday": "금",
         "minutes": 32,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 35,
+        "time": "16:30"
       }
     ],
     "slope": 3.2,
@@ -18021,7 +18369,7 @@
     "morning": 19,
     "evening": 22,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -18066,6 +18414,12 @@
         "weekday": "금",
         "minutes": 20,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 22,
+        "time": "16:30"
       }
     ],
     "slope": 9.1,
@@ -18198,9 +18552,9 @@
     "dong": "하대원동",
     "liquidity": 0.7,
     "morning": 18,
-    "evening": 22,
+    "evening": 23,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -18215,6 +18569,12 @@
         "weekday": "금",
         "minutes": 22,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 24,
+        "time": "16:30"
       }
     ],
     "slope": 50.5,
@@ -18379,7 +18739,7 @@
     "morning": 20,
     "evening": 30,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -18424,6 +18784,12 @@
         "weekday": "금",
         "minutes": 26,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 29,
+        "time": "16:30"
       }
     ],
     "slope": 14,
@@ -18660,7 +19026,7 @@
     "morning": 30,
     "evening": 35,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -18687,6 +19053,12 @@
         "weekday": "금",
         "minutes": 35,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 36,
+        "time": "16:30"
       }
     ],
     "slope": 33,
@@ -18901,7 +19273,7 @@
     "morning": 24,
     "evening": 32,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -18928,6 +19300,12 @@
         "weekday": "금",
         "minutes": 28,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 33,
+        "time": "16:30"
       }
     ],
     "slope": 25.8,
@@ -19190,9 +19568,9 @@
     "dong": "서천동",
     "liquidity": 4,
     "morning": 24,
-    "evening": 32,
+    "evening": 34,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -19207,6 +19585,12 @@
         "weekday": "금",
         "minutes": 32,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 35,
+        "time": "16:30"
       }
     ],
     "slope": 6.6,
@@ -19505,9 +19889,9 @@
     "dong": "구갈동",
     "liquidity": 6.2,
     "morning": 23,
-    "evening": 37,
+    "evening": 36,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -19546,6 +19930,12 @@
         "weekday": "금",
         "minutes": 31,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 33,
+        "time": "16:30"
       }
     ],
     "slope": 8.3,
@@ -20141,9 +20531,9 @@
     "dong": "영덕동",
     "liquidity": 3.6,
     "morning": 25,
-    "evening": 31,
+    "evening": 32,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -20170,6 +20560,12 @@
         "weekday": "금",
         "minutes": 28,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 33,
+        "time": "16:30"
       }
     ],
     "slope": 17.2,
@@ -20392,9 +20788,9 @@
     "dong": "신갈동",
     "liquidity": 3.4,
     "morning": 21,
-    "evening": 31,
+    "evening": 33,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -20409,6 +20805,12 @@
         "weekday": "금",
         "minutes": 31,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 34,
+        "time": "16:30"
       }
     ],
     "slope": 3.6,
@@ -20631,9 +21033,9 @@
     "dong": "성복동",
     "liquidity": 1.2,
     "morning": 20,
-    "evening": 27,
+    "evening": 30,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -20648,6 +21050,12 @@
         "weekday": "금",
         "minutes": 27,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 32,
+        "time": "16:30"
       }
     ],
     "slope": 21.3,
@@ -20820,9 +21228,9 @@
     "dong": "신장동",
     "liquidity": 2.3,
     "morning": 25,
-    "evening": 45,
+    "evening": 38,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -20837,6 +21245,12 @@
         "weekday": "금",
         "minutes": 45,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 31,
+        "time": "16:30"
       }
     ],
     "slope": 1.1,
@@ -21157,9 +21571,9 @@
     "dong": "병점동",
     "liquidity": 2.9,
     "morning": 35,
-    "evening": 50,
+    "evening": 49,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -21186,6 +21600,12 @@
         "weekday": "금",
         "minutes": 41,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 46,
+        "time": "16:30"
       }
     ],
     "slope": 1.9,
@@ -21712,9 +22132,9 @@
     "dong": "반정동",
     "liquidity": 4.4,
     "morning": 36,
-    "evening": 44,
+    "evening": 42,
     "morning_cnt": 6,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -21747,6 +22167,12 @@
         "weekday": "금",
         "minutes": 36,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 40,
+        "time": "16:30"
       }
     ],
     "slope": 3.3,
@@ -22013,7 +22439,7 @@
     "morning": 35,
     "evening": 41,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -22052,6 +22478,12 @@
         "weekday": "금",
         "minutes": 35,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 40,
+        "time": "16:30"
       }
     ],
     "slope": 7.2,
@@ -22472,9 +22904,9 @@
     "dong": "반월동",
     "liquidity": 2.8,
     "morning": 26,
-    "evening": 37,
+    "evening": 36,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -22501,6 +22933,12 @@
         "weekday": "금",
         "minutes": 32,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 35,
+        "time": "16:30"
       }
     ],
     "slope": 4.8,
@@ -22757,9 +23195,9 @@
     "dong": "반송동",
     "liquidity": 3,
     "morning": 29,
-    "evening": 43,
+    "evening": 42,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -22786,6 +23224,12 @@
         "weekday": "금",
         "minutes": 36,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 40,
+        "time": "16:30"
       }
     ],
     "slope": 8,
@@ -23417,9 +23861,9 @@
     "dong": "청계동",
     "liquidity": 3.2,
     "morning": 29,
-    "evening": 44,
+    "evening": 43,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -23446,6 +23890,12 @@
         "weekday": "금",
         "minutes": 37,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 41,
+        "time": "16:30"
       }
     ],
     "slope": 7.7,
@@ -23686,9 +24136,9 @@
     "dong": "청계동",
     "liquidity": 1.9,
     "morning": 29,
-    "evening": 44,
+    "evening": 43,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -23715,6 +24165,12 @@
         "weekday": "금",
         "minutes": 37,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 41,
+        "time": "16:30"
       }
     ],
     "slope": 6.1,
@@ -23939,9 +24395,9 @@
     "dong": "반송동",
     "liquidity": 3.1,
     "morning": 29,
-    "evening": 43,
+    "evening": 42,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -23968,6 +24424,12 @@
         "weekday": "금",
         "minutes": 36,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 40,
+        "time": "16:30"
       }
     ],
     "slope": 4.1,
@@ -24325,7 +24787,7 @@
     "morning": 37,
     "evening": 48,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -24370,6 +24832,12 @@
         "weekday": "금",
         "minutes": 44,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 47,
+        "time": "16:30"
       }
     ],
     "slope": 12.9,
@@ -24550,9 +25018,9 @@
     "dong": "반송동",
     "liquidity": 3.4,
     "morning": 23,
-    "evening": 29,
+    "evening": 32,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -24567,6 +25035,12 @@
         "weekday": "금",
         "minutes": 29,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 34,
+        "time": "16:30"
       }
     ],
     "slope": 1.9,
@@ -24769,9 +25243,9 @@
     "dong": "산척동",
     "liquidity": 6.9,
     "morning": 32,
-    "evening": 44,
+    "evening": 47,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -24786,6 +25260,12 @@
         "weekday": "금",
         "minutes": 44,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 50,
+        "time": "16:30"
       }
     ],
     "slope": 10.5,
@@ -24970,7 +25450,7 @@
     "morning": 29,
     "evening": 40,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -25009,6 +25489,12 @@
         "weekday": "금",
         "minutes": 37,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 39,
+        "time": "16:30"
       }
     ],
     "slope": 8.3,
@@ -25421,7 +25907,7 @@
     "morning": 34,
     "evening": 46,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -25466,6 +25952,12 @@
         "weekday": "금",
         "minutes": 42,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 45,
+        "time": "16:30"
       }
     ],
     "slope": 5.9,
@@ -25664,9 +26156,9 @@
     "dong": "반송동",
     "liquidity": 4.2,
     "morning": 21,
-    "evening": 29,
+    "evening": 31,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -25681,6 +26173,12 @@
         "weekday": "금",
         "minutes": 29,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 33,
+        "time": "16:30"
       }
     ],
     "slope": 2.4,
@@ -25977,9 +26475,9 @@
     "dong": "장지동",
     "liquidity": 4.7,
     "morning": 33,
-    "evening": 49,
+    "evening": 48,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -25994,6 +26492,12 @@
         "weekday": "금",
         "minutes": 49,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 46,
+        "time": "16:30"
       }
     ],
     "slope": 10.3,
@@ -26206,7 +26710,7 @@
     "morning": 32,
     "evening": 45,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -26245,6 +26749,12 @@
         "weekday": "금",
         "minutes": 39,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 45,
+        "time": "16:30"
       }
     ],
     "slope": 2.1,
@@ -26487,9 +26997,9 @@
     "dong": "반송동",
     "liquidity": 4.6,
     "morning": 22,
-    "evening": 29,
+    "evening": 31,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -26504,6 +27014,12 @@
         "weekday": "금",
         "minutes": 29,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 33,
+        "time": "16:30"
       }
     ],
     "slope": 0.5,
@@ -26726,9 +27242,9 @@
     "dong": "산척동",
     "liquidity": 3.8,
     "morning": 39,
-    "evening": 50,
+    "evening": 51,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -26767,6 +27283,12 @@
         "weekday": "금",
         "minutes": 47,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 52,
+        "time": "16:30"
       }
     ],
     "slope": 21.6,
@@ -27043,9 +27565,9 @@
     "dong": "청계동",
     "liquidity": 4.9,
     "morning": 30,
-    "evening": 45,
+    "evening": 43,
     "morning_cnt": 5,
-    "evening_cnt": 2,
+    "evening_cnt": 3,
     "morning_details": [
       {
         "date": "2026-04-30",
@@ -27072,6 +27594,12 @@
         "weekday": "금",
         "minutes": 38,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 41,
+        "time": "16:30"
       }
     ],
     "slope": 7.4,
@@ -27294,7 +27822,7 @@
     "morning": 35,
     "evening": 45,
     "morning_cnt": 7,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-28",
@@ -27339,6 +27867,12 @@
         "weekday": "금",
         "minutes": 40,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 44,
+        "time": "16:30"
       }
     ],
     "slope": 12.8,
@@ -27984,9 +28518,9 @@
     "dong": "산척동",
     "liquidity": 2.5,
     "morning": 38,
-    "evening": 48,
+    "evening": 49,
     "morning_cnt": 6,
-    "evening_cnt": 3,
+    "evening_cnt": 4,
     "morning_details": [
       {
         "date": "2026-04-29",
@@ -28025,6 +28559,12 @@
         "weekday": "금",
         "minutes": 45,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 51,
+        "time": "16:30"
       }
     ],
     "slope": 10.2,
@@ -28197,9 +28737,9 @@
     "dong": "장지동",
     "liquidity": 3.4,
     "morning": 31,
-    "evening": 41,
+    "evening": 43,
     "morning_cnt": 3,
-    "evening_cnt": 1,
+    "evening_cnt": 2,
     "morning_details": [
       {
         "date": "2026-05-01",
@@ -28214,6 +28754,12 @@
         "weekday": "금",
         "minutes": 41,
         "time": "16:33"
+      },
+      {
+        "date": "2026-05-04",
+        "weekday": "월",
+        "minutes": 44,
+        "time": "16:30"
       }
     ],
     "slope": 11.5,
