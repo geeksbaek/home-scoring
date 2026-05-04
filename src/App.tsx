@@ -484,14 +484,14 @@ type MulticulturalData = Record<string, MulticulturalCity>;
 function SchoolCell({ data }: { data: AptData }) {
   if (!data.schools || data.schools.length === 0) return <span className="text-muted-foreground text-xs">-</span>;
   const sv = data.school_violence ?? {};
-  const totalViolence = Object.values(sv).reduce((sum, v) => sum + v.total, 0);
+  const maxViolence = Math.max(0, ...Object.values(sv).map((v) => v.total));
   return (
     <TooltipProvider delay={200}>
       <Tooltip>
         <TooltipTrigger className="text-xs text-left cursor-default max-w-[80px] truncate block">
           {data.schools[0].replace("초등학교", "초")}
           {data.schools.length > 1 && <span className="text-muted-foreground"> +{data.schools.length - 1}</span>}
-          {totalViolence > 0 && <span className="text-destructive ml-0.5">({totalViolence})</span>}
+          {maxViolence > 0 && <span className="text-destructive ml-0.5">({maxViolence})</span>}
         </TooltipTrigger>
         <TooltipContent className="text-xs max-w-[320px]" side="left">
           <p className="font-semibold mb-2">배정 초등학교</p>
