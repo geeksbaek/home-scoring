@@ -9012,6 +9012,12 @@
     "hcode": null,
     "recent_trades": [
       {
+        "date": "2026-05-01",
+        "price": 2.1,
+        "floor": 1,
+        "area": 60
+      },
+      {
         "date": "2026-04-09",
         "price": 2.9,
         "floor": 12,
@@ -9868,11 +9874,11 @@
     "display_name": "수원시청역SKVIEW",
     "atype": "84",
     "area": 84.9,
-    "avg": 60000,
-    "accel": 2.3,
-    "r3_avg": 60700,
+    "avg": 60850,
+    "accel": 2.7,
+    "r3_avg": 60900,
     "p3_avg": 59310,
-    "count": 14,
+    "count": 15,
     "build": 2008,
     "region": "수원시 권선구",
     "dong": "권선동",
@@ -9894,6 +9900,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 6.2,
+        "floor": 3,
+        "area": 84.9
+      },
       {
         "date": "2026-04-29",
         "price": 6,
@@ -11484,11 +11496,11 @@
     "display_name": "호매실스위첸",
     "atype": "59",
     "area": 59.9,
-    "avg": 46200,
-    "accel": 3.9,
-    "r3_avg": 45169,
+    "avg": 46225,
+    "accel": 4,
+    "r3_avg": 45207,
     "p3_avg": 43489,
-    "count": 56,
+    "count": 57,
     "build": 2014,
     "region": "수원시 권선구",
     "dong": "호매실동",
@@ -11510,6 +11522,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 4.6,
+        "floor": 9,
+        "area": 59.9
+      },
       {
         "date": "2026-04-24",
         "price": 4.7,
@@ -12095,11 +12113,11 @@
     "display_name": "권선자이e편한세상",
     "atype": "59",
     "area": 60,
-    "avg": 55500,
-    "accel": 4.5,
-    "r3_avg": 56386,
+    "avg": 55250,
+    "accel": 4.1,
+    "r3_avg": 56150,
     "p3_avg": 53933,
-    "count": 25,
+    "count": 26,
     "build": 2011,
     "region": "수원시 권선구",
     "dong": "권선동",
@@ -12121,6 +12139,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 5.5,
+        "floor": 2,
+        "area": 60
+      },
       {
         "date": "2026-04-23",
         "price": 5.7,
@@ -13151,11 +13175,11 @@
     "display_name": "수원하늘채더퍼스트2단지",
     "atype": "59",
     "area": 60,
-    "avg": 59413,
-    "accel": 2.3,
-    "r3_avg": 58750,
+    "avg": 59520,
+    "accel": 2.5,
+    "r3_avg": 58850,
     "p3_avg": 57424,
-    "count": 28,
+    "count": 29,
     "build": 2022,
     "region": "수원시 권선구",
     "dong": "곡반정동",
@@ -13177,6 +13201,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 6,
+        "floor": 15,
+        "area": 59.9
+      },
       {
         "date": "2026-04-29",
         "price": 5.6,
@@ -13755,11 +13785,11 @@
     "display_name": "수원아이파크시티7단지",
     "atype": "59",
     "area": 59.9,
-    "avg": 58270,
-    "accel": 2.1,
-    "r3_avg": 58450,
+    "avg": 58607,
+    "accel": 2.3,
+    "r3_avg": 58545,
     "p3_avg": 57230,
-    "count": 47,
+    "count": 49,
     "build": 2016,
     "region": "수원시 권선구",
     "dong": "권선동",
@@ -13781,6 +13811,18 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-04",
+        "price": 6,
+        "floor": 2,
+        "area": 59.9
+      },
+      {
+        "date": "2026-05-02",
+        "price": 5.9,
+        "floor": 11,
+        "area": 59.9
+      },
       {
         "date": "2026-04-24",
         "price": 5.8,
@@ -15537,11 +15579,11 @@
     "display_name": "호매실마을13단지",
     "atype": "59",
     "area": 59.9,
-    "avg": 45325,
-    "accel": 6.2,
-    "r3_avg": 45035,
+    "avg": 45850,
+    "accel": 6.5,
+    "r3_avg": 45141,
     "p3_avg": 42392,
-    "count": 83,
+    "count": 85,
     "build": 2015,
     "region": "수원시 권선구",
     "dong": "호매실동",
@@ -15563,6 +15605,24 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 3.9,
+        "floor": 1,
+        "area": 59.9
+      },
+      {
+        "date": "2026-05-01",
+        "price": 4.7,
+        "floor": 19,
+        "area": 59.9
+      },
+      {
+        "date": "2026-05-01",
+        "price": 4.7,
+        "floor": 17,
+        "area": 59.8
+      },
       {
         "date": "2026-04-28",
         "price": 4.5,
@@ -18609,11 +18669,11 @@
     "display_name": "엘지빌리지4",
     "atype": "59",
     "area": 60,
-    "avg": 34400,
-    "accel": 10.5,
-    "r3_avg": 35175,
+    "avg": 35100,
+    "accel": 10.9,
+    "r3_avg": 35300,
     "p3_avg": 31825,
-    "count": 8,
+    "count": 9,
     "build": 1998,
     "region": "수원시 권선구",
     "dong": "금곡동",
@@ -18635,6 +18695,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 3.6,
+        "floor": 17,
+        "area": 60
+      },
       {
         "date": "2026-04-15",
         "price": 3.4,
@@ -18721,11 +18787,11 @@
     "display_name": "보성,유원",
     "atype": "59",
     "area": 60,
-    "avg": 35363,
-    "accel": 0.9,
-    "r3_avg": 34383,
+    "avg": 35090,
+    "accel": 0.8,
+    "r3_avg": 34345,
     "p3_avg": 34072,
-    "count": 27,
+    "count": 28,
     "build": 1996,
     "region": "수원시 권선구",
     "dong": "권선동",
@@ -18747,6 +18813,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 3.4,
+        "floor": 3,
+        "area": 59.8
+      },
       {
         "date": "2026-04-18",
         "price": 3.3,
@@ -19161,11 +19233,11 @@
     "display_name": "코오롱하늘채",
     "atype": "59",
     "area": 59.9,
-    "avg": 44400,
-    "accel": 3.6,
-    "r3_avg": 45467,
+    "avg": 44800,
+    "accel": 3.3,
+    "r3_avg": 45300,
     "p3_avg": 43867,
-    "count": 9,
+    "count": 10,
     "build": 1999,
     "region": "수원시 권선구",
     "dong": "구운동",
@@ -19187,6 +19259,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 4.5,
+        "floor": 16,
+        "area": 59.9
+      },
       {
         "date": "2026-03-27",
         "price": 4.5,
@@ -20956,6 +21034,158 @@
     "school_violence": {}
   },
   {
+    "name": "일월청구",
+    "display_name": "일월청구",
+    "atype": "59",
+    "area": 60,
+    "avg": 46750,
+    "accel": 4.6,
+    "r3_avg": 46750,
+    "p3_avg": 44700,
+    "count": 2,
+    "build": 2001,
+    "region": "수원시 권선구",
+    "dong": "구운동",
+    "liquidity": null,
+    "morning": null,
+    "evening": null,
+    "morning_cnt": 0,
+    "evening_cnt": 0,
+    "morning_details": [],
+    "evening_details": [],
+    "slope": null,
+    "slope_method": "",
+    "slope_dongs": [],
+    "pedia1": null,
+    "pedia1_name": null,
+    "pedia1_slope": null,
+    "pedia2": null,
+    "pedia2_name": null,
+    "pedia2_slope": null,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 4.7,
+        "floor": 17,
+        "area": 60
+      },
+      {
+        "date": "2025-12-06",
+        "price": 4.5,
+        "floor": 15,
+        "area": 60
+      }
+    ],
+    "parking": 650,
+    "parking_per_hh": 1.24,
+    "elevator": 14,
+    "households": 524,
+    "dong_count": 6,
+    "top_floor": 23,
+    "heat_type": "지역난방",
+    "structure": "철근콘크리트구조",
+    "cctv": 129,
+    "doro_juso": "경기도 수원시 권선구 수성로35번길 60",
+    "use_date": "20010312",
+    "repair_fund": null,
+    "subway_line": "1호선",
+    "subway_station": null,
+    "education": "초등학교() 중학교() 고등학교() 대학교()",
+    "energy": {
+      "heat": 0,
+      "waterHot": 0,
+      "elect": 0,
+      "waterCool": 0,
+      "gas": 0
+    },
+    "mgmt_cost": null,
+    "mgmt_summer": null,
+    "mgmt_winter": null,
+    "naver_place_id": "19204479",
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null,
+    "schools": [],
+    "school_violence": {}
+  },
+  {
+    "name": "청구1차",
+    "display_name": "청구1차",
+    "atype": "74",
+    "area": 73,
+    "avg": 33000,
+    "accel": 10,
+    "r3_avg": 33000,
+    "p3_avg": 30000,
+    "count": 2,
+    "build": 2000,
+    "region": "수원시 권선구",
+    "dong": "오목천동",
+    "liquidity": null,
+    "morning": null,
+    "evening": null,
+    "morning_cnt": 0,
+    "evening_cnt": 0,
+    "morning_details": [],
+    "evening_details": [],
+    "slope": null,
+    "slope_method": "",
+    "slope_dongs": [],
+    "pedia1": null,
+    "pedia1_name": null,
+    "pedia1_slope": null,
+    "pedia2": null,
+    "pedia2_name": null,
+    "pedia2_slope": null,
+    "hcode": null,
+    "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 3.3,
+        "floor": 14,
+        "area": 73
+      },
+      {
+        "date": "2026-01-25",
+        "price": 3,
+        "floor": 7,
+        "area": 73
+      }
+    ],
+    "parking": 319,
+    "parking_per_hh": 1.02,
+    "elevator": 9,
+    "households": 314,
+    "dong_count": 5,
+    "top_floor": 18,
+    "heat_type": "개별난방",
+    "structure": "철근콘크리트구조",
+    "cctv": 78,
+    "doro_juso": "경기도 수원시 권선구 오목천로39번길 8",
+    "use_date": "20001014",
+    "repair_fund": null,
+    "subway_line": "신분당선",
+    "subway_station": null,
+    "education": "초등학교(오목초등학교) 중학교(영신여중) 고등학교(영신여고)",
+    "energy": {
+      "heat": 0,
+      "waterHot": 0,
+      "elect": 0,
+      "waterCool": 0,
+      "gas": 0
+    },
+    "mgmt_cost": null,
+    "mgmt_summer": null,
+    "mgmt_winter": null,
+    "naver_place_id": "19236543",
+    "eq_design": null,
+    "eq_capacity": null,
+    "energy_grade": null,
+    "schools": [],
+    "school_violence": {}
+  },
+  {
     "name": "녹턴",
     "display_name": "녹턴",
     "atype": "74",
@@ -21206,11 +21436,11 @@
     "display_name": "서수원레이크푸르지오1단지",
     "atype": "59",
     "area": 60,
-    "avg": 40500,
-    "accel": -0.6,
-    "r3_avg": 40167,
+    "avg": 41100,
+    "accel": 0.4,
+    "r3_avg": 40550,
     "p3_avg": 40400,
-    "count": 4,
+    "count": 5,
     "build": 2014,
     "region": "수원시 권선구",
     "dong": "입북동",
@@ -21232,6 +21462,12 @@
     "pedia2_slope": null,
     "hcode": "6yjfe",
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 4.2,
+        "floor": 23,
+        "area": 60
+      },
       {
         "date": "2026-04-22",
         "price": 4.1,
@@ -27702,6 +27938,12 @@
     "hcode": "dGbe5",
     "recent_trades": [
       {
+        "date": "2026-05-01",
+        "price": 8.2,
+        "floor": 1,
+        "area": 74.9
+      },
+      {
         "date": "2026-04-18",
         "price": 8.8,
         "floor": 4,
@@ -29651,10 +29893,10 @@
     "atype": "59",
     "area": 69.5,
     "avg": 48000,
-    "accel": -4.4,
-    "r3_avg": 50000,
+    "accel": -5.7,
+    "r3_avg": 49333,
     "p3_avg": 52300,
-    "count": 3,
+    "count": 4,
     "build": 2014,
     "region": "수원시 팔달구",
     "dong": "화서동",
@@ -29676,6 +29918,12 @@
     "pedia2_slope": null,
     "hcode": "aVLf7",
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 4.8,
+        "floor": 5,
+        "area": 69.5
+      },
       {
         "date": "2026-04-09",
         "price": 4.8,
@@ -64642,11 +64890,11 @@
     "display_name": "풍림",
     "atype": "59",
     "area": 59.8,
-    "avg": 26333,
-    "accel": -4,
-    "r3_avg": 28486,
+    "avg": 28175,
+    "accel": -3.2,
+    "r3_avg": 28723,
     "p3_avg": 29658,
-    "count": 40,
+    "count": 41,
     "build": 1998,
     "region": "용인시 처인구",
     "dong": "상하동",
@@ -64668,6 +64916,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 3.4,
+        "floor": 6,
+        "area": 59.8
+      },
       {
         "date": "2026-04-23",
         "price": 2.2,
@@ -67655,11 +67909,11 @@
     "display_name": "교동마을신창무궁화타운",
     "atype": "59",
     "area": 59.9,
-    "avg": 35000,
-    "accel": 4.7,
-    "r3_avg": 33886,
+    "avg": 35800,
+    "accel": 5.7,
+    "r3_avg": 34225,
     "p3_avg": 32375,
-    "count": 15,
+    "count": 16,
     "build": 1996,
     "region": "용인시 기흥구",
     "dong": "마북동",
@@ -67681,6 +67935,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 3.7,
+        "floor": 7,
+        "area": 59.9
+      },
       {
         "date": "2026-04-10",
         "price": 3.4,
@@ -68836,11 +69096,11 @@
     "display_name": "금화마을주공3단지",
     "atype": "59",
     "area": 60,
-    "avg": 53767,
-    "accel": 9.7,
-    "r3_avg": 50763,
+    "avg": 53700,
+    "accel": 10,
+    "r3_avg": 50900,
     "p3_avg": 46291,
-    "count": 42,
+    "count": 43,
     "build": 2001,
     "region": "용인시 기흥구",
     "dong": "상갈동",
@@ -68862,6 +69122,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 5.4,
+        "floor": 7,
+        "area": 60
+      },
       {
         "date": "2026-04-25",
         "price": 5.3,
@@ -73532,11 +73798,11 @@
     "display_name": "모아미래도1단지아파트",
     "atype": "59",
     "area": 59.7,
-    "avg": 44550,
-    "accel": 3,
-    "r3_avg": 41662,
+    "avg": 44200,
+    "accel": 3.1,
+    "r3_avg": 41725,
     "p3_avg": 40459,
-    "count": 34,
+    "count": 35,
     "build": 2006,
     "region": "용인시 기흥구",
     "dong": "동백동",
@@ -73558,6 +73824,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 4.3,
+        "floor": 12,
+        "area": 59.7
+      },
       {
         "date": "2026-04-16",
         "price": 4.7,
@@ -74533,11 +74805,11 @@
     "display_name": "용인보라효성해링턴플레이스",
     "atype": "74",
     "area": 75.4,
-    "avg": 54050,
-    "accel": -0.1,
-    "r3_avg": 55371,
+    "avg": 55617,
+    "accel": 0.6,
+    "r3_avg": 55794,
     "p3_avg": 55446,
-    "count": 26,
+    "count": 28,
     "build": 2019,
     "region": "용인시 기흥구",
     "dong": "보라동",
@@ -74559,6 +74831,18 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 5.9,
+        "floor": 12,
+        "area": 74.9
+      },
+      {
+        "date": "2026-05-01",
+        "price": 5.9,
+        "floor": 9,
+        "area": 75.4
+      },
       {
         "date": "2026-04-25",
         "price": 5.6,
@@ -76537,11 +76821,11 @@
     "display_name": "영통로효성해링턴플레이스1차",
     "atype": "59",
     "area": 60,
-    "avg": 65400,
+    "avg": 64500,
     "accel": 3.3,
-    "r3_avg": 63412,
+    "r3_avg": 63425,
     "p3_avg": 61375,
-    "count": 25,
+    "count": 26,
     "build": 2017,
     "region": "용인시 기흥구",
     "dong": "서천동",
@@ -76563,6 +76847,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 6.4,
+        "floor": 4,
+        "area": 60
+      },
       {
         "date": "2026-04-30",
         "price": 6.5,
@@ -76894,11 +77184,11 @@
     "display_name": "구성역효성해링턴플레이스",
     "atype": "59",
     "area": 61.9,
-    "avg": 61900,
-    "accel": 6.7,
-    "r3_avg": 61967,
+    "avg": 62700,
+    "accel": 7.3,
+    "r3_avg": 62350,
     "p3_avg": 58100,
-    "count": 10,
+    "count": 11,
     "build": 2016,
     "region": "용인시 기흥구",
     "dong": "마북동",
@@ -76920,6 +77210,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 6.4,
+        "floor": 3,
+        "area": 61.9
+      },
       {
         "date": "2026-04-06",
         "price": 6.2,
@@ -86539,11 +86835,11 @@
     "display_name": "도담마을우미린",
     "atype": "59",
     "area": 60,
-    "avg": 62700,
-    "accel": 11.5,
-    "r3_avg": 67333,
+    "avg": 66000,
+    "accel": 11,
+    "r3_avg": 67000,
     "p3_avg": 60383,
-    "count": 9,
+    "count": 10,
     "build": 2004,
     "region": "용인시 수지구",
     "dong": "죽전동",
@@ -86565,6 +86861,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 6.6,
+        "floor": 9,
+        "area": 60
+      },
       {
         "date": "2026-03-31",
         "price": 7,
@@ -98319,11 +98621,11 @@
     "display_name": "대광파인밸리",
     "atype": "59",
     "area": 59.7,
-    "avg": 21939,
-    "accel": 1,
-    "r3_avg": 22117,
+    "avg": 20800,
+    "accel": -0.5,
+    "r3_avg": 21788,
     "p3_avg": 21898,
-    "count": 16,
+    "count": 17,
     "build": 2003,
     "region": "화성시",
     "dong": "남양읍 남양리",
@@ -98345,6 +98647,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 2.1,
+        "floor": 5,
+        "area": 59.7
+      },
       {
         "date": "2026-04-02",
         "price": 2.2,
@@ -100769,11 +101077,11 @@
     "display_name": "진안골마을주공10단지",
     "atype": "59",
     "area": 59.6,
-    "avg": 31113,
-    "accel": -1.8,
-    "r3_avg": 30814,
+    "avg": 31000,
+    "accel": -1.7,
+    "r3_avg": 30838,
     "p3_avg": 31375,
-    "count": 15,
+    "count": 16,
     "build": 2004,
     "region": "화성시",
     "dong": "진안동",
@@ -100795,6 +101103,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 3.1,
+        "floor": 6,
+        "area": 59.6
+      },
       {
         "date": "2026-03-31",
         "price": 3.1,
@@ -104610,11 +104924,11 @@
     "display_name": "반월자이더파크",
     "atype": "59",
     "area": 59.9,
-    "avg": 38700,
-    "accel": -3,
-    "r3_avg": 38167,
+    "avg": 38850,
+    "accel": -2.4,
+    "r3_avg": 38375,
     "p3_avg": 39333,
-    "count": 6,
+    "count": 7,
     "build": 2016,
     "region": "화성시",
     "dong": "반월동",
@@ -104636,6 +104950,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 3.9,
+        "floor": 16,
+        "area": 59.7
+      },
       {
         "date": "2026-04-29",
         "price": 3.9,
@@ -104984,15 +105304,15 @@
     "display_name": "병점역아이파크캐슬",
     "atype": "59",
     "area": 59.9,
-    "avg": 64233,
-    "accel": 3.8,
-    "r3_avg": 63144,
+    "avg": 64350,
+    "accel": 4.1,
+    "r3_avg": 63300,
     "p3_avg": 60820,
-    "count": 14,
+    "count": 15,
     "build": 2021,
     "region": "화성시",
     "dong": "병점동",
-    "liquidity": 6.4,
+    "liquidity": 6.9,
     "morning": 35,
     "evening": 49,
     "morning_cnt": 5,
@@ -105151,6 +105471,12 @@
     "pedia2_slope": 8.9,
     "hcode": "dzz14",
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 6.5,
+        "floor": 18,
+        "area": 59.9
+      },
       {
         "date": "2026-04-25",
         "price": 6.5,
@@ -105800,15 +106126,15 @@
     "display_name": "나노시티역롯데캐슬",
     "atype": "59",
     "area": 60,
-    "avg": 64700,
-    "accel": 4.3,
-    "r3_avg": 64350,
+    "avg": 64850,
+    "accel": 4.6,
+    "r3_avg": 64567,
     "p3_avg": 61700,
-    "count": 7,
+    "count": 8,
     "build": 2022,
     "region": "화성시",
     "dong": "반월동",
-    "liquidity": 4,
+    "liquidity": 4.5,
     "morning": 26,
     "evening": 36,
     "morning_cnt": 5,
@@ -105907,6 +106233,12 @@
     "pedia2_slope": 8.4,
     "hcode": "dqq24",
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 6.5,
+        "floor": 7,
+        "area": 60
+      },
       {
         "date": "2026-04-08",
         "price": 6.5,
@@ -108109,11 +108441,11 @@
     "display_name": "병점역한일타운",
     "atype": "59",
     "area": 60,
-    "avg": 24100,
-    "accel": 1.6,
-    "r3_avg": 24680,
+    "avg": 23950,
+    "accel": 1,
+    "r3_avg": 24533,
     "p3_avg": 24300,
-    "count": 6,
+    "count": 7,
     "build": 2001,
     "region": "화성시",
     "dong": "병점동",
@@ -108135,6 +108467,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-04",
+        "price": 2.4,
+        "floor": 8,
+        "area": 60
+      },
       {
         "date": "2026-04-07",
         "price": 2.4,
@@ -108538,11 +108876,11 @@
     "display_name": "이편한세상동탄",
     "atype": "74",
     "area": 74.7,
-    "avg": 55500,
-    "accel": 2.6,
-    "r3_avg": 57494,
+    "avg": 56325,
+    "accel": 2.2,
+    "r3_avg": 57271,
     "p3_avg": 56050,
-    "count": 13,
+    "count": 16,
     "build": 2018,
     "region": "화성시",
     "dong": "목동",
@@ -108564,6 +108902,24 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-04",
+        "price": 5.7,
+        "floor": 9,
+        "area": 74.4
+      },
+      {
+        "date": "2026-05-04",
+        "price": 5.7,
+        "floor": 11,
+        "area": 74.4
+      },
+      {
+        "date": "2026-05-01",
+        "price": 5.6,
+        "floor": 2,
+        "area": 74.7
+      },
       {
         "date": "2026-04-14",
         "price": 5.6,
@@ -111543,11 +111899,11 @@
     "display_name": "푸른마을모아미래도",
     "atype": "59",
     "area": 59,
-    "avg": 41575,
-    "accel": -0.9,
-    "r3_avg": 42900,
+    "avg": 41622,
+    "accel": -1,
+    "r3_avg": 42861,
     "p3_avg": 43279,
-    "count": 41,
+    "count": 42,
     "build": 2008,
     "region": "화성시",
     "dong": "능동",
@@ -111569,6 +111925,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 4.2,
+        "floor": 17,
+        "area": 59.2
+      },
       {
         "date": "2026-04-29",
         "price": 4.4,
@@ -113673,15 +114035,15 @@
     "display_name": "더레이크시티부영1단지",
     "atype": "59",
     "area": 60,
-    "avg": 59386,
-    "accel": 2.7,
-    "r3_avg": 59187,
+    "avg": 59463,
+    "accel": 2.8,
+    "r3_avg": 59228,
     "p3_avg": 57611,
-    "count": 38,
+    "count": 39,
     "build": 2018,
     "region": "화성시",
     "dong": "산척동",
-    "liquidity": 8.9,
+    "liquidity": 9.2,
     "morning": 32,
     "evening": 47,
     "morning_cnt": 3,
@@ -113748,6 +114110,12 @@
     "pedia2_slope": 11.3,
     "hcode": "b0g10",
     "recent_trades": [
+      {
+        "date": "2026-05-03",
+        "price": 6,
+        "floor": 8,
+        "area": 60
+      },
       {
         "date": "2026-04-28",
         "price": 5.8,
@@ -116512,6 +116880,12 @@
     "hcode": null,
     "recent_trades": [
       {
+        "date": "2026-05-04",
+        "price": 3.8,
+        "floor": 1,
+        "area": 72.6
+      },
+      {
         "date": "2026-04-27",
         "price": 4.2,
         "floor": 13,
@@ -119166,11 +119540,11 @@
     "display_name": "푸른마을모아미래도",
     "atype": "84",
     "area": 83.7,
-    "avg": 51500,
-    "accel": -1.4,
-    "r3_avg": 49583,
+    "avg": 50500,
+    "accel": -1.7,
+    "r3_avg": 49429,
     "p3_avg": 50278,
-    "count": 15,
+    "count": 16,
     "build": 2008,
     "region": "화성시",
     "dong": "능동",
@@ -119192,6 +119566,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 4.9,
+        "floor": 4,
+        "area": 83.7
+      },
       {
         "date": "2026-04-23",
         "price": 5.1,
@@ -121876,11 +122256,11 @@
     "display_name": "동탄역센트럴상록아파트",
     "atype": "59",
     "area": 60,
-    "avg": 94450,
-    "accel": 9.4,
-    "r3_avg": 92067,
+    "avg": 94471,
+    "accel": 9.8,
+    "r3_avg": 92414,
     "p3_avg": 84178,
-    "count": 59,
+    "count": 62,
     "build": 2017,
     "region": "화성시",
     "dong": "영천동",
@@ -121934,6 +122314,24 @@
     "pedia2_slope": null,
     "hcode": "cO5d7",
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 9.4,
+        "floor": 7,
+        "area": 60
+      },
+      {
+        "date": "2026-05-01",
+        "price": 9.5,
+        "floor": 11,
+        "area": 60
+      },
+      {
+        "date": "2026-05-01",
+        "price": 9.5,
+        "floor": 15,
+        "area": 60
+      },
       {
         "date": "2026-04-27",
         "price": 9.4,
@@ -123288,15 +123686,15 @@
     "display_name": "동탄역센트럴푸르지오",
     "atype": "59",
     "area": 59.4,
-    "avg": 82480,
-    "accel": 7.7,
-    "r3_avg": 78788,
+    "avg": 82850,
+    "accel": 8,
+    "r3_avg": 79015,
     "p3_avg": 73156,
-    "count": 68,
+    "count": 69,
     "build": 2015,
     "region": "화성시",
     "dong": "청계동",
-    "liquidity": 8.7,
+    "liquidity": 8.9,
     "morning": 31,
     "evening": 41,
     "morning_cnt": 7,
@@ -123409,6 +123807,12 @@
     "pedia2_slope": -10.4,
     "hcode": "ayI44",
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 8.5,
+        "floor": 23,
+        "area": 59.4
+      },
       {
         "date": "2026-04-25",
         "price": 8.3,
@@ -125962,11 +126366,11 @@
     "display_name": "더레이크시티부영6단지",
     "atype": "59",
     "area": 60,
-    "avg": 50500,
+    "avg": 50883,
     "accel": 1.7,
-    "r3_avg": 52045,
+    "r3_avg": 52078,
     "p3_avg": 51185,
-    "count": 42,
+    "count": 43,
     "build": 2018,
     "region": "화성시",
     "dong": "산척동",
@@ -125988,6 +126392,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 5.3,
+        "floor": 19,
+        "area": 60
+      },
       {
         "date": "2026-04-29",
         "price": 5.2,
@@ -126290,15 +126700,15 @@
     "display_name": "동탄역신안인스빌리베라2차",
     "atype": "74",
     "area": 73,
-    "avg": 75900,
-    "accel": 4.1,
-    "r3_avg": 77300,
+    "avg": 84800,
+    "accel": 5.3,
+    "r3_avg": 78238,
     "p3_avg": 74267,
-    "count": 13,
+    "count": 14,
     "build": 2016,
     "region": "화성시",
     "dong": "청계동",
-    "liquidity": 7.6,
+    "liquidity": 8.2,
     "morning": 29,
     "evening": 41,
     "morning_cnt": 5,
@@ -126381,6 +126791,12 @@
     "pedia2_slope": -16.4,
     "hcode": "aCh0b",
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 8.5,
+        "floor": 19,
+        "area": 73
+      },
       {
         "date": "2026-03-28",
         "price": 7.8,
@@ -129754,11 +130170,11 @@
     "display_name": "그린힐 반도유보라 아이비파크 10(1단지)",
     "atype": "74",
     "area": 74.1,
-    "avg": 45250,
-    "accel": 0.5,
-    "r3_avg": 46125,
+    "avg": 47333,
+    "accel": 2.9,
+    "r3_avg": 47200,
     "p3_avg": 45883,
-    "count": 16,
+    "count": 17,
     "build": 2018,
     "region": "화성시",
     "dong": "산척동",
@@ -129780,6 +130196,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 5.2,
+        "floor": 17,
+        "area": 74.1
+      },
       {
         "date": "2026-04-29",
         "price": 4.5,
@@ -130560,11 +130982,11 @@
     "display_name": "자연앤데시앙",
     "atype": "74",
     "area": 74.6,
-    "avg": 49500,
-    "accel": 2.9,
-    "r3_avg": 50400,
+    "avg": 50560,
+    "accel": 3.6,
+    "r3_avg": 50767,
     "p3_avg": 49000,
-    "count": 18,
+    "count": 19,
     "build": 2008,
     "region": "화성시",
     "dong": "능동",
@@ -130586,6 +131008,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 5.5,
+        "floor": 25,
+        "area": 74.6
+      },
       {
         "date": "2026-04-24",
         "price": 4.7,
@@ -131292,11 +131720,11 @@
     "display_name": "제일풍경채에듀앤파크",
     "atype": "59",
     "area": 59.6,
-    "avg": 45700,
-    "accel": -0.9,
-    "r3_avg": 46182,
+    "avg": 45740,
+    "accel": -1,
+    "r3_avg": 46158,
     "p3_avg": 46620,
-    "count": 21,
+    "count": 22,
     "build": 2018,
     "region": "화성시",
     "dong": "장지동",
@@ -131318,6 +131746,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-04",
+        "price": 4.6,
+        "floor": 8,
+        "area": 59.6
+      },
       {
         "date": "2026-04-23",
         "price": 4.7,
@@ -131482,11 +131916,11 @@
     "display_name": "능동마을이지더원",
     "atype": "84",
     "area": 83.6,
-    "avg": 58550,
-    "accel": 0.8,
-    "r3_avg": 58030,
+    "avg": 58038,
+    "accel": 0.4,
+    "r3_avg": 57775,
     "p3_avg": 57542,
-    "count": 11,
+    "count": 12,
     "build": 2008,
     "region": "화성시",
     "dong": "능동",
@@ -131508,6 +131942,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 5.7,
+        "floor": 6,
+        "area": 83.6
+      },
       {
         "date": "2026-04-19",
         "price": 6,
@@ -131606,11 +132046,11 @@
     "display_name": "동탄2신도시 베라체",
     "atype": "59",
     "area": 60,
-    "avg": 51667,
-    "accel": 0.6,
-    "r3_avg": 51420,
+    "avg": 51775,
+    "accel": 0.7,
+    "r3_avg": 51463,
     "p3_avg": 51109,
-    "count": 32,
+    "count": 33,
     "build": 2018,
     "region": "화성시",
     "dong": "목동",
@@ -131632,6 +132072,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 5.2,
+        "floor": 16,
+        "area": 60
+      },
       {
         "date": "2026-04-24",
         "price": 5.2,
@@ -137616,11 +138062,11 @@
     "display_name": "서희스타힐스엔에이치에프",
     "atype": "74",
     "area": 74.9,
-    "avg": 55000,
-    "accel": 1,
-    "r3_avg": 56250,
+    "avg": 55400,
+    "accel": 0.8,
+    "r3_avg": 56160,
     "p3_avg": 55700,
-    "count": 6,
+    "count": 7,
     "build": 2017,
     "region": "화성시",
     "dong": "산척동",
@@ -137642,6 +138088,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 5.6,
+        "floor": 11,
+        "area": 74.9
+      },
       {
         "date": "2026-04-27",
         "price": 5.5,
@@ -138637,11 +139089,11 @@
     "display_name": "중흥에스클래스에듀하이",
     "atype": "84",
     "area": 83,
-    "avg": 68267,
-    "accel": -1.7,
-    "r3_avg": 67918,
+    "avg": 67400,
+    "accel": -2.1,
+    "r3_avg": 67658,
     "p3_avg": 69094,
-    "count": 20,
+    "count": 21,
     "build": 2019,
     "region": "화성시",
     "dong": "산척동",
@@ -138713,6 +139165,12 @@
     "pedia2_slope": null,
     "hcode": "gGLba",
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 6.5,
+        "floor": 3,
+        "area": 83
+      },
       {
         "date": "2026-04-28",
         "price": 6.4,
@@ -139089,11 +139547,11 @@
     "display_name": "동탄2신도시금강펜테리움센트럴파크Ⅰ",
     "atype": "59",
     "area": 69.6,
-    "avg": 57000,
-    "accel": 5,
-    "r3_avg": 56375,
+    "avg": 57950,
+    "accel": 5.9,
+    "r3_avg": 56880,
     "p3_avg": 53700,
-    "count": 9,
+    "count": 10,
     "build": 2016,
     "region": "화성시",
     "dong": "여울동",
@@ -139115,6 +139573,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 5.9,
+        "floor": 13,
+        "area": 70
+      },
       {
         "date": "2026-04-15",
         "price": 5.7,
@@ -139325,11 +139789,11 @@
     "display_name": "동탄역중흥에스클래스",
     "atype": "84",
     "area": 83,
-    "avg": 63660,
-    "accel": 0.9,
-    "r3_avg": 62780,
+    "avg": 64050,
+    "accel": 1.1,
+    "r3_avg": 62933,
     "p3_avg": 62240,
-    "count": 25,
+    "count": 26,
     "build": 2019,
     "region": "화성시",
     "dong": "여울동",
@@ -139401,6 +139865,12 @@
     "pedia2_slope": null,
     "hcode": "b0df9",
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 6.6,
+        "floor": 11,
+        "area": 83
+      },
       {
         "date": "2026-04-25",
         "price": 6.2,
@@ -146902,11 +147372,11 @@
     "display_name": "삼성2",
     "atype": "84",
     "area": 85,
-    "avg": 52700,
-    "accel": -2.6,
-    "r3_avg": 52000,
+    "avg": 47500,
+    "accel": -6.8,
+    "r3_avg": 49750,
     "p3_avg": 53400,
-    "count": 2,
+    "count": 3,
     "build": 1998,
     "region": "수원시 장안구",
     "dong": "율전동",
@@ -146928,6 +147398,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 4.8,
+        "floor": 9,
+        "area": 84.9
+      },
       {
         "date": "2026-03-02",
         "price": 5.2,
@@ -148314,11 +148790,11 @@
     "display_name": "센트라우스",
     "atype": "84",
     "area": 85,
-    "avg": 60567,
-    "accel": -1.3,
-    "r3_avg": 61936,
+    "avg": 62100,
+    "accel": -0.7,
+    "r3_avg": 62315,
     "p3_avg": 62770,
-    "count": 21,
+    "count": 23,
     "build": 2005,
     "region": "수원시 권선구",
     "dong": "서둔동",
@@ -148340,6 +148816,18 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 6.4,
+        "floor": 6,
+        "area": 85
+      },
+      {
+        "date": "2026-05-01",
+        "price": 6.5,
+        "floor": 15,
+        "area": 85
+      },
       {
         "date": "2026-04-16",
         "price": 6.1,
@@ -149299,11 +149787,11 @@
     "display_name": "엘지빌리지2",
     "atype": "84",
     "area": 84.4,
-    "avg": 46500,
-    "accel": 3.9,
-    "r3_avg": 44675,
+    "avg": 44200,
+    "accel": 3.2,
+    "r3_avg": 44367,
     "p3_avg": 42983,
-    "count": 14,
+    "count": 15,
     "build": 1998,
     "region": "수원시 권선구",
     "dong": "금곡동",
@@ -149325,6 +149813,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 4.2,
+        "floor": 9,
+        "area": 85
+      },
       {
         "date": "2026-04-23",
         "price": 4.7,
@@ -156235,11 +156729,11 @@
     "display_name": "수원아이파크시티2단지",
     "atype": "84",
     "area": 84.9,
-    "avg": 62400,
-    "accel": -1.2,
-    "r3_avg": 66780,
+    "avg": 63400,
+    "accel": -2.4,
+    "r3_avg": 65957,
     "p3_avg": 67586,
-    "count": 12,
+    "count": 14,
     "build": 2012,
     "region": "수원시 권선구",
     "dong": "권선동",
@@ -156261,6 +156755,18 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 6.4,
+        "floor": 8,
+        "area": 84.9
+      },
+      {
+        "date": "2026-05-01",
+        "price": 6.4,
+        "floor": 3,
+        "area": 84.9
+      },
       {
         "date": "2026-04-08",
         "price": 6.2,
@@ -157875,11 +158381,11 @@
     "display_name": "오목천동대우푸르지오1단지",
     "atype": "84",
     "area": 85,
-    "avg": 41500,
-    "accel": 3.9,
-    "r3_avg": 41667,
+    "avg": 41250,
+    "accel": 3.5,
+    "r3_avg": 41500,
     "p3_avg": 40100,
-    "count": 8,
+    "count": 9,
     "build": 2006,
     "region": "수원시 권선구",
     "dong": "오목천동",
@@ -157901,6 +158407,12 @@
     "pedia2_slope": null,
     "hcode": "6yjfe",
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 4.1,
+        "floor": 14,
+        "area": 85
+      },
       {
         "date": "2026-04-16",
         "price": 4.2,
@@ -160231,11 +160743,11 @@
     "display_name": "쌍용스윗닷홈1단지",
     "atype": "84",
     "area": 84.9,
-    "avg": 33500,
+    "avg": 33750,
     "accel": -2.9,
     "r3_avg": 34000,
     "p3_avg": 35000,
-    "count": 4,
+    "count": 5,
     "build": 2005,
     "region": "수원시 권선구",
     "dong": "당수동",
@@ -160257,6 +160769,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 3.4,
+        "floor": 10,
+        "area": 84.9
+      },
       {
         "date": "2026-04-24",
         "price": 3.4,
@@ -164018,11 +164536,11 @@
     "display_name": "수원역푸르지오자이",
     "atype": "84",
     "area": 85,
-    "avg": 79825,
-    "accel": -0.4,
-    "r3_avg": 83967,
+    "avg": 81260,
+    "accel": -0.1,
+    "r3_avg": 84200,
     "p3_avg": 84313,
-    "count": 20,
+    "count": 21,
     "build": 2021,
     "region": "수원시 팔달구",
     "dong": "고등동",
@@ -164094,6 +164612,12 @@
     "pedia2_slope": null,
     "hcode": "dvB78",
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 8.7,
+        "floor": 16,
+        "area": 85
+      },
       {
         "date": "2026-04-28",
         "price": 8.7,
@@ -175857,15 +176381,15 @@
     "display_name": "영통롯데캐슬엘클래스1단지",
     "atype": "84",
     "area": 85,
-    "avg": 89250,
-    "accel": 2.6,
-    "r3_avg": 88030,
+    "avg": 89200,
+    "accel": 2.7,
+    "r3_avg": 88118,
     "p3_avg": 85832,
-    "count": 21,
+    "count": 22,
     "build": 2022,
     "region": "수원시 영통구",
     "dong": "망포동",
-    "liquidity": 3.3,
+    "liquidity": 3.4,
     "morning": 30,
     "evening": 45,
     "morning_cnt": 3,
@@ -175936,6 +176460,12 @@
     "pedia2_slope": -0.5,
     "hcode": "dUDd4",
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 8.9,
+        "floor": 14,
+        "area": 85
+      },
       {
         "date": "2026-04-18",
         "price": 8.8,
@@ -180312,6 +180842,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 7.5,
+        "floor": 1,
+        "area": 84.5
+      },
       {
         "date": "2026-04-25",
         "price": 7.1,
@@ -195487,15 +196023,15 @@
     "display_name": "기흥역더샵",
     "atype": "84",
     "area": 85,
-    "avg": 94375,
-    "accel": 3.6,
-    "r3_avg": 94700,
+    "avg": 94917,
+    "accel": 3.7,
+    "r3_avg": 94808,
     "p3_avg": 91405,
-    "count": 41,
+    "count": 43,
     "build": 2018,
     "region": "용인시 기흥구",
     "dong": "구갈동",
-    "liquidity": 4.8,
+    "liquidity": 5,
     "morning": 19,
     "evening": 31,
     "morning_cnt": 3,
@@ -195558,6 +196094,18 @@
     "pedia2_slope": -15.5,
     "hcode": "aQm81",
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 9.4,
+        "floor": 41,
+        "area": 85
+      },
+      {
+        "date": "2026-05-01",
+        "price": 9.8,
+        "floor": 35,
+        "area": 85
+      },
       {
         "date": "2026-04-26",
         "price": 9.8,
@@ -196391,15 +196939,15 @@
     "display_name": "신흥덕롯데캐슬레이시티",
     "atype": "84",
     "area": 84.9,
-    "avg": 74150,
-    "accel": 3.6,
-    "r3_avg": 72415,
+    "avg": 73620,
+    "accel": 3.5,
+    "r3_avg": 72350,
     "p3_avg": 69900,
-    "count": 20,
+    "count": 21,
     "build": 2019,
     "region": "용인시 기흥구",
     "dong": "신갈동",
-    "liquidity": 8.2,
+    "liquidity": 8.6,
     "morning": 20,
     "evening": 30,
     "morning_cnt": 7,
@@ -196512,6 +197060,12 @@
     "pedia2_slope": -3.5,
     "hcode": "aZw7e",
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 7.2,
+        "floor": 5,
+        "area": 84.9
+      },
       {
         "date": "2026-04-18",
         "price": 7.8,
@@ -196966,11 +197520,11 @@
     "display_name": "휴먼시아물푸레마을3단지",
     "atype": "84",
     "area": 85,
-    "avg": 41500,
-    "accel": 3.4,
-    "r3_avg": 41200,
+    "avg": 42000,
+    "accel": 3.8,
+    "r3_avg": 41380,
     "p3_avg": 39861,
-    "count": 18,
+    "count": 19,
     "build": 2008,
     "region": "용인시 기흥구",
     "dong": "청덕동",
@@ -196992,6 +197546,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 4.3,
+        "floor": 9,
+        "area": 84.9
+      },
       {
         "date": "2026-04-30",
         "price": 4.1,
@@ -197774,11 +198334,11 @@
     "display_name": "기흥역센트럴푸르지오",
     "atype": "84",
     "area": 84.8,
-    "avg": 92209,
-    "accel": 2.5,
-    "r3_avg": 91165,
+    "avg": 92317,
+    "accel": 2.6,
+    "r3_avg": 91231,
     "p3_avg": 88931,
-    "count": 70,
+    "count": 71,
     "build": 2018,
     "region": "용인시 기흥구",
     "dong": "구갈동",
@@ -197800,6 +198360,12 @@
     "pedia2_slope": null,
     "hcode": "6yjfe",
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 9.4,
+        "floor": 32,
+        "area": 84.7
+      },
       {
         "date": "2026-04-25",
         "price": 9.2,
@@ -201445,11 +202011,11 @@
     "display_name": "신갈현대아파트",
     "atype": "84",
     "area": 84.8,
-    "avg": 54233,
-    "accel": 11.5,
-    "r3_avg": 54113,
+    "avg": 55675,
+    "accel": 12.9,
+    "r3_avg": 54767,
     "p3_avg": 48513,
-    "count": 12,
+    "count": 13,
     "build": 1997,
     "region": "용인시 기흥구",
     "dong": "신갈동",
@@ -201471,6 +202037,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 6,
+        "floor": 10,
+        "area": 84.8
+      },
       {
         "date": "2026-04-17",
         "price": 5.4,
@@ -201581,11 +202153,11 @@
     "display_name": "도현마을현대",
     "atype": "84",
     "area": 84.8,
-    "avg": 79600,
-    "accel": 5.1,
-    "r3_avg": 81167,
+    "avg": 82500,
+    "accel": 5.5,
+    "r3_avg": 81500,
     "p3_avg": 77250,
-    "count": 5,
+    "count": 6,
     "build": 2001,
     "region": "용인시 기흥구",
     "dong": "신갈동",
@@ -201627,6 +202199,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 8.3,
+        "floor": 2,
+        "area": 84.8
+      },
       {
         "date": "2026-04-01",
         "price": 8.1,
@@ -205648,11 +206226,11 @@
     "display_name": "백현마을경남아너스빌",
     "atype": "84",
     "area": 85,
-    "avg": 45550,
-    "accel": 6.4,
-    "r3_avg": 44331,
+    "avg": 45040,
+    "accel": 6.2,
+    "r3_avg": 44236,
     "p3_avg": 41663,
-    "count": 21,
+    "count": 22,
     "build": 2006,
     "region": "용인시 기흥구",
     "dong": "동백동",
@@ -205674,6 +206252,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-04",
+        "price": 4.3,
+        "floor": 15,
+        "area": 85
+      },
       {
         "date": "2026-04-13",
         "price": 4.2,
@@ -206875,11 +207459,11 @@
     "display_name": "교동마을정광아파트",
     "atype": "84",
     "area": 85,
-    "avg": 40500,
-    "accel": 2.3,
-    "r3_avg": 39929,
+    "avg": 40250,
+    "accel": 2.4,
+    "r3_avg": 39938,
     "p3_avg": 39014,
-    "count": 14,
+    "count": 15,
     "build": 1997,
     "region": "용인시 기흥구",
     "dong": "마북동",
@@ -206901,6 +207485,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 4,
+        "floor": 11,
+        "area": 85
+      },
       {
         "date": "2026-04-10",
         "price": 4.1,
@@ -207017,11 +207607,11 @@
     "display_name": "호수마을서해그랑블",
     "atype": "84",
     "area": 84.6,
-    "avg": 51767,
-    "accel": 4.3,
-    "r3_avg": 52467,
+    "avg": 51075,
+    "accel": 3.3,
+    "r3_avg": 51971,
     "p3_avg": 50313,
-    "count": 14,
+    "count": 15,
     "build": 2006,
     "region": "용인시 기흥구",
     "dong": "동백동",
@@ -207043,6 +207633,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 4.9,
+        "floor": 2,
+        "area": 84.6
+      },
       {
         "date": "2026-04-25",
         "price": 5.3,
@@ -210261,11 +210857,11 @@
     "display_name": "장미마을삼성래미안2",
     "atype": "84",
     "area": 85,
-    "avg": 74255,
-    "accel": 6.2,
-    "r3_avg": 77125,
+    "avg": 77500,
+    "accel": 6.3,
+    "r3_avg": 77167,
     "p3_avg": 72614,
-    "count": 22,
+    "count": 23,
     "build": 2003,
     "region": "용인시 기흥구",
     "dong": "언남동",
@@ -210307,6 +210903,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 7.8,
+        "floor": 12,
+        "area": 85
+      },
       {
         "date": "2026-04-03",
         "price": 7.4,
@@ -210489,11 +211091,11 @@
     "display_name": "SK",
     "atype": "84",
     "area": 84.5,
-    "avg": 50500,
-    "accel": 1,
-    "r3_avg": 51167,
+    "avg": 50067,
+    "accel": 0.6,
+    "r3_avg": 50927,
     "p3_avg": 50645,
-    "count": 20,
+    "count": 22,
     "build": 2002,
     "region": "용인시 기흥구",
     "dong": "서천동",
@@ -210515,6 +211117,18 @@
     "pedia2_slope": null,
     "hcode": "dGbe5",
     "recent_trades": [
+      {
+        "date": "2026-05-03",
+        "price": 5.1,
+        "floor": 16,
+        "area": 84.5
+      },
+      {
+        "date": "2026-05-02",
+        "price": 4.9,
+        "floor": 3,
+        "area": 84.5
+      },
       {
         "date": "2026-04-11",
         "price": 5.1,
@@ -211285,11 +211899,11 @@
     "display_name": "백현마을한라비발디(1차)",
     "atype": "84",
     "area": 85,
-    "avg": 47671,
-    "accel": 4.5,
-    "r3_avg": 48369,
+    "avg": 47200,
+    "accel": 4.2,
+    "r3_avg": 48239,
     "p3_avg": 46275,
-    "count": 12,
+    "count": 13,
     "build": 2006,
     "region": "용인시 기흥구",
     "dong": "동백동",
@@ -211311,6 +211925,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 4.7,
+        "floor": 2,
+        "area": 85
+      },
       {
         "date": "2026-04-21",
         "price": 4.6,
@@ -211533,11 +212153,11 @@
     "display_name": "서천마을4단지쌍용예가",
     "atype": "84",
     "area": 84.9,
-    "avg": 61000,
-    "accel": -2.1,
-    "r3_avg": 58454,
+    "avg": 61500,
+    "accel": -1.7,
+    "r3_avg": 58707,
     "p3_avg": 59725,
-    "count": 17,
+    "count": 18,
     "build": 2012,
     "region": "용인시 기흥구",
     "dong": "서천동",
@@ -211559,6 +212179,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 6.2,
+        "floor": 7,
+        "area": 84.8
+      },
       {
         "date": "2026-04-18",
         "price": 6.1,
@@ -211707,11 +212333,11 @@
     "display_name": "강남마을한라비발디",
     "atype": "84",
     "area": 85,
-    "avg": 43567,
-    "accel": 7,
-    "r3_avg": 44581,
+    "avg": 43800,
+    "accel": 7.2,
+    "r3_avg": 44650,
     "p3_avg": 41650,
-    "count": 26,
+    "count": 27,
     "build": 2004,
     "region": "용인시 기흥구",
     "dong": "상하동",
@@ -211733,6 +212359,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 4.5,
+        "floor": 9,
+        "area": 85
+      },
       {
         "date": "2026-04-25",
         "price": 4,
@@ -212178,11 +212810,11 @@
     "display_name": "구성우림필유",
     "atype": "84",
     "area": 84.3,
-    "avg": 68000,
-    "accel": 9.7,
-    "r3_avg": 61600,
+    "avg": 68500,
+    "accel": 12.3,
+    "r3_avg": 63080,
     "p3_avg": 56160,
-    "count": 9,
+    "count": 10,
     "build": 1998,
     "region": "용인시 기흥구",
     "dong": "마북동",
@@ -212204,6 +212836,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 6.9,
+        "floor": 5,
+        "area": 84.3
+      },
       {
         "date": "2026-04-18",
         "price": 6.8,
@@ -214074,11 +214712,11 @@
     "display_name": "스파팰리스리가",
     "atype": "84",
     "area": 85,
-    "avg": 69467,
-    "accel": 3.9,
-    "r3_avg": 66033,
+    "avg": 70050,
+    "accel": 4.6,
+    "r3_avg": 66477,
     "p3_avg": 63540,
-    "count": 22,
+    "count": 23,
     "build": 2013,
     "region": "용인시 기흥구",
     "dong": "언남동",
@@ -214100,6 +214738,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 7.2,
+        "floor": 6,
+        "area": 85
+      },
       {
         "date": "2026-04-28",
         "price": 7.5,
@@ -214295,11 +214939,11 @@
     "display_name": "청현마을기흥데시앙",
     "atype": "84",
     "area": 85,
-    "avg": 40500,
-    "accel": -0.6,
-    "r3_avg": 40750,
+    "avg": 40750,
+    "accel": -0.2,
+    "r3_avg": 40900,
     "p3_avg": 41000,
-    "count": 9,
+    "count": 10,
     "build": 2005,
     "region": "용인시 기흥구",
     "dong": "영덕동",
@@ -214321,6 +214965,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 4.2,
+        "floor": 7,
+        "area": 85
+      },
       {
         "date": "2026-04-27",
         "price": 4.1,
@@ -215619,11 +216269,11 @@
     "display_name": "용인보라효성해링턴플레이스",
     "atype": "84",
     "area": 84.8,
-    "avg": 59000,
-    "accel": -4.7,
-    "r3_avg": 58667,
+    "avg": 59250,
+    "accel": -4.4,
+    "r3_avg": 58875,
     "p3_avg": 61560,
-    "count": 8,
+    "count": 9,
     "build": 2019,
     "region": "용인시 기흥구",
     "dong": "보라동",
@@ -215645,6 +216295,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 6,
+        "floor": 6,
+        "area": 84.8
+      },
       {
         "date": "2026-04-11",
         "price": 5.9,
@@ -219087,6 +219743,12 @@
     "hcode": null,
     "recent_trades": [
       {
+        "date": "2026-05-01",
+        "price": 2.9,
+        "floor": 1,
+        "area": 85
+      },
+      {
         "date": "2026-04-29",
         "price": 3.5,
         "floor": 4,
@@ -219266,11 +219928,11 @@
     "display_name": "금화마을5단지주공그린빌",
     "atype": "84",
     "area": 84.8,
-    "avg": 47500,
-    "accel": 0.6,
-    "r3_avg": 47386,
+    "avg": 48250,
+    "accel": 1,
+    "r3_avg": 47588,
     "p3_avg": 47100,
-    "count": 12,
+    "count": 13,
     "build": 2001,
     "region": "용인시 기흥구",
     "dong": "상갈동",
@@ -219292,6 +219954,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 4.9,
+        "floor": 3,
+        "area": 85
+      },
       {
         "date": "2026-04-17",
         "price": 4.8,
@@ -219490,11 +220158,11 @@
     "display_name": "백현마을서해그랑블",
     "atype": "84",
     "area": 84.6,
-    "avg": 45633,
-    "accel": 4.4,
-    "r3_avg": 44282,
+    "avg": 45725,
+    "accel": 4.7,
+    "r3_avg": 44425,
     "p3_avg": 42417,
-    "count": 17,
+    "count": 18,
     "build": 2006,
     "region": "용인시 기흥구",
     "dong": "동백동",
@@ -219516,6 +220184,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-03",
+        "price": 4.6,
+        "floor": 6,
+        "area": 84.6
+      },
       {
         "date": "2026-04-30",
         "price": 4.5,
@@ -219756,11 +220430,11 @@
     "display_name": "교동마을마북이편한세상",
     "atype": "84",
     "area": 84.6,
-    "avg": 56500,
-    "accel": 0.2,
-    "r3_avg": 56620,
+    "avg": 55650,
+    "accel": -0.3,
+    "r3_avg": 56317,
     "p3_avg": 56500,
-    "count": 9,
+    "count": 10,
     "build": 2009,
     "region": "용인시 기흥구",
     "dong": "마북동",
@@ -219782,6 +220456,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-03",
+        "price": 5.5,
+        "floor": 2,
+        "area": 84.6
+      },
       {
         "date": "2026-04-27",
         "price": 5.7,
@@ -221134,11 +221814,11 @@
     "display_name": "신정마을진흥",
     "atype": "84",
     "area": 85,
-    "avg": 107500,
-    "accel": 15.1,
-    "r3_avg": 105417,
+    "avg": 106500,
+    "accel": 14.8,
+    "r3_avg": 105143,
     "p3_avg": 91556,
-    "count": 15,
+    "count": 16,
     "build": 1999,
     "region": "용인시 수지구",
     "dong": "풍덕천동",
@@ -221160,6 +221840,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 10.4,
+        "floor": 17,
+        "area": 85
+      },
       {
         "date": "2026-04-25",
         "price": 10.6,
@@ -221756,11 +222442,11 @@
     "display_name": "새터마을죽전힐스테이트",
     "atype": "84",
     "area": 85,
-    "avg": 82857,
-    "accel": 9.1,
-    "r3_avg": 79704,
+    "avg": 82875,
+    "accel": 9.3,
+    "r3_avg": 79826,
     "p3_avg": 73045,
-    "count": 57,
+    "count": 58,
     "build": 2004,
     "region": "용인시 수지구",
     "dong": "죽전동",
@@ -221826,6 +222512,12 @@
     "pedia2_slope": null,
     "hcode": "6lk5a",
     "recent_trades": [
+      {
+        "date": "2026-05-04",
+        "price": 8.3,
+        "floor": 8,
+        "area": 85
+      },
       {
         "date": "2026-04-20",
         "price": 7.9,
@@ -238114,11 +238806,11 @@
     "display_name": "더샵하남에디피스",
     "atype": "84",
     "area": 84.9,
-    "avg": 136160,
-    "accel": 10.8,
-    "r3_avg": 141667,
+    "avg": 139000,
+    "accel": 10.2,
+    "r3_avg": 141000,
     "p3_avg": 127900,
-    "count": 5,
+    "count": 6,
     "build": 2024,
     "region": "하남시",
     "dong": "덕풍동",
@@ -238140,6 +238832,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 13.9,
+        "floor": 5,
+        "area": 84.9
+      },
       {
         "date": "2026-04-01",
         "price": 14.5,
@@ -244916,11 +245614,11 @@
     "display_name": "병점역아이파크캐슬",
     "atype": "84",
     "area": 85,
-    "avg": 73300,
-    "accel": 1.4,
-    "r3_avg": 73802,
+    "avg": 73657,
+    "accel": 1.5,
+    "r3_avg": 73873,
     "p3_avg": 72815,
-    "count": 58,
+    "count": 59,
     "build": 2021,
     "region": "화성시",
     "dong": "병점동",
@@ -245083,6 +245781,12 @@
     "pedia2_slope": 8.9,
     "hcode": "dzz14",
     "recent_trades": [
+      {
+        "date": "2026-05-04",
+        "price": 7.6,
+        "floor": 5,
+        "area": 85
+      },
       {
         "date": "2026-04-28",
         "price": 7.4,
@@ -247231,11 +247935,11 @@
     "display_name": "진안골마을주공11단지",
     "atype": "84",
     "area": 85,
-    "avg": 36500,
-    "accel": -2.1,
-    "r3_avg": 36575,
+    "avg": 35750,
+    "accel": -3.4,
+    "r3_avg": 36110,
     "p3_avg": 37364,
-    "count": 11,
+    "count": 12,
     "build": 2004,
     "region": "화성시",
     "dong": "진안동",
@@ -247257,6 +247961,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 3.4,
+        "floor": 3,
+        "area": 85
+      },
       {
         "date": "2026-04-09",
         "price": 3.7,
@@ -247361,15 +248071,15 @@
     "display_name": "신동탄포레자이",
     "atype": "84",
     "area": 85,
-    "avg": 92567,
+    "avg": 92300,
     "accel": 2.6,
-    "r3_avg": 90689,
+    "r3_avg": 90732,
     "p3_avg": 88400,
-    "count": 31,
+    "count": 32,
     "build": 2023,
     "region": "화성시",
     "dong": "반월동",
-    "liquidity": 6.2,
+    "liquidity": 6.3,
     "morning": 29,
     "evening": 39,
     "morning_cnt": 7,
@@ -247486,6 +248196,12 @@
     "pedia2_slope": 6.7,
     "hcode": "dNLc1",
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 9.2,
+        "floor": 23,
+        "area": 85
+      },
       {
         "date": "2026-04-28",
         "price": 9.4,
@@ -249776,10 +250492,10 @@
     "atype": "84",
     "area": 85,
     "avg": 60000,
-    "accel": 5.3,
-    "r3_avg": 58250,
+    "accel": 6.3,
+    "r3_avg": 58833,
     "p3_avg": 55342,
-    "count": 8,
+    "count": 9,
     "build": 2018,
     "region": "화성시",
     "dong": "능동",
@@ -249801,6 +250517,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 6,
+        "floor": 16,
+        "area": 85
+      },
       {
         "date": "2026-04-28",
         "price": 6,
@@ -251789,11 +252511,11 @@
     "display_name": "우미린센트포레2단지",
     "atype": "84",
     "area": 85,
-    "avg": 45000,
-    "accel": -4,
-    "r3_avg": 45629,
+    "avg": 45500,
+    "accel": -3.6,
+    "r3_avg": 45800,
     "p3_avg": 47520,
-    "count": 12,
+    "count": 13,
     "build": 2023,
     "region": "화성시",
     "dong": "안녕동",
@@ -251815,6 +252537,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 4.7,
+        "floor": 10,
+        "area": 85
+      },
       {
         "date": "2026-04-21",
         "price": 4.7,
@@ -252281,11 +253009,11 @@
     "display_name": "서동탄역우남퍼스트빌아파트",
     "atype": "84",
     "area": 84.2,
-    "avg": 37875,
-    "accel": 0.7,
-    "r3_avg": 37575,
+    "avg": 38044,
+    "accel": 1,
+    "r3_avg": 37662,
     "p3_avg": 37300,
-    "count": 34,
+    "count": 35,
     "build": 2002,
     "region": "화성시",
     "dong": "능동",
@@ -252307,6 +253035,12 @@
     "pedia2_slope": null,
     "hcode": "6mB0e",
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 3.9,
+        "floor": 7,
+        "area": 84.2
+      },
       {
         "date": "2026-04-28",
         "price": 3.8,
@@ -253216,11 +253950,11 @@
     "display_name": "신영통현대3차",
     "atype": "84",
     "area": 85,
-    "avg": 39483,
-    "accel": 2,
-    "r3_avg": 40000,
+    "avg": 41500,
+    "accel": 3.3,
+    "r3_avg": 40500,
     "p3_avg": 39225,
-    "count": 6,
+    "count": 7,
     "build": 2001,
     "region": "화성시",
     "dong": "반월동",
@@ -253242,6 +253976,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 4.2,
+        "floor": 14,
+        "area": 85
+      },
       {
         "date": "2026-03-25",
         "price": 3.9,
@@ -254520,11 +255260,11 @@
     "display_name": "동탄파크푸르지오",
     "atype": "84",
     "area": 84.9,
-    "avg": 56825,
-    "accel": -0.5,
-    "r3_avg": 57685,
+    "avg": 57160,
+    "accel": -0.4,
+    "r3_avg": 57743,
     "p3_avg": 57955,
-    "count": 24,
+    "count": 25,
     "build": 2018,
     "region": "화성시",
     "dong": "영천동",
@@ -254546,6 +255286,12 @@
     "pedia2_slope": null,
     "hcode": "6yjfe",
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 5.9,
+        "floor": 10,
+        "area": 84.9
+      },
       {
         "date": "2026-04-23",
         "price": 5.3,
@@ -257679,15 +258425,15 @@
     "display_name": "동탄역대원칸타빌포레지움",
     "atype": "84",
     "area": 84.7,
-    "avg": 70250,
-    "accel": 0.3,
-    "r3_avg": 70231,
+    "avg": 70556,
+    "accel": 0.5,
+    "r3_avg": 70394,
     "p3_avg": 70014,
-    "count": 23,
+    "count": 24,
     "build": 2015,
     "region": "화성시",
     "dong": "청계동",
-    "liquidity": 3.2,
+    "liquidity": 3.4,
     "morning": 29,
     "evening": 43,
     "morning_cnt": 5,
@@ -257770,6 +258516,12 @@
     "pedia2_slope": -27.6,
     "hcode": "alpee",
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 7.3,
+        "floor": 19,
+        "area": 84.7
+      },
       {
         "date": "2026-04-24",
         "price": 7,
@@ -259549,11 +260301,11 @@
     "display_name": "산척동,동탄호수공원금강펜테리움센트럴파크Ⅱ",
     "atype": "84",
     "area": 85,
-    "avg": 57663,
+    "avg": 57558,
     "accel": 0.8,
-    "r3_avg": 56910,
+    "r3_avg": 56941,
     "p3_avg": 56466,
-    "count": 42,
+    "count": 44,
     "build": 2017,
     "region": "화성시",
     "dong": "산척동",
@@ -259575,6 +260327,18 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-04",
+        "price": 5.8,
+        "floor": 15,
+        "area": 85
+      },
+      {
+        "date": "2026-05-01",
+        "price": 5.7,
+        "floor": 17,
+        "area": 85
+      },
       {
         "date": "2026-04-29",
         "price": 5.8,
@@ -259878,15 +260642,15 @@
     "display_name": "동탄역신안인스빌리베라1차",
     "atype": "84",
     "area": 85,
-    "avg": 73400,
-    "accel": 1.8,
-    "r3_avg": 72829,
+    "avg": 74767,
+    "accel": 2.6,
+    "r3_avg": 73413,
     "p3_avg": 71570,
-    "count": 17,
+    "count": 18,
     "build": 2015,
     "region": "화성시",
     "dong": "청계동",
-    "liquidity": 1.9,
+    "liquidity": 2,
     "morning": 29,
     "evening": 43,
     "morning_cnt": 5,
@@ -259989,6 +260753,12 @@
     "pedia2_slope": -24.9,
     "hcode": "ayH06",
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 7.8,
+        "floor": 20,
+        "area": 85
+      },
       {
         "date": "2026-04-24",
         "price": 7.5,
@@ -262385,11 +263155,11 @@
     "display_name": "동탄동원로얄듀크2차",
     "atype": "84",
     "area": 85,
-    "avg": 62900,
-    "accel": -0.6,
-    "r3_avg": 62391,
+    "avg": 63900,
+    "accel": -0.1,
+    "r3_avg": 62683,
     "p3_avg": 62753,
-    "count": 28,
+    "count": 29,
     "build": 2019,
     "region": "화성시",
     "dong": "목동",
@@ -262411,6 +263181,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 6.6,
+        "floor": 9,
+        "area": 85
+      },
       {
         "date": "2026-04-20",
         "price": 6.3,
@@ -263585,11 +264361,11 @@
     "display_name": "동탄역에일린의뜰",
     "atype": "84",
     "area": 85,
-    "avg": 66738,
-    "accel": 1.6,
-    "r3_avg": 66184,
+    "avg": 67880,
+    "accel": 2.5,
+    "r3_avg": 66781,
     "p3_avg": 65150,
-    "count": 29,
+    "count": 31,
     "build": 2016,
     "region": "화성시",
     "dong": "여울동",
@@ -263611,6 +264387,18 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 7.2,
+        "floor": 3,
+        "area": 85
+      },
+      {
+        "date": "2026-05-02",
+        "price": 7.3,
+        "floor": 12,
+        "area": 85
+      },
       {
         "date": "2026-04-20",
         "price": 6.3,
@@ -264621,11 +265409,11 @@
     "display_name": "동탄역포레너스",
     "atype": "84",
     "area": 84.5,
-    "avg": 68211,
+    "avg": 68090,
     "accel": 3.1,
-    "r3_avg": 66812,
+    "r3_avg": 66816,
     "p3_avg": 64800,
-    "count": 90,
+    "count": 91,
     "build": 2017,
     "region": "화성시",
     "dong": "영천동",
@@ -264647,6 +265435,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 6.7,
+        "floor": 9,
+        "area": 84.5
+      },
       {
         "date": "2026-04-28",
         "price": 6.4,
@@ -265862,11 +266656,11 @@
     "display_name": "레이크힐 반도유보라 아이비파크 10.2",
     "atype": "84",
     "area": 85,
-    "avg": 51125,
+    "avg": 51400,
     "accel": 0.3,
-    "r3_avg": 51980,
+    "r3_avg": 52005,
     "p3_avg": 51825,
-    "count": 32,
+    "count": 33,
     "build": 2018,
     "region": "화성시",
     "dong": "산척동",
@@ -265888,6 +266682,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 5.3,
+        "floor": 14,
+        "area": 85
+      },
       {
         "date": "2026-04-24",
         "price": 5.4,
@@ -266704,11 +267504,11 @@
     "display_name": "동탄역시범호반써밋",
     "atype": "84",
     "area": 85,
-    "avg": 112417,
-    "accel": 5.8,
-    "r3_avg": 111165,
+    "avg": 112786,
+    "accel": 6,
+    "r3_avg": 111348,
     "p3_avg": 105085,
-    "count": 46,
+    "count": 47,
     "build": 2015,
     "region": "화성시",
     "dong": "청계동",
@@ -266730,6 +267530,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 11.5,
+        "floor": 16,
+        "area": 85
+      },
       {
         "date": "2026-04-22",
         "price": 10.6,
@@ -268677,11 +269483,11 @@
     "display_name": "동탄2신도시금강펜테리움센트럴파크Ⅰ",
     "atype": "84",
     "area": 85,
-    "avg": 59775,
-    "accel": 0.8,
-    "r3_avg": 61438,
+    "avg": 61120,
+    "accel": 1.3,
+    "r3_avg": 61735,
     "p3_avg": 60940,
-    "count": 31,
+    "count": 32,
     "build": 2016,
     "region": "화성시",
     "dong": "여울동",
@@ -268703,6 +269509,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 6.7,
+        "floor": 6,
+        "area": 85
+      },
       {
         "date": "2026-04-27",
         "price": 5.9,
@@ -270658,11 +271470,11 @@
     "display_name": "동탄역시범대원칸타빌아파트",
     "atype": "84",
     "area": 84.8,
-    "avg": 114000,
-    "accel": 8.6,
-    "r3_avg": 119467,
+    "avg": 111667,
+    "accel": 7.5,
+    "r3_avg": 118220,
     "p3_avg": 109962,
-    "count": 22,
+    "count": 23,
     "build": 2015,
     "region": "화성시",
     "dong": "청계동",
@@ -270684,6 +271496,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 10.7,
+        "floor": 2,
+        "area": 84.7
+      },
       {
         "date": "2026-04-24",
         "price": 11.9,
@@ -271969,11 +272787,11 @@
     "display_name": "동탄 더샵 레이크에듀타운",
     "atype": "84",
     "area": 84.9,
-    "avg": 94383,
-    "accel": 2.7,
-    "r3_avg": 94384,
+    "avg": 94725,
+    "accel": 2.9,
+    "r3_avg": 94498,
     "p3_avg": 91875,
-    "count": 56,
+    "count": 58,
     "build": 2019,
     "region": "화성시",
     "dong": "산척동",
@@ -271995,6 +272813,24 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 8.9,
+        "floor": 1,
+        "area": 85
+      },
+      {
+        "date": "2026-05-02",
+        "price": 9.5,
+        "floor": 11,
+        "area": 85
+      },
+      {
+        "date": "2026-05-01",
+        "price": 9.7,
+        "floor": 11,
+        "area": 85
+      },
       {
         "date": "2026-04-29",
         "price": 9.9,
@@ -274805,15 +275641,15 @@
     "display_name": "동탄역더샵센트럴시티2차",
     "atype": "84",
     "area": 85,
-    "avg": 76841,
-    "accel": 1.8,
-    "r3_avg": 77450,
+    "avg": 80500,
+    "accel": 2.1,
+    "r3_avg": 77685,
     "p3_avg": 76110,
-    "count": 22,
+    "count": 23,
     "build": 2018,
     "region": "화성시",
     "dong": "여울동",
-    "liquidity": 5.5,
+    "liquidity": 5.8,
     "morning": 32,
     "evening": 45,
     "morning_cnt": 6,
@@ -274916,6 +275752,12 @@
     "pedia2_slope": 16,
     "hcode": "aV671",
     "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "price": 8.1,
+        "floor": 14,
+        "area": 85
+      },
       {
         "date": "2026-04-04",
         "price": 8,
@@ -278514,11 +279356,11 @@
     "display_name": "동탄금강펜테리움센트럴파크Ⅳ",
     "atype": "84",
     "area": 84.9,
-    "avg": 61000,
+    "avg": 60900,
     "accel": 1.1,
-    "r3_avg": 60810,
+    "r3_avg": 60809,
     "p3_avg": 60142,
-    "count": 23,
+    "count": 24,
     "build": 2018,
     "region": "화성시",
     "dong": "목동",
@@ -278540,6 +279382,12 @@
     "pedia2_slope": null,
     "hcode": null,
     "recent_trades": [
+      {
+        "date": "2026-05-03",
+        "price": 6.1,
+        "floor": 12,
+        "area": 85
+      },
       {
         "date": "2026-04-09",
         "price": 6.1,
@@ -280320,15 +281168,15 @@
     "display_name": "동탄역이지더원",
     "atype": "84",
     "area": 85,
-    "avg": 72250,
-    "accel": 5.9,
-    "r3_avg": 71375,
+    "avg": 72967,
+    "accel": 6.4,
+    "r3_avg": 71711,
     "p3_avg": 67378,
-    "count": 17,
+    "count": 18,
     "build": 2015,
     "region": "화성시",
     "dong": "영천동",
-    "liquidity": 6.3,
+    "liquidity": 6.7,
     "morning": null,
     "evening": null,
     "morning_cnt": 0,
@@ -280395,6 +281243,12 @@
     "pedia2_slope": -15.9,
     "hcode": "aTPeb",
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 7.4,
+        "floor": 14,
+        "area": 85
+      },
       {
         "date": "2026-04-16",
         "price": 7.4,
@@ -282965,15 +283819,15 @@
     "display_name": "한화포레나동탄호수",
     "atype": "84",
     "area": 84.1,
-    "avg": 79600,
-    "accel": 0.6,
-    "r3_avg": 78489,
+    "avg": 79420,
+    "accel": 0.7,
+    "r3_avg": 78510,
     "p3_avg": 77988,
-    "count": 17,
+    "count": 18,
     "build": 2020,
     "region": "화성시",
     "dong": "장지동",
-    "liquidity": 3.4,
+    "liquidity": 3.6,
     "morning": 31,
     "evening": 43,
     "morning_cnt": 3,
@@ -283044,6 +283898,12 @@
     "pedia2_slope": 0.1,
     "hcode": "dwh52",
     "recent_trades": [
+      {
+        "date": "2026-05-02",
+        "price": 7.9,
+        "floor": 9,
+        "area": 84.1
+      },
       {
         "date": "2026-04-22",
         "price": 7.9,
