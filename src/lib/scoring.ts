@@ -59,7 +59,7 @@ export interface AptData {
   energy_grade: string | null;
   // 배정 초등학교
   schools: string[];
-  school_violence: Record<string, { s1: number; s2: number; total: number; types?: { s1: number[]; s2: number[] }; victims?: number[]; perps?: number[] }>;
+  school_violence: Record<string, Record<string, any>>; // school → year → { cases, types, vp, ps, sped }
   // computed
   score: number;
   pedScore: number | null;

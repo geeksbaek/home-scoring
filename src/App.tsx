@@ -480,68 +480,92 @@ interface MulticulturalCity {
 }
 type MulticulturalData = Record<string, MulticulturalCity>;
 
+function getYearTotal(yearData: any): number {
+  if (!yearData || yearData.zero || yearData.noData) return 0;
+  return (yearData.cases?.s1?.n || 0) + (yearData.cases?.s2?.n || 0);
+}
+
 function SchoolCell({ data }: { data: AptData }) {
   if (!data.schools || data.schools.length === 0) return <span className="text-muted-foreground text-xs">-</span>;
   const sv = data.school_violence ?? {};
-  const maxViolence = Math.max(0, ...Object.values(sv).map((v) => v.total));
+  const YEARS = ["2023", "2024", "2025"];
+  const YEAR_LABELS = ["22", "23", "24"];
+  const TYPE_LABELS = ["신체","언어","금품","강요","따돌림","성폭력","사이버","기타"];
+
+  // Latest year max for cell display
+  const latestMax = Math.max(0, ...data.schools.map((s) => getYearTotal(sv[s]?.["2025"])));
+
   return (
     <Popover>
       <PopoverTrigger>
         <span className="cursor-pointer text-xs">
           {data.schools[0].replace("초등학교", "초")}
           {data.schools.length > 1 && <span className="text-muted-foreground"> +{data.schools.length - 1}</span>}
-          {maxViolence > 0 && <span className="text-destructive ml-0.5">({maxViolence})</span>}
+          {latestMax > 0 && <span className="text-destructive ml-0.5">({latestMax})</span>}
         </span>
       </PopoverTrigger>
-      <PopoverContent className="w-64 text-xs">
-        <p className="font-semibold mb-2">배정 초등학교</p>
-        <div className="flex flex-col gap-2">
+      <PopoverContent className="w-72 text-xs">
+        <p className="font-semibold mb-2">배정 초등학교 학폭 현황</p>
+        <div className="flex flex-col gap-3">
           {data.schools.map((s) => {
-            const v = sv[s];
+            const schoolData = sv[s];
+            if (!schoolData) return <div key={s} className="text-muted-foreground">{s}: 데이터 미조회</div>;
+
+            const yearTotals = YEARS.map((y) => getYearTotal(schoolData[y]));
+            const hasAny = yearTotals.some((t) => t > 0);
+            const trend = yearTotals[2] - yearTotals[0]; // 2024 vs 2022
+
             return (
               <div key={s} className="rounded-md bg-muted/50 px-2 py-1.5">
-                <div className="font-medium mb-1">{s}</div>
-                {v ? (
-                  v.total > 0 ? (
-                    <div className="flex flex-col gap-1">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-destructive font-semibold">학폭 심의 {v.total}건</span>
-                        <span className="text-muted-foreground">(2024학년도)</span>
+                <div className="font-medium mb-1.5">{s}</div>
+
+                {/* 연도별 추이 바 */}
+                <div className="flex items-end gap-1 mb-1.5">
+                  {YEARS.map((y, i) => {
+                    const t = yearTotals[i];
+                    const maxH = Math.max(...yearTotals, 1);
+                    const h = Math.max(4, (t / maxH) * 28);
+                    return (
+                      <div key={y} className="flex flex-col items-center gap-0.5">
+                        <span className={t > 0 ? "text-destructive font-semibold" : "text-muted-foreground"}>{t}</span>
+                        <div className={`w-5 rounded-sm ${t > 0 ? "bg-destructive/70" : "bg-muted-foreground/20"}`} style={{ height: h }} />
+                        <span className="text-[9px] text-muted-foreground">{YEAR_LABELS[i]}</span>
                       </div>
-                      <div className="flex gap-3 text-muted-foreground">
-                        <span>1학기 <span className={v.s1 > 0 ? "text-destructive" : ""}>{v.s1}건</span></span>
-                        <span>2학기 <span className={v.s2 > 0 ? "text-destructive" : ""}>{v.s2}건</span></span>
+                    );
+                  })}
+                  <div className="ml-2 text-[10px]">
+                    {trend > 0 && <span className="text-destructive font-medium">+{trend} 증가</span>}
+                    {trend < 0 && <span className="text-green-500 font-medium">{trend} 감소</span>}
+                    {trend === 0 && hasAny && <span className="text-muted-foreground">변동없음</span>}
+                    {!hasAny && <span className="text-green-500">3년간 0건</span>}
+                  </div>
+                </div>
+
+                {/* 최신 연도 상세 (2024학년도) */}
+                {yearTotals[2] > 0 && (() => {
+                  const yd = schoolData["2025"];
+                  if (!yd?.types) return null;
+                  const sums = TYPE_LABELS.map((_, i) => (yd.types.s1[i]||0) + (yd.types.s2[i]||0));
+                  const victims = (yd.cases?.s1?.v||0) + (yd.cases?.s2?.v||0);
+                  const perps = (yd.cases?.s1?.p||0) + (yd.cases?.s2?.p||0);
+                  return (
+                    <div className="flex flex-col gap-0.5 border-t border-border/50 pt-1">
+                      <div className="flex flex-wrap gap-1">
+                        {TYPE_LABELS.map((l, i) => sums[i] > 0 ? (
+                          <span key={l} className="rounded bg-destructive/10 text-destructive px-1">{l} {sums[i]}</span>
+                        ) : null)}
                       </div>
-                      {v.types && (() => {
-                        const labels = ["신체","언어","금품","강요","따돌림","성폭력","사이버","기타"];
-                        const sums = labels.map((_, i) => (v.types!.s1[i] || 0) + (v.types!.s2[i] || 0));
-                        const active = labels.filter((_, i) => sums[i] > 0);
-                        return active.length > 0 ? (
-                          <div className="flex flex-wrap gap-1 mt-0.5">
-                            {labels.map((l, i) => sums[i] > 0 ? (
-                              <span key={l} className="rounded bg-destructive/10 text-destructive px-1">{l} {sums[i]}</span>
-                            ) : null)}
-                            <span className="text-muted-foreground text-[10px] self-center">유형 중복 포함</span>
-                          </div>
-                        ) : null;
-                      })()}
-                      {v.victims && (v.victims[0] + v.victims[1] > 0) && (
-                        <div className="text-muted-foreground mt-0.5">
-                          피해 {v.victims[0] + v.victims[1]}명 · 가해 {(v.perps?.[0] || 0) + (v.perps?.[1] || 0)}명
-                        </div>
+                      {(victims > 0 || perps > 0) && (
+                        <span className="text-muted-foreground">피해 {victims}명 · 가해 {perps}명</span>
                       )}
                     </div>
-                  ) : (
-                    <span className="text-green-500">학폭 심의 0건</span>
-                  )
-                ) : (
-                  <span className="text-muted-foreground">데이터 미조회</span>
-                )}
+                  );
+                })()}
               </div>
             );
           })}
         </div>
-        <p className="text-muted-foreground mt-2 text-[10px]">출처: 학교알리미 학교폭력대책심의위원회 심의 결과</p>
+        <p className="text-muted-foreground mt-2 text-[10px]">출처: 학교알리미 (2022-2024학년도) · 유형 중복 포함</p>
       </PopoverContent>
     </Popover>
   );
