@@ -12827,7 +12827,125 @@
     "schools": [
       "능실초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "능실초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "cases": {
+            "s1": {
+              "n": 5,
+              "v": 0,
+              "p": 12
+            },
+            "s2": {
+              "n": 2,
+              "v": 0,
+              "p": 3
+            }
+          },
+          "types": {
+            "s1": [
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          },
+          "sped": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          }
+        },
+        "2026": {
+          "captchaFailed": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -13289,9 +13407,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.28,
+    "mgmt_summer": 0.28,
+    "mgmt_winter": 0.28,
     "naver_place_id": "443457951",
     "eq_design": null,
     "eq_capacity": null,
@@ -14098,9 +14216,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "34787506",
     "eq_design": null,
     "eq_capacity": null,
@@ -14259,9 +14377,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.03,
+    "mgmt_summer": 0.03,
+    "mgmt_winter": 0.03,
     "naver_place_id": "19206722",
     "eq_design": null,
     "eq_capacity": null,
@@ -15818,9 +15936,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": "19206037",
     "eq_design": null,
     "eq_capacity": null,
@@ -16543,7 +16661,125 @@
     "schools": [
       "능실초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "능실초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "cases": {
+            "s1": {
+              "n": 5,
+              "v": 0,
+              "p": 12
+            },
+            "s2": {
+              "n": 2,
+              "v": 0,
+              "p": 3
+            }
+          },
+          "types": {
+            "s1": [
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          },
+          "sped": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          }
+        },
+        "2026": {
+          "captchaFailed": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -16780,7 +17016,22 @@
     "schools": [
       "곡정초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "곡정초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -17151,9 +17402,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.24,
+    "mgmt_summer": 0.24,
+    "mgmt_winter": 0.24,
     "naver_place_id": "19206337",
     "eq_design": null,
     "eq_capacity": null,
@@ -17476,9 +17727,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.05,
+    "mgmt_summer": 0.05,
+    "mgmt_winter": 0.05,
     "naver_place_id": "19206939",
     "eq_design": null,
     "eq_capacity": null,
@@ -17787,9 +18038,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "19203792",
     "eq_design": null,
     "eq_capacity": null,
@@ -19223,9 +19474,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.23,
+    "mgmt_summer": 0.23,
+    "mgmt_winter": 0.23,
     "naver_place_id": "443457951",
     "eq_design": null,
     "eq_capacity": null,
@@ -19452,9 +19703,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.23,
+    "mgmt_summer": 0.23,
+    "mgmt_winter": 0.23,
     "naver_place_id": "19438419",
     "eq_design": null,
     "eq_capacity": null,
@@ -19462,7 +19713,22 @@
     "schools": [
       "규장초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "규장초등학교": {
+        "2023": {
+          "noData": true
+        },
+        "2024": {
+          "noData": true
+        },
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "zero": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -19895,7 +20161,125 @@
     "schools": [
       "능실초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "능실초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "cases": {
+            "s1": {
+              "n": 5,
+              "v": 0,
+              "p": 12
+            },
+            "s2": {
+              "n": 2,
+              "v": 0,
+              "p": 3
+            }
+          },
+          "types": {
+            "s1": [
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          },
+          "sped": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          }
+        },
+        "2026": {
+          "captchaFailed": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -20380,9 +20764,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.18,
+    "mgmt_summer": 0.18,
+    "mgmt_winter": 0.18,
     "naver_place_id": "19438419",
     "eq_design": null,
     "eq_capacity": null,
@@ -20390,7 +20774,22 @@
     "schools": [
       "규장초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "규장초등학교": {
+        "2023": {
+          "noData": true
+        },
+        "2024": {
+          "noData": true
+        },
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "zero": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -20639,9 +21038,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.12,
+    "mgmt_summer": 0.12,
+    "mgmt_winter": 0.12,
     "naver_place_id": "19204087",
     "eq_design": null,
     "eq_capacity": null,
@@ -20988,7 +21387,125 @@
     "schools": [
       "능실초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "능실초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "cases": {
+            "s1": {
+              "n": 5,
+              "v": 0,
+              "p": 12
+            },
+            "s2": {
+              "n": 2,
+              "v": 0,
+              "p": 3
+            }
+          },
+          "types": {
+            "s1": [
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          },
+          "sped": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          }
+        },
+        "2026": {
+          "captchaFailed": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -21132,9 +21649,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "19205560",
     "eq_design": null,
     "eq_capacity": null,
@@ -21475,9 +21992,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19207061",
     "eq_design": null,
     "eq_capacity": null,
@@ -21634,9 +22151,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.12,
     "naver_place_id": "38727098",
     "eq_design": null,
     "eq_capacity": null,
@@ -22315,9 +22832,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19206755",
     "eq_design": null,
     "eq_capacity": null,
@@ -25019,7 +25536,125 @@
     "schools": [
       "능실초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "능실초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "cases": {
+            "s1": {
+              "n": 5,
+              "v": 0,
+              "p": 12
+            },
+            "s2": {
+              "n": 2,
+              "v": 0,
+              "p": 3
+            }
+          },
+          "types": {
+            "s1": [
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          },
+          "sped": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          }
+        },
+        "2026": {
+          "captchaFailed": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -25705,9 +26340,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": "34787505",
     "eq_design": null,
     "eq_capacity": null,
@@ -25889,9 +26524,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19204490",
     "eq_design": null,
     "eq_capacity": null,
@@ -26025,9 +26660,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": "19207144",
     "eq_design": null,
     "eq_capacity": null,
@@ -26216,9 +26851,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.16,
+    "mgmt_summer": 0.16,
+    "mgmt_winter": 0.16,
     "naver_place_id": "38729672",
     "eq_design": null,
     "eq_capacity": null,
@@ -26451,7 +27086,16 @@
     "schools": [
       "당수초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "당수초등학교": {
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "zero": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -26571,9 +27215,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": "19207061",
     "eq_design": null,
     "eq_capacity": null,
@@ -27897,9 +28541,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.05,
+    "mgmt_summer": 0.05,
+    "mgmt_winter": 0.05,
     "naver_place_id": "19205424",
     "eq_design": null,
     "eq_capacity": null,
@@ -28468,9 +29112,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.16,
+    "mgmt_summer": 0.16,
+    "mgmt_winter": 0.17,
     "naver_place_id": "37605735",
     "eq_design": null,
     "eq_capacity": null,
@@ -28576,7 +29220,125 @@
     "schools": [
       "능실초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "능실초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "cases": {
+            "s1": {
+              "n": 5,
+              "v": 0,
+              "p": 12
+            },
+            "s2": {
+              "n": 2,
+              "v": 0,
+              "p": 3
+            }
+          },
+          "types": {
+            "s1": [
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          },
+          "sped": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          }
+        },
+        "2026": {
+          "captchaFailed": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -29058,7 +29820,22 @@
     "schools": [
       "곡정초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "곡정초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -29223,7 +30000,22 @@
     "schools": [
       "곡정초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "곡정초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -29941,9 +30733,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": "19205932",
     "eq_design": null,
     "eq_capacity": null,
@@ -30358,9 +31150,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.04,
     "naver_place_id": "19202712",
     "eq_design": null,
     "eq_capacity": null,
@@ -30567,9 +31359,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.03,
+    "mgmt_summer": 0.03,
+    "mgmt_winter": 0.03,
     "naver_place_id": "19205485",
     "eq_design": null,
     "eq_capacity": null,
@@ -30579,8 +31371,223 @@
     ],
     "school_violence": {
       "고현초등학교": {
-        "2026": {
+        "2023": {
           "timeout": true
+        },
+        "2024": {
+          "cases": {
+            "s1": {
+              "n": 0,
+              "v": 0,
+              "p": 0
+            },
+            "s2": {
+              "n": 0,
+              "v": 0,
+              "p": 0
+            }
+          },
+          "types": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "sped": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "cases": {
+            "s1": {
+              "n": 1,
+              "v": 0,
+              "p": 1
+            },
+            "s2": {
+              "n": 0,
+              "v": 0,
+              "p": 0
+            }
+          },
+          "types": {
+            "s1": [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5
+            ],
+            "s2": [
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5
+            ]
+          },
+          "sped": {
+            "s1": [
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5
+            ],
+            "s2": [
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5
+            ]
+          }
         }
       }
     },
@@ -31264,9 +32271,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.03,
+    "mgmt_summer": 0.03,
+    "mgmt_winter": 0.03,
     "naver_place_id": "19202432",
     "eq_design": null,
     "eq_capacity": null,
@@ -31405,9 +32412,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19203442",
     "eq_design": null,
     "eq_capacity": null,
@@ -31917,7 +32924,22 @@
     "schools": [
       "구운초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "구운초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -32025,9 +33047,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "1069451245",
     "eq_design": null,
     "eq_capacity": null,
@@ -32131,9 +33153,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19203580",
     "eq_design": null,
     "eq_capacity": null,
@@ -32591,9 +33613,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "19204490",
     "eq_design": null,
     "eq_capacity": null,
@@ -32718,9 +33740,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "32098837",
     "eq_design": null,
     "eq_capacity": null,
@@ -32818,9 +33840,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.02,
+    "mgmt_summer": 0.02,
+    "mgmt_winter": 0.02,
     "naver_place_id": "19204509",
     "eq_design": null,
     "eq_capacity": null,
@@ -32946,7 +33968,16 @@
     "schools": [
       "당수초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "당수초등학교": {
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "zero": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -33146,7 +34177,22 @@
     "schools": [
       "구운초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "구운초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -33242,9 +34288,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.02,
+    "mgmt_summer": 0.02,
+    "mgmt_winter": 0.02,
     "naver_place_id": "19206064",
     "eq_design": null,
     "eq_capacity": null,
@@ -38245,7 +39291,22 @@
     "schools": [
       "권선초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "권선초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 33,
     "foreign_rate": 5.9,
     "foreign_count": 12303,
@@ -83109,9 +84170,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19217651",
     "eq_design": null,
     "eq_capacity": null,
@@ -83441,9 +84502,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.14,
+    "mgmt_summer": 0.14,
+    "mgmt_winter": 0.14,
     "naver_place_id": "1266151091",
     "eq_design": null,
     "eq_capacity": null,
@@ -84292,9 +85353,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.19,
+    "mgmt_summer": 0.19,
+    "mgmt_winter": 0.19,
     "naver_place_id": "1247391125",
     "eq_design": null,
     "eq_capacity": null,
@@ -84742,9 +85803,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.6,
+    "mgmt_summer": 0.6,
+    "mgmt_winter": 0.6,
     "naver_place_id": "1816367370",
     "eq_design": null,
     "eq_capacity": null,
@@ -85066,9 +86127,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "1547191653",
     "eq_design": null,
     "eq_capacity": null,
@@ -85189,9 +86250,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.03,
+    "mgmt_summer": 0.03,
+    "mgmt_winter": 0.03,
     "naver_place_id": "38655154",
     "eq_design": null,
     "eq_capacity": null,
@@ -85568,9 +86629,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.15,
+    "mgmt_summer": 0.15,
+    "mgmt_winter": 0.15,
     "naver_place_id": "1247391125",
     "eq_design": null,
     "eq_capacity": null,
@@ -85734,9 +86795,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": "19217265",
     "eq_design": null,
     "eq_capacity": null,
@@ -85853,9 +86914,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.04,
     "naver_place_id": "1858440323",
     "eq_design": null,
     "eq_capacity": null,
@@ -86056,9 +87117,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.29,
+    "mgmt_summer": 0.29,
+    "mgmt_winter": 0.3,
     "naver_place_id": "33799530",
     "eq_design": null,
     "eq_capacity": null,
@@ -86162,9 +87223,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": "1547191653",
     "eq_design": null,
     "eq_capacity": null,
@@ -86305,9 +87366,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.17,
+    "mgmt_summer": 0.17,
+    "mgmt_winter": 0.17,
     "naver_place_id": "1266151091",
     "eq_design": null,
     "eq_capacity": null,
@@ -86647,9 +87708,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.48,
+    "mgmt_summer": 0.48,
+    "mgmt_winter": 0.48,
     "naver_place_id": "1816367370",
     "eq_design": null,
     "eq_capacity": null,
@@ -86765,9 +87826,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.04,
     "naver_place_id": "32103621",
     "eq_design": null,
     "eq_capacity": null,
@@ -87092,9 +88153,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.04,
     "naver_place_id": "1998440293",
     "eq_design": null,
     "eq_capacity": null,
@@ -87281,9 +88342,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.17,
+    "mgmt_summer": 0.17,
+    "mgmt_winter": 0.16,
     "naver_place_id": "35709337",
     "eq_design": null,
     "eq_capacity": null,
@@ -87645,9 +88706,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.12,
+    "mgmt_summer": 0.12,
+    "mgmt_winter": 0.13,
     "naver_place_id": "425521566",
     "eq_design": null,
     "eq_capacity": null,
@@ -88459,9 +89520,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.02,
+    "mgmt_summer": 0.02,
+    "mgmt_winter": 0.02,
     "naver_place_id": "19220506",
     "eq_design": null,
     "eq_capacity": null,
@@ -89380,9 +90441,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.17,
+    "mgmt_summer": 0.17,
+    "mgmt_winter": 0.18,
     "naver_place_id": "1640094295",
     "eq_design": null,
     "eq_capacity": null,
@@ -89504,9 +90565,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "19220144",
     "eq_design": null,
     "eq_capacity": null,
@@ -89657,9 +90718,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19220041",
     "eq_design": null,
     "eq_capacity": null,
@@ -89966,9 +91027,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": "1593069747",
     "eq_design": null,
     "eq_capacity": null,
@@ -90523,9 +91584,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.04,
     "naver_place_id": "19222695",
     "eq_design": null,
     "eq_capacity": null,
@@ -91149,9 +92210,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": "1936306845",
     "eq_design": null,
     "eq_capacity": null,
@@ -91647,9 +92708,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.16,
+    "mgmt_summer": 0.16,
+    "mgmt_winter": 0.16,
     "naver_place_id": "1005581183",
     "eq_design": null,
     "eq_capacity": null,
@@ -91850,9 +92911,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.32,
+    "mgmt_summer": 0.32,
+    "mgmt_winter": 0.32,
     "naver_place_id": "19221449",
     "eq_design": null,
     "eq_capacity": null,
@@ -92016,9 +93077,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.38,
+    "mgmt_summer": 0.38,
+    "mgmt_winter": 0.38,
     "naver_place_id": "19221449",
     "eq_design": null,
     "eq_capacity": null,
@@ -92164,9 +93225,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.15,
+    "mgmt_summer": 0.15,
+    "mgmt_winter": 0.15,
     "naver_place_id": "19223221",
     "eq_design": null,
     "eq_capacity": null,
@@ -92938,9 +93999,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "1936306845",
     "eq_design": null,
     "eq_capacity": null,
@@ -94976,9 +96037,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.14,
+    "mgmt_summer": 0.14,
+    "mgmt_winter": 0.14,
     "naver_place_id": "1640094295",
     "eq_design": null,
     "eq_capacity": null,
@@ -95271,9 +96332,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.12,
+    "mgmt_summer": 0.12,
+    "mgmt_winter": 0.13,
     "naver_place_id": "1005581183",
     "eq_design": null,
     "eq_capacity": null,
@@ -96480,9 +97541,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": "21130911",
     "eq_design": null,
     "eq_capacity": null,
@@ -96911,9 +97972,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.42,
+    "mgmt_summer": 0.42,
+    "mgmt_winter": 0.42,
     "naver_place_id": "19221449",
     "eq_design": null,
     "eq_capacity": null,
@@ -97022,9 +98083,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.02,
+    "mgmt_summer": 0.02,
+    "mgmt_winter": 0.02,
     "naver_place_id": "19223433",
     "eq_design": null,
     "eq_capacity": null,
@@ -97152,9 +98213,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.18,
+    "mgmt_summer": 0.18,
+    "mgmt_winter": 0.19,
     "naver_place_id": "31202946",
     "eq_design": null,
     "eq_capacity": null,
@@ -97382,9 +98443,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.47,
+    "mgmt_summer": 0.47,
+    "mgmt_winter": 0.47,
     "naver_place_id": "19226202",
     "eq_design": null,
     "eq_capacity": null,
@@ -97700,9 +98761,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.6,
+    "mgmt_summer": 0.6,
+    "mgmt_winter": 0.6,
     "naver_place_id": "19224073",
     "eq_design": null,
     "eq_capacity": null,
@@ -97849,9 +98910,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.03,
+    "mgmt_summer": 0.03,
+    "mgmt_winter": 0.03,
     "naver_place_id": "19224080",
     "eq_design": null,
     "eq_capacity": null,
@@ -98022,9 +99083,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.13,
+    "mgmt_summer": 0.13,
+    "mgmt_winter": 0.13,
     "naver_place_id": "19226657",
     "eq_design": null,
     "eq_capacity": null,
@@ -98167,9 +99228,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19224924",
     "eq_design": null,
     "eq_capacity": null,
@@ -98571,9 +99632,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": "19223788",
     "eq_design": null,
     "eq_capacity": null,
@@ -99040,9 +100101,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.22,
+    "mgmt_summer": 0.22,
+    "mgmt_winter": 0.22,
     "naver_place_id": "19229639",
     "eq_design": null,
     "eq_capacity": null,
@@ -99349,9 +100410,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.4,
+    "mgmt_summer": 0.4,
+    "mgmt_winter": 0.4,
     "naver_place_id": "19226202",
     "eq_design": null,
     "eq_capacity": null,
@@ -99461,9 +100522,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.15,
+    "mgmt_summer": 0.15,
+    "mgmt_winter": 0.15,
     "naver_place_id": "1429691031",
     "eq_design": null,
     "eq_capacity": null,
@@ -99624,9 +100685,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": "19223863",
     "eq_design": null,
     "eq_capacity": null,
@@ -99736,9 +100797,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.04,
     "naver_place_id": "19229052",
     "eq_design": null,
     "eq_capacity": null,
@@ -99974,9 +101035,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.2,
+    "mgmt_summer": 0.2,
+    "mgmt_winter": 0.2,
     "naver_place_id": "19225869",
     "eq_design": null,
     "eq_capacity": null,
@@ -100097,9 +101158,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.15,
+    "mgmt_summer": 0.15,
+    "mgmt_winter": 0.15,
     "naver_place_id": "19226657",
     "eq_design": null,
     "eq_capacity": null,
@@ -100209,9 +101270,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.22,
+    "mgmt_summer": 0.22,
+    "mgmt_winter": 0.22,
     "naver_place_id": "19229639",
     "eq_design": null,
     "eq_capacity": null,
@@ -100382,9 +101443,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.15,
+    "mgmt_summer": 0.15,
+    "mgmt_winter": 0.15,
     "naver_place_id": "19225018",
     "eq_design": null,
     "eq_capacity": null,
@@ -101243,9 +102304,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": "19230036",
     "eq_design": null,
     "eq_capacity": null,
@@ -101349,9 +102410,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": "19228615",
     "eq_design": null,
     "eq_capacity": null,
@@ -101573,9 +102634,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.19,
+    "mgmt_summer": 0.19,
+    "mgmt_winter": 0.19,
     "naver_place_id": "19229639",
     "eq_design": null,
     "eq_capacity": null,
@@ -101854,9 +102915,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.17,
+    "mgmt_summer": 0.17,
+    "mgmt_winter": 0.17,
     "naver_place_id": "19227735",
     "eq_design": null,
     "eq_capacity": null,
@@ -102009,9 +103070,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": "19228298",
     "eq_design": null,
     "eq_capacity": null,
@@ -102109,9 +103170,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.19,
+    "mgmt_summer": 0.19,
+    "mgmt_winter": 0.19,
     "naver_place_id": "19229639",
     "eq_design": null,
     "eq_capacity": null,
@@ -102344,9 +103405,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.27,
+    "mgmt_summer": 0.27,
+    "mgmt_winter": 0.27,
     "naver_place_id": "19225906",
     "eq_design": null,
     "eq_capacity": null,
@@ -102465,9 +103526,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.03,
+    "mgmt_summer": 0.03,
+    "mgmt_winter": 0.03,
     "naver_place_id": "19224080",
     "eq_design": null,
     "eq_capacity": null,
@@ -102712,9 +103773,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.29,
+    "mgmt_summer": 0.29,
+    "mgmt_winter": 0.29,
     "naver_place_id": "19225496",
     "eq_design": null,
     "eq_capacity": null,
@@ -110837,9 +111898,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "19205932",
     "eq_design": null,
     "eq_capacity": null,
@@ -163596,9 +164657,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": "19203580",
     "eq_design": null,
     "eq_capacity": null,
@@ -229399,9 +230460,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.04,
     "naver_place_id": "19222020",
     "eq_design": null,
     "eq_capacity": null,
@@ -238814,9 +239875,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.17,
+    "mgmt_summer": 0.17,
+    "mgmt_winter": 0.17,
     "naver_place_id": "19204087",
     "eq_design": null,
     "eq_capacity": null,
@@ -239490,7 +240551,22 @@
     "schools": [
       "곡정초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "곡정초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -239848,9 +240924,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "19204490",
     "eq_design": null,
     "eq_capacity": null,
@@ -240481,9 +241557,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.32,
+    "mgmt_summer": 0.32,
+    "mgmt_winter": 0.32,
     "naver_place_id": "443457951",
     "eq_design": null,
     "eq_capacity": null,
@@ -240899,9 +241975,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.35,
+    "mgmt_summer": 0.35,
+    "mgmt_winter": 0.34,
     "naver_place_id": "19206337",
     "eq_design": null,
     "eq_capacity": null,
@@ -241190,9 +242266,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.17,
+    "mgmt_summer": 0.17,
+    "mgmt_winter": 0.18,
     "naver_place_id": "19207196",
     "eq_design": null,
     "eq_capacity": null,
@@ -242044,7 +243120,125 @@
     "schools": [
       "능실초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "능실초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "cases": {
+            "s1": {
+              "n": 5,
+              "v": 0,
+              "p": 12
+            },
+            "s2": {
+              "n": 2,
+              "v": 0,
+              "p": 3
+            }
+          },
+          "types": {
+            "s1": [
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          },
+          "sped": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          }
+        },
+        "2026": {
+          "captchaFailed": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -242269,7 +243463,22 @@
     "schools": [
       "구운초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "구운초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -242567,9 +243776,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": "19203792",
     "eq_design": null,
     "eq_capacity": null,
@@ -243226,7 +244435,125 @@
     "schools": [
       "능실초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "능실초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "cases": {
+            "s1": {
+              "n": 5,
+              "v": 0,
+              "p": 12
+            },
+            "s2": {
+              "n": 2,
+              "v": 0,
+              "p": 3
+            }
+          },
+          "types": {
+            "s1": [
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          },
+          "sped": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          }
+        },
+        "2026": {
+          "captchaFailed": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -244213,9 +245540,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.2,
+    "mgmt_summer": 0.2,
+    "mgmt_winter": 0.2,
     "naver_place_id": "19206346",
     "eq_design": null,
     "eq_capacity": null,
@@ -244223,7 +245550,22 @@
     "schools": [
       "곡정초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "곡정초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -244391,9 +245733,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.13,
+    "mgmt_summer": 0.13,
+    "mgmt_winter": 0.13,
     "naver_place_id": "19205560",
     "eq_design": null,
     "eq_capacity": null,
@@ -244797,9 +246139,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.26,
+    "mgmt_summer": 0.26,
+    "mgmt_winter": 0.26,
     "naver_place_id": "19438419",
     "eq_design": null,
     "eq_capacity": null,
@@ -244807,7 +246149,22 @@
     "schools": [
       "규장초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "규장초등학교": {
+        "2023": {
+          "noData": true
+        },
+        "2024": {
+          "noData": true
+        },
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "zero": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -245294,7 +246651,16 @@
     "schools": [
       "당수초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "당수초등학교": {
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "zero": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -245600,9 +246966,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.18,
+    "mgmt_summer": 0.18,
+    "mgmt_winter": 0.19,
     "naver_place_id": "37605735",
     "eq_design": null,
     "eq_capacity": null,
@@ -245744,9 +247110,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.15,
+    "mgmt_summer": 0.15,
+    "mgmt_winter": 0.16,
     "naver_place_id": "19207144",
     "eq_design": null,
     "eq_capacity": null,
@@ -246046,7 +247412,16 @@
     "schools": [
       "당수초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "당수초등학교": {
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "zero": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -246989,9 +248364,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.14,
+    "mgmt_summer": 0.14,
+    "mgmt_winter": 0.14,
     "naver_place_id": "34787505",
     "eq_design": null,
     "eq_capacity": null,
@@ -247228,9 +248603,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.19,
+    "mgmt_summer": 0.19,
+    "mgmt_winter": 0.19,
     "naver_place_id": "21862555",
     "eq_design": null,
     "eq_capacity": null,
@@ -247238,7 +248613,22 @@
     "schools": [
       "곡정초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "곡정초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -248157,9 +249547,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.04,
     "naver_place_id": "19207000",
     "eq_design": null,
     "eq_capacity": null,
@@ -248308,9 +249698,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.04,
     "naver_place_id": "19205485",
     "eq_design": null,
     "eq_capacity": null,
@@ -248320,8 +249710,223 @@
     ],
     "school_violence": {
       "고현초등학교": {
-        "2026": {
+        "2023": {
           "timeout": true
+        },
+        "2024": {
+          "cases": {
+            "s1": {
+              "n": 0,
+              "v": 0,
+              "p": 0
+            },
+            "s2": {
+              "n": 0,
+              "v": 0,
+              "p": 0
+            }
+          },
+          "types": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "sped": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "cases": {
+            "s1": {
+              "n": 1,
+              "v": 0,
+              "p": 1
+            },
+            "s2": {
+              "n": 0,
+              "v": 0,
+              "p": 0
+            }
+          },
+          "types": {
+            "s1": [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5
+            ],
+            "s2": [
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5
+            ]
+          },
+          "sped": {
+            "s1": [
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5
+            ],
+            "s2": [
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5
+            ]
+          }
         }
       }
     },
@@ -248790,7 +250395,125 @@
     "schools": [
       "능실초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "능실초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "cases": {
+            "s1": {
+              "n": 5,
+              "v": 0,
+              "p": 12
+            },
+            "s2": {
+              "n": 2,
+              "v": 0,
+              "p": 3
+            }
+          },
+          "types": {
+            "s1": [
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          },
+          "sped": {
+            "s1": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "s2": [
+              2,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ]
+          }
+        },
+        "2026": {
+          "captchaFailed": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -249474,9 +251197,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": "32098837",
     "eq_design": null,
     "eq_capacity": null,
@@ -249643,7 +251366,22 @@
     "schools": [
       "곡정초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "곡정초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -249802,9 +251540,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "19206020",
     "eq_design": null,
     "eq_capacity": null,
@@ -250746,9 +252484,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.21,
+    "mgmt_summer": 0.21,
+    "mgmt_winter": 0.21,
     "naver_place_id": "19206345",
     "eq_design": null,
     "eq_capacity": null,
@@ -250756,7 +252494,22 @@
     "schools": [
       "곡정초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "곡정초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -251159,7 +252912,16 @@
     "schools": [
       "당수초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "당수초등학교": {
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "zero": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -251856,9 +253618,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.18,
+    "mgmt_summer": 0.18,
+    "mgmt_winter": 0.18,
     "naver_place_id": "38729672",
     "eq_design": null,
     "eq_capacity": null,
@@ -252805,9 +254567,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": "1069451245",
     "eq_design": null,
     "eq_capacity": null,
@@ -253122,9 +254884,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": "19205932",
     "eq_design": null,
     "eq_capacity": null,
@@ -253295,9 +255057,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "19203580",
     "eq_design": null,
     "eq_capacity": null,
@@ -254160,9 +255922,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "19203442",
     "eq_design": null,
     "eq_capacity": null,
@@ -254695,9 +256457,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": "19205424",
     "eq_design": null,
     "eq_capacity": null,
@@ -255295,9 +257057,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": "19205754",
     "eq_design": null,
     "eq_capacity": null,
@@ -255503,9 +257265,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "19207061",
     "eq_design": null,
     "eq_capacity": null,
@@ -256280,9 +258042,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.12,
+    "mgmt_summer": 0.12,
+    "mgmt_winter": 0.13,
     "naver_place_id": "38727098",
     "eq_design": null,
     "eq_capacity": null,
@@ -256695,9 +258457,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.03,
+    "mgmt_summer": 0.03,
+    "mgmt_winter": 0.04,
     "naver_place_id": "19203746",
     "eq_design": null,
     "eq_capacity": null,
@@ -256707,8 +258469,223 @@
     ],
     "school_violence": {
       "고현초등학교": {
-        "2026": {
+        "2023": {
           "timeout": true
+        },
+        "2024": {
+          "cases": {
+            "s1": {
+              "n": 0,
+              "v": 0,
+              "p": 0
+            },
+            "s2": {
+              "n": 0,
+              "v": 0,
+              "p": 0
+            }
+          },
+          "types": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "sped": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "cases": {
+            "s1": {
+              "n": 1,
+              "v": 0,
+              "p": 1
+            },
+            "s2": {
+              "n": 0,
+              "v": 0,
+              "p": 0
+            }
+          },
+          "types": {
+            "s1": [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "vp": {
+            "s1": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "s2": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "ps": {
+            "s1": [
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5
+            ],
+            "s2": [
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5
+            ]
+          },
+          "sped": {
+            "s1": [
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5
+            ],
+            "s2": [
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5
+            ]
+          }
         }
       }
     },
@@ -256845,9 +258822,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "1010825138",
     "eq_design": null,
     "eq_capacity": null,
@@ -257585,7 +259562,16 @@
     "schools": [
       "당수초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "당수초등학교": {
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "zero": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -257821,9 +259807,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19202712",
     "eq_design": null,
     "eq_capacity": null,
@@ -299786,9 +301772,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.68,
+    "mgmt_summer": 0.68,
+    "mgmt_winter": 0.68,
     "naver_place_id": "1816367370",
     "eq_design": null,
     "eq_capacity": null,
@@ -300268,9 +302254,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.32,
+    "mgmt_summer": 0.32,
+    "mgmt_winter": 0.33,
     "naver_place_id": "33799530",
     "eq_design": null,
     "eq_capacity": null,
@@ -300398,9 +302384,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.19,
+    "mgmt_summer": 0.19,
+    "mgmt_winter": 0.19,
     "naver_place_id": "1266151091",
     "eq_design": null,
     "eq_capacity": null,
@@ -300552,9 +302538,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.21,
+    "mgmt_summer": 0.21,
+    "mgmt_winter": 0.21,
     "naver_place_id": "1247391125",
     "eq_design": null,
     "eq_capacity": null,
@@ -300688,9 +302674,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.04,
     "naver_place_id": "19217429",
     "eq_design": null,
     "eq_capacity": null,
@@ -300955,9 +302941,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.16,
+    "mgmt_summer": 0.16,
+    "mgmt_winter": 0.16,
     "naver_place_id": "1549695497",
     "eq_design": null,
     "eq_capacity": null,
@@ -301079,9 +303065,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.05,
+    "mgmt_summer": 0.05,
+    "mgmt_winter": 0.05,
     "naver_place_id": "38655154",
     "eq_design": null,
     "eq_capacity": null,
@@ -301854,9 +303840,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "19217651",
     "eq_design": null,
     "eq_capacity": null,
@@ -302815,9 +304801,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "19215766",
     "eq_design": null,
     "eq_capacity": null,
@@ -303036,9 +305022,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.05,
     "naver_place_id": "32103621",
     "eq_design": null,
     "eq_capacity": null,
@@ -303428,9 +305414,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.21,
+    "mgmt_summer": 0.21,
+    "mgmt_winter": 0.21,
     "naver_place_id": "19223221",
     "eq_design": null,
     "eq_capacity": null,
@@ -304240,9 +306226,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.14,
+    "mgmt_summer": 0.14,
+    "mgmt_winter": 0.14,
     "naver_place_id": "21130911",
     "eq_design": null,
     "eq_capacity": null,
@@ -304879,9 +306865,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "19220041",
     "eq_design": null,
     "eq_capacity": null,
@@ -305045,9 +307031,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "19222997",
     "eq_design": null,
     "eq_capacity": null,
@@ -306248,9 +308234,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.2,
+    "mgmt_summer": 0.2,
+    "mgmt_winter": 0.2,
     "naver_place_id": "1640094295",
     "eq_design": null,
     "eq_capacity": null,
@@ -306465,9 +308451,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.16,
+    "mgmt_summer": 0.16,
+    "mgmt_winter": 0.16,
     "naver_place_id": "19223028",
     "eq_design": null,
     "eq_capacity": null,
@@ -306588,9 +308574,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19222695",
     "eq_design": null,
     "eq_capacity": null,
@@ -306967,9 +308953,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.18,
+    "mgmt_summer": 0.18,
+    "mgmt_winter": 0.18,
     "naver_place_id": "1005581183",
     "eq_design": null,
     "eq_capacity": null,
@@ -307103,9 +309089,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.21,
+    "mgmt_summer": 0.21,
+    "mgmt_winter": 0.21,
     "naver_place_id": "31202946",
     "eq_design": null,
     "eq_capacity": null,
@@ -307233,9 +309219,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.13,
+    "mgmt_summer": 0.13,
+    "mgmt_winter": 0.13,
     "naver_place_id": "19220144",
     "eq_design": null,
     "eq_capacity": null,
@@ -307583,9 +309569,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.41,
+    "mgmt_summer": 0.41,
+    "mgmt_winter": 0.42,
     "naver_place_id": "19225496",
     "eq_design": null,
     "eq_capacity": null,
@@ -307862,9 +309848,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.17,
+    "mgmt_summer": 0.17,
+    "mgmt_winter": 0.17,
     "naver_place_id": "19226657",
     "eq_design": null,
     "eq_capacity": null,
@@ -308229,9 +310215,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.23,
+    "mgmt_summer": 0.23,
+    "mgmt_winter": 0.23,
     "naver_place_id": "19225869",
     "eq_design": null,
     "eq_capacity": null,
@@ -308698,9 +310684,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.32,
+    "mgmt_summer": 0.32,
+    "mgmt_winter": 0.32,
     "naver_place_id": "19229862",
     "eq_design": null,
     "eq_capacity": null,
@@ -308815,9 +310801,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.03,
+    "mgmt_summer": 0.03,
+    "mgmt_winter": 0.03,
     "naver_place_id": "19227156",
     "eq_design": null,
     "eq_capacity": null,
@@ -309122,9 +311108,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.05,
+    "mgmt_summer": 0.05,
+    "mgmt_winter": 0.05,
     "naver_place_id": "19224080",
     "eq_design": null,
     "eq_capacity": null,
@@ -309369,9 +311355,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.17,
+    "mgmt_summer": 0.17,
+    "mgmt_winter": 0.17,
     "naver_place_id": "19226657",
     "eq_design": null,
     "eq_capacity": null,
@@ -309740,9 +311726,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.14,
+    "mgmt_summer": 0.14,
+    "mgmt_winter": 0.14,
     "naver_place_id": "1422636325",
     "eq_design": null,
     "eq_capacity": null,
@@ -309921,9 +311907,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.15,
+    "mgmt_summer": 0.15,
+    "mgmt_winter": 0.15,
     "naver_place_id": "19223863",
     "eq_design": null,
     "eq_capacity": null,
@@ -310174,9 +312160,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.38,
+    "mgmt_summer": 0.38,
+    "mgmt_winter": 0.39,
     "naver_place_id": "19225906",
     "eq_design": null,
     "eq_capacity": null,
@@ -310298,9 +312284,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.13,
+    "mgmt_summer": 0.13,
+    "mgmt_winter": 0.13,
     "naver_place_id": "19228615",
     "eq_design": null,
     "eq_capacity": null,
@@ -310549,9 +312535,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.19,
+    "mgmt_summer": 0.19,
+    "mgmt_winter": 0.19,
     "naver_place_id": "19225878",
     "eq_design": null,
     "eq_capacity": null,
@@ -311024,9 +313010,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.17,
+    "mgmt_summer": 0.17,
+    "mgmt_winter": 0.17,
     "naver_place_id": "19226657",
     "eq_design": null,
     "eq_capacity": null,
@@ -311190,9 +313176,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.14,
+    "mgmt_summer": 0.14,
+    "mgmt_winter": 0.14,
     "naver_place_id": "1422636325",
     "eq_design": null,
     "eq_capacity": null,
@@ -311296,9 +313282,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.44,
+    "mgmt_summer": 0.44,
+    "mgmt_winter": 0.44,
     "naver_place_id": "19225499",
     "eq_design": null,
     "eq_capacity": null,
@@ -311457,9 +313443,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.15,
+    "mgmt_summer": 0.15,
+    "mgmt_winter": 0.15,
     "naver_place_id": "19228277",
     "eq_design": null,
     "eq_capacity": null,
@@ -311557,9 +313543,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.21,
+    "mgmt_summer": 0.21,
+    "mgmt_winter": 0.21,
     "naver_place_id": "19226555",
     "eq_design": null,
     "eq_capacity": null,
@@ -311669,9 +313655,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.27,
+    "mgmt_summer": 0.27,
+    "mgmt_winter": 0.27,
     "naver_place_id": "19229639",
     "eq_design": null,
     "eq_capacity": null,
@@ -311812,9 +313798,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.15,
+    "mgmt_summer": 0.15,
+    "mgmt_winter": 0.15,
     "naver_place_id": "19223619",
     "eq_design": null,
     "eq_capacity": null,
@@ -311918,9 +313904,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.05,
+    "mgmt_summer": 0.05,
+    "mgmt_winter": 0.05,
     "naver_place_id": "19229052",
     "eq_design": null,
     "eq_capacity": null,
@@ -312018,9 +314004,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.05,
+    "mgmt_summer": 0.05,
+    "mgmt_winter": 0.05,
     "naver_place_id": "19229052",
     "eq_design": null,
     "eq_capacity": null,
@@ -312118,9 +314104,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.23,
+    "mgmt_summer": 0.23,
+    "mgmt_winter": 0.22,
     "naver_place_id": "19228597",
     "eq_design": null,
     "eq_capacity": null,
@@ -312247,9 +314233,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": "19228375",
     "eq_design": null,
     "eq_capacity": null,
@@ -312410,9 +314396,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.17,
+    "mgmt_summer": 0.17,
+    "mgmt_winter": 0.17,
     "naver_place_id": "19225018",
     "eq_design": null,
     "eq_capacity": null,
@@ -312640,9 +314626,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.52,
+    "mgmt_summer": 0.52,
+    "mgmt_winter": 0.53,
     "naver_place_id": "19226202",
     "eq_design": null,
     "eq_capacity": null,
@@ -312805,9 +314791,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.05,
+    "mgmt_summer": 0.05,
+    "mgmt_winter": 0.05,
     "naver_place_id": "19224080",
     "eq_design": null,
     "eq_capacity": null,
@@ -312954,9 +314940,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.21,
+    "mgmt_summer": 0.21,
+    "mgmt_winter": 0.21,
     "naver_place_id": "19227735",
     "eq_design": null,
     "eq_capacity": null,
@@ -313115,9 +315101,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.15,
+    "mgmt_summer": 0.15,
+    "mgmt_winter": 0.15,
     "naver_place_id": "19223788",
     "eq_design": null,
     "eq_capacity": null,
@@ -313282,9 +315268,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.75,
+    "mgmt_summer": 0.75,
+    "mgmt_winter": 0.76,
     "naver_place_id": "19225293",
     "eq_design": null,
     "eq_capacity": null,
@@ -313382,9 +315368,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.53,
+    "mgmt_summer": 0.53,
+    "mgmt_winter": 0.54,
     "naver_place_id": "19223918",
     "eq_design": null,
     "eq_capacity": null,
@@ -313488,9 +315474,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.53,
+    "mgmt_summer": 0.53,
+    "mgmt_winter": 0.54,
     "naver_place_id": "19223918",
     "eq_design": null,
     "eq_capacity": null,
@@ -313594,9 +315580,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.21,
+    "mgmt_summer": 0.21,
+    "mgmt_winter": 0.21,
     "naver_place_id": "1429691031",
     "eq_design": null,
     "eq_capacity": null,
