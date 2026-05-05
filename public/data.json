@@ -118,7 +118,22 @@
     "schools": [
       "송정초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "송정초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 50,
     "foreign_rate": 2.6,
     "foreign_count": 7432,
@@ -3107,7 +3122,22 @@
     "schools": [
       "수성초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "수성초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "zero": true
+        }
+      }
+    },
     "safety_score": 50,
     "foreign_rate": 2.6,
     "foreign_count": 7432,
@@ -3474,7 +3504,22 @@
     "schools": [
       "수원동신초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "수원동신초등학교": {
+        "2023": {
+          "zero": true
+        },
+        "2024": {
+          "zero": true
+        },
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 50,
     "foreign_rate": 2.6,
     "foreign_count": 7432,
@@ -3686,7 +3731,7 @@
     "build": 2007,
     "region": "수원시 장안구",
     "dong": "상현동",
-    "liquidity": 6.3,
+    "liquidity": null,
     "morning": 20,
     "evening": 27,
     "morning_cnt": 1,
@@ -4462,7 +4507,22 @@
     "schools": [
       "수원동신초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "수원동신초등학교": {
+        "2023": {
+          "zero": true
+        },
+        "2024": {
+          "zero": true
+        },
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 50,
     "foreign_rate": 2.6,
     "foreign_count": 7432,
@@ -8110,6 +8170,9 @@
     ],
     "school_violence": {
       "송원초등학교": {
+        "2023": {
+          "timeout": true
+        },
         "2024": {
           "timeout": true
         },
@@ -9464,7 +9527,7 @@
     "build": 1999,
     "region": "수원시 장안구",
     "dong": "정자동",
-    "liquidity": 0.9,
+    "liquidity": 2.5,
     "morning": 19,
     "evening": 25,
     "morning_cnt": 1,
@@ -12579,7 +12642,7 @@
     "build": 1995,
     "region": "수원시 장안구",
     "dong": "진안동",
-    "liquidity": 1,
+    "liquidity": 1.1,
     "morning": 20,
     "evening": 27,
     "morning_cnt": 1,
@@ -18144,325 +18207,16 @@
     "school_violence": {
       "고색초등학교": {
         "2023": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          },
-          "sped": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          }
+          "timeout": true
         },
         "2024": {
           "zero": true
         },
         "2025": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          },
-          "sped": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          }
+          "timeout": true
         },
         "2026": {
-          "cases": {
-            "s1": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            },
-            "s2": {
-              "n": 1,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "ps": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "sped": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          }
+          "timeout": true
         }
       }
     },
@@ -18630,325 +18384,16 @@
     "school_violence": {
       "고색초등학교": {
         "2023": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          },
-          "sped": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          }
+          "timeout": true
         },
         "2024": {
           "zero": true
         },
         "2025": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          },
-          "sped": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          }
+          "timeout": true
         },
         "2026": {
-          "cases": {
-            "s1": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            },
-            "s2": {
-              "n": 1,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "ps": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "sped": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          }
+          "timeout": true
         }
       }
     },
@@ -28566,325 +28011,16 @@
     "school_violence": {
       "고색초등학교": {
         "2023": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          },
-          "sped": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          }
+          "timeout": true
         },
         "2024": {
           "zero": true
         },
         "2025": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          },
-          "sped": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          }
+          "timeout": true
         },
         "2026": {
-          "cases": {
-            "s1": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            },
-            "s2": {
-              "n": 1,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "ps": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "sped": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          }
+          "timeout": true
         }
       }
     },
@@ -29850,325 +28986,16 @@
     "school_violence": {
       "고색초등학교": {
         "2023": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          },
-          "sped": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          }
+          "timeout": true
         },
         "2024": {
           "zero": true
         },
         "2025": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          },
-          "sped": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          }
+          "timeout": true
         },
         "2026": {
-          "cases": {
-            "s1": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            },
-            "s2": {
-              "n": 1,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "ps": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "sped": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          }
+          "timeout": true
         }
       }
     },
@@ -33838,325 +32665,16 @@
     "school_violence": {
       "고색초등학교": {
         "2023": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          },
-          "sped": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          }
+          "timeout": true
         },
         "2024": {
           "zero": true
         },
         "2025": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          },
-          "sped": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          }
+          "timeout": true
         },
         "2026": {
-          "cases": {
-            "s1": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            },
-            "s2": {
-              "n": 1,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "ps": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "sped": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          }
+          "timeout": true
         }
       }
     },
@@ -40047,7 +38565,7 @@
     "school_violence": {
       "권선초등학교": {
         "2023": {
-          "captchaFailed": true
+          "timeout": true
         },
         "2024": {
           "timeout": true
@@ -63483,7 +62001,7 @@
     "build": 2014,
     "region": "수원시 영통구",
     "dong": "원천동",
-    "liquidity": 8.8,
+    "liquidity": null,
     "morning": 20,
     "evening": 28,
     "morning_cnt": 1,
@@ -66407,7 +64925,7 @@
     "build": 1998,
     "region": "수원시 영통구",
     "dong": "매탄동",
-    "liquidity": 0.3,
+    "liquidity": null,
     "morning": 23,
     "evening": 33,
     "morning_cnt": 1,
@@ -76624,7 +75142,7 @@
     "build": 2010,
     "region": "수원시 영통구",
     "dong": "매탄동",
-    "liquidity": 1.8,
+    "liquidity": null,
     "morning": 18,
     "evening": 26,
     "morning_cnt": 1,
@@ -105099,9 +103617,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -106060,9 +104578,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -107050,9 +105568,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -107428,9 +105946,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -108157,9 +106675,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -108450,9 +106968,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -108726,9 +107244,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.05,
+    "mgmt_summer": 0.05,
+    "mgmt_winter": 0.05,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -109205,9 +107723,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -109821,9 +108339,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -109973,9 +108491,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -111673,9 +110191,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.04,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -111935,9 +110453,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -112158,9 +110676,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -112556,9 +111074,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -112821,9 +111339,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -114744,9 +113262,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -115015,9 +113533,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -126494,7 +125012,7 @@
     "build": 1998,
     "region": "용인시 기흥구",
     "dong": "보라동",
-    "liquidity": 3.6,
+    "liquidity": null,
     "morning": 21,
     "evening": 27,
     "morning_cnt": 1,
@@ -141028,7 +139546,7 @@
     "build": 2000,
     "region": "용인시 수지구",
     "dong": "풍덕천동",
-    "liquidity": 2.2,
+    "liquidity": 3.6,
     "morning": 18,
     "evening": 28,
     "morning_cnt": 1,
@@ -150677,7 +149195,7 @@
     "build": 2020,
     "region": "용인시 수지구",
     "dong": "동천동",
-    "liquidity": 0.9,
+    "liquidity": 2.1,
     "morning": 16,
     "evening": 23,
     "morning_cnt": 1,
@@ -153899,9 +152417,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -154425,9 +152943,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -154549,9 +153067,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -154716,9 +153234,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -155165,9 +153683,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -156719,9 +155237,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -158377,9 +156895,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": null,
     "eq_design": false,
     "eq_capacity": null,
@@ -159328,9 +157846,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -160131,9 +158649,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -160783,9 +159301,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -160915,9 +159433,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -161980,9 +160498,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.05,
+    "mgmt_summer": 0.05,
+    "mgmt_winter": 0.05,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -162757,9 +161275,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.16,
+    "mgmt_summer": 0.16,
+    "mgmt_winter": 0.16,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -164265,9 +162783,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -164424,9 +162942,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -165892,325 +164410,16 @@
     "school_violence": {
       "고색초등학교": {
         "2023": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          },
-          "sped": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          }
+          "timeout": true
         },
         "2024": {
           "zero": true
         },
         "2025": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          },
-          "sped": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          }
+          "timeout": true
         },
         "2026": {
-          "cases": {
-            "s1": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            },
-            "s2": {
-              "n": 1,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "ps": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "sped": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          }
+          "timeout": true
         }
       }
     },
@@ -169555,7 +167764,22 @@
     "schools": [
       "송정초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "송정초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 5.4,
     "foreign_count": 51635,
@@ -231309,7 +229533,22 @@
     "schools": [
       "송정초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "송정초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 50,
     "foreign_rate": 2.6,
     "foreign_count": 7432,
@@ -236000,7 +234239,22 @@
     "schools": [
       "송정초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "송정초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 50,
     "foreign_rate": 2.6,
     "foreign_count": 7432,
@@ -237304,7 +235558,22 @@
     "schools": [
       "수성초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "수성초등학교": {
+        "2023": {
+          "timeout": true
+        },
+        "2024": {
+          "timeout": true
+        },
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "zero": true
+        }
+      }
+    },
     "safety_score": 50,
     "foreign_rate": 2.6,
     "foreign_count": 7432,
@@ -238782,7 +237051,22 @@
     "schools": [
       "수원동신초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "수원동신초등학교": {
+        "2023": {
+          "zero": true
+        },
+        "2024": {
+          "zero": true
+        },
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 50,
     "foreign_rate": 2.6,
     "foreign_count": 7432,
@@ -240794,7 +239078,16 @@
     "schools": [
       "수일초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "수일초등학교": {
+        "2025": {
+          "zero": true
+        },
+        "2026": {
+          "zero": true
+        }
+      }
+    },
     "safety_score": 50,
     "foreign_rate": 2.6,
     "foreign_count": 7432,
@@ -245284,325 +243577,16 @@
     "school_violence": {
       "고색초등학교": {
         "2023": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          },
-          "sped": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          }
+          "timeout": true
         },
         "2024": {
           "zero": true
         },
         "2025": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          },
-          "sped": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          }
+          "timeout": true
         },
         "2026": {
-          "cases": {
-            "s1": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            },
-            "s2": {
-              "n": 1,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "ps": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "sped": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          }
+          "timeout": true
         }
       }
     },
@@ -256456,325 +254440,16 @@
     "school_violence": {
       "고색초등학교": {
         "2023": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          },
-          "sped": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          }
+          "timeout": true
         },
         "2024": {
           "zero": true
         },
         "2025": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          },
-          "sped": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          }
+          "timeout": true
         },
         "2026": {
-          "cases": {
-            "s1": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            },
-            "s2": {
-              "n": 1,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "ps": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "sped": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          }
+          "timeout": true
         }
       }
     },
@@ -259032,325 +256707,16 @@
     "school_violence": {
       "고색초등학교": {
         "2023": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          },
-          "sped": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          }
+          "timeout": true
         },
         "2024": {
           "zero": true
         },
         "2025": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          },
-          "sped": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          }
+          "timeout": true
         },
         "2026": {
-          "cases": {
-            "s1": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            },
-            "s2": {
-              "n": 1,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "ps": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "sped": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          }
+          "timeout": true
         }
       }
     },
@@ -260270,325 +257636,16 @@
     "school_violence": {
       "고색초등학교": {
         "2023": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              1,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          },
-          "sped": {
-            "s1": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ],
-            "s2": [
-              3,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              4
-            ]
-          }
+          "timeout": true
         },
         "2024": {
           "zero": true
         },
         "2025": {
-          "cases": {
-            "s1": {
-              "n": 1,
-              "v": 0,
-              "p": 1
-            },
-            "s2": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              1
-            ]
-          },
-          "ps": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          },
-          "sped": {
-            "s1": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ],
-            "s2": [
-              2,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              2
-            ]
-          }
+          "timeout": true
         },
         "2026": {
-          "cases": {
-            "s1": {
-              "n": 0,
-              "v": 0,
-              "p": 0
-            },
-            "s2": {
-              "n": 1,
-              "v": 0,
-              "p": 0
-            }
-          },
-          "types": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              1,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "vp": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "ps": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "sped": {
-            "s1": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "s2": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          }
+          "timeout": true
         }
       }
     },
@@ -279474,9 +276531,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -289929,7 +286986,7 @@
     "build": 1998,
     "region": "수원시 영통구",
     "dong": "매탄동",
-    "liquidity": 0.3,
+    "liquidity": 0.4,
     "morning": 23,
     "evening": 33,
     "morning_cnt": 1,
@@ -317900,9 +314957,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.1,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -318166,9 +315223,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -318616,9 +315673,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.11,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -318755,9 +315812,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -319320,9 +316377,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -319443,9 +316500,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -319859,9 +316916,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -320855,9 +317912,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -321017,9 +318074,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -322178,9 +319235,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -322982,9 +320039,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -323541,9 +320598,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -323719,9 +320776,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -323856,9 +320913,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.12,
+    "mgmt_summer": 0.12,
+    "mgmt_winter": 0.12,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -326987,7 +324044,7 @@
     "build": 2008,
     "region": "용인시 기흥구",
     "dong": "청덕동",
-    "liquidity": 8.3,
+    "liquidity": 5.2,
     "morning": 16,
     "evening": 28,
     "morning_cnt": 1,
@@ -328025,7 +325082,7 @@
     "build": 2002,
     "region": "용인시 기흥구",
     "dong": "상하동",
-    "liquidity": 2.6,
+    "liquidity": 1.3,
     "morning": 24,
     "evening": 31,
     "morning_cnt": 1,
@@ -329830,7 +326887,7 @@
     "build": 2000,
     "region": "용인시 기흥구",
     "dong": "보정동",
-    "liquidity": 2.8,
+    "liquidity": 2.3,
     "morning": 22,
     "evening": 27,
     "morning_cnt": 1,
@@ -343498,7 +340555,7 @@
     "build": 2001,
     "region": "용인시 기흥구",
     "dong": "마북동",
-    "liquidity": 3.3,
+    "liquidity": 2.4,
     "morning": 20,
     "evening": 26,
     "morning_cnt": 1,
@@ -369474,7 +366531,7 @@
     "build": 2020,
     "region": "용인시 수지구",
     "dong": "동천동",
-    "liquidity": 1.2,
+    "liquidity": 1.8,
     "morning": 16,
     "evening": 23,
     "morning_cnt": 1,
@@ -383553,9 +380610,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -384345,9 +381402,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -385576,9 +382633,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -385765,9 +382822,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -385934,9 +382991,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -386518,9 +383575,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": false,
     "eq_capacity": null,
@@ -387991,9 +385048,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -388200,9 +385257,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -389199,9 +386256,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -390361,9 +387418,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -390485,9 +387542,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.12,
+    "mgmt_summer": 0.12,
+    "mgmt_winter": 0.12,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -390672,9 +387729,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -390837,9 +387894,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -391758,9 +388815,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -392330,9 +389387,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -392457,9 +389514,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.12,
+    "mgmt_summer": 0.12,
+    "mgmt_winter": 0.12,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -392741,9 +389798,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -392977,9 +390034,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -393083,9 +390140,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.13,
+    "mgmt_summer": 0.13,
+    "mgmt_winter": 0.13,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
@@ -394069,9 +391126,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": null,
     "eq_design": null,
     "eq_capacity": null,
