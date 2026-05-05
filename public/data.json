@@ -11202,10 +11202,10 @@
     "lng": 126.95304,
     "pedia1": 36,
     "pedia1_name": "광교이안소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 0.4,
     "pedia2": 38,
     "pedia2_name": "박소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -4.5,
     "hcode": "55oa5",
     "recent_trades": [
       {
@@ -12119,10 +12119,10 @@
     "lng": 126.95304,
     "pedia1": 36,
     "pedia1_name": "광교이안소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 0.4,
     "pedia2": 38,
     "pedia2_name": "박소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -4.5,
     "hcode": "55oa5",
     "recent_trades": [
       {
@@ -13809,6 +13809,9 @@
     ],
     "school_violence": {
       "세곡초등학교": {
+        "2023": {
+          "timeout": true
+        },
         "2024": {
           "timeout": true
         },
@@ -14167,7 +14170,19 @@
     "schools": [
       "세류초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "세류초등학교": {
+        "2024": {
+          "zero": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -15877,9 +15892,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19206037",
     "eq_design": null,
     "eq_capacity": null,
@@ -17240,9 +17255,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": "19206337",
     "eq_design": null,
     "eq_capacity": null,
@@ -17580,9 +17595,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.04,
+    "mgmt_summer": 0.04,
+    "mgmt_winter": 0.04,
     "naver_place_id": "19206939",
     "eq_design": null,
     "eq_capacity": null,
@@ -17921,9 +17936,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.05,
+    "mgmt_summer": 0.05,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19203792",
     "eq_design": null,
     "eq_capacity": null,
@@ -25985,7 +26000,19 @@
     "schools": [
       "세류초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "세류초등학교": {
+        "2024": {
+          "zero": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -26486,9 +26513,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "38729672",
     "eq_design": null,
     "eq_capacity": null,
@@ -29109,9 +29136,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "37605735",
     "eq_design": null,
     "eq_capacity": null,
@@ -30301,10 +30328,10 @@
     "lng": 126.95304,
     "pedia1": 36,
     "pedia1_name": "광교이안소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 0.4,
     "pedia2": 38,
     "pedia2_name": "박소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -4.5,
     "hcode": "55oa5",
     "recent_trades": [
       {
@@ -30846,10 +30873,10 @@
     "lng": 127.09405,
     "pedia1": 4,
     "pedia1_name": "하나소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 0.5,
     "pedia2": 16,
     "pedia2_name": "성모바른소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": 2.7,
     "hcode": "54C7a",
     "recent_trades": [
       {
@@ -30953,9 +30980,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "19205932",
     "eq_design": null,
     "eq_capacity": null,
@@ -31305,10 +31332,10 @@
     "lng": 127.09014,
     "pedia1": 6,
     "pedia1_name": "연세로이소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": -6.5,
     "pedia2": 10,
     "pedia2_name": "온가족소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -6.9,
     "hcode": "53s7d",
     "recent_trades": [
       {
@@ -32491,9 +32518,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "19202432",
     "eq_design": null,
     "eq_capacity": null,
@@ -32632,9 +32659,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.06,
+    "mgmt_summer": 0.06,
+    "mgmt_winter": 0.06,
     "naver_place_id": "19203442",
     "eq_design": null,
     "eq_capacity": null,
@@ -45759,7 +45786,19 @@
     "schools": [
       "세류초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "세류초등학교": {
+        "2024": {
+          "zero": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 33,
     "foreign_rate": 5.9,
     "foreign_count": 12303,
@@ -84947,10 +84986,10 @@
     "lng": 126.99044,
     "pedia1": 5,
     "pedia1_name": "금동소아과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 1.3,
     "pedia2": 11,
     "pedia2_name": "삼성드림 소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -0.3,
     "hcode": "xKb2",
     "recent_trades": [
       {
@@ -109690,10 +109729,10 @@
     "lng": 127.08052,
     "pedia1": 17,
     "pedia1_name": "제일봄소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": -0.2,
     "pedia2": 19,
     "pedia2_name": "최소아청소년과",
-    "pedia2_slope": null,
+    "pedia2_slope": -14.6,
     "hcode": "gf09c",
     "recent_trades": [
       {
@@ -112413,10 +112452,10 @@
     "lng": 127.08052,
     "pedia1": 15,
     "pedia1_name": "제일봄소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": -0.2,
     "pedia2": 17,
     "pedia2_name": "최소아청소년과",
-    "pedia2_slope": null,
+    "pedia2_slope": -14.6,
     "hcode": "gcIb4",
     "recent_trades": [
       {
@@ -112544,10 +112583,10 @@
     "lng": 127.09405,
     "pedia1": 4,
     "pedia1_name": "하나소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 0.5,
     "pedia2": 16,
     "pedia2_name": "성모바른소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": 2.7,
     "hcode": "54C7a",
     "recent_trades": [
       {
@@ -112604,9 +112643,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "19205932",
     "eq_design": null,
     "eq_capacity": null,
@@ -121254,10 +121293,10 @@
     "lng": 127.07299,
     "pedia1": 5,
     "pedia1_name": "강남병원 소아청소년센터",
-    "pedia1_slope": null,
+    "pedia1_slope": -3,
     "pedia2": 9,
     "pedia2_name": "배소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -7.6,
     "hcode": "6gKbb",
     "recent_trades": [
       {
@@ -124756,10 +124795,10 @@
     "lng": 127.11974,
     "pedia1": 6,
     "pedia1_name": "유수정소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": -0.4,
     "pedia2": 9,
     "pedia2_name": "김종화푸른소아과",
-    "pedia2_slope": null,
+    "pedia2_slope": -6.8,
     "hcode": "6gHc5",
     "recent_trades": [
       {
@@ -126358,10 +126397,10 @@
     "lng": 127.07883,
     "pedia1": 3,
     "pedia1_name": "하나소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 6.6,
     "pedia2": 27,
     "pedia2_name": "강남병원 소아청소년센터",
-    "pedia2_slope": null,
+    "pedia2_slope": 7.7,
     "hcode": "dCQf2",
     "recent_trades": [
       {
@@ -134318,10 +134357,10 @@
     "lng": 127.07883,
     "pedia1": 3,
     "pedia1_name": "하나소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 6.6,
     "pedia2": 27,
     "pedia2_name": "강남병원 소아청소년센터",
-    "pedia2_slope": null,
+    "pedia2_slope": 7.7,
     "hcode": "dCQf2",
     "recent_trades": [
       {
@@ -150403,10 +150442,10 @@
     "lng": 127.05726,
     "pedia1": 14,
     "pedia1_name": "올리브소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 1.1,
     "pedia2": 16,
     "pedia2_name": "위드준소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -3.2,
     "hcode": "6l0ee",
     "recent_trades": [
       {
@@ -151073,10 +151112,10 @@
     "lng": 127.07883,
     "pedia1": 4,
     "pedia1_name": "유수정소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 6.6,
     "pedia2": 8,
     "pedia2_name": "김종화푸른소아과",
-    "pedia2_slope": null,
+    "pedia2_slope": 7.7,
     "hcode": "aZy5b",
     "recent_trades": [
       {
@@ -152914,10 +152953,10 @@
     "lng": 127.07883,
     "pedia1": 13,
     "pedia1_name": "피터소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 6.6,
     "pedia2": 20,
     "pedia2_name": "메디파크 소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": 7.7,
     "hcode": "6mr2a",
     "recent_trades": [
       {
@@ -218961,10 +219000,10 @@
     "lng": 127.05726,
     "pedia1": 20,
     "pedia1_name": "동탄해와달소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 1.1,
     "pedia2": 21,
     "pedia2_name": "신수아소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -3.2,
     "hcode": "csO0c",
     "recent_trades": [
       {
@@ -223695,10 +223734,10 @@
     "lng": 127.05726,
     "pedia1": 20,
     "pedia1_name": "동탄해와달소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 1.1,
     "pedia2": 21,
     "pedia2_name": "신수아소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -3.2,
     "hcode": "csO0c",
     "recent_trades": [
       {
@@ -242732,9 +242771,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": "19206337",
     "eq_design": null,
     "eq_capacity": null,
@@ -244474,9 +244513,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.08,
+    "mgmt_summer": 0.08,
+    "mgmt_winter": 0.08,
     "naver_place_id": "19203792",
     "eq_design": null,
     "eq_capacity": null,
@@ -244982,7 +245021,19 @@
     "schools": [
       "세류초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "세류초등학교": {
+        "2024": {
+          "zero": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -247567,9 +247618,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.07,
+    "mgmt_summer": 0.07,
+    "mgmt_winter": 0.07,
     "naver_place_id": "37605735",
     "eq_design": null,
     "eq_capacity": null,
@@ -248110,10 +248161,10 @@
     "lng": 127.05726,
     "pedia1": 15,
     "pedia1_name": "아이들소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 1.1,
     "pedia2": 17,
     "pedia2_name": "레인보우소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -3.2,
     "hcode": "aUsef",
     "recent_trades": [
       {
@@ -248981,7 +249032,19 @@
     "schools": [
       "세류초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "세류초등학교": {
+        "2024": {
+          "zero": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -250049,7 +250112,19 @@
     "schools": [
       "세류초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "세류초등학교": {
+        "2024": {
+          "zero": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 48,
     "foreign_rate": 3,
     "foreign_count": 10326,
@@ -254190,9 +254265,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "38729672",
     "eq_design": null,
     "eq_capacity": null,
@@ -255235,10 +255310,10 @@
     "lng": 127.09405,
     "pedia1": 4,
     "pedia1_name": "하나소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 0.5,
     "pedia2": 16,
     "pedia2_name": "성모바른소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": 2.7,
     "hcode": "54C7a",
     "recent_trades": [
       {
@@ -255456,9 +255531,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.11,
+    "mgmt_summer": 0.11,
+    "mgmt_winter": 0.11,
     "naver_place_id": "19205932",
     "eq_design": null,
     "eq_capacity": null,
@@ -256494,9 +256569,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.09,
+    "mgmt_summer": 0.09,
+    "mgmt_winter": 0.09,
     "naver_place_id": "19203442",
     "eq_design": null,
     "eq_capacity": null,
@@ -259453,9 +259528,9 @@
       "waterCool": 0,
       "gas": 0
     },
-    "mgmt_cost": null,
-    "mgmt_summer": null,
-    "mgmt_winter": null,
+    "mgmt_cost": 0.1,
+    "mgmt_summer": 0.1,
+    "mgmt_winter": 0.1,
     "naver_place_id": "1010825138",
     "eq_design": null,
     "eq_capacity": null,
@@ -260722,10 +260797,10 @@
     "lng": 127.09014,
     "pedia1": 6,
     "pedia1_name": "연세로이소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": -6.5,
     "pedia2": 10,
     "pedia2_name": "온가족소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -6.9,
     "hcode": "53s7d",
     "recent_trades": [
       {
@@ -268809,7 +268884,19 @@
     "schools": [
       "세류초등학교"
     ],
-    "school_violence": {},
+    "school_violence": {
+      "세류초등학교": {
+        "2024": {
+          "zero": true
+        },
+        "2025": {
+          "timeout": true
+        },
+        "2026": {
+          "timeout": true
+        }
+      }
+    },
     "safety_score": 33,
     "foreign_rate": 5.9,
     "foreign_count": 12303,
@@ -297459,10 +297546,10 @@
     "lng": 127.05726,
     "pedia1": 26,
     "pedia1_name": "광교이안소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 1.1,
     "pedia2": 28,
     "pedia2_name": "서울 위즈소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -3.2,
     "hcode": "58Kac",
     "recent_trades": [
       {
@@ -317719,10 +317806,10 @@
     "lng": 127.20758,
     "pedia1": 15,
     "pedia1_name": "문소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": -2,
     "pedia2": 20,
     "pedia2_name": "삼성아이웰 소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": 5.3,
     "hcode": "6fTc7",
     "recent_trades": [
       {
@@ -327725,10 +327812,10 @@
     "lng": 127.07883,
     "pedia1": 4,
     "pedia1_name": "꿈이든소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 6.6,
     "pedia2": 7,
     "pedia2_name": "미래소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": 7.7,
     "hcode": "aIN39",
     "recent_trades": [
       {
@@ -357935,10 +358022,10 @@
     "lng": 127.07883,
     "pedia1": 3,
     "pedia1_name": "하나소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 6.6,
     "pedia2": 27,
     "pedia2_name": "강남병원 소아청소년센터",
-    "pedia2_slope": null,
+    "pedia2_slope": 7.7,
     "hcode": "dCQf2",
     "recent_trades": [
       {
@@ -371560,10 +371647,10 @@
     "lng": 127.07883,
     "pedia1": 4,
     "pedia1_name": "유수정소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 6.6,
     "pedia2": 8,
     "pedia2_name": "김종화푸른소아과",
-    "pedia2_slope": null,
+    "pedia2_slope": 7.7,
     "hcode": "aZy5b",
     "recent_trades": [
       {
@@ -380155,10 +380242,10 @@
     "lng": 127.07883,
     "pedia1": 13,
     "pedia1_name": "피터소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 6.6,
     "pedia2": 20,
     "pedia2_name": "메디파크 소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": 7.7,
     "hcode": "6mr2a",
     "recent_trades": [
       {
@@ -457367,10 +457454,10 @@
     "lng": 127.05726,
     "pedia1": 20,
     "pedia1_name": "동탄해와달소아청소년과의원",
-    "pedia1_slope": null,
+    "pedia1_slope": 1.1,
     "pedia2": 21,
     "pedia2_name": "신수아소아청소년과의원",
-    "pedia2_slope": null,
+    "pedia2_slope": -3.2,
     "hcode": "csO0c",
     "recent_trades": [
       {
