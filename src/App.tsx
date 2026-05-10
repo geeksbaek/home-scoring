@@ -391,22 +391,35 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   const mr = mortgageRate / 12;
   const grossMortgageMonthly = maxLoan > 0 ? Math.round(maxLoan * mr / (1 - Math.pow(1 + mr, -months))) : 0;
 
-  // 사내 이자지원 (매매대출 기본 적용, 모든 주담대 상품 가능)
+  // 사내 이자지원: min(잔액, 1.5억) × (mortgageRate - 2%) 매월 지원.
+  // LTV 50% 제약 = 매매가의 50% 까지만 지원금 한도로 인정.
   const subsidyEligible = interestSubsidy;
   const subsidyAmount = subsidyEligible
     ? Math.min(maxLoan, Math.floor(priceMan * SUBSIDY_LTV), SUBSIDY_MAX_AMOUNT)
     : 0;
-  // 본인 부담 가중평균 금리: 지원분은 2%, 비지원분은 원금리
-  const effectiveRate = subsidyAmount > 0 && maxLoan > 0
-    ? (subsidyAmount * SUBSIDY_USER_RATE + (maxLoan - subsidyAmount) * mortgageRate) / maxLoan
+  const subsidyDiffRate = Math.max(0, mortgageRate - SUBSIDY_USER_RATE);
+  // amortization 시뮬: 매월 잔액 추적 → 잔액이 1.5억 밑으로 가면 그만큼만 보조
+  let subsidyTotal = 0;
+  if (subsidyAmount > 0 && grossMortgageMonthly > 0) {
+    const subsidyMr = subsidyDiffRate / 12;
+    let bal = maxLoan;
+    for (let m = 0; m < months; m++) {
+      const base = Math.min(bal, subsidyAmount);
+      subsidyTotal += base * subsidyMr;
+      const interest = bal * mr;
+      const principal = grossMortgageMonthly - interest;
+      bal -= principal;
+      if (bal < 0) bal = 0;
+    }
+  }
+  subsidyTotal = Math.round(subsidyTotal);
+  const subsidyMonthly = months > 0 ? Math.round(subsidyTotal / months) : 0;
+  const mortgageMonthly = Math.max(0, grossMortgageMonthly - subsidyMonthly);
+  const mortgageTotalInterest = maxLoan > 0 ? grossMortgageMonthly * months - maxLoan - subsidyTotal : 0;
+  // 표시용 effective rate (총 지원액 / (원금 × 연수)로 근사한 본인 평균 금리)
+  const effectiveRate = subsidyAmount > 0 && maxLoan > 0 && years > 0
+    ? Math.max(0, mortgageRate - subsidyTotal / (maxLoan * years))
     : mortgageRate;
-  const erM = effectiveRate / 12;
-  const mortgageMonthly = maxLoan > 0
-    ? Math.round(maxLoan * erM / (1 - Math.pow(1 + erM, -months)))
-    : 0;
-  const subsidyMonthly = grossMortgageMonthly - mortgageMonthly; // 회사 월평균 지원금
-  const mortgageTotalInterest = maxLoan > 0 ? mortgageMonthly * months - maxLoan : 0;
-  const subsidyTotal = subsidyMonthly * months;
 
   const extraMonthly = Math.round(extraLoanMan * extraRate / 12); // 추가 이자만
   const totalMonthly = mortgageMonthly + extraMonthly;
@@ -506,9 +519,9 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
               <p className="font-semibold mb-0.5">월 상환 ({aff.years}년)</p>
               {aff.subsidyAmount > 0 ? (
                 <>
-                  <div className="flex justify-between"><span className="text-muted-foreground">주담대 원리금 ({(aff.mortgageRate * 100).toFixed(1)}% → {(aff.effectiveRate * 100).toFixed(2)}%)</span><span>{aff.grossMortgageMonthly.toLocaleString()}만원</span></div>
-                  <div className="flex justify-between"><span className="text-emerald-500">└ 회사 이자지원 ({(aff.subsidyAmount / 10000).toFixed(1)}억 한도)</span><span className="text-emerald-500">-{aff.subsidyMonthly.toLocaleString()}만원</span></div>
-                  <div className="flex justify-between"><span className="text-muted-foreground">└ 본인 부담 원리금</span><span>{aff.mortgageMonthly.toLocaleString()}만원</span></div>
+                  <div className="flex justify-between"><span className="text-muted-foreground">주담대 원리금 ({(aff.mortgageRate * 100).toFixed(1)}%)</span><span>{aff.grossMortgageMonthly.toLocaleString()}만원</span></div>
+                  <div className="flex justify-between"><span className="text-emerald-500">└ 회사 이자지원 ({(aff.subsidyAmount / 10000).toFixed(1)}억 × {((aff.mortgageRate - 0.02) * 100).toFixed(1)}%, 평균)</span><span className="text-emerald-500">-{aff.subsidyMonthly.toLocaleString()}만원</span></div>
+                  <div className="flex justify-between"><span className="text-muted-foreground">└ 본인 부담 원리금 (평균)</span><span>{aff.mortgageMonthly.toLocaleString()}만원</span></div>
                 </>
               ) : (
                 <div className="flex justify-between"><span className="text-muted-foreground">주담대 원리금 ({(aff.mortgageRate * 100).toFixed(1)}%)</span><span>{aff.mortgageMonthly.toLocaleString()}만원</span></div>
