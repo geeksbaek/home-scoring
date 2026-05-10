@@ -1496,7 +1496,25 @@ export default function App() {
     return f;
   }, [data, typeFilter, sortField, regionFilter, commuteFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, excludeDirect, excludeFirstFloor, myLocation]);
 
-  const favoriteItems = useMemo(() => data.filter((d) => favorites.has(`${d.name}|${d.atype}`)), [data, favorites]);
+  const favoriteItems = useMemo(() => {
+    const items = data.filter((d) => favorites.has(`${d.name}|${d.atype}`));
+    return items.sort((a, b) => {
+      if (a.name !== b.name) return a.name.localeCompare(b.name, "ko");
+      return a.area - b.area;
+    });
+  }, [data, favorites]);
+
+  // 같은 단지(name) row 그룹화 → rowspan 메타
+  const favoriteRowMeta = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const d of favoriteItems) counts.set(d.name, (counts.get(d.name) ?? 0) + 1);
+    const seen = new Set<string>();
+    return favoriteItems.map((d) => {
+      const isFirst = !seen.has(d.name);
+      seen.add(d.name);
+      return { isFirst, span: counts.get(d.name) ?? 1 };
+    });
+  }, [favoriteItems]);
 
   const filteredNames = useMemo(() => new Set(filtered.map((d) => d.name)), [filtered]);
 
@@ -1864,29 +1882,33 @@ export default function App() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {favoriteItems.map((d) => {
+                {favoriteItems.map((d, idx) => {
                   const sparkData = d.recent_trades?.slice().reverse().map((t) => ({ date: t.date, price: t.price })) ?? [];
                   const favKey = `${d.name}|${d.atype}`;
+                  const { isFirst, span } = favoriteRowMeta[idx];
+                  const groupClass = span > 1 ? "border-t-2 border-primary/30" : "";
                   return (
-                    <TableRow key={`fav-${favKey}`} className="bg-primary/5">
+                    <TableRow key={`fav-${favKey}`} className={cn("bg-primary/5", isFirst && groupClass)}>
                       <TableCell className="text-center cursor-pointer text-yellow-400" onClick={() => toggleFav(favKey)}>★</TableCell>
                       <TableCell>
                         <div className="flex flex-col gap-0.5">
                           <div>
-                            <span className="text-muted-foreground text-[11px] mr-1">{d.region}</span>
-                            <AptInfoPopover d={d} />
+                            {isFirst && <span className="text-muted-foreground text-[11px] mr-1">{d.region}</span>}
+                            {isFirst ? <AptInfoPopover d={d} /> : <span className="text-muted-foreground/60 text-xs">↳</span>}
                             <Badge variant="outline" className={cn("ml-1 text-[10px]", atypeBadgeColor(d.atype))}>{Math.floor(d.area)}㎡</Badge>
-                            <span className="text-muted-foreground text-[10px] ml-0.5">({d.build})</span>
+                            {isFirst && <span className="text-muted-foreground text-[10px] ml-0.5">({d.build})</span>}
                           </div>
-                          <div className="flex gap-2 text-[10px]">
-                            {d.hcode && <a href={`https://hogangnono.com/apt/${d.hcode}`} target="_blank" rel="noopener" className="text-primary hover:underline">호갱노노</a>}
-                            <a href={naverMapUrl(d.naver_place_id, `${d.name} ${d.dong}`, isMobile)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버지도</a>
-                            {d.naver_complex_id
-                              ? <a href={naverLandUrl(d.naver_complex_id, isMobile, d.pyeong_type_nos)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버부동산</a>
-                              : <a href={naverLandSearchUrl(d.name, isMobile)} target="_blank" rel="noopener" className="text-muted-foreground hover:underline">네이버부동산</a>
-                            }
-                            <AllTypesDialog name={d.name} allData={data} favorites={favorites} onToggleFav={toggleFav} />
-                          </div>
+                          {isFirst && (
+                            <div className="flex gap-2 text-[10px]">
+                              {d.hcode && <a href={`https://hogangnono.com/apt/${d.hcode}`} target="_blank" rel="noopener" className="text-primary hover:underline">호갱노노</a>}
+                              <a href={naverMapUrl(d.naver_place_id, `${d.name} ${d.dong}`, isMobile)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버지도</a>
+                              {d.naver_complex_id
+                                ? <a href={naverLandUrl(d.naver_complex_id, isMobile, d.pyeong_type_nos)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버부동산</a>
+                                : <a href={naverLandSearchUrl(d.name, isMobile)} target="_blank" rel="noopener" className="text-muted-foreground hover:underline">네이버부동산</a>
+                              }
+                              <AllTypesDialog name={d.name} allData={data} favorites={favorites} onToggleFav={toggleFav} />
+                            </div>
+                          )}
                         </div>
                       </TableCell>
                       <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
@@ -1894,36 +1916,38 @@ export default function App() {
                       <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
                       <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                       <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
-                      <TableCell className="text-center"><CommutePopover data={d} /></TableCell>
-                      <TableCell className="text-center"><PedPopover data={d} /></TableCell>
-                      <TableCell className="text-center"><SlopePopover data={d} /></TableCell>
-                      <TableCell className="text-center"><ParkingCell data={d} /></TableCell>
-                      <TableCell className="text-center"><SchoolCell data={d} /></TableCell>
-                      <TableCell className="text-center">
-                        <Popover>
-                          <PopoverTrigger className="cursor-pointer">
-                            <LabelText label={safetyLabel(d.safety_grade)} />
-                          </PopoverTrigger>
-                          <PopoverContent className="w-56 text-xs">
-                            <p className="font-semibold mb-2">치안 점수 — {d.region}</p>
-                            {d.safety_score != null ? (
-                              <div className="flex flex-col gap-1">
-                                <div className="flex justify-between"><span className="text-muted-foreground">종합 점수</span><span className="font-bold text-sm">{d.safety_score}<span className="text-[10px] font-normal text-muted-foreground">/100</span></span></div>
-                                <div className="border-t border-border/50 pt-1 mt-0.5" />
-                                <div className="flex justify-between"><span className="text-muted-foreground">범죄 안전등급</span><span>{d.safety_grade}등급 ({d.safety_grade_label})</span></div>
-                                <div className="flex justify-between"><span className="text-muted-foreground">외국인 비율</span><span>{d.foreign_rate}%</span></div>
-                                <div className="flex justify-between"><span className="text-muted-foreground">외국인 수</span><span>{d.foreign_count?.toLocaleString()}명</span></div>
-                                <div className="flex justify-between"><span className="text-muted-foreground">시군구 인구</span><span>{d.safety_population ? (d.safety_population / 10000).toFixed(1) + "만" : "-"}</span></div>
-                                <div className="border-t border-border/50 pt-1 mt-0.5" />
-                                <p className="text-[10px] text-muted-foreground">범죄등급: 행안부 지역안전지수 2024 (1=최고~5=최저)</p>
-                                <p className="text-[10px] text-muted-foreground">외국인: 법무부 등록외국인 2025-02</p>
-                              </div>
-                            ) : <span className="text-muted-foreground">데이터 없음</span>}
-                          </PopoverContent>
-                        </Popover>
-                      </TableCell>
-                      <TableCell className="text-center"><EqCell data={d} /></TableCell>
-                      <TableCell className="text-center"><LhCell data={d} /></TableCell>
+                      {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><CommutePopover data={d} /></TableCell>}
+                      {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><PedPopover data={d} /></TableCell>}
+                      {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><SlopePopover data={d} /></TableCell>}
+                      {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><ParkingCell data={d} /></TableCell>}
+                      {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><SchoolCell data={d} /></TableCell>}
+                      {isFirst && (
+                        <TableCell rowSpan={span} className="text-center align-middle">
+                          <Popover>
+                            <PopoverTrigger className="cursor-pointer">
+                              <LabelText label={safetyLabel(d.safety_grade)} />
+                            </PopoverTrigger>
+                            <PopoverContent className="w-56 text-xs">
+                              <p className="font-semibold mb-2">치안 점수 — {d.region}</p>
+                              {d.safety_score != null ? (
+                                <div className="flex flex-col gap-1">
+                                  <div className="flex justify-between"><span className="text-muted-foreground">종합 점수</span><span className="font-bold text-sm">{d.safety_score}<span className="text-[10px] font-normal text-muted-foreground">/100</span></span></div>
+                                  <div className="border-t border-border/50 pt-1 mt-0.5" />
+                                  <div className="flex justify-between"><span className="text-muted-foreground">범죄 안전등급</span><span>{d.safety_grade}등급 ({d.safety_grade_label})</span></div>
+                                  <div className="flex justify-between"><span className="text-muted-foreground">외국인 비율</span><span>{d.foreign_rate}%</span></div>
+                                  <div className="flex justify-between"><span className="text-muted-foreground">외국인 수</span><span>{d.foreign_count?.toLocaleString()}명</span></div>
+                                  <div className="flex justify-between"><span className="text-muted-foreground">시군구 인구</span><span>{d.safety_population ? (d.safety_population / 10000).toFixed(1) + "만" : "-"}</span></div>
+                                  <div className="border-t border-border/50 pt-1 mt-0.5" />
+                                  <p className="text-[10px] text-muted-foreground">범죄등급: 행안부 지역안전지수 2024 (1=최고~5=최저)</p>
+                                  <p className="text-[10px] text-muted-foreground">외국인: 법무부 등록외국인 2025-02</p>
+                                </div>
+                              ) : <span className="text-muted-foreground">데이터 없음</span>}
+                            </PopoverContent>
+                          </Popover>
+                        </TableCell>
+                      )}
+                      {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><EqCell data={d} /></TableCell>}
+                      {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><LhCell data={d} /></TableCell>}
                     </TableRow>
                   );
                 })}
