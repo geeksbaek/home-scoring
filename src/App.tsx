@@ -446,6 +446,42 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   return { taxRate, acqTax, eduTax, ruralTax, totalTax, netTax, taxExempt, broker, legalFee, stampTax, bondDiscount, miscCost, ltvRate, ltvMax, ltvCap, productCap, eligIssues, dsrMax, maxLoan, dsrLimited, totalCapital, extraLoanMan, required, affordable, totalMonthly, mortgageMonthly, extraMonthly, mortgageRate, extraRate, effectiveRate, totalInterest, extraRepayMonthly, extraRepayYrs, netMonthlyIncome, netMonthlyParental, repayRatio, repayRatioParental, years, firstTimeBuyer, regulated, product, productName: prodInfo.name, interestSubsidy, subsidyEligible, subsidyAmount, subsidyMonthly, subsidyTotal, grossMortgageMonthly };
 }
 
+// 2026년 기준 인테리어 평당 단가 (수도권 평균, 자재·시공 포함). 출처: 업계 단가 벤치마크 (오늘의집/집브로/AJD 2025-26).
+//   신축 0~5년: 도배·장판 정도 → 평당 30~80만
+//   부분 6~15년: + 조명/필름/일부 화장실 → 평당 80~150만
+//   올수리 16~25년: + 욕실·주방·바닥 전체 → 평당 150~250만
+//   풀리모델링 26년+: + 창호·일부 구조 → 평당 250~400만
+// 평수 = 전용면적 × 1.3(공급/전용 평균비) ÷ 3.3058
+function calcInterior(areaSqm: number | null | undefined, useDate: string | null | undefined) {
+  if (!areaSqm || areaSqm <= 0) return null;
+  const py = (areaSqm * 1.3) / 3.3058;
+  const year = useDate && useDate.length >= 4 ? parseInt(useDate.slice(0, 4)) : null;
+  const age = year ? 2026 - year : null;
+  let minRate: number, maxRate: number, level: string, scope: string;
+  if (age != null && age <= 5) {
+    minRate = 30; maxRate = 80;
+    level = "신축"; scope = "도배·장판 (옵션)";
+  } else if (age != null && age <= 15) {
+    minRate = 80; maxRate = 150;
+    level = "부분 보수"; scope = "도배·장판·조명+α";
+  } else if (age != null && age <= 25) {
+    minRate = 150; maxRate = 250;
+    level = "올수리"; scope = "+ 욕실·주방·바닥";
+  } else {
+    minRate = 250; maxRate = 400;
+    level = "풀 리모델링"; scope = "+ 창호·일부 구조";
+  }
+  return {
+    pyeong: Math.round(py * 10) / 10,
+    age,
+    level,
+    scope,
+    minRate, maxRate,
+    min: Math.round(py * minRate),
+    max: Math.round(py * maxRate),
+  };
+}
+
 function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, firstTimeBuyer, loanProduct, interestSubsidy }: { data: AptData; capitalMan: number | null; extraLoanMan: number; income1Man: number; income2Man: number; loanYears: number; extraRepayYrs: number; firstTimeBuyer: boolean; loanProduct: LoanProduct; interestSubsidy: boolean }) {
   const [customPrice, setCustomPrice] = useState<string>("");
   const customMan = customPrice && !Number.isNaN(parseFloat(customPrice)) ? parseFloat(customPrice) * 10000 : null;
@@ -562,6 +598,22 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
             </div>
           </div>
         )}
+        {(() => {
+          const it = calcInterior(data.area, data.use_date);
+          if (!it) return null;
+          return (
+            <div className="mb-2 pb-2 border-b">
+              <p className="font-semibold mb-1">예상 인테리어 <span className="text-[10px] font-normal text-muted-foreground">({it.pyeong}평{it.age != null && `, ${it.age}년차`})</span></p>
+              <div className="space-y-0.5">
+                <div className="flex justify-between"><span className="text-muted-foreground">권장 수준</span><span>{it.level} <span className="text-[10px] text-muted-foreground">({it.scope})</span></span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">평당 단가</span><span>{it.minRate}~{it.maxRate}만원</span></div>
+                <div className="flex justify-between font-medium"><span>예상 비용</span><span>{it.min.toLocaleString()}~{it.max.toLocaleString()}만원</span></div>
+                <div className="flex justify-between text-[10px] text-muted-foreground"><span>매매가 + 부대비 + 인테리어 (최대 기준)</span><span>{((priceMan + (aff?.netTax ?? 0) + (aff?.broker ?? 0) + (aff?.miscCost ?? 0) + it.max) / 10000).toFixed(1)}억</span></div>
+              </div>
+              <p className="text-[10px] text-muted-foreground mt-1">2026년 수도권 평균 기준 (자재·시공 포함). 자재 등급/디자인에 따라 변동.</p>
+            </div>
+          );
+        })()}
         {data.recent_trades?.length > 0 && (
           <>
             <p className="font-semibold mb-1">최근 거래</p>
