@@ -429,14 +429,17 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
 }
 
 function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, firstTimeBuyer, loanProduct, interestSubsidy }: { data: AptData; capitalMan: number | null; extraLoanMan: number; income1Man: number; income2Man: number; loanYears: number; extraRepayYrs: number; firstTimeBuyer: boolean; loanProduct: LoanProduct; interestSubsidy: boolean }) {
-  const priceText = `${(data.avg / 10000).toFixed(1)}억`;
+  const [customPrice, setCustomPrice] = useState<string>("");
+  const customMan = customPrice && !Number.isNaN(parseFloat(customPrice)) ? parseFloat(customPrice) * 10000 : null;
+  const priceMan = customMan ?? data.avg;
+  const triggerText = `${(data.avg / 10000).toFixed(1)}억`;
   const regulated = REGULATED_REGIONS.has(data.region);
-  const aff = capitalMan != null ? calcAffordability(data.avg, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, data.area, firstTimeBuyer, regulated, loanProduct, interestSubsidy) : null;
+  const aff = capitalMan != null ? calcAffordability(priceMan, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, data.area, firstTimeBuyer, regulated, loanProduct, interestSubsidy) : null;
   const color = aff ? (aff.affordable ? (aff.extraLoanMan > 0 ? "text-amber-500" : "text-emerald-500") : "text-red-500") : "";
 
   return (
     <Popover>
-      <PopoverTrigger className={cn("cursor-pointer underline decoration-dotted underline-offset-4", color)}>{priceText}</PopoverTrigger>
+      <PopoverTrigger className={cn("cursor-pointer underline decoration-dotted underline-offset-4", color)}>{triggerText}</PopoverTrigger>
       <PopoverContent className="w-64 text-xs max-h-80 overflow-y-auto">
         {aff && (
           <div className="mb-2 pb-2 border-b">
@@ -448,12 +451,40 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
               <p className="text-[10px] text-amber-500 mb-1">⚠ 자격 미달: {aff.eligIssues.join(", ")}</p>
             )}
             <div className="space-y-0.5">
-              <div className="flex justify-between"><span className="text-muted-foreground">매매가</span><span>{priceText}</span></div>
+              <div className="flex justify-between items-center">
+                <span className="text-muted-foreground">매매가</span>
+                <span className="flex items-center gap-1">
+                  <input
+                    type="number"
+                    step="0.1"
+                    inputMode="decimal"
+                    placeholder={(data.avg / 10000).toFixed(1)}
+                    value={customPrice}
+                    onChange={(e) => setCustomPrice(e.target.value)}
+                    onClick={(e) => (e.target as HTMLInputElement).select()}
+                    className={cn(
+                      "w-14 text-right bg-background border border-border rounded px-1 py-0 text-xs tabular-nums focus:outline-none focus:border-primary",
+                      customPrice && "text-amber-500 border-amber-500/50"
+                    )}
+                  />
+                  <span className="text-muted-foreground">억</span>
+                  {customPrice && (
+                    <button
+                      type="button"
+                      onClick={() => setCustomPrice("")}
+                      className="text-muted-foreground hover:text-foreground text-[10px]"
+                      title="현재가로 리셋"
+                    >
+                      ↺
+                    </button>
+                  )}
+                </span>
+              </div>
               <div className="flex justify-between"><span className="text-muted-foreground">취득세 ({(aff.taxRate * 100).toFixed(1)}%+교육{aff.ruralTax > 0 ? "+농특" : ""})</span><span>{aff.netTax.toLocaleString()}만원</span></div>
               <div className="flex justify-between"><span className="text-muted-foreground">중개보수 (0.44%)</span><span>{aff.broker.toLocaleString()}만원</span></div>
               <div className="flex justify-between"><span className="text-muted-foreground">법무사/인지/채권</span><span>{aff.miscCost.toLocaleString()}만원</span></div>
               {aff.taxExempt > 0 && <div className="flex justify-between"><span className="text-muted-foreground">생애최초 감면</span><span className="text-emerald-500">-{aff.taxExempt.toLocaleString()}만원</span></div>}
-              <div className="flex justify-between border-t pt-0.5"><span className="text-muted-foreground">총 비용</span><span>{((data.avg + aff.netTax + aff.broker + aff.miscCost) / 10000).toFixed(1)}억</span></div>
+              <div className="flex justify-between border-t pt-0.5"><span className="text-muted-foreground">총 비용</span><span>{((priceMan + aff.netTax + aff.broker + aff.miscCost) / 10000).toFixed(1)}억</span></div>
               <div className="flex justify-between"><span className="text-muted-foreground">LTV {(aff.ltvRate * 100).toFixed(0)}% · {aff.regulated ? "규제" : "비규제"}{aff.regulated ? ` · 한도 ${aff.ltvCap / 10000}억` : ""}{aff.productCap !== Infinity ? ` · 상품한도 ${aff.productCap / 10000}억` : ""}</span><span>-{(aff.ltvMax / 10000).toFixed(1)}억</span></div>
               {aff.dsrMax != null && <div className="flex justify-between"><span className="text-muted-foreground">DSR 한도 (40%)</span><span className={aff.dsrLimited ? "text-amber-500" : ""}>-{(aff.dsrMax / 10000).toFixed(1)}억</span></div>}
               {aff.dsrLimited && <p className="text-[10px] text-amber-500">DSR에 의해 대출 제한</p>}
@@ -642,6 +673,34 @@ function EqCell({ data }: { data: AptData }) {
           <p>재건축 시 추가분담금이 적고 사업성이 좋다</p>
           <p>~30㎡ 작음 / 30~60㎡ 보통 / 60㎡~ 우수</p>
         </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+function LhCell({ data }: { data: AptData }) {
+  if (!data.lh_origin) return <span className="text-muted-foreground text-xs">-</span>;
+  const conv = data.lh_has_conversion;
+  return (
+    <Popover>
+      <PopoverTrigger
+        className={cn(
+          "cursor-pointer text-[10px] px-1.5 py-0 rounded border",
+          conv ? "border-amber-500/60 text-amber-500 bg-amber-500/10" : "border-border text-muted-foreground"
+        )}
+      >
+        {conv ? "임대전환" : "LH"}
+      </PopoverTrigger>
+      <PopoverContent className="w-64 text-xs">
+        <p className="font-semibold mb-1">LH 공급 유형</p>
+        <ul className="space-y-0.5 text-muted-foreground">
+          {data.lh_types.map((t) => <li key={t}>· {t}</li>)}
+        </ul>
+        {conv && (
+          <p className="mt-2 pt-2 border-t text-[10px] text-muted-foreground">
+            5/10/50년 또는 분납 임대 후 분양전환 단지 (일부 동만 해당될 수 있음)
+          </p>
+        )}
       </PopoverContent>
     </Popover>
   );
@@ -895,7 +954,7 @@ function AptInfoPopover({ d }: { d: AptData }) {
         {d.display_name}
       </PopoverTrigger>
       <PopoverContent className="w-72 text-xs p-0">
-        <div className="px-3 pt-3 pb-2 border-b sticky top-0 bg-popover">
+        <div className="px-3 pt-3 pb-2 border-b">
           <p className="font-semibold">단지 정보</p>
           {d.doro_juso && <p className="text-muted-foreground mt-0.5">{d.doro_juso}</p>}
         </div>
@@ -1777,6 +1836,7 @@ export default function App() {
                   <TableHead className="text-center">초등학교</TableHead>
                   <TableHead className="text-center">안전</TableHead>
                   <TableHead className="text-center">내진</TableHead>
+                  <TableHead className="text-center">LH</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -1839,6 +1899,7 @@ export default function App() {
                         </Popover>
                       </TableCell>
                       <TableCell className="text-center"><EqCell data={d} /></TableCell>
+                      <TableCell className="text-center"><LhCell data={d} /></TableCell>
                     </TableRow>
                   );
                 })}
@@ -1876,6 +1937,7 @@ export default function App() {
                 <TableHead className="text-center">초등학교</TableHead>
                 <TableHead className="text-center">안전</TableHead>
                 <TableHead className="text-center">내진</TableHead>
+                <TableHead className="text-center">LH</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -1942,6 +2004,7 @@ export default function App() {
                       </Popover>
                     </TableCell>
                     <TableCell className="text-center"><EqCell data={d} /></TableCell>
+                    <TableCell className="text-center"><LhCell data={d} /></TableCell>
                   </TableRow>
                 );
               })}

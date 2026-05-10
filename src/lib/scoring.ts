@@ -4,15 +4,16 @@ export interface AptData {
   atype: string;
   area: number;
   avg: number;
-  accel: number;
+  accel: number | null;
   r3_avg: number;
-  p3_avg: number;
+  p3_avg: number | null;
   count: number;
   build: number;
   region: string;
   dong: string;
   liquidity: number | null;
   liq_approx?: boolean;
+  type_units: number | null; // 해당 면적타입 세대수
   morning: number | null;
   evening: number | null;
   morning_cnt: number;
@@ -29,7 +30,7 @@ export interface AptData {
   pedia2_name: string | null;
   pedia2_slope: number | null;
   hcode: string | null;
-  recent_trades: { date: string; price: number; floor: number | null; area: number }[];
+  recent_trades: { date: string; price: number; floor: number | null; area: number; direct?: boolean }[];
   // K-apt
   parking: number | null;
   parking_per_hh: number | null;
@@ -47,8 +48,10 @@ export interface AptData {
   subway_station: string | null;
   education: string | null;
   energy: { heat: number; waterHot: number; elect: number; waterCool: number; gas: number } | null;
-  // 네이버
+  // 지도
   naver_place_id: string | null;
+  naver_complex_id: string | null;
+  pyeong_type_nos: number[] | null;
   // 관리비 (만원/월)
   mgmt_cost: number | null;
   mgmt_summer: number | null;
@@ -60,6 +63,41 @@ export interface AptData {
   // 배정 초등학교
   schools: string[];
   school_violence: Record<string, Record<string, any>>; // school → year → { cases, types, vp, ps, sped }
+  // 좌표
+  lat: number | null;
+  lng: number | null;
+  // 치안
+  safety_score: number | null;
+  foreign_rate: number | null;
+  foreign_count: number | null;
+  safety_grade: number | null;
+  safety_grade_label: string | null;
+  safety_population: number | null;
+  // 장기수선충당금
+  repair_balance: number | null; // 세대당 적립금 (만원)
+  repair_levy: number | null; // 세대당 월 부과액 (원)
+  repair_reserve_rate: number | null; // 적립요율 (%)
+  // 건축물 제원
+  vl_rat: number | null; // 용적률 (%)
+  bc_rat: number | null; // 건폐율 (%)
+  land_share: number | null; // 대지지분 (㎡/세대)
+  // 유지관리 이력
+  maint_count: number | null;
+  maint_recent: string | null;
+  maint_elevator_remaining: number | null;
+  maint_piping_remaining: number | null;
+  maint_waterproof_remaining: number | null;
+  // 회계감사
+  audit_year: string | null;
+  audit_done: boolean | null;
+  audit_opinion: string | null;
+  audit_net_profit: number | null;
+  // LH 분양전환 정보
+  lh_origin: boolean;
+  lh_has_conversion: boolean;
+  lh_types: string[];
+  // r3 거래가 없는 atype (AllTypesDialog 표시용 ghost row)
+  no_trades?: boolean;
   // computed
   score: number;
   pedScore: number | null;
@@ -81,19 +119,36 @@ export function commuteScore(d: AptData): number | null {
   return Math.round((m + e) / 2);
 }
 
-export function calcScores(data: AptData[]) {
-  const n = data.length;
+export interface ScoreWeights {
+  accel: number;
+  liquidity: number;
+  build: number;
+  commute: number;
+  pedia: number;
+}
+
+export const DEFAULT_WEIGHTS: ScoreWeights = { accel: 35, liquidity: 25, build: 20, commute: 10, pedia: 10 };
+
+export function calcScores(data: AptData[], weights: ScoreWeights = DEFAULT_WEIGHTS) {
+  // ghost row(no_trades)는 거래/가속도 등이 없어 점수 무의미 → 제외
+  const live = data.filter((d) => !d.no_trades);
+  const n = live.length;
   if (n === 0) return;
   const rank = (arr: number[]) => {
     const sorted = [...arr].sort((a, b) => a - b);
     return arr.map((v) => (sorted.indexOf(v) + 1) / n);
   };
-  const accels = rank(data.map((d) => d.accel));
-  const liqs = rank(data.map((d) => d.liquidity ?? 0));
-  const builds = rank(data.map((d) => d.build));
-  data.forEach((d, i) => {
-    d.score = Math.round((accels[i] * 35 + liqs[i] * 25 + builds[i] * 20) * 10) / 10;
+  const accels = rank(live.map((d) => d.accel ?? 0));
+  const liqs = rank(live.map((d) => d.liquidity ?? 0));
+  const builds = rank(live.map((d) => d.build));
+  const commutes = rank(live.map((d) => -(d.commuteScore ?? 999)));
+  const peds = rank(live.map((d) => -(d.pedScore ?? 999)));
+  live.forEach((d, i) => {
+    d.score = Math.round((accels[i] * weights.accel + liqs[i] * weights.liquidity + builds[i] * weights.build + commutes[i] * weights.commute + peds[i] * weights.pedia) * 10) / 10;
   });
+  for (const d of data) {
+    if (d.no_trades) d.score = 0;
+  }
 }
 
 export type Label = { text: string; variant: "default" | "success" | "warning" | "destructive" };
@@ -140,6 +195,15 @@ export function parkingLabel(v: number | null): Label {
   return { text: `${v}대`, variant: "destructive" };
 }
 
+export function safetyLabel(grade: number | null): Label {
+  if (grade == null) return { text: "-", variant: "default" };
+  if (grade <= 1) return { text: `${grade}등급`, variant: "success" };
+  if (grade <= 2) return { text: `${grade}등급`, variant: "success" };
+  if (grade <= 3) return { text: `${grade}등급`, variant: "default" };
+  if (grade <= 4) return { text: `${grade}등급`, variant: "warning" };
+  return { text: `${grade}등급`, variant: "destructive" };
+}
+
 export function naverMapUrl(placeId: string | null, query: string, isMobile: boolean): string {
   if (placeId) {
     return isMobile
@@ -149,4 +213,28 @@ export function naverMapUrl(placeId: string | null, query: string, isMobile: boo
   return isMobile
     ? `nmap://search?query=${encodeURIComponent(query)}&appname=com.nhn.NaverMap`
     : `https://map.naver.com/v5/search/${encodeURIComponent(query)}`;
+}
+
+export function naverLandUrl(complexId: string, isMobile: boolean, pyeongTypeNos: number[] | null = null): string {
+  // 네이버페이 부동산 (리뉴얼) — 매물 탭, 매매, 가격 오름차순
+  const params = new URLSearchParams({
+    articleSortingType: "PRICE_ASC",
+    articleTradeTypes: "A1",
+    tab: "article",
+    transactionTradeType: "A1",
+  });
+  if (pyeongTypeNos && pyeongTypeNos.length > 0) {
+    params.set("articlePyeongTypeNumbers", pyeongTypeNos.join("-"));
+  }
+  const web = `https://fin.land.naver.com/complexes/${complexId}?${params.toString()}`;
+  return isMobile
+    ? `naversearchapp://inappbrowser?url=${encodeURIComponent(web)}&target=new&version=6`
+    : web;
+}
+
+export function naverLandSearchUrl(query: string, isMobile: boolean): string {
+  const web = `https://fin.land.naver.com/search?query=${encodeURIComponent(query)}`;
+  return isMobile
+    ? `naversearchapp://inappbrowser?url=${encodeURIComponent(web)}&target=new&version=6`
+    : web;
 }
