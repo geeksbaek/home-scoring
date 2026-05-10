@@ -308,7 +308,7 @@ const LOAN_PRODUCTS: Record<LoanProduct, {
   newborn: { name: "신생아특례 (출산 2년 내)", rate: 0.026, maxLoan: 50000, maxPrice: 90000, maxIncome: 25000, maxAreaSqm: 85, forceLtv: 0.8, desc: "부부합산 2.5억(2025-04 한시 상향), 9억·85㎡ 이하" },
 };
 
-function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit: number, income1Man: number, income2Man: number, years: number, extraRepayYrs: number, areaSqm?: number, firstTimeBuyer: boolean = true, regulated: boolean = false, product: LoanProduct = "normal", interestSubsidy: boolean = false) {
+function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit: number, income1Man: number, income2Man: number, years: number, extraRepayYrs: number, areaSqm?: number, firstTimeBuyer: boolean = true, regulated: boolean = false, product: LoanProduct = "normal", interestSubsidy: boolean = false, interiorCost: number = 0) {
   const incomeMan = income1Man + income2Man;
   // 취득세율: 6억 이하 1%, 6~9억 누진, 9억 초과 3%
   let taxRate: number;
@@ -372,7 +372,8 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   // 추가대출 없이 먼저 필요자금 계산
   const dsrMaxNone = incomeMan && incomeMan > 0 ? calcDsrMaxLoan(incomeMan, 0, 0.055, 0.045, Math.min(years, 40)) : null;
   const maxLoanBase = dsrMaxNone != null ? Math.min(ltvMax, dsrMaxNone) : ltvMax;
-  const shortfall = Math.max(0, priceMan + netTax + broker + miscCost - maxLoanBase - capitalMan);
+  // 인테리어는 주담대 LTV 대상이 아님 → 자본금/추가대출로만 처리
+  const shortfall = Math.max(0, priceMan + netTax + broker + miscCost + interiorCost - maxLoanBase - capitalMan);
 
   // 실제 추가대출 = 모자란 금액, 한도 이내
   const extraLoanMan = Math.min(shortfall, extraLoanLimit);
@@ -386,7 +387,7 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   const totalCapital = capitalMan + extraLoanMan;
 
   // 필요자금
-  const required = priceMan + netTax + broker + miscCost - maxLoan;
+  const required = priceMan + netTax + broker + miscCost + interiorCost - maxLoan;
   const affordable = totalCapital >= required;
 
   // 월납입금/이자총액
@@ -443,7 +444,7 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   const repayRatio = netMonthlyIncome ? totalMonthly / netMonthlyIncome : null;
   const repayRatioParental = netMonthlyParental ? totalMonthly / netMonthlyParental : null;
 
-  return { taxRate, acqTax, eduTax, ruralTax, totalTax, netTax, taxExempt, broker, legalFee, stampTax, bondDiscount, miscCost, ltvRate, ltvMax, ltvCap, productCap, eligIssues, dsrMax, maxLoan, dsrLimited, totalCapital, extraLoanMan, required, affordable, totalMonthly, mortgageMonthly, extraMonthly, mortgageRate, extraRate, effectiveRate, totalInterest, extraRepayMonthly, extraRepayYrs, netMonthlyIncome, netMonthlyParental, repayRatio, repayRatioParental, years, firstTimeBuyer, regulated, product, productName: prodInfo.name, interestSubsidy, subsidyEligible, subsidyAmount, subsidyMonthly, subsidyTotal, grossMortgageMonthly };
+  return { taxRate, acqTax, eduTax, ruralTax, totalTax, netTax, taxExempt, broker, legalFee, stampTax, bondDiscount, miscCost, interiorCost, ltvRate, ltvMax, ltvCap, productCap, eligIssues, dsrMax, maxLoan, dsrLimited, totalCapital, extraLoanMan, required, affordable, totalMonthly, mortgageMonthly, extraMonthly, mortgageRate, extraRate, effectiveRate, totalInterest, extraRepayMonthly, extraRepayYrs, netMonthlyIncome, netMonthlyParental, repayRatio, repayRatioParental, years, firstTimeBuyer, regulated, product, productName: prodInfo.name, interestSubsidy, subsidyEligible, subsidyAmount, subsidyMonthly, subsidyTotal, grossMortgageMonthly };
 }
 
 // 2026년 기준 인테리어 평당 단가 (수도권 평균, 자재·시공 포함). 출처: 업계 단가 벤치마크 (오늘의집/집브로/AJD 2025-26).
@@ -488,11 +489,12 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
   const priceMan = customMan ?? data.avg;
   const interior = calcInterior(data.area, data.use_date);
   const interiorAvg = interior ? Math.round((interior.min + interior.max) / 2) : 0;
+  const interiorForCalc = includeInterior ? interiorAvg : 0;
   const triggerText = includeInterior && interior
     ? `${((data.avg + interiorAvg) / 10000).toFixed(1)}억`
     : `${(data.avg / 10000).toFixed(1)}억`;
   const regulated = REGULATED_REGIONS.has(data.region);
-  const aff = capitalMan != null ? calcAffordability(priceMan, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, data.area, firstTimeBuyer, regulated, loanProduct, interestSubsidy) : null;
+  const aff = capitalMan != null ? calcAffordability(priceMan, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, data.area, firstTimeBuyer, regulated, loanProduct, interestSubsidy, interiorForCalc) : null;
   const color = aff ? (aff.affordable ? (aff.extraLoanMan > 0 ? "text-amber-500" : "text-emerald-500") : "text-red-500") : "";
 
   return (
@@ -552,7 +554,10 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
               <div className="flex justify-between"><span className="text-muted-foreground">중개보수 (0.44%)</span><span>{aff.broker.toLocaleString()}만원</span></div>
               <div className="flex justify-between"><span className="text-muted-foreground">법무사/인지/채권</span><span>{aff.miscCost.toLocaleString()}만원</span></div>
               {aff.taxExempt > 0 && <div className="flex justify-between"><span className="text-muted-foreground">생애최초 감면</span><span className="text-emerald-500">-{aff.taxExempt.toLocaleString()}만원</span></div>}
-              <div className="flex justify-between border-t pt-0.5"><span className="text-muted-foreground">총 비용</span><span>{((priceMan + aff.netTax + aff.broker + aff.miscCost) / 10000).toFixed(1)}억</span></div>
+              {aff.interiorCost > 0 && (
+                <div className="flex justify-between"><span className="text-muted-foreground">인테리어 (평균)</span><span>{aff.interiorCost.toLocaleString()}만원</span></div>
+              )}
+              <div className="flex justify-between border-t pt-0.5"><span className="text-muted-foreground">총 비용{aff.interiorCost > 0 ? " (인테리어 포함)" : ""}</span><span>{((priceMan + aff.netTax + aff.broker + aff.miscCost + aff.interiorCost) / 10000).toFixed(1)}억</span></div>
               <div className="flex justify-between"><span className="text-muted-foreground">LTV {(aff.ltvRate * 100).toFixed(0)}% · {aff.regulated ? "규제" : "비규제"}{aff.regulated ? ` · 한도 ${aff.ltvCap / 10000}억` : ""}{aff.productCap !== Infinity ? ` · 상품한도 ${aff.productCap / 10000}억` : ""}</span><span>-{(aff.ltvMax / 10000).toFixed(1)}억</span></div>
               {aff.dsrMax != null && <div className="flex justify-between"><span className="text-muted-foreground">DSR 한도 (40%)</span><span className={aff.dsrLimited ? "text-amber-500" : ""}>-{(aff.dsrMax / 10000).toFixed(1)}억</span></div>}
               {aff.dsrLimited && <p className="text-[10px] text-amber-500">DSR에 의해 대출 제한</p>}
@@ -1713,6 +1718,20 @@ export default function App() {
               💰 자금 설정
               {capital && <span className="ml-1 text-emerald-500">●</span>}
             </Button>
+            <select
+              value={loanProduct}
+              onChange={(e) => { setLoanProduct(e.target.value as LoanProduct); localStorage.setItem("f_loanProduct", e.target.value); }}
+              className="h-auto py-0.5 px-1 rounded border bg-background text-[10px]"
+              title={LOAN_PRODUCTS[loanProduct].desc}
+            >
+              {(Object.keys(LOAN_PRODUCTS) as LoanProduct[]).map((p) => (
+                <option key={p} value={p}>{LOAN_PRODUCTS[p].name} ({(LOAN_PRODUCTS[p].rate * 100).toFixed(1)}%)</option>
+              ))}
+            </select>
+            <label className="flex items-center gap-1 cursor-pointer" title="테이블 현재가 = 매매가 + 인테리어(평균)">
+              <input type="checkbox" checked={includeInterior} onChange={(e) => { setIncludeInterior(e.target.checked); localStorage.setItem("f_includeInterior", String(e.target.checked)); }} className="rounded h-3 w-3" />
+              <span>인테리어 합산</span>
+            </label>
             <Button variant="outline" size="sm" className="text-[10px] h-auto py-0.5 px-2" onClick={() => setMcOpen(true)}>다문화 통계</Button>
 
             <Dialog open={financeOpen} onOpenChange={setFinanceOpen}>
@@ -1762,19 +1781,6 @@ export default function App() {
                       </select>
                     </label>
                   </div>
-                  <label className="flex flex-col gap-1">
-                    <span className="text-xs text-muted-foreground">대출 상품</span>
-                    <select
-                      value={loanProduct}
-                      onChange={(e) => { setLoanProduct(e.target.value as LoanProduct); localStorage.setItem("f_loanProduct", e.target.value); }}
-                      className="h-8 rounded border bg-background px-2 text-sm"
-                    >
-                      {(Object.keys(LOAN_PRODUCTS) as LoanProduct[]).map((p) => (
-                        <option key={p} value={p}>{LOAN_PRODUCTS[p].name} ({(LOAN_PRODUCTS[p].rate * 100).toFixed(1)}%)</option>
-                      ))}
-                    </select>
-                    <span className="text-[10px] text-muted-foreground">{LOAN_PRODUCTS[loanProduct].desc}</span>
-                  </label>
                   <label className="flex items-center gap-2 cursor-pointer" title="생애최초 주택 구매자 (LTV 80% / 취득세 200만원 감면)">
                     <input type="checkbox" checked={firstTimeBuyer} onChange={(e) => { setFirstTimeBuyer(e.target.checked); localStorage.setItem("f_firstTime", String(e.target.checked)); }} className="rounded" />
                     <span className="text-sm">생애최초 주택 구매자</span>
@@ -1786,13 +1792,6 @@ export default function App() {
                       <span className="text-sm">사내 이자지원 (매매대출)</span>
                       <span className="text-[10px] text-muted-foreground">본인 2% 부담, 초과분 회사 지원 · 매매가 50% / 최대 1.5억</span>
                       <span className="text-[10px] text-muted-foreground">일반 주담대 기본 적용 · 정책상품은 신한 신생아특례·SC제일 u-보금자리만 · 실거주 필수</span>
-                    </div>
-                  </label>
-                  <label className="flex items-start gap-2 cursor-pointer" title="테이블 현재가 셀에 인테리어 비용(평균) 합산해 표시. 평균 = (최소 + 최대) / 2.">
-                    <input type="checkbox" checked={includeInterior} onChange={(e) => { setIncludeInterior(e.target.checked); localStorage.setItem("f_includeInterior", String(e.target.checked)); }} className="rounded mt-0.5" />
-                    <div className="flex flex-col">
-                      <span className="text-sm">인테리어 합산 표시</span>
-                      <span className="text-[10px] text-muted-foreground">테이블 현재가 = 매매가 + 인테리어(평균)</span>
                     </div>
                   </label>
                   <div className="pt-2 border-t flex justify-between gap-2">
