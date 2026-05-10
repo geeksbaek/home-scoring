@@ -1340,6 +1340,7 @@ export default function App() {
   const [viewMode, setViewMode] = useState<"table" | "map">("table");
   const [regionFilter, setRegionFilter] = useState<string[]>(() => lsArr("f_region_multi"));
   const [commuteFilter, setCommuteFilter] = useState(() => ls("f_commute", "all"));
+  const [liquidityFilter, setLiquidityFilter] = useState(() => ls("f_liquidity", "all"));
   const [priceMin, setPriceMin] = useState(() => ls("f_priceMin", "0"));
   const [priceMax, setPriceMax] = useState(() => ls("f_priceMax", "20"));
   const [hhMin, setHhMin] = useState(() => {
@@ -1409,6 +1410,7 @@ export default function App() {
   useEffect(() => { localStorage.setItem("f_sort", sortField); }, [sortField]);
   useEffect(() => { localStorage.setItem("f_region_multi", JSON.stringify(regionFilter)); }, [regionFilter]);
   useEffect(() => { localStorage.setItem("f_commute", commuteFilter); }, [commuteFilter]);
+  useEffect(() => { localStorage.setItem("f_liquidity", liquidityFilter); }, [liquidityFilter]);
   useEffect(() => { localStorage.setItem("f_priceMin", priceMin); }, [priceMin]);
   useEffect(() => { localStorage.setItem("f_priceMax", priceMax); }, [priceMax]);
   useEffect(() => { localStorage.setItem("f_hhMin", hhMin); }, [hhMin]);
@@ -1470,6 +1472,9 @@ export default function App() {
       if (regionFilter.length > 0 && !regionFilter.some(r => d.region.includes(r))) return false;
       if (commuteFilter === "good" && (d.commuteScore == null || d.commuteScore > 30)) return false;
       if (commuteFilter === "ok" && (d.commuteScore == null || d.commuteScore > 40)) return false;
+      if (liquidityFilter === "good" && (d.liquidity == null || d.liquidity < 7)) return false;
+      if (liquidityFilter === "ok" && (d.liquidity == null || d.liquidity < 4)) return false;
+      if (liquidityFilter === "bad" && (d.liquidity == null || d.liquidity < 2)) return false;
 
       // 비즈니스 로직 필터 (직거래/1층 제외 후 count 기준)
       if (pMinVal > 0 && d.avg < pMinVal) return false;
@@ -1494,7 +1499,7 @@ export default function App() {
       return (vb as number) - (va as number);
     });
     return f;
-  }, [data, typeFilter, sortField, regionFilter, commuteFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, excludeDirect, excludeFirstFloor, myLocation]);
+  }, [data, typeFilter, sortField, regionFilter, commuteFilter, liquidityFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, excludeDirect, excludeFirstFloor, myLocation]);
 
   const favoriteItems = useMemo(() => {
     const items = data.filter((d) => favorites.has(`${d.name}|${d.atype}`));
@@ -1529,6 +1534,9 @@ export default function App() {
     if (regionFilter.length > 0 && !regionFilter.some(r => d.region.includes(r))) reasons.push("지역");
     if (commuteFilter === "good" && (d.commuteScore == null || d.commuteScore > 30)) reasons.push(d.commuteScore == null ? "출퇴근 데이터 없음" : "출퇴근 30분 초과");
     if (commuteFilter === "ok" && (d.commuteScore == null || d.commuteScore > 40)) reasons.push(d.commuteScore == null ? "출퇴근 데이터 없음" : "출퇴근 40분 초과");
+    if (liquidityFilter === "good" && (d.liquidity == null || d.liquidity < 7)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (좋음 미만)`);
+    if (liquidityFilter === "ok" && (d.liquidity == null || d.liquidity < 4)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (보통 미만)`);
+    if (liquidityFilter === "bad" && (d.liquidity == null || d.liquidity < 2)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (나쁨 미만)`);
     if (pMinVal > 0 && d.avg < pMinVal) reasons.push(`${priceMin}억 미만`);
     if (pMaxVal < Infinity && d.avg > pMaxVal) reasons.push(`${priceMax}억 초과`);
     if (hhMinVal > 0 && (d.households ?? 0) < hhMinVal) reasons.push(d.households == null ? `세대수 데이터 없음` : `${hhMin}세대 미만`);
@@ -1792,6 +1800,15 @@ export default function App() {
               <SelectItem value="all">출퇴근 전체</SelectItem>
               <SelectItem value="good">좋음 이상</SelectItem>
               <SelectItem value="ok">보통 이상</SelectItem>
+            </SelectContent>
+          </Select>
+          <Select value={liquidityFilter} onValueChange={(v) => v && setLiquidityFilter(v)} items={{ all: "환금성 전체", good: "좋음 이상 (≥7%)", ok: "보통 이상 (≥4%)", bad: "나쁨 이상 (≥2%)" }}>
+            <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">환금성 전체</SelectItem>
+              <SelectItem value="good">좋음 이상 (≥7%)</SelectItem>
+              <SelectItem value="ok">보통 이상 (≥4%)</SelectItem>
+              <SelectItem value="bad">나쁨 이상 (≥2%)</SelectItem>
             </SelectContent>
           </Select>
           <span className="text-xs text-muted-foreground">{filtered.length}개 단지</span>
