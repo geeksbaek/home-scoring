@@ -344,8 +344,9 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   // 규제: 생애최초 70%, 일반 40%, cap 6억 (15억초과→4억, 25억초과→2억)
   // 비규제: 생애최초 80%, 일반 70%, cap 없음
   const prodInfo = LOAN_PRODUCTS[product];
+  // 정책상품 LTV: 규제지역 진입 시 70% 상한 적용 (신생아특례 80% → 70% 등)
   const ltvRate = prodInfo.forceLtv != null
-    ? prodInfo.forceLtv
+    ? (regulated ? Math.min(prodInfo.forceLtv, 0.7) : prodInfo.forceLtv)
     : regulated
       ? (firstTimeBuyer ? 0.7 : 0.4)
       : (firstTimeBuyer ? 0.8 : 0.7);
