@@ -272,12 +272,12 @@ function calcDsrMaxLoan(incomeMan: number, existDebtMan: number, existRate = 0.0
 const REGULATED_REGIONS = new Set(["성남시 분당구", "성남시 수정구", "성남시 중원구", "수원시 영통구", "수원시 장안구", "수원시 팔달구", "용인시 수지구", "하남시"]);
 
 // 사내 이자지원 (주택구입 매매대출): 본인 2% 부담, 초과분 회사 지원
-// 대상 상품: 신한은행 신생아특례, SC제일은행 u-보금자리(특례보금자리론)
+// 기본적으로 일반 주담대 대상. 정책상품의 경우 특정 은행에서만 가능:
+// 신한은행 신생아특례 / SC제일은행 u-보금자리(특례보금자리론).
 // 한도: 매매가 50% / 최대 15,000만원
 const SUBSIDY_USER_RATE = 0.02;
 const SUBSIDY_MAX_AMOUNT = 15000; // 만원
 const SUBSIDY_LTV = 0.5;
-const SUBSIDY_PRODUCTS = new Set<LoanProduct>(["newborn", "bogeumjari"]);
 
 // 정책상품 정의 (2025-2026 기준, 부부합산 소득 기준)
 // 디딤돌: HUG 디딤돌대출 (생애최초 한정 우대)
@@ -391,8 +391,8 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   const mr = mortgageRate / 12;
   const grossMortgageMonthly = maxLoan > 0 ? Math.round(maxLoan * mr / (1 - Math.pow(1 + mr, -months))) : 0;
 
-  // 사내 이자지원 (매매대출 한정, 신생아특례·u-보금자리만 가능)
-  const subsidyEligible = interestSubsidy && SUBSIDY_PRODUCTS.has(product);
+  // 사내 이자지원 (매매대출 기본 적용, 모든 주담대 상품 가능)
+  const subsidyEligible = interestSubsidy;
   const subsidyAmount = subsidyEligible
     ? Math.min(maxLoan, Math.floor(priceMan * SUBSIDY_LTV), SUBSIDY_MAX_AMOUNT)
     : 0;
@@ -471,9 +471,6 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
                 </>
               ) : (
                 <div className="flex justify-between"><span className="text-muted-foreground">주담대 원리금 ({(aff.mortgageRate * 100).toFixed(1)}%)</span><span>{aff.mortgageMonthly.toLocaleString()}만원</span></div>
-              )}
-              {aff.interestSubsidy && !aff.subsidyEligible && (
-                <p className="text-[10px] text-amber-500">⚠ 이자지원: {aff.productName} 상품은 미적용 (신생아특례·u-보금자리만)</p>
               )}
               {aff.extraMonthly > 0 && <div className="flex justify-between"><span className="text-muted-foreground">추가대출 이자 ({(aff.extraRate * 100).toFixed(1)}%)</span><span>{aff.extraMonthly.toLocaleString()}만원</span></div>}
               <div className="flex justify-between font-medium"><span>월 납입 합계{aff.subsidyAmount > 0 ? " (실부담)" : ""}</span><span>{aff.totalMonthly.toLocaleString()}만원</span></div>
@@ -1574,12 +1571,12 @@ export default function App() {
                     <span className="text-sm">생애최초 주택 구매자</span>
                     <span className="text-[10px] text-muted-foreground">(LTV 우대 + 취득세 -200만원)</span>
                   </label>
-                  <label className="flex items-start gap-2 cursor-pointer" title="사내 대출이자지원 (주택구입 매매대출 한정). 본인 2% 부담, 초과분 회사 지원. 한도: 매매가 50% / 최대 1.5억. 신한은행 신생아특례, SC제일은행 u-보금자리만 적용.">
+                  <label className="flex items-start gap-2 cursor-pointer" title="사내 대출이자지원 (주택구입 매매대출). 본인 2% 부담, 초과분 회사 지원. 한도: 매매가 50% / 최대 1.5억. 일반 주담대 기본 적용. 정책상품은 신한 신생아특례 / SC제일 u-보금자리에서만 가능.">
                     <input type="checkbox" checked={interestSubsidy} onChange={(e) => { setInterestSubsidy(e.target.checked); localStorage.setItem("f_interestSubsidy", String(e.target.checked)); }} className="rounded mt-0.5" />
                     <div className="flex flex-col">
                       <span className="text-sm">사내 이자지원 (매매대출)</span>
                       <span className="text-[10px] text-muted-foreground">본인 2% 부담, 초과분 회사 지원 · 매매가 50% / 최대 1.5억</span>
-                      <span className="text-[10px] text-muted-foreground">신한 신생아특례 / SC제일 u-보금자리 한정 · 실거주 필수</span>
+                      <span className="text-[10px] text-muted-foreground">일반 주담대 기본 적용 · 정책상품은 신한 신생아특례·SC제일 u-보금자리만 · 실거주 필수</span>
                     </div>
                   </label>
                   <div className="pt-2 border-t flex justify-between gap-2">
