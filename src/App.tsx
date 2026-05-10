@@ -33,7 +33,9 @@ function atypeBadgeColor(atype: string): string {
     "84": "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
     "74": "bg-lime-500/10 text-lime-500 border-lime-500/20",
     "64": "bg-amber-500/10 text-amber-500 border-amber-500/20",
+    "60": "bg-amber-300/10 text-amber-300 border-amber-300/20",
     "59": "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
+    "52": "bg-yellow-300/10 text-yellow-300 border-yellow-300/20",
     "49": "bg-orange-500/10 text-orange-500 border-orange-500/20",
     "39": "bg-red-500/10 text-red-500 border-red-500/20",
     "29": "bg-rose-500/10 text-rose-500 border-rose-500/20",
@@ -56,8 +58,10 @@ function atypeLabel(atype: string): string {
     "99": "85~99㎡",
     "84": "80~84㎡",
     "74": "70~79㎡",
-    "64": "60~69㎡",
-    "59": "50~59㎡",
+    "64": "64~69㎡",
+    "60": "60~63㎡",
+    "59": "57~59㎡",
+    "52": "50~56㎡",
     "49": "40~49㎡",
     "39": "30~39㎡",
     "29": "~29㎡",
@@ -68,7 +72,7 @@ function atypeLabel(atype: string): string {
 // 면적 그룹: 84 초과=대형, 84=중형, 84 미만=소형
 const ATYPES_LARGE = ["230", "200", "160", "140", "124", "114", "104", "99"];
 const ATYPES_MEDIUM = ["84"];
-const ATYPES_SMALL = ["74", "64", "59", "49", "39", "29"];
+const ATYPES_SMALL = ["74", "64", "60", "59", "52", "49", "39", "29"];
 
 function atypeMatchesFilter(atype: string, filter: string): boolean {
   if (filter === "large") return ATYPES_LARGE.includes(atype);
