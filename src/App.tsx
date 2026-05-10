@@ -482,11 +482,15 @@ function calcInterior(areaSqm: number | null | undefined, useDate: string | null
   };
 }
 
-function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, firstTimeBuyer, loanProduct, interestSubsidy }: { data: AptData; capitalMan: number | null; extraLoanMan: number; income1Man: number; income2Man: number; loanYears: number; extraRepayYrs: number; firstTimeBuyer: boolean; loanProduct: LoanProduct; interestSubsidy: boolean }) {
+function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, firstTimeBuyer, loanProduct, interestSubsidy, includeInterior }: { data: AptData; capitalMan: number | null; extraLoanMan: number; income1Man: number; income2Man: number; loanYears: number; extraRepayYrs: number; firstTimeBuyer: boolean; loanProduct: LoanProduct; interestSubsidy: boolean; includeInterior: boolean }) {
   const [customPrice, setCustomPrice] = useState<string>("");
   const customMan = customPrice && !Number.isNaN(parseFloat(customPrice)) ? parseFloat(customPrice) * 10000 : null;
   const priceMan = customMan ?? data.avg;
-  const triggerText = `${(data.avg / 10000).toFixed(1)}억`;
+  const interior = calcInterior(data.area, data.use_date);
+  const interiorAvg = interior ? Math.round((interior.min + interior.max) / 2) : 0;
+  const triggerText = includeInterior && interior
+    ? `${((data.avg + interiorAvg) / 10000).toFixed(1)}억`
+    : `${(data.avg / 10000).toFixed(1)}억`;
   const regulated = REGULATED_REGIONS.has(data.region);
   const aff = capitalMan != null ? calcAffordability(priceMan, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, data.area, firstTimeBuyer, regulated, loanProduct, interestSubsidy) : null;
   const color = aff ? (aff.affordable ? (aff.extraLoanMan > 0 ? "text-amber-500" : "text-emerald-500") : "text-red-500") : "";
@@ -1451,6 +1455,7 @@ export default function App() {
   const [firstTimeBuyer, setFirstTimeBuyer] = useState(() => ls("f_firstTime", "true") === "true");
   const [loanProduct, setLoanProduct] = useState<LoanProduct>(() => ls("f_loanProduct", "normal") as LoanProduct);
   const [interestSubsidy, setInterestSubsidy] = useState(() => ls("f_interestSubsidy", "false") === "true");
+  const [includeInterior, setIncludeInterior] = useState(() => ls("f_includeInterior", "false") === "true");
   const [financeOpen, setFinanceOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const [weights, setWeights] = useState<ScoreWeights>(() => {
@@ -1783,6 +1788,13 @@ export default function App() {
                       <span className="text-[10px] text-muted-foreground">일반 주담대 기본 적용 · 정책상품은 신한 신생아특례·SC제일 u-보금자리만 · 실거주 필수</span>
                     </div>
                   </label>
+                  <label className="flex items-start gap-2 cursor-pointer" title="테이블 현재가 셀에 인테리어 비용(평균) 합산해 표시. 평균 = (최소 + 최대) / 2.">
+                    <input type="checkbox" checked={includeInterior} onChange={(e) => { setIncludeInterior(e.target.checked); localStorage.setItem("f_includeInterior", String(e.target.checked)); }} className="rounded mt-0.5" />
+                    <div className="flex flex-col">
+                      <span className="text-sm">인테리어 합산 표시</span>
+                      <span className="text-[10px] text-muted-foreground">테이블 현재가 = 매매가 + 인테리어(평균)</span>
+                    </div>
+                  </label>
                   <div className="pt-2 border-t flex justify-between gap-2">
                     <button
                       className="text-xs text-muted-foreground hover:text-destructive"
@@ -2030,7 +2042,7 @@ export default function App() {
                         </div>
                       </TableCell>
                       <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
-                      <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} /></TableCell>
+                      <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
                       <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                       <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
@@ -2138,7 +2150,7 @@ export default function App() {
                       </div>
                     </TableCell>
                     <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
-                    <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} /></TableCell>
+                    <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                     <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
                     <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                     <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
