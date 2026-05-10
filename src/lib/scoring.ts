@@ -96,6 +96,12 @@ export interface AptData {
   lh_origin: boolean;
   lh_has_conversion: boolean;
   lh_types: string[];
+  // 가족 비중 추정 신호
+  school_lower3_rate: number | null;  // 배정초 1~3학년/전체 (%)
+  school_total: number | null;        // 배정초 전체 학생수
+  dong_age0_9_rate: number | null;    // 행정동 0~9세 비율 (%)
+  dong_age30s_rate: number | null;    // 행정동 30대 비율 (%)
+  dong_pop_total: number | null;      // 행정동 인구
   // r3 거래가 없는 atype (AllTypesDialog 표시용 ghost row)
   no_trades?: boolean;
   // computed

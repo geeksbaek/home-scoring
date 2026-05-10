@@ -1004,6 +1004,37 @@ function AptInfoPopover({ d }: { d: AptData }) {
             <p className="mt-0.5">{d.education}</p>
           </div>
         )}
+        {(d.school_lower3_rate != null || d.dong_age0_9_rate != null) && (
+          <div className="mt-2 pt-2 border-t">
+            <p className="font-semibold mb-1">가족 신호 <span className="text-[10px] font-normal text-muted-foreground">(추정)</span></p>
+            <div className="space-y-0.5">
+              {d.school_lower3_rate != null && (
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">배정초 1~3학년</span>
+                  <span className={cn(d.school_lower3_rate >= 50 ? "text-emerald-500" : d.school_lower3_rate <= 35 ? "text-amber-500" : "")}>
+                    {d.school_lower3_rate}%
+                    {d.school_total != null && <span className="text-[10px] text-muted-foreground"> ({d.school_total}명)</span>}
+                  </span>
+                </div>
+              )}
+              {d.dong_age0_9_rate != null && (
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">동 0~9세 비율</span>
+                  <span className={cn(d.dong_age0_9_rate >= 8 ? "text-emerald-500" : d.dong_age0_9_rate <= 4 ? "text-amber-500" : "")}>
+                    {d.dong_age0_9_rate}%
+                  </span>
+                </div>
+              )}
+              {d.dong_age30s_rate != null && (
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">동 30대 비율</span>
+                  <span>{d.dong_age30s_rate}%</span>
+                </div>
+              )}
+            </div>
+            <p className="text-[10px] text-muted-foreground mt-1">학교: 학년 비율 ↑ = 어린 자녀 가구 ↑ / 동: 연령대 ↑ = 가족·신혼 가구 ↑</p>
+          </div>
+        )}
         {d.mgmt_cost != null && (
           <div className="mt-2 pt-2 border-t">
             <p className="font-semibold mb-1">관리비 ({d.area}㎡ 기준)</p>
