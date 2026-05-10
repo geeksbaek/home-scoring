@@ -453,14 +453,11 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
 //   올수리 16~25년: + 욕실·주방·바닥 전체 → 평당 150~250만
 //   풀리모델링 26년+: + 창호·일부 구조 → 평당 250~400만
 // 평수 = 전용면적 × 1.3(공급/전용 평균비) ÷ 3.3058
-function calcInterior(areaSqm: number | null | undefined, useDate: string | null | undefined, buildYear: number | null | undefined) {
+function calcInterior(areaSqm: number | null | undefined, buildYear: number | null | undefined) {
   if (!areaSqm || areaSqm <= 0) return null;
+  if (!buildYear || buildYear <= 1900) return null;
   const py = (areaSqm * 1.3) / 3.3058;
-  // 사용승인일 우선, 없으면 거래 신고된 건축연도(build) fallback
-  const year = useDate && useDate.length >= 4 ? parseInt(useDate.slice(0, 4))
-    : (buildYear && buildYear > 1900 ? buildYear : null);
-  if (year == null) return null;  // 둘 다 없으면 산출 불가
-  const age = 2026 - year;
+  const age = 2026 - buildYear;
   let minRate: number, maxRate: number, level: string, scope: string;
   if (age <= 5) {
     minRate = 30; maxRate = 80;
@@ -490,7 +487,7 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
   const [customPrice, setCustomPrice] = useState<string>("");
   const customMan = customPrice && !Number.isNaN(parseFloat(customPrice)) ? parseFloat(customPrice) * 10000 : null;
   const priceMan = customMan ?? data.avg;
-  const interior = calcInterior(data.area, data.use_date, data.build);
+  const interior = calcInterior(data.area, data.build);
   const interiorAvg = interior ? Math.round((interior.min + interior.max) / 2) : 0;
   const interiorForCalc = includeInterior ? interiorAvg : 0;
   const triggerText = includeInterior && interior
@@ -611,7 +608,7 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
           </div>
         )}
         {(() => {
-          const it = calcInterior(data.area, data.use_date, data.build);
+          const it = calcInterior(data.area, data.build);
           if (!it) return null;
           return (
             <div className="mb-2 pb-2 border-b">
