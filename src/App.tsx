@@ -1,22 +1,81 @@
-import { useEffect, useMemo, useState } from "react";
+import React, { startTransition, useEffect, useMemo, useState } from "react";
 import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Card, CardContent } from "@/components/ui/card";
 import {
-  type AptData, pedScore, commuteScore, calcScores,
-  commuteLabel, pedLabel, parkingLabel, liquidityLabel, mgmtCostLabel, naverMapUrl, type Label,
+  type AptData, pedScore, commuteScore, calcScores, DEFAULT_WEIGHTS, type ScoreWeights,
+  commuteLabel, pedLabel, parkingLabel, liquidityLabel, safetyLabel, naverMapUrl, naverLandUrl, naverLandSearchUrl, type Label,
 } from "@/lib/scoring";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
+import { lazy, Suspense } from "react";
+const AptMap = lazy(() => import("@/components/AptMap"));
 
 const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+
+function atypeBadgeColor(atype: string): string {
+  const m: Record<string, string> = {
+    "230": "bg-fuchsia-500/10 text-fuchsia-500 border-fuchsia-500/20",
+    "200": "bg-purple-500/10 text-purple-500 border-purple-500/20",
+    "160": "bg-violet-500/10 text-violet-500 border-violet-500/20",
+    "140": "bg-indigo-500/10 text-indigo-500 border-indigo-500/20",
+    "124": "bg-blue-500/10 text-blue-500 border-blue-500/20",
+    "114": "bg-sky-500/10 text-sky-500 border-sky-500/20",
+    "104": "bg-cyan-500/10 text-cyan-500 border-cyan-500/20",
+    "99": "bg-teal-500/10 text-teal-500 border-teal-500/20",
+    "84": "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
+    "74": "bg-lime-500/10 text-lime-500 border-lime-500/20",
+    "64": "bg-amber-500/10 text-amber-500 border-amber-500/20",
+    "59": "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
+    "49": "bg-orange-500/10 text-orange-500 border-orange-500/20",
+    "39": "bg-red-500/10 text-red-500 border-red-500/20",
+    "29": "bg-rose-500/10 text-rose-500 border-rose-500/20",
+  };
+  return m[atype] ?? "bg-muted text-muted-foreground border-border";
+}
+
+function atypeLabel(atype: string): string {
+  const m: Record<string, string> = {
+    "large": "대형 전체",
+    "medium": "중형 전체",
+    "small": "소형 전체",
+    "230": "220㎡+",
+    "200": "180~219㎡",
+    "160": "150~179㎡",
+    "140": "130~149㎡",
+    "124": "120~129㎡",
+    "114": "110~119㎡",
+    "104": "100~109㎡",
+    "99": "85~99㎡",
+    "84": "80~84㎡",
+    "74": "70~79㎡",
+    "64": "60~69㎡",
+    "59": "50~59㎡",
+    "49": "40~49㎡",
+    "39": "30~39㎡",
+    "29": "~29㎡",
+  };
+  return m[atype] ?? `${atype}㎡`;
+}
+
+// 면적 그룹: 84 초과=대형, 84=중형, 84 미만=소형
+const ATYPES_LARGE = ["230", "200", "160", "140", "124", "114", "104", "99"];
+const ATYPES_MEDIUM = ["84"];
+const ATYPES_SMALL = ["74", "64", "59", "49", "39", "29"];
+
+function atypeMatchesFilter(atype: string, filter: string): boolean {
+  if (filter === "large") return ATYPES_LARGE.includes(atype);
+  if (filter === "medium") return ATYPES_MEDIUM.includes(atype);
+  if (filter === "small") return ATYPES_SMALL.includes(atype);
+  return atype === filter;
+}
 
 function LabelBadge({ label }: { label: Label }) {
   if (label.text === "-") return <span className="text-muted-foreground">-</span>;
@@ -40,7 +99,8 @@ function LabelText({ label }: { label: Label }) {
   return <span className={cn("text-xs font-medium", colors[label.variant])}>{label.text}</span>;
 }
 
-function AccelBadge({ value }: { value: number }) {
+function AccelBadge({ value }: { value: number | null }) {
+  if (value == null) return <span className="text-muted-foreground">-</span>;
   const cls = value > 5 ? "text-emerald-500" : value < 0 ? "text-red-500" : "text-foreground";
   return <span className={cn("font-medium", cls)}>{value > 0 ? "+" : ""}{value}%</span>;
 }
@@ -89,22 +149,57 @@ function CommutePopover({ data }: { data: AptData }) {
   const label = commuteLabel(data.commuteScore);
   const color = (m: number) =>
     m <= 30 ? "text-emerald-500" : m <= 40 ? "text-foreground" : m <= 50 ? "text-amber-500" : "text-red-500";
+
+  // 날짜별 출퇴근 병합
+  const dayMap = new Map<string, { date: string; weekday: string; morning?: number; morningTime?: string; evening?: number; eveningTime?: string }>();
+  for (const t of data.morning_details ?? []) {
+    const key = t.date;
+    if (!dayMap.has(key)) dayMap.set(key, { date: t.date, weekday: t.weekday });
+    const e = dayMap.get(key)!;
+    e.morning = t.minutes;
+    e.morningTime = t.time;
+  }
+  for (const t of data.evening_details ?? []) {
+    const key = t.date;
+    if (!dayMap.has(key)) dayMap.set(key, { date: t.date, weekday: t.weekday });
+    const e = dayMap.get(key)!;
+    e.evening = t.minutes;
+    e.eveningTime = t.time;
+  }
+  const days = [...dayMap.values()].sort((a, b) => b.date.localeCompare(a.date));
+
   return (
     <Popover>
       <PopoverTrigger><span className="cursor-pointer"><LabelBadge label={label} /></span></PopoverTrigger>
-      <PopoverContent className="w-56 text-xs">
-        <p className="font-semibold mb-2">출퇴근 상세</p>
-        <div className="flex justify-between"><span className="text-muted-foreground">출근 평균</span><span>{data.morning ? `${data.morning}분` : "-"}</span></div>
-        <div className="flex justify-between"><span className="text-muted-foreground">퇴근 평균</span><span>{data.evening ? `${data.evening}분` : "-"}</span></div>
-        {data.morning_details?.length > 0 && (
-          <div className="mt-2"><p className="font-semibold text-muted-foreground mb-1">출근 기록</p>
-            {data.morning_details.map((t, i) => <div key={i} className="flex justify-between"><span>{t.date.slice(5)} ({t.weekday}) {t.time ?? ""}</span><span className={color(t.minutes)}>{t.minutes}분</span></div>)}
-          </div>
-        )}
-        {data.evening_details?.length > 0 && (
-          <div className="mt-2"><p className="font-semibold text-muted-foreground mb-1">퇴근 기록</p>
-            {data.evening_details.map((t, i) => <div key={i} className="flex justify-between"><span>{t.date.slice(5)} ({t.weekday}) {t.time ?? ""}</span><span className={color(t.minutes)}>{t.minutes}분</span></div>)}
-          </div>
+      <PopoverContent className="w-64 text-xs">
+        <p className="font-semibold mb-2">출퇴근 상세 (판교)</p>
+        <div className="flex justify-between mb-2">
+          <span className="text-muted-foreground">출근 평균</span><span className={color(data.morning ?? 99)}>{data.morning ? `${data.morning}분` : "-"}</span>
+          <span className="text-muted-foreground ml-3">퇴근 평균</span><span className={color(data.evening ?? 99)}>{data.evening ? `${data.evening}분` : "-"}</span>
+        </div>
+        {days.length > 0 && (
+          <table className="w-full border-t border-border/50">
+            <thead>
+              <tr className="text-muted-foreground">
+                <th className="text-left py-1 font-normal">날짜</th>
+                <th className="text-right py-1 font-normal">출근</th>
+                <th className="text-right py-1 font-normal">퇴근</th>
+              </tr>
+            </thead>
+            <tbody>
+              {days.map((d) => (
+                <tr key={d.date} className="border-t border-border/30">
+                  <td className="py-0.5 text-muted-foreground">{d.date.slice(5)} ({d.weekday})</td>
+                  <td className={cn("text-right py-0.5", d.morning ? color(d.morning) : "text-muted-foreground")}>
+                    {d.morning ? <span>{d.morning}분{d.morningTime && <span className="text-muted-foreground text-[10px] ml-1">{d.morningTime}</span>}</span> : "-"}
+                  </td>
+                  <td className={cn("text-right py-0.5", d.evening ? color(d.evening) : "text-muted-foreground")}>
+                    {d.evening ? <span>{d.evening}분{d.eveningTime && <span className="text-muted-foreground text-[10px] ml-1">{d.eveningTime}</span>}</span> : "-"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )}
         {(data.subway_line || data.subway_station) && (
           <div className="mt-2 pt-2 border-t">
@@ -120,7 +215,7 @@ function CommutePopover({ data }: { data: AptData }) {
 function PedPopover({ data }: { data: AptData }) {
   const label = pedLabel(data.pedScore);
   const sc = (v: number | null) =>
-    v == null ? "" : Math.abs(v) >= 10 ? "text-red-400" : Math.abs(v) >= 5 ? "text-amber-400" : "text-emerald-400";
+    v == null ? "" : Math.abs(v) >= 10 ? "text-red-500" : Math.abs(v) >= 5 ? "text-amber-500" : "text-emerald-500";
   return (
     <Popover>
       <PopoverTrigger><span className="cursor-pointer"><LabelBadge label={label} /></span></PopoverTrigger>
@@ -173,7 +268,43 @@ function calcDsrMaxLoan(incomeMan: number, existDebtMan: number, existRate = 0.0
   return Math.round(monthlyRepay * factor);
 }
 
-function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit: number, income1Man: number, income2Man: number, years: number, extraRepayYrs: number, areaSqm?: number) {
+// 규제지역: 성남(분당/수정/중원), 수원(영통/장안/팔달), 용인 수지, 하남
+const REGULATED_REGIONS = new Set(["성남시 분당구", "성남시 수정구", "성남시 중원구", "수원시 영통구", "수원시 장안구", "수원시 팔달구", "용인시 수지구", "하남시"]);
+
+// 사내 이자지원 (주택구입 매매대출): 본인 2% 부담, 초과분 회사 지원
+// 대상 상품: 신한은행 신생아특례, SC제일은행 u-보금자리(특례보금자리론)
+// 한도: 매매가 50% / 최대 15,000만원
+const SUBSIDY_USER_RATE = 0.02;
+const SUBSIDY_MAX_AMOUNT = 15000; // 만원
+const SUBSIDY_LTV = 0.5;
+const SUBSIDY_PRODUCTS = new Set<LoanProduct>(["newborn", "bogeumjari"]);
+
+// 정책상품 정의 (2025-2026 기준, 부부합산 소득 기준)
+// 디딤돌: HUG 디딤돌대출 (생애최초 한정 우대)
+// 보금자리: 한국주택금융공사 보금자리론 (특례 종료, u-보금자리 신설)
+// 신생아특례: 2024-01 시행 → 2025-04 소득상한 2.5억 확대 (한시)
+type LoanProduct = "normal" | "didimdol" | "bogeumjari" | "newborn";
+const LOAN_PRODUCTS: Record<LoanProduct, {
+  name: string;
+  rate: number;
+  maxLoan: number; // 최대 대출 한도 (만원). 0 = 없음
+  maxPrice: number; // 주택가격 한도 (만원). 0 = 없음
+  maxIncome: number; // 부부합산 소득 한도 (만원). 0 = 없음
+  maxAreaSqm: number; // 전용면적 한도 (㎡). 0 = 없음
+  forceLtv?: number; // LTV 강제 (정책상품)
+  desc: string;
+}> = {
+  normal: { name: "일반 주담대", rate: 0.045, maxLoan: 0, maxPrice: 0, maxIncome: 0, maxAreaSqm: 0, desc: "은행 자체상품, 시장금리" },
+  // 디딤돌 (2025): 부부합산 8.5천 (신혼·2자녀 1억), 주택 5억(수도권 6억), 한도 일반 2.5억/신혼 4억/2자녀 4억/신생아 5억
+  didimdol: { name: "디딤돌 (생애최초)", rate: 0.032, maxLoan: 40000, maxPrice: 60000, maxIncome: 8500, maxAreaSqm: 85, forceLtv: 0.7, desc: "부부합산 8.5천(신혼/자녀 1억), 한도 신혼 4억" },
+  // 보금자리: 2024 종료 → u-보금자리 (디딤돌 흡수) → 일반 보금자리 한도 3.6억, 생애최초 4.2억, 부부합산 7천(신혼 8.5천), 주택 6억
+  bogeumjari: { name: "u-보금자리 (생애최초)", rate: 0.044, maxLoan: 42000, maxPrice: 60000, maxIncome: 7000, maxAreaSqm: 0, forceLtv: 0.7, desc: "부부합산 7천(신혼 8.5천), LTV 70%, 4.2억" },
+  // 신생아특례 (2024-01 시행): 부부합산 1.3억 → 2025-04부터 한시 2.5억 상향
+  // 2년 내 출산 가구, 9억 이하 주택, 전용 85㎡ 이하 (수도권), 한도 5억, 우대금리 1.6~3.3%
+  newborn: { name: "신생아특례 (출산 2년 내)", rate: 0.026, maxLoan: 50000, maxPrice: 90000, maxIncome: 25000, maxAreaSqm: 85, forceLtv: 0.8, desc: "부부합산 2.5억(2025-04 한시 상향), 9억·85㎡ 이하" },
+};
+
+function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit: number, income1Man: number, income2Man: number, years: number, extraRepayYrs: number, areaSqm?: number, firstTimeBuyer: boolean = true, regulated: boolean = false, product: LoanProduct = "normal", interestSubsidy: boolean = false) {
   const incomeMan = income1Man + income2Man;
   // 취득세율: 6억 이하 1%, 6~9억 누진, 9억 초과 3%
   let taxRate: number;
@@ -184,7 +315,7 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   const eduTax = Math.round(acqTax * 0.1); // 지방교육세 10%
   const ruralTax = (areaSqm ?? 0) > 85 ? Math.round(acqTax * 0.2) : 0; // 농어촌특별세 20% (85㎡ 초과만)
   const totalTax = acqTax + eduTax + ruralTax;
-  const taxExempt = 200; // 생애최초 감면 200만원
+  const taxExempt = firstTimeBuyer ? 200 : 0; // 생애최초 감면 200만원
   const netTax = Math.max(0, totalTax - taxExempt);
 
   // 중개보수 (0.4% + VAT 10%)
@@ -196,12 +327,47 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   else brokerRate = 0.006;
   const broker = Math.round(priceMan * brokerRate * 1.1);
 
-  // 대출: LTV 70%, 최대 6억
-  const ltvMax = Math.min(Math.round(priceMan * 0.7), 60000);
+  // 법무사 비용 (등기대행, 매매가 구간별 추정)
+  const legalFee = priceMan <= 50000 ? 50 : priceMan <= 100000 ? 70 : 90; // 만원
+
+  // 인지세 (1억~10억: 15만원)
+  const stampTax = priceMan >= 10000 ? 15 : 0; // 만원
+
+  // 국민주택채권 매입 할인손 (85㎡ 이하: 13/1000, 초과: 26/1000, 할인율 약 6%)
+  const bondRate = (areaSqm ?? 0) > 85 ? 0.026 : 0.013;
+  const bondDiscount = Math.round(priceMan * bondRate * 0.06); // 만원
+
+  // 기타 부대비용 합계
+  const miscCost = legalFee + stampTax + bondDiscount;
+
+  // LTV: 규제지역 vs 비규제지역
+  // 규제: 생애최초 70%, 일반 40%, cap 6억 (15억초과→4억, 25억초과→2억)
+  // 비규제: 생애최초 80%, 일반 70%, cap 없음
+  const prodInfo = LOAN_PRODUCTS[product];
+  const ltvRate = prodInfo.forceLtv != null
+    ? prodInfo.forceLtv
+    : regulated
+      ? (firstTimeBuyer ? 0.7 : 0.4)
+      : (firstTimeBuyer ? 0.8 : 0.7);
+  const ltvCalc = Math.round(priceMan * ltvRate);
+  let ltvCap = Infinity;
+  if (regulated) {
+    if (priceMan > 250000) ltvCap = 20000;
+    else if (priceMan > 150000) ltvCap = 40000;
+    else ltvCap = 60000;
+  }
+  // 정책상품 절대 한도
+  const productCap = prodInfo.maxLoan > 0 ? prodInfo.maxLoan : Infinity;
+  // 정책상품 자격 미달 검증
+  const eligIssues: string[] = [];
+  if (prodInfo.maxPrice > 0 && priceMan > prodInfo.maxPrice) eligIssues.push(`주택가격 ${prodInfo.maxPrice / 10000}억 초과`);
+  if (prodInfo.maxIncome > 0 && incomeMan > prodInfo.maxIncome) eligIssues.push(`소득 ${prodInfo.maxIncome / 10000}억 초과`);
+  if (prodInfo.maxAreaSqm > 0 && (areaSqm ?? 0) > prodInfo.maxAreaSqm) eligIssues.push(`전용 ${prodInfo.maxAreaSqm}㎡ 초과`);
+  const ltvMax = Math.min(ltvCalc, ltvCap, productCap);
   // 추가대출 없이 먼저 필요자금 계산
   const dsrMaxNone = incomeMan && incomeMan > 0 ? calcDsrMaxLoan(incomeMan, 0, 0.055, 0.045, Math.min(years, 40)) : null;
   const maxLoanBase = dsrMaxNone != null ? Math.min(ltvMax, dsrMaxNone) : ltvMax;
-  const shortfall = Math.max(0, priceMan + netTax + broker - maxLoanBase - capitalMan);
+  const shortfall = Math.max(0, priceMan + netTax + broker + miscCost - maxLoanBase - capitalMan);
 
   // 실제 추가대출 = 모자란 금액, 한도 이내
   const extraLoanMan = Math.min(shortfall, extraLoanLimit);
@@ -215,16 +381,33 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   const totalCapital = capitalMan + extraLoanMan;
 
   // 필요자금
-  const required = priceMan + netTax + broker - maxLoan;
+  const required = priceMan + netTax + broker + miscCost - maxLoan;
   const affordable = totalCapital >= required;
 
   // 월납입금/이자총액
-  const mortgageRate = 0.045; // 주담대 4.5%
+  const mortgageRate = prodInfo.rate; // 상품별 금리
   const extraRate = 0.055; // 추가/신용대출 5.5%
   const months = years * 12;
   const mr = mortgageRate / 12;
-  const mortgageMonthly = maxLoan > 0 ? Math.round(maxLoan * mr / (1 - Math.pow(1 + mr, -months))) : 0;
+  const grossMortgageMonthly = maxLoan > 0 ? Math.round(maxLoan * mr / (1 - Math.pow(1 + mr, -months))) : 0;
+
+  // 사내 이자지원 (매매대출 한정, 신생아특례·u-보금자리만 가능)
+  const subsidyEligible = interestSubsidy && SUBSIDY_PRODUCTS.has(product);
+  const subsidyAmount = subsidyEligible
+    ? Math.min(maxLoan, Math.floor(priceMan * SUBSIDY_LTV), SUBSIDY_MAX_AMOUNT)
+    : 0;
+  // 본인 부담 가중평균 금리: 지원분은 2%, 비지원분은 원금리
+  const effectiveRate = subsidyAmount > 0 && maxLoan > 0
+    ? (subsidyAmount * SUBSIDY_USER_RATE + (maxLoan - subsidyAmount) * mortgageRate) / maxLoan
+    : mortgageRate;
+  const erM = effectiveRate / 12;
+  const mortgageMonthly = maxLoan > 0
+    ? Math.round(maxLoan * erM / (1 - Math.pow(1 + erM, -months)))
+    : 0;
+  const subsidyMonthly = grossMortgageMonthly - mortgageMonthly; // 회사 월평균 지원금
   const mortgageTotalInterest = maxLoan > 0 ? mortgageMonthly * months - maxLoan : 0;
+  const subsidyTotal = subsidyMonthly * months;
+
   const extraMonthly = Math.round(extraLoanMan * extraRate / 12); // 추가 이자만
   const totalMonthly = mortgageMonthly + extraMonthly;
   const totalInterest = mortgageTotalInterest + extraLoanMan * extraRate * years;
@@ -242,13 +425,14 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   const repayRatio = netMonthlyIncome ? totalMonthly / netMonthlyIncome : null;
   const repayRatioParental = netMonthlyParental ? totalMonthly / netMonthlyParental : null;
 
-  return { taxRate, acqTax, eduTax, ruralTax, totalTax, netTax, broker, ltvMax, dsrMax, maxLoan, dsrLimited, totalCapital, extraLoanMan, required, affordable, totalMonthly, mortgageMonthly, extraMonthly, mortgageRate, extraRate, totalInterest, extraRepayMonthly, extraRepayYrs, netMonthlyIncome, netMonthlyParental, repayRatio, repayRatioParental, years };
+  return { taxRate, acqTax, eduTax, ruralTax, totalTax, netTax, taxExempt, broker, legalFee, stampTax, bondDiscount, miscCost, ltvRate, ltvMax, ltvCap, productCap, eligIssues, dsrMax, maxLoan, dsrLimited, totalCapital, extraLoanMan, required, affordable, totalMonthly, mortgageMonthly, extraMonthly, mortgageRate, extraRate, effectiveRate, totalInterest, extraRepayMonthly, extraRepayYrs, netMonthlyIncome, netMonthlyParental, repayRatio, repayRatioParental, years, firstTimeBuyer, regulated, product, productName: prodInfo.name, interestSubsidy, subsidyEligible, subsidyAmount, subsidyMonthly, subsidyTotal, grossMortgageMonthly };
 }
 
-function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs }: { data: AptData; capitalMan: number | null; extraLoanMan: number; income1Man: number; income2Man: number; loanYears: number; extraRepayYrs: number }) {
+function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, firstTimeBuyer, loanProduct, interestSubsidy }: { data: AptData; capitalMan: number | null; extraLoanMan: number; income1Man: number; income2Man: number; loanYears: number; extraRepayYrs: number; firstTimeBuyer: boolean; loanProduct: LoanProduct; interestSubsidy: boolean }) {
   const priceText = `${(data.avg / 10000).toFixed(1)}억`;
-  const aff = capitalMan != null ? calcAffordability(data.avg, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, data.area) : null;
-  const color = aff ? (aff.affordable ? (aff.extraLoanMan > 0 ? "text-amber-500" : "text-emerald-500") : "text-red-400") : "";
+  const regulated = REGULATED_REGIONS.has(data.region);
+  const aff = capitalMan != null ? calcAffordability(data.avg, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, data.area, firstTimeBuyer, regulated, loanProduct, interestSubsidy) : null;
+  const color = aff ? (aff.affordable ? (aff.extraLoanMan > 0 ? "text-amber-500" : "text-emerald-500") : "text-red-500") : "";
 
   return (
     <Popover>
@@ -256,25 +440,47 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
       <PopoverContent className="w-64 text-xs max-h-80 overflow-y-auto">
         {aff && (
           <div className="mb-2 pb-2 border-b">
-            <p className="font-semibold mb-1">{aff.affordable ? "구매 가능" : "자금 부족"}</p>
+            <p className="font-semibold mb-1 flex items-center justify-between">
+              <span>{aff.affordable ? "구매 가능" : "자금 부족"}</span>
+              <span className="text-[10px] text-muted-foreground font-normal">{aff.productName}</span>
+            </p>
+            {aff.eligIssues.length > 0 && (
+              <p className="text-[10px] text-amber-500 mb-1">⚠ 자격 미달: {aff.eligIssues.join(", ")}</p>
+            )}
             <div className="space-y-0.5">
               <div className="flex justify-between"><span className="text-muted-foreground">매매가</span><span>{priceText}</span></div>
               <div className="flex justify-between"><span className="text-muted-foreground">취득세 ({(aff.taxRate * 100).toFixed(1)}%+교육{aff.ruralTax > 0 ? "+농특" : ""})</span><span>{aff.netTax.toLocaleString()}만원</span></div>
               <div className="flex justify-between"><span className="text-muted-foreground">중개보수 (0.44%)</span><span>{aff.broker.toLocaleString()}만원</span></div>
-              <div className="flex justify-between"><span className="text-muted-foreground">생애최초 감면</span><span className="text-emerald-500">-200만원</span></div>
-              <div className="flex justify-between border-t pt-0.5"><span className="text-muted-foreground">총 비용</span><span>{((data.avg + aff.netTax + aff.broker) / 10000).toFixed(1)}억</span></div>
-              <div className="flex justify-between"><span className="text-muted-foreground">LTV 한도 (70%, 6억)</span><span>-{(aff.ltvMax / 10000).toFixed(1)}억</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">법무사/인지/채권</span><span>{aff.miscCost.toLocaleString()}만원</span></div>
+              {aff.taxExempt > 0 && <div className="flex justify-between"><span className="text-muted-foreground">생애최초 감면</span><span className="text-emerald-500">-{aff.taxExempt.toLocaleString()}만원</span></div>}
+              <div className="flex justify-between border-t pt-0.5"><span className="text-muted-foreground">총 비용</span><span>{((data.avg + aff.netTax + aff.broker + aff.miscCost) / 10000).toFixed(1)}억</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">LTV {(aff.ltvRate * 100).toFixed(0)}% · {aff.regulated ? "규제" : "비규제"}{aff.regulated ? ` · 한도 ${aff.ltvCap / 10000}억` : ""}{aff.productCap !== Infinity ? ` · 상품한도 ${aff.productCap / 10000}억` : ""}</span><span>-{(aff.ltvMax / 10000).toFixed(1)}억</span></div>
               {aff.dsrMax != null && <div className="flex justify-between"><span className="text-muted-foreground">DSR 한도 (40%)</span><span className={aff.dsrLimited ? "text-amber-500" : ""}>-{(aff.dsrMax / 10000).toFixed(1)}억</span></div>}
               {aff.dsrLimited && <p className="text-[10px] text-amber-500">DSR에 의해 대출 제한</p>}
               {aff.extraLoanMan > 0 && <div className="flex justify-between"><span className="text-muted-foreground">추가대출</span><span>+{(aff.extraLoanMan / 10000).toFixed(1)}억</span></div>}
-              <div className="flex justify-between font-medium border-t pt-0.5"><span>필요 자본금</span><span className={aff.affordable ? "text-emerald-500" : "text-red-400"}>{(aff.required / 10000).toFixed(1)}억 {aff.extraLoanMan > 0 ? `(보유 ${(aff.totalCapital / 10000).toFixed(1)}억)` : ""}</span></div>
+              <div className="flex justify-between font-medium border-t pt-0.5"><span>필요 자본금</span><span className={aff.affordable ? "text-emerald-500" : "text-red-500"}>{(aff.required / 10000).toFixed(1)}억</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">보유 자본금</span><span>{(aff.totalCapital / 10000).toFixed(1)}억{!aff.affordable && <span className="text-red-500 ml-1">(-{((aff.required - aff.totalCapital) / 10000).toFixed(1)}억)</span>}</span></div>
             </div>
             <div className="mt-2 pt-2 border-t space-y-0.5">
               <p className="font-semibold mb-0.5">월 상환 ({aff.years}년)</p>
-              <div className="flex justify-between"><span className="text-muted-foreground">주담대 원리금 ({(aff.mortgageRate * 100).toFixed(1)}%)</span><span>{aff.mortgageMonthly.toLocaleString()}만원</span></div>
+              {aff.subsidyAmount > 0 ? (
+                <>
+                  <div className="flex justify-between"><span className="text-muted-foreground">주담대 원리금 ({(aff.mortgageRate * 100).toFixed(1)}% → {(aff.effectiveRate * 100).toFixed(2)}%)</span><span>{aff.grossMortgageMonthly.toLocaleString()}만원</span></div>
+                  <div className="flex justify-between"><span className="text-emerald-500">└ 회사 이자지원 ({(aff.subsidyAmount / 10000).toFixed(1)}억 한도)</span><span className="text-emerald-500">-{aff.subsidyMonthly.toLocaleString()}만원</span></div>
+                  <div className="flex justify-between"><span className="text-muted-foreground">└ 본인 부담 원리금</span><span>{aff.mortgageMonthly.toLocaleString()}만원</span></div>
+                </>
+              ) : (
+                <div className="flex justify-between"><span className="text-muted-foreground">주담대 원리금 ({(aff.mortgageRate * 100).toFixed(1)}%)</span><span>{aff.mortgageMonthly.toLocaleString()}만원</span></div>
+              )}
+              {aff.interestSubsidy && !aff.subsidyEligible && (
+                <p className="text-[10px] text-amber-500">⚠ 이자지원: {aff.productName} 상품은 미적용 (신생아특례·u-보금자리만)</p>
+              )}
               {aff.extraMonthly > 0 && <div className="flex justify-between"><span className="text-muted-foreground">추가대출 이자 ({(aff.extraRate * 100).toFixed(1)}%)</span><span>{aff.extraMonthly.toLocaleString()}만원</span></div>}
-              <div className="flex justify-between font-medium"><span>월 납입 합계</span><span>{aff.totalMonthly.toLocaleString()}만원</span></div>
-              <div className="flex justify-between text-muted-foreground"><span>{aff.years}년 이자 총액</span><span>{(aff.totalInterest / 10000).toFixed(1)}억</span></div>
+              <div className="flex justify-between font-medium"><span>월 납입 합계{aff.subsidyAmount > 0 ? " (실부담)" : ""}</span><span>{aff.totalMonthly.toLocaleString()}만원</span></div>
+              <div className="flex justify-between text-muted-foreground"><span>{aff.years}년 이자 총액{aff.subsidyAmount > 0 ? " (실부담)" : ""}</span><span>{(aff.totalInterest / 10000).toFixed(1)}억</span></div>
+              {aff.subsidyAmount > 0 && (
+                <div className="flex justify-between text-emerald-500"><span>{aff.years}년 회사 지원 총액</span><span>-{(aff.subsidyTotal / 10000).toFixed(2)}억</span></div>
+              )}
               {aff.repayRatio != null && (
                 <div className="mt-1 pt-1 border-t space-y-0.5">
                   <div className="flex justify-between">
@@ -284,7 +490,7 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
                   {aff.repayRatioParental != null && (
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">육아휴직 시 (세후{aff.netMonthlyParental?.toLocaleString()}만)</span>
-                      <span className={aff.repayRatioParental! <= 0.25 ? "text-emerald-500" : aff.repayRatioParental! <= 0.33 ? "" : aff.repayRatioParental! <= 0.5 ? "text-amber-500" : "text-red-400"}>{(aff.repayRatioParental! * 100).toFixed(0)}% {aff.repayRatioParental! <= 0.25 ? "안전" : aff.repayRatioParental! <= 0.33 ? "적정" : aff.repayRatioParental! <= 0.5 ? "부담" : "위험"}</span>
+                      <span className={aff.repayRatioParental! <= 0.25 ? "text-emerald-500" : aff.repayRatioParental! <= 0.33 ? "" : aff.repayRatioParental! <= 0.5 ? "text-amber-500" : "text-red-500"}>{(aff.repayRatioParental! * 100).toFixed(0)}% {aff.repayRatioParental! <= 0.25 ? "안전" : aff.repayRatioParental! <= 0.33 ? "적정" : aff.repayRatioParental! <= 0.5 ? "부담" : "위험"}</span>
                     </div>
                   )}
                 </div>
@@ -322,7 +528,7 @@ function AccelPopover({ data }: { data: AptData }) {
         <p className="font-semibold mb-2">가속도 계산</p>
         <p className="text-muted-foreground">(최근3개월 - 이전3개월) / 이전3개월</p>
         <div className="mt-2 flex justify-between"><span className="text-muted-foreground">최근3개월</span><span>{(data.r3_avg / 10000).toFixed(1)}억</span></div>
-        <div className="flex justify-between"><span className="text-muted-foreground">이전3개월</span><span>{(data.p3_avg / 10000).toFixed(1)}억</span></div>
+        <div className="flex justify-between"><span className="text-muted-foreground">이전3개월</span><span>{data.p3_avg != null ? `${(data.p3_avg / 10000).toFixed(1)}억` : "-"}</span></div>
       </PopoverContent>
     </Popover>
   );
@@ -373,7 +579,7 @@ function LiquidityCell({ data }: { data: AptData }) {
         <p className="font-semibold mb-2">환금성</p>
         <div className="space-y-0.5">
           <div className="flex justify-between"><span className="text-muted-foreground">최근 6개월 거래</span><span>{data.count}건</span></div>
-          <div className="flex justify-between"><span className="text-muted-foreground">{data.atype}타입 세대수</span><span>{Math.round(data.count / v * 100)}세대</span></div>
+          <div className="flex justify-between"><span className="text-muted-foreground">{atypeLabel(data.atype)} 타입 세대수</span><span>{v > 0 ? Math.round(data.count / v * 100) : "-"}세대</span></div>
           <div className="flex justify-between font-medium"><span className="text-muted-foreground">환금성</span><span>{v}%</span></div>
         </div>
         <p className="text-muted-foreground mt-2 pt-2 border-t leading-relaxed">거래건수 / 해당 면적타입 세대수. 높을수록 거래가 활발하여 매도 시 유리</p>
@@ -410,64 +616,34 @@ function ParkingCell({ data }: { data: AptData }) {
   );
 }
 
-function MgmtCostCell({ data }: { data: AptData }) {
-  const mc = data.mgmt_cost;
-  if (mc == null) return <span className="text-muted-foreground text-xs">-</span>;
-  const g = data.energy_grade;
-  return (
-    <Popover>
-      <PopoverTrigger className="cursor-pointer"><LabelText label={mgmtCostLabel(mc)} /></PopoverTrigger>
-      <PopoverContent className="w-56 text-xs">
-        <p className="font-semibold mb-1">관리비 ({data.area}㎡ 기준)</p>
-        <div className="space-y-0.5">
-          <div className="flex justify-between"><span className="text-muted-foreground">연평균</span><span className="font-medium">{mc}만원/월</span></div>
-          {data.mgmt_summer != null && <div className="flex justify-between"><span className="text-muted-foreground">여름</span><span>{data.mgmt_summer}만원</span></div>}
-          {data.mgmt_winter != null && <div className="flex justify-between"><span className="text-muted-foreground">겨울</span><span>{data.mgmt_winter}만원</span></div>}
-        </div>
-        {g && (
-          <div className="mt-2 pt-2 border-t">
-            <p className="font-semibold mb-1">에너지효율등급: {g}</p>
-            <div className="text-muted-foreground text-[10px] space-y-0.5">
-              <div className="flex justify-between"><span>1+++</span><span>60 미만 kWh/㎡</span></div>
-              <div className="flex justify-between"><span>1++</span><span>60~90</span></div>
-              <div className="flex justify-between"><span>1+</span><span>90~120</span></div>
-              <div className="flex justify-between"><span>1</span><span>120~150</span></div>
-              <div className="flex justify-between"><span>2</span><span>150~200</span></div>
-              <div className="flex justify-between"><span>3</span><span>200~250</span></div>
-            </div>
-          </div>
-        )}
-      </PopoverContent>
-    </Popover>
-  );
-}
-
 function EqCell({ data }: { data: AptData }) {
   if (data.eq_design == null) return <span className="text-muted-foreground text-xs">-</span>;
   const applied = data.eq_design;
   return (
     <Popover>
-      <PopoverTrigger className={cn("cursor-pointer text-xs font-medium", applied ? "text-emerald-500" : "text-red-400")}>
+      <PopoverTrigger className={cn("cursor-pointer text-xs font-medium", applied ? "text-emerald-500" : "text-red-500")}>
         {applied ? "적용" : "미적용"}
       </PopoverTrigger>
-      <PopoverContent className="w-52 text-xs">
-        <p className="font-semibold mb-2">내진설계</p>
-        <div className="flex justify-between"><span className="text-muted-foreground">적용 여부</span><span className={applied ? "text-emerald-500" : "text-red-400"}>{applied ? "적용" : "미적용"}</span></div>
-        {data.eq_capacity && <div className="flex justify-between"><span className="text-muted-foreground">내진능력</span><span>{data.eq_capacity}</span></div>}
+      <PopoverContent className="w-60 text-xs">
+        <p className="font-semibold mb-2">건축 정보</p>
+        <div className="space-y-0.5">
+          <div className="flex justify-between"><span className="text-muted-foreground">내진설계</span><span className={applied ? "text-emerald-500" : "text-red-500"}>{applied ? "적용" : "미적용"}</span></div>
+          {data.eq_capacity && <div className="flex justify-between"><span className="text-muted-foreground">내진능력</span><span>{data.eq_capacity}</span></div>}
+          {data.vl_rat != null && <div className="flex justify-between"><span className="text-muted-foreground">용적률</span><span>{data.vl_rat}%</span></div>}
+          {data.bc_rat != null && <div className="flex justify-between"><span className="text-muted-foreground">건폐율</span><span>{data.bc_rat}%</span></div>}
+          {data.land_share != null && (
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">대지지분</span>
+              <span className={data.land_share >= 60 ? "text-emerald-500" : data.land_share >= 40 ? "" : "text-amber-500"}>
+                {data.land_share}㎡/세대 ({(data.land_share / 3.3058).toFixed(1)}평)
+              </span>
+            </div>
+          )}
+        </div>
         <div className="mt-2 pt-2 border-t text-muted-foreground text-[10px] space-y-1">
-          <p>지진 발생 시 건물 붕괴를 방지하는 구조 설계</p>
-          <div>
-            <p className="font-semibold text-foreground/70">내진능력 읽는 법 (예: Ⅶ-0.169g)</p>
-            <p>Ⅶ = MMI 진도 7 (벽 균열, 서 있기 어려움)</p>
-            <p>0.169g = 최대지반가속도 (중력의 16.9%)</p>
-            <p>숫자가 클수록 강한 지진을 견딤</p>
-          </div>
-          <div>
-            <p className="font-semibold text-foreground/70">의무 적용 기준</p>
-            <p>~2005: 6층 이상 (기준 낮음)</p>
-            <p>2005~2017: 3층+, 연면적 1만㎡ 이상</p>
-            <p>2017~: 2층 이상 모든 건축물</p>
-          </div>
+          <p className="font-semibold text-foreground/70">대지지분이 클수록</p>
+          <p>재건축 시 추가분담금이 적고 사업성이 좋다</p>
+          <p>~30㎡ 작음 / 30~60㎡ 보통 / 60㎡~ 우수</p>
         </div>
       </PopoverContent>
     </Popover>
@@ -476,6 +652,7 @@ function EqCell({ data }: { data: AptData }) {
 
 interface MulticulturalCity {
   total: number; domestic: number; midEntry: number; foreign: number;
+  totalStudents?: number;
   countries: Record<string, { domestic: number; midEntry: number; foreign: number }>;
 }
 type MulticulturalData = Record<string, MulticulturalCity>;
@@ -485,15 +662,84 @@ function getYearTotal(yearData: any): number {
   return (yearData.cases?.s1?.n || 0) + (yearData.cases?.s2?.n || 0);
 }
 
+function YearDetail({ yd, yearLabel }: { yd: any; yearLabel: string }) {
+  const TYPE_LABELS = ["신체","언어","금품","강요","따돌림","성폭력","사이버","기타"];
+  const VP_LABELS = ["심리상담","일시보호","치료요양","학급교체","전학","기타"];
+  const PS_LABELS = ["서면사과","접촉금지","학교봉사","사회봉사","특별교육","출석정지","학급교체","전학","퇴학"];
+
+  if (!yd || yd.zero || yd.noData || yd.parseError) return null;
+  const total = (yd.cases?.s1?.n || 0) + (yd.cases?.s2?.n || 0);
+  if (total === 0) return null;
+
+  const victims = (yd.cases?.s1?.v||0) + (yd.cases?.s2?.v||0);
+  const perps = (yd.cases?.s1?.p||0) + (yd.cases?.s2?.p||0);
+  const typeSums = TYPE_LABELS.map((_, i) => (yd.types?.s1?.[i]||0) + (yd.types?.s2?.[i]||0));
+  const vpSums = VP_LABELS.map((_, i) => (yd.vp?.s1?.[i]||0) + (yd.vp?.s2?.[i]||0));
+  const psSums = PS_LABELS.map((_, i) => (yd.ps?.s1?.[i]||0) + (yd.ps?.s2?.[i]||0));
+  const spedTarget = (yd.sped?.s1?.[0]||0) + (yd.sped?.s2?.[0]||0);
+  const spedDone = (yd.sped?.s1?.[1]||0) + (yd.sped?.s2?.[1]||0);
+  const spedParent = (yd.sped?.s1?.[2]||0) + (yd.sped?.s2?.[2]||0);
+  const hasVp = vpSums.some(v => v > 0);
+  const hasPs = psSums.some(v => v > 0);
+  const hasSped = spedTarget > 0;
+
+  return (
+    <div className="flex flex-col gap-1 border-t border-border/50 pt-1">
+      <div className="flex items-center gap-1.5">
+        <span className="font-semibold text-destructive">{yearLabel}학년도</span>
+        <span className="text-muted-foreground">심의 {total}건 · 피해 {victims}명 · 가해 {perps}명</span>
+      </div>
+      {/* 유형별 */}
+      <div className="flex flex-wrap gap-1">
+        {TYPE_LABELS.map((l, i) => typeSums[i] > 0 ? (
+          <span key={l} className="rounded bg-destructive/10 text-destructive px-1">{l} {typeSums[i]}</span>
+        ) : null)}
+      </div>
+      {/* 피해학생 보호조치 */}
+      {hasVp && (
+        <div className="flex flex-wrap gap-1 items-center">
+          <span className="text-muted-foreground">보호조치:</span>
+          {VP_LABELS.map((l, i) => vpSums[i] > 0 ? (
+            <span key={l} className="rounded bg-blue-500/10 text-blue-500 px-1">{l} {vpSums[i]}</span>
+          ) : null)}
+        </div>
+      )}
+      {/* 가해학생 선도교육조치 */}
+      {hasPs && (
+        <div className="flex flex-wrap gap-1 items-center">
+          <span className="text-muted-foreground">선도조치:</span>
+          {PS_LABELS.map((l, i) => psSums[i] > 0 ? (
+            <span key={l} className="rounded bg-orange-500/10 text-orange-500 px-1">{l} {psSums[i]}</span>
+          ) : null)}
+        </div>
+      )}
+      {/* 특별교육 */}
+      {hasSped && (
+        <div className="text-muted-foreground">
+          특별교육: 대상 {spedTarget}명 · 학생완료 {spedDone} · 보호자완료 {spedParent}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function schoolInfoUrl(schoolName: string, region: string | undefined): string {
+  // 학교알리미는 deep link를 지원하지 않음 (모든 페이지가 세션 기반).
+  // 동명 학교 disambiguation 위해 region(시군구) 포함하여 Naver 검색.
+  const city = region?.split(" ")[0] ?? "";
+  const q = `${city} ${schoolName} 학교알리미`.trim();
+  return `https://search.naver.com/search.naver?query=${encodeURIComponent(q)}`;
+}
+
 function SchoolCell({ data }: { data: AptData }) {
   if (!data.schools || data.schools.length === 0) return <span className="text-muted-foreground text-xs">-</span>;
   const sv = data.school_violence ?? {};
-  const YEARS = ["2023", "2024", "2025"];
-  const YEAR_LABELS = ["22", "23", "24"];
-  const TYPE_LABELS = ["신체","언어","금품","강요","따돌림","성폭력","사이버","기타"];
+  const currentYear = new Date().getFullYear();
+  const YEARS = Array.from({ length: 4 }, (_, i) => String(currentYear - 3 + i));
+  const YEAR_LABELS = YEARS.map((y) => y.slice(2));
 
-  // Latest year max for cell display
-  const latestMax = Math.max(0, ...data.schools.map((s) => getYearTotal(sv[s]?.["2025"])));
+  // 배정학교 중 4개년 합계가 가장 높은 한 학교의 합계
+  const allYearsTotal = Math.max(0, ...data.schools.map((s) => YEARS.reduce((ys, y) => ys + getYearTotal(sv[s]?.[y]), 0)));
 
   return (
     <Popover>
@@ -501,10 +747,10 @@ function SchoolCell({ data }: { data: AptData }) {
         <span className="cursor-pointer text-xs">
           {data.schools[0].replace("초등학교", "초")}
           {data.schools.length > 1 && <span className="text-muted-foreground"> +{data.schools.length - 1}</span>}
-          {latestMax > 0 && <span className="text-destructive ml-0.5">({latestMax})</span>}
+          {allYearsTotal > 0 && <span className="text-destructive ml-0.5">({allYearsTotal})</span>}
         </span>
       </PopoverTrigger>
-      <PopoverContent className="w-72 text-xs">
+      <PopoverContent className="w-80 text-xs max-h-[70vh] overflow-y-auto">
         <p className="font-semibold mb-2">배정 초등학교 학폭 현황</p>
         <div className="flex flex-col gap-3">
           {data.schools.map((s) => {
@@ -513,11 +759,20 @@ function SchoolCell({ data }: { data: AptData }) {
 
             const yearTotals = YEARS.map((y) => getYearTotal(schoolData[y]));
             const hasAny = yearTotals.some((t) => t > 0);
-            const trend = yearTotals[2] - yearTotals[0]; // 2024 vs 2022
+            const trend = yearTotals[yearTotals.length - 1] - yearTotals[0]; // latest vs oldest
 
             return (
               <div key={s} className="rounded-md bg-muted/50 px-2 py-1.5">
-                <div className="font-medium mb-1.5">{s}</div>
+                <div className="font-medium mb-1.5 flex items-center justify-between gap-2">
+                  <span>{s}</span>
+                  <a
+                    href={schoolInfoUrl(s, data.region)}
+                    target="_blank"
+                    rel="noopener"
+                    className="text-[10px] text-primary hover:underline font-normal"
+                    title="학교알리미 검색"
+                  >학교알리미 ↗</a>
+                </div>
 
                 {/* 연도별 추이 바 */}
                 <div className="flex items-end gap-1 mb-1.5">
@@ -535,37 +790,23 @@ function SchoolCell({ data }: { data: AptData }) {
                   })}
                   <div className="ml-2 text-[10px]">
                     {trend > 0 && <span className="text-destructive font-medium">+{trend} 증가</span>}
-                    {trend < 0 && <span className="text-green-500 font-medium">{trend} 감소</span>}
+                    {trend < 0 && <span className="text-emerald-500 font-medium">{trend} 감소</span>}
                     {trend === 0 && hasAny && <span className="text-muted-foreground">변동없음</span>}
-                    {!hasAny && <span className="text-green-500">3년간 0건</span>}
+                    {!hasAny && <span className="text-emerald-500">3년간 0건</span>}
                   </div>
                 </div>
 
-                {/* 최신 연도 상세 (2024학년도) */}
-                {yearTotals[2] > 0 && (() => {
-                  const yd = schoolData["2025"];
-                  if (!yd?.types) return null;
-                  const sums = TYPE_LABELS.map((_, i) => (yd.types.s1[i]||0) + (yd.types.s2[i]||0));
-                  const victims = (yd.cases?.s1?.v||0) + (yd.cases?.s2?.v||0);
-                  const perps = (yd.cases?.s1?.p||0) + (yd.cases?.s2?.p||0);
-                  return (
-                    <div className="flex flex-col gap-0.5 border-t border-border/50 pt-1">
-                      <div className="flex flex-wrap gap-1">
-                        {TYPE_LABELS.map((l, i) => sums[i] > 0 ? (
-                          <span key={l} className="rounded bg-destructive/10 text-destructive px-1">{l} {sums[i]}</span>
-                        ) : null)}
-                      </div>
-                      {(victims > 0 || perps > 0) && (
-                        <span className="text-muted-foreground">피해 {victims}명 · 가해 {perps}명</span>
-                      )}
-                    </div>
-                  );
-                })()}
+                {/* 각 연도 세부 데이터 (최신부터) */}
+                <div className="flex flex-col gap-1.5">
+                  {[...YEARS].reverse().map((y, i) => (
+                    <YearDetail key={y} yd={schoolData[y]} yearLabel={YEAR_LABELS[YEARS.length - 1 - i]} />
+                  ))}
+                </div>
               </div>
             );
           })}
         </div>
-        <p className="text-muted-foreground mt-2 text-[10px]">출처: 학교알리미 (2022-2024학년도) · 유형 중복 포함</p>
+        <p className="text-muted-foreground mt-2 text-[10px]">출처: 학교알리미 ({currentYear - 4}-{currentYear - 1}학년도) · 유형 중복 포함</p>
       </PopoverContent>
     </Popover>
   );
@@ -577,7 +818,7 @@ function MulticulturalPanel({ mc }: { mc: MulticulturalData }) {
   const items = targets.filter((c) => mc[c]).map((c) => ({ city: c, ...mc[c] }));
   if (items.length === 0) return <p className="text-xs text-muted-foreground">데이터 로딩 중...</p>;
 
-  const maxTotal = Math.max(...items.map((d) => d.total));
+  const maxTotal = Math.max(1, ...items.map((d) => d.total));
   const detail = mc[selected];
   const topCountries = detail
     ? Object.entries(detail.countries)
@@ -588,15 +829,15 @@ function MulticulturalPanel({ mc }: { mc: MulticulturalData }) {
 
   return (
     <div className="space-y-4">
-      <p className="text-xs text-muted-foreground">경기도교육청 2024 기준, 초등학교 다문화학생 수 (시 클릭 시 국적별 상세)</p>
+      <p className="text-xs text-muted-foreground">경기도교육청 2024 기준, 초등학교 다문화학생 수 (시 클릭 시 국적별 상세). 전체 학생 수 대비 비율.</p>
       <div className="space-y-3">
         {items.map((d) => (
           <div key={d.city} className="space-y-1 cursor-pointer" onClick={() => setSelected(d.city)}>
             <div className="flex justify-between text-sm">
               <span className={cn("font-medium", selected === d.city && "text-primary")}>{d.city}</span>
               <span className="text-muted-foreground text-xs">
-                {d.total.toLocaleString()}명
-                <span className="ml-1 text-[10px]">(국내{d.domestic} 중도{d.midEntry} 외국{d.foreign})</span>
+                {d.total.toLocaleString()}명{d.totalStudents ? ` / ${d.totalStudents.toLocaleString()}명` : ""}
+                <span className="ml-1 text-[10px]">({d.totalStudents ? `${(d.total / d.totalStudents * 100).toFixed(1)}%` : `국내${d.domestic} 중도${d.midEntry} 외국${d.foreign}`})</span>
               </span>
             </div>
             <div className="h-4 bg-muted rounded-full overflow-hidden flex">
@@ -620,9 +861,9 @@ function MulticulturalPanel({ mc }: { mc: MulticulturalData }) {
               <div key={d.country} className="flex items-center gap-2 text-xs">
                 <span className="w-28 truncate">{d.country}</span>
                 <div className="flex-1 h-3.5 bg-muted rounded-full overflow-hidden flex">
-                  <div className="bg-blue-500 h-full" style={{ width: `${(d.domestic / topCountries[0].total) * 100}%` }} />
-                  <div className="bg-amber-500 h-full" style={{ width: `${(d.midEntry / topCountries[0].total) * 100}%` }} />
-                  <div className="bg-red-400 h-full" style={{ width: `${(d.foreign / topCountries[0].total) * 100}%` }} />
+                  <div className="bg-blue-500 h-full" style={{ width: `${(d.domestic / Math.max(topCountries[0].total, 1)) * 100}%` }} />
+                  <div className="bg-amber-500 h-full" style={{ width: `${(d.midEntry / Math.max(topCountries[0].total, 1)) * 100}%` }} />
+                  <div className="bg-red-400 h-full" style={{ width: `${(d.foreign / Math.max(topCountries[0].total, 1)) * 100}%` }} />
                 </div>
                 <span className="w-20 text-right tabular-nums text-[11px]">{d.total}명 ({(d.total / detail.total * 100).toFixed(1)}%)</span>
               </div>
@@ -639,21 +880,419 @@ function MulticulturalPanel({ mc }: { mc: MulticulturalData }) {
   );
 }
 
-type SortKey = "score" | "accel" | "liquidity" | "commuteScore" | "pedScore" | "slope" | "avg" | "build" | "name";
+function AptInfoPopover({ d }: { d: AptData }) {
+  const maintLabel = (n: number | null) => {
+    if (n == null) return null;
+    if (n < 0) return { text: `주기 초과 ${Math.abs(n)}년`, cls: "text-red-500" };
+    if (n === 0) return { text: "교체 임박", cls: "text-amber-500" };
+    if (n <= 3) return { text: `${n}년`, cls: "text-amber-500" };
+    return { text: `${n}년`, cls: "text-emerald-500" };
+  };
+  const elev = maintLabel(d.maint_elevator_remaining);
+  const pipe = maintLabel(d.maint_piping_remaining);
+  const wp = maintLabel(d.maint_waterproof_remaining);
+
+  return (
+    <Popover>
+      <PopoverTrigger className="cursor-pointer font-medium text-sm hover:underline decoration-dotted underline-offset-4">
+        {d.display_name}
+      </PopoverTrigger>
+      <PopoverContent className="w-72 text-xs p-0">
+        <div className="px-3 pt-3 pb-2 border-b sticky top-0 bg-popover">
+          <p className="font-semibold">단지 정보</p>
+          {d.doro_juso && <p className="text-muted-foreground mt-0.5">{d.doro_juso}</p>}
+        </div>
+        <div className="px-3 py-2 max-h-80 overflow-y-auto">
+        <div className="space-y-0.5">
+          {d.dong_count != null && <div className="flex justify-between"><span className="text-muted-foreground">동수</span><span>{d.dong_count}동</span></div>}
+          {d.top_floor != null && <div className="flex justify-between"><span className="text-muted-foreground">최고층</span><span>{d.top_floor}층</span></div>}
+          {d.structure && <div className="flex justify-between"><span className="text-muted-foreground">구조</span><span>{d.structure}</span></div>}
+          {d.heat_type && <div className="flex justify-between"><span className="text-muted-foreground">난방</span><span>{d.heat_type}</span></div>}
+          {d.use_date && <div className="flex justify-between"><span className="text-muted-foreground">사용승인</span><span>{d.use_date.slice(0, 4)}.{d.use_date.slice(4, 6)}.{d.use_date.slice(6, 8)}</span></div>}
+          {d.cctv != null && d.cctv > 0 && <div className="flex justify-between"><span className="text-muted-foreground">CCTV</span><span>{d.cctv}대</span></div>}
+          {d.vl_rat != null && <div className="flex justify-between"><span className="text-muted-foreground">용적률</span><span>{d.vl_rat}%</span></div>}
+          {d.bc_rat != null && <div className="flex justify-between"><span className="text-muted-foreground">건폐율</span><span>{d.bc_rat}%</span></div>}
+          {d.land_share != null && <div className="flex justify-between"><span className="text-muted-foreground">대지지분</span><span>{d.land_share}㎡ ({(d.land_share / 3.3058).toFixed(1)}평)</span></div>}
+        </div>
+        {d.education && (
+          <div className="mt-2 pt-2 border-t">
+            <p className="text-muted-foreground">교육시설</p>
+            <p className="mt-0.5">{d.education}</p>
+          </div>
+        )}
+        {d.mgmt_cost != null && (
+          <div className="mt-2 pt-2 border-t">
+            <p className="font-semibold mb-1">관리비 ({d.area}㎡ 기준)</p>
+            <div className="space-y-0.5">
+              <div className="flex justify-between"><span className="text-muted-foreground">연평균</span><span className="font-medium">{d.mgmt_cost}만원/월</span></div>
+              {d.mgmt_summer != null && <div className="flex justify-between"><span className="text-muted-foreground">여름</span><span>{d.mgmt_summer}만원</span></div>}
+              {d.mgmt_winter != null && <div className="flex justify-between"><span className="text-muted-foreground">겨울</span><span>{d.mgmt_winter}만원</span></div>}
+              {d.energy_grade && <div className="flex justify-between"><span className="text-muted-foreground">에너지등급</span><span>{d.energy_grade}</span></div>}
+            </div>
+          </div>
+        )}
+        {d.repair_balance != null && (
+          <div className="mt-2 pt-2 border-t">
+            <p className="font-semibold mb-1">장기수선충당금</p>
+            <div className="space-y-0.5">
+              <div className="flex justify-between"><span className="text-muted-foreground">적립금</span><span>{d.repair_balance}만원/세대</span></div>
+              {d.repair_levy != null && <div className="flex justify-between"><span className="text-muted-foreground">월부과</span><span>{d.repair_levy.toLocaleString()}원/세대</span></div>}
+              {d.repair_reserve_rate != null && <div className="flex justify-between"><span className="text-muted-foreground">적립요율</span><span>{d.repair_reserve_rate}%</span></div>}
+            </div>
+            <div className="mt-1.5 text-muted-foreground text-[10px] leading-relaxed">
+              <p>적립금이 충분해야 큰 수선 시 분담금 추가 부과 부담이 적음.</p>
+            </div>
+          </div>
+        )}
+        {d.audit_year && (
+          <div className="mt-2 pt-2 border-t">
+            <p className="font-semibold mb-1">회계감사 ({d.audit_year}년)</p>
+            <div className="space-y-0.5">
+              <div className="flex justify-between"><span className="text-muted-foreground">이행</span><span className={d.audit_done ? "text-emerald-500" : "text-red-500"}>{d.audit_done ? "완료" : "미실시 ⚠"}</span></div>
+              {d.audit_opinion && <div className="flex justify-between"><span className="text-muted-foreground">의견</span><span className={d.audit_opinion === "적정" ? "text-emerald-500" : "text-amber-500"}>{d.audit_opinion}{d.audit_opinion !== "적정" ? " ⚠" : ""}</span></div>}
+              {d.audit_net_profit != null && (
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">당기손익</span>
+                  <span className={d.audit_net_profit >= 0 ? "text-emerald-500" : "text-red-500"}>{d.audit_net_profit >= 0 ? "흑자 " : "적자 "}{(Math.abs(d.audit_net_profit) / 10000).toFixed(0)}만원</span>
+                </div>
+              )}
+            </div>
+            <div className="mt-1.5 text-muted-foreground text-[10px] leading-relaxed">
+              <p>미실시·부정적 의견은 운영 리스크. 흑/적자는 큰 수선년도엔 적자가 자연스러움.</p>
+            </div>
+          </div>
+        )}
+        {d.maint_count != null && d.maint_count > 0 && (
+          <div className="mt-2 pt-2 border-t">
+            <p className="font-semibold mb-1">유지관리 이력 ({d.maint_count}건)</p>
+            <div className="space-y-0.5">
+              {d.maint_recent && <div className="flex justify-between"><span className="text-muted-foreground">최근 공사</span><span>{d.maint_recent}</span></div>}
+              {elev && <div className="flex justify-between"><span className="text-muted-foreground">승강기</span><span className={elev.cls}>{elev.text}</span></div>}
+              {pipe && <div className="flex justify-between"><span className="text-muted-foreground">배관</span><span className={pipe.cls}>{pipe.text}</span></div>}
+              {wp && <div className="flex justify-between"><span className="text-muted-foreground">방수</span><span className={wp.cls}>{wp.text}</span></div>}
+            </div>
+            <div className="mt-1.5 text-muted-foreground text-[10px] leading-relaxed">
+              <p>다음 교체 주기까지 남은 기간.</p>
+              <p>• <span className="text-red-500">주기 초과</span> = 적립금 부족 시 분담금 위험</p>
+              <p>• <span className="text-amber-500">교체 임박</span> = 곧 큰 수선비 발생</p>
+              <p>• <span className="text-emerald-500">N년</span> = 당분간 큰 비용 없음</p>
+            </div>
+          </div>
+        )}
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+function AllTypesDialog({ name, allData, favorites, onToggleFav }: { name: string; allData: AptData[]; favorites: Set<string>; onToggleFav: (key: string) => void }) {
+  const types = useMemo(
+    () => allData.filter((d) => d.name === name).sort((a, b) => a.area - b.area),
+    [allData, name]
+  );
+  if (types.length <= 1) return null;
+
+  return (
+    <Dialog>
+      <DialogTrigger
+        className="text-[10px] text-muted-foreground hover:text-primary hover:underline"
+        onClick={(e) => e.stopPropagation()}
+      >
+        전체 {types.length}타입
+      </DialogTrigger>
+      <DialogContent className="!w-[95vw] sm:!w-fit !max-w-[95vw]">
+        <DialogHeader>
+          <DialogTitle>{name} — 전체 평형</DialogTitle>
+        </DialogHeader>
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow className="bg-muted/50">
+                <TableHead className="w-8 text-center"></TableHead>
+                <TableHead>면적</TableHead>
+                <TableHead className="text-right">세대수</TableHead>
+                <TableHead className="text-right">현재가</TableHead>
+                <TableHead className="text-right">가속도</TableHead>
+                <TableHead className="text-center">환금</TableHead>
+                <TableHead className="text-right text-xs">6개월거래</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {types.map((t) => {
+                const favKey = `${t.name}|${t.atype}`;
+                const isFav = favorites.has(favKey);
+                return (
+                <TableRow key={t.atype} className={cn(t.no_trades && "opacity-60")}>
+                  <TableCell
+                    className={cn("text-center select-none", t.no_trades ? "text-muted-foreground" : "cursor-pointer", isFav && "text-yellow-400")}
+                    onClick={() => !t.no_trades && onToggleFav(favKey)}
+                    title={t.no_trades ? "거래 없음" : (isFav ? "즐겨찾기 해제" : "즐겨찾기 추가")}
+                  >
+                    {t.no_trades ? "" : (isFav ? "★" : "☆")}
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="outline" className={cn("text-[10px]", atypeBadgeColor(t.atype))}>
+                      {t.area}㎡
+                    </Badge>
+                    <span className="ml-2 text-xs text-muted-foreground">{atypeLabel(t.atype)}</span>
+                  </TableCell>
+                  <TableCell className="text-right text-xs">
+                    {t.type_units != null
+                      ? <span>{t.type_units.toLocaleString()}<span className="text-muted-foreground">세대</span></span>
+                      : <span className="text-muted-foreground">-</span>}
+                  </TableCell>
+                  <TableCell className="text-right text-sm font-medium">
+                    {t.no_trades ? <span className="text-muted-foreground">-</span> : `${(t.avg / 10000).toFixed(1)}억`}
+                  </TableCell>
+                  <TableCell className="text-right">{t.no_trades ? <span className="text-muted-foreground">-</span> : <AccelBadge value={t.accel} />}</TableCell>
+                  <TableCell className="text-center">{t.no_trades ? <span className="text-muted-foreground">-</span> : <LabelText label={liquidityLabel(t.liquidity)} />}</TableCell>
+                  <TableCell className="text-right text-xs text-muted-foreground">{t.no_trades ? "거래 없음" : `${t.count}건`}</TableCell>
+                </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+          {types.some(t => t.type_units == null) && (
+            <p className="text-[10px] text-muted-foreground mt-2">- = 건축물대장 미등록 (소규모 단지)</p>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+function CompareDialog({ open, onOpenChange, items, onRemove }: {
+  open: boolean;
+  onOpenChange: (v: boolean) => void;
+  items: AptData[];
+  onRemove: (key: string) => void;
+}) {
+  if (items.length === 0) {
+    return (
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="max-w-md">
+          <DialogHeader><DialogTitle>단지 비교</DialogTitle></DialogHeader>
+          <p className="text-sm text-muted-foreground">비교할 즐겨찾기가 없습니다. ★를 눌러 즐겨찾기에 추가하세요.</p>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
+  // 행 정의
+  type Row = { label: string; render: (d: AptData) => React.ReactNode; group?: string };
+  const fmt = (n: number | null | undefined, suffix = "") => n == null ? "-" : `${n}${suffix}`;
+  const fmtBil = (n: number | null | undefined) => n == null ? "-" : `${(n / 10000).toFixed(2)}억`;
+  const fmtPct = (n: number | null | undefined) => n == null ? "-" : `${n}%`;
+  const slopeMaint = (n: number | null) => {
+    if (n == null) return "-";
+    if (n < 0) return <span className="text-red-500">초과 {Math.abs(n)}년</span>;
+    if (n === 0) return <span className="text-amber-500">교체 임박</span>;
+    if (n <= 3) return <span className="text-amber-500">{n}년</span>;
+    return <span className="text-emerald-500">{n}년</span>;
+  };
+  const slopeColor = (n: number | null) => n == null ? "" : n <= 10 ? "text-emerald-500" : n >= 30 ? "text-red-500" : "";
+  const commuteColor = (m: number | null) => m == null ? "" : m <= 30 ? "text-emerald-500" : m <= 40 ? "" : m <= 50 ? "text-amber-500" : "text-red-500";
+  const pedColor = (m: number | null) => m == null ? "" : m <= 20 ? "text-emerald-500" : m <= 30 ? "" : "text-amber-500";
+  const violenceTotal = (sv: any, year: string) => {
+    const yd = sv?.[year];
+    if (!yd || yd.zero || yd.noData) return 0;
+    return (yd.cases?.s1?.n || 0) + (yd.cases?.s2?.n || 0);
+  };
+  const currentYear = new Date().getFullYear();
+  const YEARS = [String(currentYear - 3), String(currentYear - 2), String(currentYear - 1), String(currentYear)];
+
+  const rows: Row[] = [
+    { label: "지역", render: (d) => d.region },
+    { label: "준공", render: (d) => `${d.build}년` },
+    { label: "동수", render: (d) => fmt(d.dong_count, "동") },
+    { label: "최고층", render: (d) => fmt(d.top_floor, "층") },
+    { label: "총 세대수", render: (d) => d.households != null ? d.households.toLocaleString() + "세대" : "-" },
+    { label: "면적", render: (d) => <Badge variant="outline" className={cn("text-[10px]", atypeBadgeColor(d.atype))}>{Math.floor(d.area)}㎡</Badge> },
+    { label: "타입 세대수", render: (d) => d.type_units != null ? d.type_units.toLocaleString() + "세대" : "-" },
+    { label: "현재가", render: (d) => <span className="font-medium">{fmtBil(d.avg)}</span>, group: "가격" },
+    { label: "가속도", render: (d) => <AccelBadge value={d.accel} /> },
+    { label: "환금성", render: (d) => <LabelText label={liquidityLabel(d.liquidity)} /> },
+    { label: "6개월 거래", render: (d) => `${d.count}건` },
+    { label: "출퇴근 점수", render: (d) => <LabelBadge label={commuteLabel(d.commuteScore)} />, group: "교통" },
+    { label: "출근(판교)", render: (d) => d.morning != null ? <span className={commuteColor(d.morning)}>{d.morning}분</span> : "-" },
+    { label: "퇴근(판교)", render: (d) => d.evening != null ? <span className={commuteColor(d.evening)}>{d.evening}분</span> : "-" },
+    { label: "지하철", render: (d) => [d.subway_line, d.subway_station].filter(Boolean).join(" ") || "-" },
+    { label: "단지 고저차", render: (d) => d.slope != null ? <span className={slopeColor(d.slope)}>{d.slope}m</span> : "-", group: "환경" },
+    { label: "소아과 점수", render: (d) => <LabelBadge label={pedLabel(d.pedScore)} /> },
+    { label: "소아과 1", render: (d) => d.pedia1_name ? <span className={pedColor(d.pedia1)}>{d.pedia1_name} {d.pedia1}분{d.pedia1_slope != null ? ` (${d.pedia1_slope > 0 ? "↑" : "↓"}${Math.abs(d.pedia1_slope)}m)` : ""}</span> : "-" },
+    { label: "소아과 2", render: (d) => d.pedia2_name ? <span className={pedColor(d.pedia2)}>{d.pedia2_name} {d.pedia2}분{d.pedia2_slope != null ? ` (${d.pedia2_slope > 0 ? "↑" : "↓"}${Math.abs(d.pedia2_slope)}m)` : ""}</span> : "-" },
+    { label: "주차/세대", render: (d) => <LabelText label={parkingLabel(d.parking_per_hh)} /> },
+    { label: "배정초", render: (d) => d.schools?.join(", ") || "-", group: "교육" },
+    { label: "학폭 (4년)", render: (d) => {
+      if (!d.schools?.length) return "-";
+      const totals = YEARS.map((y) => d.schools.reduce((s, sn) => s + violenceTotal(d.school_violence?.[sn], y), 0));
+      const total4yr = totals.reduce((a, b) => a + b, 0);
+      const recent = totals[totals.length - 1];
+      const cls = recent >= 3 ? "text-red-500" : recent > 0 ? "text-amber-500" : total4yr === 0 ? "text-emerald-500" : "";
+      return <span className={cls}>{total4yr}건 (최근 {recent}건)</span>;
+    } },
+    { label: "치안", render: (d) => <LabelText label={safetyLabel(d.safety_grade)} /> },
+    { label: "내진설계", render: (d) => d.eq_design === true ? <span className="text-emerald-500">적용</span> : d.eq_design === false ? <span className="text-red-500">미적용</span> : "-", group: "건축" },
+    { label: "용적률", render: (d) => fmtPct(d.vl_rat) },
+    { label: "건폐율", render: (d) => fmtPct(d.bc_rat) },
+    { label: "대지지분", render: (d) => d.land_share != null ? <span className={d.land_share >= 60 ? "text-emerald-500" : d.land_share >= 40 ? "" : "text-amber-500"}>{d.land_share}㎡ ({(d.land_share / 3.3058).toFixed(1)}평)</span> : "-" },
+    { label: "관리비 연평균", render: (d) => d.mgmt_cost != null ? `${d.mgmt_cost}만원/월` : "-", group: "운영비" },
+    { label: "관리비 여름", render: (d) => d.mgmt_summer != null ? `${d.mgmt_summer}만원` : "-" },
+    { label: "관리비 겨울", render: (d) => d.mgmt_winter != null ? `${d.mgmt_winter}만원` : "-" },
+    { label: "에너지등급", render: (d) => d.energy_grade ?? "-" },
+    { label: "장기수선 적립", render: (d) => d.repair_balance != null ? `${d.repair_balance}만/세대` : "-", group: "장기수선" },
+    { label: "월 부과액", render: (d) => d.repair_levy != null ? `${d.repair_levy.toLocaleString()}원/세대` : "-" },
+    { label: "적립률", render: (d) => fmtPct(d.repair_reserve_rate) },
+    { label: "회계감사", render: (d) => d.audit_year ? <span>{d.audit_year} {d.audit_done ? "완료" : <span className="text-red-500">미실시</span>} {d.audit_opinion === "적정" ? <span className="text-emerald-500">적정</span> : <span className="text-amber-500">{d.audit_opinion}</span>}</span> : "-", group: "감사" },
+    { label: "당기손익", render: (d) => d.audit_net_profit != null ? <span className={d.audit_net_profit >= 0 ? "text-emerald-500" : "text-red-500"}>{d.audit_net_profit >= 0 ? "흑자 " : "적자 "}{(Math.abs(d.audit_net_profit) / 10000).toFixed(0)}만</span> : "-" },
+    { label: "유지관리 건수", render: (d) => d.maint_count != null ? `${d.maint_count}건` : "-", group: "유지관리" },
+    { label: "최근 공사", render: (d) => d.maint_recent ?? "-" },
+    { label: "승강기 잔여", render: (d) => slopeMaint(d.maint_elevator_remaining) },
+    { label: "배관 잔여", render: (d) => slopeMaint(d.maint_piping_remaining) },
+    { label: "방수 잔여", render: (d) => slopeMaint(d.maint_waterproof_remaining) },
+  ];
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="!w-[95vw] sm:!w-fit !max-w-[95vw] max-h-[90vh] overflow-hidden flex flex-col">
+        <DialogHeader>
+          <DialogTitle>단지 비교 — 즐겨찾기 {items.length}개</DialogTitle>
+        </DialogHeader>
+        <div className="overflow-auto flex-1">
+          <table className="w-full text-xs border-collapse">
+            <thead>
+              <tr>
+                <th className="text-left p-2 border-b font-medium text-muted-foreground sticky left-0 bg-background min-w-[100px] z-20">항목</th>
+                {items.map((d) => (
+                  <th key={`${d.name}|${d.atype}`} className="text-left p-2 border-b border-l min-w-[180px] align-top">
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <div className="font-semibold text-sm">{d.display_name}</div>
+                        <div className="text-[10px] text-muted-foreground">
+                          {d.region} · {d.area}㎡
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => onRemove(`${d.name}|${d.atype}`)}
+                        className="text-muted-foreground hover:text-destructive text-base leading-none"
+                        title="즐겨찾기 해제"
+                      >×</button>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, i) => {
+                const isGroupStart = row.group && (i === 0 || rows[i - 1].group !== row.group);
+                return (
+                  <React.Fragment key={row.label}>
+                    {isGroupStart && (
+                      <tr><td colSpan={items.length + 1} className="bg-muted/40 px-2 py-1 text-[10px] font-medium text-muted-foreground uppercase tracking-wide">{row.group}</td></tr>
+                    )}
+                    <tr className="border-b">
+                      <td className="p-2 text-muted-foreground sticky left-0 bg-background">{row.label}</td>
+                      {items.map((d) => (
+                        <td key={`${d.name}|${d.atype}|${row.label}`} className="p-2 border-l align-top">
+                          {row.render(d)}
+                        </td>
+                      ))}
+                    </tr>
+                  </React.Fragment>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+type SortKey = "score" | "accel" | "liquidity" | "commuteScore" | "pedScore" | "slope" | "avg" | "build" | "name" | "distance";
+
+function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLng = (lng2 - lng1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+class MapErrorBoundary extends React.Component<{ children: React.ReactNode }, { error: Error | null }> {
+  state = { error: null as Error | null };
+  static getDerivedStateFromError(error: Error) { return { error }; }
+  render() {
+    if (this.state.error) return (
+      <div className="w-full h-[500px] rounded-lg border flex flex-col items-center justify-center text-muted-foreground gap-2">
+        <p>지도 로드 실패</p>
+        <p className="text-xs">{this.state.error.message}</p>
+        <button className="text-xs text-primary underline" onClick={() => this.setState({ error: null })}>재시도</button>
+      </div>
+    );
+    return this.props.children;
+  }
+}
 
 export default function App() {
   const [data, setData] = useState<AptData[]>([]);
-  const [typeFilter, setTypeFilter] = useState("all");
-  const [sortField, setSortField] = useState<SortKey>("score");
-  const [regionFilter, setRegionFilter] = useState("all");
-  const [commuteFilter, setCommuteFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [highlightedApt, setHighlightedApt] = useState<string | null>(null);
+  const searchRef = React.useRef<HTMLInputElement>(null);
+  const searchTimerRef = React.useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  const onSearchInput = (v: string) => {
+    clearTimeout(searchTimerRef.current);
+    searchTimerRef.current = setTimeout(() => startTransition(() => setSearchQuery(v)), 150);
+  };
+  const clearSearch = () => {
+    if (searchRef.current) searchRef.current.value = "";
+    setSearchQuery("");
+  };
+  const ls = (k: string, d: string) => localStorage.getItem(k) ?? d;
+  const lsArr = (k: string): string[] => {
+    try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : []; } catch { return []; }
+  };
+  const [typeFilter, setTypeFilter] = useState<string[]>(() => lsArr("f_type_multi"));
+  const [sortField, setSortField] = useState<SortKey>(() => ls("f_sort", "score") as SortKey);
+  const [myLocation, setMyLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [viewMode, setViewMode] = useState<"table" | "map">("table");
+  const [regionFilter, setRegionFilter] = useState<string[]>(() => lsArr("f_region_multi"));
+  const [commuteFilter, setCommuteFilter] = useState(() => ls("f_commute", "all"));
+  const [priceMin, setPriceMin] = useState(() => ls("f_priceMin", "0"));
+  const [priceMax, setPriceMax] = useState(() => ls("f_priceMax", "20"));
+  const [hhMin, setHhMin] = useState(() => {
+    const v = ls("f_hhMin", "0");
+    return ["0", "150", "300", "500", "1000"].includes(v) ? v : "0";
+  });
+  const [buildMin, setBuildMin] = useState(() => {
+    const v = ls("f_buildMin", "0");
+    return ["0", "1992", "2005", "2018", "2019"].includes(v) ? v : "0";
+  });
+  const [tradeMin, setTradeMin] = useState(() => ls("f_tradeMin", "0"));
+  const [excludeDirect, setExcludeDirect] = useState(() => ls("f_exDirect", "true") === "true");
+  const [excludeFirstFloor, setExcludeFirstFloor] = useState(() => ls("f_ex1F", "true") === "true");
   const [capital, setCapital] = useState<string>(() => localStorage.getItem("capital") ?? "");
   const [income1, setIncome1] = useState<string>(() => localStorage.getItem("income1") ?? "");
   const [income2, setIncome2] = useState<string>(() => localStorage.getItem("income2") ?? "");
   const [extraLoan, setExtraLoan] = useState<string>(() => localStorage.getItem("extraLoan") ?? "");
   const [loanYears, setLoanYears] = useState<string>(() => localStorage.getItem("loanYears") ?? "30");
   const [extraRepayYears, setExtraRepayYears] = useState<string>(() => localStorage.getItem("extraRepayYears") ?? "2");
+  const [firstTimeBuyer, setFirstTimeBuyer] = useState(() => ls("f_firstTime", "true") === "true");
+  const [loanProduct, setLoanProduct] = useState<LoanProduct>(() => ls("f_loanProduct", "normal") as LoanProduct);
+  const [interestSubsidy, setInterestSubsidy] = useState(() => ls("f_interestSubsidy", "false") === "true");
+  const [financeOpen, setFinanceOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
+  const [weights, setWeights] = useState<ScoreWeights>(() => {
+    try { const s = localStorage.getItem("weights"); return s ? JSON.parse(s) : DEFAULT_WEIGHTS; } catch { return DEFAULT_WEIGHTS; }
+  });
+  const updateWeight = (key: keyof ScoreWeights, val: string) => {
+    const w = { ...weights, [key]: +val || 0 };
+    setWeights(w);
+    localStorage.setItem("weights", JSON.stringify(w));
+  };
+  const weightSum = weights.accel + weights.liquidity + weights.build + weights.commute + weights.pedia;
   const [mcOpen, setMcOpen] = useState(false);
   const [multicultural, setMulticultural] = useState<MulticulturalData>({});
   const [favorites, setFavorites] = useState<Set<string>>(() => {
@@ -669,12 +1308,14 @@ export default function App() {
     });
   };
 
+  const [compareOpen, setCompareOpen] = useState(false);
+
   useEffect(() => {
     fetch(import.meta.env.BASE_URL + "data.json")
       .then((r) => r.json())
       .then((raw: AptData[]) => {
         raw.forEach((d) => { d.pedScore = pedScore(d); d.commuteScore = commuteScore(d); d.score = 0; });
-        calcScores(raw);
+        calcScores(raw, weights);
         setData(raw);
       });
     fetch(import.meta.env.BASE_URL + "multicultural.json")
@@ -683,29 +1324,150 @@ export default function App() {
       .catch(() => {});
   }, []);
 
-  const regions = useMemo(() => [...new Set(data.map((d) => d.region.split(" ")[0]))].sort(), [data]);
+  // 필터 localStorage 저장
+  useEffect(() => { localStorage.setItem("f_type_multi", JSON.stringify(typeFilter)); }, [typeFilter]);
+  useEffect(() => { localStorage.setItem("f_sort", sortField); }, [sortField]);
+  useEffect(() => { localStorage.setItem("f_region_multi", JSON.stringify(regionFilter)); }, [regionFilter]);
+  useEffect(() => { localStorage.setItem("f_commute", commuteFilter); }, [commuteFilter]);
+  useEffect(() => { localStorage.setItem("f_priceMin", priceMin); }, [priceMin]);
+  useEffect(() => { localStorage.setItem("f_priceMax", priceMax); }, [priceMax]);
+  useEffect(() => { localStorage.setItem("f_hhMin", hhMin); }, [hhMin]);
+  useEffect(() => { localStorage.setItem("f_buildMin", buildMin); }, [buildMin]);
+  useEffect(() => { localStorage.setItem("f_tradeMin", tradeMin); }, [tradeMin]);
+  useEffect(() => { localStorage.setItem("f_exDirect", String(excludeDirect)); }, [excludeDirect]);
+  useEffect(() => { localStorage.setItem("f_ex1F", String(excludeFirstFloor)); }, [excludeFirstFloor]);
+
+  // 가중치 변경 시 스코어 재계산
+  useEffect(() => {
+    if (data.length === 0) return;
+    calcScores(data, weights);
+    setData([...data]);
+  }, [weights]);
+
+  const regions = useMemo(() => {
+    const cities = new Set<string>();
+    const districts = new Map<string, Set<string>>(); // city → 구 set
+    for (const d of data) {
+      const [city, gu] = d.region.split(" ");
+      cities.add(city);
+      if (gu) {
+        if (!districts.has(city)) districts.set(city, new Set());
+        districts.get(city)!.add(d.region);
+      }
+    }
+    // 시 → 시의 구들 순으로 평탄화
+    const list: string[] = [];
+    for (const city of [...cities].sort()) {
+      list.push(city);
+      const gus = districts.get(city);
+      if (gus) for (const r of [...gus].sort()) list.push(r);
+    }
+    return list;
+  }, [data]);
 
   const filtered = useMemo(() => {
-    let f = data.filter((d) => {
-      if (typeFilter === "84") return d.atype === "84";
-      if (typeFilter === "small") return d.atype !== "84";
+    const pMinVal = priceMin !== "" ? +priceMin * 10000 : 0;
+    const pMaxVal = priceMax !== "" && +priceMax < 20 ? +priceMax * 10000 : Infinity;
+    const hhMinVal = hhMin !== "" ? +hhMin : 0;
+    const buildMinVal = buildMin !== "" ? +buildMin : 0;
+    const tradeMinVal = tradeMin !== "" ? +tradeMin : 0;
+
+    // 직거래/1층 필터를 먼저 적용하여 count를 재계산한 후 tradeMin 체크
+    let f = data.map((d) => {
+      if (!(excludeDirect || excludeFirstFloor)) return d;
+      const trades = (d.recent_trades ?? []).filter((t) => {
+        if (excludeDirect && t.direct) return false;
+        if (excludeFirstFloor && t.floor === 1) return false;
+        return true;
+      });
+      if (trades.length === (d.recent_trades ?? []).length) return d;
+      return { ...d, recent_trades: trades, count: trades.length };
+    });
+
+    f = f.filter((d) => {
+      if (d.no_trades) return false; // 거래 없는 ghost row는 메인 표 제외
+      if (typeFilter.length > 0 && !typeFilter.some((f) => atypeMatchesFilter(d.atype, f))) return false;
+      if (regionFilter.length > 0 && !regionFilter.some(r => d.region.includes(r))) return false;
+      if (commuteFilter === "good" && (d.commuteScore == null || d.commuteScore > 30)) return false;
+      if (commuteFilter === "ok" && (d.commuteScore == null || d.commuteScore > 40)) return false;
+
+      // 비즈니스 로직 필터 (직거래/1층 제외 후 count 기준)
+      if (pMinVal > 0 && d.avg < pMinVal) return false;
+      if (pMaxVal < Infinity && d.avg > pMaxVal) return false;
+      if (hhMinVal > 0 && (d.households ?? 0) < hhMinVal) return false;
+      if (buildMinVal > 0 && d.build < buildMinVal) return false;
+      if (tradeMinVal > 0 && d.count < tradeMinVal) return false;
       return true;
     });
-    if (regionFilter !== "all") f = f.filter((d) => d.region.includes(regionFilter));
-    if (commuteFilter === "good") f = f.filter((d) => d.commuteScore != null && d.commuteScore <= 30);
-    else if (commuteFilter === "ok") f = f.filter((d) => d.commuteScore != null && d.commuteScore <= 40);
 
     f.sort((a, b) => {
-      const va = a[sortField] ?? (["commuteScore", "pedScore", "slope", "avg"].includes(sortField) ? Infinity : -Infinity);
-      const vb = b[sortField] ?? (["commuteScore", "pedScore", "slope", "avg"].includes(sortField) ? Infinity : -Infinity);
+      if (sortField === "distance" && myLocation) {
+        const da = a.lat && a.lng ? haversineKm(myLocation.lat, myLocation.lng, a.lat, a.lng) : Infinity;
+        const db = b.lat && b.lng ? haversineKm(myLocation.lat, myLocation.lng, b.lat, b.lng) : Infinity;
+        return da - db;
+      }
+      const sf = sortField as keyof AptData;
+      const va = a[sf] ?? (["commuteScore", "pedScore", "slope", "avg"].includes(sortField) ? Infinity : -Infinity);
+      const vb = b[sf] ?? (["commuteScore", "pedScore", "slope", "avg"].includes(sortField) ? Infinity : -Infinity);
       if (sortField === "name") return String(va).localeCompare(String(vb));
       if (["commuteScore", "pedScore", "slope", "avg"].includes(sortField)) return (va as number) - (vb as number);
       return (vb as number) - (va as number);
     });
     return f;
-  }, [data, typeFilter, sortField, regionFilter, commuteFilter]);
+  }, [data, typeFilter, sortField, regionFilter, commuteFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, excludeDirect, excludeFirstFloor, myLocation]);
 
   const favoriteItems = useMemo(() => data.filter((d) => favorites.has(`${d.name}|${d.atype}`)), [data, favorites]);
+
+  const filteredNames = useMemo(() => new Set(filtered.map((d) => d.name)), [filtered]);
+
+  const getFilterReason = (d: AptData): string | null => {
+    const pMinVal = priceMin !== "" ? +priceMin * 10000 : 0;
+    const pMaxVal = priceMax !== "" && +priceMax < 20 ? +priceMax * 10000 : Infinity;
+    const hhMinVal = hhMin !== "" ? +hhMin : 0;
+    const buildMinVal = buildMin !== "" ? +buildMin : 0;
+    const tradeMinVal = tradeMin !== "" ? +tradeMin : 0;
+    const reasons: string[] = [];
+    if (typeFilter.length > 0 && !typeFilter.some((f) => atypeMatchesFilter(d.atype, f))) reasons.push("면적");
+    if (regionFilter.length > 0 && !regionFilter.some(r => d.region.includes(r))) reasons.push("지역");
+    if (commuteFilter === "good" && (d.commuteScore == null || d.commuteScore > 30)) reasons.push(d.commuteScore == null ? "출퇴근 데이터 없음" : "출퇴근 30분 초과");
+    if (commuteFilter === "ok" && (d.commuteScore == null || d.commuteScore > 40)) reasons.push(d.commuteScore == null ? "출퇴근 데이터 없음" : "출퇴근 40분 초과");
+    if (pMinVal > 0 && d.avg < pMinVal) reasons.push(`${priceMin}억 미만`);
+    if (pMaxVal < Infinity && d.avg > pMaxVal) reasons.push(`${priceMax}억 초과`);
+    if (hhMinVal > 0 && (d.households ?? 0) < hhMinVal) reasons.push(d.households == null ? `세대수 데이터 없음` : `${hhMin}세대 미만`);
+    if (buildMinVal > 0 && d.build < buildMinVal) reasons.push(`${buildMin}년 이전`);
+    if (tradeMinVal > 0 && d.count < tradeMinVal) reasons.push(`거래 ${d.count}건`);
+    return reasons.length > 0 ? reasons.join(", ") : null;
+  };
+
+  const searchResults = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    const q = searchQuery.trim().toLowerCase();
+    // 전체 데이터에서 타입별로 검색 (필터 무관)
+    const results: (AptData & { _inFilter: boolean })[] = [];
+    for (const d of data) {
+      if (d.no_trades) continue;
+      const haystack = [d.name, d.display_name, d.dong, d.doro_juso, d.region].filter(Boolean).join(" ").toLowerCase();
+      if (!haystack.includes(q)) continue;
+      results.push({ ...d, _inFilter: filteredNames.has(d.name) });
+      if (results.length >= 30) break;
+    }
+    // 정렬: 필터에 있는 것 먼저 → 단지명 → 면적 오름차순
+    return results.sort((a, b) => {
+      if (a._inFilter !== b._inFilter) return a._inFilter ? -1 : 1;
+      if (a.name !== b.name) return a.name.localeCompare(b.name);
+      return a.area - b.area;
+    });
+  }, [data, searchQuery, filteredNames]);
+
+  // Cmd+K / Ctrl+K 단축키
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") { e.preventDefault(); setSearchOpen(true); setTimeout(() => searchRef.current?.focus(), 50); }
+      if (e.key === "Escape") { setSearchOpen(false); clearSearch(); }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
 
   const globalPctRange = useMemo(() => {
     const aptMaxes: number[] = [];
@@ -732,41 +1494,108 @@ export default function App() {
         <h1 className="text-xl font-bold mb-1">아파트 매수 후보 스코어링</h1>
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
           <p className="text-xs text-muted-foreground">
-            데이터: 2021-01~2026-04 실거래가 (전용 59~85㎡) | 최종 업데이트: {new Date().toLocaleDateString("ko-KR")}
+            데이터: 실거래가 (전 면적) | 최종 업데이트: {new Date().toLocaleDateString("ko-KR")}
           </p>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 shrink-0">
-            <div className="flex items-center gap-1">
-              <label className="text-[10px] text-muted-foreground">자본금</label>
-              <input type="number" step="0.1" placeholder="억" value={capital} onChange={(e) => { setCapital(e.target.value); localStorage.setItem("capital", e.target.value); }} className="w-14 text-xs bg-background border border-border rounded px-1.5 py-0.5 text-right" />
-            </div>
-            <div className="flex items-center gap-1">
-              <label className="text-[10px] text-muted-foreground">연봉1</label>
-              <input type="number" step="0.01" placeholder="억" value={income1} onChange={(e) => { setIncome1(e.target.value); localStorage.setItem("income1", e.target.value); }} className="w-14 text-xs bg-background border border-border rounded px-1.5 py-0.5 text-right" />
-            </div>
-            <div className="flex items-center gap-1">
-              <label className="text-[10px] text-muted-foreground">연봉2</label>
-              <input type="number" step="0.01" placeholder="억" value={income2} onChange={(e) => { setIncome2(e.target.value); localStorage.setItem("income2", e.target.value); }} className="w-14 text-xs bg-background border border-border rounded px-1.5 py-0.5 text-right" />
-            </div>
-            <div className="flex items-center gap-1">
-              <label className="text-[10px] text-muted-foreground">추가대출한도</label>
-              <input type="number" step="0.1" placeholder="억" value={extraLoan} onChange={(e) => { setExtraLoan(e.target.value); localStorage.setItem("extraLoan", e.target.value); }} className="w-14 text-xs bg-background border border-border rounded px-1.5 py-0.5 text-right" />
-            </div>
-            <span className="text-[10px] text-muted-foreground">억</span>
-            <select value={loanYears} onChange={(e) => { setLoanYears(e.target.value); localStorage.setItem("loanYears", e.target.value); }} className="text-xs bg-background border border-border rounded px-1 py-0.5">
-              <option value="20">주담대20년</option>
-              <option value="30">주담대30년</option>
-              <option value="40">주담대40년</option>
-              <option value="50">주담대50년</option>
-            </select>
-            <select value={extraRepayYears} onChange={(e) => { setExtraRepayYears(e.target.value); localStorage.setItem("extraRepayYears", e.target.value); }} className="text-xs bg-background border border-border rounded px-1 py-0.5">
-              <option value="1">추가1년</option>
-              <option value="2">추가2년</option>
-              <option value="3">추가3년</option>
-              <option value="5">추가5년</option>
-            </select>
-            <button className="text-[10px] text-muted-foreground border border-border rounded px-2 py-0.5 hover:text-foreground" onClick={() => { caches.keys().then(k => Promise.all(k.map(n => caches.delete(n)))).finally(() => location.reload()); }}>캐시 초기화</button>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 shrink-0 text-[10px]">
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-[10px] h-auto py-0.5 px-2"
+              onClick={() => setFinanceOpen(true)}
+              title="자본/연봉/대출 설정 (브라우저 로컬에만 저장)"
+            >
+              💰 자금 설정
+              {capital && <span className="ml-1 text-emerald-500">●</span>}
+            </Button>
+            <Button variant="outline" size="sm" className="text-[10px] h-auto py-0.5 px-2" onClick={() => setMcOpen(true)}>다문화 통계</Button>
+
+            <Dialog open={financeOpen} onOpenChange={setFinanceOpen}>
+              <DialogContent className="max-w-md">
+                <DialogHeader>
+                  <DialogTitle>자금 / 대출 설정</DialogTitle>
+                </DialogHeader>
+                <p className="text-[11px] text-muted-foreground -mt-1 mb-2">⚠ 민감 정보 — 브라우저 localStorage에만 저장되며 외부로 전송되지 않습니다.</p>
+                <div className="space-y-3 text-sm">
+                  <div className="grid grid-cols-2 gap-2">
+                    <label className="flex flex-col gap-1">
+                      <span className="text-xs text-muted-foreground">보유 자본금 (억)</span>
+                      <input type="number" step="0.1" min="0" placeholder="예: 5" value={capital} onChange={(e) => { setCapital(e.target.value); localStorage.setItem("capital", e.target.value); }} className="h-8 rounded border bg-background px-2 text-sm" />
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="text-xs text-muted-foreground">추가대출 한도 (억)</span>
+                      <input type="number" step="0.1" min="0" placeholder="예: 1" value={extraLoan} onChange={(e) => { setExtraLoan(e.target.value); localStorage.setItem("extraLoan", e.target.value); }} className="h-8 rounded border bg-background px-2 text-sm" />
+                    </label>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <label className="flex flex-col gap-1">
+                      <span className="text-xs text-muted-foreground">본인 연봉 (억)</span>
+                      <input type="number" step="0.01" min="0" placeholder="예: 0.7" value={income1} onChange={(e) => { setIncome1(e.target.value); localStorage.setItem("income1", e.target.value); }} className="h-8 rounded border bg-background px-2 text-sm" />
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="text-xs text-muted-foreground">배우자 연봉 (억)</span>
+                      <input type="number" step="0.01" min="0" placeholder="예: 0.5" value={income2} onChange={(e) => { setIncome2(e.target.value); localStorage.setItem("income2", e.target.value); }} className="h-8 rounded border bg-background px-2 text-sm" />
+                    </label>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <label className="flex flex-col gap-1">
+                      <span className="text-xs text-muted-foreground">주담대 만기</span>
+                      <select value={loanYears} onChange={(e) => { setLoanYears(e.target.value); localStorage.setItem("loanYears", e.target.value); }} className="h-8 rounded border bg-background px-2 text-sm">
+                        <option value="20">20년</option>
+                        <option value="30">30년</option>
+                        <option value="40">40년</option>
+                        <option value="50">50년</option>
+                      </select>
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="text-xs text-muted-foreground">추가대출 상환</span>
+                      <select value={extraRepayYears} onChange={(e) => { setExtraRepayYears(e.target.value); localStorage.setItem("extraRepayYears", e.target.value); }} className="h-8 rounded border bg-background px-2 text-sm">
+                        <option value="1">1년</option>
+                        <option value="2">2년</option>
+                        <option value="3">3년</option>
+                        <option value="5">5년</option>
+                      </select>
+                    </label>
+                  </div>
+                  <label className="flex flex-col gap-1">
+                    <span className="text-xs text-muted-foreground">대출 상품</span>
+                    <select
+                      value={loanProduct}
+                      onChange={(e) => { setLoanProduct(e.target.value as LoanProduct); localStorage.setItem("f_loanProduct", e.target.value); }}
+                      className="h-8 rounded border bg-background px-2 text-sm"
+                    >
+                      {(Object.keys(LOAN_PRODUCTS) as LoanProduct[]).map((p) => (
+                        <option key={p} value={p}>{LOAN_PRODUCTS[p].name} ({(LOAN_PRODUCTS[p].rate * 100).toFixed(1)}%)</option>
+                      ))}
+                    </select>
+                    <span className="text-[10px] text-muted-foreground">{LOAN_PRODUCTS[loanProduct].desc}</span>
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer" title="생애최초 주택 구매자 (LTV 80% / 취득세 200만원 감면)">
+                    <input type="checkbox" checked={firstTimeBuyer} onChange={(e) => { setFirstTimeBuyer(e.target.checked); localStorage.setItem("f_firstTime", String(e.target.checked)); }} className="rounded" />
+                    <span className="text-sm">생애최초 주택 구매자</span>
+                    <span className="text-[10px] text-muted-foreground">(LTV 우대 + 취득세 -200만원)</span>
+                  </label>
+                  <label className="flex items-start gap-2 cursor-pointer" title="사내 대출이자지원 (주택구입 매매대출 한정). 본인 2% 부담, 초과분 회사 지원. 한도: 매매가 50% / 최대 1.5억. 신한은행 신생아특례, SC제일은행 u-보금자리만 적용.">
+                    <input type="checkbox" checked={interestSubsidy} onChange={(e) => { setInterestSubsidy(e.target.checked); localStorage.setItem("f_interestSubsidy", String(e.target.checked)); }} className="rounded mt-0.5" />
+                    <div className="flex flex-col">
+                      <span className="text-sm">사내 이자지원 (매매대출)</span>
+                      <span className="text-[10px] text-muted-foreground">본인 2% 부담, 초과분 회사 지원 · 매매가 50% / 최대 1.5억</span>
+                      <span className="text-[10px] text-muted-foreground">신한 신생아특례 / SC제일 u-보금자리 한정 · 실거주 필수</span>
+                    </div>
+                  </label>
+                  <div className="pt-2 border-t flex justify-between gap-2">
+                    <button
+                      className="text-xs text-muted-foreground hover:text-destructive"
+                      onClick={() => {
+                        for (const k of ["capital", "income1", "income2", "extraLoan"]) localStorage.removeItem(k);
+                        setCapital(""); setIncome1(""); setIncome2(""); setExtraLoan("");
+                      }}
+                    >금액 모두 지우기</button>
+                    <Button size="sm" onClick={() => setFinanceOpen(false)}>완료</Button>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
             <Dialog open={mcOpen} onOpenChange={setMcOpen}>
-              <DialogTrigger render={<Button variant="outline" size="sm" className="text-[10px] h-auto py-0.5 px-2" />}>다문화 통계</DialogTrigger>
               <DialogContent className="max-w-lg max-h-[85vh] overflow-y-auto">
                 <DialogHeader>
                   <DialogTitle>행정구역별 다문화학생 현황</DialogTitle>
@@ -779,44 +1608,60 @@ export default function App() {
 
         <Collapsible open={infoOpen} onOpenChange={setInfoOpen}>
           <CollapsibleTrigger className="flex items-center gap-1 text-sm text-primary cursor-pointer mb-3">
-            필터/스코어링 기준
+            스코어링 가중치 {weightSum !== 100 && <span className="text-destructive text-xs ml-1">(합계 {weightSum}%)</span>}
             <ChevronDown className={cn("h-4 w-4 transition-transform", infoOpen && "rotate-180")} />
           </CollapsibleTrigger>
           <CollapsibleContent>
-            <Card className="mb-4">
-              <CardContent className="text-xs text-muted-foreground space-y-3 pt-4">
-                <div>
-                  <p className="font-semibold text-foreground mb-1">필터 조건</p>
-                  <div className="flex flex-wrap gap-x-3 gap-y-1 items-center">
-                    <span><Badge variant="destructive" className="text-[10px] mr-1">가격</Badge>최근 1개월 평균 7~9억</span>
-                    <span><Badge variant="destructive" className="text-[10px] mr-1">세대수</Badge>500세대 이상</span>
-                    <span><Badge variant="destructive" className="text-[10px] mr-1">스프링클러</Badge>2005년 이후 준공</span>
-                    <span><Badge variant="destructive" className="text-[10px] mr-1">거래량</Badge>최근 6개월 3건+</span>
-                  </div>
+            <div className="flex flex-col gap-1.5 mb-4 text-xs max-w-md">
+              {([
+                ["accel", "가속도"],
+                ["liquidity", "환금성"],
+                ["build", "신축도"],
+                ["commute", "출퇴근"],
+                ["pedia", "소아과"],
+              ] as const).map(([key, label]) => (
+                <div key={key} className="flex items-center gap-2">
+                  <span className="text-muted-foreground w-10 text-right shrink-0">{label}</span>
+                  <input type="range" min="0" max="50" step="5" value={weights[key]} onChange={(e) => updateWeight(key, e.target.value)} className="flex-1 accent-primary h-1.5 cursor-pointer" />
+                  <span className="w-8 text-right tabular-nums font-medium shrink-0">{weights[key]}%</span>
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground mb-1">스코어링 가중치</p>
-                  <div className="flex flex-wrap gap-x-3 gap-y-1 items-center">
-                    <span><Badge className="text-[10px] mr-1">가속도 35%</Badge>최근 3개월 vs 이전 3개월</span>
-                    <span><Badge className="text-[10px] mr-1">환금성 25%</Badge>거래건수 / 해당타입 세대수</span>
-                    <span><Badge className="text-[10px] mr-1">신축도 20%</Badge>건축년도 기반</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              ))}
+            </div>
+            {weightSum !== 100 && <p className="text-destructive text-[10px] mb-3">합계 {weightSum}% — 100%를 권장합니다</p>}
           </CollapsibleContent>
         </Collapsible>
 
-        <div className="flex flex-wrap gap-2 mb-4 items-center">
-          <Select value={typeFilter} onValueChange={(v) => v && setTypeFilter(v)}>
-            <SelectTrigger className="w-28 h-8 text-xs"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">전체</SelectItem>
-              <SelectItem value="84">84~85㎡</SelectItem>
-              <SelectItem value="small">59~76㎡</SelectItem>
+        <div className="flex flex-wrap gap-2 mb-2 items-center">
+          <Select multiple value={typeFilter} onValueChange={(v: string[]) => setTypeFilter(v)}>
+            <SelectTrigger className="w-32 h-8 text-xs">
+              <SelectValue>{(v: string[]) => v.length === 0 ? "전체 면적" : v.length === 1 ? atypeLabel(v[0]) : `면적 ${v.length}개`}</SelectValue>
+            </SelectTrigger>
+            <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
+              <SelectItem value="large"><span className="font-medium">대형 전체 (84㎡ 초과)</span></SelectItem>
+              {ATYPES_LARGE.map((a) => (
+                <SelectItem key={a} value={a}><span className="pl-3 text-muted-foreground">{atypeLabel(a)}</span></SelectItem>
+              ))}
+              <SelectItem value="medium"><span className="font-medium">중형 전체 (84㎡)</span></SelectItem>
+              {ATYPES_MEDIUM.map((a) => (
+                <SelectItem key={a} value={a}><span className="pl-3 text-muted-foreground">{atypeLabel(a)}</span></SelectItem>
+              ))}
+              <SelectItem value="small"><span className="font-medium">소형 전체 (84㎡ 미만)</span></SelectItem>
+              {ATYPES_SMALL.map((a) => (
+                <SelectItem key={a} value={a}><span className="pl-3 text-muted-foreground">{atypeLabel(a)}</span></SelectItem>
+              ))}
             </SelectContent>
           </Select>
-          <Select value={sortField} onValueChange={(v) => v && setSortField(v as SortKey)}>
+          <Select value={sortField} onValueChange={(v) => {
+            if (!v) return;
+            if (v === "distance" && !myLocation) {
+              navigator.geolocation.getCurrentPosition(
+                (pos) => { setMyLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude }); setSortField("distance"); },
+                () => { /* 위치 권한 거부 시 무시 */ },
+              );
+            } else {
+              setSortField(v as SortKey);
+            }
+          }} items={{ score: "점수순", accel: "가속도순", liquidity: "환금성순", commuteScore: "출퇴근순", pedScore: "소아과순", avg: "현재가순", distance: "거리순" }}>
             <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
             <SelectContent>
               <SelectItem value="score">점수순</SelectItem>
@@ -825,16 +1670,25 @@ export default function App() {
               <SelectItem value="commuteScore">출퇴근순</SelectItem>
               <SelectItem value="pedScore">소아과순</SelectItem>
               <SelectItem value="avg">현재가순</SelectItem>
+              <SelectItem value="distance">거리순</SelectItem>
             </SelectContent>
           </Select>
-          <Select value={regionFilter} onValueChange={(v) => v && setRegionFilter(v)}>
-            <SelectTrigger className="w-28 h-8 text-xs"><SelectValue /></SelectTrigger>
+          <Select multiple value={regionFilter} onValueChange={(v: string[]) => setRegionFilter(v)}>
+            <SelectTrigger className="w-32 h-8 text-xs">
+              <SelectValue>{(v: string[]) => v.length === 0 ? "전체 지역" : v.length === 1 ? v[0] : `지역 ${v.length}개`}</SelectValue>
+            </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">전체 지역</SelectItem>
-              {regions.map((r) => <SelectItem key={r} value={r}>{r}</SelectItem>)}
+              {regions.map((r) => {
+                const isGu = r.includes(" ");
+                return (
+                  <SelectItem key={r} value={r}>
+                    {isGu ? <span className="pl-3 text-muted-foreground">{r.split(" ")[1]}</span> : <span className="font-medium">{r}</span>}
+                  </SelectItem>
+                );
+              })}
             </SelectContent>
           </Select>
-          <Select value={commuteFilter} onValueChange={(v) => v && setCommuteFilter(v)}>
+          <Select value={commuteFilter} onValueChange={(v) => v && setCommuteFilter(v)} items={{ all: "출퇴근 전체", good: "좋음 이상", ok: "보통 이상" }}>
             <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
             <SelectContent>
               <SelectItem value="all">출퇴근 전체</SelectItem>
@@ -843,6 +1697,68 @@ export default function App() {
             </SelectContent>
           </Select>
           <span className="text-xs text-muted-foreground">{filtered.length}개 단지</span>
+          <Button variant={viewMode === "table" ? "default" : "outline"} size="sm" className="h-7 text-xs px-2" onClick={() => setViewMode("table")}>테이블</Button>
+          <Button variant={viewMode === "map" ? "default" : "outline"} size="sm" className="h-7 text-xs px-2" onClick={() => { setViewMode("map"); if (!myLocation) navigator.geolocation.getCurrentPosition((p) => setMyLocation({ lat: p.coords.latitude, lng: p.coords.longitude }), () => {}); }}>지도</Button>
+          {favorites.size > 1 && (
+            <Button variant="outline" size="sm" className="h-7 text-xs px-2" onClick={() => setCompareOpen(true)}>
+              <span className="text-yellow-400">★</span> 비교 ({favorites.size})
+            </Button>
+          )}
+        </div>
+        <div className="flex flex-wrap gap-3 mb-4 items-center text-xs">
+          <label className="flex items-center gap-2" title="현재가 범위 (억 단위)">
+            <span className="text-muted-foreground">현재가</span>
+            <span className="text-[10px] tabular-nums w-24 text-center">
+              {(+priceMin === 0 && +priceMax >= 20) ? "전체" : `${priceMin}억 ~ ${+priceMax >= 20 ? "20억+" : priceMax + "억"}`}
+            </span>
+            <Slider
+              className="w-40"
+              min={0}
+              max={20}
+              step={1}
+              value={[+priceMin || 0, +priceMax || 20]}
+              onValueChange={(v: readonly number[]) => { setPriceMin(String(v[0])); setPriceMax(String(v[1])); }}
+            />
+          </label>
+          <label className="flex items-center gap-1" title="최소 세대수 (공동주택관리법 / 주택건설기준)">
+            <span className="text-muted-foreground">세대수</span>
+            <Select value={hhMin} onValueChange={(v) => v && setHhMin(v)} items={{ "0": "전체", "150": "150세대↑", "300": "300세대↑", "500": "500세대↑", "1000": "1000세대↑" }}>
+              <SelectTrigger className="w-28 h-7 text-xs"><SelectValue /></SelectTrigger>
+              <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
+                <SelectItem value="0">전체</SelectItem>
+                <SelectItem value="150">150세대↑ (승강기/난방 시 의무관리)</SelectItem>
+                <SelectItem value="300">300세대↑ (전면 의무관리)</SelectItem>
+                <SelectItem value="500">500세대↑ (놀이터·경로당)</SelectItem>
+                <SelectItem value="1000">1000세대↑ (대단지)</SelectItem>
+              </SelectContent>
+            </Select>
+          </label>
+          <label className="flex items-center gap-1" title="최소 준공년도 (스프링클러·주차장 법적 기준)">
+            <span className="text-muted-foreground">준공</span>
+            <Select value={buildMin} onValueChange={(v) => v && setBuildMin(v)} items={{ "0": "전체", "1992": "1992년↑", "2005": "2005년↑", "2018": "2018년↑", "2019": "2019년↑" }}>
+              <SelectTrigger className="w-28 h-7 text-xs"><SelectValue /></SelectTrigger>
+              <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
+                <SelectItem value="0">전체</SelectItem>
+                <SelectItem value="1992">1992년↑ (16층 이상 층만 스프링클러)</SelectItem>
+                <SelectItem value="2005">2005년↑ (11층+ 동 전층 스프링클러)</SelectItem>
+                <SelectItem value="2018">2018년↑ (6층+ 신축 스프링클러)</SelectItem>
+                <SelectItem value="2019">2019년↑ (주차칸 2.5m)</SelectItem>
+              </SelectContent>
+            </Select>
+          </label>
+          <label className="flex items-center gap-1" title="최근 6개월 최소 거래 건수">
+            <span className="text-muted-foreground">6개월 거래</span>
+            <input type="number" min="0" placeholder="0" value={tradeMin} onChange={(e) => setTradeMin(e.target.value)} className="w-10 h-7 rounded border bg-background px-1.5 text-xs text-center" />
+            <span className="text-muted-foreground text-[10px]">건+</span>
+          </label>
+          <label className="flex items-center gap-1.5 cursor-pointer" title="중개인 없는 직거래 제외">
+            <input type="checkbox" checked={excludeDirect} onChange={(e) => setExcludeDirect(e.target.checked)} className="rounded" />
+            <span className="text-muted-foreground">직거래 제외</span>
+          </label>
+          <label className="flex items-center gap-1.5 cursor-pointer" title="1층 거래 제외">
+            <input type="checkbox" checked={excludeFirstFloor} onChange={(e) => setExcludeFirstFloor(e.target.checked)} className="rounded" />
+            <span className="text-muted-foreground">1층 제외</span>
+          </label>
         </div>
 
         {favoriteItems.length > 0 && (
@@ -852,6 +1768,7 @@ export default function App() {
                 <TableRow className="bg-primary/10">
                   <TableHead className="w-6 text-center"></TableHead>
                   <TableHead className="min-w-[160px]">즐겨찾기</TableHead>
+                  <TableHead className="text-center">세대수</TableHead>
                   <TableHead className="text-center">현재가</TableHead>
                   <TableHead className="text-center w-20">추이</TableHead>
                   <TableHead className="text-center">가속도</TableHead>
@@ -860,7 +1777,8 @@ export default function App() {
                   <TableHead className="text-center">소아과</TableHead>
                   <TableHead className="text-center">고저차</TableHead>
                   <TableHead className="text-center">주차</TableHead>
-                  <TableHead className="text-center">관리비</TableHead>
+                  <TableHead className="text-center">초등학교</TableHead>
+                  <TableHead className="text-center">안전</TableHead>
                   <TableHead className="text-center">내진</TableHead>
                 </TableRow>
               </TableHeader>
@@ -870,17 +1788,28 @@ export default function App() {
                   const favKey = `${d.name}|${d.atype}`;
                   return (
                     <TableRow key={`fav-${favKey}`} className="bg-primary/5">
-                      <TableCell className="text-center cursor-pointer" onClick={() => toggleFav(favKey)}>★</TableCell>
+                      <TableCell className="text-center cursor-pointer text-yellow-400" onClick={() => toggleFav(favKey)}>★</TableCell>
                       <TableCell>
                         <div className="flex flex-col gap-0.5">
                           <div>
-                            <span className="text-muted-foreground text-[11px] mr-1">{d.region.split(" ")[0]}</span>
-                            <span className="font-medium text-sm">{d.display_name}</span>
-                            <Badge variant="outline" className={cn("ml-1 text-[10px]", d.atype === "84" ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" : d.atype === "74" ? "bg-amber-500/10 text-amber-500 border-amber-500/20" : "bg-red-500/10 text-red-500 border-red-500/20")}>{d.area}㎡</Badge>
+                            <span className="text-muted-foreground text-[11px] mr-1">{d.region}</span>
+                            <AptInfoPopover d={d} />
+                            <Badge variant="outline" className={cn("ml-1 text-[10px]", atypeBadgeColor(d.atype))}>{Math.floor(d.area)}㎡</Badge>
+                            <span className="text-muted-foreground text-[10px] ml-0.5">({d.build})</span>
+                          </div>
+                          <div className="flex gap-2 text-[10px]">
+                            {d.hcode && <a href={`https://hogangnono.com/apt/${d.hcode}`} target="_blank" rel="noopener" className="text-primary hover:underline">호갱노노</a>}
+                            <a href={naverMapUrl(d.naver_place_id, `${d.name} ${d.dong}`, isMobile)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버지도</a>
+                            {d.naver_complex_id
+                              ? <a href={naverLandUrl(d.naver_complex_id, isMobile, d.pyeong_type_nos)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버부동산</a>
+                              : <a href={naverLandSearchUrl(d.name, isMobile)} target="_blank" rel="noopener" className="text-muted-foreground hover:underline">네이버부동산</a>
+                            }
+                            <AllTypesDialog name={d.name} allData={data} favorites={favorites} onToggleFav={toggleFav} />
                           </div>
                         </div>
                       </TableCell>
-                      <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} /></TableCell>
+                      <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
+                      <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} /></TableCell>
                       <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
                       <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                       <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
@@ -888,7 +1817,30 @@ export default function App() {
                       <TableCell className="text-center"><PedPopover data={d} /></TableCell>
                       <TableCell className="text-center"><SlopePopover data={d} /></TableCell>
                       <TableCell className="text-center"><ParkingCell data={d} /></TableCell>
-                      <TableCell className="text-center"><MgmtCostCell data={d} /></TableCell>
+                      <TableCell className="text-center"><SchoolCell data={d} /></TableCell>
+                      <TableCell className="text-center">
+                        <Popover>
+                          <PopoverTrigger className="cursor-pointer">
+                            <LabelText label={safetyLabel(d.safety_grade)} />
+                          </PopoverTrigger>
+                          <PopoverContent className="w-56 text-xs">
+                            <p className="font-semibold mb-2">치안 점수 — {d.region}</p>
+                            {d.safety_score != null ? (
+                              <div className="flex flex-col gap-1">
+                                <div className="flex justify-between"><span className="text-muted-foreground">종합 점수</span><span className="font-bold text-sm">{d.safety_score}<span className="text-[10px] font-normal text-muted-foreground">/100</span></span></div>
+                                <div className="border-t border-border/50 pt-1 mt-0.5" />
+                                <div className="flex justify-between"><span className="text-muted-foreground">범죄 안전등급</span><span>{d.safety_grade}등급 ({d.safety_grade_label})</span></div>
+                                <div className="flex justify-between"><span className="text-muted-foreground">외국인 비율</span><span>{d.foreign_rate}%</span></div>
+                                <div className="flex justify-between"><span className="text-muted-foreground">외국인 수</span><span>{d.foreign_count?.toLocaleString()}명</span></div>
+                                <div className="flex justify-between"><span className="text-muted-foreground">시군구 인구</span><span>{d.safety_population ? (d.safety_population / 10000).toFixed(1) + "만" : "-"}</span></div>
+                                <div className="border-t border-border/50 pt-1 mt-0.5" />
+                                <p className="text-[10px] text-muted-foreground">범죄등급: 행안부 지역안전지수 2024 (1=최고~5=최저)</p>
+                                <p className="text-[10px] text-muted-foreground">외국인: 법무부 등록외국인 2025-02</p>
+                              </div>
+                            ) : <span className="text-muted-foreground">데이터 없음</span>}
+                          </PopoverContent>
+                        </Popover>
+                      </TableCell>
                       <TableCell className="text-center"><EqCell data={d} /></TableCell>
                     </TableRow>
                   );
@@ -898,13 +1850,24 @@ export default function App() {
           </div>
         )}
 
-        <div className="overflow-x-auto rounded-lg border">
+        {viewMode === "map" && (
+          <div className="mb-4">
+            <MapErrorBoundary>
+              <Suspense fallback={<div className="w-full h-[500px] rounded-lg border flex items-center justify-center text-muted-foreground">지도 로딩...</div>}>
+                <AptMap data={filtered} myLocation={myLocation} />
+              </Suspense>
+            </MapErrorBoundary>
+          </div>
+        )}
+
+        {viewMode === "table" && <div className="overflow-x-auto rounded-lg border">
           <Table>
             <TableHeader>
               <TableRow className="bg-muted/50">
                 <TableHead className="w-6 text-center"></TableHead>
                 <TableHead className="w-8 text-center">#</TableHead>
                 <TableHead className="min-w-[160px]">단지명</TableHead>
+                <TableHead className="text-center">세대수</TableHead>
                 <TableHead className="text-center">현재가</TableHead>
                 <TableHead className="text-center w-20">추이</TableHead>
                 <TableHead className="text-center">가속도</TableHead>
@@ -913,8 +1876,8 @@ export default function App() {
                 <TableHead className="text-center">소아과</TableHead>
                 <TableHead className="text-center">고저차</TableHead>
                 <TableHead className="text-center">주차</TableHead>
-                <TableHead className="text-center">관리비</TableHead>
                 <TableHead className="text-center">초등학교</TableHead>
+                <TableHead className="text-center">안전</TableHead>
                 <TableHead className="text-center">내진</TableHead>
               </TableRow>
             </TableHeader>
@@ -927,49 +1890,30 @@ export default function App() {
                 const favKey = `${d.name}|${d.atype}`;
                 const isFav = favorites.has(favKey);
                 return (
-                  <TableRow key={favKey} className={isFav ? "bg-primary/5" : ""}>
-                    <TableCell className="text-center cursor-pointer" onClick={() => toggleFav(favKey)}>{isFav ? "★" : "☆"}</TableCell>
+                  <TableRow key={favKey} data-apt={d.name} className={cn(isFav && "bg-primary/5", highlightedApt === d.name && "!bg-primary/20 animate-pulse")}>
+                    <TableCell className={cn("text-center cursor-pointer", isFav && "text-yellow-400")} onClick={() => toggleFav(favKey)}>{isFav ? "★" : "☆"}</TableCell>
                     <TableCell className="text-center text-muted-foreground text-xs">{i + 1}</TableCell>
                     <TableCell>
                       <div className="flex flex-col gap-0.5">
                         <div>
-                          <span className="text-muted-foreground text-[11px] mr-1">{d.region.split(" ")[0]}</span>
-                          <Popover>
-                            <PopoverTrigger className="cursor-pointer font-medium text-sm hover:underline decoration-dotted underline-offset-4">{d.display_name}</PopoverTrigger>
-                            <PopoverContent className="w-64 text-xs">
-                              <p className="font-semibold mb-2">단지 정보</p>
-                              {d.doro_juso && <p className="text-muted-foreground mb-2">{d.doro_juso}</p>}
-                              <div className="space-y-0.5">
-                                {d.households != null && <div className="flex justify-between"><span className="text-muted-foreground">세대수</span><span>{d.households.toLocaleString()}세대</span></div>}
-                                {d.dong_count != null && <div className="flex justify-between"><span className="text-muted-foreground">동수</span><span>{d.dong_count}동</span></div>}
-                                {d.top_floor != null && <div className="flex justify-between"><span className="text-muted-foreground">최고층</span><span>{d.top_floor}층</span></div>}
-                                {d.structure && <div className="flex justify-between"><span className="text-muted-foreground">구조</span><span>{d.structure}</span></div>}
-                                {d.heat_type && <div className="flex justify-between"><span className="text-muted-foreground">난방</span><span>{d.heat_type}</span></div>}
-                                {d.use_date && <div className="flex justify-between"><span className="text-muted-foreground">사용승인</span><span>{d.use_date.slice(0, 4)}.{d.use_date.slice(4, 6)}.{d.use_date.slice(6, 8)}</span></div>}
-                                {d.cctv != null && d.cctv > 0 && <div className="flex justify-between"><span className="text-muted-foreground">CCTV</span><span>{d.cctv}대</span></div>}
-                                {d.eq_design != null && <div className="flex justify-between"><span className="text-muted-foreground">내진설계</span><span className={d.eq_design ? "text-emerald-500" : "text-red-400"}>{d.eq_design ? "적용" : "미적용"}{d.eq_capacity ? ` (${d.eq_capacity})` : ""}</span></div>}
-                              </div>
-                              {d.education && (
-                                <div className="mt-2 pt-2 border-t">
-                                  <p className="text-muted-foreground">교육시설</p>
-                                  <p className="mt-0.5">{d.education}</p>
-                                </div>
-                              )}
-                            </PopoverContent>
-                          </Popover>
-                          <Badge variant="outline" className={cn("ml-1 text-[10px]", d.atype === "84" ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" : d.atype === "74" ? "bg-amber-500/10 text-amber-500 border-amber-500/20" : "bg-red-500/10 text-red-500 border-red-500/20")}>{d.area}㎡</Badge>
+                          <span className="text-muted-foreground text-[11px] mr-1">{d.region}</span>
+                          <AptInfoPopover d={d} />
+                          <Badge variant="outline" className={cn("ml-1 text-[10px]", atypeBadgeColor(d.atype))}>{Math.floor(d.area)}㎡</Badge>
                           <span className="text-muted-foreground text-[10px] ml-0.5">({d.build})</span>
                         </div>
                         <div className="flex gap-2 text-[10px]">
-                          {d.hcode
-                            ? <a href={`https://hogangnono.com/apt/${d.hcode}`} target="_blank" rel="noopener" className="text-primary hover:underline">호갱노노</a>
-                            : <a href={`https://new.land.naver.com/search?query=${encodeURIComponent(d.name)}`} target="_blank" rel="noopener" className="text-muted-foreground hover:underline">네이버부동산</a>
-                          }
+                          {d.hcode && <a href={`https://hogangnono.com/apt/${d.hcode}`} target="_blank" rel="noopener" className="text-primary hover:underline">호갱노노</a>}
                           <a href={naverMapUrl(d.naver_place_id, `${d.name} ${d.dong}`, isMobile)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버지도</a>
+                          {d.naver_complex_id
+                            ? <a href={naverLandUrl(d.naver_complex_id, isMobile, d.pyeong_type_nos)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버부동산</a>
+                            : <a href={naverLandSearchUrl(d.name, isMobile)} target="_blank" rel="noopener" className="text-muted-foreground hover:underline">네이버부동산</a>
+                          }
+                          <AllTypesDialog name={d.name} allData={data} favorites={favorites} onToggleFav={toggleFav} />
                         </div>
                       </div>
                     </TableCell>
-                    <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} /></TableCell>
+                    <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
+                    <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} /></TableCell>
                     <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
                     <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                     <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
@@ -977,15 +1921,142 @@ export default function App() {
                     <TableCell className="text-center"><PedPopover data={d} /></TableCell>
                     <TableCell className="text-center"><SlopePopover data={d} /></TableCell>
                     <TableCell className="text-center"><ParkingCell data={d} /></TableCell>
-                    <TableCell className="text-center"><MgmtCostCell data={d} /></TableCell>
                     <TableCell className="text-center"><SchoolCell data={d} /></TableCell>
+                    <TableCell className="text-center">
+                      <Popover>
+                        <PopoverTrigger className="cursor-pointer">
+                          <LabelText label={safetyLabel(d.safety_grade)} />
+                        </PopoverTrigger>
+                        <PopoverContent className="w-56 text-xs">
+                          <p className="font-semibold mb-2">범죄 안전등급 — {d.region}</p>
+                          {d.safety_grade != null ? (
+                            <div className="flex flex-col gap-1">
+                              <div className="flex justify-between"><span className="text-muted-foreground">안전등급</span><span className="font-bold">{d.safety_grade}등급 ({d.safety_grade_label})</span></div>
+                              <p className="text-[10px] text-muted-foreground">행안부 지역안전지수 2024 (1=최고~5=최저)</p>
+                              <div className="border-t border-border/50 pt-1 mt-0.5" />
+                              <p className="text-[10px] text-muted-foreground mb-0.5">참고: 외국인 현황</p>
+                              <div className="flex justify-between"><span className="text-muted-foreground">외국인 비율</span><span>{d.foreign_rate}%</span></div>
+                              <div className="flex justify-between"><span className="text-muted-foreground">외국인 수</span><span>{d.foreign_count?.toLocaleString()}명</span></div>
+                              <div className="flex justify-between"><span className="text-muted-foreground">시군구 인구</span><span>{d.safety_population ? (d.safety_population / 10000).toFixed(1) + "만" : "-"}</span></div>
+                              <p className="text-[10px] text-muted-foreground mt-0.5">법무부 등록외국인 2025-02</p>
+                            </div>
+                          ) : <span className="text-muted-foreground">데이터 없음</span>}
+                        </PopoverContent>
+                      </Popover>
+                    </TableCell>
                     <TableCell className="text-center"><EqCell data={d} /></TableCell>
                   </TableRow>
                 );
               })}
             </TableBody>
           </Table>
-        </div>
+        </div>}
+        <div className="h-20" />
+      </div>
+
+      {/* 플로팅 검색 (Spotlight style) */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
+        {!searchOpen ? (
+          <button
+            onClick={() => { setSearchOpen(true); setTimeout(() => searchRef.current?.focus(), 50); }}
+            className="w-full flex items-center gap-2 px-4 py-2.5 rounded-full bg-muted/80 backdrop-blur border border-border/50 text-sm text-muted-foreground shadow-lg hover:bg-muted transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            아파트 검색...
+            <kbd className="ml-auto text-[10px] bg-background/50 px-1.5 py-0.5 rounded border border-border/50">⌘K</kbd>
+          </button>
+        ) : (
+          <div className="rounded-2xl bg-popover/95 backdrop-blur-xl border border-border shadow-2xl overflow-hidden">
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-border/50">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground shrink-0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <input
+                ref={searchRef}
+                defaultValue=""
+                onChange={(e) => onSearchInput(e.target.value)}
+                placeholder="단지명, 법정동, 도로명으로 검색..."
+                className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground/50"
+                autoFocus
+              />
+              {searchQuery && (
+                <button onClick={() => clearSearch()} className="text-muted-foreground hover:text-foreground text-xs">✕</button>
+              )}
+              <kbd className="text-[10px] text-muted-foreground bg-muted px-1.5 py-0.5 rounded cursor-pointer" onClick={() => { setSearchOpen(false); clearSearch(); }}>ESC</kbd>
+            </div>
+            {searchResults.length > 0 && (
+              <div className="max-h-96 overflow-y-auto py-1">
+                {searchResults.map((d: any, i) => {
+                  const inFilter = d._inFilter;
+                  const reason = inFilter ? null : getFilterReason(d);
+                  const favKey = `${d.name}|${d.atype}`;
+                  const isFav = favorites.has(favKey);
+                  const prev = searchResults[i - 1];
+                  const isFirstOfName = !prev || prev.name !== d.name;
+                  return (
+                    <div
+                      key={favKey}
+                      className={cn(
+                        "w-full flex items-center gap-2 px-4 py-2 text-left text-sm transition-colors border-l-2",
+                        inFilter ? "hover:bg-muted/50 border-transparent" : "border-transparent",
+                        isFirstOfName && i > 0 && "border-t border-border/40 mt-0.5 pt-2"
+                      )}
+                    >
+                      <button
+                        onClick={(e) => { e.stopPropagation(); toggleFav(favKey); }}
+                        className={cn("shrink-0 cursor-pointer text-base leading-none w-5 text-center", isFav && "text-yellow-400")}
+                        title={isFav ? "즐겨찾기 해제" : "즐겨찾기 추가"}
+                      >{isFav ? "★" : "☆"}</button>
+                      <button
+                        disabled={!inFilter}
+                        className={cn("flex-1 min-w-0 flex items-center gap-3 text-left", inFilter ? "cursor-pointer" : "cursor-not-allowed")}
+                        onClick={() => {
+                          if (!inFilter) return;
+                          setSearchOpen(false); clearSearch();
+                          setHighlightedApt(d.name);
+                          setTimeout(() => {
+                            const row = document.querySelector(`[data-apt="${d.name}"]`);
+                            if (row) row.scrollIntoView({ behavior: "smooth", block: "center" });
+                          }, 50);
+                          setTimeout(() => setHighlightedApt(null), 3000);
+                        }}
+                      >
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5">
+                            {isFirstOfName ? (
+                              <span className={cn("font-medium truncate", !inFilter && "text-muted-foreground")}>{d.display_name || d.name}</span>
+                            ) : (
+                              <span className="text-muted-foreground/50 text-xs">└</span>
+                            )}
+                            <Badge variant="outline" className={cn("text-[9px] shrink-0", atypeBadgeColor(d.atype))}>{Math.floor(d.area)}㎡</Badge>
+                            <span className="text-xs text-muted-foreground">{(d.avg / 10000).toFixed(1)}억</span>
+                          </div>
+                          {isFirstOfName && (
+                            <div className="text-[11px] text-muted-foreground mt-0.5">
+                              {d.region} {d.dong} · {d.build}년
+                              {d.households ? ` · ${d.households.toLocaleString()}세대` : ""}
+                              {reason && <span className="text-destructive font-medium text-xs"> · {reason}</span>}
+                            </div>
+                          )}
+                        </div>
+                        <span className={cn("text-xs font-medium shrink-0 tabular-nums", d.accel == null ? "text-muted-foreground" : d.accel > 0 ? "text-emerald-500" : d.accel < 0 ? "text-red-500" : "text-muted-foreground")}>
+                          {d.accel == null ? "-" : `${d.accel > 0 ? "+" : ""}${d.accel}%`}
+                        </span>
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {searchQuery && searchResults.length === 0 && (
+              <div className="px-4 py-6 text-center text-sm text-muted-foreground">검색 결과 없음</div>
+            )}
+          </div>
+        )}
+        <CompareDialog
+          open={compareOpen}
+          onOpenChange={setCompareOpen}
+          items={data.filter((d) => favorites.has(`${d.name}|${d.atype}`))}
+          onRemove={toggleFav}
+        />
       </div>
     </div>
   );
