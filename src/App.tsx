@@ -1341,6 +1341,7 @@ export default function App() {
   const [regionFilter, setRegionFilter] = useState<string[]>(() => lsArr("f_region_multi"));
   const [commuteFilter, setCommuteFilter] = useState(() => ls("f_commute", "all"));
   const [liquidityFilter, setLiquidityFilter] = useState(() => ls("f_liquidity", "all"));
+  const [accelFilter, setAccelFilter] = useState(() => ls("f_accel", "all"));
   const [priceMin, setPriceMin] = useState(() => ls("f_priceMin", "0"));
   const [priceMax, setPriceMax] = useState(() => ls("f_priceMax", "20"));
   const [hhMin, setHhMin] = useState(() => {
@@ -1411,6 +1412,7 @@ export default function App() {
   useEffect(() => { localStorage.setItem("f_region_multi", JSON.stringify(regionFilter)); }, [regionFilter]);
   useEffect(() => { localStorage.setItem("f_commute", commuteFilter); }, [commuteFilter]);
   useEffect(() => { localStorage.setItem("f_liquidity", liquidityFilter); }, [liquidityFilter]);
+  useEffect(() => { localStorage.setItem("f_accel", accelFilter); }, [accelFilter]);
   useEffect(() => { localStorage.setItem("f_priceMin", priceMin); }, [priceMin]);
   useEffect(() => { localStorage.setItem("f_priceMax", priceMax); }, [priceMax]);
   useEffect(() => { localStorage.setItem("f_hhMin", hhMin); }, [hhMin]);
@@ -1475,6 +1477,9 @@ export default function App() {
       if (liquidityFilter === "good" && (d.liquidity == null || d.liquidity < 7)) return false;
       if (liquidityFilter === "ok" && (d.liquidity == null || d.liquidity < 4)) return false;
       if (liquidityFilter === "bad" && (d.liquidity == null || d.liquidity < 2)) return false;
+      if (accelFilter === "good" && (d.accel == null || d.accel <= 5)) return false;
+      if (accelFilter === "ok" && (d.accel == null || d.accel < 0)) return false;
+      if (accelFilter === "bad" && (d.accel == null || d.accel >= 0)) return false;
 
       // 비즈니스 로직 필터 (직거래/1층 제외 후 count 기준)
       if (pMinVal > 0 && d.avg < pMinVal) return false;
@@ -1499,7 +1504,7 @@ export default function App() {
       return (vb as number) - (va as number);
     });
     return f;
-  }, [data, typeFilter, sortField, regionFilter, commuteFilter, liquidityFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, excludeDirect, excludeFirstFloor, myLocation]);
+  }, [data, typeFilter, sortField, regionFilter, commuteFilter, liquidityFilter, accelFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, excludeDirect, excludeFirstFloor, myLocation]);
 
   const favoriteItems = useMemo(() => {
     const items = data.filter((d) => favorites.has(`${d.name}|${d.atype}`));
@@ -1537,6 +1542,9 @@ export default function App() {
     if (liquidityFilter === "good" && (d.liquidity == null || d.liquidity < 7)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (좋음 미만)`);
     if (liquidityFilter === "ok" && (d.liquidity == null || d.liquidity < 4)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (보통 미만)`);
     if (liquidityFilter === "bad" && (d.liquidity == null || d.liquidity < 2)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (나쁨 미만)`);
+    if (accelFilter === "good" && (d.accel == null || d.accel <= 5)) reasons.push(d.accel == null ? "가속도 데이터 없음" : `가속도 ${d.accel}% (상승 미만)`);
+    if (accelFilter === "ok" && (d.accel == null || d.accel < 0)) reasons.push(d.accel == null ? "가속도 데이터 없음" : `가속도 ${d.accel}% (보합 미만)`);
+    if (accelFilter === "bad" && (d.accel == null || d.accel >= 0)) reasons.push(d.accel == null ? "가속도 데이터 없음" : `가속도 ${d.accel}% (하락 아님)`);
     if (pMinVal > 0 && d.avg < pMinVal) reasons.push(`${priceMin}억 미만`);
     if (pMaxVal < Infinity && d.avg > pMaxVal) reasons.push(`${priceMax}억 초과`);
     if (hhMinVal > 0 && (d.households ?? 0) < hhMinVal) reasons.push(d.households == null ? `세대수 데이터 없음` : `${hhMin}세대 미만`);
@@ -1809,6 +1817,15 @@ export default function App() {
               <SelectItem value="good">좋음 이상 (≥7%)</SelectItem>
               <SelectItem value="ok">보통 이상 (≥4%)</SelectItem>
               <SelectItem value="bad">나쁨 이상 (≥2%)</SelectItem>
+            </SelectContent>
+          </Select>
+          <Select value={accelFilter} onValueChange={(v) => v && setAccelFilter(v)} items={{ all: "가속도 전체", good: "상승 (>5%)", ok: "보합 이상 (≥0%)", bad: "하락 (<0%)" }}>
+            <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">가속도 전체</SelectItem>
+              <SelectItem value="good">상승 (&gt;5%)</SelectItem>
+              <SelectItem value="ok">보합 이상 (≥0%)</SelectItem>
+              <SelectItem value="bad">하락 (&lt;0%)</SelectItem>
             </SelectContent>
           </Select>
           <span className="text-xs text-muted-foreground">{filtered.length}개 단지</span>
