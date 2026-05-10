@@ -1886,29 +1886,26 @@ export default function App() {
                   const sparkData = d.recent_trades?.slice().reverse().map((t) => ({ date: t.date, price: t.price })) ?? [];
                   const favKey = `${d.name}|${d.atype}`;
                   const { isFirst, span } = favoriteRowMeta[idx];
-                  const groupClass = span > 1 ? "border-t-2 border-primary/30" : "";
                   return (
-                    <TableRow key={`fav-${favKey}`} className={cn("bg-primary/5", isFirst && groupClass)}>
+                    <TableRow key={`fav-${favKey}`} className="bg-primary/5">
                       <TableCell className="text-center cursor-pointer text-yellow-400" onClick={() => toggleFav(favKey)}>★</TableCell>
                       <TableCell>
                         <div className="flex flex-col gap-0.5">
                           <div>
-                            {isFirst && <span className="text-muted-foreground text-[11px] mr-1">{d.region}</span>}
-                            {isFirst ? <AptInfoPopover d={d} /> : <span className="text-muted-foreground/60 text-xs">↳</span>}
+                            <span className="text-muted-foreground text-[11px] mr-1">{d.region}</span>
+                            <AptInfoPopover d={d} />
                             <Badge variant="outline" className={cn("ml-1 text-[10px]", atypeBadgeColor(d.atype))}>{Math.floor(d.area)}㎡</Badge>
-                            {isFirst && <span className="text-muted-foreground text-[10px] ml-0.5">({d.build})</span>}
+                            <span className="text-muted-foreground text-[10px] ml-0.5">({d.build})</span>
                           </div>
-                          {isFirst && (
-                            <div className="flex gap-2 text-[10px]">
-                              {d.hcode && <a href={`https://hogangnono.com/apt/${d.hcode}`} target="_blank" rel="noopener" className="text-primary hover:underline">호갱노노</a>}
-                              <a href={naverMapUrl(d.naver_place_id, `${d.name} ${d.dong}`, isMobile)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버지도</a>
-                              {d.naver_complex_id
-                                ? <a href={naverLandUrl(d.naver_complex_id, isMobile, d.pyeong_type_nos)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버부동산</a>
-                                : <a href={naverLandSearchUrl(d.name, isMobile)} target="_blank" rel="noopener" className="text-muted-foreground hover:underline">네이버부동산</a>
-                              }
-                              <AllTypesDialog name={d.name} allData={data} favorites={favorites} onToggleFav={toggleFav} />
-                            </div>
-                          )}
+                          <div className="flex gap-2 text-[10px]">
+                            {d.hcode && <a href={`https://hogangnono.com/apt/${d.hcode}`} target="_blank" rel="noopener" className="text-primary hover:underline">호갱노노</a>}
+                            <a href={naverMapUrl(d.naver_place_id, `${d.name} ${d.dong}`, isMobile)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버지도</a>
+                            {d.naver_complex_id
+                              ? <a href={naverLandUrl(d.naver_complex_id, isMobile, d.pyeong_type_nos)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버부동산</a>
+                              : <a href={naverLandSearchUrl(d.name, isMobile)} target="_blank" rel="noopener" className="text-muted-foreground hover:underline">네이버부동산</a>
+                            }
+                            <AllTypesDialog name={d.name} allData={data} favorites={favorites} onToggleFav={toggleFav} />
+                          </div>
                         </div>
                       </TableCell>
                       <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
