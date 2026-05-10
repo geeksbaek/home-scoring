@@ -461,6 +461,16 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
                     placeholder={(data.avg / 10000).toFixed(1)}
                     value={customPrice}
                     onChange={(e) => setCustomPrice(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key !== "ArrowUp" && e.key !== "ArrowDown") return;
+                      e.preventDefault();
+                      const base = customPrice && !Number.isNaN(parseFloat(customPrice))
+                        ? parseFloat(customPrice)
+                        : data.avg / 10000;
+                      const delta = e.key === "ArrowUp" ? 0.1 : -0.1;
+                      const next = Math.max(0, Math.round((base + delta) * 10) / 10);
+                      setCustomPrice(next.toFixed(1));
+                    }}
                     onClick={(e) => (e.target as HTMLInputElement).select()}
                     className={cn(
                       "w-14 text-right bg-background border border-border rounded px-1 py-0 text-xs tabular-nums focus:outline-none focus:border-primary",
