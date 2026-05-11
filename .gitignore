@@ -4,7 +4,5 @@ bun.lock
 *.local
 .DS_Store
 
-# 민감정보 (사용자 출퇴근 측정 등)
-data/commute_results.json
-data/apt_scoring_results.md
+# 민감정보
 .env
