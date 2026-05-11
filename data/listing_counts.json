@@ -1,0 +1,281 @@
+{
+  "가천대역두산위브": {
+    "trade": 9,
+    "deposit": 1,
+    "rent": 0
+  },
+  "수원모아미래도센트럴타운2단지": {
+    "trade": 10,
+    "deposit": 0,
+    "rent": 0
+  },
+  "수원하늘채더퍼스트1단지": {
+    "trade": 109,
+    "deposit": 1,
+    "rent": 0
+  },
+  "호반 써밋 수원": {
+    "trade": 2,
+    "deposit": 0,
+    "rent": 0
+  },
+  "호반베르디움더센트럴": {
+    "trade": 2,
+    "deposit": 0,
+    "rent": 0
+  },
+  "광교더포레스트": {
+    "trade": 110,
+    "deposit": 0,
+    "rent": 1
+  },
+  "매탄위브하늘채": {
+    "trade": 110,
+    "deposit": 0,
+    "rent": 1
+  },
+  "영통아이파크캐슬3단지": {
+    "trade": 110,
+    "deposit": 0,
+    "rent": 1
+  },
+  "영흥숲푸르지오파크비엔": {
+    "trade": 55,
+    "deposit": 4,
+    "rent": 0
+  },
+  "더샵광교산퍼스트파크": {
+    "trade": 21,
+    "deposit": 0,
+    "rent": 0
+  },
+  "서광교파크스위첸": {
+    "trade": 4,
+    "deposit": 0,
+    "rent": 0
+  },
+  "수원 SK SKY VIEW": {
+    "trade": 107,
+    "deposit": 2,
+    "rent": 0
+  },
+  "화서역푸르지오더에듀포레": {
+    "trade": 107,
+    "deposit": 2,
+    "rent": 0
+  },
+  "매교역푸르지오SKVIEW": {
+    "trade": 6,
+    "deposit": 0,
+    "rent": 0
+  },
+  "수원센트럴아이파크자이": {
+    "trade": 11,
+    "deposit": 0,
+    "rent": 0
+  },
+  "힐스테이트푸르지오수원": {
+    "trade": 15,
+    "deposit": 2,
+    "rent": 1
+  },
+  "기흥역더샵": {
+    "trade": 7,
+    "deposit": 1,
+    "rent": 0
+  },
+  "기흥역파크푸르지오": {
+    "trade": 5,
+    "deposit": 1,
+    "rent": 0
+  },
+  "신흥덕롯데캐슬레이시티": {
+    "trade": 110,
+    "deposit": 0,
+    "rent": 1
+  },
+  "용인동백두산위브더제니스": {
+    "trade": 8,
+    "deposit": 2,
+    "rent": 0
+  },
+  "힐스테이트구성": {
+    "trade": 43,
+    "deposit": 0,
+    "rent": 2
+  },
+  "힐스테이트서천": {
+    "trade": 3,
+    "deposit": 0,
+    "rent": 0
+  },
+  "미사강변트래지안": {
+    "trade": 19,
+    "deposit": 0,
+    "rent": 2
+  },
+  "금호어울림레이크": {
+    "trade": 110,
+    "deposit": 0,
+    "rent": 1
+  },
+  "동탄2하우스디더레이크": {
+    "trade": 110,
+    "deposit": 0,
+    "rent": 1
+  },
+  "동탄역 호반 써밋": {
+    "trade": 39,
+    "deposit": 0,
+    "rent": 0
+  },
+  "동탄역센트럴푸르지오": {
+    "trade": 110,
+    "deposit": 0,
+    "rent": 1
+  },
+  "동탄역신안인스빌리베라2차": {
+    "trade": 120,
+    "deposit": 2,
+    "rent": 2
+  },
+  "동탄역이지더원": {
+    "trade": 110,
+    "deposit": 0,
+    "rent": 1
+  },
+  "동탄역푸르지오": {
+    "trade": 32,
+    "deposit": 3,
+    "rent": 0
+  },
+  "반도유보라아이비파크3": {
+    "trade": 39,
+    "deposit": 0,
+    "rent": 0
+  },
+  "반정아이파크캐슬5단지": {
+    "trade": 9,
+    "deposit": 0,
+    "rent": 1
+  },
+  "병점역아이파크캐슬": {
+    "trade": 55,
+    "deposit": 0,
+    "rent": 0
+  },
+  "신동탄포레자이": {
+    "trade": 46,
+    "deposit": 0,
+    "rent": 1
+  },
+  "푸르지오": {
+    "trade": 39,
+    "deposit": 0,
+    "rent": 0
+  },
+  "SK-VIEW": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "THESHARP판교퍼스트파크": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "까치마을(1단지)(대우롯데선경)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "까치마을(2단지)(주공)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "까치마을(3단지)(신원)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "까치마을(4단지)(롯데)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "더샵분당파크리버": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "두산위브트레지움": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "매화마을공무원1": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "매화마을공무원2": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "목련마을(한일)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "무지개(12단지)(주공뜨란체)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "무지개(3단지)(건영)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "무지개(3단지)(신한)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "백현마을7단지(주공)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "봇들마을1단지(판교신미주)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "봇들마을2단지(이지더원)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "봇들마을3단지(주공)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "봇들마을4단지(주공)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "산운마을11단지(판교포레라움)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "산운마을12단지판교센트럴포레와이시티": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "산운마을13단지(태영)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "샛별마을(동성)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "샛별마을(라이프)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "샛별마을(삼부)": {
+    "trade": -1,
+    "complexId": ""
+  },
+  "시범삼성": {
+    "trade": -1,
+    "complexId": ""
+  }
+}

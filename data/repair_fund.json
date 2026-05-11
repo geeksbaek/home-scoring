@@ -1,0 +1,5804 @@
+{
+  "까치마을(1단지)(대우롯데선경)": {
+    "balance_per_hh": 77.4,
+    "levy_per_hh": 44937,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "까치마을(2단지)(주공)": {
+    "balance_per_hh": 77.4,
+    "levy_per_hh": 44937,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "까치마을(3단지)(신원)": {
+    "balance_per_hh": 77.4,
+    "levy_per_hh": 44937,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "까치마을(4단지)(롯데)": {
+    "balance_per_hh": 77.4,
+    "levy_per_hh": 44937,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "두산위브트레지움": {
+    "balance_per_hh": 334.7,
+    "levy_per_hh": 55540,
+    "reserve_rate": 10.5,
+    "months_collected": 8
+  },
+  "목련마을(한일)": {
+    "balance_per_hh": 152.3,
+    "levy_per_hh": 19000,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "무지개(12단지)(주공뜨란체)": {
+    "balance_per_hh": 107.1,
+    "levy_per_hh": 33675,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "무지개(3단지)(건영)": {
+    "balance_per_hh": 107.1,
+    "levy_per_hh": 33675,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "무지개(3단지)(신한)": {
+    "balance_per_hh": 107.1,
+    "levy_per_hh": 33675,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "백현마을7단지(주공)": {
+    "balance_per_hh": 105.6,
+    "levy_per_hh": 28780,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "봇들마을3단지(주공)": {
+    "balance_per_hh": 49.8,
+    "levy_per_hh": 30116,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "봇들마을4단지(주공)": {
+    "balance_per_hh": 303,
+    "levy_per_hh": 29351,
+    "reserve_rate": 15,
+    "months_collected": 8
+  },
+  "산운마을11단지(판교포레라움)": {
+    "balance_per_hh": 47.8,
+    "levy_per_hh": 28324,
+    "reserve_rate": 5.4,
+    "months_collected": 7
+  },
+  "산운마을13단지(태영)": {
+    "balance_per_hh": 85.9,
+    "levy_per_hh": 40224,
+    "reserve_rate": 5.6,
+    "months_collected": 8
+  },
+  "샛별마을(동성)": {
+    "balance_per_hh": 221.6,
+    "levy_per_hh": 49457,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "샛별마을(라이프)": {
+    "balance_per_hh": 192.1,
+    "levy_per_hh": 0,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "샛별마을(삼부)": {
+    "balance_per_hh": 199.5,
+    "levy_per_hh": 0,
+    "reserve_rate": null,
+    "months_collected": 2
+  },
+  "시범우성": {
+    "balance_per_hh": 245.2,
+    "levy_per_hh": 23570,
+    "reserve_rate": 36,
+    "months_collected": 8
+  },
+  "시범한양": {
+    "balance_per_hh": 77.5,
+    "levy_per_hh": 24372,
+    "reserve_rate": 9.4,
+    "months_collected": 8
+  },
+  "시범현대": {
+    "balance_per_hh": 303.3,
+    "levy_per_hh": 31265,
+    "reserve_rate": 5.1,
+    "months_collected": 8
+  },
+  "아름마을(두산)": {
+    "balance_per_hh": 230.1,
+    "levy_per_hh": 51942,
+    "reserve_rate": 16.1,
+    "months_collected": 8
+  },
+  "양지마을(2단지)(청구)": {
+    "balance_per_hh": 299.5,
+    "levy_per_hh": 25640,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "양지마을(6단지)(금호,청구)": {
+    "balance_per_hh": 299.5,
+    "levy_per_hh": 25640,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "양지마을(6단지)(한양603동)": {
+    "balance_per_hh": 299.5,
+    "levy_per_hh": 25640,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "양지마을(금호1)": {
+    "balance_per_hh": 299.5,
+    "levy_per_hh": 25640,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "이매촌(금강)": {
+    "balance_per_hh": 236.5,
+    "levy_per_hh": 48278,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "이매촌(삼성)": {
+    "balance_per_hh": 236.5,
+    "levy_per_hh": 48278,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "이매촌(진흥)": {
+    "balance_per_hh": 236.5,
+    "levy_per_hh": 48278,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "이매촌(한신)": {
+    "balance_per_hh": 236.5,
+    "levy_per_hh": 48278,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "장미마을(동부)": {
+    "balance_per_hh": 229.6,
+    "levy_per_hh": 40184,
+    "reserve_rate": 15.9,
+    "months_collected": 8
+  },
+  "장미마을(현대)": {
+    "balance_per_hh": 176,
+    "levy_per_hh": 44931,
+    "reserve_rate": 1,
+    "months_collected": 8
+  },
+  "정든마을(5단지)(신화)": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 24715,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "청솔마을(계룡)": {
+    "balance_per_hh": 114.8,
+    "levy_per_hh": 34572,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "청솔마을(한라)": {
+    "balance_per_hh": 114.8,
+    "levy_per_hh": 34572,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "탑마을(벽산)": {
+    "balance_per_hh": 240.8,
+    "levy_per_hh": 51497,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "파크뷰": {
+    "balance_per_hh": 331.4,
+    "levy_per_hh": 78835,
+    "reserve_rate": 6.5,
+    "months_collected": 8
+  },
+  "파크타운(서안)": {
+    "balance_per_hh": 207.1,
+    "levy_per_hh": 29804,
+    "reserve_rate": 60,
+    "months_collected": 8
+  },
+  "판교풍경채어바니티(5단지)": {
+    "balance_per_hh": 102.3,
+    "levy_per_hh": 21932,
+    "reserve_rate": 6.5,
+    "months_collected": 8
+  },
+  "판교풍경채어바니티(7단지)": {
+    "balance_per_hh": 102.3,
+    "levy_per_hh": 21932,
+    "reserve_rate": 6.5,
+    "months_collected": 8
+  },
+  "푸른마을(신성)": {
+    "balance_per_hh": 175.7,
+    "levy_per_hh": 38603,
+    "reserve_rate": 12.7,
+    "months_collected": 8
+  },
+  "푸른마을(쌍용)": {
+    "balance_per_hh": 175.7,
+    "levy_per_hh": 38603,
+    "reserve_rate": 12.7,
+    "months_collected": 8
+  },
+  "한솔마을(1단지)(청구)": {
+    "balance_per_hh": 145.2,
+    "levy_per_hh": 23658,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "한솔마을(5단지)(주공)": {
+    "balance_per_hh": 145.2,
+    "levy_per_hh": 23658,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "효자촌(화성)": {
+    "balance_per_hh": 14.6,
+    "levy_per_hh": 66272,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "e편한세상금빛그랑메종1단지": {
+    "balance_per_hh": 46.7,
+    "levy_per_hh": 14349,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "e편한세상금빛그랑메종3단지": {
+    "balance_per_hh": 48.1,
+    "levy_per_hh": 28877,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "e편한세상금빛그랑메종4단지": {
+    "balance_per_hh": 48.6,
+    "levy_per_hh": 14976,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "LH동분당센트럴파크": {
+    "balance_per_hh": 78.2,
+    "levy_per_hh": 32781,
+    "reserve_rate": 7.3,
+    "months_collected": 8
+  },
+  "단남": {
+    "balance_per_hh": 352.4,
+    "levy_per_hh": 15000,
+    "reserve_rate": 2.7,
+    "months_collected": 7
+  },
+  "동분당포레스트": {
+    "balance_per_hh": 245.4,
+    "levy_per_hh": 25477,
+    "reserve_rate": 1.5,
+    "months_collected": 8
+  },
+  "래미안금광": {
+    "balance_per_hh": 213.2,
+    "levy_per_hh": 44357,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "산성": {
+    "balance_per_hh": 134.2,
+    "levy_per_hh": 19100,
+    "reserve_rate": 2.9,
+    "months_collected": 7
+  },
+  "성남자이": {
+    "balance_per_hh": 63.8,
+    "levy_per_hh": 18365,
+    "reserve_rate": 1.4,
+    "months_collected": 8
+  },
+  "센트럴타운(3단지)": {
+    "balance_per_hh": 61.6,
+    "levy_per_hh": 44452,
+    "reserve_rate": 7.7,
+    "months_collected": 8
+  },
+  "신흥역하늘채랜더스원1단지": {
+    "balance_per_hh": 19.2,
+    "levy_per_hh": 17136,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "아튼빌": {
+    "balance_per_hh": 171.7,
+    "levy_per_hh": 44278,
+    "reserve_rate": 50,
+    "months_collected": 7
+  },
+  "은행주공": {
+    "balance_per_hh": 93.5,
+    "levy_per_hh": 2037,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "일성": {
+    "balance_per_hh": 227.1,
+    "levy_per_hh": 16854,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "중앙동힐스테이트1차": {
+    "balance_per_hh": 148.2,
+    "levy_per_hh": 45166,
+    "reserve_rate": 1,
+    "months_collected": 8
+  },
+  "중앙동힐스테이트2차": {
+    "balance_per_hh": 149.7,
+    "levy_per_hh": 40225,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "태연스카이빌": {
+    "balance_per_hh": 389.7,
+    "levy_per_hh": 65000,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "한양수자인성남마크뷰": {
+    "balance_per_hh": 17.6,
+    "levy_per_hh": 9794,
+    "reserve_rate": 1.5,
+    "months_collected": 8
+  },
+  "가천대역동부센트레빌1단지": {
+    "balance_per_hh": 266.7,
+    "levy_per_hh": 23976,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "가천대역두산위브": {
+    "balance_per_hh": 59.2,
+    "levy_per_hh": 11173,
+    "reserve_rate": 2,
+    "months_collected": 8
+  },
+  "가천대역쌍용스윗닷홈": {
+    "balance_per_hh": 319.3,
+    "levy_per_hh": 20686,
+    "reserve_rate": 16,
+    "months_collected": 7
+  },
+  "단대푸르지오": {
+    "balance_per_hh": 141.3,
+    "levy_per_hh": 34252,
+    "reserve_rate": 1.1,
+    "months_collected": 7
+  },
+  "산성역자이푸르지오1단지": {
+    "balance_per_hh": 24.1,
+    "levy_per_hh": 11705,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "산성역자이푸르지오2단지": {
+    "balance_per_hh": 28.7,
+    "levy_per_hh": 13905,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "산성역자이푸르지오3단지": {
+    "balance_per_hh": 22.5,
+    "levy_per_hh": 11268,
+    "reserve_rate": 2.4,
+    "months_collected": 8
+  },
+  "산성역포레스티아": {
+    "balance_per_hh": 54.4,
+    "levy_per_hh": 19455,
+    "reserve_rate": 15,
+    "months_collected": 7
+  },
+  "삼부": {
+    "balance_per_hh": 13.6,
+    "levy_per_hh": 26331,
+    "reserve_rate": 1.2,
+    "months_collected": 8
+  },
+  "위례 래미안이편한세상": {
+    "balance_per_hh": 135.7,
+    "levy_per_hh": 32504,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "위례센트럴자이": {
+    "balance_per_hh": 119.2,
+    "levy_per_hh": 15728,
+    "reserve_rate": 7.7,
+    "months_collected": 8
+  },
+  "진로": {
+    "balance_per_hh": 72.5,
+    "levy_per_hh": 58560,
+    "reserve_rate": 1,
+    "months_collected": 8
+  },
+  "진흥더블파크": {
+    "balance_per_hh": 374.7,
+    "levy_per_hh": 37905,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "청구": {
+    "balance_per_hh": 72,
+    "levy_per_hh": 21026,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "판교밸리자이1단지": {
+    "balance_per_hh": 82.6,
+    "levy_per_hh": 47975,
+    "reserve_rate": 3,
+    "months_collected": 7
+  },
+  "판교밸리자이2단지": {
+    "balance_per_hh": 95.5,
+    "levy_per_hh": 52748,
+    "reserve_rate": 3,
+    "months_collected": 7
+  },
+  "판교밸리호반써밋": {
+    "balance_per_hh": 67.9,
+    "levy_per_hh": 22628,
+    "reserve_rate": 0.8,
+    "months_collected": 8
+  },
+  "Y CITY(와이시티)": {
+    "balance_per_hh": 163.5,
+    "levy_per_hh": 23985,
+    "reserve_rate": 15,
+    "months_collected": 8
+  },
+  "거산": {
+    "balance_per_hh": 147.7,
+    "levy_per_hh": 28872,
+    "reserve_rate": 17.7,
+    "months_collected": 8
+  },
+  "권선대우": {
+    "balance_per_hh": 186.6,
+    "levy_per_hh": 45952,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "권선자이e편한세상": {
+    "balance_per_hh": 117,
+    "levy_per_hh": 31762,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "극동스타클래스": {
+    "balance_per_hh": 59.8,
+    "levy_per_hh": 10137,
+    "reserve_rate": 3.8,
+    "months_collected": 8
+  },
+  "남광하우스토리": {
+    "balance_per_hh": 110.4,
+    "levy_per_hh": 62864,
+    "reserve_rate": 0.1,
+    "months_collected": 8
+  },
+  "녹턴": {
+    "balance_per_hh": 126.3,
+    "levy_per_hh": 26677,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "대원신동아": {
+    "balance_per_hh": 104.4,
+    "levy_per_hh": 39670,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "대한": {
+    "balance_per_hh": 141.1,
+    "levy_per_hh": 52255,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "매탄권선역리버파크": {
+    "balance_per_hh": 92.5,
+    "levy_per_hh": 36631,
+    "reserve_rate": 6,
+    "months_collected": 8
+  },
+  "벨섬시티": {
+    "balance_per_hh": 7.6,
+    "levy_per_hh": 7335,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "삼익1": {
+    "balance_per_hh": 34.1,
+    "levy_per_hh": 23159,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "삼익2차": {
+    "balance_per_hh": 126.1,
+    "levy_per_hh": 38925,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "삼익3": {
+    "balance_per_hh": 88.2,
+    "levy_per_hh": 30215,
+    "reserve_rate": 5.6,
+    "months_collected": 8
+  },
+  "삼천리1차": {
+    "balance_per_hh": 154.1,
+    "levy_per_hh": 44413,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "삼천리2차": {
+    "balance_per_hh": 124.2,
+    "levy_per_hh": 24600,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "상우": {
+    "balance_per_hh": 176,
+    "levy_per_hh": 42911,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "서수원레이크푸르지오1단지": {
+    "balance_per_hh": 165.9,
+    "levy_per_hh": 31593,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "서수원레이크푸르지오2단지": {
+    "balance_per_hh": 106.8,
+    "levy_per_hh": 26407,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "서수원자이": {
+    "balance_per_hh": 67.5,
+    "levy_per_hh": 21410,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "센트라우스": {
+    "balance_per_hh": 241.8,
+    "levy_per_hh": 49223,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "수원모아미래도센트럴타운2단지": {
+    "balance_per_hh": 23.7,
+    "levy_per_hh": 18113,
+    "reserve_rate": 15,
+    "months_collected": 7
+  },
+  "수원아이파크시티2단지": {
+    "balance_per_hh": 179.1,
+    "levy_per_hh": 21965,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "수원아이파크시티3단지": {
+    "balance_per_hh": 65.3,
+    "levy_per_hh": 17845,
+    "reserve_rate": 1.8,
+    "months_collected": 8
+  },
+  "수원아이파크시티4단지": {
+    "balance_per_hh": 35.7,
+    "levy_per_hh": 25835,
+    "reserve_rate": 23,
+    "months_collected": 7
+  },
+  "수원아이파크시티7단지": {
+    "balance_per_hh": 39.2,
+    "levy_per_hh": 17053,
+    "reserve_rate": 6,
+    "months_collected": 8
+  },
+  "수원역센트럴타운": {
+    "balance_per_hh": 1.2,
+    "levy_per_hh": 12444,
+    "reserve_rate": 2.2,
+    "months_collected": 8
+  },
+  "수원역해모로아파트(수원센트럴타운1단지)": {
+    "balance_per_hh": 53.9,
+    "levy_per_hh": 19136,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "수원하늘채더퍼스트1단지": {
+    "balance_per_hh": 74.3,
+    "levy_per_hh": 15820,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "수원하늘채더퍼스트2단지": {
+    "balance_per_hh": 60.2,
+    "levy_per_hh": 12502,
+    "reserve_rate": 10,
+    "months_collected": 7
+  },
+  "신명": {
+    "balance_per_hh": 140,
+    "levy_per_hh": 39467,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "신현대": {
+    "balance_per_hh": 115.8,
+    "levy_per_hh": 30000,
+    "reserve_rate": 70,
+    "months_collected": 8
+  },
+  "오페라하우스": {
+    "balance_per_hh": 1206,
+    "levy_per_hh": 17489,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "우남1": {
+    "balance_per_hh": 108.7,
+    "levy_per_hh": 34517,
+    "reserve_rate": 6.4,
+    "months_collected": 7
+  },
+  "일월청구": {
+    "balance_per_hh": 221.3,
+    "levy_per_hh": 40171,
+    "reserve_rate": 0.2,
+    "months_collected": 7
+  },
+  "청구1차": {
+    "balance_per_hh": 176.3,
+    "levy_per_hh": 23293,
+    "reserve_rate": 15,
+    "months_collected": 8
+  },
+  "청구2": {
+    "balance_per_hh": 114.6,
+    "levy_per_hh": 49241,
+    "reserve_rate": 6.2,
+    "months_collected": 8
+  },
+  "태산": {
+    "balance_per_hh": 98.2,
+    "levy_per_hh": 24656,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "태산1": {
+    "balance_per_hh": 70.2,
+    "levy_per_hh": 39663,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "한라비발디2단지": {
+    "balance_per_hh": 243.4,
+    "levy_per_hh": 29875,
+    "reserve_rate": 2,
+    "months_collected": 7
+  },
+  "한양수자인파크원": {
+    "balance_per_hh": 121.7,
+    "levy_per_hh": 19109,
+    "reserve_rate": 3.4,
+    "months_collected": 8
+  },
+  "한주": {
+    "balance_per_hh": 119.1,
+    "levy_per_hh": 42248,
+    "reserve_rate": 3.4,
+    "months_collected": 8
+  },
+  "한효": {
+    "balance_per_hh": 53.7,
+    "levy_per_hh": 46943,
+    "reserve_rate": 11,
+    "months_collected": 8
+  },
+  "호매실경남아너스빌": {
+    "balance_per_hh": 77.2,
+    "levy_per_hh": 23789,
+    "reserve_rate": 5.6,
+    "months_collected": 8
+  },
+  "호매실더센트라고": {
+    "balance_per_hh": 84.8,
+    "levy_per_hh": 15406,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "호매실마을13단지": {
+    "balance_per_hh": 72.1,
+    "levy_per_hh": 9901,
+    "reserve_rate": 1.6,
+    "months_collected": 8
+  },
+  "호매실스위첸": {
+    "balance_per_hh": 69.9,
+    "levy_per_hh": 13155,
+    "reserve_rate": 5.2,
+    "months_collected": 7
+  },
+  "호매실스타힐스": {
+    "balance_per_hh": 64.1,
+    "levy_per_hh": 14127,
+    "reserve_rate": 3,
+    "months_collected": 7
+  },
+  "호매실신미주": {
+    "balance_per_hh": 115.1,
+    "levy_per_hh": 47159,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "호반 써밋 수원": {
+    "balance_per_hh": 118.3,
+    "levy_per_hh": 13913,
+    "reserve_rate": 2.6,
+    "months_collected": 8
+  },
+  "호반베르디움더센트럴": {
+    "balance_per_hh": 38.9,
+    "levy_per_hh": 16724,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "e-편한세상": {
+    "balance_per_hh": 147.5,
+    "levy_per_hh": 32784,
+    "reserve_rate": 2.3,
+    "months_collected": 8
+  },
+  "e편한세상영통2차(1단지)": {
+    "balance_per_hh": 59.8,
+    "levy_per_hh": 12043,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "e편한세상영통2차(2단지)": {
+    "balance_per_hh": 59.8,
+    "levy_per_hh": 12043,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "광교대광로제비앙": {
+    "balance_per_hh": 111.7,
+    "levy_per_hh": 19157,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "광교더리브": {
+    "balance_per_hh": 51,
+    "levy_per_hh": 39632,
+    "reserve_rate": 2,
+    "months_collected": 6
+  },
+  "광교더샵": {
+    "balance_per_hh": 114.1,
+    "levy_per_hh": 19303,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "광교더포레스트": {
+    "balance_per_hh": 106.1,
+    "levy_per_hh": 52025,
+    "reserve_rate": 26.1,
+    "months_collected": 8
+  },
+  "광교센트럴뷰": {
+    "balance_per_hh": 87.3,
+    "levy_per_hh": 29136,
+    "reserve_rate": 10,
+    "months_collected": 7
+  },
+  "광교아이파크": {
+    "balance_per_hh": 46,
+    "levy_per_hh": 18754,
+    "reserve_rate": 25,
+    "months_collected": 7
+  },
+  "광교에듀포레": {
+    "balance_per_hh": 143.9,
+    "levy_per_hh": 26874,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "광교역참누리포레스트": {
+    "balance_per_hh": 140.6,
+    "levy_per_hh": 40082,
+    "reserve_rate": 6,
+    "months_collected": 8
+  },
+  "광교푸르지오월드마크": {
+    "balance_per_hh": 109.1,
+    "levy_per_hh": 33612,
+    "reserve_rate": 4.1,
+    "months_collected": 8
+  },
+  "광교한양수자인": {
+    "balance_per_hh": 109.6,
+    "levy_per_hh": 28272,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "광교호수마을호반써밋": {
+    "balance_per_hh": 43.6,
+    "levy_per_hh": 39334,
+    "reserve_rate": 3.5,
+    "months_collected": 8
+  },
+  "그대가프리미어": {
+    "balance_per_hh": 105.9,
+    "levy_per_hh": 38915,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "극동": {
+    "balance_per_hh": 202.3,
+    "levy_per_hh": 46927,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "극동의푸른별": {
+    "balance_per_hh": 164.8,
+    "levy_per_hh": 37590,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "동수원자이1차": {
+    "balance_per_hh": 72.6,
+    "levy_per_hh": 43181,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "동수원자이2차": {
+    "balance_per_hh": 175.6,
+    "levy_per_hh": 39130,
+    "reserve_rate": 20,
+    "months_collected": 7
+  },
+  "래미안영통마크원1단지": {
+    "balance_per_hh": 103.6,
+    "levy_per_hh": 34530,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "래미안영통마크원2단지": {
+    "balance_per_hh": 155.9,
+    "levy_per_hh": 63273,
+    "reserve_rate": 2.2,
+    "months_collected": 8
+  },
+  "마젤란21": {
+    "balance_per_hh": 66.9,
+    "levy_per_hh": 47967,
+    "reserve_rate": 15,
+    "months_collected": 8
+  },
+  "망포마을쌍용1차": {
+    "balance_per_hh": 225.6,
+    "levy_per_hh": 33112,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "망포쌍용에듀파크": {
+    "balance_per_hh": 115.7,
+    "levy_per_hh": 40000,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "망포역아이파크": {
+    "balance_per_hh": 232.3,
+    "levy_per_hh": 41735,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "매탄레이크파크": {
+    "balance_per_hh": 109,
+    "levy_per_hh": 35766,
+    "reserve_rate": 18.7,
+    "months_collected": 8
+  },
+  "매탄위브하늘채": {
+    "balance_per_hh": 153.7,
+    "levy_per_hh": 33775,
+    "reserve_rate": 20,
+    "months_collected": 7
+  },
+  "방죽마을영통뜨란채": {
+    "balance_per_hh": 168.2,
+    "levy_per_hh": 39000,
+    "reserve_rate": 30,
+    "months_collected": 8
+  },
+  "벽적골두산": {
+    "balance_per_hh": 114.6,
+    "levy_per_hh": 25000,
+    "reserve_rate": 5.6,
+    "months_collected": 8
+  },
+  "벽적골롯데": {
+    "balance_per_hh": 6.4,
+    "levy_per_hh": 23890,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "삼성3": {
+    "balance_per_hh": 62.4,
+    "levy_per_hh": 35000,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "센트럴하이츠": {
+    "balance_per_hh": 76.5,
+    "levy_per_hh": 46776,
+    "reserve_rate": 25,
+    "months_collected": 7
+  },
+  "신나무실건영": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 62962,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "신나무실극동": {
+    "balance_per_hh": 202.3,
+    "levy_per_hh": 46927,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "신나무실신명": {
+    "balance_per_hh": 184.8,
+    "levy_per_hh": 48000,
+    "reserve_rate": 70,
+    "months_collected": 8
+  },
+  "신나무실신성": {
+    "balance_per_hh": 31.8,
+    "levy_per_hh": 42110,
+    "reserve_rate": 19.5,
+    "months_collected": 8
+  },
+  "엘지동수원자이": {
+    "balance_per_hh": 238.9,
+    "levy_per_hh": 42158,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "영통SKVIEW": {
+    "balance_per_hh": 60.2,
+    "levy_per_hh": 11488,
+    "reserve_rate": 1,
+    "months_collected": 8
+  },
+  "영통라온프라이빗": {
+    "balance_per_hh": 111.5,
+    "levy_per_hh": 25878,
+    "reserve_rate": 15,
+    "months_collected": 8
+  },
+  "영통롯데캐슬엘클래스1단지": {
+    "balance_per_hh": 42.3,
+    "levy_per_hh": 14146,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "영통롯데캐슬엘클래스2단지": {
+    "balance_per_hh": 55,
+    "levy_per_hh": 14107,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "영통센트럴파크뷰": {
+    "balance_per_hh": 33.7,
+    "levy_per_hh": 38821,
+    "reserve_rate": 33,
+    "months_collected": 8
+  },
+  "영통아이파크": {
+    "balance_per_hh": 97.4,
+    "levy_per_hh": 38397,
+    "reserve_rate": 6.1,
+    "months_collected": 8
+  },
+  "영통아이파크캐슬1단지": {
+    "balance_per_hh": 83.1,
+    "levy_per_hh": 10372,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "영통아이파크캐슬2단지": {
+    "balance_per_hh": 80.6,
+    "levy_per_hh": 18675,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "영통아이파크캐슬3단지": {
+    "balance_per_hh": 49.6,
+    "levy_per_hh": 13755,
+    "reserve_rate": null,
+    "months_collected": 4
+  },
+  "영통에듀파크(321동~327동)": {
+    "balance_per_hh": 27.7,
+    "levy_per_hh": 63528,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "영통에듀파크(331동~337동)": {
+    "balance_per_hh": 27.7,
+    "levy_per_hh": 63528,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "영통자이": {
+    "balance_per_hh": 39.8,
+    "levy_per_hh": 15629,
+    "reserve_rate": 1.4,
+    "months_collected": 8
+  },
+  "영흥숲푸르지오파크비엔": {
+    "balance_per_hh": 34.6,
+    "levy_per_hh": 14072,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "원천레이크파크": {
+    "balance_per_hh": 149.9,
+    "levy_per_hh": 36906,
+    "reserve_rate": 15,
+    "months_collected": 7
+  },
+  "임광": {
+    "balance_per_hh": 136.9,
+    "levy_per_hh": 38472,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "자연앤힐스테이트": {
+    "balance_per_hh": 10.3,
+    "levy_per_hh": 49806,
+    "reserve_rate": 0.3,
+    "months_collected": 8
+  },
+  "주공그린빌2": {
+    "balance_per_hh": 193.4,
+    "levy_per_hh": 56341,
+    "reserve_rate": 3.8,
+    "months_collected": 8
+  },
+  "주공그린빌3": {
+    "balance_per_hh": 177.5,
+    "levy_per_hh": 36723,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "주공그린빌5": {
+    "balance_per_hh": 135.9,
+    "levy_per_hh": 31235,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "청명마을(주공)": {
+    "balance_per_hh": 187.7,
+    "levy_per_hh": 50119,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "청명센트레빌": {
+    "balance_per_hh": 99.8,
+    "levy_per_hh": 34945,
+    "reserve_rate": 3.8,
+    "months_collected": 8
+  },
+  "한국2": {
+    "balance_per_hh": 28.6,
+    "levy_per_hh": 12370,
+    "reserve_rate": 10.5,
+    "months_collected": 8
+  },
+  "현대힐스테이트": {
+    "balance_per_hh": 209.6,
+    "levy_per_hh": 41804,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "황골마을(쌍용)": {
+    "balance_per_hh": 113.6,
+    "levy_per_hh": 32000,
+    "reserve_rate": 13.2,
+    "months_collected": 8
+  },
+  "황골마을신명": {
+    "balance_per_hh": 184.8,
+    "levy_per_hh": 48000,
+    "reserve_rate": 70,
+    "months_collected": 8
+  },
+  "힐스테이트영통": {
+    "balance_per_hh": 97.9,
+    "levy_per_hh": 19258,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "광교산임광그대가": {
+    "balance_per_hh": 75,
+    "levy_per_hh": 33640,
+    "reserve_rate": 2.7,
+    "months_collected": 8
+  },
+  "꽃뫼마을장안": {
+    "balance_per_hh": 200.5,
+    "levy_per_hh": 27035,
+    "reserve_rate": 3.8,
+    "months_collected": 7
+  },
+  "노을마을대동": {
+    "balance_per_hh": 44.9,
+    "levy_per_hh": 35926,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "대월마을대림진흥": {
+    "balance_per_hh": 59.8,
+    "levy_per_hh": 76010,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "더샵광교산퍼스트파크": {
+    "balance_per_hh": 67.1,
+    "levy_per_hh": 17335,
+    "reserve_rate": 2.9,
+    "months_collected": 8
+  },
+  "밤꽃마을뜨란채": {
+    "balance_per_hh": 126,
+    "levy_per_hh": 37075,
+    "reserve_rate": 20,
+    "months_collected": 7
+  },
+  "백설 에듀빌": {
+    "balance_per_hh": 77.1,
+    "levy_per_hh": 41000,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "백설마을삼환나우빌": {
+    "balance_per_hh": 10.4,
+    "levy_per_hh": 55000,
+    "reserve_rate": 8.6,
+    "months_collected": 8
+  },
+  "백설마을효성": {
+    "balance_per_hh": 144.3,
+    "levy_per_hh": 67319,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "북수원리버파크": {
+    "balance_per_hh": 85.1,
+    "levy_per_hh": 56888,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "비단마을베스트타운": {
+    "balance_per_hh": 5.8,
+    "levy_per_hh": 65850,
+    "reserve_rate": 24.4,
+    "months_collected": 8
+  },
+  "비단마을신명": {
+    "balance_per_hh": 223.5,
+    "levy_per_hh": 50000,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "삼호진덕": {
+    "balance_per_hh": 74.7,
+    "levy_per_hh": 29500,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "서광교파크스위첸": {
+    "balance_per_hh": 21,
+    "levy_per_hh": 9023,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "수원 SK SKY VIEW": {
+    "balance_per_hh": 28.4,
+    "levy_per_hh": 41576,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "수원로얄팰리스": {
+    "balance_per_hh": 121.2,
+    "levy_per_hh": 26591,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "수원아너스빌위즈": {
+    "balance_per_hh": 73.4,
+    "levy_per_hh": 23634,
+    "reserve_rate": 18,
+    "months_collected": 7
+  },
+  "수원장안힐스테이트": {
+    "balance_per_hh": 200.5,
+    "levy_per_hh": 27035,
+    "reserve_rate": 3.8,
+    "months_collected": 7
+  },
+  "신일": {
+    "balance_per_hh": 106,
+    "levy_per_hh": 49603,
+    "reserve_rate": 23.2,
+    "months_collected": 7
+  },
+  "연꽃마을벽산": {
+    "balance_per_hh": 87.2,
+    "levy_per_hh": 36540,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "영광": {
+    "balance_per_hh": 143.6,
+    "levy_per_hh": 30757,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "주공뉴타운1": {
+    "balance_per_hh": 61,
+    "levy_per_hh": 35653,
+    "reserve_rate": 30,
+    "months_collected": 8
+  },
+  "주공뉴타운2": {
+    "balance_per_hh": 125.8,
+    "levy_per_hh": 37565,
+    "reserve_rate": 22.7,
+    "months_collected": 8
+  },
+  "천천삼성래미안": {
+    "balance_per_hh": 48.1,
+    "levy_per_hh": 37468,
+    "reserve_rate": 2.8,
+    "months_collected": 8
+  },
+  "청솔마을한라": {
+    "balance_per_hh": 47.9,
+    "levy_per_hh": 71162,
+    "reserve_rate": 10.5,
+    "months_collected": 8
+  },
+  "포레나북수원": {
+    "balance_per_hh": 31.1,
+    "levy_per_hh": 19367,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "화남": {
+    "balance_per_hh": 150.6,
+    "levy_per_hh": 18644,
+    "reserve_rate": 2.5,
+    "months_collected": 8
+  },
+  "화서역 우방 센트럴파크": {
+    "balance_per_hh": 32.4,
+    "levy_per_hh": 30000,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "화서역 위너스 파크": {
+    "balance_per_hh": 165.7,
+    "levy_per_hh": 48600,
+    "reserve_rate": 30.8,
+    "months_collected": 8
+  },
+  "화서역파크뷰": {
+    "balance_per_hh": 54.5,
+    "levy_per_hh": 22861,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "화서역파크푸르지오": {
+    "balance_per_hh": 64.3,
+    "levy_per_hh": 12811,
+    "reserve_rate": 2.5,
+    "months_collected": 8
+  },
+  "화서역푸르지오더에듀포레": {
+    "balance_per_hh": 55.7,
+    "levy_per_hh": 43467,
+    "reserve_rate": 6.5,
+    "months_collected": 7
+  },
+  "화서역푸르지오브리시엘": {
+    "balance_per_hh": 24,
+    "levy_per_hh": 11130,
+    "reserve_rate": 1.5,
+    "months_collected": 7
+  },
+  "화서역현대벽산": {
+    "balance_per_hh": 116.9,
+    "levy_per_hh": 38907,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "희훈루체팰리스(총4동)": {
+    "balance_per_hh": 212.8,
+    "levy_per_hh": 28115,
+    "reserve_rate": 60,
+    "months_collected": 5
+  },
+  "KCC파크타운": {
+    "balance_per_hh": 145.3,
+    "levy_per_hh": 29936,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "꽃뫼버들마을금강": {
+    "balance_per_hh": 89.5,
+    "levy_per_hh": 40000,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "꽃뫼버들마을엘지": {
+    "balance_per_hh": 88.9,
+    "levy_per_hh": 41400,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "꽃뫼버들마을진흥": {
+    "balance_per_hh": 60.4,
+    "levy_per_hh": 33920,
+    "reserve_rate": 28.6,
+    "months_collected": 8
+  },
+  "대한대우": {
+    "balance_per_hh": 287.9,
+    "levy_per_hh": 24726,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "래미안노블클래스1단지": {
+    "balance_per_hh": 151.4,
+    "levy_per_hh": 24818,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "래미안노블클래스2단지": {
+    "balance_per_hh": 151.4,
+    "levy_per_hh": 24818,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "매교역푸르지오SKVIEW": {
+    "balance_per_hh": 37.4,
+    "levy_per_hh": 9942,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "선경3": {
+    "balance_per_hh": 194.6,
+    "levy_per_hh": 42993,
+    "reserve_rate": 38,
+    "months_collected": 8
+  },
+  "수원센트럴아이파크자이": {
+    "balance_per_hh": 35.3,
+    "levy_per_hh": 13308,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "수원역푸르지오자이": {
+    "balance_per_hh": 73.1,
+    "levy_per_hh": 13539,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "우만주공2단지": {
+    "balance_per_hh": 51,
+    "levy_per_hh": 11319,
+    "reserve_rate": 8.2,
+    "months_collected": 8
+  },
+  "월드메르디앙": {
+    "balance_per_hh": 226,
+    "levy_per_hh": 34994,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "인계파밀리에": {
+    "balance_per_hh": 158.2,
+    "levy_per_hh": 29119,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "인계한양수자인": {
+    "balance_per_hh": 104.4,
+    "levy_per_hh": 16594,
+    "reserve_rate": 6,
+    "months_collected": 7
+  },
+  "한일베라체에코플러스": {
+    "balance_per_hh": 67.5,
+    "levy_per_hh": 25102,
+    "reserve_rate": 4.9,
+    "months_collected": 7
+  },
+  "화서역블루밍푸른숲": {
+    "balance_per_hh": 73.7,
+    "levy_per_hh": 59517,
+    "reserve_rate": 1.5,
+    "months_collected": 8
+  },
+  "화서위브하늘채": {
+    "balance_per_hh": 84.5,
+    "levy_per_hh": 39979,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "화서주공4단지": {
+    "balance_per_hh": 210.6,
+    "levy_per_hh": 46604,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "화서한신더휴": {
+    "balance_per_hh": 87.5,
+    "levy_per_hh": 23965,
+    "reserve_rate": 1,
+    "months_collected": 8
+  },
+  "힐스테이트푸르지오수원": {
+    "balance_per_hh": 33.3,
+    "levy_per_hh": 9537,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "e편한세상구성역플랫폼시티": {
+    "balance_per_hh": 16.2,
+    "levy_per_hh": 10263,
+    "reserve_rate": 10,
+    "months_collected": 7
+  },
+  "갈현마을현대홈타운": {
+    "balance_per_hh": 9.1,
+    "levy_per_hh": 33320,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "강남마을자연앤(6단지)": {
+    "balance_per_hh": 228.2,
+    "levy_per_hh": 53508,
+    "reserve_rate": 8,
+    "months_collected": 8
+  },
+  "강남마을한라비발디": {
+    "balance_per_hh": 174.2,
+    "levy_per_hh": 33852,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "광교호수아델리움": {
+    "balance_per_hh": 161.2,
+    "levy_per_hh": 28212,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "교동마을구성자이3차": {
+    "balance_per_hh": 233,
+    "levy_per_hh": 42796,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "교동마을엘지": {
+    "balance_per_hh": 90.6,
+    "levy_per_hh": 35881,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "교동마을현대홈타운": {
+    "balance_per_hh": 288.3,
+    "levy_per_hh": 46793,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "구성더포레스트": {
+    "balance_per_hh": 155.6,
+    "levy_per_hh": 40459,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "금화마을주공3단지": {
+    "balance_per_hh": 62.3,
+    "levy_per_hh": 20212,
+    "reserve_rate": 6.4,
+    "months_collected": 8
+  },
+  "기흥더샵프라임뷰": {
+    "balance_per_hh": 153.7,
+    "levy_per_hh": 28478,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "기흥써니밸리": {
+    "balance_per_hh": 147.6,
+    "levy_per_hh": 21953,
+    "reserve_rate": 6,
+    "months_collected": 7
+  },
+  "기흥역더샵": {
+    "balance_per_hh": 94.8,
+    "levy_per_hh": 14982,
+    "reserve_rate": 2.5,
+    "months_collected": 8
+  },
+  "기흥역롯데캐슬스카이": {
+    "balance_per_hh": 73.4,
+    "levy_per_hh": 14450,
+    "reserve_rate": 5.5,
+    "months_collected": 7
+  },
+  "기흥역센트럴푸르지오": {
+    "balance_per_hh": 101,
+    "levy_per_hh": 21142,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "기흥역파크푸르지오": {
+    "balance_per_hh": 110.7,
+    "levy_per_hh": 12125,
+    "reserve_rate": 10,
+    "months_collected": 5
+  },
+  "기흥파크뷰": {
+    "balance_per_hh": 174,
+    "levy_per_hh": 40951,
+    "reserve_rate": 4.7,
+    "months_collected": 8
+  },
+  "기흥푸르지오포레피스": {
+    "balance_per_hh": 25.1,
+    "levy_per_hh": 10373,
+    "reserve_rate": 3.9,
+    "months_collected": 8
+  },
+  "대명레이크빌": {
+    "balance_per_hh": 223.2,
+    "levy_per_hh": 33653,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "대우": {
+    "balance_per_hh": 131.1,
+    "levy_per_hh": 39769,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "도현마을현대": {
+    "balance_per_hh": 119.8,
+    "levy_per_hh": 59880,
+    "reserve_rate": 52,
+    "months_collected": 8
+  },
+  "두진": {
+    "balance_per_hh": 126.6,
+    "levy_per_hh": 24494,
+    "reserve_rate": 3.7,
+    "months_collected": 8
+  },
+  "드림랜드": {
+    "balance_per_hh": 152.5,
+    "levy_per_hh": 13132,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "매화마을우남퍼스트빌": {
+    "balance_per_hh": 628.3,
+    "levy_per_hh": 87373,
+    "reserve_rate": 10.6,
+    "months_collected": 8
+  },
+  "물푸레마을휴먼시아7단지": {
+    "balance_per_hh": 281.5,
+    "levy_per_hh": 32241,
+    "reserve_rate": 2.7,
+    "months_collected": 8
+  },
+  "백현마을경남아너스빌": {
+    "balance_per_hh": 140,
+    "levy_per_hh": 21800,
+    "reserve_rate": 13,
+    "months_collected": 7
+  },
+  "백현마을동일하이빌": {
+    "balance_per_hh": 190,
+    "levy_per_hh": 27683,
+    "reserve_rate": 100,
+    "months_collected": 8
+  },
+  "백현마을롯데캐슬": {
+    "balance_per_hh": 181.1,
+    "levy_per_hh": 43449,
+    "reserve_rate": 8.7,
+    "months_collected": 8
+  },
+  "백현마을서해그랑블": {
+    "balance_per_hh": 78.1,
+    "levy_per_hh": 24868,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "백현마을코아루": {
+    "balance_per_hh": 202.6,
+    "levy_per_hh": 27502,
+    "reserve_rate": 16.3,
+    "months_collected": 8
+  },
+  "백현마을한라비발디(1차)": {
+    "balance_per_hh": 174.2,
+    "levy_per_hh": 33852,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "백현마을한라비발디(2차)": {
+    "balance_per_hh": 174.2,
+    "levy_per_hh": 33852,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "보라마을현대모닝사이드": {
+    "balance_per_hh": 264.2,
+    "levy_per_hh": 33480,
+    "reserve_rate": 30,
+    "months_collected": 8
+  },
+  "불곡마을(벽산블루밍)": {
+    "balance_per_hh": 145,
+    "levy_per_hh": 24822,
+    "reserve_rate": 8.7,
+    "months_collected": 6
+  },
+  "삼거마을삼성래미안1": {
+    "balance_per_hh": 140.7,
+    "levy_per_hh": 75229,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "삼성래미안": {
+    "balance_per_hh": 140.7,
+    "levy_per_hh": 75229,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "상떼빌구성역플랫폼시티": {
+    "balance_per_hh": 140.2,
+    "levy_per_hh": 66049,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "새릉골풍림": {
+    "balance_per_hh": 104.6,
+    "levy_per_hh": 56120,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "서희삼정": {
+    "balance_per_hh": 307.4,
+    "levy_per_hh": 55676,
+    "reserve_rate": 30,
+    "months_collected": 8
+  },
+  "센트럴파크원": {
+    "balance_per_hh": 129,
+    "levy_per_hh": 20974,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "스파팰리스리가": {
+    "balance_per_hh": 132.2,
+    "levy_per_hh": 22447,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "신동백롯데캐슬에코1단지": {
+    "balance_per_hh": 114.1,
+    "levy_per_hh": 37007,
+    "reserve_rate": 15,
+    "months_collected": 8
+  },
+  "신동백롯데캐슬에코2단지": {
+    "balance_per_hh": 237.9,
+    "levy_per_hh": 19758,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "신동백서해그랑블1차": {
+    "balance_per_hh": 195.3,
+    "levy_per_hh": 31544,
+    "reserve_rate": 1.4,
+    "months_collected": 8
+  },
+  "신동백서해그랑블2차": {
+    "balance_per_hh": 121.4,
+    "levy_per_hh": 18902,
+    "reserve_rate": 1.6,
+    "months_collected": 8
+  },
+  "신창미션힐": {
+    "balance_per_hh": 273.6,
+    "levy_per_hh": 26447,
+    "reserve_rate": 16.7,
+    "months_collected": 7
+  },
+  "신촌마을상록데시앙": {
+    "balance_per_hh": 324,
+    "levy_per_hh": 34600,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "신흥덕롯데캐슬레이시티": {
+    "balance_per_hh": 57.2,
+    "levy_per_hh": 8343,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "쌍용(3단지)": {
+    "balance_per_hh": 212.5,
+    "levy_per_hh": 36063,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "쌍용스윗닷홈(2단지)": {
+    "balance_per_hh": 96.2,
+    "levy_per_hh": 32847,
+    "reserve_rate": 25,
+    "months_collected": 7
+  },
+  "양현마을신안": {
+    "balance_per_hh": 65.4,
+    "levy_per_hh": 23460,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "어은목마을벽산블루밍아파트": {
+    "balance_per_hh": 91.8,
+    "levy_per_hh": 51380,
+    "reserve_rate": 2.2,
+    "months_collected": 8
+  },
+  "언동마을신일해피트리": {
+    "balance_per_hh": 233.9,
+    "levy_per_hh": 48927,
+    "reserve_rate": 6.6,
+    "months_collected": 8
+  },
+  "연원마을삼성명가타운": {
+    "balance_per_hh": 108,
+    "levy_per_hh": 38516,
+    "reserve_rate": 0.6,
+    "months_collected": 8
+  },
+  "연원마을엘지": {
+    "balance_per_hh": 90.6,
+    "levy_per_hh": 35881,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "영통빌리지": {
+    "balance_per_hh": 166,
+    "levy_per_hh": 29329,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "용인기흥 우방아이유쉘": {
+    "balance_per_hh": 146.7,
+    "levy_per_hh": 15709,
+    "reserve_rate": 3.2,
+    "months_collected": 8
+  },
+  "용인동백두산위브더제니스": {
+    "balance_per_hh": 71.7,
+    "levy_per_hh": 14052,
+    "reserve_rate": 6,
+    "months_collected": 8
+  },
+  "용인마북신원아침도시": {
+    "balance_per_hh": 125.5,
+    "levy_per_hh": 18232,
+    "reserve_rate": 2.2,
+    "months_collected": 8
+  },
+  "용인서천효성해링턴플레이스": {
+    "balance_per_hh": 137.7,
+    "levy_per_hh": 20128,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "용화마을태영데시앙2": {
+    "balance_per_hh": 118.8,
+    "levy_per_hh": 50000,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "우림": {
+    "balance_per_hh": 98.6,
+    "levy_per_hh": 39111,
+    "reserve_rate": 3.4,
+    "months_collected": 8
+  },
+  "우림홀인원": {
+    "balance_per_hh": 395.4,
+    "levy_per_hh": 30220,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "장미마을삼성래미안2": {
+    "balance_per_hh": 225.3,
+    "levy_per_hh": 81630,
+    "reserve_rate": 20,
+    "months_collected": 7
+  },
+  "죽전누리에뜰": {
+    "balance_per_hh": 306.6,
+    "levy_per_hh": 34256,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "죽전자이2차": {
+    "balance_per_hh": 226.8,
+    "levy_per_hh": 66671,
+    "reserve_rate": 12.6,
+    "months_collected": 8
+  },
+  "죽현마을동원로얄듀크": {
+    "balance_per_hh": 74.9,
+    "levy_per_hh": 36000,
+    "reserve_rate": 19,
+    "months_collected": 8
+  },
+  "죽현마을아이파크": {
+    "balance_per_hh": 212.5,
+    "levy_per_hh": 37100,
+    "reserve_rate": 5.3,
+    "months_collected": 8
+  },
+  "청덕마을광도와이드빌": {
+    "balance_per_hh": 185.8,
+    "levy_per_hh": 28200,
+    "reserve_rate": 22.3,
+    "months_collected": 8
+  },
+  "청현마을기흥데시앙": {
+    "balance_per_hh": 134.8,
+    "levy_per_hh": 29285,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "코오롱하늘채(5단지)": {
+    "balance_per_hh": 154,
+    "levy_per_hh": 48622,
+    "reserve_rate": 0.1,
+    "months_collected": 8
+  },
+  "파크시엘": {
+    "balance_per_hh": 201.4,
+    "levy_per_hh": 50021,
+    "reserve_rate": 4.2,
+    "months_collected": 8
+  },
+  "풍림고층": {
+    "balance_per_hh": 53.5,
+    "levy_per_hh": 27030,
+    "reserve_rate": 22.3,
+    "months_collected": 7
+  },
+  "하마비마을동부": {
+    "balance_per_hh": 232.2,
+    "levy_per_hh": 36864,
+    "reserve_rate": 60,
+    "months_collected": 8
+  },
+  "하마비마을동일하이빌1": {
+    "balance_per_hh": 379.3,
+    "levy_per_hh": 63097,
+    "reserve_rate": 2.4,
+    "months_collected": 8
+  },
+  "행원마을동아솔레시티": {
+    "balance_per_hh": 221,
+    "levy_per_hh": 56023,
+    "reserve_rate": 42.2,
+    "months_collected": 8
+  },
+  "현대모닝사이드": {
+    "balance_per_hh": 264.2,
+    "levy_per_hh": 33480,
+    "reserve_rate": 30,
+    "months_collected": 8
+  },
+  "호반써밋레이크파크": {
+    "balance_per_hh": 101.5,
+    "levy_per_hh": 39340,
+    "reserve_rate": 3.8,
+    "months_collected": 8
+  },
+  "호수마을계룡리슈빌": {
+    "balance_per_hh": 252.2,
+    "levy_per_hh": 38757,
+    "reserve_rate": 7,
+    "months_collected": 8
+  },
+  "호수마을동보노빌리티": {
+    "balance_per_hh": 141.6,
+    "levy_per_hh": 52233,
+    "reserve_rate": 13.5,
+    "months_collected": 8
+  },
+  "호수마을상록롯데캐슬": {
+    "balance_per_hh": 117,
+    "levy_per_hh": 40000,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "호수마을서해그랑블": {
+    "balance_per_hh": 180,
+    "levy_per_hh": 21820,
+    "reserve_rate": 3.3,
+    "months_collected": 8
+  },
+  "호수마을월드메르디앙": {
+    "balance_per_hh": 223.8,
+    "levy_per_hh": 38695,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "호수마을자연앤데시앙": {
+    "balance_per_hh": 91.8,
+    "levy_per_hh": 32864,
+    "reserve_rate": 6.2,
+    "months_collected": 8
+  },
+  "호수청구": {
+    "balance_per_hh": 1.8,
+    "levy_per_hh": 21251,
+    "reserve_rate": 15.4,
+    "months_collected": 8
+  },
+  "휴먼시아물푸레마을3단지": {
+    "balance_per_hh": 312.3,
+    "levy_per_hh": 60367,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "흥덕마을7단지힐스테이트": {
+    "balance_per_hh": 141.4,
+    "levy_per_hh": 29997,
+    "reserve_rate": 2.5,
+    "months_collected": 8
+  },
+  "흥덕마을동원로얄듀크": {
+    "balance_per_hh": 74.9,
+    "levy_per_hh": 36000,
+    "reserve_rate": 19,
+    "months_collected": 8
+  },
+  "흥덕마을자연앤스위첸": {
+    "balance_per_hh": 86.1,
+    "levy_per_hh": 34500,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "흥덕우미린 레이크포레": {
+    "balance_per_hh": 133,
+    "levy_per_hh": 26260,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "힉스유타워": {
+    "balance_per_hh": 38.2,
+    "levy_per_hh": 11128,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "힐스테이트구성": {
+    "balance_per_hh": 49.5,
+    "levy_per_hh": 18266,
+    "reserve_rate": 1,
+    "months_collected": 7
+  },
+  "힐스테이트기흥": {
+    "balance_per_hh": 105.4,
+    "levy_per_hh": 15355,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "힐스테이트서천": {
+    "balance_per_hh": 56.7,
+    "levy_per_hh": 43389,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "e편한세상수지": {
+    "balance_per_hh": 76,
+    "levy_per_hh": 11295,
+    "reserve_rate": 8.7,
+    "months_collected": 8
+  },
+  "광교경남아너스빌": {
+    "balance_per_hh": 103.9,
+    "levy_per_hh": 38593,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "광교더힐": {
+    "balance_per_hh": 136.1,
+    "levy_per_hh": 29976,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "광교레이크포레": {
+    "balance_per_hh": 98.3,
+    "levy_per_hh": 14936,
+    "reserve_rate": 1.1,
+    "months_collected": 8
+  },
+  "광교산자이": {
+    "balance_per_hh": 122.7,
+    "levy_per_hh": 16164,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "광교상현마을현대": {
+    "balance_per_hh": 200.2,
+    "levy_per_hh": 25160,
+    "reserve_rate": 8,
+    "months_collected": 7
+  },
+  "광교쌍용포레듀엔(2-C)": {
+    "balance_per_hh": 197.9,
+    "levy_per_hh": 59100,
+    "reserve_rate": 22.7,
+    "months_collected": 7
+  },
+  "꽃메마을힐스테이트4차2단지": {
+    "balance_per_hh": 189.3,
+    "levy_per_hh": 45000,
+    "reserve_rate": 5.2,
+    "months_collected": 8
+  },
+  "내대지마을건영캐스빌": {
+    "balance_per_hh": 353,
+    "levy_per_hh": 32553,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "내대지마을광명샤인빌": {
+    "balance_per_hh": 261.1,
+    "levy_per_hh": 28870,
+    "reserve_rate": 32.2,
+    "months_collected": 8
+  },
+  "내대지마을우미이노스빌": {
+    "balance_per_hh": 236.4,
+    "levy_per_hh": 29406,
+    "reserve_rate": 3.2,
+    "months_collected": 8
+  },
+  "대지마을현대홈타운3차2단지": {
+    "balance_per_hh": 141.7,
+    "levy_per_hh": 45471,
+    "reserve_rate": 4.5,
+    "months_collected": 8
+  },
+  "더리버하임": {
+    "balance_per_hh": 92.3,
+    "levy_per_hh": 18196,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "더샵동천이스트포레": {
+    "balance_per_hh": 10.9,
+    "levy_per_hh": 15005,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "더샵동천포레스트": {
+    "balance_per_hh": 103.7,
+    "levy_per_hh": 26119,
+    "reserve_rate": 2.7,
+    "months_collected": 8
+  },
+  "더샵수지포레": {
+    "balance_per_hh": 116.2,
+    "levy_per_hh": 22129,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "도담마을롯데캐슬": {
+    "balance_per_hh": 423.8,
+    "levy_per_hh": 40013,
+    "reserve_rate": 38,
+    "months_collected": 8
+  },
+  "도담마을아이파크": {
+    "balance_per_hh": 169.3,
+    "levy_per_hh": 36165,
+    "reserve_rate": 6.5,
+    "months_collected": 8
+  },
+  "도담마을죽전파크빌": {
+    "balance_per_hh": 28.2,
+    "levy_per_hh": 30572,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "도담마을한양수자인": {
+    "balance_per_hh": 152.1,
+    "levy_per_hh": 20000,
+    "reserve_rate": 9.7,
+    "months_collected": 8
+  },
+  "동문그린": {
+    "balance_per_hh": 180.7,
+    "levy_per_hh": 21423,
+    "reserve_rate": 10.3,
+    "months_collected": 8
+  },
+  "동성1차": {
+    "balance_per_hh": 51.7,
+    "levy_per_hh": 23038,
+    "reserve_rate": 7,
+    "months_collected": 8
+  },
+  "동천디이스트": {
+    "balance_per_hh": 93.3,
+    "levy_per_hh": 22170,
+    "reserve_rate": 30,
+    "months_collected": 8
+  },
+  "동천마을영풍아파트": {
+    "balance_per_hh": 113.9,
+    "levy_per_hh": 48196,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동천센트럴자이": {
+    "balance_per_hh": 49.4,
+    "levy_per_hh": 31571,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동천자이": {
+    "balance_per_hh": 100.3,
+    "levy_per_hh": 14889,
+    "reserve_rate": 2.2,
+    "months_collected": 8
+  },
+  "동천파크자이": {
+    "balance_per_hh": 159.8,
+    "levy_per_hh": 12847,
+    "reserve_rate": 1.2,
+    "months_collected": 8
+  },
+  "래미안수지이스트파크": {
+    "balance_per_hh": 157.4,
+    "levy_per_hh": 23863,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "래미안이스트팰리스2단지": {
+    "balance_per_hh": 78.8,
+    "levy_per_hh": 43883,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "래미안이스트팰리스3단지": {
+    "balance_per_hh": 171.3,
+    "levy_per_hh": 46255,
+    "reserve_rate": 0.8,
+    "months_collected": 8
+  },
+  "만현마을1단지롯데캐슬": {
+    "balance_per_hh": 105.7,
+    "levy_per_hh": 53272,
+    "reserve_rate": 11.1,
+    "months_collected": 8
+  },
+  "만현마을쌍용1차": {
+    "balance_per_hh": 77.6,
+    "levy_per_hh": 87499,
+    "reserve_rate": 5.9,
+    "months_collected": 8
+  },
+  "버들치마을성복자이1차": {
+    "balance_per_hh": 186.6,
+    "levy_per_hh": 50303,
+    "reserve_rate": 1,
+    "months_collected": 7
+  },
+  "보원": {
+    "balance_per_hh": 97.4,
+    "levy_per_hh": 28000,
+    "reserve_rate": 77.3,
+    "months_collected": 7
+  },
+  "상현마을현대성우1차": {
+    "balance_per_hh": 188.3,
+    "levy_per_hh": 33346,
+    "reserve_rate": 9.1,
+    "months_collected": 8
+  },
+  "새터마을모아미래도": {
+    "balance_per_hh": 197,
+    "levy_per_hh": 35180,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "새터마을죽전힐스테이트": {
+    "balance_per_hh": 246.6,
+    "levy_per_hh": 43400,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "서원마을3단지아이파크": {
+    "balance_per_hh": 72.9,
+    "levy_per_hh": 38892,
+    "reserve_rate": 16.6,
+    "months_collected": 8
+  },
+  "서원마을현대홈타운": {
+    "balance_per_hh": 62,
+    "levy_per_hh": 55318,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "서홍마을한화꿈에그린": {
+    "balance_per_hh": 277.8,
+    "levy_per_hh": 38750,
+    "reserve_rate": 17.7,
+    "months_collected": 8
+  },
+  "성동마을수지자이": {
+    "balance_per_hh": 82.4,
+    "levy_per_hh": 49824,
+    "reserve_rate": 8.7,
+    "months_collected": 8
+  },
+  "성복센트럴자이": {
+    "balance_per_hh": 118.8,
+    "levy_per_hh": 33604,
+    "reserve_rate": 10,
+    "months_collected": 7
+  },
+  "성복아이파크": {
+    "balance_per_hh": 142.8,
+    "levy_per_hh": 24454,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "성복역금호베스트빌": {
+    "balance_per_hh": 79.5,
+    "levy_per_hh": 50445,
+    "reserve_rate": 19.8,
+    "months_collected": 7
+  },
+  "성복역롯데캐슬골드타운": {
+    "balance_per_hh": 56.1,
+    "levy_per_hh": 16311,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "성복역롯데캐슬클라시엘": {
+    "balance_per_hh": 74,
+    "levy_per_hh": 14336,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "성복역롯데캐슬파크나인": {
+    "balance_per_hh": 51.6,
+    "levy_per_hh": 11581,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "성복역리버파크": {
+    "balance_per_hh": 136.8,
+    "levy_per_hh": 28032,
+    "reserve_rate": 26.6,
+    "months_collected": 8
+  },
+  "성복역아이파크": {
+    "balance_per_hh": 201.7,
+    "levy_per_hh": 48277,
+    "reserve_rate": 7.7,
+    "months_collected": 8
+  },
+  "성현마을광명샤인빌": {
+    "balance_per_hh": 261.1,
+    "levy_per_hh": 28870,
+    "reserve_rate": 32.2,
+    "months_collected": 8
+  },
+  "수지스카이뷰푸르지오": {
+    "balance_per_hh": 25.3,
+    "levy_per_hh": 6948,
+    "reserve_rate": 0.7,
+    "months_collected": 8
+  },
+  "수지파크푸르지오": {
+    "balance_per_hh": 101.6,
+    "levy_per_hh": 16901,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "수지푸르지오월드마크": {
+    "balance_per_hh": 155.6,
+    "levy_per_hh": 28120,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "신봉마을동일하이빌3단지": {
+    "balance_per_hh": 119.7,
+    "levy_per_hh": 55931,
+    "reserve_rate": 6.3,
+    "months_collected": 8
+  },
+  "신봉마을자이2차": {
+    "balance_per_hh": 291.3,
+    "levy_per_hh": 42461,
+    "reserve_rate": 7.7,
+    "months_collected": 8
+  },
+  "신봉마을자이3차": {
+    "balance_per_hh": 75.2,
+    "levy_per_hh": 50044,
+    "reserve_rate": 18,
+    "months_collected": 8
+  },
+  "신정마을우성": {
+    "balance_per_hh": 111,
+    "levy_per_hh": 29530,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "신정마을주공1": {
+    "balance_per_hh": 83.5,
+    "levy_per_hh": 40952,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "신정마을진흥": {
+    "balance_per_hh": 149.8,
+    "levy_per_hh": 28900,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "써니벨리": {
+    "balance_per_hh": 181.7,
+    "levy_per_hh": 42045,
+    "reserve_rate": 10.3,
+    "months_collected": 8
+  },
+  "용인수지신정마을9단지": {
+    "balance_per_hh": 28.2,
+    "levy_per_hh": 30572,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "용인죽전동부센트레빌": {
+    "balance_per_hh": 133.8,
+    "levy_per_hh": 46278,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "우미이노스빌": {
+    "balance_per_hh": 236.4,
+    "levy_per_hh": 29406,
+    "reserve_rate": 3.2,
+    "months_collected": 8
+  },
+  "원천마을푸르지오": {
+    "balance_per_hh": 176.7,
+    "levy_per_hh": 41473,
+    "reserve_rate": 25.5,
+    "months_collected": 7
+  },
+  "정자뜰마을태영데시앙1차": {
+    "balance_per_hh": 138.8,
+    "levy_per_hh": 38900,
+    "reserve_rate": 10.6,
+    "months_collected": 8
+  },
+  "정자뜰마을태영데시앙2차": {
+    "balance_per_hh": 194.3,
+    "levy_per_hh": 15000,
+    "reserve_rate": 17,
+    "months_collected": 8
+  },
+  "죽전아이뷰": {
+    "balance_per_hh": 125.2,
+    "levy_per_hh": 16375,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "죽전퍼스트하임": {
+    "balance_per_hh": 88.8,
+    "levy_per_hh": 31393,
+    "reserve_rate": 30,
+    "months_collected": 8
+  },
+  "죽전현대1차": {
+    "balance_per_hh": 2.8,
+    "levy_per_hh": 37005,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "진산마을삼성5차": {
+    "balance_per_hh": 277.7,
+    "levy_per_hh": 41896,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "진산마을성원상떼빌아파트": {
+    "balance_per_hh": 85.4,
+    "levy_per_hh": 31629,
+    "reserve_rate": 30,
+    "months_collected": 7
+  },
+  "포레나 광교상현": {
+    "balance_per_hh": 81.7,
+    "levy_per_hh": 22128,
+    "reserve_rate": 3.3,
+    "months_collected": 8
+  },
+  "한국": {
+    "balance_per_hh": 143.2,
+    "levy_per_hh": 29550,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "한화포레나수지동천": {
+    "balance_per_hh": 59,
+    "levy_per_hh": 16552,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "행림마을진로": {
+    "balance_per_hh": 90.8,
+    "levy_per_hh": 35597,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "현암마을동성2차": {
+    "balance_per_hh": 152.4,
+    "levy_per_hh": 37269,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "힐스테이트광교산": {
+    "balance_per_hh": 78.5,
+    "levy_per_hh": 19743,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "e편한세상용인한숲시티4단지": {
+    "balance_per_hh": 127.3,
+    "levy_per_hh": 16208,
+    "reserve_rate": 4.1,
+    "months_collected": 8
+  },
+  "e편한세상용인한숲시티6단지": {
+    "balance_per_hh": 101.5,
+    "levy_per_hh": 18217,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "골드클래스": {
+    "balance_per_hh": 92.9,
+    "levy_per_hh": 9368,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "금평마을영화": {
+    "balance_per_hh": 525.7,
+    "levy_per_hh": 37392,
+    "reserve_rate": 12,
+    "months_collected": 8
+  },
+  "라이프타워": {
+    "balance_per_hh": 116.3,
+    "levy_per_hh": 22371,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "보평마을삼정그린뷰": {
+    "balance_per_hh": 107.7,
+    "levy_per_hh": 53384,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "성웅": {
+    "balance_per_hh": 116.4,
+    "levy_per_hh": 30000,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "신원1차": {
+    "balance_per_hh": 39.4,
+    "levy_per_hh": 28410,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "신원2차": {
+    "balance_per_hh": 31.6,
+    "levy_per_hh": 32514,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "양우내안애에듀퍼스트": {
+    "balance_per_hh": 99.7,
+    "levy_per_hh": 29898,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "양지마을신원아침도시": {
+    "balance_per_hh": 180,
+    "levy_per_hh": 21200,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "에이스카운티아파트": {
+    "balance_per_hh": 89.9,
+    "levy_per_hh": 15059,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "역북신원아침도시": {
+    "balance_per_hh": 63.5,
+    "levy_per_hh": 10578,
+    "reserve_rate": 1.8,
+    "months_collected": 8
+  },
+  "예원마을코아루": {
+    "balance_per_hh": 263.6,
+    "levy_per_hh": 45863,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "예진마을": {
+    "balance_per_hh": 161.3,
+    "levy_per_hh": 62349,
+    "reserve_rate": 15,
+    "months_collected": 7
+  },
+  "예진마을인정피렌체": {
+    "balance_per_hh": 80.6,
+    "levy_per_hh": 30000,
+    "reserve_rate": 10.2,
+    "months_collected": 8
+  },
+  "용인드마크데시앙": {
+    "balance_per_hh": 16.8,
+    "levy_per_hh": 10225,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "용인보평역서희스타힐스리버파크": {
+    "balance_per_hh": 15.4,
+    "levy_per_hh": 10468,
+    "reserve_rate": 2.7,
+    "months_collected": 8
+  },
+  "용인행정타운두산위브2단지": {
+    "balance_per_hh": 161.6,
+    "levy_per_hh": 32983,
+    "reserve_rate": 1.5,
+    "months_collected": 8
+  },
+  "용인행정타운두산위브3단지": {
+    "balance_per_hh": 160.4,
+    "levy_per_hh": 26916,
+    "reserve_rate": 5.5,
+    "months_collected": 8
+  },
+  "인정프린스1": {
+    "balance_per_hh": 110,
+    "levy_per_hh": 32175,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "인정프린스2": {
+    "balance_per_hh": 95.5,
+    "levy_per_hh": 23032,
+    "reserve_rate": 30.2,
+    "months_collected": 8
+  },
+  "풍산마을햇빛": {
+    "balance_per_hh": 174.8,
+    "levy_per_hh": 50513,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "한천마을금광베네스타": {
+    "balance_per_hh": 147,
+    "levy_per_hh": 33613,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "힐스테이트몬테로이1단지": {
+    "balance_per_hh": 6.1,
+    "levy_per_hh": 11147,
+    "reserve_rate": 0.1,
+    "months_collected": 5
+  },
+  "힐스테이트몬테로이2단지": {
+    "balance_per_hh": 5,
+    "levy_per_hh": 16537,
+    "reserve_rate": 3,
+    "months_collected": 3
+  },
+  "힐스테이트몬테로이3단지": {
+    "balance_per_hh": 6.4,
+    "levy_per_hh": 10666,
+    "reserve_rate": 3,
+    "months_collected": 6
+  },
+  "힐스테이트용인고진역1단지": {
+    "balance_per_hh": 10.8,
+    "levy_per_hh": 13245,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "e편한세상감일": {
+    "balance_per_hh": 68,
+    "levy_per_hh": 15979,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "감일센트레빌": {
+    "balance_per_hh": 72.1,
+    "levy_per_hh": 18081,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "감일수자인": {
+    "balance_per_hh": 19.7,
+    "levy_per_hh": 13540,
+    "reserve_rate": 2,
+    "months_collected": 8
+  },
+  "감일스타힐스": {
+    "balance_per_hh": 69.4,
+    "levy_per_hh": 14296,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "감일파크센트레빌": {
+    "balance_per_hh": 66.6,
+    "levy_per_hh": 19238,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "감일푸르지오마크베르": {
+    "balance_per_hh": 24.6,
+    "levy_per_hh": 9766,
+    "reserve_rate": 1.4,
+    "months_collected": 8
+  },
+  "감일한라비발디": {
+    "balance_per_hh": 30.6,
+    "levy_per_hh": 12563,
+    "reserve_rate": 1.6,
+    "months_collected": 8
+  },
+  "대명강변타운": {
+    "balance_per_hh": 215.2,
+    "levy_per_hh": 25935,
+    "reserve_rate": 30,
+    "months_collected": 8
+  },
+  "더샵하남에디피스": {
+    "balance_per_hh": 21.1,
+    "levy_per_hh": 14024,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "덕풍현대": {
+    "balance_per_hh": 101.4,
+    "levy_per_hh": 15555,
+    "reserve_rate": 100,
+    "months_collected": 8
+  },
+  "동원베네스트": {
+    "balance_per_hh": 182.7,
+    "levy_per_hh": 25000,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "동일하이빌": {
+    "balance_per_hh": 209,
+    "levy_per_hh": 28946,
+    "reserve_rate": 100,
+    "months_collected": 8
+  },
+  "라인": {
+    "balance_per_hh": 100.3,
+    "levy_per_hh": 19870,
+    "reserve_rate": 15,
+    "months_collected": 8
+  },
+  "명지캐럿(108동)": {
+    "balance_per_hh": 189.1,
+    "levy_per_hh": 29577,
+    "reserve_rate": 100,
+    "months_collected": 8
+  },
+  "미사강변 골든 센트로": {
+    "balance_per_hh": 53.6,
+    "levy_per_hh": 31822,
+    "reserve_rate": 0.6,
+    "months_collected": 7
+  },
+  "미사강변 센텀팰리스": {
+    "balance_per_hh": 42.8,
+    "levy_per_hh": 31272,
+    "reserve_rate": 4,
+    "months_collected": 8
+  },
+  "미사강변 센트리버": {
+    "balance_per_hh": 107,
+    "levy_per_hh": 15978,
+    "reserve_rate": 6,
+    "months_collected": 8
+  },
+  "미사강변 파크뷰": {
+    "balance_per_hh": 162.2,
+    "levy_per_hh": 22511,
+    "reserve_rate": 0.2,
+    "months_collected": 8
+  },
+  "미사강변더샵센트럴포레": {
+    "balance_per_hh": 141.5,
+    "levy_per_hh": 24334,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "미사강변도시 베라체": {
+    "balance_per_hh": 182.4,
+    "levy_per_hh": 20383,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "미사강변동원로얄듀크": {
+    "balance_per_hh": 97.1,
+    "levy_per_hh": 13289,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "미사강변센트럴풍경채": {
+    "balance_per_hh": 34.1,
+    "levy_per_hh": 19024,
+    "reserve_rate": 1.3,
+    "months_collected": 8
+  },
+  "미사강변아란티움": {
+    "balance_per_hh": 0.2,
+    "levy_per_hh": 760,
+    "reserve_rate": null,
+    "months_collected": 5
+  },
+  "미사강변트래지안": {
+    "balance_per_hh": 57.5,
+    "levy_per_hh": 9513,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "미사강변푸르지오": {
+    "balance_per_hh": 115,
+    "levy_per_hh": 27387,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "미사강변한신휴플러스": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 23188,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "부영": {
+    "balance_per_hh": 4,
+    "levy_per_hh": 30493,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "서해": {
+    "balance_per_hh": 115.2,
+    "levy_per_hh": 29583,
+    "reserve_rate": 33.4,
+    "months_collected": 8
+  },
+  "성원상떼빌": {
+    "balance_per_hh": 55.2,
+    "levy_per_hh": 38163,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "신안인스빌": {
+    "balance_per_hh": 75.7,
+    "levy_per_hh": 13239,
+    "reserve_rate": 2.5,
+    "months_collected": 7
+  },
+  "에코타운(B블럭)": {
+    "balance_per_hh": 169.9,
+    "levy_per_hh": 46690,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "위례롯데캐슬": {
+    "balance_per_hh": 112.5,
+    "levy_per_hh": 22180,
+    "reserve_rate": 3.2,
+    "months_collected": 8
+  },
+  "하남더샵센트럴뷰": {
+    "balance_per_hh": 46,
+    "levy_per_hh": 22321,
+    "reserve_rate": 1.5,
+    "months_collected": 8
+  },
+  "하남유니온시티에일린의뜰": {
+    "balance_per_hh": 139.5,
+    "levy_per_hh": 19167,
+    "reserve_rate": 4,
+    "months_collected": 7
+  },
+  "하남유시티대명루첸리버파크": {
+    "balance_per_hh": 51.7,
+    "levy_per_hh": 25138,
+    "reserve_rate": 6,
+    "months_collected": 8
+  },
+  "하남자이": {
+    "balance_per_hh": 110.6,
+    "levy_per_hh": 26280,
+    "reserve_rate": 29.6,
+    "months_collected": 8
+  },
+  "하남풍산아이파크(1단지)": {
+    "balance_per_hh": 109.5,
+    "levy_per_hh": 33886,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "하남풍산아이파크(5단지)": {
+    "balance_per_hh": 109.5,
+    "levy_per_hh": 33886,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "하남호반써밋에듀파크": {
+    "balance_per_hh": 35,
+    "levy_per_hh": 11080,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "한솔리치빌(1단지)": {
+    "balance_per_hh": 173.3,
+    "levy_per_hh": 19516,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "한솔리치빌(2단지)": {
+    "balance_per_hh": 173.3,
+    "levy_per_hh": 19516,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "한솔리치빌(3단지)": {
+    "balance_per_hh": 173.3,
+    "levy_per_hh": 19516,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "한솔리치빌(5단지)": {
+    "balance_per_hh": 173.3,
+    "levy_per_hh": 19516,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "해오름한국": {
+    "balance_per_hh": 73.3,
+    "levy_per_hh": 34276,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "현대홈타운": {
+    "balance_per_hh": 206.8,
+    "levy_per_hh": 27862,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "힐스테이트포웰시티": {
+    "balance_per_hh": 79.9,
+    "levy_per_hh": 12853,
+    "reserve_rate": 6.5,
+    "months_collected": 7
+  },
+  "KCC스위첸아파트": {
+    "balance_per_hh": 52.9,
+    "levy_per_hh": 21786,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "금호어울림레이크": {
+    "balance_per_hh": 108.7,
+    "levy_per_hh": 27131,
+    "reserve_rate": 0.8,
+    "months_collected": 8
+  },
+  "나노시티역롯데캐슬": {
+    "balance_per_hh": 9.1,
+    "levy_per_hh": 5331,
+    "reserve_rate": 0.5,
+    "months_collected": 8
+  },
+  "더레이크시티부영1단지": {
+    "balance_per_hh": 33.8,
+    "levy_per_hh": 21239,
+    "reserve_rate": 1.9,
+    "months_collected": 8
+  },
+  "더레이크시티부영2단지": {
+    "balance_per_hh": 83.7,
+    "levy_per_hh": 18819,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "더레이크시티부영5단지": {
+    "balance_per_hh": 62.9,
+    "levy_per_hh": 23646,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "동탄2엘에이치26단지아파트(에이65블록)": {
+    "balance_per_hh": 6.8,
+    "levy_per_hh": 4616,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄2하우스디더레이크": {
+    "balance_per_hh": 88.5,
+    "levy_per_hh": 16304,
+    "reserve_rate": 4,
+    "months_collected": 7
+  },
+  "동탄역 호반 써밋": {
+    "balance_per_hh": 66.3,
+    "levy_per_hh": 17720,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄역대원칸타빌포레지움": {
+    "balance_per_hh": 66.8,
+    "levy_per_hh": 26107,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄역더샵센트럴시티2차": {
+    "balance_per_hh": 108.6,
+    "levy_per_hh": 26716,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄역센트럴푸르지오": {
+    "balance_per_hh": 37.3,
+    "levy_per_hh": 26329,
+    "reserve_rate": 8,
+    "months_collected": 8
+  },
+  "동탄역신안인스빌리베라1차": {
+    "balance_per_hh": 86.9,
+    "levy_per_hh": 30859,
+    "reserve_rate": 6,
+    "months_collected": 8
+  },
+  "동탄역신안인스빌리베라2차": {
+    "balance_per_hh": 48.2,
+    "levy_per_hh": 22041,
+    "reserve_rate": 1.3,
+    "months_collected": 7
+  },
+  "동탄역이지더원": {
+    "balance_per_hh": 131.5,
+    "levy_per_hh": 11561,
+    "reserve_rate": 2.4,
+    "months_collected": 8
+  },
+  "동탄역푸르지오": {
+    "balance_per_hh": 484.7,
+    "levy_per_hh": 16187,
+    "reserve_rate": 3,
+    "months_collected": 7
+  },
+  "동탄호수자이파밀리에": {
+    "balance_per_hh": 16.1,
+    "levy_per_hh": 12594,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "반도유보라아이비파크3": {
+    "balance_per_hh": 55.5,
+    "levy_per_hh": 18183,
+    "reserve_rate": 2.3,
+    "months_collected": 8
+  },
+  "반정아이파크캐슬4단지": {
+    "balance_per_hh": 45.9,
+    "levy_per_hh": 8635,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "반정아이파크캐슬5단지": {
+    "balance_per_hh": 37,
+    "levy_per_hh": 10853,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "병점역아이파크캐슬": {
+    "balance_per_hh": 55.6,
+    "levy_per_hh": 9724,
+    "reserve_rate": 2,
+    "months_collected": 8
+  },
+  "솔빛마을신도브래뉴": {
+    "balance_per_hh": 175.3,
+    "levy_per_hh": 45447,
+    "reserve_rate": 1.5,
+    "months_collected": 8
+  },
+  "솔빛마을쌍용예가": {
+    "balance_per_hh": 118.1,
+    "levy_per_hh": 41686,
+    "reserve_rate": 2.8,
+    "months_collected": 7
+  },
+  "시범다은마을우남퍼스트빌": {
+    "balance_per_hh": 197.6,
+    "levy_per_hh": 54993,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "시범한빛마을금호어울림": {
+    "balance_per_hh": 206,
+    "levy_per_hh": 29669,
+    "reserve_rate": 15,
+    "months_collected": 8
+  },
+  "시범한빛마을동탄아이파크": {
+    "balance_per_hh": 157.7,
+    "levy_per_hh": 38222,
+    "reserve_rate": 21,
+    "months_collected": 8
+  },
+  "시범한빛마을삼부르네상스": {
+    "balance_per_hh": 87.1,
+    "levy_per_hh": 32144,
+    "reserve_rate": 7.7,
+    "months_collected": 8
+  },
+  "시범한빛마을한화꿈에그린": {
+    "balance_per_hh": 130,
+    "levy_per_hh": 36000,
+    "reserve_rate": 6,
+    "months_collected": 8
+  },
+  "신동탄포레자이": {
+    "balance_per_hh": 22.9,
+    "levy_per_hh": 9653,
+    "reserve_rate": 1.9,
+    "months_collected": 8
+  },
+  "푸르지오": {
+    "balance_per_hh": 144.8,
+    "levy_per_hh": 31674,
+    "reserve_rate": 37,
+    "months_collected": 8
+  },
+  "한신더휴": {
+    "balance_per_hh": 36.8,
+    "levy_per_hh": 29344,
+    "reserve_rate": 2.8,
+    "months_collected": 8
+  },
+  "한화 포레나 동탄호수": {
+    "balance_per_hh": 74.1,
+    "levy_per_hh": 14663,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "힐스테이트동탄": {
+    "balance_per_hh": 39.4,
+    "levy_per_hh": 16227,
+    "reserve_rate": 2.1,
+    "months_collected": 7
+  },
+  "시범삼성": {
+    "balance_per_hh": 164.2,
+    "levy_per_hh": 40429,
+    "reserve_rate": 21.6,
+    "months_collected": 8
+  },
+  "동양정자파라곤(3단지)": {
+    "balance_per_hh": 144.3,
+    "levy_per_hh": 43738,
+    "reserve_rate": 8.2,
+    "months_collected": 8
+  },
+  "동원로얄듀크": {
+    "balance_per_hh": 218.7,
+    "levy_per_hh": 39187,
+    "reserve_rate": 1.4,
+    "months_collected": 7
+  },
+  "로얄팰리스": {
+    "balance_per_hh": 523.5,
+    "levy_per_hh": 78585,
+    "reserve_rate": 2.6,
+    "months_collected": 8
+  },
+  "매화마을(주공4)": {
+    "balance_per_hh": 96.2,
+    "levy_per_hh": 18068,
+    "reserve_rate": 44,
+    "months_collected": 8
+  },
+  "목련마을(영남)": {
+    "balance_per_hh": 174.2,
+    "levy_per_hh": 29633,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "미켈란쉐르빌": {
+    "balance_per_hh": 292.1,
+    "levy_per_hh": 49382,
+    "reserve_rate": 1,
+    "months_collected": 8
+  },
+  "백현마을2단지": {
+    "balance_per_hh": 145.4,
+    "levy_per_hh": 42884,
+    "reserve_rate": 2.6,
+    "months_collected": 8
+  },
+  "백현마을5단지(주공)": {
+    "balance_per_hh": 177.9,
+    "levy_per_hh": 35538,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "백현마을6단지(주공)": {
+    "balance_per_hh": 209,
+    "levy_per_hh": 27578,
+    "reserve_rate": 20,
+    "months_collected": 7
+  },
+  "봇들마을1단지(판교신미주)": {
+    "balance_per_hh": 154.5,
+    "levy_per_hh": 28422,
+    "reserve_rate": 19.7,
+    "months_collected": 8
+  },
+  "분당하우스토리": {
+    "balance_per_hh": 324.3,
+    "levy_per_hh": 26734,
+    "reserve_rate": 40,
+    "months_collected": 8
+  },
+  "산운마을14단지(경남아너스빌)": {
+    "balance_per_hh": 216.2,
+    "levy_per_hh": 58352,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "산운마을6단지(신동아파밀리에)": {
+    "balance_per_hh": 346.9,
+    "levy_per_hh": 57339,
+    "reserve_rate": 4.7,
+    "months_collected": 8
+  },
+  "산운마을8단지(부영사랑으로)": {
+    "balance_per_hh": 72.2,
+    "levy_per_hh": 0,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "삼성아데나루체": {
+    "balance_per_hh": 165.3,
+    "levy_per_hh": 84663,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "샛별마을(우방)": {
+    "balance_per_hh": 181.9,
+    "levy_per_hh": 42035,
+    "reserve_rate": 1,
+    "months_collected": 7
+  },
+  "아름마을(건영)": {
+    "balance_per_hh": 230.1,
+    "levy_per_hh": 51942,
+    "reserve_rate": 16.1,
+    "months_collected": 8
+  },
+  "아름마을(선경)": {
+    "balance_per_hh": 2.9,
+    "levy_per_hh": 28993,
+    "reserve_rate": 219819664,
+    "months_collected": 7
+  },
+  "아름마을(태영)": {
+    "balance_per_hh": 57.2,
+    "levy_per_hh": 55241,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "아름마을(풍림)": {
+    "balance_per_hh": 235.4,
+    "levy_per_hh": 46718,
+    "reserve_rate": 25.4,
+    "months_collected": 8
+  },
+  "아름마을(효성)": {
+    "balance_per_hh": 208.7,
+    "levy_per_hh": 31602,
+    "reserve_rate": 40,
+    "months_collected": 8
+  },
+  "이매촌(동신9)": {
+    "balance_per_hh": 130.9,
+    "levy_per_hh": 37449,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "이매촌(청구)": {
+    "balance_per_hh": 236.5,
+    "levy_per_hh": 48278,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "장안타운(건영)": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 29731,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "청솔마을(대원)": {
+    "balance_per_hh": 34.4,
+    "levy_per_hh": 46621,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "청솔마을(서광)": {
+    "balance_per_hh": 48.1,
+    "levy_per_hh": 32530,
+    "reserve_rate": 30,
+    "months_collected": 8
+  },
+  "청솔마을(유천)": {
+    "balance_per_hh": 114.8,
+    "levy_per_hh": 34572,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "청솔마을(주공9단지)": {
+    "balance_per_hh": 92.1,
+    "levy_per_hh": 13319,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "코오롱더프라우": {
+    "balance_per_hh": 394.7,
+    "levy_per_hh": 54785,
+    "reserve_rate": 24,
+    "months_collected": 8
+  },
+  "탑마을(경남)1": {
+    "balance_per_hh": 240.8,
+    "levy_per_hh": 51497,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "탑마을(대우)": {
+    "balance_per_hh": 377.4,
+    "levy_per_hh": 56007,
+    "reserve_rate": 70,
+    "months_collected": 8
+  },
+  "판교알파리움1단지": {
+    "balance_per_hh": 114.7,
+    "levy_per_hh": 18182,
+    "reserve_rate": 0.3,
+    "months_collected": 8
+  },
+  "판교알파리움2단지": {
+    "balance_per_hh": 259.4,
+    "levy_per_hh": 36231,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "판교원마을12단지(힐스테이트)": {
+    "balance_per_hh": 274.8,
+    "levy_per_hh": 29719,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "판교원마을1단지(파라곤)": {
+    "balance_per_hh": 250.9,
+    "levy_per_hh": 57196,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "판교원마을2단지(푸르지오)": {
+    "balance_per_hh": 326.2,
+    "levy_per_hh": 27103,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "판교원마을5단지(푸르지오)": {
+    "balance_per_hh": 195,
+    "levy_per_hh": 27336,
+    "reserve_rate": 11,
+    "months_collected": 8
+  },
+  "판교원마을7단지(모아미래도)": {
+    "balance_per_hh": 81.2,
+    "levy_per_hh": 34442,
+    "reserve_rate": 2.2,
+    "months_collected": 8
+  },
+  "판교푸르지오그랑블": {
+    "balance_per_hh": 145.4,
+    "levy_per_hh": 27684,
+    "reserve_rate": 1.3,
+    "months_collected": 8
+  },
+  "효자촌(동아)": {
+    "balance_per_hh": 14.6,
+    "levy_per_hh": 66272,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "효자촌(삼환)": {
+    "balance_per_hh": 109.3,
+    "levy_per_hh": 62818,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "효자촌(임광)": {
+    "balance_per_hh": 299.9,
+    "levy_per_hh": 36436,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "효자촌(현대)": {
+    "balance_per_hh": 176,
+    "levy_per_hh": 44931,
+    "reserve_rate": 1,
+    "months_collected": 8
+  },
+  "e편한세상금빛그랑메종5단지": {
+    "balance_per_hh": 38.6,
+    "levy_per_hh": 11708,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "금광": {
+    "balance_per_hh": 73.6,
+    "levy_per_hh": 0,
+    "reserve_rate": null,
+    "months_collected": 3
+  },
+  "상대원삼익": {
+    "balance_per_hh": 43.1,
+    "levy_per_hh": 10000,
+    "reserve_rate": 60,
+    "months_collected": 8
+  },
+  "선경2차": {
+    "balance_per_hh": 55.3,
+    "levy_per_hh": 21810,
+    "reserve_rate": 12,
+    "months_collected": 8
+  },
+  "성원초원": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 25470,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "신흥역하늘채랜더스원2단지": {
+    "balance_per_hh": 62.3,
+    "levy_per_hh": 17521,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "신흥역하늘채랜더스원3단지": {
+    "balance_per_hh": 115.1,
+    "levy_per_hh": 30286,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "엘리프하이디움1단지": {
+    "balance_per_hh": 4.2,
+    "levy_per_hh": 41720,
+    "reserve_rate": 10,
+    "months_collected": 1
+  },
+  "엘리프하이디움2단지": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 44158,
+    "reserve_rate": 10,
+    "months_collected": 1
+  },
+  "연꽃마을(4단지)": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 40935,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "은빛마을(두산위브)": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 14540,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "은행주공2": {
+    "balance_per_hh": 94.3,
+    "levy_per_hh": 0,
+    "reserve_rate": null,
+    "months_collected": 2
+  },
+  "한빛스위티": {
+    "balance_per_hh": 149.4,
+    "levy_per_hh": 0,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "두산": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 26434,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "래미안위례": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 27366,
+    "reserve_rate": 2.3,
+    "months_collected": 7
+  },
+  "샤르망": {
+    "balance_per_hh": 39,
+    "levy_per_hh": 10761,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "선경논골": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 10490,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "신동아파밀리에": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 31880,
+    "reserve_rate": 2.9,
+    "months_collected": 6
+  },
+  "신세계쉐덴": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 36829,
+    "reserve_rate": 25,
+    "months_collected": 7
+  },
+  "우성에비뉴": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 31704,
+    "reserve_rate": 5.3,
+    "months_collected": 7
+  },
+  "위례더힐55": {
+    "balance_per_hh": 147.1,
+    "levy_per_hh": 0,
+    "reserve_rate": 7,
+    "months_collected": 8
+  },
+  "위례센트럴푸르지오": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 38425,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "위례아트리버푸르지오1단지": {
+    "balance_per_hh": 73.7,
+    "levy_per_hh": 26186,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "위례호반써밋에비뉴": {
+    "balance_per_hh": 120.7,
+    "levy_per_hh": 27835,
+    "reserve_rate": 5.7,
+    "months_collected": 7
+  },
+  "일성오퍼스원": {
+    "balance_per_hh": 81.4,
+    "levy_per_hh": 0,
+    "reserve_rate": 11.1,
+    "months_collected": 7
+  },
+  "힐스테이트위례": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 33598,
+    "reserve_rate": 10,
+    "months_collected": 7
+  },
+  "권선삼성": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 14680,
+    "reserve_rate": 30,
+    "months_collected": 7
+  },
+  "권선신일유토빌": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 20774,
+    "reserve_rate": 7.8,
+    "months_collected": 8
+  },
+  "권선어울림": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 34711,
+    "reserve_rate": 4.5,
+    "months_collected": 7
+  },
+  "금성": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 7374,
+    "reserve_rate": null,
+    "months_collected": 4
+  },
+  "대림": {
+    "balance_per_hh": 110.8,
+    "levy_per_hh": 49171,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "두산동아": {
+    "balance_per_hh": 108.4,
+    "levy_per_hh": 32592,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "라포리엘": {
+    "balance_per_hh": 40.4,
+    "levy_per_hh": 15593,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "서수원엠코타운르본느": {
+    "balance_per_hh": 173.5,
+    "levy_per_hh": 15665,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "서수원울트라참누리파크1단지": {
+    "balance_per_hh": 113.8,
+    "levy_per_hh": 33366,
+    "reserve_rate": 1,
+    "months_collected": 4
+  },
+  "서수원울트라참누리파크2단지": {
+    "balance_per_hh": 113.8,
+    "levy_per_hh": 33366,
+    "reserve_rate": 1,
+    "months_collected": 6
+  },
+  "서수원한라비발디3단지": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 8269,
+    "reserve_rate": 2,
+    "months_collected": 8
+  },
+  "세양청마루": {
+    "balance_per_hh": 88.7,
+    "levy_per_hh": 0,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "수원곡반정현대아이파크": {
+    "balance_per_hh": 154.3,
+    "levy_per_hh": 38689,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "수원권선데시앙": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 42317,
+    "reserve_rate": 22,
+    "months_collected": 2
+  },
+  "수원아이파크시티1단지": {
+    "balance_per_hh": 89.2,
+    "levy_per_hh": 0,
+    "reserve_rate": 1,
+    "months_collected": 7
+  },
+  "수원아이파크시티8단지": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 12171,
+    "reserve_rate": null,
+    "months_collected": 2
+  },
+  "수원아이파크시티9단지": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 11722,
+    "reserve_rate": null,
+    "months_collected": 3
+  },
+  "수원역센트럴어반시티아파트(수원센트럴타운3단지)": {
+    "balance_per_hh": 50.5,
+    "levy_per_hh": 0,
+    "reserve_rate": null,
+    "months_collected": 2
+  },
+  "수원역한라비발디퍼스트": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 20333,
+    "reserve_rate": null,
+    "months_collected": 2
+  },
+  "쌍용더플래티넘오목천역": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 9287,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "연안": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 17000,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "오목천역 서희스타힐스 아파트": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 30481,
+    "reserve_rate": null,
+    "months_collected": 5
+  },
+  "웅비": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 4750,
+    "reserve_rate": null,
+    "months_collected": 2
+  },
+  "우만주공1단지": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 6567,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "인계리치안": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 2378,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "버들치마을성복힐스테이트1차": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 32060,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "버들치마을성복힐스테이트3차": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 33675,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "미사강변파밀리에": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 18114,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "동탄역시범호반써밋": {
+    "balance_per_hh": 92.3,
+    "levy_per_hh": 0,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "동탄역에일린의뜰": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 30065,
+    "reserve_rate": 3.1,
+    "months_collected": 4
+  },
+  "동분당더퍼스트": {
+    "balance_per_hh": 110.6,
+    "levy_per_hh": 30259,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "보미리전빌3": {
+    "balance_per_hh": 35.9,
+    "levy_per_hh": 2056,
+    "reserve_rate": 34,
+    "months_collected": 7
+  },
+  "황송마을": {
+    "balance_per_hh": 51.5,
+    "levy_per_hh": 10000,
+    "reserve_rate": 50,
+    "months_collected": 8
+  },
+  "셀레스빌": {
+    "balance_per_hh": 327,
+    "levy_per_hh": 52169,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "신동아파라디움": {
+    "balance_per_hh": 293.8,
+    "levy_per_hh": 33798,
+    "reserve_rate": 12.5,
+    "months_collected": 8
+  },
+  "수원모아미래도센트럴타운1단지": {
+    "balance_per_hh": 23.7,
+    "levy_per_hh": 18113,
+    "reserve_rate": 15,
+    "months_collected": 7
+  },
+  "탑동우방파크타운": {
+    "balance_per_hh": 57.3,
+    "levy_per_hh": 45666,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "한양": {
+    "balance_per_hh": 91.5,
+    "levy_per_hh": 13650,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "호매실GS아파트": {
+    "balance_per_hh": 72.9,
+    "levy_per_hh": 47239,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "호매실금호어울림에듀포레": {
+    "balance_per_hh": 57,
+    "levy_per_hh": 15768,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "호매실엔루체(N'LUCE)": {
+    "balance_per_hh": 108.2,
+    "levy_per_hh": 23152,
+    "reserve_rate": 30,
+    "months_collected": 8
+  },
+  "호매실역서희스타힐스": {
+    "balance_per_hh": 66.6,
+    "levy_per_hh": 23078,
+    "reserve_rate": 2.1,
+    "months_collected": 8
+  },
+  "화서성일": {
+    "balance_per_hh": 1,
+    "levy_per_hh": 4906,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "건영1차": {
+    "balance_per_hh": 122.4,
+    "levy_per_hh": 60387,
+    "reserve_rate": 18,
+    "months_collected": 8
+  },
+  "광교 해모로 아파트": {
+    "balance_per_hh": 205,
+    "levy_per_hh": 43793,
+    "reserve_rate": 21.2,
+    "months_collected": 8
+  },
+  "광교2차e편한세상": {
+    "balance_per_hh": 147.5,
+    "levy_per_hh": 32784,
+    "reserve_rate": 2.3,
+    "months_collected": 8
+  },
+  "광교모아엘가레이크뷰": {
+    "balance_per_hh": 180.4,
+    "levy_per_hh": 32309,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "광교모아엘가레이크파크": {
+    "balance_per_hh": 166.2,
+    "levy_per_hh": 34990,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "광교호반베르디움트라엘": {
+    "balance_per_hh": 77.5,
+    "levy_per_hh": 44790,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "그대가센트럴파크": {
+    "balance_per_hh": 139.2,
+    "levy_per_hh": 53143,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "금성5": {
+    "balance_per_hh": 304.7,
+    "levy_per_hh": 30000,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "대우월드마크": {
+    "balance_per_hh": 314.6,
+    "levy_per_hh": 47865,
+    "reserve_rate": 0,
+    "months_collected": 8
+  },
+  "래미안광교": {
+    "balance_per_hh": 301.2,
+    "levy_per_hh": 35523,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "삼정라츠": {
+    "balance_per_hh": 197,
+    "levy_per_hh": 33890,
+    "reserve_rate": 25,
+    "months_collected": 8
+  },
+  "성일": {
+    "balance_per_hh": 98.9,
+    "levy_per_hh": 16065,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "신나무실신원": {
+    "balance_per_hh": 260.7,
+    "levy_per_hh": 54841,
+    "reserve_rate": 60,
+    "months_collected": 7
+  },
+  "영통e-편한세상": {
+    "balance_per_hh": 143.9,
+    "levy_per_hh": 19500,
+    "reserve_rate": 7.3,
+    "months_collected": 8
+  },
+  "오드카운티": {
+    "balance_per_hh": 187.5,
+    "levy_per_hh": 29901,
+    "reserve_rate": 12.1,
+    "months_collected": 8
+  },
+  "원천성일": {
+    "balance_per_hh": 10.9,
+    "levy_per_hh": 6742,
+    "reserve_rate": 30,
+    "months_collected": 7
+  },
+  "원천신미주": {
+    "balance_per_hh": 132.2,
+    "levy_per_hh": 33751,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "일신건영휴먼빌": {
+    "balance_per_hh": 104.4,
+    "levy_per_hh": 20460,
+    "reserve_rate": 0.7,
+    "months_collected": 7
+  },
+  "자연앤자이3단지": {
+    "balance_per_hh": 134,
+    "levy_per_hh": 30400,
+    "reserve_rate": 2,
+    "months_collected": 8
+  },
+  "청명마을대우": {
+    "balance_per_hh": 187.7,
+    "levy_per_hh": 50119,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "포레나영흥숲": {
+    "balance_per_hh": 34.2,
+    "levy_per_hh": 22124,
+    "reserve_rate": 1.5,
+    "months_collected": 8
+  },
+  "힐스테이트광교": {
+    "balance_per_hh": 88.9,
+    "levy_per_hh": 19837,
+    "reserve_rate": 4.3,
+    "months_collected": 7
+  },
+  "동성영화타운": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 47510,
+    "reserve_rate": null,
+    "months_collected": 2
+  },
+  "동진맨션": {
+    "balance_per_hh": 181.7,
+    "levy_per_hh": 22300,
+    "reserve_rate": 3.3,
+    "months_collected": 7
+  },
+  "두견마을벽산3차": {
+    "balance_per_hh": 132.3,
+    "levy_per_hh": 50508,
+    "reserve_rate": 6.5,
+    "months_collected": 8
+  },
+  "북수원자이렉스비아": {
+    "balance_per_hh": 18.3,
+    "levy_per_hh": 10764,
+    "reserve_rate": 2,
+    "months_collected": 8
+  },
+  "비단마을영풍": {
+    "balance_per_hh": 321.5,
+    "levy_per_hh": 52220,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "서희스타힐스3단지": {
+    "balance_per_hh": 124.6,
+    "levy_per_hh": 45526,
+    "reserve_rate": 0.5,
+    "months_collected": 7
+  },
+  "성균관대역동문디이스트": {
+    "balance_per_hh": 59.7,
+    "levy_per_hh": 17316,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "송학": {
+    "balance_per_hh": 40.5,
+    "levy_per_hh": 10893,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "수원광교산스위첸": {
+    "balance_per_hh": 5.1,
+    "levy_per_hh": 52974,
+    "reserve_rate": 60,
+    "months_collected": 8
+  },
+  "수원정자금강에스쁘아": {
+    "balance_per_hh": 118.7,
+    "levy_per_hh": 6517,
+    "reserve_rate": 2,
+    "months_collected": 8
+  },
+  "연꽃마을풍림": {
+    "balance_per_hh": 54,
+    "levy_per_hh": 50672,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "천록": {
+    "balance_per_hh": 127.3,
+    "levy_per_hh": 14643,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "청솔마을SK한화": {
+    "balance_per_hh": 23.4,
+    "levy_per_hh": 48556,
+    "reserve_rate": 12,
+    "months_collected": 8
+  },
+  "태영": {
+    "balance_per_hh": 42.3,
+    "levy_per_hh": 21692,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "화남2": {
+    "balance_per_hh": 150.6,
+    "levy_per_hh": 18644,
+    "reserve_rate": 2.5,
+    "months_collected": 8
+  },
+  "꽃뫼양지마을대우": {
+    "balance_per_hh": 193.1,
+    "levy_per_hh": 38718,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "꽃뫼양지마을현대": {
+    "balance_per_hh": 286.5,
+    "levy_per_hh": 57683,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동도센트리움": {
+    "balance_per_hh": 95.6,
+    "levy_per_hh": 19304,
+    "reserve_rate": 1.1,
+    "months_collected": 7
+  },
+  "문화맨션": {
+    "balance_per_hh": 181.2,
+    "levy_per_hh": 14934,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "선경1": {
+    "balance_per_hh": 13.7,
+    "levy_per_hh": 33683,
+    "reserve_rate": 15,
+    "months_collected": 7
+  },
+  "수원인계동동문굿모닝힐아파트": {
+    "balance_per_hh": 17.6,
+    "levy_per_hh": 17796,
+    "reserve_rate": 28,
+    "months_collected": 7
+  },
+  "수정": {
+    "balance_per_hh": 148.4,
+    "levy_per_hh": 96389,
+    "reserve_rate": 2.2,
+    "months_collected": 8
+  },
+  "우만주공4단지": {
+    "balance_per_hh": 164.3,
+    "levy_per_hh": 41976,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "인계미루아파트": {
+    "balance_per_hh": 105.2,
+    "levy_per_hh": 5371,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "코스모골드": {
+    "balance_per_hh": 7.1,
+    "levy_per_hh": 2492,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "화서주공5단지": {
+    "balance_per_hh": 120,
+    "levy_per_hh": 43869,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "SK": {
+    "balance_per_hh": 174.3,
+    "levy_per_hh": 51191,
+    "reserve_rate": 40,
+    "months_collected": 8
+  },
+  "가현마을신안": {
+    "balance_per_hh": 230.2,
+    "levy_per_hh": 49147,
+    "reserve_rate": 0.1,
+    "months_collected": 8
+  },
+  "갈천마을신일유토빌": {
+    "balance_per_hh": 244.9,
+    "levy_per_hh": 38860,
+    "reserve_rate": 18,
+    "months_collected": 7
+  },
+  "강남마을코오롱하늘채수": {
+    "balance_per_hh": 154,
+    "levy_per_hh": 48622,
+    "reserve_rate": 0.1,
+    "months_collected": 8
+  },
+  "공세호수마을공세성원상떼레이크뷰": {
+    "balance_per_hh": 236.4,
+    "levy_per_hh": 45302,
+    "reserve_rate": 5.7,
+    "months_collected": 8
+  },
+  "교동마을쌍용": {
+    "balance_per_hh": 77,
+    "levy_per_hh": 49960,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "교동마을정광아파트": {
+    "balance_per_hh": 280.6,
+    "levy_per_hh": 51551,
+    "reserve_rate": 0.3,
+    "months_collected": 8
+  },
+  "교동마을현대필그린": {
+    "balance_per_hh": 355.9,
+    "levy_per_hh": 45436,
+    "reserve_rate": 11.8,
+    "months_collected": 8
+  },
+  "구성역효성해링턴플레이스": {
+    "balance_per_hh": 84,
+    "levy_per_hh": 21947,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "기흥삼정선비마을": {
+    "balance_per_hh": 77.5,
+    "levy_per_hh": 26168,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "기흥역 롯데캐슬 레이시티": {
+    "balance_per_hh": 79.3,
+    "levy_per_hh": 9973,
+    "reserve_rate": 0.5,
+    "months_collected": 7
+  },
+  "대주피오레1단지": {
+    "balance_per_hh": 238.6,
+    "levy_per_hh": 31764,
+    "reserve_rate": 13.6,
+    "months_collected": 7
+  },
+  "대주피오레2단지": {
+    "balance_per_hh": 199.5,
+    "levy_per_hh": 41103,
+    "reserve_rate": 20,
+    "months_collected": 7
+  },
+  "더샵보정애비뉴1단지": {
+    "balance_per_hh": 167.2,
+    "levy_per_hh": 48948,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "더샵보정애비뉴2단지": {
+    "balance_per_hh": 333.5,
+    "levy_per_hh": 49717,
+    "reserve_rate": 7.3,
+    "months_collected": 8
+  },
+  "동백역월드메르디앙아파트": {
+    "balance_per_hh": 110.4,
+    "levy_per_hh": 36486,
+    "reserve_rate": 3.8,
+    "months_collected": 8
+  },
+  "동백역한라비발디(어은목마을)": {
+    "balance_per_hh": 234.2,
+    "levy_per_hh": 54340,
+    "reserve_rate": 4.4,
+    "months_collected": 8
+  },
+  "블루밍구성더센트럴": {
+    "balance_per_hh": 162.7,
+    "levy_per_hh": 26462,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "서천아이파크": {
+    "balance_per_hh": 162.4,
+    "levy_per_hh": 36869,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "성산마을서해그랑블": {
+    "balance_per_hh": 241,
+    "levy_per_hh": 29455,
+    "reserve_rate": 15,
+    "months_collected": 8
+  },
+  "성산마을신영지웰": {
+    "balance_per_hh": 190.2,
+    "levy_per_hh": 45645,
+    "reserve_rate": 0.6,
+    "months_collected": 8
+  },
+  "세원": {
+    "balance_per_hh": 182.1,
+    "levy_per_hh": 29346,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "신동백동도센트리움": {
+    "balance_per_hh": 109.1,
+    "levy_per_hh": 11929,
+    "reserve_rate": 11.9,
+    "months_collected": 8
+  },
+  "신동백아이파크": {
+    "balance_per_hh": 220.2,
+    "levy_per_hh": 47453,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "어은목마을대원칸타빌": {
+    "balance_per_hh": 177.6,
+    "levy_per_hh": 37571,
+    "reserve_rate": 15,
+    "months_collected": 8
+  },
+  "연원마을현대아이파크": {
+    "balance_per_hh": 148.2,
+    "levy_per_hh": 43807,
+    "reserve_rate": 7,
+    "months_collected": 8
+  },
+  "영덕신일1": {
+    "balance_per_hh": 92.1,
+    "levy_per_hh": 30019,
+    "reserve_rate": 11,
+    "months_collected": 8
+  },
+  "영덕신일2": {
+    "balance_per_hh": 92.1,
+    "levy_per_hh": 30019,
+    "reserve_rate": 11,
+    "months_collected": 8
+  },
+  "용인기흥효성해링턴플레이스": {
+    "balance_per_hh": 43.6,
+    "levy_per_hh": 16449,
+    "reserve_rate": 2.2,
+    "months_collected": 8
+  },
+  "용화마을태영데시앙1": {
+    "balance_per_hh": 199.6,
+    "levy_per_hh": 65958,
+    "reserve_rate": 35,
+    "months_collected": 8
+  },
+  "유원휴하임": {
+    "balance_per_hh": 104.7,
+    "levy_per_hh": 26412,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "이안두드림기흥역": {
+    "balance_per_hh": 26.7,
+    "levy_per_hh": 6598,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "지석마을그대가크레던스": {
+    "balance_per_hh": 209.3,
+    "levy_per_hh": 26142,
+    "reserve_rate": 4.7,
+    "months_collected": 7
+  },
+  "초당마을삼부르네상스12단지아파트(코아루)": {
+    "balance_per_hh": 183.1,
+    "levy_per_hh": 34596,
+    "reserve_rate": 7.8,
+    "months_collected": 8
+  },
+  "초당마을삼부르네상스13단지아파트(코아루)": {
+    "balance_per_hh": 183.1,
+    "levy_per_hh": 34596,
+    "reserve_rate": 7.8,
+    "months_collected": 7
+  },
+  "초당마을현진에버빌": {
+    "balance_per_hh": 181.6,
+    "levy_per_hh": 70112,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "초원마을성원상떼빌2차": {
+    "balance_per_hh": 320.6,
+    "levy_per_hh": 0,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "풍림(저층)": {
+    "balance_per_hh": 72.3,
+    "levy_per_hh": 8000,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "하마비마을동부센트레빌": {
+    "balance_per_hh": 232.2,
+    "levy_per_hh": 36864,
+    "reserve_rate": 60,
+    "months_collected": 8
+  },
+  "한보라더힐": {
+    "balance_per_hh": 226.2,
+    "levy_per_hh": 21372,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "한보라에듀포레": {
+    "balance_per_hh": 105.4,
+    "levy_per_hh": 40998,
+    "reserve_rate": 29.9,
+    "months_collected": 8
+  },
+  "한성1": {
+    "balance_per_hh": 31.9,
+    "levy_per_hh": 9987,
+    "reserve_rate": 32,
+    "months_collected": 8
+  },
+  "한성2": {
+    "balance_per_hh": 45.4,
+    "levy_per_hh": 0,
+    "reserve_rate": 16,
+    "months_collected": 8
+  },
+  "꽃메마을한라신영프로방스": {
+    "balance_per_hh": 380.6,
+    "levy_per_hh": 46049,
+    "reserve_rate": 30,
+    "months_collected": 8
+  },
+  "꽃메마을한라프로방스": {
+    "balance_per_hh": 320.6,
+    "levy_per_hh": 58188,
+    "reserve_rate": 26.2,
+    "months_collected": 8
+  },
+  "내대지마을푸르지오": {
+    "balance_per_hh": 136.8,
+    "levy_per_hh": 48000,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "벽산블루밍4단지": {
+    "balance_per_hh": 63.3,
+    "levy_per_hh": 39108,
+    "reserve_rate": 25.1,
+    "months_collected": 8
+  },
+  "벽산첼시빌2차": {
+    "balance_per_hh": 291.8,
+    "levy_per_hh": 86208,
+    "reserve_rate": 20.8,
+    "months_collected": 7
+  },
+  "상현마을금호베스트빌2단지": {
+    "balance_per_hh": 234.1,
+    "levy_per_hh": 54486,
+    "reserve_rate": 17.5,
+    "months_collected": 8
+  },
+  "상현마을금호베스트빌3단지": {
+    "balance_per_hh": 251,
+    "levy_per_hh": 29179,
+    "reserve_rate": 9,
+    "months_collected": 1
+  },
+  "신정마을성지": {
+    "balance_per_hh": 205.9,
+    "levy_per_hh": 51379,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "신정마을현대프라임": {
+    "balance_per_hh": 105,
+    "levy_per_hh": 52645,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "심곡마을광교힐스테이트": {
+    "balance_per_hh": 226.9,
+    "levy_per_hh": 34526,
+    "reserve_rate": 0.8,
+    "months_collected": 8
+  },
+  "엘지빌리지6": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 56952,
+    "reserve_rate": null,
+    "months_collected": 3
+  },
+  "용인수지동도센트리움": {
+    "balance_per_hh": 64.4,
+    "levy_per_hh": 10553,
+    "reserve_rate": 6,
+    "months_collected": 7
+  },
+  "인현마을힐스테이트(7차2단지)": {
+    "balance_per_hh": 257.1,
+    "levy_per_hh": 28980,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "죽전역솔하임": {
+    "balance_per_hh": 42.4,
+    "levy_per_hh": 9679,
+    "reserve_rate": 1.1,
+    "months_collected": 7
+  },
+  "죽전역월드메르디앙": {
+    "balance_per_hh": 142.7,
+    "levy_per_hh": 28754,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "중앙하이츠": {
+    "balance_per_hh": 244.6,
+    "levy_per_hh": 50979,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "푸른마을푸르지오": {
+    "balance_per_hh": 63.6,
+    "levy_per_hh": 0,
+    "reserve_rate": 15,
+    "months_collected": 5
+  },
+  "풍산아파트": {
+    "balance_per_hh": 208,
+    "levy_per_hh": 35621,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "현대성우8차": {
+    "balance_per_hh": 51,
+    "levy_per_hh": 30250,
+    "reserve_rate": 25.9,
+    "months_collected": 8
+  },
+  "e편한세상용인한숲시티2단지": {
+    "balance_per_hh": 120.3,
+    "levy_per_hh": 23216,
+    "reserve_rate": 3.3,
+    "months_collected": 8
+  },
+  "금강": {
+    "balance_per_hh": 85.1,
+    "levy_per_hh": 50550,
+    "reserve_rate": 14.8,
+    "months_collected": 8
+  },
+  "라이프": {
+    "balance_per_hh": 34.1,
+    "levy_per_hh": 24640,
+    "reserve_rate": 9.5,
+    "months_collected": 8
+  },
+  "삼환나우빌": {
+    "balance_per_hh": 121.4,
+    "levy_per_hh": 30000,
+    "reserve_rate": 20,
+    "months_collected": 6
+  },
+  "스위트홈아파트": {
+    "balance_per_hh": 51.8,
+    "levy_per_hh": 12970,
+    "reserve_rate": 1.6,
+    "months_collected": 7
+  },
+  "양우내안애에듀파크": {
+    "balance_per_hh": 74.9,
+    "levy_per_hh": 12891,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "양지": {
+    "balance_per_hh": 22.5,
+    "levy_per_hh": 16584,
+    "reserve_rate": 1.1,
+    "months_collected": 7
+  },
+  "에스원스마트빌": {
+    "balance_per_hh": 40.6,
+    "levy_per_hh": 5636,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "용인경남아너스빌디센트3단지": {
+    "balance_per_hh": 1.2,
+    "levy_per_hh": 12104,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "용인명지대역동원로얄듀크": {
+    "balance_per_hh": 118,
+    "levy_per_hh": 14230,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "용인유메이드": {
+    "balance_per_hh": 38.9,
+    "levy_per_hh": 6968,
+    "reserve_rate": 6.4,
+    "months_collected": 7
+  },
+  "용인행정타운두산위브1단지": {
+    "balance_per_hh": 174,
+    "levy_per_hh": 37380,
+    "reserve_rate": 1,
+    "months_collected": 8
+  },
+  "우미린센트럴파크": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 23012,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "힐스테이트용인고진역2단지": {
+    "balance_per_hh": 10.5,
+    "levy_per_hh": 14602,
+    "reserve_rate": 0.2,
+    "months_collected": 7
+  },
+  "힐스테이트용인둔전역": {
+    "balance_per_hh": 23.2,
+    "levy_per_hh": 13637,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "감일금강펜테리움센트럴파크": {
+    "balance_per_hh": 21.6,
+    "levy_per_hh": 4124,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "꿈동산신안": {
+    "balance_per_hh": 41,
+    "levy_per_hh": 30060,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "대동피렌체": {
+    "balance_per_hh": 82.9,
+    "levy_per_hh": 20754,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "더샵포웰시티": {
+    "balance_per_hh": 88.6,
+    "levy_per_hh": 18440,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "덕풍쌍용": {
+    "balance_per_hh": 72.5,
+    "levy_per_hh": 23287,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "리버나인RIVERNINE": {
+    "balance_per_hh": 42.8,
+    "levy_per_hh": 20687,
+    "reserve_rate": 16,
+    "months_collected": 8
+  },
+  "리버스위트칸타빌": {
+    "balance_per_hh": 89.9,
+    "levy_per_hh": 21193,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "미사강변 하우스디 더 레이크": {
+    "balance_per_hh": 56.8,
+    "levy_per_hh": 21647,
+    "reserve_rate": 1.5,
+    "months_collected": 8
+  },
+  "미사강변2차푸르지오": {
+    "balance_per_hh": 120.8,
+    "levy_per_hh": 32342,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "미사강변더샵리버포레": {
+    "balance_per_hh": 171.5,
+    "levy_per_hh": 26288,
+    "reserve_rate": 14.7,
+    "months_collected": 7
+  },
+  "미사강변동일하이빌": {
+    "balance_per_hh": 32.8,
+    "levy_per_hh": 12260,
+    "reserve_rate": 2.5,
+    "months_collected": 8
+  },
+  "미사강변루나리움": {
+    "balance_per_hh": 123.9,
+    "levy_per_hh": 18807,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "미사강변리버뷰자이": {
+    "balance_per_hh": 120.2,
+    "levy_per_hh": 15174,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "미사강변브라운스톤엔에이치에프": {
+    "balance_per_hh": 1.1,
+    "levy_per_hh": 2336,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "미사강변센트럴자이": {
+    "balance_per_hh": 226.2,
+    "levy_per_hh": 20970,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "미사강변스타힐스아파트": {
+    "balance_per_hh": 88.8,
+    "levy_per_hh": 24406,
+    "reserve_rate": 0.7,
+    "months_collected": 7
+  },
+  "미사레스티아": {
+    "balance_per_hh": 22.8,
+    "levy_per_hh": 22983,
+    "reserve_rate": 9,
+    "months_collected": 8
+  },
+  "미사역파라곤": {
+    "balance_per_hh": 68.3,
+    "levy_per_hh": 13444,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "미사역호반써밋": {
+    "balance_per_hh": 85.4,
+    "levy_per_hh": 19815,
+    "reserve_rate": 3.4,
+    "months_collected": 7
+  },
+  "백송한신": {
+    "balance_per_hh": 96.3,
+    "levy_per_hh": 20520,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "백조현대": {
+    "balance_per_hh": 66.3,
+    "levy_per_hh": 15000,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "위례 센트로엘": {
+    "balance_per_hh": 189,
+    "levy_per_hh": 22935,
+    "reserve_rate": 7,
+    "months_collected": 8
+  },
+  "위례그린파크푸르지오": {
+    "balance_per_hh": 66.5,
+    "levy_per_hh": 26264,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "위례숲우미린": {
+    "balance_per_hh": 110.9,
+    "levy_per_hh": 25082,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "위례신도시신안인스빌아스트로": {
+    "balance_per_hh": 75.7,
+    "levy_per_hh": 13239,
+    "reserve_rate": 2.5,
+    "months_collected": 7
+  },
+  "위례우미린": {
+    "balance_per_hh": 76.1,
+    "levy_per_hh": 23025,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "위례포레자이": {
+    "balance_per_hh": 84.5,
+    "levy_per_hh": 14010,
+    "reserve_rate": 4,
+    "months_collected": 8
+  },
+  "위례호반써밋": {
+    "balance_per_hh": 116.9,
+    "levy_per_hh": 20596,
+    "reserve_rate": 2,
+    "months_collected": 8
+  },
+  "창우마을": {
+    "balance_per_hh": 137.6,
+    "levy_per_hh": 30340,
+    "reserve_rate": 10.6,
+    "months_collected": 8
+  },
+  "포웰시티푸르지오라포레": {
+    "balance_per_hh": 67.5,
+    "levy_per_hh": 13673,
+    "reserve_rate": 2.5,
+    "months_collected": 8
+  },
+  "플로리체위례": {
+    "balance_per_hh": 156.8,
+    "levy_per_hh": 27892,
+    "reserve_rate": 2.5,
+    "months_collected": 8
+  },
+  "하남": {
+    "balance_per_hh": 35,
+    "levy_per_hh": 11080,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "하남한솔솔파크": {
+    "balance_per_hh": 225.9,
+    "levy_per_hh": 25475,
+    "reserve_rate": 1.8,
+    "months_collected": 8
+  },
+  "하남힐즈파크푸르지오2단지": {
+    "balance_per_hh": 74.9,
+    "levy_per_hh": 12410,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "힐스테이트센트럴위례": {
+    "balance_per_hh": 111.5,
+    "levy_per_hh": 22526,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "e편한세상남양뉴타운": {
+    "balance_per_hh": 42.6,
+    "levy_per_hh": 10958,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "구봉마을우남퍼스트빌": {
+    "balance_per_hh": 218.3,
+    "levy_per_hh": 48658,
+    "reserve_rate": 13.5,
+    "months_collected": 8
+  },
+  "금호어울림레이크2차": {
+    "balance_per_hh": 108.7,
+    "levy_per_hh": 27131,
+    "reserve_rate": 0.8,
+    "months_collected": 8
+  },
+  "기산베스트빌": {
+    "balance_per_hh": 145.1,
+    "levy_per_hh": 30000,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "나루마을신도브래뉴": {
+    "balance_per_hh": 148.4,
+    "levy_per_hh": 41852,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "남수원현대": {
+    "balance_per_hh": 84.3,
+    "levy_per_hh": 31148,
+    "reserve_rate": 13.3,
+    "months_collected": 8
+  },
+  "남양아이파크": {
+    "balance_per_hh": 200.2,
+    "levy_per_hh": 49128,
+    "reserve_rate": 2.6,
+    "months_collected": 8
+  },
+  "남양우림": {
+    "balance_per_hh": 196.8,
+    "levy_per_hh": 35027,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "남양우림필유아파트": {
+    "balance_per_hh": 196.8,
+    "levy_per_hh": 35027,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "대광파인밸리": {
+    "balance_per_hh": 17.4,
+    "levy_per_hh": 48813,
+    "reserve_rate": 13.3,
+    "months_collected": 6
+  },
+  "대광파인밸리골드": {
+    "balance_per_hh": 145.7,
+    "levy_per_hh": 52380,
+    "reserve_rate": 0.2,
+    "months_collected": 8
+  },
+  "대창": {
+    "balance_per_hh": 67.6,
+    "levy_per_hh": 38713,
+    "reserve_rate": 9.6,
+    "months_collected": 7
+  },
+  "더샵센트럴시티": {
+    "balance_per_hh": 65.2,
+    "levy_per_hh": 22611,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "더펠리체휴먼빌": {
+    "balance_per_hh": 72.9,
+    "levy_per_hh": 10826,
+    "reserve_rate": 1.5,
+    "months_collected": 8
+  },
+  "동광뷰엘": {
+    "balance_per_hh": 158.2,
+    "levy_per_hh": 34836,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄 더 레이크 팰리스": {
+    "balance_per_hh": 62.9,
+    "levy_per_hh": 23646,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "동탄 더샵 레이크에듀타운": {
+    "balance_per_hh": 81.6,
+    "levy_per_hh": 15220,
+    "reserve_rate": 2,
+    "months_collected": 7
+  },
+  "동탄2디에트르포레": {
+    "balance_per_hh": 36.4,
+    "levy_per_hh": 9821,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄2신도시 베라체": {
+    "balance_per_hh": 93.2,
+    "levy_per_hh": 17269,
+    "reserve_rate": 3.5,
+    "months_collected": 8
+  },
+  "동탄2신도시호반베르디움22단지": {
+    "balance_per_hh": 57.2,
+    "levy_per_hh": 7755,
+    "reserve_rate": 0.6,
+    "months_collected": 8
+  },
+  "동탄나루마을동탄역U.BORA여울숲1.0": {
+    "balance_per_hh": 199.8,
+    "levy_per_hh": 52308,
+    "reserve_rate": 2.4,
+    "months_collected": 8
+  },
+  "동탄동원로얄듀크2차": {
+    "balance_per_hh": 83.3,
+    "levy_per_hh": 19516,
+    "reserve_rate": 2.3,
+    "months_collected": 8
+  },
+  "동탄레이크자연앤푸르지오": {
+    "balance_per_hh": 63.7,
+    "levy_per_hh": 14844,
+    "reserve_rate": 1.3,
+    "months_collected": 8
+  },
+  "동탄린스트라우스더레이크": {
+    "balance_per_hh": 68.8,
+    "levy_per_hh": 19835,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "동탄센트럴포레스트": {
+    "balance_per_hh": 106.9,
+    "levy_per_hh": 33624,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄숲속마을 광명메이루즈": {
+    "balance_per_hh": 238.4,
+    "levy_per_hh": 31515,
+    "reserve_rate": 17.5,
+    "months_collected": 7
+  },
+  "동탄숲속마을 능동역 리체 더 포레스트": {
+    "balance_per_hh": 136.6,
+    "levy_per_hh": 77692,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄숲속마을 모아미래도1단지": {
+    "balance_per_hh": 143.4,
+    "levy_per_hh": 53540,
+    "reserve_rate": 17.4,
+    "months_collected": 7
+  },
+  "동탄숲속마을모아미래도2단지": {
+    "balance_per_hh": 161.9,
+    "levy_per_hh": 46232,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "동탄시범다은마을센트럴파크뷰": {
+    "balance_per_hh": 91.2,
+    "levy_per_hh": 38276,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "동탄역 더 힐": {
+    "balance_per_hh": 45,
+    "levy_per_hh": 23155,
+    "reserve_rate": 2.2,
+    "months_collected": 8
+  },
+  "동탄역 시범우남퍼스트빌아파트": {
+    "balance_per_hh": 64.2,
+    "levy_per_hh": 20776,
+    "reserve_rate": 3.4,
+    "months_collected": 8
+  },
+  "동탄역 시범한화 꿈에그린 프레스티지": {
+    "balance_per_hh": 73.9,
+    "levy_per_hh": 72443,
+    "reserve_rate": 12.5,
+    "months_collected": 8
+  },
+  "동탄역 신미주": {
+    "balance_per_hh": 245.5,
+    "levy_per_hh": 30000,
+    "reserve_rate": 4.8,
+    "months_collected": 8
+  },
+  "동탄역대방디엠시티더센텀": {
+    "balance_per_hh": 51.4,
+    "levy_per_hh": 7345,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "동탄역동원로얄듀크비스타3차": {
+    "balance_per_hh": 67.5,
+    "levy_per_hh": 11478,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄역롯데캐슬": {
+    "balance_per_hh": 57,
+    "levy_per_hh": 17160,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "동탄역린스트라우스": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 19513,
+    "reserve_rate": 10,
+    "months_collected": 3
+  },
+  "동탄역반도유보라아이비파크2.0": {
+    "balance_per_hh": 90.1,
+    "levy_per_hh": 0,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "동탄역반도유보라아이비파크7.0": {
+    "balance_per_hh": 137.9,
+    "levy_per_hh": 33867,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄역삼정그린코아": {
+    "balance_per_hh": 98.2,
+    "levy_per_hh": 32127,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "동탄역센트럴상록아파트": {
+    "balance_per_hh": 71.4,
+    "levy_per_hh": 18034,
+    "reserve_rate": 1.4,
+    "months_collected": 7
+  },
+  "동탄역센트럴예미지": {
+    "balance_per_hh": 141,
+    "levy_per_hh": 18504,
+    "reserve_rate": 1.6,
+    "months_collected": 8
+  },
+  "동탄역시범금강펜테리움센트럴파크3": {
+    "balance_per_hh": 70.8,
+    "levy_per_hh": 9074,
+    "reserve_rate": 2,
+    "months_collected": 8
+  },
+  "동탄역시범대원칸타빌아파트": {
+    "balance_per_hh": 46.4,
+    "levy_per_hh": 21909,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄역시범리슈빌아파트": {
+    "balance_per_hh": 87.5,
+    "levy_per_hh": 20911,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "동탄역시범반도유보라아이비파크1.0": {
+    "balance_per_hh": 55.2,
+    "levy_per_hh": 28827,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "동탄역시범예미지아파트": {
+    "balance_per_hh": 120.6,
+    "levy_per_hh": 16319,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄역예미지시그너스": {
+    "balance_per_hh": 55.2,
+    "levy_per_hh": 17814,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "동탄역유림노르웨이숲": {
+    "balance_per_hh": 50.2,
+    "levy_per_hh": 11732,
+    "reserve_rate": 5.7,
+    "months_collected": 7
+  },
+  "동탄역파라곤": {
+    "balance_per_hh": 55,
+    "levy_per_hh": 16792,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "동탄역포레너스": {
+    "balance_per_hh": 47.3,
+    "levy_per_hh": 15671,
+    "reserve_rate": 4.2,
+    "months_collected": 8
+  },
+  "동탄역헤리엇": {
+    "balance_per_hh": 64.8,
+    "levy_per_hh": 38048,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동탄위버폴리스": {
+    "balance_per_hh": 126.2,
+    "levy_per_hh": 45995,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "동탄파라곤": {
+    "balance_per_hh": 309.8,
+    "levy_per_hh": 99640,
+    "reserve_rate": 8.1,
+    "months_collected": 8
+  },
+  "동탄파크자이": {
+    "balance_per_hh": 76.4,
+    "levy_per_hh": 18131,
+    "reserve_rate": 4.1,
+    "months_collected": 8
+  },
+  "동탄파크푸르지오": {
+    "balance_per_hh": 27.3,
+    "levy_per_hh": 21598,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "동탄파크한양수자인": {
+    "balance_per_hh": 61.6,
+    "levy_per_hh": 9026,
+    "reserve_rate": 0.3,
+    "months_collected": 8
+  },
+  "동탄퍼스트파크": {
+    "balance_per_hh": 155.3,
+    "levy_per_hh": 53790,
+    "reserve_rate": 3,
+    "months_collected": 7
+  },
+  "동탄푸른마을신일해피트리": {
+    "balance_per_hh": 75.2,
+    "levy_per_hh": 50092,
+    "reserve_rate": 14,
+    "months_collected": 8
+  },
+  "동탄호수하우스디": {
+    "balance_per_hh": 76.8,
+    "levy_per_hh": 14932,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "레이크반도유보라아이비파크9.0": {
+    "balance_per_hh": 106.2,
+    "levy_per_hh": 12900,
+    "reserve_rate": 2,
+    "months_collected": 8
+  },
+  "롯데캐슬 알바트로스": {
+    "balance_per_hh": 56,
+    "levy_per_hh": 30074,
+    "reserve_rate": 3.7,
+    "months_collected": 8
+  },
+  "르파비스": {
+    "balance_per_hh": 8.1,
+    "levy_per_hh": 5837,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "반달마을두산위브1단지": {
+    "balance_per_hh": 288.8,
+    "levy_per_hh": 32100,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "반달마을두산위브2단지": {
+    "balance_per_hh": 221.8,
+    "levy_per_hh": 39259,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "반달마을푸르지오": {
+    "balance_per_hh": 214.6,
+    "levy_per_hh": 35499,
+    "reserve_rate": 3.1,
+    "months_collected": 8
+  },
+  "반월자이더파크": {
+    "balance_per_hh": 77.3,
+    "levy_per_hh": 13794,
+    "reserve_rate": 1.7,
+    "months_collected": 8
+  },
+  "발안마을주공": {
+    "balance_per_hh": 247.8,
+    "levy_per_hh": 26556,
+    "reserve_rate": 100,
+    "months_collected": 8
+  },
+  "병점성호": {
+    "balance_per_hh": 150.1,
+    "levy_per_hh": 29502,
+    "reserve_rate": 6.5,
+    "months_collected": 8
+  },
+  "병점역SK뷰아파트": {
+    "balance_per_hh": 146.2,
+    "levy_per_hh": 56171,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "병점역동문굿모닝힐": {
+    "balance_per_hh": 298.2,
+    "levy_per_hh": 43000,
+    "reserve_rate": 8,
+    "months_collected": 8
+  },
+  "병점역성호플레르빌": {
+    "balance_per_hh": 211,
+    "levy_per_hh": 30337,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "병점역센트럴허브시티": {
+    "balance_per_hh": 128.8,
+    "levy_per_hh": 44513,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "병점역양우내안애": {
+    "balance_per_hh": 91.4,
+    "levy_per_hh": 16682,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "병점역에듀포레": {
+    "balance_per_hh": 150.3,
+    "levy_per_hh": 72574,
+    "reserve_rate": 30,
+    "months_collected": 8
+  },
+  "병점역한일타운": {
+    "balance_per_hh": 91.9,
+    "levy_per_hh": 30595,
+    "reserve_rate": 40,
+    "months_collected": 8
+  },
+  "살구꽃마을대방노블랜드": {
+    "balance_per_hh": 240.3,
+    "levy_per_hh": 32860,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "살구꽃마을제일오투그란데": {
+    "balance_per_hh": 124.8,
+    "levy_per_hh": 30102,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "삼성래미안1차": {
+    "balance_per_hh": 49,
+    "levy_per_hh": 45902,
+    "reserve_rate": 14.4,
+    "months_collected": 8
+  },
+  "삼성래미안2차": {
+    "balance_per_hh": 277.2,
+    "levy_per_hh": 40830,
+    "reserve_rate": 8,
+    "months_collected": 8
+  },
+  "서동탄역우남퍼스트빌아파트": {
+    "balance_per_hh": 151.9,
+    "levy_per_hh": 31145,
+    "reserve_rate": 2.7,
+    "months_collected": 8
+  },
+  "서동탄역파크자이": {
+    "balance_per_hh": 79,
+    "levy_per_hh": 22291,
+    "reserve_rate": 2.3,
+    "months_collected": 5
+  },
+  "서동탄역파크자이2차": {
+    "balance_per_hh": 77,
+    "levy_per_hh": 0,
+    "reserve_rate": null,
+    "months_collected": 1
+  },
+  "서봉마을모아엘가": {
+    "balance_per_hh": 173.8,
+    "levy_per_hh": 38949,
+    "reserve_rate": 8,
+    "months_collected": 8
+  },
+  "서봉마을사랑으로부영6단지": {
+    "balance_per_hh": 3.7,
+    "levy_per_hh": 2976,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "세영리첼에듀파크": {
+    "balance_per_hh": 20.1,
+    "levy_per_hh": 17115,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "솔빛마을경남아너스빌": {
+    "balance_per_hh": 143.8,
+    "levy_per_hh": 55360,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "솔빛마을서해그랑블": {
+    "balance_per_hh": 59.8,
+    "levy_per_hh": 58077,
+    "reserve_rate": 19,
+    "months_collected": 7
+  },
+  "송산그린시티반도유보라아이비파크": {
+    "balance_per_hh": 47.5,
+    "levy_per_hh": 8964,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "시범다은마을삼성래미안": {
+    "balance_per_hh": 73.2,
+    "levy_per_hh": 39613,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "시범다은마을포스코더샵": {
+    "balance_per_hh": 136.9,
+    "levy_per_hh": 60495,
+    "reserve_rate": 60,
+    "months_collected": 8
+  },
+  "신동탄푸르지오": {
+    "balance_per_hh": 180.6,
+    "levy_per_hh": 41193,
+    "reserve_rate": 30.9,
+    "months_collected": 7
+  },
+  "신양고층": {
+    "balance_per_hh": 15.4,
+    "levy_per_hh": 11111,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "신영지웰": {
+    "balance_per_hh": 261.3,
+    "levy_per_hh": 41918,
+    "reserve_rate": 21,
+    "months_collected": 8
+  },
+  "신일유토빌": {
+    "balance_per_hh": 169.7,
+    "levy_per_hh": 43872,
+    "reserve_rate": 36,
+    "months_collected": 8
+  },
+  "아름마을신한미지엔": {
+    "balance_per_hh": 160.3,
+    "levy_per_hh": 57321,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "안화동마을주공5단지": {
+    "balance_per_hh": 314.6,
+    "levy_per_hh": 64070,
+    "reserve_rate": 20.9,
+    "months_collected": 8
+  },
+  "안화동마을주공7단지": {
+    "balance_per_hh": 210.7,
+    "levy_per_hh": 31760,
+    "reserve_rate": 42,
+    "months_collected": 8
+  },
+  "양우내안애2차에듀타운아파트": {
+    "balance_per_hh": 171,
+    "levy_per_hh": 24948,
+    "reserve_rate": 3.2,
+    "months_collected": 6
+  },
+  "오색마을사랑으로부영9단지": {
+    "balance_per_hh": 1.8,
+    "levy_per_hh": 2333,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "우남블루존": {
+    "balance_per_hh": 44.8,
+    "levy_per_hh": 44688,
+    "reserve_rate": 100,
+    "months_collected": 8
+  },
+  "우미린센트포레1단지": {
+    "balance_per_hh": 38.8,
+    "levy_per_hh": 10127,
+    "reserve_rate": 1.3,
+    "months_collected": 8
+  },
+  "우미린센트포레2단지": {
+    "balance_per_hh": 31.8,
+    "levy_per_hh": 10115,
+    "reserve_rate": 3.1,
+    "months_collected": 7
+  },
+  "우미린제일풍경채": {
+    "balance_per_hh": 54.8,
+    "levy_per_hh": 41010,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "자연앤데시앙": {
+    "balance_per_hh": 81.9,
+    "levy_per_hh": 32417,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "주공1단지": {
+    "balance_per_hh": 144.6,
+    "levy_per_hh": 30779,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "진안골마을주공10단지": {
+    "balance_per_hh": 186.7,
+    "levy_per_hh": 33488,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "진안파크자이아파트": {
+    "balance_per_hh": 168.6,
+    "levy_per_hh": 65460,
+    "reserve_rate": 100,
+    "months_collected": 8
+  },
+  "포도마을코스코밸리": {
+    "balance_per_hh": 75.6,
+    "levy_per_hh": 32901,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "포스코더샵2차": {
+    "balance_per_hh": 92.8,
+    "levy_per_hh": 43763,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "푸르뫼금강에스쁘아": {
+    "balance_per_hh": 117.5,
+    "levy_per_hh": 31800,
+    "reserve_rate": 7,
+    "months_collected": 8
+  },
+  "푸른마을두산위브": {
+    "balance_per_hh": 169.3,
+    "levy_per_hh": 43845,
+    "reserve_rate": 2,
+    "months_collected": 8
+  },
+  "푸른마을모아미래도": {
+    "balance_per_hh": 80.2,
+    "levy_per_hh": 55771,
+    "reserve_rate": 19.7,
+    "months_collected": 8
+  },
+  "한양수자인디에스티지": {
+    "balance_per_hh": 34.7,
+    "levy_per_hh": 23733,
+    "reserve_rate": 100,
+    "months_collected": 7
+  },
+  "한일베라체": {
+    "balance_per_hh": 158.2,
+    "levy_per_hh": 22826,
+    "reserve_rate": 5.6,
+    "months_collected": 7
+  },
+  "행복마을 참누리 에듀파크(101동-113동)": {
+    "balance_per_hh": 114.7,
+    "levy_per_hh": 31777,
+    "reserve_rate": 7,
+    "months_collected": 8
+  },
+  "행복마을 참누리 에듀파크(114동-120동)": {
+    "balance_per_hh": 114.7,
+    "levy_per_hh": 31777,
+    "reserve_rate": 7,
+    "months_collected": 8
+  },
+  "향남시범넓은마을향남지웰2차": {
+    "balance_per_hh": 40.5,
+    "levy_per_hh": 22728,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "호반베르디움센트럴포레": {
+    "balance_per_hh": 72.9,
+    "levy_per_hh": 12500,
+    "reserve_rate": 17,
+    "months_collected": 7
+  },
+  "호수공원역 센트럴시티": {
+    "balance_per_hh": 24.8,
+    "levy_per_hh": 19106,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "화성남양뉴타운리젠시빌란트": {
+    "balance_per_hh": 51.3,
+    "levy_per_hh": 15131,
+    "reserve_rate": 5,
+    "months_collected": 8
+  },
+  "화성남양시티프라디움3차아파트": {
+    "balance_per_hh": 19.9,
+    "levy_per_hh": 14536,
+    "reserve_rate": 10,
+    "months_collected": 7
+  },
+  "화성남양시티프라디움4차": {
+    "balance_per_hh": 50.8,
+    "levy_per_hh": 17383,
+    "reserve_rate": 0.4,
+    "months_collected": 8
+  },
+  "화성동탄2센트럴힐즈동탄아파트": {
+    "balance_per_hh": 11.9,
+    "levy_per_hh": 6315,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "화성사강영도엘리시아": {
+    "balance_per_hh": 29.5,
+    "levy_per_hh": 11346,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "화성송산동원로얄듀크포레": {
+    "balance_per_hh": 28.5,
+    "levy_per_hh": 27258,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "화성시청역서희스타힐스4차숲속마을": {
+    "balance_per_hh": 22.8,
+    "levy_per_hh": 11075,
+    "reserve_rate": 10,
+    "months_collected": 8
+  },
+  "화성시청역센트럴파크스타힐스1단지": {
+    "balance_per_hh": 27.1,
+    "levy_per_hh": 9512,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "화성시청역센트럴파크스타힐스2단지": {
+    "balance_per_hh": 29,
+    "levy_per_hh": 12145,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "화성시청역센트럴파크스타힐스3단지": {
+    "balance_per_hh": 46.8,
+    "levy_per_hh": 15068,
+    "reserve_rate": 3,
+    "months_collected": 8
+  },
+  "화성조암스위트엠": {
+    "balance_per_hh": 4.3,
+    "levy_per_hh": 8654,
+    "reserve_rate": 1,
+    "months_collected": 3
+  },
+  "화성조암한라비발디": {
+    "balance_per_hh": 0.5,
+    "levy_per_hh": 39933,
+    "reserve_rate": 1.9,
+    "months_collected": 8
+  },
+  "힐스테이트동탄역": {
+    "balance_per_hh": 55.6,
+    "levy_per_hh": 15640,
+    "reserve_rate": 1,
+    "months_collected": 8
+  },
+  "롯데캐슬(중앙동)": {
+    "balance_per_hh": 183.9,
+    "levy_per_hh": 32619,
+    "reserve_rate": 12.1,
+    "months_collected": 8
+  },
+  "한신(신흥동)": {
+    "balance_per_hh": 143.1,
+    "levy_per_hh": 0,
+    "reserve_rate": 5.1,
+    "months_collected": 7
+  },
+  "강남(구운동)": {
+    "balance_per_hh": 125.5,
+    "levy_per_hh": 58561,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동남(서둔동)": {
+    "balance_per_hh": 144.6,
+    "levy_per_hh": 31237,
+    "reserve_rate": 8,
+    "months_collected": 7
+  },
+  "동성(금곡동)": {
+    "balance_per_hh": 23.8,
+    "levy_per_hh": 29144,
+    "reserve_rate": 5.5,
+    "months_collected": 6
+  },
+  "삼성(탑동)": {
+    "balance_per_hh": 151.6,
+    "levy_per_hh": 39478,
+    "reserve_rate": 9,
+    "months_collected": 8
+  },
+  "삼환(구운동)": {
+    "balance_per_hh": 90.4,
+    "levy_per_hh": 34054,
+    "reserve_rate": null,
+    "months_collected": 6
+  },
+  "선경(구운동)": {
+    "balance_per_hh": 0,
+    "levy_per_hh": 35000,
+    "reserve_rate": null,
+    "months_collected": 4
+  },
+  "성지(권선동)": {
+    "balance_per_hh": 46.6,
+    "levy_per_hh": 0,
+    "reserve_rate": 12.4,
+    "months_collected": 5
+  },
+  "신우(권선동)": {
+    "balance_per_hh": 130.9,
+    "levy_per_hh": 37378,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "우림필유(고색동)": {
+    "balance_per_hh": 157.1,
+    "levy_per_hh": 36442,
+    "reserve_rate": 15,
+    "months_collected": 8
+  },
+  "인정프린스(당수동)": {
+    "balance_per_hh": 129.9,
+    "levy_per_hh": 32434,
+    "reserve_rate": 1,
+    "months_collected": 8
+  },
+  "코오롱하늘채(구운동)": {
+    "balance_per_hh": 152.1,
+    "levy_per_hh": 47174,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "한성(권선동)": {
+    "balance_per_hh": 128.8,
+    "levy_per_hh": 45000,
+    "reserve_rate": 18,
+    "months_collected": 8
+  },
+  "광교호반베르디움(이의동)": {
+    "balance_per_hh": 49.3,
+    "levy_per_hh": 42189,
+    "reserve_rate": 2.9,
+    "months_collected": 8
+  },
+  "우남퍼스트빌(매탄동)": {
+    "balance_per_hh": 69.2,
+    "levy_per_hh": 31592,
+    "reserve_rate": 5.1,
+    "months_collected": 8
+  },
+  "우성(매탄동)": {
+    "balance_per_hh": 124.6,
+    "levy_per_hh": 39256,
+    "reserve_rate": 72,
+    "months_collected": 8
+  },
+  "한양수자인(망포동)": {
+    "balance_per_hh": 101.5,
+    "levy_per_hh": 19294,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "경남아너스빌(정자동)": {
+    "balance_per_hh": 52.2,
+    "levy_per_hh": 41422,
+    "reserve_rate": 2.3,
+    "months_collected": 8
+  },
+  "늘푸른벽산(율전동)": {
+    "balance_per_hh": 88.3,
+    "levy_per_hh": 36826,
+    "reserve_rate": 4.2,
+    "months_collected": 8
+  },
+  "미도(정자동)": {
+    "balance_per_hh": 234,
+    "levy_per_hh": 24996,
+    "reserve_rate": 3,
+    "months_collected": 7
+  },
+  "벽산(조원동)": {
+    "balance_per_hh": 146.7,
+    "levy_per_hh": 19981,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "벽산블루밍(정자동)": {
+    "balance_per_hh": 186.2,
+    "levy_per_hh": 27560,
+    "reserve_rate": 20,
+    "months_collected": 8
+  },
+  "삼성1(율전동)": {
+    "balance_per_hh": 93.1,
+    "levy_per_hh": 49303,
+    "reserve_rate": null,
+    "months_collected": 7
+  },
+  "삼성2(율전동)": {
+    "balance_per_hh": 75.9,
+    "levy_per_hh": 31839,
+    "reserve_rate": 12,
+    "months_collected": 8
+  },
+  "삼익(파장동)": {
+    "balance_per_hh": 224.5,
+    "levy_per_hh": 19888,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "성원(연무동)": {
+    "balance_per_hh": 43.5,
+    "levy_per_hh": 46018,
+    "reserve_rate": 1,
+    "months_collected": 8
+  },
+  "신미주(연무동)": {
+    "balance_per_hh": 130.9,
+    "levy_per_hh": 34247,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "현대(천천동)": {
+    "balance_per_hh": 76.8,
+    "levy_per_hh": 38574,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "풍림(우만동)": {
+    "balance_per_hh": 109.5,
+    "levy_per_hh": 33470,
+    "reserve_rate": 6.8,
+    "months_collected": 8
+  },
+  "동부(구갈동)": {
+    "balance_per_hh": 11.6,
+    "levy_per_hh": 20000,
+    "reserve_rate": 8.5,
+    "months_collected": 7
+  },
+  "진우(삼가동)": {
+    "balance_per_hh": 96.6,
+    "levy_per_hh": 23384,
+    "reserve_rate": null,
+    "months_collected": 8
+  },
+  "동아(신장동)": {
+    "balance_per_hh": 136.4,
+    "levy_per_hh": 33913,
+    "reserve_rate": 10.2,
+    "months_collected": 7
+  }
+}
