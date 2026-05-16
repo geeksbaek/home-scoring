@@ -299,14 +299,38 @@ const LOAN_PRODUCTS: Record<LoanProduct, {
   desc: string;
 }> = {
   normal: { name: "일반 주담대", rate: 0.045, maxLoan: 0, maxPrice: 0, maxIncome: 0, maxAreaSqm: 0, desc: "은행 자체상품, 시장금리" },
-  // 디딤돌 (2025): 부부합산 8.5천 (신혼·2자녀 1억), 주택 5억(수도권 6억), 한도 일반 2.5억/신혼 4억/2자녀 4억/신생아 5억
+  // 디딤돌 (2025): 부부합산 8.5천 (신혼·2자녀 1억), 주택 5억(수도권 6억), 한도 일반 2.5억/신혼 4억/2자녀 4억/신생아 4억
   didimdol: { name: "디딤돌 (생애최초)", rate: 0.032, maxLoan: 40000, maxPrice: 60000, maxIncome: 8500, maxAreaSqm: 85, forceLtv: 0.7, desc: "부부합산 8.5천(신혼/자녀 1억), 한도 신혼 4억" },
   // 보금자리: 2024 종료 → u-보금자리 (디딤돌 흡수) → 일반 보금자리 한도 3.6억, 생애최초 4.2억, 부부합산 7천(신혼 8.5천), 주택 6억
   bogeumjari: { name: "u-보금자리 (생애최초)", rate: 0.044, maxLoan: 42000, maxPrice: 60000, maxIncome: 7000, maxAreaSqm: 0, forceLtv: 0.7, desc: "부부합산 7천(신혼 8.5천), LTV 70%, 4.2억" },
   // 신생아특례 (2024-01 시행): 부부합산 1.3억 → 2025-04부터 한시 2.5억 상향
-  // 2년 내 출산 가구, 9억 이하 주택, 전용 85㎡ 이하 (수도권), 한도 5억, 우대금리 1.6~3.3%
-  newborn: { name: "신생아특례 (출산 2년 내)", rate: 0.026, maxLoan: 50000, maxPrice: 90000, maxIncome: 25000, maxAreaSqm: 85, forceLtv: 0.8, desc: "부부합산 2.5억(2025-04 한시 상향), 9억·85㎡ 이하" },
+  // 2년 내 출산 가구, 9억 이하 주택, 전용 85㎡ 이하 (수도권), 한도 4억(2025-06-27부터 5억→4억 축소)
+  // rate: 표시용 기본값 — 실제 적용 금리는 getNewbornRate(소득·만기·맞벌이) 사용
+  newborn: { name: "신생아특례 (출산 2년 내)", rate: 0.026, maxLoan: 40000, maxPrice: 90000, maxIncome: 25000, maxAreaSqm: 85, forceLtv: 0.8, desc: "부부합산 2.5억(맞벌이), 9억·85㎡ 이하, 한도 4억, 금리 1.8~4.5% (소득·만기별)" },
 };
+
+// 신생아 특례 디딤돌 금리표 (2026-05 기준, myhome.go.kr)
+// 부부합산 소득(만원) × 만기(10/15/20/30년) — 기본 5년 적용, 우대금리 별도
+function getNewbornRate(incomeMan: number, years: number, dualIncome: boolean): number {
+  const termIdx = years <= 10 ? 0 : years <= 15 ? 1 : years <= 20 ? 2 : 3;
+  const brackets: Array<{ upper: number; dualOnly?: boolean; rates: [number, number, number, number] }> = [
+    { upper: 2000,  rates: [0.0180, 0.0190, 0.0200, 0.0205] },
+    { upper: 4000,  rates: [0.0215, 0.0225, 0.0235, 0.0240] },
+    { upper: 6000,  rates: [0.0240, 0.0250, 0.0260, 0.0265] },
+    { upper: 8500,  rates: [0.0265, 0.0275, 0.0285, 0.0290] },
+    { upper: 13000, rates: [0.0290, 0.0300, 0.0310, 0.0320] },
+    { upper: 15000, dualOnly: true, rates: [0.0350, 0.0360, 0.0370, 0.0380] },
+    { upper: 17000, dualOnly: true, rates: [0.0385, 0.0395, 0.0405, 0.0415] },
+    { upper: 20000, dualOnly: true, rates: [0.0420, 0.0430, 0.0440, 0.0450] },
+  ];
+  for (const b of brackets) {
+    if (incomeMan <= b.upper) {
+      if (b.dualOnly && !dualIncome) return LOAN_PRODUCTS.normal.rate; // 외벌이 1.3억 초과 → 자격 미달
+      return b.rates[termIdx];
+    }
+  }
+  return LOAN_PRODUCTS.normal.rate; // 2억 초과
+}
 
 function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit: number, income1Man: number, income2Man: number, years: number, extraRepayYrs: number, areaSqm?: number, firstTimeBuyer: boolean = true, regulated: boolean = false, product: LoanProduct = "normal", interestSubsidy: boolean = false, interiorCost: number = 0) {
   const incomeMan = income1Man + income2Man;
@@ -391,7 +415,9 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   const affordable = totalCapital >= required;
 
   // 월납입금/이자총액
-  const mortgageRate = prodInfo.rate; // 상품별 금리
+  const mortgageRate = product === "newborn"
+    ? getNewbornRate(incomeMan, years, income1Man > 0 && income2Man > 0)
+    : prodInfo.rate; // 상품별 금리
   const extraRate = 0.055; // 추가/신용대출 5.5%
   const months = years * 12;
   const mr = mortgageRate / 12;
@@ -1724,9 +1750,10 @@ export default function App() {
               className="h-auto py-0.5 px-1 rounded border bg-background text-[10px]"
               title={LOAN_PRODUCTS[loanProduct].desc}
             >
-              {(Object.keys(LOAN_PRODUCTS) as LoanProduct[]).map((p) => (
-                <option key={p} value={p}>{LOAN_PRODUCTS[p].name} ({(LOAN_PRODUCTS[p].rate * 100).toFixed(1)}%)</option>
-              ))}
+              {(Object.keys(LOAN_PRODUCTS) as LoanProduct[]).map((p) => {
+                const rateLabel = p === "newborn" ? "1.8~4.5%" : `${(LOAN_PRODUCTS[p].rate * 100).toFixed(1)}%`;
+                return <option key={p} value={p}>{LOAN_PRODUCTS[p].name} ({rateLabel})</option>;
+              })}
             </select>
             <label className="flex items-center gap-1 cursor-pointer" title="테이블 현재가 = 매매가 + 인테리어(평균)">
               <input type="checkbox" checked={includeInterior} onChange={(e) => { setIncludeInterior(e.target.checked); localStorage.setItem("f_includeInterior", String(e.target.checked)); }} className="rounded h-3 w-3" />
@@ -1929,9 +1956,9 @@ export default function App() {
           <span className="text-xs text-muted-foreground">{filtered.length}개 단지</span>
           <Button variant={viewMode === "table" ? "default" : "outline"} size="sm" className="h-7 text-xs px-2" onClick={() => setViewMode("table")}>테이블</Button>
           <Button variant={viewMode === "map" ? "default" : "outline"} size="sm" className="h-7 text-xs px-2" onClick={() => { setViewMode("map"); if (!myLocation) navigator.geolocation.getCurrentPosition((p) => setMyLocation({ lat: p.coords.latitude, lng: p.coords.longitude }), () => {}); }}>지도</Button>
-          {favorites.size > 1 && (
+          {favoriteItems.length > 1 && (
             <Button variant="outline" size="sm" className="h-7 text-xs px-2" onClick={() => setCompareOpen(true)}>
-              <span className="text-yellow-400">★</span> 비교 ({favorites.size})
+              <span className="text-yellow-400">★</span> 비교 ({favoriteItems.length})
             </Button>
           )}
         </div>
