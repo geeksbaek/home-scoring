@@ -68,7 +68,7 @@ export default function MolitPressViewer() {
     [items, selectedId],
   );
   const body = selected ? pickPdfMarkdown(selected.attachments) : null;
-  const buttonLabel = data ? `📰 보도자료 ${data.length}` : "📰 보도자료";
+  const buttonLabel = "📰 보도자료";
 
   return (
     <>
@@ -86,10 +86,7 @@ export default function MolitPressViewer() {
         <div className="fixed inset-0 z-50 bg-background">
           <div className="h-full max-w-7xl mx-auto px-3 py-3 sm:px-6 sm:py-5 flex flex-col gap-3">
             <div className="flex items-center justify-between gap-2">
-              <div>
-                <h2 className="text-base font-bold">📰 국토교통부 보도자료</h2>
-                <p className="text-[11px] text-muted-foreground">RSS 증분 수집 · PDF→Markdown 변환 (codex gpt-5.5 high)</p>
-              </div>
+              <h2 className="text-base font-bold">📰 국토교통부 보도자료</h2>
               <Button variant="outline" size="sm" className="h-7 text-xs px-2" onClick={() => setOpen(false)}>닫기 (Esc)</Button>
             </div>
 
