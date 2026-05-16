@@ -77,7 +77,6 @@ export default function MolitPressViewer() {
         size="sm"
         className="text-[10px] h-auto py-0.5 px-2"
         onClick={() => setOpen(true)}
-        title="국토교통부 RSS 보도자료 (gpt-5.5 high로 PDF→마크다운 변환)"
       >
         {buttonLabel}
       </Button>
