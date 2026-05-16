@@ -2222,8 +2222,8 @@ export default function App() {
         <div className="h-20" />
       </div>
 
-      {/* 플로팅 검색 (Spotlight style) */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
+      {/* 플로팅 검색 (Spotlight style) — 보도자료 모달 열렸을 때 숨김 */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4 body-[molit-press-open]:hidden [body.molit-press-open_&]:hidden">
         {!searchOpen ? (
           <button
             onClick={() => { setSearchOpen(true); setTimeout(() => searchRef.current?.focus(), 50); }}

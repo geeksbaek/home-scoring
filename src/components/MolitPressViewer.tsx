@@ -55,9 +55,11 @@ export default function MolitPressViewer() {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
     document.body.style.overflow = "hidden";
+    document.body.classList.add("molit-press-open");
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      document.body.classList.remove("molit-press-open");
       window.removeEventListener("keydown", onKey);
     };
   }, [open]);
