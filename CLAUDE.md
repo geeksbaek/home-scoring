@@ -15,7 +15,7 @@
 
 ## 프로젝트 개요
 
-경기도(수원/성남/용인/하남/화성) 아파트 매매 실거래가를 수집·분석하는 대시보드.
+경기도(수원/성남/용인/하남/화성/안양) 아파트 매매 실거래가를 수집·분석하는 대시보드.
 - **런타임**: Bun + TypeScript
 - **프론트엔드**: React + Vite + Tailwind + shadcn/ui (base-ui) → GitHub Pages 배포
 - **대상**: 1,555개 단지, 2,864개 (단지×면적) — 실거래가 r3 (2026-02 이후) 보유 단지 전체
@@ -24,6 +24,7 @@
 
 | 시각 | 작업 | 비고 |
 |------|------|------|
+| 05:00 | MOLIT 보도자료 수집·변환 | `cd ~/GitHub/home-scoring && bun scripts/collect_molit_press.ts --download-attachments --convert-md` (RSS 증분 + PDF → markdown via `codex` gpt-5.5 high → `public/molit_press.json`) |
 | 06:30 | 출근 시간 측정 | `bun src/commute.ts` |
 | 07:30 | 일일 파이프라인 | `bun src/daily.ts` (공휴일 자동 스킵) |
 | 16:00 | 퇴근 시간 측정 | `bun src/commute.ts --reverse` |

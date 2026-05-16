@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import { lazy, Suspense } from "react";
 const AptMap = lazy(() => import("@/components/AptMap"));
+const MolitPressViewer = lazy(() => import("@/components/MolitPressViewer"));
 
 const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
 
@@ -1760,6 +1761,9 @@ export default function App() {
               <span>인테리어 합산</span>
             </label>
             <Button variant="outline" size="sm" className="text-[10px] h-auto py-0.5 px-2" onClick={() => setMcOpen(true)}>다문화 통계</Button>
+            <Suspense fallback={null}>
+              <MolitPressViewer />
+            </Suspense>
 
             <Dialog open={financeOpen} onOpenChange={setFinanceOpen}>
               <DialogContent className="max-w-md">
