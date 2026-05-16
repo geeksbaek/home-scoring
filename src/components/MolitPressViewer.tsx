@@ -83,7 +83,7 @@ export default function MolitPressViewer() {
       </Button>
 
       {open && (
-        <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 bg-background">
           <div className="h-full max-w-7xl mx-auto px-3 py-3 sm:px-6 sm:py-5 flex flex-col gap-3">
             <div className="flex items-center justify-between gap-2">
               <div>

@@ -3,6 +3,7 @@ dist
 bun.lock
 *.local
 .DS_Store
+data/molit_press_attachments/**/_tmp_*
 
 # 민감정보
 .env

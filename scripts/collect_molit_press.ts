@@ -365,9 +365,10 @@ async function convertPdfToMarkdown(pdfPath: string, options: CliOptions): Promi
     .filter((f) => f.startsWith(`${stem}-`) && f.endsWith(".png"))
     .sort();
 
+  const sections: string[] = [];
   try {
-    // 페이지 병렬 변환 (codex app server는 병렬 호출 지원)
-    const sections = await Promise.all(pages.map(async (page) => {
+    // 순차 변환: codex CLI는 동시 호출 시 system skills 디렉토리 충돌로 빈 응답 발생
+    for (const page of pages) {
       const imgPath = join(dir, page);
       const result = await spawnCapture(
         "codex",
@@ -381,8 +382,8 @@ async function convertPdfToMarkdown(pdfPath: string, options: CliOptions): Promi
       );
       const body = extractCodexBody(result.stdout);
       if (!body) throw new Error(`codex returned empty body for ${page}: ${result.stderr.slice(0, 200)}`);
-      return body;
-    }));
+      sections.push(body);
+    }
     return sections.join("\n\n");
   } finally {
     for (const page of pages) await unlink(join(dir, page)).catch(() => {});
