@@ -36,11 +36,33 @@ function pickPdfMarkdown(attachments: Attachment[]): { name: string; markdown: s
   return pdf && pdf.markdown ? { name: pdf.name, markdown: pdf.markdown } : null;
 }
 
+const READ_STORAGE_KEY = "molit_press_read_ids_v1";
+
+function loadReadIds(): Set<string> {
+  try {
+    const raw = localStorage.getItem(READ_STORAGE_KEY);
+    if (!raw) return new Set();
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? new Set(arr.filter((v) => typeof v === "string")) : new Set();
+  } catch {
+    return new Set();
+  }
+}
+
+function saveReadIds(ids: Set<string>) {
+  try {
+    localStorage.setItem(READ_STORAGE_KEY, JSON.stringify([...ids]));
+  } catch {
+    // ignore quota errors
+  }
+}
+
 export default function MolitPressViewer() {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState<PressRelease[] | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [readIds, setReadIds] = useState<Set<string>>(() => loadReadIds());
 
   useEffect(() => {
     let cancelled = false;
@@ -70,17 +92,46 @@ export default function MolitPressViewer() {
     [items, selectedId],
   );
   const body = selected ? pickPdfMarkdown(selected.attachments) : null;
+  const unreadCount = useMemo(
+    () => items.reduce((n, it) => n + (readIds.has(it.id) ? 0 : 1), 0),
+    [items, readIds],
+  );
   const buttonLabel = "📰 보도자료";
+
+  useEffect(() => {
+    if (!open || !selected) return;
+    if (readIds.has(selected.id)) return;
+    const next = new Set(readIds);
+    next.add(selected.id);
+    setReadIds(next);
+    saveReadIds(next);
+  }, [open, selected, readIds]);
+
+  const markAllRead = () => {
+    if (items.length === 0) return;
+    const next = new Set(readIds);
+    for (const it of items) next.add(it.id);
+    setReadIds(next);
+    saveReadIds(next);
+  };
 
   return (
     <>
       <Button
-        variant="outline"
+        variant={unreadCount > 0 ? "default" : "outline"}
         size="sm"
-        className="text-[10px] h-auto py-0.5 px-2"
+        className={cn(
+          "relative text-[10px] h-auto py-0.5 px-2 transition-colors",
+          unreadCount > 0 && "bg-blue-600 hover:bg-blue-700 text-white border-blue-600 font-semibold shadow-sm",
+        )}
         onClick={() => setOpen(true)}
       >
         {buttonLabel}
+        {unreadCount > 0 && (
+          <span className="ml-1 inline-flex items-center justify-center min-w-[1rem] h-4 px-1 rounded-full bg-white text-blue-600 text-[9px] font-bold tabular-nums">
+            {unreadCount > 99 ? "99+" : unreadCount}
+          </span>
+        )}
       </Button>
 
       {open && (
@@ -88,7 +139,14 @@ export default function MolitPressViewer() {
           <div className="h-full max-w-7xl mx-auto px-3 py-3 sm:px-6 sm:py-5 flex flex-col gap-3">
             <div className="flex items-center justify-between gap-2">
               <h2 className="text-base font-bold">📰 국토교통부 보도자료</h2>
-              <Button variant="outline" size="sm" className="h-7 text-xs px-2" onClick={() => setOpen(false)}>닫기 (Esc)</Button>
+              <div className="flex items-center gap-2">
+                {unreadCount > 0 && (
+                  <Button variant="ghost" size="sm" className="h-7 text-xs px-2" onClick={markAllRead}>
+                    모두 읽음
+                  </Button>
+                )}
+                <Button variant="outline" size="sm" className="h-7 text-xs px-2" onClick={() => setOpen(false)}>닫기 (Esc)</Button>
+              </div>
             </div>
 
             {err && <div className="text-xs text-red-500">로드 실패: {err}</div>}
@@ -101,6 +159,7 @@ export default function MolitPressViewer() {
                     {items.map((it) => {
                       const isActive = (selected?.id ?? null) === it.id;
                       const hasMd = it.attachments.some((a) => a.type === "pdf" && a.markdown);
+                      const isUnread = !readIds.has(it.id);
                       return (
                         <li key={it.id}>
                           <button
@@ -109,13 +168,15 @@ export default function MolitPressViewer() {
                             className={cn(
                               "w-full text-left px-3 py-2 text-xs hover:bg-muted/50",
                               isActive && "bg-muted",
+                              !isUnread && !isActive && "opacity-60",
                             )}
                           >
                             <div className="flex items-center gap-1 mb-0.5">
+                              {isUnread && <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-500" aria-label="안읽음" />}
                               <span className="text-[10px] text-muted-foreground tabular-nums">{formatDate(it.publishedDate ?? it.publishedAt)}</span>
                               {!hasMd && <span className="text-[9px] text-amber-500" title="마크다운 변환 미완료">md×</span>}
                             </div>
-                            <div className="line-clamp-2 font-medium">{it.title}</div>
+                            <div className={cn("line-clamp-2", isUnread ? "font-semibold" : "font-normal")}>{it.title}</div>
                             {it.subtitle && <div className="line-clamp-2 text-[11px] text-muted-foreground mt-0.5">{it.subtitle}</div>}
                           </button>
                         </li>
