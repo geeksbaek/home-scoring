@@ -4,7 +4,7 @@
       "key": "seoul",
       "label": "서울특별시",
       "url": "data-seoul.json",
-      "count": 5837,
+      "count": 5939,
       "region_prefixes": [
         "서울특별시"
       ]
@@ -24,5 +24,5 @@
       ]
     }
   ],
-  "generatedAt": "2026-05-17T02:06:49.786Z"
+  "generatedAt": "2026-05-17T02:12:29.956Z"
 }
