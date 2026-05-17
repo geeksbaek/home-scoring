@@ -4,7 +4,7 @@
       "key": "seoul",
       "label": "서울특별시",
       "url": "data-seoul.json",
-      "count": 5939,
+      "count": 6482,
       "region_prefixes": [
         "서울특별시"
       ]
@@ -13,7 +13,7 @@
       "key": "gyeonggi",
       "label": "경기도",
       "url": "data-gyeonggi.json",
-      "count": 4556,
+      "count": 4855,
       "region_prefixes": [
         "성남시",
         "수원시",
@@ -24,5 +24,5 @@
       ]
     }
   ],
-  "generatedAt": "2026-05-17T02:12:29.956Z"
+  "generatedAt": "2026-05-17T02:16:31.958Z"
 }
