@@ -7,3 +7,8 @@ data/molit_press_attachments/**/_tmp_*
 
 # 민감정보
 .env
+
+public/data.json
+public/data-seoul.json
+public/data-gyeonggi.json
+public/data-index.json

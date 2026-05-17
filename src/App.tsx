@@ -273,8 +273,21 @@ function calcDsrMaxLoan(incomeMan: number, existDebtMan: number, existRate = 0.0
   return Math.round(monthlyRepay * factor);
 }
 
-// 규제지역: 성남(분당/수정/중원), 수원(영통/장안/팔달), 용인 수지, 하남
-const REGULATED_REGIONS = new Set(["성남시 분당구", "성남시 수정구", "성남시 중원구", "수원시 영통구", "수원시 장안구", "수원시 팔달구", "용인시 수지구", "하남시"]);
+// 규제지역: 서울 전 25구(투기과열·조정대상), 성남(분당/수정/중원), 수원(영통/장안/팔달), 용인 수지, 하남
+const REGULATED_REGIONS = new Set([
+  // 서울 25구 전체
+  "서울특별시 종로구", "서울특별시 중구", "서울특별시 용산구", "서울특별시 성동구",
+  "서울특별시 광진구", "서울특별시 동대문구", "서울특별시 중랑구", "서울특별시 성북구",
+  "서울특별시 강북구", "서울특별시 도봉구", "서울특별시 노원구", "서울특별시 은평구",
+  "서울특별시 서대문구", "서울특별시 마포구", "서울특별시 양천구", "서울특별시 강서구",
+  "서울특별시 구로구", "서울특별시 금천구", "서울특별시 영등포구", "서울특별시 동작구",
+  "서울특별시 관악구", "서울특별시 서초구", "서울특별시 강남구", "서울특별시 송파구",
+  "서울특별시 강동구",
+  // 경기 주요
+  "성남시 분당구", "성남시 수정구", "성남시 중원구",
+  "수원시 영통구", "수원시 장안구", "수원시 팔달구",
+  "용인시 수지구", "하남시",
+]);
 
 // 사내 이자지원 (주택구입 매매대출): 본인 2% 부담, 초과분 회사 지원
 // 기본적으로 일반 주담대 대상. 정책상품의 경우 특정 은행에서만 가능:
@@ -1517,14 +1530,26 @@ export default function App() {
   const [compareOpen, setCompareOpen] = useState(false);
 
   useEffect(() => {
-    fetch(import.meta.env.BASE_URL + "data.json")
-      .then((r) => r.json())
+    const base = import.meta.env.BASE_URL ?? "/";
+    const loadFromIndex = async () => {
+      const idxRes = await fetch(base + "data-index.json");
+      if (!idxRes.ok) throw new Error("no-index");
+      const idx: { shards: { url: string }[] } = await idxRes.json();
+      const parts = await Promise.all(
+        idx.shards.map((s) => fetch(base + s.url).then((r) => r.json() as Promise<AptData[]>)),
+      );
+      return parts.flat();
+    };
+    const loadFallback = () => fetch(base + "data.json").then((r) => r.json() as Promise<AptData[]>);
+
+    loadFromIndex()
+      .catch(() => loadFallback())
       .then((raw: AptData[]) => {
         raw.forEach((d) => { d.pedScore = pedScore(d); d.commuteScore = commuteScore(d); d.score = 0; });
         calcScores(raw, weights);
         setData(raw);
       });
-    fetch(import.meta.env.BASE_URL + "multicultural.json")
+    fetch(base + "multicultural.json")
       .then((r) => r.json())
       .then(setMulticultural)
       .catch(() => {});
