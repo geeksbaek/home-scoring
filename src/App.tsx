@@ -1542,13 +1542,27 @@ export default function App() {
     };
     const loadFallback = () => fetch(base + "data.json").then((r) => r.json() as Promise<AptData[]>);
 
-    loadFromIndex()
-      .catch(() => loadFallback())
-      .then((raw: AptData[]) => {
-        raw.forEach((d) => { d.pedScore = pedScore(d); d.commuteScore = commuteScore(d); d.score = 0; });
-        calcScores(raw, weights);
-        setData(raw);
+    Promise.all([
+      loadFromIndex().catch(() => loadFallback()),
+      // school_violence는 별도 파일. 학교명 키로 참조 공유 → 메모리 절감 (8MB → 2MB)
+      fetch(base + "school_violence.json").then((r) => r.ok ? r.json() : {}).catch(() => ({})),
+    ]).then(([raw, sv]: [AptData[], Record<string, Record<string, any>>]) => {
+      raw.forEach((d) => {
+        // schools 배열 기반 inline 매핑. 객체 참조 공유 (deep copy X)
+        if (d.schools && d.schools.length > 0) {
+          const m: Record<string, Record<string, any>> = {};
+          for (const s of d.schools) if (sv[s]) m[s] = sv[s];
+          d.school_violence = m;
+        } else {
+          d.school_violence = {};
+        }
+        d.pedScore = pedScore(d);
+        d.commuteScore = commuteScore(d);
+        d.score = 0;
       });
+      calcScores(raw, weights);
+      setData(raw);
+    });
     fetch(base + "multicultural.json")
       .then((r) => r.json())
       .then(setMulticultural)
