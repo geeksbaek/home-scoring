@@ -120,6 +120,7 @@ interface IdentityEntry {
 
 export async function collectBuilding() {
   const forceMode = process.argv.includes("--force");
+  const __only = process.env.ONLY_NAMES ? new Set(JSON.parse(require("node:fs").readFileSync(process.env.ONLY_NAMES, "utf8")) as string[]) : null;
   console.log(`건축물대장 데이터 수집 시작${forceMode ? " (전체 재수집)" : ""}`);
 
   const identityPath = join(DATA_DIR, "apt_identity.json");
@@ -167,11 +168,12 @@ export async function collectBuilding() {
 
   for (const apt of identity) {
     const { name, bjd_code, jibun, sigungu_cd, bjdong } = apt;
+    if (__only && !__only.has(name)) continue;
     idx++;
     process.stdout.write(`  [${idx}/${identity.length}] ${name}...`);
 
     // 캐시 (내진설계 데이터가 있으면 스킵)
-    if (!forceMode && result[name] && result[name].earthquakeDesign !== null) {
+    if (!forceMode && !__only && result[name] && result[name].earthquakeDesign !== null) {
       console.log(" (캐시)");
       skipCount++;
       continue;

@@ -92,7 +92,8 @@ async function main() {
   const hcodesPath = join(DATA_DIR, "hogangnono_codes.json");
   const hcodes: Record<string, string> = existsSync(hcodesPath) ? await Bun.file(hcodesPath).json() : {};
 
-  const targets = identity.filter((a) => !a.hcode);
+  const __only = process.env.ONLY_NAMES ? new Set(JSON.parse(require("node:fs").readFileSync(process.env.ONLY_NAMES,"utf8")) as string[]) : null;
+  const targets = identity.filter((a) => !a.hcode).filter((a:any) => !__only || __only.has(a.name));
   console.log(`hcode 누락 단지: ${targets.length}`);
 
   let success = 0, fail = 0;

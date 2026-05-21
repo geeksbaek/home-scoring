@@ -36,7 +36,8 @@ async function main() {
     ? await Bun.file(join(DATA_DIR, "naver_complex_ids.json")).json()
     : {};
 
-  const targets = identity.filter((d) => d.naver_place_id && !out[d.name]);
+  const __only = process.env.ONLY_NAMES ? new Set(JSON.parse(require("node:fs").readFileSync(process.env.ONLY_NAMES,"utf8")) as string[]) : null;
+  const targets = identity.filter((d) => d.naver_place_id && !out[d.name]).filter((d:any) => !__only || __only.has(d.name));
   console.log(`수집 대상: ${targets.length}개 (기존 ${Object.keys(out).length}개 보유)\n`);
 
   let ok = 0, miss = 0;
