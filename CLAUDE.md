@@ -6,7 +6,7 @@
 - **데이터 수집 시 매 건 저장**: 프로세스 크래시 대비. 배치 저장 금지.
 - **공휴일 데이터 제외**: 출퇴근 측정, 실거래 수집 모두 공휴일/주말 데이터 포함 금지.
 - **외부 API 매칭은 좌표 검증 필수**: 이름 검색만으로 매칭하지 말 것. K-apt 주소 → 카카오 geocode → 후보 polygon 좌표 비교 (500m 이내 OK). hcode/place_id/kapt_code 모두 적용.
-- **신규 데이터 수집 후 audit 실행**: `bun src/audit_hcode.ts`로 mismatch 0 확인. daily.ts에 자동 포함됨.
+- **신규 데이터 수집 후 audit 실행**: `bun pipeline/audit_hcode.ts`로 mismatch 0 확인. daily.ts에 자동 포함됨.
 - **프론트엔드 기능 개발 후 자동 커밋·배포**: `home-scoring/src/` 변경 작업이 끝나면 사용자 별도 지시 없이 다음 절차를 자동 수행한다. 작업 단위가 명확히 마무리된 시점(타입 체크 통과 + UI 검증 완료)에만 실행하고, 중간 산출물 상태에서는 금지.
   1. `home-scoring`에서 변경된 소스 파일만 선택적으로 add (전체 add는 hook으로 자동 차단됨 — `.claude/hooks/block-git-add-all.sh`).
   2. 변경 내용을 요약한 한국어 커밋 메시지로 main에 commit + push.
@@ -21,18 +21,34 @@
 - **대상**: 약 5,900개 단지, 16,000개 (단지×면적) — 실거래가 r3 (2026-02 이후) 보유 단지 전체
 - **데이터 배포**: `data-seoul.json` + `data-gyeonggi.json` + `data-index.json` 도시별 분할 (합본 `data.json`은 100MB+로 폐기). 프론트엔드는 index 로드 후 shard 병합.
 
+## 저장소 구조 (단일 repo)
+
+과거 백엔드(`~/GitHub/home`)와 프론트엔드(`~/GitHub/home-scoring`)가 분리돼 있었으나 **`home-scoring` 단일 repo로 통합**됨.
+- `pipeline/` — 데이터 파이프라인 (Bun/TS): `daily.ts`, `sync.ts`, `commute.ts`, `collect_*.ts` 등. 경로는 모두 `import.meta.dir` 상대 → repo 루트 기준.
+- `src/` — React+Vite 프론트엔드.
+- `scripts/` — MOLIT 보도자료 수집(`collect_molit_press.ts`).
+- `data/` — 파이프라인 입출력. **`data/*.json`은 .gitignore**(대용량, gh-pages로만 배포). `molit_press_releases.json`·`molit_press_attachments/`만 추적.
+- `pipeline/sync.ts`가 스코어링 후 `public/` shard 작성 → `bun run build` → `dist/`를 `gh-pages` 브랜치로 force push.
+
 ## 같은 단지명 멀티 단지 분리
 
-서울 추가로 동명단지가 폭증(현대 38개 동, 삼성 15개 동 등). `bun src/split_dup_apts.ts --apply`로 단지명+법정동 ≥5건 단위로 `이름(법정동)` 형식 분리. 분리 후 bjd_code/hcode/building/kapt 등 재수집 필요.
+서울 추가로 동명단지가 폭증(현대 38개 동, 삼성 15개 동 등). `bun pipeline/split_dup_apts.ts --apply`로 단지명+법정동 ≥5건 단위로 `이름(법정동)` 형식 분리. 분리 후 bjd_code/hcode/building/kapt 등 재수집 필요.
 
-## 스케줄 (Claude Code Cron)
+## 스케줄 (launchd · `~/Library/LaunchAgents`)
 
 | 시각 | 작업 | 비고 |
 |------|------|------|
 | 05:00 | MOLIT 보도자료 수집·변환 | `cd ~/GitHub/home-scoring && bun scripts/collect_molit_press.ts --download-attachments --convert-md` (RSS 증분 + PDF → markdown via `codex` gpt-5.5 high → `public/molit_press.json`) |
-| 06:30 | 출근 시간 측정 | `bun src/commute.ts` |
-| 07:30 | 일일 파이프라인 | `bun src/daily.ts` (공휴일 자동 스킵) |
-| 16:00 | 퇴근 시간 측정 | `bun src/commute.ts --reverse` |
+| 06:30 | 출근 시간 측정 | `bun pipeline/commute.ts` |
+| 07:30 | 일일 파이프라인 | `bun pipeline/daily.ts` (공휴일 자동 스킵) |
+| 16:00 | 퇴근 시간 측정 | `bun pipeline/commute.ts --reverse` |
+
+**launchd 운영**:
+- plist: `~/Library/LaunchAgents/com.home-scoring.{molit-press,commute-morning,daily,commute-evening}.plist`
+- 모두 `WorkingDirectory = ~/GitHub/home-scoring`. daily/commute는 `pipeline/`, molit은 `scripts/` 실행.
+- 로그: `~/Library/Logs/home-scoring/{label}.log` / `.err`
+- plist 수정 후 `launchctl unload <plist> && launchctl load <plist>`로 reload.
+- **wall-clock 스케줄 한계**: 지정 시각에 맥이 sleep이면 그날 미실행 → 깨어날 때 1회만 catch-up. 정시 실행 보장 안 됨.
 
 ## 일일 파이프라인 (`daily.ts`)
 
@@ -149,31 +165,31 @@
 ## 파일 구조
 
 ### 핵심 스크립트
-- `src/daily.ts` — 일일 파이프라인 (수집→검증→스코어링→배포)
-- `src/identity.ts` — apt_identity.json 마스터 빌드 (data.json 기반)
-- `src/audit_hcode.ts` — hcode 좌표 검증 (mismatch 자동 검출)
-- `src/sync.ts` — 스코어링 + data.json + GitHub Pages 배포
-- `src/commute.ts` — 출퇴근 측정 (Kakao Mobility)
-- `src/collect.ts` — 실거래가 증분 수집
+- `pipeline/daily.ts` — 일일 파이프라인 (수집→검증→스코어링→배포)
+- `pipeline/identity.ts` — apt_identity.json 마스터 빌드 (data.json 기반)
+- `pipeline/audit_hcode.ts` — hcode 좌표 검증 (mismatch 자동 검출)
+- `pipeline/sync.ts` — 스코어링 + data.json + GitHub Pages 배포
+- `pipeline/commute.ts` — 출퇴근 측정 (Kakao Mobility)
+- `pipeline/collect.ts` — 실거래가 증분 수집
 
 ### 데이터 수집
-- `src/collect_hcode.ts` — 호갱노노 hcode (좌표 검증 포함)
-- `src/collect_coords.ts` — 동별 좌표 (hcode polygon)
-- `src/collect_slope.ts` — 고저차 (Google Elevation)
-- `src/collect_schools.ts` — 배정초등학교
-- `src/building.ts` — 건축물대장 (vlRat/bcRat/세대수/내진)
-- `src/kapt.ts` — K-apt 단지정보
-- `src/collect_mgmt.ts` — 관리비 (V2 공용+개별)
-- `src/collect_audit.ts` — 회계감사
-- `src/collect_maintenance.ts` — 유지관리이력
-- `src/collect_delinquency.ts` — 장기수선충당금
-- `src/collect_pedia.ts` — 소아과 + 고저차
-- `src/collect_violence.ts` — 학폭 (CAPTCHA)
-- `src/collect_unit_types.ts` — 건축물대장 전유부 면적별 세대수 (정밀, 신규)
-- `src/unit_types.ts` — K-apt 4분류 fallback (`fromKapt: true`)
-- `src/collect_naver_complex.ts` — 네이버부동산 complex_no 매핑
-- `src/fix_bjd_codes.ts` — 누락 bjd_code 카카오 보강
-- `src/kapt_search.ts` — 누락 kapt_code 검색
+- `pipeline/collect_hcode.ts` — 호갱노노 hcode (좌표 검증 포함)
+- `pipeline/collect_coords.ts` — 동별 좌표 (hcode polygon)
+- `pipeline/collect_slope.ts` — 고저차 (Google Elevation)
+- `pipeline/collect_schools.ts` — 배정초등학교
+- `pipeline/building.ts` — 건축물대장 (vlRat/bcRat/세대수/내진)
+- `pipeline/kapt.ts` — K-apt 단지정보
+- `pipeline/collect_mgmt.ts` — 관리비 (V2 공용+개별)
+- `pipeline/collect_audit.ts` — 회계감사
+- `pipeline/collect_maintenance.ts` — 유지관리이력
+- `pipeline/collect_delinquency.ts` — 장기수선충당금
+- `pipeline/collect_pedia.ts` — 소아과 + 고저차
+- `pipeline/collect_violence.ts` — 학폭 (CAPTCHA)
+- `pipeline/collect_unit_types.ts` — 건축물대장 전유부 면적별 세대수 (정밀, 신규)
+- `pipeline/unit_types.ts` — K-apt 4분류 fallback (`fromKapt: true`)
+- `pipeline/collect_naver_complex.ts` — 네이버부동산 complex_no 매핑
+- `pipeline/fix_bjd_codes.ts` — 누락 bjd_code 카카오 보강
+- `pipeline/kapt_search.ts` — 누락 kapt_code 검색
 
 ### 주요 데이터
 - `data/apt_identity.json` — 1555개 단지 마스터 (식별자 통합)
@@ -194,7 +210,7 @@
 - `.env`의 `PUBLIC_DATA_API_KEY` — 실거래가, 건축물대장
 - `.env`의 `KAKAO_REST_API_KEY` — geocoding, 주소→좌표, 소아과
 - `.env`의 `GOOGLE_API_KEY` — Elevation API
-- `home-scoring/.env`의 `VITE_GOOGLE_MAPS_KEY` — Maps JavaScript API
+- `.env`의 `VITE_GOOGLE_MAPS_KEY` — Maps JavaScript API (백엔드·프론트 키 모두 단일 `.env`)
 - `.env`의 `KAPT_API_KEY` — K-apt V2 (단지정보, 관리비, 회계감사, 유지관리 이력, 장기수선충당금 등)
 
 ## 상세 문서

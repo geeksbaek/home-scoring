@@ -12,3 +12,7 @@ public/data.json
 public/data-seoul.json
 public/data-gyeonggi.json
 public/data-index.json
+
+# 파이프라인 생성 데이터 (대용량 — gh-pages로만 배포, main은 가볍게)
+/data/*.json
+!/data/molit_press_releases.json
