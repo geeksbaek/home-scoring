@@ -93,6 +93,7 @@ function pickBestCandidate(
 async function main() {
   const identityPath = join(DATA_DIR, "apt_identity.json");
   const identity: any[] = await Bun.file(identityPath).json();
+  const __only = process.env.ONLY_NAMES ? new Set(JSON.parse(require("node:fs").readFileSync(process.env.ONLY_NAMES, "utf8")) as string[]) : null;
   const kaptInfo: Record<string, any> = await Bun.file(join(DATA_DIR, "kapt_info.json")).json().catch(() => ({}));
   const dongCoords: Record<string, Array<{ dong: string; lat: number; lng: number }>> =
     await Bun.file(join(DATA_DIR, "dong_coords_naver.json")).json().catch(() => ({}));
@@ -103,6 +104,7 @@ async function main() {
 
   for (let i = 0; i < identity.length; i++) {
     const entry = identity[i];
+    if (__only && !__only.has(entry.name)) continue;
     process.stdout.write(`[${i + 1}/${identity.length}] ${entry.name}...`);
 
     // 단지 좌표 ground truth — dong_coords 평균
