@@ -1619,16 +1619,20 @@ export default function App() {
     const buildMinVal = buildMin !== "" ? +buildMin : 0;
     const tradeMinVal = tradeMin !== "" ? +tradeMin : 0;
 
-    // 직거래/1층 필터를 먼저 적용하여 count를 재계산한 후 tradeMin 체크
+    // 직거래/1층 필터를 토글에 따라 항상 recent_trades 기준으로 count·환금 재계산.
+    // (sync의 d.count는 1층·직거래 제외값이므로, OFF 시에도 d.count를 쓰면 토글이 무반응이 됨)
     let f = data.map((d) => {
-      if (!(excludeDirect || excludeFirstFloor)) return d;
-      const trades = (d.recent_trades ?? []).filter((t) => {
+      const all = d.recent_trades ?? [];
+      const trades = all.filter((t) => {
         if (excludeDirect && t.direct) return false;
         if (excludeFirstFloor && t.floor === 1) return false;
         return true;
       });
-      if (trades.length === (d.recent_trades ?? []).length) return d;
-      return { ...d, recent_trades: trades, count: trades.length };
+      const count = trades.length;
+      const liquidity = d.type_units && d.type_units > 0
+        ? Math.round((count / d.type_units) * 1000) / 10
+        : d.liquidity;
+      return { ...d, recent_trades: trades, count, liquidity };
     });
 
     f = f.filter((d) => {
