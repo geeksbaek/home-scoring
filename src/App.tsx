@@ -1,4 +1,4 @@
-import React, { startTransition, useEffect, useMemo, useState } from "react";
+import React, { startTransition, useCallback, useEffect, useMemo, useState } from "react";
 import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from "@/components/ui/table";
@@ -1612,6 +1612,22 @@ export default function App() {
     return list;
   }, [data]);
 
+  // 1층·직거래 토글을 recent_trades에 적용 + count·환금 재계산 (메인/즐겨찾기/전체타입 공용)
+  const applyTradeFilter = useCallback((d: AptData): AptData => {
+    const all = d.recent_trades ?? [];
+    const trades = all.filter((t) => {
+      if (excludeDirect && t.direct) return false;
+      if (excludeFirstFloor && t.floor === 1) return false;
+      return true;
+    });
+    const count = trades.length;
+    const liquidity = d.type_units && d.type_units > 0
+      ? Math.round((count / d.type_units) * 1000) / 10
+      : d.liquidity;
+    return { ...d, recent_trades: trades, count, liquidity };
+  }, [excludeDirect, excludeFirstFloor]);
+  const tradeFilteredData = useMemo(() => data.map(applyTradeFilter), [data, applyTradeFilter]);
+
   const filtered = useMemo(() => {
     const pMinVal = priceMin !== "" ? +priceMin * 10000 : 0;
     const pMaxVal = priceMax !== "" && +priceMax < 20 ? +priceMax * 10000 : Infinity;
@@ -1619,21 +1635,7 @@ export default function App() {
     const buildMinVal = buildMin !== "" ? +buildMin : 0;
     const tradeMinVal = tradeMin !== "" ? +tradeMin : 0;
 
-    // 직거래/1층 필터를 토글에 따라 항상 recent_trades 기준으로 count·환금 재계산.
-    // (sync의 d.count는 1층·직거래 제외값이므로, OFF 시에도 d.count를 쓰면 토글이 무반응이 됨)
-    let f = data.map((d) => {
-      const all = d.recent_trades ?? [];
-      const trades = all.filter((t) => {
-        if (excludeDirect && t.direct) return false;
-        if (excludeFirstFloor && t.floor === 1) return false;
-        return true;
-      });
-      const count = trades.length;
-      const liquidity = d.type_units && d.type_units > 0
-        ? Math.round((count / d.type_units) * 1000) / 10
-        : d.liquidity;
-      return { ...d, recent_trades: trades, count, liquidity };
-    });
+    let f = [...tradeFilteredData];
 
     f = f.filter((d) => {
       if (d.no_trades) return false; // 거래 없는 ghost row는 메인 표 제외
@@ -1671,15 +1673,15 @@ export default function App() {
       return (vb as number) - (va as number);
     });
     return f;
-  }, [data, typeFilter, sortField, regionFilter, commuteFilter, liquidityFilter, accelFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, excludeDirect, excludeFirstFloor, myLocation]);
+  }, [tradeFilteredData, typeFilter, sortField, regionFilter, commuteFilter, liquidityFilter, accelFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, myLocation]);
 
   const favoriteItems = useMemo(() => {
-    const items = data.filter((d) => favorites.has(`${d.name}|${d.atype}`));
+    const items = tradeFilteredData.filter((d) => favorites.has(`${d.name}|${d.atype}`));
     return items.sort((a, b) => {
       if (a.name !== b.name) return a.name.localeCompare(b.name, "ko");
       return a.area - b.area;
     });
-  }, [data, favorites]);
+  }, [tradeFilteredData, favorites]);
 
   // 같은 단지(name) row 그룹화 → rowspan 메타
   const favoriteRowMeta = useMemo(() => {
@@ -2110,7 +2112,7 @@ export default function App() {
                               ? <a href={naverLandUrl(d.naver_complex_id, isMobile, d.pyeong_type_nos)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버부동산</a>
                               : <a href={naverLandSearchUrl(d.name, isMobile)} target="_blank" rel="noopener" className="text-muted-foreground hover:underline">네이버부동산</a>
                             }
-                            <AllTypesDialog name={d.name} allData={data} favorites={favorites} onToggleFav={toggleFav} />
+                            <AllTypesDialog name={d.name} allData={tradeFilteredData} favorites={favorites} onToggleFav={toggleFav} />
                           </div>
                         </div>
                       </TableCell>
@@ -2218,7 +2220,7 @@ export default function App() {
                             ? <a href={naverLandUrl(d.naver_complex_id, isMobile, d.pyeong_type_nos)} target="_blank" rel="noopener" className="text-primary hover:underline">네이버부동산</a>
                             : <a href={naverLandSearchUrl(d.name, isMobile)} target="_blank" rel="noopener" className="text-muted-foreground hover:underline">네이버부동산</a>
                           }
-                          <AllTypesDialog name={d.name} allData={data} favorites={favorites} onToggleFav={toggleFav} />
+                          <AllTypesDialog name={d.name} allData={tradeFilteredData} favorites={favorites} onToggleFav={toggleFav} />
                         </div>
                       </div>
                     </TableCell>
