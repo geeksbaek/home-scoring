@@ -346,7 +346,7 @@ function getNewbornRate(incomeMan: number, years: number, dualIncome: boolean): 
   return LOAN_PRODUCTS.normal.rate; // 2억 초과
 }
 
-function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit: number, income1Man: number, income2Man: number, years: number, extraRepayYrs: number, areaSqm?: number, firstTimeBuyer: boolean = true, regulated: boolean = false, product: LoanProduct = "normal", interestSubsidy: boolean = false, interiorCost: number = 0) {
+function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit: number, income1Man: number, income2Man: number, years: number, extraRepayYrs: number, areaSqm?: number, firstTimeBuyer: boolean = true, regulated: boolean = false, product: LoanProduct = "normal", interestSubsidy: boolean = false, interiorCost: number = 0, kbPriceMan: number | null = null) {
   const incomeMan = income1Man + income2Man;
   // 취득세율: 6억 이하 1%, 6~9억 누진, 9억 초과 3%
   let taxRate: number;
@@ -392,11 +392,13 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
     : regulated
       ? (firstTimeBuyer ? 0.7 : 0.4)
       : 0.7; // 비규제: 생초·일반 모두 70%
-  const ltvCalc = Math.round(priceMan * ltvRate);
+  // KB시세 입력 시 LTV는 min(매매가, KB시세) 기준 (은행 실무)
+  const ltvBase = kbPriceMan != null && kbPriceMan > 0 ? Math.min(priceMan, kbPriceMan) : priceMan;
+  const ltvCalc = Math.round(ltvBase * ltvRate);
   let ltvCap = 60000; // 기본 6억 (비규제·규제 15억 이하 동일)
   if (regulated) {
-    if (priceMan > 250000) ltvCap = 20000;
-    else if (priceMan > 150000) ltvCap = 40000;
+    if (ltvBase > 250000) ltvCap = 20000;
+    else if (ltvBase > 150000) ltvCap = 40000;
   }
   // 정책상품 절대 한도
   const productCap = prodInfo.maxLoan > 0 ? prodInfo.maxLoan : Infinity;
@@ -483,7 +485,7 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   const repayRatio = netMonthlyIncome ? totalMonthly / netMonthlyIncome : null;
   const repayRatioParental = netMonthlyParental ? totalMonthly / netMonthlyParental : null;
 
-  return { taxRate, acqTax, eduTax, ruralTax, totalTax, netTax, taxExempt, broker, legalFee, stampTax, bondDiscount, miscCost, interiorCost, ltvRate, ltvMax, ltvCap, productCap, eligIssues, dsrMax, maxLoan, dsrLimited, totalCapital, extraLoanMan, required, affordable, totalMonthly, mortgageMonthly, extraMonthly, mortgageRate, extraRate, effectiveRate, totalInterest, extraRepayMonthly, extraRepayYrs, netMonthlyIncome, netMonthlyParental, repayRatio, repayRatioParental, years, firstTimeBuyer, regulated, product, productName: prodInfo.name, interestSubsidy, subsidyEligible, subsidyAmount, subsidyMonthly, subsidyTotal, grossMortgageMonthly };
+  return { taxRate, acqTax, eduTax, ruralTax, totalTax, netTax, taxExempt, broker, legalFee, stampTax, bondDiscount, miscCost, interiorCost, ltvRate, ltvBase, ltvMax, ltvCap, productCap, eligIssues, dsrMax, maxLoan, dsrLimited, totalCapital, extraLoanMan, required, affordable, totalMonthly, mortgageMonthly, extraMonthly, mortgageRate, extraRate, effectiveRate, totalInterest, extraRepayMonthly, extraRepayYrs, netMonthlyIncome, netMonthlyParental, repayRatio, repayRatioParental, years, firstTimeBuyer, regulated, product, productName: prodInfo.name, interestSubsidy, subsidyEligible, subsidyAmount, subsidyMonthly, subsidyTotal, grossMortgageMonthly };
 }
 
 // 2026년 기준 인테리어 평당 단가 (수도권 평균, 자재·시공 포함). 출처: 업계 단가 벤치마크 (오늘의집/집브로/AJD 2025-26).
@@ -525,6 +527,13 @@ function calcInterior(areaSqm: number | null | undefined, buildYear: number | nu
 function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, firstTimeBuyer, loanProduct, interestSubsidy, includeInterior }: { data: AptData; capitalMan: number | null; extraLoanMan: number; income1Man: number; income2Man: number; loanYears: number; extraRepayYrs: number; firstTimeBuyer: boolean; loanProduct: LoanProduct; interestSubsidy: boolean; includeInterior: boolean }) {
   const [customPrice, setCustomPrice] = useState<string>("");
   const customMan = customPrice && !Number.isNaN(parseFloat(customPrice)) ? parseFloat(customPrice) * 10000 : null;
+  const kbStorageKey = `kb:${data.name}|${data.atype}`;
+  const [kbPrice, setKbPrice] = useState<string>(() => localStorage.getItem(kbStorageKey) ?? "");
+  useEffect(() => {
+    if (kbPrice) localStorage.setItem(kbStorageKey, kbPrice);
+    else localStorage.removeItem(kbStorageKey);
+  }, [kbStorageKey, kbPrice]);
+  const kbMan = kbPrice && !Number.isNaN(parseFloat(kbPrice)) ? parseFloat(kbPrice) * 10000 : null;
   const priceMan = customMan ?? data.avg;
   const interior = calcInterior(data.area, data.build);
   const interiorAvg = interior ? Math.round((interior.min + interior.max) / 2) : 0;
@@ -533,7 +542,7 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
     ? `${((data.avg + interiorAvg) / 10000).toFixed(1)}억`
     : `${(data.avg / 10000).toFixed(1)}억`;
   const regulated = REGULATED_REGIONS.has(data.region);
-  const aff = capitalMan != null ? calcAffordability(priceMan, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, data.area, firstTimeBuyer, regulated, loanProduct, interestSubsidy, interiorForCalc) : null;
+  const aff = capitalMan != null ? calcAffordability(priceMan, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, data.area, firstTimeBuyer, regulated, loanProduct, interestSubsidy, interiorForCalc, kbMan) : null;
   const color = aff ? (aff.affordable ? (aff.extraLoanMan > 0 ? "text-amber-500" : "text-emerald-500") : "text-red-500") : "";
 
   return (
@@ -589,6 +598,38 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
                   )}
                 </span>
               </div>
+              <div className="flex justify-between items-center">
+                <span className="text-muted-foreground" title="입력 시 LTV는 min(매매가, KB시세) × LTV율로 계산. 단지별 자동 저장.">KB시세 (선택)</span>
+                <span className="flex items-center gap-1">
+                  <input
+                    type="number"
+                    step="0.1"
+                    inputMode="decimal"
+                    placeholder="-"
+                    value={kbPrice}
+                    onChange={(e) => setKbPrice(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key !== "ArrowUp" && e.key !== "ArrowDown") return;
+                      e.preventDefault();
+                      const base = kbPrice && !Number.isNaN(parseFloat(kbPrice))
+                        ? parseFloat(kbPrice)
+                        : (data.avg / 10000);
+                      const delta = e.key === "ArrowUp" ? 0.1 : -0.1;
+                      const next = Math.max(0, Math.round((base + delta) * 10) / 10);
+                      setKbPrice(next.toFixed(1));
+                    }}
+                    onClick={(e) => (e.target as HTMLInputElement).select()}
+                    className={cn(
+                      "w-14 text-right bg-background border border-border rounded px-1 py-0 text-xs tabular-nums focus:outline-none focus:border-primary",
+                      kbPrice && "text-sky-500 border-sky-500/50"
+                    )}
+                  />
+                  <span className="text-muted-foreground">억</span>
+                  {kbPrice && (
+                    <button type="button" onClick={() => setKbPrice("")} className="text-muted-foreground hover:text-foreground text-[10px]" title="제거">↺</button>
+                  )}
+                </span>
+              </div>
               <div className="flex justify-between"><span className="text-muted-foreground">취득세 ({(aff.taxRate * 100).toFixed(1)}%+교육{aff.ruralTax > 0 ? "+농특" : ""})</span><span>{aff.netTax.toLocaleString()}만원</span></div>
               <div className="flex justify-between"><span className="text-muted-foreground">중개보수 (0.44%)</span><span>{aff.broker.toLocaleString()}만원</span></div>
               <div className="flex justify-between"><span className="text-muted-foreground">법무사/인지/채권</span><span>{aff.miscCost.toLocaleString()}만원</span></div>
@@ -597,7 +638,7 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
                 <div className="flex justify-between"><span className="text-muted-foreground">인테리어 (평균)</span><span>{aff.interiorCost.toLocaleString()}만원</span></div>
               )}
               <div className="flex justify-between border-t pt-0.5"><span className="text-muted-foreground">총 비용{aff.interiorCost > 0 ? " (인테리어 포함)" : ""}</span><span>{((priceMan + aff.netTax + aff.broker + aff.miscCost + aff.interiorCost) / 10000).toFixed(1)}억</span></div>
-              <div className="flex justify-between"><span className="text-muted-foreground">LTV {(aff.ltvRate * 100).toFixed(0)}% · {aff.regulated ? "규제" : "비규제"}{` · 한도 ${aff.ltvCap / 10000}억`}{aff.productCap !== Infinity ? ` · 상품한도 ${aff.productCap / 10000}억` : ""}</span><span>-{(aff.ltvMax / 10000).toFixed(1)}억</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">LTV {(aff.ltvRate * 100).toFixed(0)}% · {aff.regulated ? "규제" : "비규제"}{` · 한도 ${aff.ltvCap / 10000}억`}{aff.productCap !== Infinity ? ` · 상품한도 ${aff.productCap / 10000}억` : ""}{aff.ltvBase < priceMan ? ` · KB ${(aff.ltvBase / 10000).toFixed(1)}억 기준` : ""}</span><span>-{(aff.ltvMax / 10000).toFixed(1)}억</span></div>
               {aff.dsrMax != null && <div className="flex justify-between"><span className="text-muted-foreground">DSR 한도 (40%)</span><span className={aff.dsrLimited ? "text-amber-500" : ""}>-{(aff.dsrMax / 10000).toFixed(1)}억</span></div>}
               {aff.dsrLimited && <p className="text-[10px] text-amber-500">DSR에 의해 대출 제한</p>}
               {aff.extraLoanMan > 0 && <div className="flex justify-between"><span className="text-muted-foreground">추가대출</span><span>+{(aff.extraLoanMan / 10000).toFixed(1)}억</span></div>}
