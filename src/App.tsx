@@ -382,22 +382,21 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   // 기타 부대비용 합계
   const miscCost = legalFee + stampTax + bondDiscount;
 
-  // LTV: 규제지역 vs 비규제지역
+  // LTV: 규제지역 vs 비규제지역 (2026 정책)
   // 규제: 생애최초 70%, 일반 40%, cap 6억 (15억초과→4억, 25억초과→2억)
-  // 비규제: 생애최초 80%, 일반 70%, cap 없음
+  // 비규제: 생애최초/일반 모두 70%, cap 6억
   const prodInfo = LOAN_PRODUCTS[product];
   // 정책상품 LTV: 규제지역 진입 시 70% 상한 적용 (신생아특례 80% → 70% 등)
   const ltvRate = prodInfo.forceLtv != null
     ? (regulated ? Math.min(prodInfo.forceLtv, 0.7) : prodInfo.forceLtv)
     : regulated
       ? (firstTimeBuyer ? 0.7 : 0.4)
-      : (firstTimeBuyer ? 0.8 : 0.7);
+      : 0.7; // 비규제: 생초·일반 모두 70%
   const ltvCalc = Math.round(priceMan * ltvRate);
-  let ltvCap = Infinity;
+  let ltvCap = 60000; // 기본 6억 (비규제·규제 15억 이하 동일)
   if (regulated) {
     if (priceMan > 250000) ltvCap = 20000;
     else if (priceMan > 150000) ltvCap = 40000;
-    else ltvCap = 60000;
   }
   // 정책상품 절대 한도
   const productCap = prodInfo.maxLoan > 0 ? prodInfo.maxLoan : Infinity;
@@ -598,7 +597,7 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
                 <div className="flex justify-between"><span className="text-muted-foreground">인테리어 (평균)</span><span>{aff.interiorCost.toLocaleString()}만원</span></div>
               )}
               <div className="flex justify-between border-t pt-0.5"><span className="text-muted-foreground">총 비용{aff.interiorCost > 0 ? " (인테리어 포함)" : ""}</span><span>{((priceMan + aff.netTax + aff.broker + aff.miscCost + aff.interiorCost) / 10000).toFixed(1)}억</span></div>
-              <div className="flex justify-between"><span className="text-muted-foreground">LTV {(aff.ltvRate * 100).toFixed(0)}% · {aff.regulated ? "규제" : "비규제"}{aff.regulated ? ` · 한도 ${aff.ltvCap / 10000}억` : ""}{aff.productCap !== Infinity ? ` · 상품한도 ${aff.productCap / 10000}억` : ""}</span><span>-{(aff.ltvMax / 10000).toFixed(1)}억</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">LTV {(aff.ltvRate * 100).toFixed(0)}% · {aff.regulated ? "규제" : "비규제"}{` · 한도 ${aff.ltvCap / 10000}억`}{aff.productCap !== Infinity ? ` · 상품한도 ${aff.productCap / 10000}억` : ""}</span><span>-{(aff.ltvMax / 10000).toFixed(1)}억</span></div>
               {aff.dsrMax != null && <div className="flex justify-between"><span className="text-muted-foreground">DSR 한도 (40%)</span><span className={aff.dsrLimited ? "text-amber-500" : ""}>-{(aff.dsrMax / 10000).toFixed(1)}억</span></div>}
               {aff.dsrLimited && <p className="text-[10px] text-amber-500">DSR에 의해 대출 제한</p>}
               {aff.extraLoanMan > 0 && <div className="flex justify-between"><span className="text-muted-foreground">추가대출</span><span>+{(aff.extraLoanMan / 10000).toFixed(1)}억</span></div>}
