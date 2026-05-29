@@ -528,11 +528,18 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
   const [customPrice, setCustomPrice] = useState<string>("");
   const customMan = customPrice && !Number.isNaN(parseFloat(customPrice)) ? parseFloat(customPrice) * 10000 : null;
   const kbStorageKey = `kb:${data.name}|${data.atype}`;
-  const [kbPrice, setKbPrice] = useState<string>(() => localStorage.getItem(kbStorageKey) ?? "");
+  // KB부동산 자동 수집 시세 (만원). 있으면 기본값으로 사용.
+  const kbAutoMan = data.kb_sale != null && data.kb_sale > 0 ? data.kb_sale : null;
+  const kbAutoStr = kbAutoMan != null ? (kbAutoMan / 10000).toFixed(1) : "";
+  // localStorage는 사용자 수동 override 전용. 빈 문자열이면 자동값 사용.
+  const [kbOverride, setKbOverride] = useState<string>(() => localStorage.getItem(kbStorageKey) ?? "");
   useEffect(() => {
-    if (kbPrice) localStorage.setItem(kbStorageKey, kbPrice);
+    if (kbOverride) localStorage.setItem(kbStorageKey, kbOverride);
     else localStorage.removeItem(kbStorageKey);
-  }, [kbStorageKey, kbPrice]);
+  }, [kbStorageKey, kbOverride]);
+  // 표시·계산에 쓸 값: override 우선, 없으면 자동값
+  const kbPrice = kbOverride !== "" ? kbOverride : kbAutoStr;
+  const kbIsManual = kbOverride !== "" && kbOverride !== kbAutoStr;
   const kbMan = kbPrice && !Number.isNaN(parseFloat(kbPrice)) ? parseFloat(kbPrice) * 10000 : null;
   const priceMan = customMan ?? data.avg;
   const interior = calcInterior(data.area, data.build);
@@ -599,7 +606,9 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-muted-foreground" title="입력 시 LTV는 min(매매가, KB시세) × LTV율로 계산. 단지별 자동 저장.">KB시세 (선택)</span>
+                <span className="text-muted-foreground" title={`LTV는 min(매매가, KB시세) × LTV율로 계산.${kbAutoMan != null ? ` KB부동산 자동 시세${data.kb_as_of ? ` (${data.kb_as_of} 기준)` : ""}.` : ""} 직접 수정 시 단지별 자동 저장.`}>
+                  KB시세 {kbIsManual ? "(수정됨)" : kbAutoMan != null ? "(자동)" : "(선택)"}
+                </span>
                 <span className="flex items-center gap-1">
                   <input
                     type="number"
@@ -607,7 +616,7 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
                     inputMode="decimal"
                     placeholder="-"
                     value={kbPrice}
-                    onChange={(e) => setKbPrice(e.target.value)}
+                    onChange={(e) => setKbOverride(e.target.value)}
                     onKeyDown={(e) => {
                       if (e.key !== "ArrowUp" && e.key !== "ArrowDown") return;
                       e.preventDefault();
@@ -616,17 +625,17 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
                         : (data.avg / 10000);
                       const delta = e.key === "ArrowUp" ? 0.1 : -0.1;
                       const next = Math.max(0, Math.round((base + delta) * 10) / 10);
-                      setKbPrice(next.toFixed(1));
+                      setKbOverride(next.toFixed(1));
                     }}
                     onClick={(e) => (e.target as HTMLInputElement).select()}
                     className={cn(
                       "w-14 text-right bg-background border border-border rounded px-1 py-0 text-xs tabular-nums focus:outline-none focus:border-primary",
-                      kbPrice && "text-sky-500 border-sky-500/50"
+                      kbPrice && (kbIsManual ? "text-sky-500 border-sky-500/50" : "text-muted-foreground")
                     )}
                   />
                   <span className="text-muted-foreground">억</span>
-                  {kbPrice && (
-                    <button type="button" onClick={() => setKbPrice("")} className="text-muted-foreground hover:text-foreground text-[10px]" title="제거">↺</button>
+                  {kbIsManual && (
+                    <button type="button" onClick={() => setKbOverride("")} className="text-muted-foreground hover:text-foreground text-[10px]" title={kbAutoMan != null ? "KB 자동값으로 복귀" : "제거"}>↺</button>
                   )}
                 </span>
               </div>

@@ -52,6 +52,10 @@ export interface AptData {
   naver_place_id: string | null;
   naver_complex_id: string | null;
   pyeong_type_nos: number[] | null;
+  // KB부동산 시세 (만원) — PricePopover LTV 기본값
+  kb_sale?: number | null;
+  kb_jeonse?: number | null;
+  kb_as_of?: string | null;
   // 관리비 (만원/월)
   mgmt_cost: number | null;
   mgmt_summer: number | null;

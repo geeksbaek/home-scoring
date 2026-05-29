@@ -110,6 +110,21 @@ async function main() {
     console.log(`   ⚠ hcode 검증 오류: ${e.message?.slice(0, 100)}`);
   }
 
+  // ── 3.5 KB부동산 시세 (신규 단지 증분 + 금요일 전체 갱신) ──
+  // KB 시세는 주간(금요일) 갱신 → 금요일엔 --refresh-price로 전체 재조회.
+  console.log("3️⃣.5  KB부동산 시세 수집...");
+  try {
+    const isFriday = now.getDay() === 5;
+    // 신규 단지 증분은 매일. 금요일(KB 갱신일)엔 전체 시세 갱신 + 미매칭 단지 재시도.
+    await $`bun pipeline/collect_kb_price.ts`.cwd(ROOT);
+    if (isFriday) {
+      await $`bun pipeline/collect_kb_price.ts --retry-failed`.cwd(ROOT);
+      await $`bun pipeline/collect_kb_price.ts --refresh-price`.cwd(ROOT);
+    }
+  } catch (e: any) {
+    console.log(`   ⚠ KB시세 오류: ${e.message?.slice(0, 100)}`);
+  }
+
   // ── 4. 스코어링 재생성 + 배포 ────────────────────────
   console.log("4️⃣  스코어링 재생성 + 배포...");
   try {
