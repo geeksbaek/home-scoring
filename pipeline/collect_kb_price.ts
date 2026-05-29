@@ -33,7 +33,9 @@ const HEADERS = {
   "User-Agent":
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
   Referer: "https://kbland.kr/",
+  Origin: "https://kbland.kr",
   Accept: "application/json",
+  webservice: "1", // map250mBlwInfoList POST에 필수
 };
 
 // sync.ts areaType()와 동일 — 전용면적 raw 기준 버킷.
@@ -155,6 +157,63 @@ async function kbGetRetry<T = any>(path: string, params: Record<string, string |
   return r.data;
 }
 
+async function kbPost<T = any>(path: string, body: Record<string, unknown>): Promise<KbFetch<T>> {
+  try {
+    const res = await fetch(`${KB_BASE}${path}`, {
+      method: "POST",
+      headers: { ...HEADERS, "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (res.status === 429 || res.status === 503) return { data: null, rateLimited: true };
+    if (!res.ok) return { data: null, rateLimited: false };
+    const json: any = await res.json();
+    return { data: (json?.dataBody?.data ?? null) as T, rateLimited: false };
+  } catch {
+    return { data: null, rateLimited: false };
+  }
+}
+
+// 지도 bbox 단지마커 검색의 빈 필터 필드 (실제 KB 웹 요청 본문 복제)
+const EMPTY_FILTER_KEYS = ["매매시작값","매매종료값","보증금시작값","보증금종료값","월세시작값","월세종료값","면적시작값","면적종료값","준공년도시작값","준공년도종료값","방수","욕실수","세대수시작값","세대수종료값","관리비시작값","관리비종료값","용적률시작값","용적률종료값","건폐율시작값","건폐율종료값","전세가율시작값","전세가율종료값","매매전세차시작값","매매전세차종료값","월세수익률시작값","월세수익률종료값","구조","주차","엘리베이터","보안옵션","매물","융자금","옵션","점포수시작값","점포수종료값","지상층","지하층","지목","용도지역","추진현황"];
+
+interface BboxCandidate {
+  단지기본일련번호: number;
+  단지명: string;
+  wgs84위도: number;
+  wgs84경도: number;
+}
+
+// 좌표 중심 bbox 내 아파트 단지마커 조회 (이름 무관)
+async function bboxSearch(lat: number, lng: number): Promise<BboxCandidate[]> {
+  const d = 0.0035; // 약 ±400m
+  const body: Record<string, unknown> = {
+    selectCode: "1,2,3", zoomLevel: 17,
+    startLat: lat - d, startLng: lng - d, endLat: lat + d, endLng: lng + d,
+    물건종류: "01", 거래유형: "1,2,3",
+    분양단지구분코드: "C01", 일반분양여부: "1,0", 분양진행단계코드: "S01,S11,S12",
+    webCheck: "Y", 단지묶음여부: "N",
+  };
+  for (const k of EMPTY_FILTER_KEYS) body[k] = "";
+  let r = await kbPost<{ 단지리스트?: BboxCandidate[] }>("/land-complex/map/map250mBlwInfoList", body);
+  let backoff = 5000;
+  while (r.rateLimited && backoff <= 60000) {
+    await sleep(backoff);
+    r = await kbPost<{ 단지리스트?: BboxCandidate[] }>("/land-complex/map/map250mBlwInfoList", body);
+    backoff *= 2;
+  }
+  return r.data?.단지리스트 ?? [];
+}
+
+// complex/main → 법정동코드 + 지번 (bbox 후보 재검증용)
+async function complexAddr(complexNo: string | number): Promise<{ bubcode: string | null; jibun: string | null }> {
+  const d = await kbGetRetry<any>("/land-complex/complex/main", { 단지기본일련번호: complexNo });
+  if (!d) return { bubcode: null, jibun: null };
+  const bon = String(d.본번지내용 ?? "").trim();
+  const bu = String(d.부번지내용 ?? "").trim();
+  const jibun = bon ? (bu && bu !== "0" ? `${bon}-${bu}` : bon) : null;
+  return { bubcode: d.법정동코드 ?? null, jibun };
+}
+
 interface Identity {
   name: string;
   region: string;
@@ -255,17 +314,51 @@ async function matchComplex(
     await sleep(300);
   }
 
-  if (!best) return null;
-  return {
-    complexNo: best.c.COMPLEX_NO,
-    bubcode: best.c.BUBCODE || null,
-    arno: best.c.ARNO || null,
-    lat: parseFloat(best.c.WGS84_LAT) || null,
-    lng: parseFloat(best.c.WGS84_LNG) || null,
-    dist_m: best.dist != null ? Math.round(best.dist) : null,
-    matched_by: best.by,
-    kb_name: best.c.HSCM_NM,
-  };
+  if (best) {
+    return {
+      complexNo: best.c.COMPLEX_NO,
+      bubcode: best.c.BUBCODE || null,
+      arno: best.c.ARNO || null,
+      lat: parseFloat(best.c.WGS84_LAT) || null,
+      lng: parseFloat(best.c.WGS84_LNG) || null,
+      dist_m: best.dist != null ? Math.round(best.dist) : null,
+      matched_by: best.by,
+      kb_name: best.c.HSCM_NM,
+    };
+  }
+
+  // 이름검색 실패 → 좌표 bbox fallback (KB가 단지명을 재배열/축약한 케이스).
+  // 후보를 complex/main으로 법정동+지번 재검증해 오염좌표 오매칭 방지.
+  if (centroid) {
+    const cands = await bboxSearch(centroid.lat, centroid.lng);
+    const near = cands
+      .map((c) => ({ c, dist: haversine(centroid.lat, centroid.lng, c.wgs84위도, c.wgs84경도) }))
+      .filter((x) => Number.isFinite(x.dist) && x.dist <= 500)
+      .sort((a, b) => a.dist - b.dist)
+      .slice(0, 4);
+    for (const { c, dist } of near) {
+      await sleep(250);
+      const addr = await complexAddr(c.단지기본일련번호);
+      const bjdMatch = !!id.bjd_code && addr.bubcode === id.bjd_code;
+      const jibunFull = !!id.jibun && !!normJibun(addr.jibun) && normJibun(addr.jibun) === normJibun(id.jibun);
+      const bonMatch = !!bonbun(id.jibun) && bonbun(addr.jibun) === bonbun(id.jibun);
+      // bjd_code 있으면 법정동/풀지번 일치 필수(본번만으론 타지역 오매칭 위험), 없으면 풀지번/본번 허용
+      const accept = id.bjd_code ? (bjdMatch || jibunFull) : (jibunFull || bonMatch);
+      if (!accept) continue;
+      return {
+        complexNo: String(c.단지기본일련번호),
+        bubcode: addr.bubcode,
+        arno: addr.jibun,
+        lat: c.wgs84위도,
+        lng: c.wgs84경도,
+        dist_m: Math.round(dist),
+        matched_by: "bbox+" + (bjdMatch && bonMatch ? "bjd+jibun" : jibunFull ? "jibun" : bjdMatch ? "bjd" : "bon"),
+        kb_name: c.단지명,
+      };
+    }
+  }
+
+  return null;
 }
 
 interface AreaInfo {
