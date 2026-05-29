@@ -14,7 +14,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useNaverArticles, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
+import { useNaverArticles, getProxyUrl, setProxyUrl, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
 import { ChevronDown } from "lucide-react";
 import { lazy, Suspense } from "react";
 const AptMap = lazy(() => import("@/components/AptMap"));
@@ -551,6 +551,29 @@ function ArticleCard({ a }: { a: NaverArticle }) {
   );
 }
 
+function ProxySetting() {
+  const [open, setOpen] = useState(false);
+  const [val, setVal] = useState(() => getProxyUrl());
+  if (!open) {
+    return (
+      <button type="button" onClick={() => { setVal(getProxyUrl()); setOpen(true); }} className="text-[10px] text-muted-foreground hover:text-foreground" title="실매물 프록시 URL 설정 (Cloudflare 터널 등)">⚙ 프록시 URL</button>
+    );
+  }
+  return (
+    <div className="mt-1 flex items-center gap-1">
+      <input
+        type="text"
+        value={val}
+        onChange={(e) => setVal(e.target.value)}
+        placeholder="https://xxx.trycloudflare.com"
+        className="flex-1 min-w-0 bg-background border border-border rounded px-1 py-0 text-[10px] focus:outline-none focus:border-primary"
+      />
+      <button type="button" onClick={() => { setProxyUrl(val); setOpen(false); }} className="text-[10px] text-primary hover:underline shrink-0">저장</button>
+      <button type="button" onClick={() => setOpen(false)} className="text-[10px] text-muted-foreground hover:text-foreground shrink-0">✕</button>
+    </div>
+  );
+}
+
 function NaverListings({ data }: { data: AptData }) {
   const { loading, data: result, error, fetchArticles } = useNaverArticles();
   const complexId = data.naver_complex_id;
@@ -564,13 +587,16 @@ function NaverListings({ data }: { data: AptData }) {
   return (
     <div className="mt-2 pt-2 border-t">
       {!result && !loading && !error && (
-        <button
-          type="button"
-          onClick={() => fetchArticles(complexId, data.pyeong_type_nos)}
-          className="w-full text-center py-1 rounded border border-border text-primary hover:bg-muted text-xs"
-        >
-          네이버 실매물 불러오기 ({Math.floor(data.area)}㎡)
-        </button>
+        <>
+          <button
+            type="button"
+            onClick={() => fetchArticles(complexId, data.pyeong_type_nos)}
+            className="w-full text-center py-1 rounded border border-border text-primary hover:bg-muted text-xs"
+          >
+            네이버 실매물 불러오기 ({Math.floor(data.area)}㎡)
+          </button>
+          <ProxySetting />
+        </>
       )}
       {loading && (
         <div className="space-y-1">
@@ -579,9 +605,12 @@ function NaverListings({ data }: { data: AptData }) {
         </div>
       )}
       {error && (
-        <p className="text-[10px] text-muted-foreground">
-          실매물 조회 일시 불가 · <a href={moreUrl} target="_blank" rel="noopener" className="text-primary hover:underline">네이버에서 보기 →</a>
-        </p>
+        <>
+          <p className="text-[10px] text-muted-foreground">
+            실매물 조회 일시 불가 · <a href={moreUrl} target="_blank" rel="noopener" className="text-primary hover:underline">네이버에서 보기 →</a>
+          </p>
+          <ProxySetting />
+        </>
       )}
       {result && (
         <>

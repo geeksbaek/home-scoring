@@ -1,8 +1,23 @@
 import { useCallback, useState } from "react";
 
-// 네이버 실매물 프록시 URL. 빌드 시 VITE_NAVER_PROXY_URL 로 주입.
-// 미설정 시 로컬 개발용 localhost fallback (프로덕션에선 프록시 없으면 graceful degrade).
-const PROXY = import.meta.env.VITE_NAVER_PROXY_URL || "http://127.0.0.1:8787";
+// 네이버 실매물 프록시 URL 해석 (런타임).
+// 우선순위: localStorage("naverProxyUrl") > 빌드시 VITE_NAVER_PROXY_URL > 로컬 fallback.
+// quick tunnel(trycloudflare) URL이 재시작마다 바뀌므로 런타임 설정 가능하게 함.
+const PROXY_KEY = "naverProxyUrl";
+export function getProxyUrl(): string {
+  try {
+    const v = localStorage.getItem(PROXY_KEY);
+    if (v && v.trim()) return v.trim().replace(/\/+$/, "");
+  } catch { /* ignore */ }
+  return (import.meta.env.VITE_NAVER_PROXY_URL || "http://127.0.0.1:8787").replace(/\/+$/, "");
+}
+export function setProxyUrl(url: string) {
+  try {
+    const v = url.trim().replace(/\/+$/, "");
+    if (v) localStorage.setItem(PROXY_KEY, v);
+    else localStorage.removeItem(PROXY_KEY);
+  } catch { /* ignore */ }
+}
 
 export type NaverArticle = {
   articleNo: string;
@@ -51,7 +66,7 @@ export function useNaverArticles() {
     try {
       const qs = new URLSearchParams({ complexNo, trade });
       if (pyeongTypeNos && pyeongTypeNos.length > 0) qs.set("pyeongTypes", pyeongTypeNos.join("-"));
-      const r = await fetch(`${PROXY}/articles?${qs}`, { signal: AbortSignal.timeout(12000) });
+      const r = await fetch(`${getProxyUrl()}/articles?${qs}`, { signal: AbortSignal.timeout(12000) });
       const json = await r.json();
       if (!r.ok) throw new Error(json?.error || `proxy ${r.status}`);
       setState({ loading: false, data: json as NaverResult, error: null });
