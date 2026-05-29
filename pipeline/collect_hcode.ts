@@ -91,6 +91,9 @@ async function main() {
   const kapt: Record<string, any> = await Bun.file(join(DATA_DIR, "kapt_info.json")).json();
   const hcodesPath = join(DATA_DIR, "hogangnono_codes.json");
   const hcodes: Record<string, string> = existsSync(hcodesPath) ? await Bun.file(hcodesPath).json() : {};
+  // KB 단지좌표 — 검증된 ground truth. 있으면 geocode 대신 매칭 앵커로 사용(재오염 방지).
+  const kbIdsPath = join(DATA_DIR, "kb_complex_ids.json");
+  const kbIds: Record<string, { lat: number | null; lng: number | null } | null> = existsSync(kbIdsPath) ? await Bun.file(kbIdsPath).json() : {};
 
   const __only = process.env.ONLY_NAMES ? new Set(JSON.parse(require("node:fs").readFileSync(process.env.ONLY_NAMES,"utf8")) as string[]) : null;
   const targets = identity.filter((a) => !a.hcode).filter((a:any) => !__only || __only.has(a.name));
@@ -102,26 +105,30 @@ async function main() {
     const apt = targets[i];
     process.stdout.write(`[${i + 1}/${targets.length}] ${apt.name}...`);
 
-    // 1. ground truth 좌표
-    let query: string | null = null;
+    // 1. ground truth 좌표 — KB 검증좌표 우선, 없으면 주소 geocode
     const k = kapt[apt.name];
-    if (k?.doroJuso) query = k.doroJuso;
-    else if (k?.addr) query = k.addr;
-    else if (apt.doro_juso) query = apt.doro_juso;
-    else if (apt.jibun_addr) query = apt.jibun_addr;
-    else if (apt.bjdong && apt.jibun) {
-      const prefix = (apt.region || "").startsWith("서울") ? "" : "경기도 ";
-      query = `${prefix}${apt.region || ""} ${apt.bjdong} ${apt.jibun}`;
+    let truth: { lat: number; lng: number } | null = null;
+    const kb = kbIds[apt.name];
+    if (kb && kb.lat != null && kb.lng != null) {
+      truth = { lat: kb.lat, lng: kb.lng };
+    } else {
+      let query: string | null = null;
+      if (k?.doroJuso) query = k.doroJuso;
+      else if (k?.addr) query = k.addr;
+      else if (apt.doro_juso) query = apt.doro_juso;
+      else if (apt.jibun_addr) query = apt.jibun_addr;
+      else if (apt.bjdong && apt.jibun) {
+        const prefix = (apt.region || "").startsWith("서울") ? "" : "경기도 ";
+        query = `${prefix}${apt.region || ""} ${apt.bjdong} ${apt.jibun}`;
+      }
+      if (!query) {
+        console.log(" ✗ truth 없음");
+        fail++;
+        continue;
+      }
+      truth = await geocode(query);
+      await sleep(50);
     }
-
-    if (!query) {
-      console.log(" ✗ truth 없음");
-      fail++;
-      continue;
-    }
-
-    const truth = await geocode(query);
-    await sleep(50);
     if (!truth) {
       console.log(" ✗ geocode 실패");
       fail++;
