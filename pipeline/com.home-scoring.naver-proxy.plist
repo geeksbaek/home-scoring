@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  네이버 실매물 프록시 상주 서비스 (launchd) — 템플릿.
+  설치(사용자가 직접 실행):
+    cp pipeline/com.home-scoring.naver-proxy.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.home-scoring.naver-proxy.plist
+  중지/제거:
+    launchctl unload ~/Library/LaunchAgents/com.home-scoring.naver-proxy.plist
+  로그: ~/Library/Logs/home-scoring/naver-proxy.{log,err}
+  curl_cffi 필요: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m pip install curl_cffi
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>HOME</key>
+		<string>/Users/jongyeol</string>
+		<key>PATH</key>
+		<string>/Library/Frameworks/Python.framework/Versions/3.13/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+		<key>PORT</key>
+		<string>8787</string>
+	</dict>
+	<key>Label</key>
+	<string>com.home-scoring.naver-proxy</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Library/Frameworks/Python.framework/Versions/3.13/bin/python3</string>
+		<string>pipeline/naver_proxy.py</string>
+	</array>
+	<key>KeepAlive</key>
+	<true/>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/jongyeol/Library/Logs/home-scoring/naver-proxy.err</string>
+	<key>StandardOutPath</key>
+	<string>/Users/jongyeol/Library/Logs/home-scoring/naver-proxy.log</string>
+	<key>ThrottleInterval</key>
+	<integer>10</integer>
+	<key>WorkingDirectory</key>
+	<string>/Users/jongyeol/GitHub/home-scoring</string>
+</dict>
+</plist>

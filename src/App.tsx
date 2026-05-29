@@ -14,6 +14,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useNaverArticles, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
 import { ChevronDown } from "lucide-react";
 import { lazy, Suspense } from "react";
 const AptMap = lazy(() => import("@/components/AptMap"));
@@ -524,6 +525,88 @@ function calcInterior(areaSqm: number | null | undefined, buildYear: number | nu
   };
 }
 
+function ArticleCard({ a }: { a: NaverArticle }) {
+  return (
+    <div className="rounded border border-border/60 px-1.5 py-1">
+      <div className="flex items-center justify-between gap-1">
+        <span className="flex items-center gap-1">
+          <Badge variant="outline" className="text-[9px] px-1 py-0">{a.tradeName}</Badge>
+          <strong className="tabular-nums">{formatArticlePrice(a)}</strong>
+        </span>
+        <span className="text-[10px] text-muted-foreground tabular-nums shrink-0">
+          {a.exclusiveName ?? (a.exclusiveArea ? `${Math.floor(a.exclusiveArea)}㎡` : "")}
+          {a.floor ? ` · ${a.floor}층` : ""}
+        </span>
+      </div>
+      <div className="flex items-center gap-1 text-[10px] text-muted-foreground flex-wrap">
+        {a.dong && <span>{a.dong}</span>}
+        {a.directionName && <span>· {a.directionName}향</span>}
+        {verifyLabel(a.verifyType) && <span className="text-emerald-500">· {verifyLabel(a.verifyType)}</span>}
+        {a.directTrade && <span className="text-amber-500">· 직거래</span>}
+        {a.confirmDate && <span className="ml-auto">{formatConfirm(a.confirmDate)} 확인</span>}
+      </div>
+      {a.feature && <p className="text-[10px] text-foreground/80 line-clamp-1" title={a.feature}>{a.feature}</p>}
+      {a.broker && <p className="text-[9px] text-muted-foreground line-clamp-1">{a.broker}</p>}
+    </div>
+  );
+}
+
+function NaverListings({ data }: { data: AptData }) {
+  const { loading, data: result, error, fetchArticles } = useNaverArticles();
+  const complexId = data.naver_complex_id;
+  if (!complexId) return null;
+
+  const moreUrl = naverLandUrl(complexId, isMobile, data.pyeong_type_nos);
+  // 서버단에서 pyeong_type_nos로 평형 스코핑 → 반환 매물이 곧 이 평형 매물
+  const articles = result?.articles ?? [];
+  const scoped = (data.pyeong_type_nos?.length ?? 0) > 0;
+
+  return (
+    <div className="mt-2 pt-2 border-t">
+      {!result && !loading && !error && (
+        <button
+          type="button"
+          onClick={() => fetchArticles(complexId, data.pyeong_type_nos)}
+          className="w-full text-center py-1 rounded border border-border text-primary hover:bg-muted text-xs"
+        >
+          네이버 실매물 불러오기 ({Math.floor(data.area)}㎡)
+        </button>
+      )}
+      {loading && (
+        <div className="space-y-1">
+          <p className="font-semibold mb-1">네이버 실매물</p>
+          {[0, 1, 2].map((i) => <div key={i} className="h-9 rounded bg-muted animate-pulse" />)}
+        </div>
+      )}
+      {error && (
+        <p className="text-[10px] text-muted-foreground">
+          실매물 조회 일시 불가 · <a href={moreUrl} target="_blank" rel="noopener" className="text-primary hover:underline">네이버에서 보기 →</a>
+        </p>
+      )}
+      {result && (
+        <>
+          <p className="font-semibold mb-1">
+            네이버 매매 {scoped && <span className="font-normal text-muted-foreground">{Math.floor(data.area)}㎡ </span>}
+            <span className="text-muted-foreground font-normal">{result.totalCount}건</span>
+          </p>
+          {articles.length === 0 ? (
+            <p className="text-[10px] text-muted-foreground">
+              현재 {scoped ? "이 평형 " : ""}매매 매물이 없습니다 · <a href={moreUrl} target="_blank" rel="noopener" className="text-primary hover:underline">네이버에서 보기 →</a>
+            </p>
+          ) : (
+            <>
+              <div className="space-y-1">{articles.map((a) => <ArticleCard key={a.articleNo} a={a} />)}</div>
+              <a href={moreUrl} target="_blank" rel="noopener" className="block mt-1 text-[10px] text-primary hover:underline">
+                네이버부동산에서 더보기 →{result.cached ? " (캐시)" : ""}
+              </a>
+            </>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
 function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, firstTimeBuyer, loanProduct, interestSubsidy, includeInterior }: { data: AptData; capitalMan: number | null; extraLoanMan: number; income1Man: number; income2Man: number; loanYears: number; extraRepayYrs: number; firstTimeBuyer: boolean; loanProduct: LoanProduct; interestSubsidy: boolean; includeInterior: boolean }) {
   const [customPrice, setCustomPrice] = useState<string>("");
   const customMan = customPrice && !Number.isNaN(parseFloat(customPrice)) ? parseFloat(customPrice) * 10000 : null;
@@ -721,6 +804,7 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
             </table>
           </>
         )}
+        <NaverListings data={data} />
       </PopoverContent>
     </Popover>
   );
