@@ -139,7 +139,8 @@ async function main() {
 
     let reserveRate: number | null = null;
     for (let j = monthlyData.length - 1; j >= 0; j--) {
-      if (monthlyData[j].sPer != null && monthlyData[j].sPer! > 0) {
+      // 적립요율은 부과 대비 적립비율 → 100% 초과는 사실상 불가. 200% 초과는 API 가비지로 폐기.
+      if (monthlyData[j].sPer != null && monthlyData[j].sPer! > 0 && monthlyData[j].sPer! <= 200) {
         reserveRate = Math.round(monthlyData[j].sPer! * 10) / 10;
         break;
       }

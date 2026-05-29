@@ -87,8 +87,10 @@ async function main() {
     else if (apt.doro_juso) query = apt.doro_juso;
     else if (apt.jibun_addr) query = apt.jibun_addr;
     else if (apt.bjdong && apt.jibun) {
+      // region은 이미 "서울특별시 강남구"처럼 시/도 포함 → '경기도' 하드코딩 금지
+      // (과거 버그: "경기도 서울특별시 ..." → 경기 좌표로 geocode되어 서울단지 hcode 오염을 audit가 못 걸름)
       const region = apt.region || "";
-      query = `경기도 ${region} ${apt.bjdong} ${apt.jibun}`;
+      query = `${region} ${apt.bjdong} ${apt.jibun}`;
     }
 
     if (!query) {

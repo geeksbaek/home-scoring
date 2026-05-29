@@ -136,17 +136,20 @@ function buildUnitTypes(rows: ExposItem[], targetName: string, allowFallback: bo
     perHo.set(k, (perHo.get(k) ?? 0) + parseFloat(String(r.area)));
   }
 
-  // area별 호 수
+  // area별 호 수 (상가/집합부/dongNm·hoNm 결측 합산 가비지 제외 — 아파트 전용면적은 ≤300㎡)
   const areaCounts = new Map<number, number>();
+  let validHo = 0;
   for (const a of perHo.values()) {
     const r = Math.round(a * 100) / 100;
+    if (r <= 0 || r > 300) continue;
     areaCounts.set(r, (areaCounts.get(r) ?? 0) + 1);
+    validHo++;
   }
   const areaTypes: AreaTypeEntry[] = [...areaCounts.entries()]
     .sort((a, b) => a[0] - b[0])
     .map(([area, count]) => ({ area, count }));
 
-  return { bldNm: pick.bld, totalUnits: perHo.size, areaTypes, matched: pick.matched };
+  return { bldNm: pick.bld, totalUnits: validHo, areaTypes, matched: pick.matched };
 }
 
 async function main() {

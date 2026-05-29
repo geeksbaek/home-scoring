@@ -246,8 +246,18 @@ export async function collectBuilding() {
       eqDesign = titles.some((t: any) => t.rserthqkDsgnApplyYn === "1" || t.rserthqkDsgnApplyYn === "Y");
       const withCap = titles.find((t: any) => t.rserthqkAblty?.trim());
       eqCap = withCap?.rserthqkAblty?.trim() || null;
+      // 유니코드 로마숫자(Ⅶ U+2166 등)를 ASCII로 정규화 (문자열 비교/검색 일관성)
+      if (eqCap) {
+        const ROMAN: Record<string, string> = { "Ⅰ": "I", "Ⅱ": "II", "Ⅲ": "III", "Ⅳ": "IV", "Ⅴ": "V", "Ⅵ": "VI", "Ⅶ": "VII", "Ⅷ": "VIII", "Ⅸ": "IX", "Ⅹ": "X" };
+        eqCap = eqCap.replace(/[Ⅰ-Ⅹ]/g, (ch) => ROMAN[ch] ?? ch);
+      }
       structure = titles[0].strctCdNm?.trim() || null;
       useAprDay = titles[0].useAprDay?.trim() || null;
+      // 'YYYY M D' 공백 구분 → 'YYYYMMDD' 정규화
+      if (useAprDay && /^\d{1,4}\s+\d{1,2}\s+\d{1,2}$/.test(useAprDay)) {
+        const [y, m, d] = useAprDay.split(/\s+/);
+        useAprDay = `${y.padStart(4, "0")}${m.padStart(2, "0")}${d.padStart(2, "0")}`;
+      }
     }
 
     // 총괄표제부 조회 (에너지등급)
@@ -307,6 +317,9 @@ export async function collectBuilding() {
       const bs = titles.map((t: any) => parseFloat(t.bcRat)).filter((v: number) => v > 0);
       if (bs.length > 0) bcRat = Math.round((bs.reduce((a: number, b: number) => a + b, 0) / bs.length) * 100) / 100;
     }
+    // 물리적 상한 검증 (건축물대장 파싱 오류/면적값 혼입 가비지 폐기): 용적률 ≤2000%, 건폐율 ≤100%
+    if (vlRat != null && (vlRat <= 0 || vlRat > 2000)) vlRat = null;
+    if (bcRat != null && (bcRat <= 0 || bcRat > 100)) bcRat = null;
 
     // 주차대수: 총괄표제부 totPkngCnt 우선 (단지 전체 합계, 부속동·상가 포함)
     // 없으면 4필드 합 (indrAuto + oudrAuto + indrMech + oudrMech)
