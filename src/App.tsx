@@ -1644,6 +1644,10 @@ export default function App() {
   const [sortField, setSortField] = useState<SortKey>(() => ls("f_sort", "score") as SortKey);
   const [myLocation, setMyLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [viewMode, setViewMode] = useState<"table" | "map">("table");
+  // 메인 테이블 점진 렌더 — 필터 없을 때 ~5,900행 동시 렌더 freeze 방지
+  const ROW_PAGE = 60;
+  const [visibleCount, setVisibleCount] = useState(ROW_PAGE);
+  const sentinelRef = React.useRef<HTMLTableRowElement>(null);
   const [regionFilter, setRegionFilter] = useState<string[]>(() => lsArr("f_region_multi"));
   const [commuteFilter, setCommuteFilter] = useState(() => ls("f_commute", "all"));
   const [liquidityFilter, setLiquidityFilter] = useState(() => ls("f_liquidity", "all"));
@@ -1852,6 +1856,24 @@ export default function App() {
     });
     return f;
   }, [tradeFilteredData, typeFilter, sortField, regionFilter, commuteFilter, liquidityFilter, accelFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, myLocation]);
+
+  // 필터/정렬/뷰 변경 시 점진 렌더 카운트 리셋 (스크롤 맨 위로 돌아간 효과)
+  useEffect(() => { setVisibleCount(ROW_PAGE); }, [filtered, viewMode]);
+
+  // sentinel이 보이면 다음 페이지만큼 더 렌더
+  useEffect(() => {
+    if (viewMode !== "table") return;
+    if (visibleCount >= filtered.length) return;
+    const el = sentinelRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0]?.isIntersecting) {
+        startTransition(() => setVisibleCount((c) => Math.min(c + ROW_PAGE, filtered.length)));
+      }
+    }, { rootMargin: "600px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [viewMode, visibleCount, filtered.length]);
 
   const favoriteItems = useMemo(() => {
     const items = tradeFilteredData.filter((d) => favorites.has(`${d.name}|${d.atype}`));
@@ -2384,7 +2406,7 @@ export default function App() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filtered.map((d, i) => {
+              {filtered.slice(0, visibleCount).map((d, i) => {
                 const sparkData = d.recent_trades
                   ?.slice()
                   .reverse()
@@ -2452,6 +2474,13 @@ export default function App() {
                   </TableRow>
                 );
               })}
+              {visibleCount < filtered.length && (
+                <TableRow ref={sentinelRef}>
+                  <TableCell colSpan={17} className="text-center text-xs text-muted-foreground py-3">
+                    {filtered.length - visibleCount}개 더 불러오는 중…
+                  </TableCell>
+                </TableRow>
+              )}
             </TableBody>
           </Table>
         </div>}

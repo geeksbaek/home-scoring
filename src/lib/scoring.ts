@@ -144,9 +144,16 @@ export function calcScores(data: AptData[], weights: ScoreWeights = DEFAULT_WEIG
   const live = data.filter((d) => !d.no_trades);
   const n = live.length;
   if (n === 0) return;
+  // 값 → 정렬 후 최초 등장 인덱스. 동점은 동일 순위(기존 indexOf 동작과 일치).
+  // 기존: arr.map(v => sorted.indexOf(v)) = O(n²) → n≈16000에서 수 초 freeze.
+  // 개선: 최초 인덱스를 Map에 1회 적재 → O(n log n).
   const rank = (arr: number[]) => {
     const sorted = [...arr].sort((a, b) => a - b);
-    return arr.map((v) => (sorted.indexOf(v) + 1) / n);
+    const firstIdx = new Map<number, number>();
+    for (let i = 0; i < sorted.length; i++) {
+      if (!firstIdx.has(sorted[i])) firstIdx.set(sorted[i], i);
+    }
+    return arr.map((v) => (firstIdx.get(v)! + 1) / n);
   };
   const accels = rank(live.map((d) => d.accel ?? 0));
   const liqs = rank(live.map((d) => d.liquidity ?? 0));
