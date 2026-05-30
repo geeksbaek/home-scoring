@@ -242,6 +242,14 @@ export function naverLandUrl(complexId: string, isMobile: boolean, pyeongTypeNos
     : web;
 }
 
+export function naverArticleUrl(articleNo: string, isMobile: boolean): string {
+  // 네이버페이 부동산 매물 상세 (articleNo → 상세 레이어로 리다이렉트)
+  const web = `https://fin.land.naver.com/articles/${articleNo}`;
+  return isMobile
+    ? `naversearchapp://inappbrowser?url=${encodeURIComponent(web)}&target=new&version=6`
+    : web;
+}
+
 export function naverLandSearchUrl(query: string, isMobile: boolean): string {
   const web = `https://fin.land.naver.com/search?query=${encodeURIComponent(query)}`;
   return isMobile

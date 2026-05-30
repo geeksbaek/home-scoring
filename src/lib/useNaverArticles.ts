@@ -132,8 +132,18 @@ export function verifyLabel(t: string | null): string | null {
 }
 
 // ── 매물 입주가능 판별 ──────────────────────────────────────────────────
+/**
+ * 매물 설명에 '주인전세/주전' 등 → 매도 후에도 집주인이 전세로 거주 → 실입주 불가(점유 매물).
+ * '주인거주/주인입주'(즉시입주 가능)와 구분하기 위해 '전세/임대' 동반 패턴만 매칭.
+ * 오탐 방지: 주전자/주전부리 제외.
+ */
+export function isOwnerJeonse(a: NaverArticle): boolean {
+  const t = a.feature || "";
+  return /주인\s*전세|집주인\s*전세|주인\s*임대|소유자\s*전세|주전(?!자|부리)|주전세/.test(t);
+}
 /** 매물이 targetMonth("YYYY-MM")까지 실입주 가능한가. 즉시입주=항상, 날짜=해당월≤target. */
 export function isMovableBy(a: NaverArticle, targetMonth: string): boolean {
+  if (isOwnerJeonse(a)) return false; // 주인전세 → 점유 지속, 실입주 불가
   const mi = a.moveIn;
   if (!mi) return false; // 입주정보 미확보 → 보수적으로 제외
   if (mi.immediate) return true;

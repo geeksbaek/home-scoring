@@ -9,12 +9,12 @@ import { Slider } from "@/components/ui/slider";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   type AptData, pedScore, commuteScore, calcScores, DEFAULT_WEIGHTS, type ScoreWeights,
-  commuteLabel, pedLabel, parkingLabel, liquidityLabel, safetyLabel, naverMapUrl, naverLandUrl, naverLandSearchUrl, type Label,
+  commuteLabel, pedLabel, parkingLabel, liquidityLabel, safetyLabel, naverMapUrl, naverLandUrl, naverArticleUrl, naverLandSearchUrl, type Label,
 } from "@/lib/scoring";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { getProxyUrl, setProxyUrl, getProxyToken, setProxyToken, useColumnListings, isMovableBy, isTenant, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
+import { getProxyUrl, setProxyUrl, getProxyToken, setProxyToken, useColumnListings, isMovableBy, isTenant, isOwnerJeonse, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
 import { ChevronDown } from "lucide-react";
 import { lazy, Suspense } from "react";
 const AptMap = lazy(() => import("@/components/AptMap"));
@@ -527,9 +527,16 @@ function calcInterior(areaSqm: number | null | undefined, buildYear: number | nu
 
 function ArticleCard({ a, targetMonth }: { a: NaverArticle; targetMonth?: string }) {
   const movable = targetMonth ? isMovableBy(a, targetMonth) : undefined;
+  const ownerJeonse = isOwnerJeonse(a);
   const tenant = isTenant(a);
   return (
-    <div className={cn("rounded border px-1.5 py-1", movable === false ? "border-border/40 opacity-60" : "border-border/60")}>
+    <a
+      href={naverArticleUrl(a.articleNo, isMobile)}
+      target="_blank"
+      rel="noopener"
+      title="네이버부동산 매물 상세 보기"
+      className={cn("block rounded border px-1.5 py-1 transition-colors hover:border-primary/70 hover:bg-accent/40", movable === false ? "border-border/40 opacity-60" : "border-border/60")}
+    >
       <div className="flex items-center justify-between gap-1">
         <span className="flex items-center gap-1">
           <Badge variant="outline" className="text-[9px] px-1 py-0">{a.tradeName}</Badge>
@@ -541,8 +548,9 @@ function ArticleCard({ a, targetMonth }: { a: NaverArticle; targetMonth?: string
         </span>
       </div>
       <div className="flex items-center gap-1 text-[10px] flex-wrap">
-        <span className={a.moveIn?.immediate ? "text-emerald-600 font-medium" : "text-muted-foreground"}>{moveInLabel(a)}</span>
-        {tenant && <span className="text-rose-500">· 세낀(대출X)</span>}
+        <span className={!ownerJeonse && a.moveIn?.immediate ? "text-emerald-600 font-medium" : "text-muted-foreground"}>{moveInLabel(a)}</span>
+        {ownerJeonse && <span className="text-rose-500 font-medium">· 주인전세(실입주X)</span>}
+        {tenant && !ownerJeonse && <span className="text-rose-500">· 세낀(대출X)</span>}
         {a.dong && <span className="text-muted-foreground">· {a.dong}</span>}
         {a.directionName && <span className="text-muted-foreground">· {a.directionName}향</span>}
         {verifyLabel(a.verifyType) && <span className="text-muted-foreground">· {verifyLabel(a.verifyType)}</span>}
@@ -550,7 +558,7 @@ function ArticleCard({ a, targetMonth }: { a: NaverArticle; targetMonth?: string
       </div>
       {a.feature && <p className="text-[10px] text-foreground/80 line-clamp-1" title={a.feature}>{a.feature}</p>}
       {a.broker && <p className="text-[9px] text-muted-foreground line-clamp-1">{a.broker}</p>}
-    </div>
+    </a>
   );
 }
 
