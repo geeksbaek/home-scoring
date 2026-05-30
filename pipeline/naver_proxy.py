@@ -80,19 +80,39 @@ DIRECTION = {
 }
 
 
+_ALLOWLIST_PATH = DATA_DIR / "naver_complex_ids.json"
+
 def load_allowlist() -> set[str]:
     """naver_complex_ids.json 의 complexNo 값만 허용."""
-    path = DATA_DIR / "naver_complex_ids.json"
     try:
-        mapping = json.loads(path.read_text(encoding="utf-8"))
+        mapping = json.loads(_ALLOWLIST_PATH.read_text(encoding="utf-8"))
         return {str(v) for v in mapping.values() if v}
     except Exception as e:  # pragma: no cover
         print(f"[warn] allowlist 로드 실패({e}) — allowlist 비활성(모든 complexNo 허용)")
         return set()
 
 
+# 핫리로드: daily 파이프라인이 매핑을 추가하면 mtime 변경 → 다음 요청에서 자동 재로드.
+# (프록시 재시작 없이도 신규 매핑 단지 조회 가능 — 과거 stale allowlist로 403 막힌 버그 방지)
+_allowlist_lock = threading.Lock()
 ALLOWLIST = load_allowlist()
+_allowlist_mtime = _ALLOWLIST_PATH.stat().st_mtime if _ALLOWLIST_PATH.exists() else 0.0
 print(f"[init] allowlist {len(ALLOWLIST)}개 complexNo 로드")
+
+def current_allowlist() -> set[str]:
+    """파일 mtime이 바뀌었으면 재로드 후 반환(스레드 안전)."""
+    global ALLOWLIST, _allowlist_mtime
+    try:
+        mtime = _ALLOWLIST_PATH.stat().st_mtime
+    except OSError:
+        return ALLOWLIST
+    if mtime != _allowlist_mtime:
+        with _allowlist_lock:
+            if mtime != _allowlist_mtime:  # double-check
+                ALLOWLIST = load_allowlist()
+                _allowlist_mtime = mtime
+                print(f"[reload] allowlist 갱신 {len(ALLOWLIST)}개 (mtime 변경 감지)", flush=True)
+    return ALLOWLIST
 
 # ── curl_cffi 세션 (Chrome TLS 임퍼소네이트) ──────────────────────────────
 _session_lock = threading.Lock()
@@ -386,7 +406,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed = urlparse(self.path)
         if parsed.path == "/health":
-            self._json(200, {"ok": True, "allowlist": len(ALLOWLIST), "cached": len(_cache)})
+            self._json(200, {"ok": True, "allowlist": len(current_allowlist()), "cached": len(_cache)})
             return
         if parsed.path != "/articles":
             self._json(404, {"error": "not found"})
@@ -420,7 +440,8 @@ class Handler(BaseHTTPRequestHandler):
         if not complex_no:
             self._json(400, {"error": "complexNo required"})
             return
-        if ALLOWLIST and complex_no not in ALLOWLIST:
+        allowlist = current_allowlist()
+        if allowlist and complex_no not in allowlist:
             self._json(403, {"error": "complexNo not in allowlist"})
             return
         if trade and trade not in TRADE_NAME:
