@@ -185,6 +185,71 @@ function _pump() {
 function keyOf(complexId: string, pyeongTypeNos: number[] | null): string {
   return `${complexId}|${pyeongTypeNos?.length ? pyeongTypeNos.join("-") : ""}`;
 }
+
+/**
+ * NDJSON 스트림 1회 실행. 프록시가 {type:list} → {type:movein}×N → {type:done} 순서로 흘려보냄.
+ * - list 도착 즉시 articles 채움(status는 loading 유지) → 팝오버가 바로 열림.
+ * - movein 한 줄마다 해당 매물 입주정보 부착 후 _emit → 동적 추가.
+ * 비스트림(구버전 프록시·에러) 응답이면 한방 JSON으로 폴백.
+ */
+async function _runStream(key: string, complexId: string, pyeongTypeNos: number[] | null, force: boolean, prevArticles: NaverArticle[]): Promise<void> {
+  const qs = new URLSearchParams({ complexNo: complexId, trade: "A1", movein: "1", stream: "1" });
+  if (pyeongTypeNos?.length) qs.set("pyeongTypes", pyeongTypeNos.join("-"));
+  if (force) qs.set("fresh", "1");
+  let articles: NaverArticle[] = prevArticles;
+  const byNo = new Map<string, NaverArticle>();
+  try {
+    const r = await fetch(`${getProxyUrl()}/articles?${qs}`, { headers: authHeaders(), signal: AbortSignal.timeout(120000) });
+    const ct = r.headers.get("content-type") || "";
+    if (!r.ok || !ct.includes("ndjson") || !r.body) {
+      // 폴백: 구버전 프록시(한방 JSON) 또는 에러 응답
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j?.error || `proxy ${r.status}`);
+      _store.set(key, { status: "done", articles: (j.articles ?? []) as NaverArticle[] });
+      _emit();
+      return;
+    }
+    const reader = r.body.getReader();
+    const dec = new TextDecoder();
+    let buf = "";
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      let nl: number;
+      while ((nl = buf.indexOf("\n")) >= 0) {
+        const line = buf.slice(0, nl).trim();
+        buf = buf.slice(nl + 1);
+        if (!line) continue;
+        let msg: { type: string; articles?: NaverArticle[]; articleNo?: string; moveIn?: NaverArticle["moveIn"]; error?: string };
+        try { msg = JSON.parse(line); } catch { continue; }
+        if (msg.type === "list") {
+          articles = (msg.articles ?? []) as NaverArticle[];
+          byNo.clear();
+          for (const a of articles) byNo.set(String(a.articleNo), a);
+          _store.set(key, { status: "loading", articles: [...articles] });
+          _emit();
+        } else if (msg.type === "movein") {
+          const a = byNo.get(String(msg.articleNo));
+          if (a) a.moveIn = msg.moveIn;
+          _store.set(key, { status: "loading", articles: [...articles] });
+          _emit();
+        } else if (msg.type === "done") {
+          _store.set(key, { status: "done", articles: [...articles] });
+          _emit();
+        } else if (msg.type === "error") {
+          throw new Error(msg.error || "proxy error");
+        }
+      }
+    }
+    // 스트림이 done 없이 끊긴 경우(연결 종료 등) loading 고착 방지
+    const cur = _store.get(key);
+    if (cur && cur.status === "loading") { _store.set(key, { status: "done", articles: cur.articles }); _emit(); }
+  } catch (e) {
+    _store.set(key, { status: "error", articles, error: (e as Error).message });
+    _emit();
+  }
+}
 /**
  * 단지×평형 매물(입주가능일 포함)을 로드해 스토어에 채움. 명시적 트리거 전용(자동 호출 X).
  * - 이미 로딩 중이면 중복 트리거 무시.
@@ -195,19 +260,11 @@ export function ensureListings(complexId: string, pyeongTypeNos: number[] | null
   const key = keyOf(complexId, pyeongTypeNos);
   const existing = _store.get(key);
   if (existing && (existing.status === "loading" || !force)) return key;
-  _store.set(key, { status: "loading", articles: existing?.articles ?? [] });
+  const prev = existing?.articles ?? [];
+  _store.set(key, { status: "loading", articles: prev });
   _emit();
   _queue.push(() => {
-    const qs = new URLSearchParams({ complexNo: complexId, trade: "A1", movein: "1" });
-    if (pyeongTypeNos?.length) qs.set("pyeongTypes", pyeongTypeNos.join("-"));
-    if (force) qs.set("fresh", "1");
-    fetch(`${getProxyUrl()}/articles?${qs}`, { headers: authHeaders(), signal: AbortSignal.timeout(120000) })
-      .then(async (r) => ({ ok: r.ok, j: await r.json() }))
-      .then(({ ok, j }) => {
-        if (!ok) throw new Error(j?.error || "proxy error");
-        _store.set(key, { status: "done", articles: (j.articles ?? []) as NaverArticle[] });
-      })
-      .catch((e) => _store.set(key, { status: "error", articles: existing?.articles ?? [], error: (e as Error).message }))
+    _runStream(key, complexId, pyeongTypeNos, force, prev)
       .finally(() => { _active--; _emit(); _pump(); });
   });
   _pump();

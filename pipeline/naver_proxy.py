@@ -355,6 +355,25 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _stream_start(self):
+        """NDJSON 스트림 응답 헤더. Content-Length 없이 연결 종료로 EOF 신호(Connection: close)."""
+        self.send_response(200)
+        self._cors()
+        self.send_header("Content-Type", "application/x-ndjson; charset=utf-8")
+        self.send_header("Cache-Control", "no-cache")
+        self.send_header("Connection", "close")
+        self.close_connection = True
+        self.end_headers()
+
+    def _ndjson(self, obj: dict) -> bool:
+        """NDJSON 한 줄 write+flush. 클라이언트 조기 종료(BrokenPipe) 시 False 반환."""
+        try:
+            self.wfile.write((json.dumps(obj, ensure_ascii=False) + "\n").encode("utf-8"))
+            self.wfile.flush()
+            return True
+        except (BrokenPipeError, ConnectionResetError, OSError):
+            return False
+
     def do_OPTIONS(self):
         self.send_response(204)
         self._cors()
@@ -395,6 +414,8 @@ class Handler(BaseHTTPRequestHandler):
         movein = (qs.get("movein") or ["0"])[0].strip() in ("1", "true", "yes")
         # fresh=1 → 캐시 무시하고 업스트림 재조회(새로고침용). 결과는 다시 캐시에 저장.
         fresh = (qs.get("fresh") or qs.get("nocache") or ["0"])[0].strip() in ("1", "true", "yes")
+        # stream=1 → NDJSON 스트림: list 먼저 → 입주가능일(movein) 건별 → done. 팝오버 즉시 표시·동적 추가용.
+        stream = (qs.get("stream") or ["0"])[0].strip() in ("1", "true", "yes")
 
         if not complex_no:
             self._json(400, {"error": "complexNo required"})
@@ -408,6 +429,11 @@ class Handler(BaseHTTPRequestHandler):
             sort = "PRICE_ASC"
 
         key = f"{complex_no}|{trade}|{sort}|{'-'.join(map(str, pyeong_types))}|mi{int(movein)}"
+
+        if stream:
+            self._stream_articles(complex_no, trade, sort, pyeong_types, key, fresh)
+            return
+
         if not fresh:
             hit = cached(key)
             if hit is not None:
@@ -426,6 +452,55 @@ class Handler(BaseHTTPRequestHandler):
             err = {"error": str(e)[:200]}
             store(key, err, True)
             self._json(502, err)
+
+    def _stream_articles(self, complex_no, trade, sort, pyeong_types, key, fresh):
+        """NDJSON 스트림: {type:list} → {type:movein}×N → {type:done}. 완료분은 캐시에 저장.
+        리스트는 즉시 보내 팝오버가 바로 열리고, 느린 입주가능일(상세 조회)은 건별로 흘려보낸다."""
+        # 캐시 적중(non-fresh) → 즉시 재생(list + movein + done)
+        if not fresh:
+            hit = cached(key)
+            if hit is not None:
+                payload, is_err = hit
+                self._stream_start()
+                if is_err:
+                    self._ndjson({"type": "error", "error": payload.get("error", "error")})
+                    return
+                arts = payload.get("articles", [])
+                if not self._ndjson({"type": "list", "totalCount": payload.get("totalCount", len(arts)),
+                                     "hasNextPage": payload.get("hasNextPage", False), "count": len(arts),
+                                     "articles": arts, "cached": True}):
+                    return
+                for a in arts:
+                    if a.get("moveIn") is not None:
+                        if not self._ndjson({"type": "movein", "articleNo": a.get("articleNo"), "moveIn": a["moveIn"]}):
+                            return
+                self._ndjson({"type": "done", "cached": True})
+                return
+
+        # 라이브 수집: 리스트 먼저 fetch (실패 시 502 JSON, 아직 스트림 시작 전)
+        try:
+            raw = fetch_articles(complex_no, trade, sort, pyeong_types)
+            payload = normalize(raw)
+        except Exception as e:
+            err = {"error": str(e)[:200]}
+            store(key, err, True)
+            self._json(502, err)
+            return
+
+        arts = payload["articles"]
+        self._stream_start()
+        if not self._ndjson({"type": "list", "totalCount": payload["totalCount"],
+                             "hasNextPage": payload["hasNextPage"], "count": payload["count"],
+                             "articles": arts, "cached": False}):
+            return  # 클라이언트 끊김 — movein 상세 조회 스킵(업스트림 부하 절감)
+        # 입주가능일 건별 스트림 (가격 오름차순 우선, 상한 MOVEIN_CAP)
+        for a in [x for x in arts if x.get("articleNo")][:MOVEIN_CAP]:
+            mi = fetch_movein(str(a["articleNo"]))
+            a["moveIn"] = mi
+            if not self._ndjson({"type": "movein", "articleNo": a.get("articleNo"), "moveIn": mi}):
+                return  # 끊김 — 남은 상세 조회 중단
+        store(key, payload, False)  # moveIn 부착 완료분 캐시 → 다음 요청은 즉시 재생
+        self._ndjson({"type": "done", "cached": False})
 
 
 def main():

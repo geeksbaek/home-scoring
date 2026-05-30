@@ -548,7 +548,7 @@ function ArticleCard({ a, targetMonth }: { a: NaverArticle; targetMonth?: string
         </span>
       </div>
       <div className="flex items-center gap-1 text-[10px] flex-wrap">
-        <span className={!ownerJeonse && a.moveIn?.immediate ? "text-emerald-600 font-medium" : "text-muted-foreground"}>{moveInLabel(a)}</span>
+        <span className={cn(a.moveIn === undefined ? "text-amber-600 animate-pulse" : !ownerJeonse && a.moveIn?.immediate ? "text-emerald-600 font-medium" : "text-muted-foreground")}>{a.moveIn === undefined ? "입주확인중…" : moveInLabel(a)}</span>
         {ownerJeonse && <span className="text-rose-500 font-medium">· 주인전세(실입주X)</span>}
         {tenant && !ownerJeonse && <span className="text-rose-500">· 세낀(대출X)</span>}
         {a.dong && <span className="text-muted-foreground">· {a.dong}</span>}
@@ -566,7 +566,7 @@ function MoveInCell({ data, targetMonth, enabled }: { data: AptData; targetMonth
   const complexId = data.naver_complex_id;
   const { entry, load, refresh } = useColumnListings(complexId, data.pyeong_type_nos, enabled && !!complexId);
   if (!complexId) return <span className="text-muted-foreground text-xs">-</span>;
-  if (!enabled) return <span className="text-muted-foreground text-xs" title="상단 '네이버 실입주가' 토글을 켜면 셀에서 조회 가능">·</span>;
+  if (!enabled) return <span className="text-muted-foreground text-xs" title="상단 '네이버 호가' 토글을 켜면 셀에서 조회 가능">·</span>;
   // 자동 조회 안 함 — 명시적으로 '조회' 클릭해야 로드.
   if (!entry) return (
     <button type="button" onClick={load} className="text-primary text-xs underline decoration-dotted underline-offset-4 hover:text-primary/80" title="네이버 실매물 조회">조회</button>
@@ -582,17 +582,26 @@ function MoveInCell({ data, targetMonth, enabled }: { data: AptData; targetMonth
   const movable = all.filter((a) => isMovableBy(a, targetMonth));
   const minMovable = movable.length ? Math.min(...movable.map((a) => a.dealPrice)) : null;
   const moreUrl = naverLandUrl(complexId, isMobile, data.pyeong_type_nos);
+  // 입주가능일(상세) 수집 진행률 — 스트리밍 중 동적 갱신. moveIn 부착된 매물 수 / 전체.
+  const enriched = all.filter((a) => a.moveIn !== undefined).length;
+  const collecting = refreshing && enriched < all.length;
 
   return (
     <Popover>
-      <PopoverTrigger className={cn("cursor-pointer underline decoration-dotted underline-offset-4 tabular-nums", refreshing && "opacity-50")}>
-        {minMovable != null ? formatWon(minMovable) : <span className="text-muted-foreground">{all.length ? "세낀만" : "없음"}</span>}
+      <PopoverTrigger className={cn("cursor-pointer underline decoration-dotted underline-offset-4 tabular-nums", refreshing && "opacity-60")} title={collecting ? "입주가능일 수집 중…" : undefined}>
+        {minMovable != null
+          ? formatWon(minMovable)
+          : collecting
+            ? <span className="text-muted-foreground animate-pulse">{all.length ? formatWon(all[0].dealPrice) : "…"}</span>
+            : <span className="text-muted-foreground">{all.length ? "세낀만" : "없음"}</span>}
       </PopoverTrigger>
       <PopoverContent className="w-72 text-xs max-h-96 overflow-y-auto">
         <div className="flex items-center justify-between mb-0.5">
           <p className="font-semibold">네이버 매매 <span className="font-normal text-muted-foreground">{Math.floor(data.area)}㎡ {all.length}건</span></p>
           <div className="flex items-center gap-1.5">
-            <span className="text-[10px] text-emerald-600">실입주 {movable.length}건</span>
+            {collecting
+              ? <span className="text-[10px] text-amber-600 animate-pulse tabular-nums">입주확인 {enriched}/{all.length}</span>
+              : <span className="text-[10px] text-emerald-600">실입주 {movable.length}건</span>}
             <button type="button" onClick={refresh} disabled={refreshing} className={cn("text-[11px] text-muted-foreground hover:text-foreground disabled:opacity-50", refreshing && "animate-spin")} title="다시 조회 (서버 캐시 무시)">↻</button>
           </div>
         </div>
@@ -2005,9 +2014,9 @@ export default function App() {
               <input type="checkbox" checked={includeInterior} onChange={(e) => { setIncludeInterior(e.target.checked); localStorage.setItem("f_includeInterior", String(e.target.checked)); }} className="rounded h-3 w-3" />
               <span>인테리어 합산</span>
             </label>
-            <label className="flex items-center gap-1 cursor-pointer" title="'실입주가' 컬럼 활성화 — 자동 호출하지 않고, 각 행의 '조회'를 눌러야 네이버 실매물을 가져옴 (팝오버 ↻로 새로고침)">
+            <label className="flex items-center gap-1 cursor-pointer" title="'호가' 컬럼 활성화 — 자동 호출하지 않고, 각 행의 '조회'를 눌러야 네이버 실매물을 가져옴 (팝오버 ↻로 새로고침)">
               <input type="checkbox" checked={naverColEnabled} onChange={(e) => { setNaverColEnabled(e.target.checked); localStorage.setItem("f_naverCol", String(e.target.checked)); }} className="rounded h-3 w-3" />
-              <span>네이버 실입주가</span>
+              <span>네이버 호가</span>
             </label>
             <label className="flex items-center gap-1" title="이 시점까지 입주 가능한 매물만 '실입주가능'으로 간주 (세낀/지연 매물 제외)">
               <span className="text-muted-foreground">입주가능</span>
@@ -2285,7 +2294,7 @@ export default function App() {
                   <TableHead className="min-w-[160px]">즐겨찾기</TableHead>
                   <TableHead className="text-center">세대수</TableHead>
                   <TableHead className="text-center">현재가</TableHead>
-                  <TableHead className="text-center" title="네이버 실매물 중 입주가능월까지 입주 가능한 매매 최저가 (세낀 제외)">실입주가</TableHead>
+                  <TableHead className="text-center" title="네이버 실매물 중 입주가능월까지 입주 가능한 매매 최저가 (세낀 제외)">호가</TableHead>
                   <TableHead className="text-center w-20">추이</TableHead>
                   <TableHead className="text-center">가속도</TableHead>
                   <TableHead className="text-center">환금</TableHead>
@@ -2391,7 +2400,7 @@ export default function App() {
                 <TableHead className="min-w-[160px]">단지명</TableHead>
                 <TableHead className="text-center">세대수</TableHead>
                 <TableHead className="text-center">현재가</TableHead>
-                  <TableHead className="text-center" title="네이버 실매물 중 입주가능월까지 입주 가능한 매매 최저가 (세낀 제외)">실입주가</TableHead>
+                  <TableHead className="text-center" title="네이버 실매물 중 입주가능월까지 입주 가능한 매매 최저가 (세낀 제외)">호가</TableHead>
                 <TableHead className="text-center w-20">추이</TableHead>
                 <TableHead className="text-center">가속도</TableHead>
                 <TableHead className="text-center">환금</TableHead>
