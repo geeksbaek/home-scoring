@@ -12,7 +12,10 @@ import { sync } from "./sync";
 const ROOT = join(import.meta.dir, "..");
 const OUT_PATH = join(ROOT, "data", "commute_results.json");
 
-const DATA_JSON = join(ROOT, "..", "home-scoring", "public", "data.json");
+// 단지 목록 소스: data.json은 도시별 shard로 분할됨 (data-seoul.json + data-gyeonggi.json).
+// data-index.json의 shards[].url을 모두 병합 로드 → 신규 shard 추가 시 자동 대응.
+const PUBLIC_DIR = join(ROOT, "public");
+const DATA_INDEX = join(PUBLIC_DIR, "data-index.json");
 
 const KAKAO_KEY = process.env.KAKAO_REST_API_KEY!;
 const HEADERS = { Authorization: `KakaoAK ${KAKAO_KEY}` };
@@ -21,10 +24,14 @@ const DESTINATION = "판교역로 166";
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-// data.json에서 아파트 목록 자동 생성
+// data shard(들)에서 아파트 목록 자동 생성
 async function loadCandidates(): Promise<[string, string][]> {
-  const data: { name: string; dong: string; region: string; doro_juso: string | null }[] =
-    await Bun.file(DATA_JSON).json();
+  const index: { shards: { url: string }[] } = await Bun.file(DATA_INDEX).json();
+  const data: { name: string; dong: string; region: string; doro_juso: string | null }[] = [];
+  for (const shard of index.shards) {
+    const rows = await Bun.file(join(PUBLIC_DIR, shard.url)).json();
+    data.push(...rows);
+  }
 
   const seen = new Set<string>();
   const candidates: [string, string][] = [];
