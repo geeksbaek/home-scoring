@@ -9,7 +9,9 @@ export function getProxyUrl(): string {
     const v = localStorage.getItem(PROXY_KEY);
     if (v && v.trim()) return v.trim().replace(/\/+$/, "");
   } catch { /* ignore */ }
-  return (import.meta.env.VITE_NAVER_PROXY_URL || "http://127.0.0.1:8787").replace(/\/+$/, "");
+  // 기본값 = 공개 Tailscale Funnel(고정). env(VITE_NAVER_PROXY_URL)·localStorage로 덮어쓰기 가능.
+  // (URL은 비밀 아님 — 접근 차단은 비밀 토큰이 담당. localhost fallback은 footgun이라 제거)
+  return (import.meta.env.VITE_NAVER_PROXY_URL || "https://home-scoring.tailee49c2.ts.net").replace(/\/+$/, "");
 }
 export function setProxyUrl(url: string) {
   try {
