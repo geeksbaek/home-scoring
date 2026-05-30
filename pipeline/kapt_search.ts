@@ -167,6 +167,28 @@ function matchesRegion(addr: string, sigunguCd: string): boolean {
   return addr.includes(expected);
 }
 
+/**
+ * 후보 중 최적 매칭 선택. 시군구(구) 단위만으로는 동명/동일구 다른 단지를 잘못 고를 수 있으므로
+ * (과거 광교2차E편한세상→매탄동 e편한세상 오매칭), 같은 구 내에서 법정동+지번 일치를 우선한다.
+ *  1) 주소에 법정동 + 동일 지번  2) 주소에 법정동  3) 시군구만 일치(약함, fallback)
+ */
+function pickMatch(results: KaptResult[], entry: any): KaptResult | undefined {
+  const inRegion = results.filter((r) => matchesRegion(r.addr, entry.sigungu_cd));
+  if (inRegion.length === 0) return undefined;
+  const bjdong = (entry.bjdong || "").trim();
+  const jibun = String(entry.jibun || "").replace(/\r/g, "").trim();
+  if (bjdong && jibun) {
+    const re = new RegExp(`(?<!\\d)${jibun.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?!\\d)`);
+    const exact = inRegion.find((r) => r.addr.includes(bjdong) && re.test(r.addr));
+    if (exact) return exact;
+  }
+  if (bjdong) {
+    const byDong = inRegion.find((r) => r.addr.includes(bjdong));
+    if (byDong) return byDong;
+  }
+  return inRegion[0]; // 약한 fallback (구만 일치) — 단일 후보일 때만 사실상 안전
+}
+
 // ── 메인 ──────────────────────────────────────────────
 
 async function main() {
@@ -190,7 +212,7 @@ async function main() {
 
     // 1차: 원본 이름으로 검색
     let results = await searchKapt(name);
-    let match = results.find((r) => matchesRegion(r.addr, sigungu));
+    let match = pickMatch(results, entry);
 
     // 2차: 변형 이름으로 검색
     if (!match) {
@@ -198,7 +220,7 @@ async function main() {
       for (const v of variations) {
         await sleep(80);
         results = await searchKapt(v);
-        match = results.find((r) => matchesRegion(r.addr, sigungu));
+        match = pickMatch(results, entry);
         if (match) break;
       }
     }
@@ -207,12 +229,12 @@ async function main() {
     if (!match && entry.bjdong) {
       await sleep(80);
       results = await searchKapt(entry.bjdong + " " + name);
-      match = results.find((r) => matchesRegion(r.addr, sigungu));
+      match = pickMatch(results, entry);
       if (!match) {
         await sleep(80);
         const shortName = name.replace(/\d+단지$|\d+차$/, "").slice(0, 8);
         results = await searchKapt(entry.bjdong + " " + shortName);
-        match = results.find((r) => matchesRegion(r.addr, sigungu));
+        match = pickMatch(results, entry);
       }
     }
 
@@ -222,7 +244,7 @@ async function main() {
       if (brand.length >= 2) {
         await sleep(80);
         results = await searchKapt(entry.bjdong + " " + brand);
-        match = results.find((r) => matchesRegion(r.addr, sigungu));
+        match = pickMatch(results, entry);
       }
     }
 
