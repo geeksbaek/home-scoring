@@ -1933,12 +1933,15 @@ export default function App() {
 
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return [];
-    const q = searchQuery.trim().toLowerCase();
+    // 특수문자·공백 무시: 소문자화 후 한글/영문/숫자만 남김 (e편한세상 ↔ e-편한세상, 래미안 안양 ↔ 래미안안양)
+    const norm = (s: string) => s.toLowerCase().replace(/[^0-9a-z가-힣]/g, "");
+    const q = norm(searchQuery);
+    if (!q) return [];
     // 전체 데이터에서 타입별로 검색 (필터 무관)
     const results: (AptData & { _inFilter: boolean })[] = [];
     for (const d of data) {
       if (d.no_trades) continue;
-      const haystack = [d.name, d.display_name, d.dong, d.doro_juso, d.region].filter(Boolean).join(" ").toLowerCase();
+      const haystack = norm([d.name, d.display_name, d.dong, d.doro_juso, d.region].filter(Boolean).join(" "));
       if (!haystack.includes(q)) continue;
       results.push({ ...d, _inFilter: filteredNames.has(d.name) });
       if (results.length >= 30) break;
@@ -2496,6 +2499,10 @@ export default function App() {
         <div className="h-20" />
       </div>
 
+      {/* 검색 열렸을 때 바깥 클릭 감지 backdrop (패널 z-50 아래) → 닫기 */}
+      {searchOpen && (
+        <div className="fixed inset-0 z-40" onClick={() => { setSearchOpen(false); clearSearch(); }} aria-hidden />
+      )}
       {/* 플로팅 검색 (Spotlight style) — 보도자료 모달 열렸을 때 숨김 */}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4 body-[molit-press-open]:hidden [body.molit-press-open_&]:hidden">
         {!searchOpen ? (

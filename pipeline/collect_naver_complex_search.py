@@ -106,8 +106,12 @@ def search_keys(d):
     # 숫자 꼬리표(번지·동수)도 제거한 코어 — 개포2차현대아파트(220) 등
     core = re.sub(r"[\(\d\-~,]+$", "", stripped).strip() or stripped
     bjd = (d.get("bjdong") or "").strip()
+    bjs = bjd[:-1] if bjd.endswith("동") else bjd  # 매탄동 → 매탄
+    # 동-접두 단지명 대응: 네이버는 '매탄e편한세상'인데 우리는 'e편한세상(매탄동)' → 접두 키워드 필요
     keys = []
-    for k in (f"{stripped} {bjd}" if bjd else None, stripped, f"{core} {bjd}" if bjd and core != stripped else None, base):
+    for k in (f"{stripped} {bjd}" if bjd else None, f"{bjs}{stripped}" if bjs else None,
+              f"{bjs} {stripped}" if bjs else None, stripped,
+              f"{core} {bjd}" if bjd and core != stripped else None, base):
         if k and k not in keys:
             keys.append(k)
     return keys
