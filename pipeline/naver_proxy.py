@@ -25,6 +25,7 @@ Usage:
 """
 import json
 import os
+import re
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -41,8 +42,12 @@ CACHE_TTL = float(os.environ.get("CACHE_TTL", "600"))        # 단지별 캐시 
 NEG_TTL = float(os.environ.get("NEG_TTL", "60"))             # 실패 응답 캐시 수명(초)
 MIN_INTERVAL = float(os.environ.get("MIN_INTERVAL", "1.2"))  # 업스트림 호출 최소 간격(초)
 PAGE_SIZE = int(os.environ.get("PAGE_SIZE", "30"))           # 1~30 (네이버 제한)
+MOVEIN_TTL = float(os.environ.get("MOVEIN_TTL", "21600"))    # 매물 입주가능일 캐시 6h
+DETAIL_INTERVAL = float(os.environ.get("DETAIL_INTERVAL", "0.5"))  # 상세 HTML 호출 간격
+MOVEIN_CAP = int(os.environ.get("MOVEIN_CAP", "30"))         # 한 요청당 상세 조회 상한
 
 API_URL = "https://fin.land.naver.com/front-api/v1/complex/article/list"
+ART_URL = "https://fin.land.naver.com/articles/"
 
 TRADE_NAME = {"A1": "매매", "B1": "전세", "B2": "월세", "B3": "단기"}
 DIRECTION = {
@@ -130,6 +135,82 @@ def fetch_articles(complex_no: str, trade: str, sort: str, pyeong_types: list[in
                     continue
                 raise
     raise RuntimeError("unreachable")
+
+
+# ── 매물별 입주가능일(상세) 조회·파싱·캐시 ──────────────────────────────────
+# 입주가능일은 리스트 API에 없고 매물 상세 SSR HTML에만 노출 → 매물 1건당 1콜.
+# 별도 세션/락/간격으로 리스트 호출과 분리, articleNo별 장기 캐시(6h).
+_DEFN_RE = re.compile(
+    r'DataList_term[^>]*>입주가능일</div><div class="DataList_definition[^>]*>(.*?)</div>'
+)
+_mi_lock = threading.Lock()
+_movein_cache: dict[str, tuple[float, dict]] = {}
+_detail_lock = threading.Lock()
+_detail_session: requests.Session | None = None
+_last_detail = 0.0
+
+
+def parse_movein(html: str) -> dict:
+    """상세 HTML의 '입주가능일' 텍스트 → {raw, immediate, date(YYYY-MM-DD|None)}."""
+    m = _DEFN_RE.search(html)
+    if not m:
+        return {"raw": None, "immediate": False, "date": None}
+    raw = re.sub(r"<[^>]+>", " ", m.group(1)).strip()
+    immediate = "즉시입주" in raw
+    date = None
+    if not immediate:
+        d = re.search(r"(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일", raw)
+        if d:
+            date = f"{d.group(1)}-{int(d.group(2)):02d}-{int(d.group(3)):02d}"
+        else:
+            d2 = re.search(r"(\d{4})년\s*(\d{1,2})월\s*(초|중|하)순", raw)
+            if d2:
+                day = {"초": 10, "중": 20, "하": 28}[d2.group(3)]
+                date = f"{d2.group(1)}-{int(d2.group(2)):02d}-{day:02d}"
+            else:
+                d3 = re.search(r"(\d{4})년\s*(\d{1,2})월", raw)
+                if d3:
+                    date = f"{d3.group(1)}-{int(d3.group(2)):02d}-28"
+    return {"raw": raw, "immediate": immediate, "date": date}
+
+
+def fetch_movein(article_no: str) -> dict:
+    """매물 상세에서 입주가능일 파싱. articleNo별 캐시 + 직렬 간격."""
+    global _detail_session, _last_detail
+    with _mi_lock:
+        hit = _movein_cache.get(article_no)
+        if hit and hit[0] > time.monotonic():
+            return hit[1]
+    with _detail_lock:
+        gap = time.monotonic() - _last_detail
+        if gap < DETAIL_INTERVAL:
+            time.sleep(DETAIL_INTERVAL - gap)
+        mi = {"raw": None, "immediate": False, "date": None}
+        try:
+            if _detail_session is None:
+                _detail_session = _new_session()
+            r = _detail_session.get(
+                ART_URL + str(article_no),
+                headers={"referer": "https://fin.land.naver.com/"},
+                timeout=15,
+            )
+            _last_detail = time.monotonic()
+            if r.status_code == 200:
+                mi = parse_movein(r.text)
+            elif r.status_code in (403, 429):
+                _detail_session = _new_session()  # 다음 건을 위해 재워밍업
+        except Exception:
+            _detail_session = None
+    with _mi_lock:
+        _movein_cache[article_no] = (time.monotonic() + MOVEIN_TTL, mi)
+    return mi
+
+
+def enrich_movein(articles: list[dict]) -> None:
+    """각 매물에 moveIn 필드 부착 (상한 MOVEIN_CAP). 가격 오름차순 우선 조회."""
+    targets = [a for a in articles if a.get("articleNo")][:MOVEIN_CAP]
+    for a in targets:
+        a["moveIn"] = fetch_movein(str(a["articleNo"]))
 
 
 def normalize(raw: dict) -> dict:
@@ -250,6 +331,7 @@ class Handler(BaseHTTPRequestHandler):
         for tok in raw_pt.replace("-", ",").replace(":", ",").split(","):
             if tok.strip().isdigit():
                 pyeong_types.append(int(tok.strip()))
+        movein = (qs.get("movein") or ["0"])[0].strip() in ("1", "true", "yes")
 
         if not complex_no:
             self._json(400, {"error": "complexNo required"})
@@ -262,7 +344,7 @@ class Handler(BaseHTTPRequestHandler):
         if sort not in ("PRICE_ASC", "PRICE_DESC", "DATE_DESC", "SPACE_ASC", "SPACE_DESC", "RANKING_DESC"):
             sort = "PRICE_ASC"
 
-        key = f"{complex_no}|{trade}|{sort}|{'-'.join(map(str, pyeong_types))}"
+        key = f"{complex_no}|{trade}|{sort}|{'-'.join(map(str, pyeong_types))}|mi{int(movein)}"
         hit = cached(key)
         if hit is not None:
             payload, is_err = hit
@@ -272,6 +354,8 @@ class Handler(BaseHTTPRequestHandler):
         try:
             raw = fetch_articles(complex_no, trade, sort, pyeong_types)
             payload = normalize(raw)
+            if movein:
+                enrich_movein(payload["articles"])  # 매물별 입주가능일 부착(상세 조회)
             store(key, payload, False)
             self._json(200, {**payload, "cached": False})
         except Exception as e:

@@ -14,7 +14,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useNaverArticles, getProxyUrl, setProxyUrl, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
+import { getProxyUrl, setProxyUrl, useColumnListings, isMovableBy, isTenant, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
 import { ChevronDown } from "lucide-react";
 import { lazy, Suspense } from "react";
 const AptMap = lazy(() => import("@/components/AptMap"));
@@ -525,9 +525,11 @@ function calcInterior(areaSqm: number | null | undefined, buildYear: number | nu
   };
 }
 
-function ArticleCard({ a }: { a: NaverArticle }) {
+function ArticleCard({ a, targetMonth }: { a: NaverArticle; targetMonth?: string }) {
+  const movable = targetMonth ? isMovableBy(a, targetMonth) : undefined;
+  const tenant = isTenant(a);
   return (
-    <div className="rounded border border-border/60 px-1.5 py-1">
+    <div className={cn("rounded border px-1.5 py-1", movable === false ? "border-border/40 opacity-60" : "border-border/60")}>
       <div className="flex items-center justify-between gap-1">
         <span className="flex items-center gap-1">
           <Badge variant="outline" className="text-[9px] px-1 py-0">{a.tradeName}</Badge>
@@ -538,16 +540,55 @@ function ArticleCard({ a }: { a: NaverArticle }) {
           {a.floor ? ` · ${a.floor}층` : ""}
         </span>
       </div>
-      <div className="flex items-center gap-1 text-[10px] text-muted-foreground flex-wrap">
-        {a.dong && <span>{a.dong}</span>}
-        {a.directionName && <span>· {a.directionName}향</span>}
-        {verifyLabel(a.verifyType) && <span className="text-emerald-500">· {verifyLabel(a.verifyType)}</span>}
-        {a.directTrade && <span className="text-amber-500">· 직거래</span>}
-        {a.confirmDate && <span className="ml-auto">{formatConfirm(a.confirmDate)} 확인</span>}
+      <div className="flex items-center gap-1 text-[10px] flex-wrap">
+        <span className={a.moveIn?.immediate ? "text-emerald-600 font-medium" : "text-muted-foreground"}>{moveInLabel(a)}</span>
+        {tenant && <span className="text-rose-500">· 세낀(대출X)</span>}
+        {a.dong && <span className="text-muted-foreground">· {a.dong}</span>}
+        {a.directionName && <span className="text-muted-foreground">· {a.directionName}향</span>}
+        {verifyLabel(a.verifyType) && <span className="text-muted-foreground">· {verifyLabel(a.verifyType)}</span>}
+        {a.confirmDate && <span className="ml-auto text-muted-foreground">{formatConfirm(a.confirmDate)} 확인</span>}
       </div>
       {a.feature && <p className="text-[10px] text-foreground/80 line-clamp-1" title={a.feature}>{a.feature}</p>}
       {a.broker && <p className="text-[9px] text-muted-foreground line-clamp-1">{a.broker}</p>}
     </div>
+  );
+}
+
+function MoveInCell({ data, targetMonth, enabled }: { data: AptData; targetMonth: string; enabled: boolean }) {
+  const complexId = data.naver_complex_id;
+  const entry = useColumnListings(complexId, data.pyeong_type_nos, enabled && !!complexId);
+  if (!complexId) return <span className="text-muted-foreground text-xs">-</span>;
+  if (!enabled) return <span className="text-muted-foreground text-xs" title="상단 '네이버 실입주가' 토글을 켜면 조회">·</span>;
+  if (!entry || entry.status === "loading") return <span className="text-muted-foreground text-xs animate-pulse" title="네이버 매물 조회 중">…</span>;
+  if (entry.status === "error") return <span className="text-muted-foreground text-xs cursor-help" title={`조회 실패: ${entry.error}`}>!</span>;
+
+  const all = [...entry.articles].sort((x, y) => x.dealPrice - y.dealPrice);
+  const movable = all.filter((a) => isMovableBy(a, targetMonth));
+  const minMovable = movable.length ? Math.min(...movable.map((a) => a.dealPrice)) : null;
+  const moreUrl = naverLandUrl(complexId, isMobile, data.pyeong_type_nos);
+
+  return (
+    <Popover>
+      <PopoverTrigger className="cursor-pointer underline decoration-dotted underline-offset-4 tabular-nums">
+        {minMovable != null ? formatWon(minMovable) : <span className="text-muted-foreground">{all.length ? "세낀만" : "없음"}</span>}
+      </PopoverTrigger>
+      <PopoverContent className="w-72 text-xs max-h-96 overflow-y-auto">
+        <div className="flex items-center justify-between mb-0.5">
+          <p className="font-semibold">네이버 매매 <span className="font-normal text-muted-foreground">{Math.floor(data.area)}㎡ {all.length}건</span></p>
+          <span className="text-[10px] text-emerald-600">실입주 {movable.length}건</span>
+        </div>
+        <p className="text-[10px] text-muted-foreground mb-1.5">~{targetMonth} 입주가능 기준 · 세낀/지연 매물은 흐리게</p>
+        {all.length === 0 ? (
+          <p className="text-[10px] text-muted-foreground">매매 매물 없음 · <a href={moreUrl} target="_blank" rel="noopener" className="text-primary hover:underline">네이버 →</a></p>
+        ) : (
+          <>
+            <div className="space-y-1">{all.map((a) => <ArticleCard key={a.articleNo} a={a} targetMonth={targetMonth} />)}</div>
+            <a href={moreUrl} target="_blank" rel="noopener" className="block mt-1 text-[10px] text-primary hover:underline">네이버부동산에서 더보기 →</a>
+            <div className="mt-1 pt-1 border-t"><ProxySetting /></div>
+          </>
+        )}
+      </PopoverContent>
+    </Popover>
   );
 }
 
@@ -570,68 +611,6 @@ function ProxySetting() {
       />
       <button type="button" onClick={() => { setProxyUrl(val); setOpen(false); }} className="text-[10px] text-primary hover:underline shrink-0">저장</button>
       <button type="button" onClick={() => setOpen(false)} className="text-[10px] text-muted-foreground hover:text-foreground shrink-0">✕</button>
-    </div>
-  );
-}
-
-function NaverListings({ data }: { data: AptData }) {
-  const { loading, data: result, error, fetchArticles } = useNaverArticles();
-  const complexId = data.naver_complex_id;
-  if (!complexId) return null;
-
-  const moreUrl = naverLandUrl(complexId, isMobile, data.pyeong_type_nos);
-  // 서버단에서 pyeong_type_nos로 평형 스코핑 → 반환 매물이 곧 이 평형 매물
-  const articles = result?.articles ?? [];
-  const scoped = (data.pyeong_type_nos?.length ?? 0) > 0;
-
-  return (
-    <div className="mt-2 pt-2 border-t">
-      {!result && !loading && !error && (
-        <>
-          <button
-            type="button"
-            onClick={() => fetchArticles(complexId, data.pyeong_type_nos)}
-            className="w-full text-center py-1 rounded border border-border text-primary hover:bg-muted text-xs"
-          >
-            네이버 실매물 불러오기 ({Math.floor(data.area)}㎡)
-          </button>
-          <ProxySetting />
-        </>
-      )}
-      {loading && (
-        <div className="space-y-1">
-          <p className="font-semibold mb-1">네이버 실매물</p>
-          {[0, 1, 2].map((i) => <div key={i} className="h-9 rounded bg-muted animate-pulse" />)}
-        </div>
-      )}
-      {error && (
-        <>
-          <p className="text-[10px] text-muted-foreground">
-            실매물 조회 일시 불가 · <a href={moreUrl} target="_blank" rel="noopener" className="text-primary hover:underline">네이버에서 보기 →</a>
-          </p>
-          <ProxySetting />
-        </>
-      )}
-      {result && (
-        <>
-          <p className="font-semibold mb-1">
-            네이버 매매 {scoped && <span className="font-normal text-muted-foreground">{Math.floor(data.area)}㎡ </span>}
-            <span className="text-muted-foreground font-normal">{result.totalCount}건</span>
-          </p>
-          {articles.length === 0 ? (
-            <p className="text-[10px] text-muted-foreground">
-              현재 {scoped ? "이 평형 " : ""}매매 매물이 없습니다 · <a href={moreUrl} target="_blank" rel="noopener" className="text-primary hover:underline">네이버에서 보기 →</a>
-            </p>
-          ) : (
-            <>
-              <div className="space-y-1">{articles.map((a) => <ArticleCard key={a.articleNo} a={a} />)}</div>
-              <a href={moreUrl} target="_blank" rel="noopener" className="block mt-1 text-[10px] text-primary hover:underline">
-                네이버부동산에서 더보기 →{result.cached ? " (캐시)" : ""}
-              </a>
-            </>
-          )}
-        </>
-      )}
     </div>
   );
 }
@@ -833,7 +812,6 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
             </table>
           </>
         )}
-        <NaverListings data={data} />
       </PopoverContent>
     </Popover>
   );
@@ -1663,6 +1641,14 @@ export default function App() {
   const [loanProduct, setLoanProduct] = useState<LoanProduct>(() => ls("f_loanProduct", "normal") as LoanProduct);
   const [interestSubsidy, setInterestSubsidy] = useState(() => ls("f_interestSubsidy", "false") === "true");
   const [includeInterior, setIncludeInterior] = useState(() => ls("f_includeInterior", "false") === "true");
+  // 네이버 실입주가 컬럼: 라이브 로딩 토글(기본 off) + 목표 입주가능월(기본 6개월 후)
+  const [naverColEnabled, setNaverColEnabled] = useState(() => ls("f_naverCol", "false") === "true");
+  const [moveInMonth, setMoveInMonth] = useState<string>(() => {
+    const v = localStorage.getItem("f_moveInMonth");
+    if (v) return v;
+    const d = new Date(); d.setMonth(d.getMonth() + 6);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+  });
   const [financeOpen, setFinanceOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const [weights, setWeights] = useState<ScoreWeights>(() => {
@@ -1967,6 +1953,14 @@ export default function App() {
               <input type="checkbox" checked={includeInterior} onChange={(e) => { setIncludeInterior(e.target.checked); localStorage.setItem("f_includeInterior", String(e.target.checked)); }} className="rounded h-3 w-3" />
               <span>인테리어 합산</span>
             </label>
+            <label className="flex items-center gap-1 cursor-pointer" title="네이버 실매물을 단지별로 조회해 '실입주가' 컬럼 표시 (켜면 보이는 행마다 네이버 호출 — 느릴 수 있음)">
+              <input type="checkbox" checked={naverColEnabled} onChange={(e) => { setNaverColEnabled(e.target.checked); localStorage.setItem("f_naverCol", String(e.target.checked)); }} className="rounded h-3 w-3" />
+              <span>네이버 실입주가</span>
+            </label>
+            <label className="flex items-center gap-1" title="이 시점까지 입주 가능한 매물만 '실입주가능'으로 간주 (세낀/지연 매물 제외)">
+              <span className="text-muted-foreground">입주가능</span>
+              <input type="month" value={moveInMonth} onChange={(e) => { setMoveInMonth(e.target.value); localStorage.setItem("f_moveInMonth", e.target.value); }} className="h-auto py-0.5 px-1 rounded border bg-background text-[10px] tabular-nums" />
+            </label>
             <Button variant="outline" size="sm" className="text-[10px] h-auto py-0.5 px-2" onClick={() => setMcOpen(true)}>다문화 통계</Button>
             <Suspense fallback={null}>
               <MolitPressViewer />
@@ -2238,6 +2232,7 @@ export default function App() {
                   <TableHead className="min-w-[160px]">즐겨찾기</TableHead>
                   <TableHead className="text-center">세대수</TableHead>
                   <TableHead className="text-center">현재가</TableHead>
+                  <TableHead className="text-center" title="네이버 실매물 중 입주가능월까지 입주 가능한 매매 최저가 (세낀 제외)">실입주가</TableHead>
                   <TableHead className="text-center w-20">추이</TableHead>
                   <TableHead className="text-center">가속도</TableHead>
                   <TableHead className="text-center">환금</TableHead>
@@ -2280,6 +2275,7 @@ export default function App() {
                       </TableCell>
                       <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
                       <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
+                      <TableCell className="text-center text-sm"><MoveInCell data={d} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
                       <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
                       <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                       <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
@@ -2342,6 +2338,7 @@ export default function App() {
                 <TableHead className="min-w-[160px]">단지명</TableHead>
                 <TableHead className="text-center">세대수</TableHead>
                 <TableHead className="text-center">현재가</TableHead>
+                  <TableHead className="text-center" title="네이버 실매물 중 입주가능월까지 입주 가능한 매매 최저가 (세낀 제외)">실입주가</TableHead>
                 <TableHead className="text-center w-20">추이</TableHead>
                 <TableHead className="text-center">가속도</TableHead>
                 <TableHead className="text-center">환금</TableHead>
@@ -2388,6 +2385,7 @@ export default function App() {
                     </TableCell>
                     <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
                     <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
+                      <TableCell className="text-center text-sm"><MoveInCell data={d} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
                     <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
                     <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                     <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
