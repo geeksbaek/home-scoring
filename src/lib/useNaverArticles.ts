@@ -79,14 +79,11 @@ export function useNaverArticles() {
   return { ...state, fetchArticles };
 }
 
-/** 730000000(원) → "7억 3,000" / 900000000 → "9억" / 5000만 → "5,000만" */
+/** 730000000(원) → "7.3억" / 900000000 → "9.0억" / 5000만 → "5,000만" (현재가 컬럼과 동일 표기) */
 export function formatWon(won: number): string {
   if (!won || won <= 0) return "-";
   const man = Math.round(won / 10000);
-  const eok = Math.floor(man / 10000);
-  const rest = man % 10000;
-  if (eok > 0 && rest > 0) return `${eok}억 ${rest.toLocaleString()}`;
-  if (eok > 0) return `${eok}억`;
+  if (man >= 10000) return `${(man / 10000).toFixed(1)}억`;
   return `${man.toLocaleString()}만`;
 }
 
