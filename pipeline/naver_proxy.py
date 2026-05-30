@@ -393,6 +393,8 @@ class Handler(BaseHTTPRequestHandler):
             if tok.strip().isdigit():
                 pyeong_types.append(int(tok.strip()))
         movein = (qs.get("movein") or ["0"])[0].strip() in ("1", "true", "yes")
+        # fresh=1 → 캐시 무시하고 업스트림 재조회(새로고침용). 결과는 다시 캐시에 저장.
+        fresh = (qs.get("fresh") or qs.get("nocache") or ["0"])[0].strip() in ("1", "true", "yes")
 
         if not complex_no:
             self._json(400, {"error": "complexNo required"})
@@ -406,11 +408,12 @@ class Handler(BaseHTTPRequestHandler):
             sort = "PRICE_ASC"
 
         key = f"{complex_no}|{trade}|{sort}|{'-'.join(map(str, pyeong_types))}|mi{int(movein)}"
-        hit = cached(key)
-        if hit is not None:
-            payload, is_err = hit
-            self._json(502 if is_err else 200, {**payload, "cached": True})
-            return
+        if not fresh:
+            hit = cached(key)
+            if hit is not None:
+                payload, is_err = hit
+                self._json(502 if is_err else 200, {**payload, "cached": True})
+                return
 
         try:
             raw = fetch_articles(complex_no, trade, sort, pyeong_types)

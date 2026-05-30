@@ -158,7 +158,7 @@ export function moveInLabel(a: NaverArticle): string {
 }
 
 // ── 컬럼용 공유 스토어 (단지×평형별 1회 로드, 동시성 제한) ───────────────
-type Entry = { status: "loading" | "done" | "error"; articles: NaverArticle[]; error?: string };
+export type Entry = { status: "loading" | "done" | "error"; articles: NaverArticle[]; error?: string };
 const _store = new Map<string, Entry>();
 const _subs = new Set<() => void>();
 const _queue: (() => void)[] = [];
@@ -175,36 +175,57 @@ function _pump() {
 function keyOf(complexId: string, pyeongTypeNos: number[] | null): string {
   return `${complexId}|${pyeongTypeNos?.length ? pyeongTypeNos.join("-") : ""}`;
 }
-/** 단지×평형 매물(입주가능일 포함)을 1회 로드해 스토어에 채움. */
-export function ensureListings(complexId: string, pyeongTypeNos: number[] | null): string {
+/**
+ * 단지×평형 매물(입주가능일 포함)을 로드해 스토어에 채움. 명시적 트리거 전용(자동 호출 X).
+ * - 이미 로딩 중이면 중복 트리거 무시.
+ * - force=false: 이미 로드된(done/error) 항목은 재조회 안 함(캐시 사용).
+ * - force=true: 강제 재조회. 직전 articles는 보존해 새로고침 중에도 팝오버 유지. 서버 캐시도 fresh=1로 우회.
+ */
+export function ensureListings(complexId: string, pyeongTypeNos: number[] | null, force = false): string {
   const key = keyOf(complexId, pyeongTypeNos);
-  if (_store.has(key)) return key;
-  _store.set(key, { status: "loading", articles: [] });
+  const existing = _store.get(key);
+  if (existing && (existing.status === "loading" || !force)) return key;
+  _store.set(key, { status: "loading", articles: existing?.articles ?? [] });
   _emit();
   _queue.push(() => {
     const qs = new URLSearchParams({ complexNo: complexId, trade: "A1", movein: "1" });
     if (pyeongTypeNos?.length) qs.set("pyeongTypes", pyeongTypeNos.join("-"));
+    if (force) qs.set("fresh", "1");
     fetch(`${getProxyUrl()}/articles?${qs}`, { headers: authHeaders(), signal: AbortSignal.timeout(120000) })
       .then(async (r) => ({ ok: r.ok, j: await r.json() }))
       .then(({ ok, j }) => {
         if (!ok) throw new Error(j?.error || "proxy error");
         _store.set(key, { status: "done", articles: (j.articles ?? []) as NaverArticle[] });
       })
-      .catch((e) => _store.set(key, { status: "error", articles: [], error: (e as Error).message }))
+      .catch((e) => _store.set(key, { status: "error", articles: existing?.articles ?? [], error: (e as Error).message }))
       .finally(() => { _active--; _emit(); _pump(); });
   });
   _pump();
   return key;
 }
-/** 컬럼 셀에서 사용: enabled면 로드 트리거 + 스토어 구독. */
-export function useColumnListings(complexId: string | null, pyeongTypeNos: number[] | null, enabled: boolean): Entry | null {
+
+export type ColumnListings = {
+  entry: Entry | null;
+  load: () => void; // 명시적 조회 (미로드 시에만)
+  refresh: () => void; // 강제 재조회 (서버 캐시까지 우회)
+};
+/**
+ * 컬럼 셀에서 사용: 스토어 구독 + 수동 트리거. **자동 로드하지 않음** — 셀에서 load()를 호출해야 조회.
+ * subscribe=false면 구독/렌더 안 함(토글 off인 셀의 불필요한 리렌더 방지).
+ */
+export function useColumnListings(complexId: string | null, pyeongTypeNos: number[] | null, subscribe: boolean): ColumnListings {
   const [, force] = useReducer((x) => x + 1, 0);
   useEffect(() => {
-    if (!enabled || !complexId) return;
-    ensureListings(complexId, pyeongTypeNos);
+    if (!subscribe) return;
     _subs.add(force);
     return () => { _subs.delete(force); };
-  }, [complexId, pyeongTypeNos, enabled]);
-  if (!enabled || !complexId) return null;
-  return _store.get(keyOf(complexId, pyeongTypeNos)) ?? null;
+  }, [subscribe]);
+  const load = useCallback(() => {
+    if (complexId) ensureListings(complexId, pyeongTypeNos, false);
+  }, [complexId, pyeongTypeNos]);
+  const refresh = useCallback(() => {
+    if (complexId) ensureListings(complexId, pyeongTypeNos, true);
+  }, [complexId, pyeongTypeNos]);
+  const entry = subscribe && complexId ? (_store.get(keyOf(complexId, pyeongTypeNos)) ?? null) : null;
+  return { entry, load, refresh };
 }

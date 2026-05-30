@@ -556,12 +556,20 @@ function ArticleCard({ a, targetMonth }: { a: NaverArticle; targetMonth?: string
 
 function MoveInCell({ data, targetMonth, enabled }: { data: AptData; targetMonth: string; enabled: boolean }) {
   const complexId = data.naver_complex_id;
-  const entry = useColumnListings(complexId, data.pyeong_type_nos, enabled && !!complexId);
+  const { entry, load, refresh } = useColumnListings(complexId, data.pyeong_type_nos, enabled && !!complexId);
   if (!complexId) return <span className="text-muted-foreground text-xs">-</span>;
-  if (!enabled) return <span className="text-muted-foreground text-xs" title="상단 '네이버 실입주가' 토글을 켜면 조회">·</span>;
-  if (!entry || entry.status === "loading") return <span className="text-muted-foreground text-xs animate-pulse" title="네이버 매물 조회 중">…</span>;
-  if (entry.status === "error") return <span className="text-muted-foreground text-xs cursor-help" title={`조회 실패: ${entry.error}`}>!</span>;
+  if (!enabled) return <span className="text-muted-foreground text-xs" title="상단 '네이버 실입주가' 토글을 켜면 셀에서 조회 가능">·</span>;
+  // 자동 조회 안 함 — 명시적으로 '조회' 클릭해야 로드.
+  if (!entry) return (
+    <button type="button" onClick={load} className="text-primary text-xs underline decoration-dotted underline-offset-4 hover:text-primary/80" title="네이버 실매물 조회">조회</button>
+  );
+  // 최초 로딩(직전 데이터 없음) → 스피너. 새로고침 중(직전 데이터 있음)이면 아래 팝오버 유지.
+  if (entry.status === "loading" && entry.articles.length === 0) return <span className="text-muted-foreground text-xs animate-pulse" title="네이버 매물 조회 중">…</span>;
+  if (entry.status === "error" && entry.articles.length === 0) return (
+    <button type="button" onClick={refresh} className="text-rose-500 text-xs cursor-pointer hover:underline" title={`조회 실패: ${entry.error} · 클릭하면 재시도`}>!재시도</button>
+  );
 
+  const refreshing = entry.status === "loading";
   const all = [...entry.articles].sort((x, y) => x.dealPrice - y.dealPrice);
   const movable = all.filter((a) => isMovableBy(a, targetMonth));
   const minMovable = movable.length ? Math.min(...movable.map((a) => a.dealPrice)) : null;
@@ -569,13 +577,16 @@ function MoveInCell({ data, targetMonth, enabled }: { data: AptData; targetMonth
 
   return (
     <Popover>
-      <PopoverTrigger className="cursor-pointer underline decoration-dotted underline-offset-4 tabular-nums">
+      <PopoverTrigger className={cn("cursor-pointer underline decoration-dotted underline-offset-4 tabular-nums", refreshing && "opacity-50")}>
         {minMovable != null ? formatWon(minMovable) : <span className="text-muted-foreground">{all.length ? "세낀만" : "없음"}</span>}
       </PopoverTrigger>
       <PopoverContent className="w-72 text-xs max-h-96 overflow-y-auto">
         <div className="flex items-center justify-between mb-0.5">
           <p className="font-semibold">네이버 매매 <span className="font-normal text-muted-foreground">{Math.floor(data.area)}㎡ {all.length}건</span></p>
-          <span className="text-[10px] text-emerald-600">실입주 {movable.length}건</span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-[10px] text-emerald-600">실입주 {movable.length}건</span>
+            <button type="button" onClick={refresh} disabled={refreshing} className={cn("text-[11px] text-muted-foreground hover:text-foreground disabled:opacity-50", refreshing && "animate-spin")} title="다시 조회 (서버 캐시 무시)">↻</button>
+          </div>
         </div>
         <p className="text-[10px] text-muted-foreground mb-1.5">~{targetMonth} 입주가능 기준 · 세낀/지연 매물은 흐리게</p>
         {all.length === 0 ? (
@@ -1964,7 +1975,7 @@ export default function App() {
               <input type="checkbox" checked={includeInterior} onChange={(e) => { setIncludeInterior(e.target.checked); localStorage.setItem("f_includeInterior", String(e.target.checked)); }} className="rounded h-3 w-3" />
               <span>인테리어 합산</span>
             </label>
-            <label className="flex items-center gap-1 cursor-pointer" title="네이버 실매물을 단지별로 조회해 '실입주가' 컬럼 표시 (켜면 보이는 행마다 네이버 호출 — 느릴 수 있음)">
+            <label className="flex items-center gap-1 cursor-pointer" title="'실입주가' 컬럼 활성화 — 자동 호출하지 않고, 각 행의 '조회'를 눌러야 네이버 실매물을 가져옴 (팝오버 ↻로 새로고침)">
               <input type="checkbox" checked={naverColEnabled} onChange={(e) => { setNaverColEnabled(e.target.checked); localStorage.setItem("f_naverCol", String(e.target.checked)); }} className="rounded h-3 w-3" />
               <span>네이버 실입주가</span>
             </label>
