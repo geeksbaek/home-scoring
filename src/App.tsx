@@ -14,7 +14,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { getProxyUrl, setProxyUrl, useColumnListings, isMovableBy, isTenant, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
+import { getProxyUrl, setProxyUrl, getProxyToken, setProxyToken, useColumnListings, isMovableBy, isTenant, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
 import { ChevronDown } from "lucide-react";
 import { lazy, Suspense } from "react";
 const AptMap = lazy(() => import("@/components/AptMap"));
@@ -595,22 +595,33 @@ function MoveInCell({ data, targetMonth, enabled }: { data: AptData; targetMonth
 function ProxySetting() {
   const [open, setOpen] = useState(false);
   const [val, setVal] = useState(() => getProxyUrl());
+  const [tok, setTok] = useState(() => getProxyToken());
   if (!open) {
     return (
-      <button type="button" onClick={() => { setVal(getProxyUrl()); setOpen(true); }} className="text-[10px] text-muted-foreground hover:text-foreground" title="실매물 프록시 URL 설정 (Cloudflare 터널 등)">⚙ 프록시 URL</button>
+      <button type="button" onClick={() => { setVal(getProxyUrl()); setTok(getProxyToken()); setOpen(true); }} className="text-[10px] text-muted-foreground hover:text-foreground" title="실매물 프록시 URL + 비밀 토큰 설정">⚙ 프록시 설정</button>
     );
   }
   return (
-    <div className="mt-1 flex items-center gap-1">
+    <div className="mt-1 space-y-1">
       <input
         type="text"
         value={val}
         onChange={(e) => setVal(e.target.value)}
-        placeholder="https://xxx.trycloudflare.com"
-        className="flex-1 min-w-0 bg-background border border-border rounded px-1 py-0 text-[10px] focus:outline-none focus:border-primary"
+        placeholder="프록시 URL (https://...)"
+        className="w-full bg-background border border-border rounded px-1 py-0 text-[10px] focus:outline-none focus:border-primary"
       />
-      <button type="button" onClick={() => { setProxyUrl(val); setOpen(false); }} className="text-[10px] text-primary hover:underline shrink-0">저장</button>
-      <button type="button" onClick={() => setOpen(false)} className="text-[10px] text-muted-foreground hover:text-foreground shrink-0">✕</button>
+      <input
+        type="password"
+        value={tok}
+        onChange={(e) => setTok(e.target.value)}
+        placeholder="비밀 토큰"
+        autoComplete="off"
+        className="w-full bg-background border border-border rounded px-1 py-0 text-[10px] focus:outline-none focus:border-primary"
+      />
+      <div className="flex items-center gap-2">
+        <button type="button" onClick={() => { setProxyUrl(val); setProxyToken(tok); setOpen(false); }} className="text-[10px] text-primary hover:underline">저장</button>
+        <button type="button" onClick={() => setOpen(false)} className="text-[10px] text-muted-foreground hover:text-foreground">✕</button>
+      </div>
     </div>
   );
 }
@@ -1961,6 +1972,7 @@ export default function App() {
               <span className="text-muted-foreground">입주가능</span>
               <input type="month" value={moveInMonth} onChange={(e) => { setMoveInMonth(e.target.value); localStorage.setItem("f_moveInMonth", e.target.value); }} className="h-auto py-0.5 px-1 rounded border bg-background text-[10px] tabular-nums" />
             </label>
+            <ProxySetting />
             <Button variant="outline" size="sm" className="text-[10px] h-auto py-0.5 px-2" onClick={() => setMcOpen(true)}>다문화 통계</Button>
             <Suspense fallback={null}>
               <MolitPressViewer />

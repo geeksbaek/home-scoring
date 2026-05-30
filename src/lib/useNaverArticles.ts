@@ -19,6 +19,23 @@ export function setProxyUrl(url: string) {
   } catch { /* ignore */ }
 }
 
+// 프록시 비밀 토큰 (공개 번들엔 미포함 — 사용자가 브라우저별로 1회 입력, localStorage 저장).
+const TOKEN_KEY = "naverProxyToken";
+export function getProxyToken(): string {
+  try { return (localStorage.getItem(TOKEN_KEY) || "").trim(); } catch { return ""; }
+}
+export function setProxyToken(token: string) {
+  try {
+    const v = token.trim();
+    if (v) localStorage.setItem(TOKEN_KEY, v);
+    else localStorage.removeItem(TOKEN_KEY);
+  } catch { /* ignore */ }
+}
+function authHeaders(): Record<string, string> {
+  const t = getProxyToken();
+  return t ? { "x-proxy-token": t } : {};
+}
+
 export type NaverArticle = {
   articleNo: string;
   trade: string; // A1/B1/B2/B3
@@ -67,7 +84,7 @@ export function useNaverArticles() {
     try {
       const qs = new URLSearchParams({ complexNo, trade });
       if (pyeongTypeNos && pyeongTypeNos.length > 0) qs.set("pyeongTypes", pyeongTypeNos.join("-"));
-      const r = await fetch(`${getProxyUrl()}/articles?${qs}`, { signal: AbortSignal.timeout(12000) });
+      const r = await fetch(`${getProxyUrl()}/articles?${qs}`, { headers: authHeaders(), signal: AbortSignal.timeout(12000) });
       const json = await r.json();
       if (!r.ok) throw new Error(json?.error || `proxy ${r.status}`);
       setState({ loading: false, data: json as NaverResult, error: null });
@@ -165,7 +182,7 @@ export function ensureListings(complexId: string, pyeongTypeNos: number[] | null
   _queue.push(() => {
     const qs = new URLSearchParams({ complexNo: complexId, trade: "A1", movein: "1" });
     if (pyeongTypeNos?.length) qs.set("pyeongTypes", pyeongTypeNos.join("-"));
-    fetch(`${getProxyUrl()}/articles?${qs}`, { signal: AbortSignal.timeout(120000) })
+    fetch(`${getProxyUrl()}/articles?${qs}`, { headers: authHeaders(), signal: AbortSignal.timeout(120000) })
       .then(async (r) => ({ ok: r.ok, j: await r.json() }))
       .then(({ ok, j }) => {
         if (!ok) throw new Error(j?.error || "proxy error");

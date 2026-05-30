@@ -23,11 +23,13 @@ Usage:
 
 의존성: curl_cffi (pip install curl_cffi). 표준 라이브러리 http.server 사용(웹프레임워크 불필요).
 """
+import hmac
 import json
 import os
 import re
 import threading
 import time
+from collections import deque
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
@@ -52,6 +54,19 @@ ALLOWED_ORIGINS = {
         "https://geeksbaek.github.io,http://localhost:5173,http://127.0.0.1:5173",
     ).split(",") if o.strip()
 }
+# 비밀 토큰: env PROXY_TOKEN 또는 data/_proxy_token(gitignored) 파일에서 로드.
+# 설정돼 있으면 /articles 호출 시 X-Proxy-Token 헤더(or ?token=) 일치 필수. 공개번들엔 미포함.
+def _load_token() -> str:
+    t = os.environ.get("PROXY_TOKEN", "").strip()
+    if t:
+        return t
+    f = Path(__file__).resolve().parent.parent / "data" / "_proxy_token"
+    try:
+        return f.read_text(encoding="utf-8").strip()
+    except Exception:
+        return ""
+PROXY_TOKEN = _load_token()
+MAX_RPM = int(os.environ.get("MAX_RPM", "120"))  # 전역 분당 요청 상한(/articles)
 
 API_URL = "https://fin.land.naver.com/front-api/v1/complex/article/list"
 ART_URL = "https://fin.land.naver.com/articles/"
@@ -287,6 +302,33 @@ def store(key: str, payload: dict, is_error: bool):
         _cache[key] = (time.monotonic() + ttl, payload, is_error)
 
 
+# ── 전역 incoming rate-limit (/articles) ──────────────────────────────────
+_rl_lock = threading.Lock()
+_rl_hits: deque = deque()  # 최근 60s 요청 타임스탬프
+
+
+def rate_limited() -> bool:
+    now = time.monotonic()
+    with _rl_lock:
+        while _rl_hits and _rl_hits[0] < now - 60:
+            _rl_hits.popleft()
+        if len(_rl_hits) >= MAX_RPM:
+            return True
+        _rl_hits.append(now)
+        return False
+
+
+def token_ok(handler) -> bool:
+    """PROXY_TOKEN 설정 시 X-Proxy-Token 헤더(or ?token=) 일치 검증(상수시간)."""
+    if not PROXY_TOKEN:
+        return True
+    from urllib.parse import urlparse, parse_qs
+    supplied = handler.headers.get("X-Proxy-Token", "")
+    if not supplied:
+        supplied = (parse_qs(urlparse(handler.path).query).get("token") or [""])[0]
+    return hmac.compare_digest(supplied, PROXY_TOKEN)
+
+
 class Handler(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
 
@@ -301,7 +343,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Access-Control-Allow-Origin", origin)
             self.send_header("Vary", "Origin")
         self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "content-type")
+        self.send_header("Access-Control-Allow-Headers", "content-type, x-proxy-token")
         self.send_header("Access-Control-Max-Age", "600")
 
     def _json(self, code: int, payload: dict):
@@ -329,6 +371,15 @@ class Handler(BaseHTTPRequestHandler):
             return
         if parsed.path != "/articles":
             self._json(404, {"error": "not found"})
+            return
+
+        # 비밀 토큰 검증 (공개 URL 무단 호출 차단)
+        if not token_ok(self):
+            self._json(403, {"error": "invalid or missing token"})
+            return
+        # 전역 rate-limit (홍수 방어)
+        if rate_limited():
+            self._json(429, {"error": "rate limited"})
             return
 
         qs = parse_qs(parsed.query)
