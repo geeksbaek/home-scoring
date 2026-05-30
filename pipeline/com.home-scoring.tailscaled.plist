@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Tailscale userspace 데몬 (네이버 프록시 공개용 Funnel 호스팅) — 템플릿.
+  sudo·시스템 VPN 권한 불필요(userspace networking). 로그인/Funnel 설정은
+  ~/.config/tailscale-userspace 의 state에 저장돼 재시작 시 자동 복원.
+  고정 URL: https://home-scoring.tailee49c2.ts.net → http://localhost:8787
+
+  설치:
+    cp pipeline/com.home-scoring.tailscaled.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.home-scoring.tailscaled.plist
+  관리(커스텀 소켓 지정 필요):
+    tailscale --socket=$HOME/.config/tailscale-userspace/tailscaled.sock status
+  중지:
+    launchctl unload ~/Library/LaunchAgents/com.home-scoring.tailscaled.plist
+  로그: ~/Library/Logs/home-scoring/tailscaled.{log,err}
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>HOME</key>
+		<string>/Users/jongyeol</string>
+		<key>PATH</key>
+		<string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+	</dict>
+	<key>Label</key>
+	<string>com.home-scoring.tailscaled</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/opt/homebrew/bin/tailscaled</string>
+		<string>--tun=userspace-networking</string>
+		<string>--statedir=/Users/jongyeol/.config/tailscale-userspace</string>
+		<string>--socket=/Users/jongyeol/.config/tailscale-userspace/tailscaled.sock</string>
+	</array>
+	<key>KeepAlive</key>
+	<true/>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/jongyeol/Library/Logs/home-scoring/tailscaled.err</string>
+	<key>StandardOutPath</key>
+	<string>/Users/jongyeol/Library/Logs/home-scoring/tailscaled.log</string>
+	<key>ThrottleInterval</key>
+	<integer>10</integer>
+	<key>WorkingDirectory</key>
+	<string>/Users/jongyeol/GitHub/home-scoring</string>
+</dict>
+</plist>
