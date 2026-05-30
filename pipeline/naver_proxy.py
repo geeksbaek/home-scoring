@@ -45,6 +45,13 @@ PAGE_SIZE = int(os.environ.get("PAGE_SIZE", "30"))           # 1~30 (네이버 �
 MOVEIN_TTL = float(os.environ.get("MOVEIN_TTL", "21600"))    # 매물 입주가능일 캐시 6h
 DETAIL_INTERVAL = float(os.environ.get("DETAIL_INTERVAL", "0.5"))  # 상세 HTML 호출 간격
 MOVEIN_CAP = int(os.environ.get("MOVEIN_CAP", "30"))         # 한 요청당 상세 조회 상한
+# CORS 허용 origin (브라우저 남용 차단). ALLOWED_ORIGINS 환경변수로 덮어쓰기 가능.
+ALLOWED_ORIGINS = {
+    o.strip() for o in os.environ.get(
+        "ALLOWED_ORIGINS",
+        "https://geeksbaek.github.io,http://localhost:5173,http://127.0.0.1:5173",
+    ).split(",") if o.strip()
+}
 
 API_URL = "https://fin.land.naver.com/front-api/v1/complex/article/list"
 ART_URL = "https://fin.land.naver.com/articles/"
@@ -287,9 +294,12 @@ class Handler(BaseHTTPRequestHandler):
         print(f"[{self.address_string()}] {fmt % args}")
 
     def _cors(self):
-        origin = self.headers.get("Origin", "*")
-        self.send_header("Access-Control-Allow-Origin", origin)
-        self.send_header("Vary", "Origin")
+        # 허용 origin만 ACAO 반영 → 타 웹사이트 브라우저의 프록시 남용 차단.
+        # (Origin 없는 직접호출(curl)은 CORS 비적용이라 ACAO 불필요)
+        origin = self.headers.get("Origin", "")
+        if origin in ALLOWED_ORIGINS:
+            self.send_header("Access-Control-Allow-Origin", origin)
+            self.send_header("Vary", "Origin")
         self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "content-type")
         self.send_header("Access-Control-Max-Age", "600")
