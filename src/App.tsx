@@ -14,7 +14,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { getProxyUrl, setProxyUrl, getProxyToken, setProxyToken, useColumnListings, isMovableBy, isTenant, isOwnerJeonse, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
+import { getProxyUrl, setProxyUrl, getProxyToken, setProxyToken, useColumnListings, articlesForAtype, isMovableBy, isTenant, isOwnerJeonse, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
 import { ChevronDown } from "lucide-react";
 import { lazy, Suspense } from "react";
 const AptMap = lazy(() => import("@/components/AptMap"));
@@ -562,9 +562,11 @@ function ArticleCard({ a, targetMonth }: { a: NaverArticle; targetMonth?: string
   );
 }
 
-function MoveInCell({ data, targetMonth, enabled }: { data: AptData; targetMonth: string; enabled: boolean }) {
+function MoveInCell({ data, allData, targetMonth, enabled }: { data: AptData; allData: AptData[]; targetMonth: string; enabled: boolean }) {
   const complexId = data.naver_complex_id;
-  const { entry, load, refresh } = useColumnListings(complexId, data.pyeong_type_nos, enabled && !!complexId);
+  const { entry, load, refresh } = useColumnListings(complexId, enabled && !!complexId);
+  // 같은 단지의 atype별 대표면적 → 매물을 가장 가까운 atype에 배정(네이버 평형번호 미사용).
+  const reps = useMemo(() => allData.filter((x) => x.name === data.name).map((x) => ({ atype: x.atype, area: x.area })), [allData, data.name]);
   if (!complexId) return <span className="text-muted-foreground text-xs">-</span>;
   if (!enabled) return <span className="text-muted-foreground text-xs" title="상단 '네이버 호가' 토글을 켜면 셀에서 조회 가능">·</span>;
   // 자동 조회 안 함 — 명시적으로 '조회' 클릭해야 로드.
@@ -578,7 +580,8 @@ function MoveInCell({ data, targetMonth, enabled }: { data: AptData; targetMonth
   );
 
   const refreshing = entry.status === "loading";
-  const all = [...entry.articles].sort((x, y) => x.dealPrice - y.dealPrice);
+  // 단지 전체 매물 수신 → 이 row의 atype만 nearest-area 매칭으로 필터(네이버 평형번호 미사용).
+  const all = articlesForAtype(entry.articles, data.atype, reps).sort((x, y) => x.dealPrice - y.dealPrice);
   const movable = all.filter((a) => isMovableBy(a, targetMonth));
   const minMovable = movable.length ? Math.min(...movable.map((a) => a.dealPrice)) : null;
   const moreUrl = naverLandUrl(complexId, isMobile, data.pyeong_type_nos);
@@ -2340,7 +2343,7 @@ export default function App() {
                       </TableCell>
                       <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
                       <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
-                      <TableCell className="text-center text-sm"><MoveInCell data={d} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
+                      <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
                       <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
                       <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                       <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
@@ -2450,7 +2453,7 @@ export default function App() {
                     </TableCell>
                     <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
                     <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
-                      <TableCell className="text-center text-sm"><MoveInCell data={d} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
+                      <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
                     <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
                     <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                     <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>

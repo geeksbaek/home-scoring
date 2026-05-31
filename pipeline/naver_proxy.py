@@ -44,6 +44,7 @@ CACHE_TTL = float(os.environ.get("CACHE_TTL", "600"))        # 단지별 캐시 
 NEG_TTL = float(os.environ.get("NEG_TTL", "60"))             # 실패 응답 캐시 수명(초)
 MIN_INTERVAL = float(os.environ.get("MIN_INTERVAL", "1.2"))  # 업스트림 호출 최소 간격(초)
 PAGE_SIZE = int(os.environ.get("PAGE_SIZE", "30"))           # 1~30 (네이버 제한)
+MAX_PAGES = int(os.environ.get("MAX_PAGES", "20"))           # 페이지네이션 상한(20×30=600건) — 무한루프 방지
 MOVEIN_TTL = float(os.environ.get("MOVEIN_TTL", "21600"))    # 매물 입주가능일 캐시 6h
 DETAIL_INTERVAL = float(os.environ.get("DETAIL_INTERVAL", "0.5"))  # 상세 HTML 호출 간격
 MOVEIN_CAP = int(os.environ.get("MOVEIN_CAP", "30"))         # 한 요청당 상세 조회 상한
@@ -134,8 +135,9 @@ def _get_session() -> requests.Session:
     return _session
 
 
-def fetch_articles(complex_no: str, trade: str, sort: str, pyeong_types: list[int]) -> dict:
-    """네이버에서 매물 목록을 받아 원본 JSON 반환. 직렬화+rate-limit+재시도 포함."""
+def _post_page(complex_no: str, trade: str, sort: str, pyeong_types: list[int], last_info: list) -> dict:
+    """매물 목록 한 페이지 POST. 직렬 간격 + 403/429 재워밍업 재시도. 원본 JSON 반환.
+    (호출자가 _session_lock 보유 상태로 호출 — 페이지 루프 전체를 한 락으로 직렬화)"""
     global _session, _last_call
     body = {
         "size": PAGE_SIZE,
@@ -145,38 +147,68 @@ def fetch_articles(complex_no: str, trade: str, sort: str, pyeong_types: list[in
         "dongNumbers": [],
         "userChannelType": "PC",
         "articleSortType": sort,
-        "lastInfo": [],
+        "lastInfo": last_info,  # 이전 페이지 응답의 result.lastInfo (1페이지는 [])
     }
     headers = {
         "referer": f"https://fin.land.naver.com/complexes/{complex_no}",
         "content-type": "application/json",
         "accept": "application/json, text/plain, */*",
     }
-    with _session_lock:
-        # 업스트림 최소 간격 보장(직렬)
-        gap = time.monotonic() - _last_call
-        if gap < MIN_INTERVAL:
-            time.sleep(MIN_INTERVAL - gap)
-        for attempt in range(2):
-            try:
-                s = _get_session()
-                r = s.post(API_URL, headers=headers, data=json.dumps(body), timeout=20)
-                _last_call = time.monotonic()
-                if r.status_code == 200:
-                    return r.json()
-                # 403/429 → 세션 재워밍업 후 1회 재시도
-                if r.status_code in (403, 429) and attempt == 0:
-                    time.sleep(2.0)
-                    _session = _new_session()
-                    continue
-                raise RuntimeError(f"upstream HTTP {r.status_code}: {r.text[:120]}")
-            except Exception:
-                if attempt == 0:
-                    time.sleep(2.0)
-                    _session = _new_session()
-                    continue
-                raise
+    # 업스트림 최소 간격 보장(직렬) — 페이지마다 적용해 rate-limit/차단 회피
+    gap = time.monotonic() - _last_call
+    if gap < MIN_INTERVAL:
+        time.sleep(MIN_INTERVAL - gap)
+    for attempt in range(2):
+        try:
+            s = _get_session()
+            r = s.post(API_URL, headers=headers, data=json.dumps(body), timeout=20)
+            _last_call = time.monotonic()
+            if r.status_code == 200:
+                return r.json()
+            # 403/429 → 세션 재워밍업 후 1회 재시도
+            if r.status_code in (403, 429) and attempt == 0:
+                time.sleep(2.0)
+                _session = _new_session()
+                continue
+            raise RuntimeError(f"upstream HTTP {r.status_code}: {r.text[:120]}")
+        except Exception:
+            if attempt == 0:
+                time.sleep(2.0)
+                _session = _new_session()
+                continue
+            raise
     raise RuntimeError("unreachable")
+
+
+def fetch_articles(complex_no: str, trade: str, sort: str, pyeong_types: list[int]) -> dict:
+    """단지 매물 전체를 페이지네이션으로 모아 합친 원본 JSON 반환.
+    네이버는 한 페이지당 최대 PAGE_SIZE(30)건만 주고 result.hasNextPage/lastInfo로 다음 페이지를 가리킨다.
+    → hasNextPage가 False가 될 때까지 lastInfo를 넘겨 반복(MAX_PAGES 상한). 미구현 시 30건에서 잘려 누락."""
+    merged: list = []
+    last_info: list = []
+    total = None
+    seen_keys: set = set()  # 동일 lastInfo 반복(서버 이상) 무한루프 방지
+    with _session_lock:
+        for _ in range(MAX_PAGES):
+            j = _post_page(complex_no, trade, sort, pyeong_types, last_info)
+            res = j.get("result") or {}
+            lst = res.get("list") or []
+            merged.extend(lst)
+            if total is None:
+                total = res.get("totalCount")
+            last_info = res.get("lastInfo") or []
+            key = tuple(map(str, last_info))
+            if not res.get("hasNextPage") or not lst or not last_info or key in seen_keys:
+                break
+            seen_keys.add(key)
+    return {
+        "result": {
+            "list": merged,
+            "totalCount": total if total is not None else len(merged),
+            "hasNextPage": False,
+            "lastInfo": [],
+        }
+    }
 
 
 # ── 매물별 입주가능일(상세) 조회·파싱·캐시 ──────────────────────────────────

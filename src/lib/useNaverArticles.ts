@@ -167,7 +167,54 @@ export function moveInLabel(a: NaverArticle): string {
   return mi.raw || "협의";
 }
 
-// ── 컬럼용 공유 스토어 (단지×평형별 1회 로드, 동시성 제한) ───────────────
+// ── 면적(㎡) → atype 버킷 (pipeline/sync.ts:areaType와 동일해야 함) ─────────
+// 네이버 평형번호는 단지 내부 평면형(84A/84B/84E…) 단위라 우리 atype 버킷과 1:1로
+// 매핑되지 않는다(같은 84.98이 비연속 번호 1·2·5로 쪼개짐). 그래서 평형번호 필터 대신
+// 단지 전체 매물을 받아 전용면적으로 직접 버킷 필터한다.
+export function areaType(a: number): string {
+  if (a < 55) return "49";
+  if (a < 62) return "59";
+  if (a < 70) return "74";
+  if (a < 86) return "84";
+  if (a < 95) return "99";
+  if (a < 110) return "114";
+  if (a < 130) return "134";
+  if (a < 150) return "164";
+  if (a < 170) return "184";
+  return "200";
+}
+/**
+ * 단지 전체 매물 중 이 atype row에 속하는 것만.
+ * data의 atype은 "거래면적 기준 버킷", area는 "대표 평형(세대수 최다)"이라 areaType(area)≠atype일 수 있다
+ * (예: 98.54가 atype "99"로 라벨 — areaType은 "114"). 그래서 단순 버킷 비교 대신,
+ * 단지의 atype별 대표면적(reps) 중 매물 전용면적과 **가장 가까운** atype에 배정한다.
+ * reps가 없거나 1개뿐이면 areaType() 버킷 비교로 폴백.
+ */
+export function articlesForAtype(
+  articles: NaverArticle[],
+  atype: string | null,
+  reps?: { atype: string; area: number | null }[],
+): NaverArticle[] {
+  if (!atype) return articles;
+  const pts = (reps ?? []).filter((c) => c.area != null) as { atype: string; area: number }[];
+  if (pts.length <= 1) {
+    return articles.filter((a) => a.exclusiveArea != null && areaType(a.exclusiveArea) === atype);
+  }
+  return articles.filter((a) => {
+    const x = a.exclusiveArea;
+    if (x == null) return false;
+    let best = pts[0].atype, bd = Infinity;
+    for (const c of pts) {
+      const dist = Math.abs(c.area - x);
+      if (dist < bd) { bd = dist; best = c.atype; }
+    }
+    return best === atype;
+  });
+}
+
+// ── 컬럼용 공유 스토어 (단지 단위 1회 로드, 동시성 제한) ──────────────────
+// 단지 전체 매물을 complexId 단독 키로 캐싱 → 같은 단지의 여러 평형 row가 1회 fetch 공유.
+// 평형별 표시는 각 셀에서 articlesForAtype로 필터(평형번호 미사용).
 export type Entry = { status: "loading" | "done" | "error"; articles: NaverArticle[]; error?: string };
 const _store = new Map<string, Entry>();
 const _subs = new Set<() => void>();
@@ -182,8 +229,8 @@ function _pump() {
     job();
   }
 }
-function keyOf(complexId: string, pyeongTypeNos: number[] | null): string {
-  return `${complexId}|${pyeongTypeNos?.length ? pyeongTypeNos.join("-") : ""}`;
+function keyOf(complexId: string): string {
+  return complexId;
 }
 
 /**
@@ -192,9 +239,9 @@ function keyOf(complexId: string, pyeongTypeNos: number[] | null): string {
  * - movein 한 줄마다 해당 매물 입주정보 부착 후 _emit → 동적 추가.
  * 비스트림(구버전 프록시·에러) 응답이면 한방 JSON으로 폴백.
  */
-async function _runStream(key: string, complexId: string, pyeongTypeNos: number[] | null, force: boolean, prevArticles: NaverArticle[]): Promise<void> {
+async function _runStream(key: string, complexId: string, force: boolean, prevArticles: NaverArticle[]): Promise<void> {
+  // pyeongTypes 미전송 → 단지 전체 매물 수신. 평형 스코핑은 표시 단계에서 면적 필터로 처리.
   const qs = new URLSearchParams({ complexNo: complexId, trade: "A1", movein: "1", stream: "1" });
-  if (pyeongTypeNos?.length) qs.set("pyeongTypes", pyeongTypeNos.join("-"));
   if (force) qs.set("fresh", "1");
   let articles: NaverArticle[] = prevArticles;
   const byNo = new Map<string, NaverArticle>();
@@ -256,15 +303,15 @@ async function _runStream(key: string, complexId: string, pyeongTypeNos: number[
  * - force=false: 이미 로드된(done/error) 항목은 재조회 안 함(캐시 사용).
  * - force=true: 강제 재조회. 직전 articles는 보존해 새로고침 중에도 팝오버 유지. 서버 캐시도 fresh=1로 우회.
  */
-export function ensureListings(complexId: string, pyeongTypeNos: number[] | null, force = false): string {
-  const key = keyOf(complexId, pyeongTypeNos);
+export function ensureListings(complexId: string, force = false): string {
+  const key = keyOf(complexId);
   const existing = _store.get(key);
   if (existing && (existing.status === "loading" || !force)) return key;
   const prev = existing?.articles ?? [];
   _store.set(key, { status: "loading", articles: prev });
   _emit();
   _queue.push(() => {
-    _runStream(key, complexId, pyeongTypeNos, force, prev)
+    _runStream(key, complexId, force, prev)
       .finally(() => { _active--; _emit(); _pump(); });
   });
   _pump();
@@ -280,7 +327,7 @@ export type ColumnListings = {
  * 컬럼 셀에서 사용: 스토어 구독 + 수동 트리거. **자동 로드하지 않음** — 셀에서 load()를 호출해야 조회.
  * subscribe=false면 구독/렌더 안 함(토글 off인 셀의 불필요한 리렌더 방지).
  */
-export function useColumnListings(complexId: string | null, pyeongTypeNos: number[] | null, subscribe: boolean): ColumnListings {
+export function useColumnListings(complexId: string | null, subscribe: boolean): ColumnListings {
   const [, force] = useReducer((x) => x + 1, 0);
   useEffect(() => {
     if (!subscribe) return;
@@ -288,11 +335,11 @@ export function useColumnListings(complexId: string | null, pyeongTypeNos: numbe
     return () => { _subs.delete(force); };
   }, [subscribe]);
   const load = useCallback(() => {
-    if (complexId) ensureListings(complexId, pyeongTypeNos, false);
-  }, [complexId, pyeongTypeNos]);
+    if (complexId) ensureListings(complexId, false);
+  }, [complexId]);
   const refresh = useCallback(() => {
-    if (complexId) ensureListings(complexId, pyeongTypeNos, true);
-  }, [complexId, pyeongTypeNos]);
-  const entry = subscribe && complexId ? (_store.get(keyOf(complexId, pyeongTypeNos)) ?? null) : null;
+    if (complexId) ensureListings(complexId, true);
+  }, [complexId]);
+  const entry = subscribe && complexId ? (_store.get(keyOf(complexId)) ?? null) : null;
   return { entry, load, refresh };
 }
