@@ -46,7 +46,9 @@ interface CommuteEntry {
   timestamp: string;
   weekday: string;
   direction: string;
-  results: { name: string; minutes: number; distance_km: number }[];
+  started?: string; // 측정 시작 "HH:MM"
+  ended?: string; // 측정 종료 "HH:MM"
+  results: { name: string; minutes: number; distance_km: number; at?: string }[];
 }
 
 interface SlopeEntry {
@@ -253,7 +255,8 @@ async function updatePages() {
         if (!dm.has(date)) dm.set(date, { weekday: e.weekday, values: [], times: [] });
         const entry = dm.get(date)!;
         entry.values.push(r.minutes);
-        entry.times.push(e.timestamp.split(" ")[1]);
+        // 개별 단지 실제 측정 시각(at) 우선, 없으면(구 데이터) batch 시작 시각
+        entry.times.push(r.at ?? e.timestamp.split(" ")[1]);
       }
     } else if (dir === "퇴근" && hour >= 15 && hour <= 17) {
       for (const r of e.results) {
@@ -264,7 +267,8 @@ async function updatePages() {
         if (!dm.has(date)) dm.set(date, { weekday: e.weekday, values: [], times: [] });
         const entry2 = dm.get(date)!;
         entry2.values.push(r.minutes);
-        entry2.times.push(e.timestamp.split(" ")[1]);
+        // 개별 단지 실제 측정 시각(at) 우선, 없으면(구 데이터) batch 시작 시각
+        entry2.times.push(r.at ?? e.timestamp.split(" ")[1]);
       }
     }
   }

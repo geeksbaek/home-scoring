@@ -12,6 +12,13 @@ import { isNonBusinessDay } from "./holidays";
 
 const ROOT = join(import.meta.dir, "..");
 const OUT_PATH = join(ROOT, "data", "commute_results.json");
+// 단지 좌표 캐시 (좌표는 불변 → 매일 geocode 5,300+회 생략). query가 바뀌면 무효화.
+const COORDS_CACHE_PATH = join(ROOT, "data", "commute_coords_cache.json");
+
+// 병렬 측정 동시성. 카카오 directions는 동시 50+에서 순간 rate limit(code -10)이 발생하므로
+// 안전선(24)을 유지 → 5,300+개를 ~30초에 측정(과거 순차 49분 대비). QPS 초과 -10은
+// kakaoJson의 backoff 재시도로 흡수(일일 quota 소진과 구분).
+const CONCURRENCY = 24;
 
 // 단지 목록 소스: data.json은 도시별 shard로 분할됨 (data-seoul.json + data-gyeonggi.json).
 // data-index.json의 shards[].url을 모두 병합 로드 → 신규 shard 추가 시 자동 대응.
@@ -30,40 +37,69 @@ if (KAKAO_KEYS.length === 0) throw new Error("KAKAO_REST_API_KEY 미설정");
 /** 모든 카카오 키가 할당량 초과(code -10)된 경우. 측정 중단 + 불완전 batch 저장 금지. */
 class QuotaExceededError extends Error {}
 
+// 카카오 키별 권한/할당량은 서비스(navi=길찾기, local=좌표검색)마다 별개다.
+// 예: 새 앱 키가 navi(directions)는 되지만 local(OPEN_MAP_AND_LOCAL)은 비활성(403)일 수 있음.
+type Service = "navi" | "local";
 let keyIdx = 0;
-const exhausted = new Set<number>(); // 당일 할당량 소진된 키 인덱스
+const exhausted = new Set<number>(); // navi 일일 quota 소진(code -10)된 키
+const localDisabled = new Set<number>(); // local(카카오맵) 서비스 비활성(403)인 키
 
-// 라운드로빈하되 소진된 키는 건너뛴다. 모두 소진이면 QuotaExceededError.
-function nextLiveKeyIdx(): number {
+// 서비스별로 사용 불가 키를 건너뛰며 라운드로빈. 가용 키 없으면 QuotaExceededError.
+function nextKeyIdx(service: Service): number {
+  const blocked = service === "navi" ? exhausted : localDisabled;
   for (let i = 0; i < KAKAO_KEYS.length; i++) {
     const idx = keyIdx % KAKAO_KEYS.length;
     keyIdx++;
-    if (!exhausted.has(idx)) return idx;
+    if (!blocked.has(idx)) return idx;
   }
-  throw new QuotaExceededError("모든 카카오 키 할당량 초과");
+  throw new QuotaExceededError(
+    service === "navi"
+      ? "모든 카카오 키 길찾기 할당량 초과"
+      : "좌표검색(카카오맵) 가능한 카카오 키 없음",
+  );
 }
 
-// 카카오 JSON GET. 키 로테이션 + 키별 할당량 소진 처리.
-// 한 키가 code -10이면 그 키를 소진 처리하고 다른 키로 재시도. 모두 소진이면 throw.
-async function kakaoJson(buildUrl: () => string): Promise<any> {
-  for (let attempt = 0; attempt < KAKAO_KEYS.length; attempt++) {
-    const idx = nextLiveKeyIdx();
+// 카카오 JSON GET. 서비스별 키 로테이션 + 권한/할당량 처리.
+//
+// - navi code -10: (a)일일 quota 소진 또는 (b)순간 QPS 초과(rate limit) 양쪽에 쓰임.
+//   -10이면 backoff 재시도. (b)면 회복, (a)면 계속 -10 → MAX_RETRY 후 그 키 소진 확정.
+// - local 403(OPEN_MAP_AND_LOCAL disabled): 그 키는 좌표검색 불가 → localDisabled 처리 후 다른 키.
+async function kakaoJson(buildUrl: () => string, service: Service): Promise<any> {
+  const MAX_RETRY = 4; // backoff 250·500·750·1000ms
+  let attempt = 0;
+  while (true) {
+    const idx = nextKeyIdx(service); // 가용 키 없으면 QuotaExceededError throw
     const res = await fetch(buildUrl(), {
       headers: { Authorization: `KakaoAK ${KAKAO_KEYS[idx]}` },
     });
     const data = await res.json();
-    if (res.status === 400 && data?.code === -10) {
-      if (!exhausted.has(idx)) {
-        exhausted.add(idx);
-        console.warn(
-          `  ⚠ 키 #${idx + 1} 할당량 소진 — 나머지 ${KAKAO_KEYS.length - exhausted.size}개 키로 계속`,
-        );
+
+    // local 서비스 권한 없음 → 그 키 좌표검색 제외하고 다른 키로
+    if (res.status === 403) {
+      if (!localDisabled.has(idx)) {
+        localDisabled.add(idx);
+        console.warn(`  ⚠ 키 #${idx + 1} 좌표검색(카카오맵) 비활성 — 다른 키로`);
       }
-      continue; // 다른 키로 재시도
+      attempt = 0;
+      continue;
     }
-    return data;
+
+    if (!(res.status === 400 && data?.code === -10)) return data;
+
+    if (attempt < MAX_RETRY) {
+      attempt++;
+      await sleep(250 * attempt); // 순간 rate limit이면 backoff 후 회복
+      continue;
+    }
+    // 재시도 후에도 -10 → 이 키는 길찾기 일일 quota 소진으로 확정
+    if (!exhausted.has(idx)) {
+      exhausted.add(idx);
+      console.warn(
+        `  ⚠ 키 #${idx + 1} 길찾기 일일 할당량 소진 — 남은 ${KAKAO_KEYS.length - exhausted.size}개 키로 계속`,
+      );
+    }
+    attempt = 0; // 다음 가용 키로 처음부터 (모두 소진이면 nextKeyIdx가 throw)
   }
-  throw new QuotaExceededError("모든 카카오 키 할당량 초과");
 }
 
 const DESTINATION = "판교역로 166";
@@ -280,7 +316,7 @@ async function geocode(query: string): Promise<GeoResult | null> {
     "https://dapi.kakao.com/v2/local/search/address.json",
   ]) {
     const params = new URLSearchParams({ query, size: "1" });
-    const data = await kakaoJson(() => `${endpoint}?${params}`);
+    const data = await kakaoJson(() => `${endpoint}?${params}`, "local");
     if (data.documents?.length) {
       const doc = data.documents[0];
       return {
@@ -291,6 +327,27 @@ async function geocode(query: string): Promise<GeoResult | null> {
     }
   }
   return null;
+}
+
+// 단지 좌표 캐시 (name → {lat,lng,query}). 좌표는 불변이라 매일 geocode를 생략한다.
+// query(도로명주소)가 바뀐 단지만 재조회.
+let coordsCache: Record<string, { lat: number; lng: number; query: string }> = {};
+async function loadCoordsCache() {
+  const f = Bun.file(COORDS_CACHE_PATH);
+  if (await f.exists()) {
+    try {
+      coordsCache = await f.json();
+    } catch {
+      coordsCache = {};
+    }
+  }
+}
+async function geocodeCached(name: string, query: string): Promise<GeoResult | null> {
+  const c = coordsCache[name];
+  if (c && c.query === query) return { lat: c.lat, lng: c.lng, name };
+  const g = await geocode(query);
+  if (g) coordsCache[name] = { lat: g.lat, lng: g.lng, query };
+  return g;
 }
 
 async function driveTime(
@@ -306,6 +363,7 @@ async function driveTime(
   });
   const data = await kakaoJson(
     () => `https://apis-navi.kakaomobility.com/v1/directions?${params}`,
+    "navi",
   );
   const summary = data.routes?.[0]?.summary;
   if (!summary) return null;
@@ -317,11 +375,25 @@ async function driveTime(
 
 // ── 메인 ───────────────────────────────────────────────
 
+const hhmm = (d: Date) =>
+  `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+
+interface Measurement {
+  name: string;
+  minutes: number;
+  distance_km: number;
+  at: string; // 실제 측정 시각 "HH:MM" (병렬 측정이라 단지마다 다를 수 있음 → 시각 정직 기록)
+}
+
 async function main() {
   const reverse = process.argv.includes("--reverse");
   const force = process.argv.includes("--force");
   const direction = reverse ? "퇴근" : "출근";
   const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+  // --limit=N: 앞 N개만 측정하는 테스트 모드. 저장/배포 생략(실데이터 비오염).
+  const limitArg = process.argv.find((a) => a.startsWith("--limit="));
+  const limit = limitArg ? parseInt(limitArg.split("=")[1], 10) : Infinity;
+  const testMode = Number.isFinite(limit);
 
   const now = new Date();
 
@@ -330,12 +402,15 @@ async function main() {
     console.log("⏭  주말/공휴일 — 출퇴근 측정 스킵 (--force로 강제 실행 가능)");
     return;
   }
-  const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")} ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+  const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")} ${hhmm(now)}`;
   const weekday = weekdays[now.getDay()];
 
-  console.log(`[${timestamp} (${weekday})] ${direction} 시간 측정 시작`);
+  console.log(
+    `[${timestamp} (${weekday})] ${direction} 시간 측정 시작${testMode ? ` (테스트 ${limit}건)` : ""}`,
+  );
   console.log(`${reverse ? "출발지" : "목적지"}: ${DESTINATION}`);
 
+  await loadCoordsCache();
   const dest = await geocode(DESTINATION);
   if (!dest) {
     console.log("ERROR: 판교아지트 좌표 조회 실패");
@@ -349,7 +424,7 @@ async function main() {
   let candidates: [string, string][];
   try {
     candidates = await loadCandidates();
-    console.log(`data.json에서 ${candidates.length}개 아파트 로드\n`);
+    console.log(`data.json에서 ${candidates.length}개 아파트 로드`);
   } catch {
     const seen = new Set<string>();
     candidates = LEGACY_CANDIDATES.filter(([name]) => {
@@ -357,49 +432,79 @@ async function main() {
       seen.add(name);
       return true;
     });
-    console.log(`data.json 로드 실패, 레거시 목록 ${candidates.length}개 사용\n`);
+    console.log(`data.json 로드 실패, 레거시 목록 ${candidates.length}개 사용`);
+  }
+  if (testMode) candidates = candidates.slice(0, limit);
+
+  // 병렬 측정 (동시성 CONCURRENCY). 좌표는 캐시 우선 → directions만 호출.
+  const measured: Measurement[] = [];
+  const started = new Date();
+  let next = 0;
+  let fatal: QuotaExceededError | null = null;
+
+  async function worker() {
+    while (true) {
+      if (fatal) return;
+      const i = next++;
+      if (i >= candidates.length) return;
+      const [name, query] = candidates[i];
+      try {
+        const geo = await geocodeCached(name, query);
+        if (!geo) {
+          console.log(`  SKIP ${name}: 좌표 조회 실패`);
+          continue;
+        }
+        const dt = reverse
+          ? await driveTime(dest.lat, dest.lng, geo.lat, geo.lng)
+          : await driveTime(geo.lat, geo.lng, dest.lat, dest.lng);
+        if (!dt) {
+          console.log(`  SKIP ${name}: 경로 조회 실패`);
+          continue;
+        }
+        measured.push({
+          name,
+          minutes: dt.minutes,
+          distance_km: Math.round((dt.distance / 1000) * 10) / 10,
+          at: hhmm(new Date()),
+        });
+      } catch (e) {
+        if (e instanceof QuotaExceededError) {
+          fatal = e;
+          return;
+        }
+        throw e;
+      }
+    }
   }
 
-  const results: { name: string; minutes: number; distance_km: number }[] = [];
-  let apiCalls = 0;
+  await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()));
+  const ended = new Date();
+  const elapsed = Math.round((ended.getTime() - started.getTime()) / 1000);
 
-  try {
-    for (const [name, query] of candidates) {
-      const geo = await geocode(query);
-      apiCalls++;
-      if (!geo) {
-        console.log(`  SKIP ${name}: 좌표 조회 실패`);
-        continue;
-      }
-      const dt = reverse
-        ? await driveTime(dest.lat, dest.lng, geo.lat, geo.lng)
-        : await driveTime(geo.lat, geo.lng, dest.lat, dest.lng);
-      apiCalls++;
-      if (!dt) {
-        console.log(`  SKIP ${name}: 경로 조회 실패`);
-        continue;
-      }
-      results.push({
-        name,
-        minutes: dt.minutes,
-        distance_km: Math.round((dt.distance / 1000) * 10) / 10,
-      });
-      console.log(`  ${name}: ${dt.minutes}분 (${(dt.distance / 1000).toFixed(1)}km)`);
+  // 좌표 캐시 저장 (신규 단지 좌표 반영)
+  await Bun.write(COORDS_CACHE_PATH, JSON.stringify(coordsCache));
 
-      // Rate limiting: 초당 10건 이하 유지 (API 2건당 200ms 대기)
-      await sleep(200);
-    }
-  } catch (e) {
-    if (e instanceof QuotaExceededError) {
-      // 할당량 초과 → 불완전 batch는 통계를 왜곡하므로 저장/배포하지 않고 종료.
-      console.error(
-        `\n⛔ 카카오 길찾기 일일 할당량 초과(키 ${KAKAO_KEYS.length}개 모두 소진): ${e.message}\n` +
-          `   ${results.length}/${candidates.length}건만 측정됨 — 불완전 batch는 저장하지 않습니다.\n` +
-          `   해결: 키 추가(.env KAKAO_REST_API_KEY_3...) 또는 측정 대상/주기 조정.`,
-      );
-      process.exit(1);
-    }
-    throw e;
+  if (fatal) {
+    // 모든 키 일일 할당량 소진 → 불완전 batch는 통계를 왜곡하므로 저장/배포하지 않고 종료.
+    console.error(
+      `\n⛔ 카카오 길찾기 일일 할당량 초과(키 ${KAKAO_KEYS.length}개 모두 소진): ${fatal.message}\n` +
+        `   ${measured.length}/${candidates.length}건만 측정됨 — 불완전 batch는 저장하지 않습니다.\n` +
+        `   해결: 키 추가(.env KAKAO_REST_API_KEY_3...) 또는 측정 대상/주기 조정.`,
+    );
+    process.exit(1);
+  }
+
+  // 측정 시각 분포 (윈도우가 좁을수록 단지 간 비교가 공정)
+  const ats = measured.map((m) => m.at).sort();
+  console.log(
+    `\n측정 완료: ${measured.length}/${candidates.length}건, ${elapsed}초 (${ats[0]}~${ats[ats.length - 1]})`,
+  );
+
+  if (testMode) {
+    console.log("테스트 모드 — 저장/배포 생략. 샘플:");
+    for (const m of measured.slice(0, 8))
+      console.log(`  ${m.name}: ${m.minutes}분 ${m.distance_km}km @${m.at}`);
+    return;
   }
 
   // 기존 결과에 추가
@@ -410,15 +515,17 @@ async function main() {
 
   history.push({
     timestamp,
+    started: hhmm(started),
+    ended: hhmm(ended),
     weekday,
     direction,
     destination: dest.name,
     destination_query: DESTINATION,
-    results,
+    results: measured,
   });
 
   await Bun.write(OUT_PATH, JSON.stringify(history, null, 2));
-  console.log(`\n저장: ${OUT_PATH} (총 ${history.length}회 측정, API ${apiCalls}건 호출)`);
+  console.log(`저장: ${OUT_PATH} (총 ${history.length}회 측정)`);
 
   // 스코어링 배포
   await sync();
