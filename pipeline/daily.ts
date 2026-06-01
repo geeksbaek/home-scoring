@@ -9,32 +9,9 @@
 
 import { join } from "node:path";
 import { $ } from "bun";
+import { isNonBusinessDay } from "./holidays";
 
 const ROOT = join(import.meta.dir, "..");
-
-// 한국 공휴일 (연도별 추가 필요)
-const HOLIDAYS_2026 = new Set([
-  "2026-01-01", // 신정
-  "2026-01-28", "2026-01-29", "2026-01-30", // 설날
-  "2026-03-01", // 삼일절
-  "2026-05-01", // 근로자의 날
-  "2026-05-05", // 어린이날
-  "2026-05-24", // 부처님오신날
-  "2026-06-06", // 현충일
-  "2026-08-15", // 광복절
-  "2026-09-24", "2026-09-25", "2026-09-26", // 추석
-  "2026-10-03", // 개천절
-  "2026-10-09", // 한글날
-  "2026-12-25", // 성탄절
-]);
-
-function isHoliday(): boolean {
-  const now = new Date();
-  const day = now.getDay(); // 0=일, 6=토
-  if (day === 0 || day === 6) return true;
-  const dateStr = now.toISOString().slice(0, 10);
-  return HOLIDAYS_2026.has(dateStr);
-}
 
 async function main() {
   const force = process.argv.includes("--force");
@@ -47,7 +24,7 @@ async function main() {
   console.log(`${"═".repeat(50)}\n`);
 
   // 공휴일 체크
-  if (!force && isHoliday()) {
+  if (!force && isNonBusinessDay()) {
     console.log("⏭  공휴일/주말 — 스킵 (--force로 강제 실행 가능)");
     return;
   }

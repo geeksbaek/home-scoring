@@ -8,6 +8,7 @@
 
 import { join } from "node:path";
 import { sync } from "./sync";
+import { isNonBusinessDay } from "./holidays";
 
 const ROOT = join(import.meta.dir, "..");
 const OUT_PATH = join(ROOT, "data", "commute_results.json");
@@ -17,8 +18,53 @@ const OUT_PATH = join(ROOT, "data", "commute_results.json");
 const PUBLIC_DIR = join(ROOT, "public");
 const DATA_INDEX = join(PUBLIC_DIR, "data-index.json");
 
-const KAKAO_KEY = process.env.KAKAO_REST_API_KEY!;
-const HEADERS = { Authorization: `KakaoAK ${KAKAO_KEY}` };
+// 카카오 길찾기 무료 할당량은 앱(REST API 키) 단위 일 10,000건.
+// 단지 5,300+개 × 출퇴근 2회 = 일 10,700+건 → 키 1개로는 초과.
+// KAKAO_REST_API_KEY_2가 있으면 호출마다 라운드로빈해 합산 할당량을 2배로.
+const KAKAO_KEYS = [
+  process.env.KAKAO_REST_API_KEY,
+  process.env.KAKAO_REST_API_KEY_2,
+].filter((k): k is string => !!k);
+if (KAKAO_KEYS.length === 0) throw new Error("KAKAO_REST_API_KEY 미설정");
+
+/** 모든 카카오 키가 할당량 초과(code -10)된 경우. 측정 중단 + 불완전 batch 저장 금지. */
+class QuotaExceededError extends Error {}
+
+let keyIdx = 0;
+const exhausted = new Set<number>(); // 당일 할당량 소진된 키 인덱스
+
+// 라운드로빈하되 소진된 키는 건너뛴다. 모두 소진이면 QuotaExceededError.
+function nextLiveKeyIdx(): number {
+  for (let i = 0; i < KAKAO_KEYS.length; i++) {
+    const idx = keyIdx % KAKAO_KEYS.length;
+    keyIdx++;
+    if (!exhausted.has(idx)) return idx;
+  }
+  throw new QuotaExceededError("모든 카카오 키 할당량 초과");
+}
+
+// 카카오 JSON GET. 키 로테이션 + 키별 할당량 소진 처리.
+// 한 키가 code -10이면 그 키를 소진 처리하고 다른 키로 재시도. 모두 소진이면 throw.
+async function kakaoJson(buildUrl: () => string): Promise<any> {
+  for (let attempt = 0; attempt < KAKAO_KEYS.length; attempt++) {
+    const idx = nextLiveKeyIdx();
+    const res = await fetch(buildUrl(), {
+      headers: { Authorization: `KakaoAK ${KAKAO_KEYS[idx]}` },
+    });
+    const data = await res.json();
+    if (res.status === 400 && data?.code === -10) {
+      if (!exhausted.has(idx)) {
+        exhausted.add(idx);
+        console.warn(
+          `  ⚠ 키 #${idx + 1} 할당량 소진 — 나머지 ${KAKAO_KEYS.length - exhausted.size}개 키로 계속`,
+        );
+      }
+      continue; // 다른 키로 재시도
+    }
+    return data;
+  }
+  throw new QuotaExceededError("모든 카카오 키 할당량 초과");
+}
 
 const DESTINATION = "판교역로 166";
 
@@ -234,8 +280,7 @@ async function geocode(query: string): Promise<GeoResult | null> {
     "https://dapi.kakao.com/v2/local/search/address.json",
   ]) {
     const params = new URLSearchParams({ query, size: "1" });
-    const res = await fetch(`${endpoint}?${params}`, { headers: HEADERS });
-    const data = await res.json();
+    const data = await kakaoJson(() => `${endpoint}?${params}`);
     if (data.documents?.length) {
       const doc = data.documents[0];
       return {
@@ -259,11 +304,9 @@ async function driveTime(
     destination: `${gLng},${gLat}`,
     priority: "RECOMMEND",
   });
-  const res = await fetch(
-    `https://apis-navi.kakaomobility.com/v1/directions?${params}`,
-    { headers: HEADERS },
+  const data = await kakaoJson(
+    () => `https://apis-navi.kakaomobility.com/v1/directions?${params}`,
   );
-  const data = await res.json();
   const summary = data.routes?.[0]?.summary;
   if (!summary) return null;
   return {
@@ -276,10 +319,17 @@ async function driveTime(
 
 async function main() {
   const reverse = process.argv.includes("--reverse");
+  const force = process.argv.includes("--force");
   const direction = reverse ? "퇴근" : "출근";
   const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
 
   const now = new Date();
+
+  // 출퇴근 측정은 평일만 (주말·공휴일은 교통 패턴이 달라 통계 오염).
+  if (!force && isNonBusinessDay(now)) {
+    console.log("⏭  주말/공휴일 — 출퇴근 측정 스킵 (--force로 강제 실행 가능)");
+    return;
+  }
   const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")} ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
   const weekday = weekdays[now.getDay()];
 
@@ -313,30 +363,43 @@ async function main() {
   const results: { name: string; minutes: number; distance_km: number }[] = [];
   let apiCalls = 0;
 
-  for (const [name, query] of candidates) {
-    const geo = await geocode(query);
-    apiCalls++;
-    if (!geo) {
-      console.log(`  SKIP ${name}: 좌표 조회 실패`);
-      continue;
-    }
-    const dt = reverse
-      ? await driveTime(dest.lat, dest.lng, geo.lat, geo.lng)
-      : await driveTime(geo.lat, geo.lng, dest.lat, dest.lng);
-    apiCalls++;
-    if (!dt) {
-      console.log(`  SKIP ${name}: 경로 조회 실패`);
-      continue;
-    }
-    results.push({
-      name,
-      minutes: dt.minutes,
-      distance_km: Math.round((dt.distance / 1000) * 10) / 10,
-    });
-    console.log(`  ${name}: ${dt.minutes}분 (${(dt.distance / 1000).toFixed(1)}km)`);
+  try {
+    for (const [name, query] of candidates) {
+      const geo = await geocode(query);
+      apiCalls++;
+      if (!geo) {
+        console.log(`  SKIP ${name}: 좌표 조회 실패`);
+        continue;
+      }
+      const dt = reverse
+        ? await driveTime(dest.lat, dest.lng, geo.lat, geo.lng)
+        : await driveTime(geo.lat, geo.lng, dest.lat, dest.lng);
+      apiCalls++;
+      if (!dt) {
+        console.log(`  SKIP ${name}: 경로 조회 실패`);
+        continue;
+      }
+      results.push({
+        name,
+        minutes: dt.minutes,
+        distance_km: Math.round((dt.distance / 1000) * 10) / 10,
+      });
+      console.log(`  ${name}: ${dt.minutes}분 (${(dt.distance / 1000).toFixed(1)}km)`);
 
-    // Rate limiting: 초당 10건 이하 유지 (API 2건당 200ms 대기)
-    await sleep(200);
+      // Rate limiting: 초당 10건 이하 유지 (API 2건당 200ms 대기)
+      await sleep(200);
+    }
+  } catch (e) {
+    if (e instanceof QuotaExceededError) {
+      // 할당량 초과 → 불완전 batch는 통계를 왜곡하므로 저장/배포하지 않고 종료.
+      console.error(
+        `\n⛔ 카카오 길찾기 일일 할당량 초과(키 ${KAKAO_KEYS.length}개 모두 소진): ${e.message}\n` +
+          `   ${results.length}/${candidates.length}건만 측정됨 — 불완전 batch는 저장하지 않습니다.\n` +
+          `   해결: 키 추가(.env KAKAO_REST_API_KEY_3...) 또는 측정 대상/주기 조정.`,
+      );
+      process.exit(1);
+    }
+    throw e;
   }
 
   // 기존 결과에 추가
