@@ -141,17 +141,28 @@ export function isOwnerJeonse(a: NaverArticle): boolean {
   const t = a.feature || "";
   return /주인\s*전세|집주인\s*전세|주인\s*임대|소유자\s*전세|주전(?!자|부리)|주전세/.test(t);
 }
+/**
+ * 매물 설명에 '세안고/세끼고/세낀/세승계/임대중' 등 → 세입자 점유(매수 후 승계).
+ * 입주가능일이 '즉시입주'로 표기돼도 실제론 세가 껴서 실입주 불가 → 세낀으로 취급.
+ * 부분일치로 [전세/월세/반전세]안고·끼고·낀·승계까지 모두 커버. 오탐 방지(세없음/공실 등은 미매칭).
+ */
+export function hasTenantText(a: NaverArticle): boolean {
+  const t = a.feature || "";
+  return /세\s*안고|세\s*끼고|세\s*낀|세\s*승계|보증금\s*승계|세입자\s*(?:있|거주|승계|존재|만기)|임대\s*중/.test(t);
+}
 /** 매물이 targetMonth("YYYY-MM")까지 실입주 가능한가. 즉시입주=항상, 날짜=해당월≤target. */
 export function isMovableBy(a: NaverArticle, targetMonth: string): boolean {
   if (isOwnerJeonse(a)) return false; // 주인전세 → 점유 지속, 실입주 불가
+  if (hasTenantText(a)) return false; // 세안고/세낀(즉시입주 표기여도) → 세입자 점유, 실입주 불가
   const mi = a.moveIn;
   if (!mi) return false; // 입주정보 미확보 → 보수적으로 제외
   if (mi.immediate) return true;
   if (mi.date) return mi.date.slice(0, 7) <= targetMonth;
   return false; // 날짜 미상(협의만) → 제외
 }
-/** 세낀(세입자 승계) 추정: 즉시입주 아니고 미래 입주일 → 점유중. */
+/** 세낀(세입자 승계) 추정: 설명에 세안고 류 텍스트 OR 즉시입주 아니고 미래 입주일 → 점유중. */
 export function isTenant(a: NaverArticle): boolean {
+  if (hasTenantText(a)) return true; // 설명 기반: 즉시입주 표기여도 세안고면 세낀
   const mi = a.moveIn;
   return !!mi && !mi.immediate && !!mi.date;
 }

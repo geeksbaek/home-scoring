@@ -548,7 +548,7 @@ function ArticleCard({ a, targetMonth }: { a: NaverArticle; targetMonth?: string
         </span>
       </div>
       <div className="flex items-center gap-1 text-[10px] flex-wrap">
-        <span className={cn(a.moveIn === undefined ? "text-amber-600 animate-pulse" : !ownerJeonse && a.moveIn?.immediate ? "text-emerald-600 font-medium" : "text-muted-foreground")}>{a.moveIn === undefined ? "입주확인중…" : moveInLabel(a)}</span>
+        <span className={cn(a.moveIn === undefined ? "text-amber-600 animate-pulse" : !ownerJeonse && !tenant && a.moveIn?.immediate ? "text-emerald-600 font-medium" : "text-muted-foreground")}>{a.moveIn === undefined ? "입주확인중…" : moveInLabel(a)}</span>
         {ownerJeonse && <span className="text-rose-500 font-medium">· 주인전세(실입주X)</span>}
         {tenant && !ownerJeonse && <span className="text-rose-500">· 세낀(대출X)</span>}
         {a.dong && <span className="text-muted-foreground">· {a.dong}</span>}
