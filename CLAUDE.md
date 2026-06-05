@@ -136,6 +136,7 @@
 
 - 한국 공휴일 + 근로자의 날(5/1) 데이터 삭제
 - `commute_results.json`에서 해당 날짜 배치 제거 후 sync
+- **공휴일 판정 자동화** (`pipeline/holidays.ts`): 구글 공개 "대한민국의 휴일" 캘린더 ICS 피드 조회(키·활용신청 불필요). DESCRIPTION이 "공휴일"로 시작하는 VEVENT만 채택 → 임시공휴일(지방선거일 등)·대체공휴일 자동 반영. `data/holidays_cache.json`(gitignore)에 캐시, 네트워크 실패 시 하드코딩 `KR_HOLIDAYS` fallback. `daily.ts`·`commute.ts`가 진입점에서 `refreshHolidays()` 호출로 매 실행 갱신. `sync.ts` 출퇴근 집계도 `isNonBusinessDay` 가드(평일 공휴일이 요일 필터를 통과하던 문제 차단).
 
 ## 데이터 커버리지 (2026-05-07 기준)
 
