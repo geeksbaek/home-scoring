@@ -9,6 +9,7 @@ import { copyFileSync, existsSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 import { type Trade, readCsv, mean, median, mode, groupBy } from "./csv";
+import { isNonBusinessDay } from "./holidays";
 
 const ROOT = join(import.meta.dir, "..");
 const DATA_DIR = join(ROOT, "data");
@@ -243,6 +244,8 @@ async function updatePages() {
 
   for (const e of commute) {
     if (!["월", "화", "수", "목", "금"].includes(e.weekday)) continue;
+    // 평일이어도 공휴일(지방선거일·대체공휴일 등)은 교통 패턴이 달라 제외
+    if (isNonBusinessDay(new Date(e.timestamp.split(" ")[0] + "T00:00:00"))) continue;
     const hour = parseInt(e.timestamp.split(" ")[1].split(":")[0]);
     const dir = e.direction ?? "출근";
     const date = e.timestamp.split(" ")[0];
@@ -299,6 +302,7 @@ async function updatePages() {
 
   // fallback: 평균 없으면 최신 단건 사용
   for (const e of commute) {
+    if (isNonBusinessDay(new Date(e.timestamp.split(" ")[0] + "T00:00:00"))) continue;
     const dir = e.direction ?? "출근";
     for (const r of e.results) {
       if (dir === "출근" && !mm.has(r.name)) {
