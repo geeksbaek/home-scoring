@@ -9,7 +9,7 @@
 
 import { join } from "node:path";
 import { $ } from "bun";
-import { isNonBusinessDay } from "./holidays";
+import { isNonBusinessDay, refreshHolidays } from "./holidays";
 
 const ROOT = join(import.meta.dir, "..");
 
@@ -22,6 +22,10 @@ async function main() {
   console.log(`\n${"═".repeat(50)}`);
   console.log(`📅 일일 파이프라인 시작: ${timestamp}`);
   console.log(`${"═".repeat(50)}\n`);
+
+  // 공휴일 캐시 갱신 (구글 ICS) → 임시공휴일·대체공휴일 자동 반영
+  const hol = await refreshHolidays();
+  console.log(hol.ok ? `🗓  공휴일 캐시 갱신: ${hol.count}일` : `🗓  공휴일 ICS 조회 실패 — 캐시/하드코딩 사용(${hol.count}일)`);
 
   // 공휴일 체크
   if (!force && isNonBusinessDay()) {

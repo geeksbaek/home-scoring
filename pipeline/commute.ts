@@ -8,7 +8,7 @@
 
 import { join } from "node:path";
 import { sync } from "./sync";
-import { isNonBusinessDay } from "./holidays";
+import { isNonBusinessDay, refreshHolidays } from "./holidays";
 
 const ROOT = join(import.meta.dir, "..");
 const OUT_PATH = join(ROOT, "data", "commute_results.json");
@@ -396,6 +396,10 @@ async function main() {
   const testMode = Number.isFinite(limit);
 
   const now = new Date();
+
+  // 공휴일 캐시 갱신 (구글 ICS) → 임시공휴일·대체공휴일 자동 반영
+  const hol = await refreshHolidays();
+  console.log(hol.ok ? `🗓  공휴일 캐시 갱신: ${hol.count}일` : `🗓  공휴일 ICS 조회 실패 — 캐시/하드코딩 사용(${hol.count}일)`);
 
   // 출퇴근 측정은 평일만 (주말·공휴일은 교통 패턴이 달라 통계 오염).
   if (!force && isNonBusinessDay(now)) {
