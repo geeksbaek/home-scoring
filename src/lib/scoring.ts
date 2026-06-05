@@ -56,6 +56,8 @@ export interface AptData {
   kb_sale?: number | null;
   kb_jeonse?: number | null;
   kb_as_of?: string | null;
+  kb_cno?: string | null; // 단지기본일련번호 (런타임 실시간 시세 조회용)
+  kb_ano?: number | null; // 대표 면적일련번호
   // 관리비 (만원/월)
   mgmt_cost: number | null;
   mgmt_summer: number | null;

@@ -14,6 +14,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { fetchKbLivePrice, type KbLivePrice } from "@/lib/kbLivePrice";
 import { getProxyUrl, setProxyUrl, getProxyToken, setProxyToken, useColumnListings, articlesForAtype, isMovableBy, isTenant, isOwnerJeonse, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
 import { ChevronDown } from "lucide-react";
 import { lazy, Suspense } from "react";
@@ -661,8 +662,23 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
   const [customPrice, setCustomPrice] = useState<string>("");
   const customMan = customPrice && !Number.isNaN(parseFloat(customPrice)) ? parseFloat(customPrice) * 10000 : null;
   const kbStorageKey = `kb:${data.name}|${data.atype}`;
-  // KB부동산 자동 수집 시세 (만원). 있으면 기본값으로 사용.
-  const kbAutoMan = data.kb_sale != null && data.kb_sale > 0 ? data.kb_sale : null;
+  // 팝오버 열 때 KB 실시간 시세 1콜 조회 (cno+ano 보유 단지만). 실패 시 정적 kb_sale fallback.
+  const [open, setOpen] = useState(false);
+  const [live, setLive] = useState<KbLivePrice | null>(null);
+  useEffect(() => {
+    if (!open || live != null) return;
+    if (data.kb_cno == null || data.kb_ano == null) return;
+    let alive = true;
+    fetchKbLivePrice(data.kb_cno, data.kb_ano).then((r) => {
+      if (alive && r != null) setLive(r);
+    });
+    return () => { alive = false; };
+  }, [open, live, data.kb_cno, data.kb_ano]);
+  // KB부동산 시세 (만원). 실시간 조회값 우선, 없으면 빌드타임 정적값.
+  const liveSaleMan = live?.sale != null && live.sale > 0 ? live.sale : null;
+  const kbAutoMan = liveSaleMan ?? (data.kb_sale != null && data.kb_sale > 0 ? data.kb_sale : null);
+  const kbAsOf = (liveSaleMan != null ? live?.asOf : null) ?? data.kb_as_of;
+  const kbIsLive = liveSaleMan != null;
   const kbAutoStr = kbAutoMan != null ? (kbAutoMan / 10000).toFixed(1) : "";
   // localStorage는 사용자 수동 override 전용. 빈 문자열이면 자동값 사용.
   const [kbOverride, setKbOverride] = useState<string>(() => localStorage.getItem(kbStorageKey) ?? "");
@@ -686,7 +702,7 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
   const color = aff ? (aff.affordable ? (aff.extraLoanMan > 0 ? "text-amber-500" : "text-emerald-500") : "text-red-500") : "";
 
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger className={cn("cursor-pointer underline decoration-dotted underline-offset-4", color)}>{triggerText}</PopoverTrigger>
       <PopoverContent className="w-64 text-xs max-h-80 overflow-y-auto">
         {aff && (
@@ -739,8 +755,8 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-muted-foreground" title={`LTV는 min(매매가, KB시세) × LTV율로 계산.${kbAutoMan != null ? ` KB부동산 자동 시세${data.kb_as_of ? ` (${data.kb_as_of} 기준)` : ""}.` : ""} 직접 수정 시 단지별 자동 저장.`}>
-                  KB시세 {kbIsManual ? "(수정됨)" : kbAutoMan != null ? "(자동)" : "(선택)"}
+                <span className="text-muted-foreground" title={`LTV는 min(매매가, KB시세) × LTV율로 계산.${kbAutoMan != null ? ` KB부동산 ${kbIsLive ? "실시간" : "자동"} 시세${kbAsOf ? ` (${kbAsOf} 기준)` : ""}.` : ""} 직접 수정 시 단지별 자동 저장.`}>
+                  KB시세 {kbIsManual ? "(수정됨)" : kbIsLive ? "(실시간)" : kbAutoMan != null ? "(자동)" : "(선택)"}
                 </span>
                 <span className="flex items-center gap-1">
                   <input

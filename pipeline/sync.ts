@@ -208,7 +208,7 @@ async function updatePages() {
   const mgmtCost = await loadJsonOpt<Record<string, { year: number; summer: number; winter: number }>>("mgmt_cost.json", {});
   const naverComplex = await loadJsonOpt<Record<string, string>>("naver_complex_ids.json", {});
   // KB부동산 시세 (이름|atype → 만원). LTV는 min(매매가, KB시세) 기준이므로 프론트 기본값으로 사용.
-  const kbPrice = await loadJsonOpt<Record<string, { sale: number | null; jeonse: number | null; sale_lo: number | null; asOf: string | null }>>("kb_price.json", {});
+  const kbPrice = await loadJsonOpt<Record<string, { sale: number | null; jeonse: number | null; sale_lo: number | null; asOf: string | null; cno?: string | null; ano?: number | null }>>("kb_price.json", {});
   const hgnnNames = await loadJsonOpt<Record<string, string>>("hgnn_names.json", {});
   const schoolMap = await loadJsonOpt<Record<string, string[]>>("school_map.json", {});
   const schoolViolenceFull = await loadJsonOpt<Record<string, Record<string, any>>>("school_violence_full.json", {});
@@ -474,6 +474,8 @@ async function updatePages() {
       kb_sale: kbPrice[`${n}|${atype}`]?.sale ?? null,
       kb_jeonse: kbPrice[`${n}|${atype}`]?.jeonse ?? null,
       kb_as_of: kbPrice[`${n}|${atype}`]?.asOf ?? null,
+      kb_cno: kbPrice[`${n}|${atype}`]?.cno ?? null, // 런타임 실시간 시세 조회용
+      kb_ano: kbPrice[`${n}|${atype}`]?.ano ?? null,
       pyeong_type_nos: null as number[] | null, // 후처리에서 채움
       // 건축물대장
       eq_design: buildingInfo[n]?.earthquakeDesign ?? null,
@@ -588,6 +590,8 @@ async function updatePages() {
         kb_sale: kbPrice[`${n}|${at}`]?.sale ?? null,
         kb_jeonse: kbPrice[`${n}|${at}`]?.jeonse ?? null,
         kb_as_of: kbPrice[`${n}|${at}`]?.asOf ?? null,
+        kb_cno: kbPrice[`${n}|${at}`]?.cno ?? null,
+        kb_ano: kbPrice[`${n}|${at}`]?.ano ?? null,
         no_trades: true,
       } as any);
     }

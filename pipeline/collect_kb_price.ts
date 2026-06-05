@@ -381,6 +381,8 @@ interface PriceEntry {
   jeonse: number | null;
   sale_lo: number | null;
   asOf: string | null;
+  cno: string | null; // 단지기본일련번호 (런타임 실시간 시세 조회용)
+  ano: number | null; // 대표 면적일련번호 (atype별 세대수 최다 평형)
 }
 
 // 단지의 atype별 시세 수집. { atype: PriceEntry } 반환
@@ -416,6 +418,8 @@ async function collectComplexPrices(complexNo: string): Promise<Record<string, P
       jeonse,
       sale_lo: s.매매하한가 && s.매매하한가 > 0 ? s.매매하한가 : null,
       asOf: s.시세기준년월일 ? `${s.시세기준년월일.slice(0, 4)}-${s.시세기준년월일.slice(4, 6)}` : null,
+      cno: complexNo,
+      ano: rep.면적일련번호 != null ? Number(rep.면적일련번호) : null,
     };
   }
   return out;
