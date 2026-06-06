@@ -9,7 +9,7 @@ import { Slider } from "@/components/ui/slider";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   type AptData, pedScore, commuteScore, commuteValues, type CommuteSlot, calcScores, DEFAULT_WEIGHTS, type ScoreWeights,
-  commuteLabel, pedLabel, parkingLabel, liquidityLabel, safetyLabel, naverMapUrl, naverLandUrl, naverArticleUrl, naverLandSearchUrl, type Label,
+  commuteLabel, pedLabel, parkingLabel, parkingGrade, liquidityLabel, safetyLabel, naverMapUrl, naverLandUrl, naverArticleUrl, naverLandSearchUrl, type Label,
 } from "@/lib/scoring";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -1099,7 +1099,7 @@ function ParkingCell({ data }: { data: AptData }) {
         <p className="font-semibold mb-2">주차 정보</p>
         <div className="flex justify-between"><span className="text-muted-foreground">총 주차대수</span><span>{data.parking?.toLocaleString()}대</span></div>
         <div className="flex justify-between"><span className="text-muted-foreground">총 세대수</span><span>{data.households?.toLocaleString()}세대</span></div>
-        <div className="flex justify-between"><span className="text-muted-foreground">세대당 주차</span><span>{v}대</span></div>
+        <div className="flex justify-between"><span className="text-muted-foreground">세대당 주차</span><span>{v}대 · {parkingGrade(v)}</span></div>
         {data.elevator != null && <div className="flex justify-between mt-1"><span className="text-muted-foreground">승강기</span><span>{data.elevator}대</span></div>}
         {data.repair_fund != null && <div className="flex justify-between mt-1 pt-1 border-t"><span className="text-muted-foreground">장기수선충당금</span><span>{Math.round(data.repair_fund / 10000).toLocaleString()}만원</span></div>}
         {data.energy && (
@@ -1825,6 +1825,7 @@ export default function App() {
   const [regionFilter, setRegionFilter] = useState<string[]>(() => lsArr("f_region_multi"));
   const [commuteFilter, setCommuteFilter] = useState(() => ls("f_commute", "all"));
   const [pediaFilter, setPediaFilter] = useState(() => ls("f_pedia", "all"));
+  const [parkingFilter, setParkingFilter] = useState(() => ls("f_parking", "all"));
   const [commuteSlot, setCommuteSlot] = useState<CommuteSlot>(() => ls("f_commuteSlot", "early") as CommuteSlot);
   const [trendRange, setTrendRange] = useState(() => ls("f_trendRange", "6")); // 추이 그래프 기간(개월): 3/6/12
   const [liquidityFilter, setLiquidityFilter] = useState(() => ls("f_liquidity", "all"));
@@ -1934,6 +1935,7 @@ export default function App() {
   useEffect(() => { localStorage.setItem("f_region_multi", JSON.stringify(regionFilter)); }, [regionFilter]);
   useEffect(() => { localStorage.setItem("f_commute", commuteFilter); }, [commuteFilter]);
   useEffect(() => { localStorage.setItem("f_pedia", pediaFilter); }, [pediaFilter]);
+  useEffect(() => { localStorage.setItem("f_parking", parkingFilter); }, [parkingFilter]);
   useEffect(() => { localStorage.setItem("f_commuteSlot", commuteSlot); }, [commuteSlot]);
   useEffect(() => { localStorage.setItem("f_trendRange", trendRange); }, [trendRange]);
   useEffect(() => { localStorage.setItem("f_liquidity", liquidityFilter); }, [liquidityFilter]);
@@ -2024,6 +2026,9 @@ export default function App() {
       if (pediaFilter === "best" && (d.pedScore == null || d.pedScore > 6)) return false;
       if (pediaFilter === "good" && (d.pedScore == null || d.pedScore > 10)) return false;
       if (pediaFilter === "ok" && (d.pedScore == null || d.pedScore > 15)) return false;
+      if (parkingFilter === "good" && (d.parking_per_hh == null || d.parking_per_hh < 1.3)) return false;
+      if (parkingFilter === "ok" && (d.parking_per_hh == null || d.parking_per_hh < 1.2)) return false;
+      if (parkingFilter === "low" && (d.parking_per_hh == null || d.parking_per_hh < 1.1)) return false;
       if (liquidityFilter === "good" && (d.liquidity == null || d.liquidity < 7)) return false;
       if (liquidityFilter === "ok" && (d.liquidity == null || d.liquidity < 4)) return false;
       if (liquidityFilter === "bad" && (d.liquidity == null || d.liquidity < 2)) return false;
@@ -2054,7 +2059,7 @@ export default function App() {
       return (vb as number) - (va as number);
     });
     return f;
-  }, [tradeFilteredData, typeFilter, sortField, regionFilter, commuteFilter, pediaFilter, liquidityFilter, accelFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, myLocation]);
+  }, [tradeFilteredData, typeFilter, sortField, regionFilter, commuteFilter, pediaFilter, parkingFilter, liquidityFilter, accelFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, myLocation]);
 
   // 필터/정렬/뷰 변경 시 점진 렌더 카운트 리셋 (스크롤 맨 위로 돌아간 효과)
   useEffect(() => { setVisibleCount(ROW_PAGE); }, [filtered, viewMode]);
@@ -2110,6 +2115,9 @@ export default function App() {
     if (pediaFilter === "best" && (d.pedScore == null || d.pedScore > 6)) reasons.push(d.pedScore == null ? "소아과 데이터 없음" : "소아과 매우좋음 미만");
     if (pediaFilter === "good" && (d.pedScore == null || d.pedScore > 10)) reasons.push(d.pedScore == null ? "소아과 데이터 없음" : "소아과 좋음 이상 아님");
     if (pediaFilter === "ok" && (d.pedScore == null || d.pedScore > 15)) reasons.push(d.pedScore == null ? "소아과 데이터 없음" : "소아과 보통 이상 아님");
+    if (parkingFilter === "good" && (d.parking_per_hh == null || d.parking_per_hh < 1.3)) reasons.push(d.parking_per_hh == null ? "주차 데이터 없음" : "주차 넉넉(≥1.3) 아님");
+    if (parkingFilter === "ok" && (d.parking_per_hh == null || d.parking_per_hh < 1.2)) reasons.push(d.parking_per_hh == null ? "주차 데이터 없음" : "주차 보통 이상(≥1.2) 아님");
+    if (parkingFilter === "low" && (d.parking_per_hh == null || d.parking_per_hh < 1.1)) reasons.push(d.parking_per_hh == null ? "주차 데이터 없음" : "주차 부족(<1.1)");
     if (liquidityFilter === "good" && (d.liquidity == null || d.liquidity < 7)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (좋음 미만)`);
     if (liquidityFilter === "ok" && (d.liquidity == null || d.liquidity < 4)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (보통 미만)`);
     if (liquidityFilter === "bad" && (d.liquidity == null || d.liquidity < 2)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (나쁨 미만)`);
@@ -2405,6 +2413,15 @@ export default function App() {
               <SelectItem value="best">매우좋음</SelectItem>
               <SelectItem value="good">좋음 이상</SelectItem>
               <SelectItem value="ok">보통 이상</SelectItem>
+            </SelectContent>
+          </Select>
+          <Select value={parkingFilter} onValueChange={(v) => v && setParkingFilter(v)} items={{ all: "주차 전체", good: "넉넉 (≥1.3)", ok: "보통 이상 (≥1.2)", low: "부족 제외 (≥1.1)" }}>
+            <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">주차 전체</SelectItem>
+              <SelectItem value="good">넉넉 (≥1.3)</SelectItem>
+              <SelectItem value="ok">보통 이상 (≥1.2)</SelectItem>
+              <SelectItem value="low">부족 제외 (≥1.1)</SelectItem>
             </SelectContent>
           </Select>
           <Select value={commuteSlot} onValueChange={(v) => v && setCommuteSlot(v as CommuteSlot)} items={{ early: "일찍 (06:30/16:00)", late: "늦게 (08:00/18:00)" }}>

@@ -243,6 +243,15 @@ export function parkingLabel(v: number | null): Label {
   return { text: `${v}대`, variant: "destructive" };
 }
 
+// 세대당 주차대수 → 등급 텍스트
+export function parkingGrade(v: number | null): string {
+  if (v == null) return "-";
+  if (v >= 1.3) return "넉넉";
+  if (v >= 1.2) return "보통";
+  if (v >= 1.1) return "부족";
+  return "매우부족";
+}
+
 export function safetyLabel(grade: number | null): Label {
   if (grade == null) return { text: "-", variant: "default" };
   if (grade <= 1) return { text: `${grade}등급`, variant: "success" };

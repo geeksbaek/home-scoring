@@ -398,6 +398,21 @@ async function updatePages() {
         return [Number(ym.replace("-", "")), Math.round((md / 10000) * 10) / 10, arr.length];
       });
 
+    // 주차대수 — 건축물대장 우선. 단 건축물대장이 세대당 1대 미만(과소집계 의심)인데
+    // K-apt가 현실범위(1.0~2.0대/세대)면 K-apt로 교정. 멀티단지 분할로 K-apt 합산주차가
+    // 분할세대수에 나뉘어 과대(>2.0)가 되는 경우는 채택 안 함(진짜 구축 저값도 보존).
+    const bestParking = (() => {
+      const bp = buildingInfo[n]?.parking;
+      const kp = kaptInfo[n]?.parkingTotal;
+      let best = bp != null && bp > 0 ? bp : (kp ?? null);
+      const hh = kaptInfo[n]?.households ?? buildingInfo[n]?.hhldCnt;
+      if (best != null && hh && hh > 0 && kp && kp > best) {
+        const bpph = best / hh, kpph = kp / hh;
+        if (bpph < 1.0 && kpph >= 1.0 && kpph <= 2.0) best = kp;
+      }
+      return best;
+    })();
+
     results.push({
       name: n,
       display_name: hgnnNames[n] ?? n,
@@ -439,16 +454,12 @@ async function updatePages() {
       hcode: idMap.get(n)?.hcode ?? null,
       recent_trades: rt,
       long_trend,
-      // K-apt 데이터 (주차는 건축물대장 우선 — K-apt가 부정확한 케이스 다수)
-      parking: (() => {
-        const bp = buildingInfo[n]?.parking;
-        const kp = kaptInfo[n]?.parkingTotal;
-        return bp != null && bp > 0 ? bp : (kp ?? null);
-      })(),
+      // 주차 — 건축물대장·K-apt 중 큰 값 채택. 둘 다 과소집계(멀티단지 분할·동 누락)가
+      // 주 실패모드라 max가 견고. 세대당 3.0 초과만 비현실적으로 보고 작은 값으로 폐기.
+      parking: bestParking,
       parking_per_hh: (() => {
-        const bp = buildingInfo[n]?.parking;
         const hh = kaptInfo[n]?.households ?? buildingInfo[n]?.hhldCnt;
-        if (bp != null && bp > 0 && hh && hh > 0) return Math.round((bp / hh) * 100) / 100;
+        if (bestParking != null && hh && hh > 0) return Math.round((bestParking / hh) * 100) / 100;
         return kaptInfo[n]?.parkingPerHh ?? null;
       })(),
       elevator: kaptInfo[n]?.elevatorCount ?? null,
