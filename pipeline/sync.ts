@@ -158,27 +158,28 @@ function areaType(a: number): string {
 
 // ── 메인 로직 ──────────────────────────────────────────
 
+// iCloud(com~apple~CloudDocs)가 오프라인/동기화 멈춤 상태면 해당 경로의 stat/copy가
+// 무한 블록된다(동기 copyFileSync는 인터럽트 불가 → 전체 파이프라인 정지, launchd job이
+// "실행 중"으로 걸려 다음 스케줄까지 막힘). 비핵심 미러링이므로 별도 `cp` 프로세스로 복사하고
+// 타임아웃 시 kill → 블록된 자식은 고아(reparent)로 두고 우리 프로세스는 깨끗이 진행/종료한다.
+async function copyFileTimeout(src: string, dst: string, ms: number): Promise<boolean> {
+  const proc = Bun.spawn(["cp", "-f", src, dst], { stdout: "ignore", stderr: "ignore", stdin: "ignore" });
+  const outcome = await Promise.race([
+    proc.exited.then((code) => (code === 0 ? "ok" : "fail")),
+    new Promise<string>((r) => setTimeout(() => r("timeout"), ms)),
+  ]);
+  if (outcome !== "ok") { try { proc.kill(9); } catch {} }
+  return outcome === "ok";
+}
+
 export async function sync() {
-  // iCloud
+  // iCloud 미러링 (비핵심, 타임아웃 보호 — iCloud 응답 없어도 배포 진행)
   for (const name of ICLOUD_FILES) {
     const src = join(DATA_DIR, name);
     const dst = join(ICLOUD_DIR, name);
-    if (existsSync(src)) {
-      // iCloud 복사는 macOS에서 간헐적으로 EINTR(interrupted syscall) 발생.
-      // 재시도하고, 끝내 실패해도 비치명적으로 처리해 배포 단계를 막지 않는다.
-      let copied = false;
-      for (let attempt = 0; attempt < 5 && !copied; attempt++) {
-        try {
-          copyFileSync(src, dst);
-          copied = true;
-        } catch (e: any) {
-          if (e?.code === "EINTR") continue;
-          console.error(`  ⚠ iCloud 복사 실패(${name}): ${e?.code ?? e?.message}`);
-          break;
-        }
-      }
-      if (copied) console.log(`  ${name} → iCloud`);
-    }
+    if (!existsSync(src)) continue;
+    const ok = await copyFileTimeout(src, dst, 10_000);
+    console.log(ok ? `  ${name} → iCloud` : `  ⚠ iCloud 복사 건너뜀(${name}) — iCloud 무응답`);
   }
 
   // GitHub Pages
