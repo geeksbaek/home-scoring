@@ -132,6 +132,13 @@
 - 개별사용료 필드는 **문자열**로 반환됨 → `parseFloat` 필수 (`typeof v === "number"` 체크 금지)
 - 단위: 원 (단지 전체) → 세대수로 나눠 만원/세대/월로 변환
 
+### KB시세 — 빌드타임 매칭 + 런타임 실시간 조회 (하이브리드)
+
+- **매칭은 빌드타임, 시세는 런타임**. `collect_kb_price.ts`가 좌표검증으로 단지를 매칭해 대표 `complexNo`+`면적일련번호`를 `kb_price.json`의 `cno`/`ano`로 저장 → `sync.ts`가 AptData `kb_cno`/`kb_ano`로 배포.
+- 프론트 `src/lib/kbLivePrice.ts`: PricePopover 열 때 `BasePrcInfoNew` 1콜로 **당일 KB시세 라이브 조회**. 세션 캐시, 실패 시 정적 `kb_sale` fallback. 라벨 "(실시간)" vs "(자동)"으로 구분.
+- **CORS**: api.kbland.kr은 요청 Origin을 그대로 반사 + 무인증. GET은 `Referer`/`Origin`/`webservice` 헤더 없이도 동작(브라우저 단순요청, preflight 없음).
+- 매칭 모호성(동명단지)은 빌드타임 좌표검증 결과 재사용으로 회피 — 런타임은 검증된 cno/ano만 신뢰.
+
 ### 출퇴근 — 공휴일 제외
 
 - 한국 공휴일 + 근로자의 날(5/1) 데이터 삭제
