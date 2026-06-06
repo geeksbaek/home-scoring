@@ -128,10 +128,8 @@ export interface AptData {
 
 export function pedScore(d: AptData): number | null {
   if (!d.pedia1) return null;
-  const adj1 = d.pedia1 + Math.abs(d.pedia1_slope ?? 0) * 0.2;
-  if (!d.pedia2) return Math.round(adj1 * 10) / 10;
-  const adj2 = d.pedia2 + Math.abs(d.pedia2_slope ?? 0) * 0.2;
-  return Math.round(((adj1 + adj2) / 2) * 10) / 10;
+  // 가장 가까운 소아과 1개만 기준 (고저차 패널티 0.2 가중)
+  return Math.round((d.pedia1 + Math.abs(d.pedia1_slope ?? 0) * 0.2) * 10) / 10;
 }
 
 export type CommuteSlot = "early" | "late";

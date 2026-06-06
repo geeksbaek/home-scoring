@@ -370,7 +370,7 @@ function PedPopover({ data }: { data: AptData }) {
           <div className="flex justify-between"><span className="text-muted-foreground">도보</span><span>{data.pedia1}분 {data.pedia1_slope != null && <span className={sc(data.pedia1_slope)}>{data.pedia1_slope > 0 ? "+" : ""}{data.pedia1_slope}m</span>}</span></div></>)}
         {data.pedia2_name && (<div className="mt-1"><p className="text-muted-foreground">2. {data.pedia2_name}</p>
           <div className="flex justify-between"><span className="text-muted-foreground">도보</span><span>{data.pedia2}분 {data.pedia2_slope != null && <span className={sc(data.pedia2_slope)}>{data.pedia2_slope > 0 ? "+" : ""}{data.pedia2_slope}m</span>}</span></div></div>)}
-        <p className="mt-2 pt-2 border-t text-muted-foreground text-[10px]">점수 = 평균도보 + |고저차|×0.2</p>
+        <p className="mt-2 pt-2 border-t text-muted-foreground text-[10px]">점수 = 가장 가까운 1곳 도보 + |고저차|×0.2</p>
       </PopoverContent>
     </Popover>
   );
