@@ -922,20 +922,22 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
   );
 }
 
-function AccelPopover({ data, halfLabel = "3개월" }: { data: AptData; halfLabel?: string }) {
+function AccelPopover({ data }: { data: AptData }) {
   const tau = data.accel_tau;
-  const cons = tau == null ? null : Math.round(Math.abs(tau) * 100);
   const at = tau == null ? 0 : Math.abs(tau);
+  const cons = tau == null ? null : Math.round(at * 100);
   const consLabel = tau == null ? "-" : at >= 0.7 ? "매우 일관" : at >= 0.4 ? "일관" : at >= 0.15 ? "보통" : "들쭉날쭉";
+  // 크기 = 일관성 가중 전 원추세 (badge값 ÷ 가중치)
+  const raw = data.accel != null && tau != null ? Math.round((data.accel / (0.5 + 0.5 * at)) * 10) / 10 : data.accel;
   return (
     <Popover>
       <PopoverTrigger><span className="cursor-pointer"><AccelBadge value={data.accel} /></span></PopoverTrigger>
       <PopoverContent className="w-60 text-xs">
-        <p className="font-semibold mb-1">상승력 — 크기 × 일관성</p>
+        <p className="font-semibold mb-1">상승력 = 크기 × 일관성</p>
         <p className="text-muted-foreground mb-2 leading-snug">Theil-Sen 기울기 × Kendall 일관성. 매 거래 꾸준히 오를수록 높음.</p>
+        <div className="flex justify-between"><span className="text-muted-foreground">크기 (원추세)</span><span>{raw != null ? `${raw > 0 ? "+" : ""}${raw}%` : "-"}</span></div>
         <div className="flex justify-between"><span className="text-muted-foreground">일관성</span><span>{cons != null ? `${cons}% · ${consLabel}` : "-"}</span></div>
-        <div className="flex justify-between"><span className="text-muted-foreground">최근 {halfLabel} 평균</span><span>{(data.r3_avg / 10000).toFixed(1)}억</span></div>
-        <div className="flex justify-between"><span className="text-muted-foreground">이전 {halfLabel} 평균</span><span>{data.p3_avg != null ? `${(data.p3_avg / 10000).toFixed(1)}억` : "-"}</span></div>
+        <div className="flex justify-between font-medium"><span className="text-muted-foreground">상승력</span><span>{data.accel != null ? `${data.accel > 0 ? "+" : ""}${data.accel}%` : "-"}</span></div>
       </PopoverContent>
     </Popover>
   );
@@ -1887,17 +1889,6 @@ export default function App() {
     const c = new Date(now.getFullYear(), now.getMonth() - months + 1, 1);
     return `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-01`;
   }, [trendRange]);
-  // 상승력용 추이 기간의 중간 지점 컷오프 (윈도우를 절반으로 나눠 최근/이전 비교)
-  const accelMidCutoff = useMemo(() => {
-    const months = parseInt(trendRange) || 6;
-    const now = new Date();
-    const startMs = new Date(now.getFullYear(), now.getMonth() - months + 1, 1).getTime();
-    const midMs = (startMs + now.getTime()) / 2;
-    const m = new Date(midMs);
-    return `${m.getFullYear()}-${String(m.getMonth() + 1).padStart(2, "0")}-${String(m.getDate()).padStart(2, "0")}`;
-  }, [trendRange]);
-  // 상승력 팝오버 라벨 — 추이 기간의 절반 (예: 6개월 → 3개월씩 비교)
-  const accelHalfLabel = `${(parseInt(trendRange) || 6) / 2}개월`;
 
   // 1층·직거래 토글을 recent_trades에 적용 + count·환금·상승력 재계산 (메인/즐겨찾기/전체타입 공용)
   const applyTradeFilter = useCallback((d: AptData): AptData => {
@@ -1912,16 +1903,10 @@ export default function App() {
       ? Math.round((count / d.type_units) * 1000) / 10
       : d.liquidity;
     const win = trades.filter((t) => t.date >= trendCutoff);
-    // 표시용 컨텍스트 — 최근/이전 절반 평균가 (팝오버)
-    const recent = win.filter((t) => t.date >= accelMidCutoff).map((t) => t.price);
-    const older = win.filter((t) => t.date < accelMidCutoff).map((t) => t.price);
-    const avgOf = (a: number[]) => a.reduce((s, v) => s + v, 0) / a.length;
-    const r3_avg = recent.length ? Math.round(avgOf(recent) * 10000) : d.avg; // 만원
-    const p3_avg = older.length ? Math.round(avgOf(older) * 10000) : null;
     // 상승력 — 크기(Theil-Sen) × 일관성(Kendall tau)
     const { value: accel, tau: accel_tau } = robustAccel(win, parseInt(trendRange) || 6);
-    return { ...d, recent_trades: trades, count, liquidity, accel, accel_tau, r3_avg, p3_avg };
-  }, [excludeDirect, excludeFirstFloor, trendCutoff, accelMidCutoff, trendRange]);
+    return { ...d, recent_trades: trades, count, liquidity, accel, accel_tau };
+  }, [excludeDirect, excludeFirstFloor, trendCutoff, trendRange]);
   const tradeFilteredData = useMemo(() => {
     const mapped = data.map(applyTradeFilter);
     calcScores(mapped, weights); // 재계산된 상승력/환금성을 종합점수에 반영
@@ -2466,7 +2451,7 @@ export default function App() {
                       <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
                       <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
-                      <TableCell className="text-center"><AccelPopover data={d} halfLabel={accelHalfLabel} /></TableCell>
+                      <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                       <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
                       {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><CommutePopover data={d} slot={commuteSlot} /></TableCell>}
                       {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><PedPopover data={d} /></TableCell>}
@@ -2577,7 +2562,7 @@ export default function App() {
                     <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
                     <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
-                    <TableCell className="text-center"><AccelPopover data={d} halfLabel={accelHalfLabel} /></TableCell>
+                    <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                     <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
                     <TableCell className="text-center"><CommutePopover data={d} slot={commuteSlot} /></TableCell>
                     <TableCell className="text-center"><PedPopover data={d} /></TableCell>
