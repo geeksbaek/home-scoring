@@ -339,6 +339,20 @@ export async function collectBuilding() {
       const sum = titles.reduce((s: number, t: any) => s + sumPark(t), 0);
       if (sum > 0) parking = sum;
     }
+    // 주차 sanity 가드: 총괄표제부 totPkngCnt가 부지 전체(같은 번/지 여러 단지) 합산이거나
+    // 면적값 혼입 → 가구당 비현실적 비율 발생. 일부 동만 잡혀 과소 누락되는 경우도 폐기.
+    // 폐기 시 parking=null → sync.ts가 K-apt parkingTotal로 자동 fallback.
+    // 분모는 K-apt 세대수 우선(분리단지 hhldCnt 오류 보정). K-apt 대비 1.8배+ & 비율>2.5도 폐기.
+    if (parking != null) {
+      const denom = kapt?.households ?? hhldCnt;
+      const kp = kapt?.parkingTotal;
+      if (denom && denom > 0) {
+        const ratio = parking / denom;
+        if (ratio > 6 || ratio < 0.15 || (kp && parking / kp >= 1.8 && ratio > 2.5)) {
+          parking = null;
+        }
+      }
+    }
 
     result[name] = {
       name,
