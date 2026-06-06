@@ -381,8 +381,8 @@ async function updatePages() {
       direct: r.거래유형 === "직거래" || undefined,
     }));
 
-    // 장기 추이 — 월별 중앙값(억 1자리), clean 거래(full) 전 기간, 비어있는 달 제외.
-    // [yyyymm, 억] 압축 배열. 프론트 장기 가격추이 차트용.
+    // 장기 추이 — 월별 중앙값(억 1자리)+건수, clean 거래(full) 전 기간, 비어있는 달 제외.
+    // [yyyymm, 억, 건수] 압축 배열. 프론트 장기 가격추이 차트 + 월별 시세 표용.
     const ltMap = new Map<string, number[]>();
     for (const r of full) {
       const ym = r.거래일자.slice(0, 7);
@@ -390,12 +390,12 @@ async function updatePages() {
       if (!arr) { arr = []; ltMap.set(ym, arr); }
       arr.push(r.금액_만원);
     }
-    const long_trend: [number, number][] = [...ltMap.entries()]
+    const long_trend: [number, number, number][] = [...ltMap.entries()]
       .sort((a, b) => (a[0] < b[0] ? -1 : 1))
       .map(([ym, arr]) => {
         const s = arr.slice().sort((x, y) => x - y);
         const md = s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2;
-        return [Number(ym.replace("-", "")), Math.round((md / 10000) * 10) / 10];
+        return [Number(ym.replace("-", "")), Math.round((md / 10000) * 10) / 10, arr.length];
       });
 
     results.push({

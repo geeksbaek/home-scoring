@@ -196,8 +196,8 @@ function Sparkline({ data, pctRange }: { data: { date: string; price: number }[]
   );
 }
 
-// 장기 추이 차트 — long_trend([yyyymm, 억] 월별 중앙값)을 시간축 비례 라인으로.
-function LongTrendChart({ data }: { data: [number, number][] }) {
+// 장기 추이 차트 — long_trend([yyyymm, 억, 건수] 월별 중앙값)을 시간축 비례 라인으로.
+function LongTrendChart({ data }: { data: [number, number, number][] }) {
   const [hover, setHover] = useState<number | null>(null);
   if (!data.length) return <p className="text-xs text-muted-foreground py-2">장기 거래 데이터 없음</p>;
   const prices = data.map((d) => d[1]);
@@ -250,6 +250,23 @@ function LongTrendChart({ data }: { data: [number, number][] }) {
       <div className="flex justify-between text-muted-foreground mt-1">
         <span>최저 {min}억 · 최고 {max}억</span>
         {cagr != null && <span>연 {cagr >= 0 ? "+" : ""}{cagr}%</span>}
+      </div>
+      {/* 월별 시세 표 (최신순, 스크롤) */}
+      <div className="mt-2 border-t pt-1 max-h-40 overflow-y-auto">
+        <table className="w-full text-[11px] tabular-nums">
+          <thead className="sticky top-0 bg-popover">
+            <tr className="text-muted-foreground"><th className="text-left font-normal pb-0.5">월</th><th className="text-right font-normal">중앙값</th><th className="text-right font-normal">건수</th></tr>
+          </thead>
+          <tbody>
+            {[...data].reverse().map(([ym, p, c], i) => (
+              <tr key={ym} className={i ? "" : "font-medium"}>
+                <td className="text-left">{Math.floor(ym / 100)}.{String(ym % 100).padStart(2, "0")}</td>
+                <td className="text-right">{p}억</td>
+                <td className="text-right text-muted-foreground">{c}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       <p className="text-muted-foreground text-[10px] mt-0.5">월별 중앙값 · 직거래/1층 제외</p>
     </div>
@@ -1807,6 +1824,7 @@ export default function App() {
   const sentinelRef = React.useRef<HTMLTableRowElement>(null);
   const [regionFilter, setRegionFilter] = useState<string[]>(() => lsArr("f_region_multi"));
   const [commuteFilter, setCommuteFilter] = useState(() => ls("f_commute", "all"));
+  const [pediaFilter, setPediaFilter] = useState(() => ls("f_pedia", "all"));
   const [commuteSlot, setCommuteSlot] = useState<CommuteSlot>(() => ls("f_commuteSlot", "early") as CommuteSlot);
   const [trendRange, setTrendRange] = useState(() => ls("f_trendRange", "6")); // 추이 그래프 기간(개월): 3/6/12
   const [liquidityFilter, setLiquidityFilter] = useState(() => ls("f_liquidity", "all"));
@@ -1915,6 +1933,7 @@ export default function App() {
   useEffect(() => { localStorage.setItem("f_sort", sortField); }, [sortField]);
   useEffect(() => { localStorage.setItem("f_region_multi", JSON.stringify(regionFilter)); }, [regionFilter]);
   useEffect(() => { localStorage.setItem("f_commute", commuteFilter); }, [commuteFilter]);
+  useEffect(() => { localStorage.setItem("f_pedia", pediaFilter); }, [pediaFilter]);
   useEffect(() => { localStorage.setItem("f_commuteSlot", commuteSlot); }, [commuteSlot]);
   useEffect(() => { localStorage.setItem("f_trendRange", trendRange); }, [trendRange]);
   useEffect(() => { localStorage.setItem("f_liquidity", liquidityFilter); }, [liquidityFilter]);
@@ -2002,6 +2021,9 @@ export default function App() {
       if (regionFilter.length > 0 && !regionFilter.some(r => d.region.includes(r))) return false;
       if (commuteFilter === "good" && (d.commuteScore == null || d.commuteScore > 30)) return false;
       if (commuteFilter === "ok" && (d.commuteScore == null || d.commuteScore > 40)) return false;
+      if (pediaFilter === "best" && (d.pedScore == null || d.pedScore > 6)) return false;
+      if (pediaFilter === "good" && (d.pedScore == null || d.pedScore > 10)) return false;
+      if (pediaFilter === "ok" && (d.pedScore == null || d.pedScore > 15)) return false;
       if (liquidityFilter === "good" && (d.liquidity == null || d.liquidity < 7)) return false;
       if (liquidityFilter === "ok" && (d.liquidity == null || d.liquidity < 4)) return false;
       if (liquidityFilter === "bad" && (d.liquidity == null || d.liquidity < 2)) return false;
@@ -2032,7 +2054,7 @@ export default function App() {
       return (vb as number) - (va as number);
     });
     return f;
-  }, [tradeFilteredData, typeFilter, sortField, regionFilter, commuteFilter, liquidityFilter, accelFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, myLocation]);
+  }, [tradeFilteredData, typeFilter, sortField, regionFilter, commuteFilter, pediaFilter, liquidityFilter, accelFilter, priceMin, priceMax, hhMin, buildMin, tradeMin, myLocation]);
 
   // 필터/정렬/뷰 변경 시 점진 렌더 카운트 리셋 (스크롤 맨 위로 돌아간 효과)
   useEffect(() => { setVisibleCount(ROW_PAGE); }, [filtered, viewMode]);
@@ -2085,6 +2107,9 @@ export default function App() {
     if (regionFilter.length > 0 && !regionFilter.some(r => d.region.includes(r))) reasons.push("지역");
     if (commuteFilter === "good" && (d.commuteScore == null || d.commuteScore > 30)) reasons.push(d.commuteScore == null ? "출퇴근 데이터 없음" : "출퇴근 30분 초과");
     if (commuteFilter === "ok" && (d.commuteScore == null || d.commuteScore > 40)) reasons.push(d.commuteScore == null ? "출퇴근 데이터 없음" : "출퇴근 40분 초과");
+    if (pediaFilter === "best" && (d.pedScore == null || d.pedScore > 6)) reasons.push(d.pedScore == null ? "소아과 데이터 없음" : "소아과 매우좋음 미만");
+    if (pediaFilter === "good" && (d.pedScore == null || d.pedScore > 10)) reasons.push(d.pedScore == null ? "소아과 데이터 없음" : "소아과 좋음 이상 아님");
+    if (pediaFilter === "ok" && (d.pedScore == null || d.pedScore > 15)) reasons.push(d.pedScore == null ? "소아과 데이터 없음" : "소아과 보통 이상 아님");
     if (liquidityFilter === "good" && (d.liquidity == null || d.liquidity < 7)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (좋음 미만)`);
     if (liquidityFilter === "ok" && (d.liquidity == null || d.liquidity < 4)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (보통 미만)`);
     if (liquidityFilter === "bad" && (d.liquidity == null || d.liquidity < 2)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (나쁨 미만)`);
@@ -2369,6 +2394,15 @@ export default function App() {
             <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
             <SelectContent>
               <SelectItem value="all">출퇴근 전체</SelectItem>
+              <SelectItem value="good">좋음 이상</SelectItem>
+              <SelectItem value="ok">보통 이상</SelectItem>
+            </SelectContent>
+          </Select>
+          <Select value={pediaFilter} onValueChange={(v) => v && setPediaFilter(v)} items={{ all: "소아과 전체", best: "매우좋음", good: "좋음 이상", ok: "보통 이상" }}>
+            <SelectTrigger className="w-28 h-8 text-xs"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">소아과 전체</SelectItem>
+              <SelectItem value="best">매우좋음</SelectItem>
               <SelectItem value="good">좋음 이상</SelectItem>
               <SelectItem value="ok">보통 이상</SelectItem>
             </SelectContent>
