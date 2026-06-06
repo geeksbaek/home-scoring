@@ -119,30 +119,41 @@ const median = (arr: number[]): number => {
   return n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2;
 };
 
-// 가속도 — 가격 vs 시간 Theil-Sen 회귀(쌍별 기울기 중앙값)로 강건 추세 추정.
-// 한 row가 같은 atype 버킷이라 면적이 사실상 동일(편차 중앙값 0%) → ㎡정규화 불필요.
-// 중앙값 기반이라 이상치(급매/고층) 면역, 실제 거래일 연속 사용(중간점 절벽 제거).
-// 결과는 기존과 동일한 스케일 유지를 위해 '선택기간 절반(halfMonths) 동안의 %변화'로 환산.
+// 상승력 — "얼마나 크고 꾸준히 잘 오르는가"를 한 수치로.
+// 크기: 가격 vs 시간 Theil-Sen 기울기(쌍별 기울기 중앙값) → 이상치(급매/고층) 면역, 중간점 절벽 없음.
+// 일관성: Kendall's tau(시간↔가격 순위상관) → 매 거래 일관 상승할수록 1, 오락가락하면 0.
+// 가중: %변화 × (0.5 + 0.5·|tau|). 같은 +%여도 일관 상승 단지가 높게.
+//   버킷 내 층/면적 노이즈로 tau가 1까지 안 가는 게 정상(중앙 0.39)이라 최대 절반까지만 감점.
+// 결과 스케일은 기존과 동일('선택기간 절반' %환산)이라 임계값(>5%/0%)·필터 그대로.
 function robustAccel(
   trades: { date: string; price: number }[],
   windowMonths: number,
-): number | null {
+): { value: number | null; tau: number | null } {
   const pts = trades
     .filter((t) => t.price > 0)
     .map((t) => ({ x: Date.parse(t.date) / 86400000, y: t.price })) // x: 일(day), y: 억
     .filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y));
-  if (pts.length < 2) return null;
+  if (pts.length < 2) return { value: null, tau: null };
   const base = median(pts.map((p) => p.y)); // 가격 중앙값 (억)
-  if (!(base > 0)) return null;
+  if (!(base > 0)) return { value: null, tau: null };
   const slopes: number[] = [];
+  let conc = 0, disc = 0, tie = 0; // 일치/불일치/동률 쌍 (Kendall)
   for (let i = 0; i < pts.length; i++)
     for (let j = i + 1; j < pts.length; j++) {
       const dx = pts[j].x - pts[i].x;
-      if (dx !== 0) slopes.push((pts[j].y - pts[i].y) / dx); // 억 per day
+      if (dx === 0) continue; // 같은 날 → 시간순서 불명
+      const dy = pts[j].y - pts[i].y;
+      slopes.push(dy / dx); // 억 per day
+      const s = Math.sign(dx) * Math.sign(dy);
+      if (s > 0) conc++; else if (s < 0) disc++; else tie++;
     }
-  if (!slopes.length) return null; // 모든 거래가 같은 날 → 시간 분산 없음
+  if (!slopes.length) return { value: null, tau: null }; // 모든 거래가 같은 날
+  const denom = conc + disc + tie;
+  const tau = denom ? (conc - disc) / denom : 0; // ∈[-1,1]: +1=매 거래 일관 상승
   const halfDays = (windowMonths / 2) * 30.44;
-  return Math.round(((median(slopes) * halfDays) / base) * 100 * 10) / 10;
+  const pct = ((median(slopes) * halfDays) / base) * 100;
+  const weighted = pct * (0.5 + 0.5 * Math.abs(tau)); // 일관성 가중 (부호 유지)
+  return { value: Math.round(weighted * 10) / 10, tau: Math.round(tau * 100) / 100 };
 }
 
 function Sparkline({ data, pctRange }: { data: { date: string; price: number }[]; pctRange: number }) {
@@ -912,12 +923,17 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
 }
 
 function AccelPopover({ data, halfLabel = "3개월" }: { data: AptData; halfLabel?: string }) {
+  const tau = data.accel_tau;
+  const cons = tau == null ? null : Math.round(Math.abs(tau) * 100);
+  const at = tau == null ? 0 : Math.abs(tau);
+  const consLabel = tau == null ? "-" : at >= 0.7 ? "매우 일관" : at >= 0.4 ? "일관" : at >= 0.15 ? "보통" : "들쭉날쭉";
   return (
     <Popover>
       <PopoverTrigger><span className="cursor-pointer"><AccelBadge value={data.accel} /></span></PopoverTrigger>
-      <PopoverContent className="w-56 text-xs">
-        <p className="font-semibold mb-1">가속도 — 가격 추세</p>
-        <p className="text-muted-foreground mb-2 leading-snug">Theil-Sen 회귀(쌍별 기울기 중앙값) · 이상치 면역. {halfLabel} 환산 변화율.</p>
+      <PopoverContent className="w-60 text-xs">
+        <p className="font-semibold mb-1">상승력 — 크기 × 일관성</p>
+        <p className="text-muted-foreground mb-2 leading-snug">Theil-Sen 기울기 × Kendall 일관성. 매 거래 꾸준히 오를수록 높음.</p>
+        <div className="flex justify-between"><span className="text-muted-foreground">일관성</span><span>{cons != null ? `${cons}% · ${consLabel}` : "-"}</span></div>
         <div className="flex justify-between"><span className="text-muted-foreground">최근 {halfLabel} 평균</span><span>{(data.r3_avg / 10000).toFixed(1)}억</span></div>
         <div className="flex justify-between"><span className="text-muted-foreground">이전 {halfLabel} 평균</span><span>{data.p3_avg != null ? `${(data.p3_avg / 10000).toFixed(1)}억` : "-"}</span></div>
       </PopoverContent>
@@ -1462,7 +1478,7 @@ function AllTypesDialog({ name, allData, favorites, onToggleFav }: { name: strin
                 <TableHead>면적</TableHead>
                 <TableHead className="text-right">세대수</TableHead>
                 <TableHead className="text-right">현재가</TableHead>
-                <TableHead className="text-right">가속도</TableHead>
+                <TableHead className="text-right">상승력</TableHead>
                 <TableHead className="text-center">환금</TableHead>
                 <TableHead className="text-right text-xs">6개월거래</TableHead>
               </TableRow>
@@ -1561,7 +1577,7 @@ function CompareDialog({ open, onOpenChange, items, onRemove, slot = "early" }: 
     { label: "면적", render: (d) => <Badge variant="outline" className={cn("text-[10px]", atypeBadgeColor(d.atype))}>{Math.floor(d.area)}㎡</Badge> },
     { label: "타입 세대수", render: (d) => d.type_units != null ? d.type_units.toLocaleString() + "세대" : "-" },
     { label: "현재가", render: (d) => <span className="font-medium">{fmtBil(d.avg)}</span>, group: "가격" },
-    { label: "가속도", render: (d) => <AccelBadge value={d.accel} /> },
+    { label: "상승력", render: (d) => <AccelBadge value={d.accel} /> },
     { label: "환금성", render: (d) => <LabelText label={liquidityLabel(d.liquidity)} /> },
     { label: "6개월 거래", render: (d) => `${d.count}건` },
     { label: "출퇴근 점수", render: (d) => <LabelBadge label={commuteLabel(d.commuteScore)} />, group: "교통" },
@@ -1871,7 +1887,7 @@ export default function App() {
     const c = new Date(now.getFullYear(), now.getMonth() - months + 1, 1);
     return `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-01`;
   }, [trendRange]);
-  // 가속도용 추이 기간의 중간 지점 컷오프 (윈도우를 절반으로 나눠 최근/이전 비교)
+  // 상승력용 추이 기간의 중간 지점 컷오프 (윈도우를 절반으로 나눠 최근/이전 비교)
   const accelMidCutoff = useMemo(() => {
     const months = parseInt(trendRange) || 6;
     const now = new Date();
@@ -1880,10 +1896,10 @@ export default function App() {
     const m = new Date(midMs);
     return `${m.getFullYear()}-${String(m.getMonth() + 1).padStart(2, "0")}-${String(m.getDate()).padStart(2, "0")}`;
   }, [trendRange]);
-  // 가속도 팝오버 라벨 — 추이 기간의 절반 (예: 6개월 → 3개월씩 비교)
+  // 상승력 팝오버 라벨 — 추이 기간의 절반 (예: 6개월 → 3개월씩 비교)
   const accelHalfLabel = `${(parseInt(trendRange) || 6) / 2}개월`;
 
-  // 1층·직거래 토글을 recent_trades에 적용 + count·환금·가속도 재계산 (메인/즐겨찾기/전체타입 공용)
+  // 1층·직거래 토글을 recent_trades에 적용 + count·환금·상승력 재계산 (메인/즐겨찾기/전체타입 공용)
   const applyTradeFilter = useCallback((d: AptData): AptData => {
     const all = d.recent_trades ?? [];
     const trades = all.filter((t) => {
@@ -1902,13 +1918,13 @@ export default function App() {
     const avgOf = (a: number[]) => a.reduce((s, v) => s + v, 0) / a.length;
     const r3_avg = recent.length ? Math.round(avgOf(recent) * 10000) : d.avg; // 만원
     const p3_avg = older.length ? Math.round(avgOf(older) * 10000) : null;
-    // 가속도 — ㎡단가 Theil-Sen 강건 추세 (면적정규화·이상치면역·실거래일 연속)
-    const accel = robustAccel(win, parseInt(trendRange) || 6);
-    return { ...d, recent_trades: trades, count, liquidity, accel, r3_avg, p3_avg };
+    // 상승력 — 크기(Theil-Sen) × 일관성(Kendall tau)
+    const { value: accel, tau: accel_tau } = robustAccel(win, parseInt(trendRange) || 6);
+    return { ...d, recent_trades: trades, count, liquidity, accel, accel_tau, r3_avg, p3_avg };
   }, [excludeDirect, excludeFirstFloor, trendCutoff, accelMidCutoff, trendRange]);
   const tradeFilteredData = useMemo(() => {
     const mapped = data.map(applyTradeFilter);
-    calcScores(mapped, weights); // 재계산된 가속도/환금성을 종합점수에 반영
+    calcScores(mapped, weights); // 재계산된 상승력/환금성을 종합점수에 반영
     return mapped;
   }, [data, applyTradeFilter, weights]);
 
@@ -2013,9 +2029,9 @@ export default function App() {
     if (liquidityFilter === "good" && (d.liquidity == null || d.liquidity < 7)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (좋음 미만)`);
     if (liquidityFilter === "ok" && (d.liquidity == null || d.liquidity < 4)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (보통 미만)`);
     if (liquidityFilter === "bad" && (d.liquidity == null || d.liquidity < 2)) reasons.push(d.liquidity == null ? "환금성 데이터 없음" : `환금성 ${d.liquidity}% (나쁨 미만)`);
-    if (accelFilter === "good" && (d.accel == null || d.accel <= 5)) reasons.push(d.accel == null ? "가속도 데이터 없음" : `가속도 ${d.accel}% (상승 미만)`);
-    if (accelFilter === "ok" && (d.accel == null || d.accel < 0)) reasons.push(d.accel == null ? "가속도 데이터 없음" : `가속도 ${d.accel}% (보합 미만)`);
-    if (accelFilter === "bad" && (d.accel == null || d.accel >= 0)) reasons.push(d.accel == null ? "가속도 데이터 없음" : `가속도 ${d.accel}% (하락 아님)`);
+    if (accelFilter === "good" && (d.accel == null || d.accel <= 5)) reasons.push(d.accel == null ? "상승력 데이터 없음" : `상승력 ${d.accel}% (상승 미만)`);
+    if (accelFilter === "ok" && (d.accel == null || d.accel < 0)) reasons.push(d.accel == null ? "상승력 데이터 없음" : `상승력 ${d.accel}% (보합 미만)`);
+    if (accelFilter === "bad" && (d.accel == null || d.accel >= 0)) reasons.push(d.accel == null ? "상승력 데이터 없음" : `상승력 ${d.accel}% (하락 아님)`);
     if (pMinVal > 0 && d.avg < pMinVal) reasons.push(`${priceMin}억 미만`);
     if (pMaxVal < Infinity && d.avg > pMaxVal) reasons.push(`${priceMax}억 초과`);
     if (hhMinVal > 0 && (d.households ?? 0) < hhMinVal) reasons.push(d.households == null ? `세대수 데이터 없음` : `${hhMin}세대 미만`);
@@ -2216,7 +2232,7 @@ export default function App() {
           <CollapsibleContent>
             <div className="flex flex-col gap-1.5 mb-4 text-xs max-w-md">
               {([
-                ["accel", "가속도"],
+                ["accel", "상승력"],
                 ["liquidity", "환금성"],
                 ["build", "신축도"],
                 ["commute", "출퇴근"],
@@ -2263,11 +2279,11 @@ export default function App() {
             } else {
               setSortField(v as SortKey);
             }
-          }} items={{ score: "점수순", accel: "가속도순", liquidity: "환금성순", commuteScore: "출퇴근순", pedScore: "소아과순", avg: "현재가순", distance: "거리순" }}>
+          }} items={{ score: "점수순", accel: "상승력순", liquidity: "환금성순", commuteScore: "출퇴근순", pedScore: "소아과순", avg: "현재가순", distance: "거리순" }}>
             <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
             <SelectContent>
               <SelectItem value="score">점수순</SelectItem>
-              <SelectItem value="accel">가속도순</SelectItem>
+              <SelectItem value="accel">상승력순</SelectItem>
               <SelectItem value="liquidity">환금성순</SelectItem>
               <SelectItem value="commuteScore">출퇴근순</SelectItem>
               <SelectItem value="pedScore">소아과순</SelectItem>
@@ -2322,10 +2338,10 @@ export default function App() {
               <SelectItem value="bad">나쁨 이상 (≥2%)</SelectItem>
             </SelectContent>
           </Select>
-          <Select value={accelFilter} onValueChange={(v) => v && setAccelFilter(v)} items={{ all: "가속도 전체", good: "상승 (>5%)", ok: "보합 이상 (≥0%)", bad: "하락 (<0%)" }}>
+          <Select value={accelFilter} onValueChange={(v) => v && setAccelFilter(v)} items={{ all: "상승력 전체", good: "상승 (>5%)", ok: "보합 이상 (≥0%)", bad: "하락 (<0%)" }}>
             <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">가속도 전체</SelectItem>
+              <SelectItem value="all">상승력 전체</SelectItem>
               <SelectItem value="good">상승 (&gt;5%)</SelectItem>
               <SelectItem value="ok">보합 이상 (≥0%)</SelectItem>
               <SelectItem value="bad">하락 (&lt;0%)</SelectItem>
@@ -2407,7 +2423,7 @@ export default function App() {
                   <TableHead className="text-center">현재가</TableHead>
                   <TableHead className="text-center" title="네이버 실매물 중 입주가능월까지 입주 가능한 매매 최저가 (세낀 제외)">호가</TableHead>
                   <TableHead className="text-center w-20">추이</TableHead>
-                  <TableHead className="text-center">가속도</TableHead>
+                  <TableHead className="text-center">상승력</TableHead>
                   <TableHead className="text-center">환금</TableHead>
                   <TableHead className="text-center">출퇴근</TableHead>
                   <TableHead className="text-center">소아과</TableHead>
@@ -2513,7 +2529,7 @@ export default function App() {
                 <TableHead className="text-center">현재가</TableHead>
                   <TableHead className="text-center" title="네이버 실매물 중 입주가능월까지 입주 가능한 매매 최저가 (세낀 제외)">호가</TableHead>
                 <TableHead className="text-center w-20">추이</TableHead>
-                <TableHead className="text-center">가속도</TableHead>
+                <TableHead className="text-center">상승력</TableHead>
                 <TableHead className="text-center">환금</TableHead>
                 <TableHead className="text-center">출퇴근</TableHead>
                 <TableHead className="text-center">소아과</TableHead>

@@ -5,6 +5,7 @@ export interface AptData {
   area: number;
   avg: number;
   accel: number | null;
+  accel_tau?: number | null; // 상승 일관성 (Kendall tau, ∈[-1,1])
   r3_avg: number;
   p3_avg: number | null;
   count: number;
