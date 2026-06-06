@@ -112,6 +112,38 @@ function AccelBadge({ value }: { value: number | null }) {
   return <span className={cn("font-medium", cls)}>{value > 0 ? "+" : ""}{value}%</span>;
 }
 
+const median = (arr: number[]): number => {
+  const n = arr.length;
+  if (!n) return NaN;
+  const s = [...arr].sort((a, b) => a - b);
+  return n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2;
+};
+
+// 가속도 — ㎡단가 vs 시간 Theil-Sen 회귀(쌍별 기울기 중앙값)로 강건 추세 추정.
+// 면적 정규화로 평형/층 구성편향 제거, 중앙값 기반이라 이상치 면역, 실제 거래일 연속 사용(중간점 절벽 제거).
+// 결과는 기존과 동일한 스케일 유지를 위해 '선택기간 절반(halfMonths) 동안의 %변화'로 환산.
+function robustAccel(
+  trades: { date: string; price: number; area: number }[],
+  windowMonths: number,
+): number | null {
+  const pts = trades
+    .filter((t) => t.area > 0 && t.price > 0)
+    .map((t) => ({ x: Date.parse(t.date) / 86400000, y: t.price / t.area })) // x: 일(day), y: 억/㎡
+    .filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y));
+  if (pts.length < 2) return null;
+  const ppm = median(pts.map((p) => p.y)); // ㎡단가 중앙값 (억/㎡)
+  if (!(ppm > 0)) return null;
+  const slopes: number[] = [];
+  for (let i = 0; i < pts.length; i++)
+    for (let j = i + 1; j < pts.length; j++) {
+      const dx = pts[j].x - pts[i].x;
+      if (dx !== 0) slopes.push((pts[j].y - pts[i].y) / dx); // 억/㎡ per day
+    }
+  if (!slopes.length) return null; // 모든 거래가 같은 날 → 시간 분산 없음
+  const halfDays = (windowMonths / 2) * 30.44;
+  return Math.round(((median(slopes) * halfDays) / ppm) * 100 * 10) / 10;
+}
+
 function Sparkline({ data, pctRange }: { data: { date: string; price: number }[]; pctRange: number }) {
   const [hover, setHover] = useState<{ x: number; date: string; price: number } | null>(null);
   if (!data.length) return null;
@@ -883,10 +915,10 @@ function AccelPopover({ data, halfLabel = "3개월" }: { data: AptData; halfLabe
     <Popover>
       <PopoverTrigger><span className="cursor-pointer"><AccelBadge value={data.accel} /></span></PopoverTrigger>
       <PopoverContent className="w-56 text-xs">
-        <p className="font-semibold mb-2">가속도 계산</p>
-        <p className="text-muted-foreground">(최근{halfLabel} - 이전{halfLabel}) / 이전{halfLabel}</p>
-        <div className="mt-2 flex justify-between"><span className="text-muted-foreground">최근 {halfLabel}</span><span>{data.accel != null ? `${(data.r3_avg / 10000).toFixed(1)}억` : "-"}</span></div>
-        <div className="flex justify-between"><span className="text-muted-foreground">이전 {halfLabel}</span><span>{data.p3_avg != null ? `${(data.p3_avg / 10000).toFixed(1)}억` : "-"}</span></div>
+        <p className="font-semibold mb-1">가속도 — ㎡단가 추세</p>
+        <p className="text-muted-foreground mb-2 leading-snug">Theil-Sen 회귀(쌍별 기울기 중앙값) · 면적정규화 · 이상치 면역. {halfLabel} 환산 변화율.</p>
+        <div className="flex justify-between"><span className="text-muted-foreground">최근 {halfLabel} 평균</span><span>{(data.r3_avg / 10000).toFixed(1)}억</span></div>
+        <div className="flex justify-between"><span className="text-muted-foreground">이전 {halfLabel} 평균</span><span>{data.p3_avg != null ? `${(data.p3_avg / 10000).toFixed(1)}억` : "-"}</span></div>
       </PopoverContent>
     </Popover>
   );
@@ -1862,18 +1894,17 @@ export default function App() {
     const liquidity = d.type_units && d.type_units > 0
       ? Math.round((count / d.type_units) * 1000) / 10
       : d.liquidity;
-    // 가속도 — 선택 추이 기간을 절반으로 나눠 최근 절반 vs 이전 절반 평균가 비교
     const win = trades.filter((t) => t.date >= trendCutoff);
+    // 표시용 컨텍스트 — 최근/이전 절반 평균가 (팝오버)
     const recent = win.filter((t) => t.date >= accelMidCutoff).map((t) => t.price);
     const older = win.filter((t) => t.date < accelMidCutoff).map((t) => t.price);
     const avgOf = (a: number[]) => a.reduce((s, v) => s + v, 0) / a.length;
     const r3_avg = recent.length ? Math.round(avgOf(recent) * 10000) : d.avg; // 만원
     const p3_avg = older.length ? Math.round(avgOf(older) * 10000) : null;
-    const accel = recent.length && p3_avg != null && p3_avg > 0
-      ? Math.round(((r3_avg - p3_avg) / p3_avg) * 100 * 10) / 10
-      : null;
+    // 가속도 — ㎡단가 Theil-Sen 강건 추세 (면적정규화·이상치면역·실거래일 연속)
+    const accel = robustAccel(win, parseInt(trendRange) || 6);
     return { ...d, recent_trades: trades, count, liquidity, accel, r3_avg, p3_avg };
-  }, [excludeDirect, excludeFirstFloor, trendCutoff, accelMidCutoff]);
+  }, [excludeDirect, excludeFirstFloor, trendCutoff, accelMidCutoff, trendRange]);
   const tradeFilteredData = useMemo(() => {
     const mapped = data.map(applyTradeFilter);
     calcScores(mapped, weights); // 재계산된 가속도/환금성을 종합점수에 반영
