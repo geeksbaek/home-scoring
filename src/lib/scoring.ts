@@ -44,6 +44,7 @@ export interface AptData {
   // K-apt
   parking: number | null;
   parking_per_hh: number | null;
+  parking_src?: "naver" | "building" | "kapt" | null;
   elevator: number | null;
   households: number | null;
   dong_count: number | null;

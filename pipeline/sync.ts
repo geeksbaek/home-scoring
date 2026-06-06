@@ -209,6 +209,8 @@ async function updatePages() {
   const pediaSl = await loadJsonOpt<Record<string, (number | null)[]>>("pedia_slope.json", {});
   const kaptInfo = await loadJsonOpt<Record<string, any>>("kapt_info.json", {});
   const buildingInfo = await loadJsonOpt<Record<string, any>>("building_info.json", {});
+  // 네이버 주차(세대당 주차대수 ground truth). {name: {total, perHh, cno} | null}
+  const naverParking = await loadJsonOpt<Record<string, { total: number | null; perHh: number; cno: string } | null>>("naver_parking.json", {});
   const mgmtCost = await loadJsonOpt<Record<string, { year: number; summer: number; winter: number }>>("mgmt_cost.json", {});
   const naverComplex = await loadJsonOpt<Record<string, string>>("naver_complex_ids.json", {});
   // KB부동산 시세 (이름|atype → 만원). LTV는 min(매매가, KB시세) 기준이므로 프론트 기본값으로 사용.
@@ -401,6 +403,7 @@ async function updatePages() {
     // 주차대수 — 건축물대장 우선. 단 건축물대장이 세대당 1대 미만(과소집계 의심)인데
     // K-apt가 현실범위(1.0~2.0대/세대)면 K-apt로 교정. 멀티단지 분할로 K-apt 합산주차가
     // 분할세대수에 나뉘어 과대(>2.0)가 되는 경우는 채택 안 함(진짜 구축 저값도 보존).
+    // (네이버 주차값이 있으면 아래에서 최우선 사용.)
     const bestParking = (() => {
       const bp = buildingInfo[n]?.parking;
       const kp = kaptInfo[n]?.parkingTotal;
@@ -412,6 +415,7 @@ async function updatePages() {
       }
       return best;
     })();
+    const naverPark = naverParking[n]; // {total, perHh} | null — 세대당 ground truth
 
     results.push({
       name: n,
@@ -454,14 +458,16 @@ async function updatePages() {
       hcode: idMap.get(n)?.hcode ?? null,
       recent_trades: rt,
       long_trend,
-      // 주차 — 건축물대장·K-apt 중 큰 값 채택. 둘 다 과소집계(멀티단지 분할·동 누락)가
-      // 주 실패모드라 max가 견고. 세대당 3.0 초과만 비현실적으로 보고 작은 값으로 폐기.
-      parking: bestParking,
+      // 주차 — 네이버 세대당 주차대수 최우선(올바른 단지별 세대수로 계산, 과소집계·구축 모두 정확).
+      // 네이버 없으면 건축물대장·K-apt(과소집계 교정 bestParking) fallback.
+      parking: naverPark?.total ?? bestParking,
       parking_per_hh: (() => {
+        if (naverPark) return naverPark.perHh;
         const hh = kaptInfo[n]?.households ?? buildingInfo[n]?.hhldCnt;
         if (bestParking != null && hh && hh > 0) return Math.round((bestParking / hh) * 100) / 100;
         return kaptInfo[n]?.parkingPerHh ?? null;
       })(),
+      parking_src: naverPark ? "naver" : (buildingInfo[n]?.parking > 0 ? "building" : (kaptInfo[n]?.parkingTotal ? "kapt" : null)),
       elevator: kaptInfo[n]?.elevatorCount ?? null,
       households: kaptInfo[n]?.households ?? buildingInfo[n]?.hhldCnt ?? unitTypes[n]?.totalUnits ?? null,
       dong_count: kaptInfo[n]?.dongCount ?? null,

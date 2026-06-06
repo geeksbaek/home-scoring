@@ -1100,6 +1100,7 @@ function ParkingCell({ data }: { data: AptData }) {
         <div className="flex justify-between"><span className="text-muted-foreground">총 주차대수</span><span>{data.parking?.toLocaleString()}대</span></div>
         <div className="flex justify-between"><span className="text-muted-foreground">총 세대수</span><span>{data.households?.toLocaleString()}세대</span></div>
         <div className="flex justify-between"><span className="text-muted-foreground">세대당 주차</span><span>{v}대 · {parkingGrade(v)}</span></div>
+        <div className="flex justify-between"><span className="text-muted-foreground">출처</span><span>{data.parking_src === "naver" ? "네이버부동산" : data.parking_src === "building" ? "건축물대장" : data.parking_src === "kapt" ? "K-apt" : "-"}</span></div>
         {data.elevator != null && <div className="flex justify-between mt-1"><span className="text-muted-foreground">승강기</span><span>{data.elevator}대</span></div>}
         {data.repair_fund != null && <div className="flex justify-between mt-1 pt-1 border-t"><span className="text-muted-foreground">장기수선충당금</span><span>{Math.round(data.repair_fund / 10000).toLocaleString()}만원</span></div>}
         {data.energy && (
