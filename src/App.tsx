@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Slider } from "@/components/ui/slider";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
-  type AptData, pedScore, commuteScore, calcScores, DEFAULT_WEIGHTS, type ScoreWeights,
+  type AptData, pedScore, commuteScore, commuteValues, type CommuteSlot, calcScores, DEFAULT_WEIGHTS, type ScoreWeights,
   commuteLabel, pedLabel, parkingLabel, liquidityLabel, safetyLabel, naverMapUrl, naverLandUrl, naverArticleUrl, naverLandSearchUrl, type Label,
 } from "@/lib/scoring";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -152,21 +152,23 @@ function Sparkline({ data, pctRange }: { data: { date: string; price: number }[]
   );
 }
 
-function CommutePopover({ data }: { data: AptData }) {
-  const label = commuteLabel(data.commuteScore);
+function CommutePopover({ data, slot = "early" }: { data: AptData; slot?: CommuteSlot }) {
+  const label = commuteLabel(commuteScore(data, slot));
+  const cv = commuteValues(data, slot);
+  const slotLabel = slot === "late" ? "늦게 · 출근08:00/퇴근18:00" : "일찍 · 출근06:30/퇴근16:00";
   const color = (m: number) =>
     m <= 30 ? "text-emerald-500" : m <= 40 ? "text-foreground" : m <= 50 ? "text-amber-500" : "text-red-500";
 
   // 날짜별 출퇴근 병합
   const dayMap = new Map<string, { date: string; weekday: string; morning?: number; morningTime?: string; evening?: number; eveningTime?: string }>();
-  for (const t of data.morning_details ?? []) {
+  for (const t of cv.morning_details ?? []) {
     const key = t.date;
     if (!dayMap.has(key)) dayMap.set(key, { date: t.date, weekday: t.weekday });
     const e = dayMap.get(key)!;
     e.morning = t.minutes;
     e.morningTime = t.time;
   }
-  for (const t of data.evening_details ?? []) {
+  for (const t of cv.evening_details ?? []) {
     const key = t.date;
     if (!dayMap.has(key)) dayMap.set(key, { date: t.date, weekday: t.weekday });
     const e = dayMap.get(key)!;
@@ -179,10 +181,11 @@ function CommutePopover({ data }: { data: AptData }) {
     <Popover>
       <PopoverTrigger><span className="cursor-pointer"><LabelBadge label={label} /></span></PopoverTrigger>
       <PopoverContent className="w-64 text-xs">
-        <p className="font-semibold mb-2">출퇴근 상세 (판교)</p>
+        <p className="font-semibold mb-0.5">출퇴근 상세 (판교)</p>
+        <p className="text-muted-foreground text-[10px] mb-2">{slotLabel}</p>
         <div className="flex justify-between mb-2">
-          <span className="text-muted-foreground">출근 평균</span><span className={color(data.morning ?? 99)}>{data.morning ? `${data.morning}분` : "-"}</span>
-          <span className="text-muted-foreground ml-3">퇴근 평균</span><span className={color(data.evening ?? 99)}>{data.evening ? `${data.evening}분` : "-"}</span>
+          <span className="text-muted-foreground">출근 평균</span><span className={color(cv.morning ?? 99)}>{cv.morning ? `${cv.morning}분` : "-"}</span>
+          <span className="text-muted-foreground ml-3">퇴근 평균</span><span className={color(cv.evening ?? 99)}>{cv.evening ? `${cv.evening}분` : "-"}</span>
         </div>
         {days.length > 0 && (
           <table className="w-full border-t border-border/50">
@@ -1475,11 +1478,12 @@ function AllTypesDialog({ name, allData, favorites, onToggleFav }: { name: strin
   );
 }
 
-function CompareDialog({ open, onOpenChange, items, onRemove }: {
+function CompareDialog({ open, onOpenChange, items, onRemove, slot = "early" }: {
   open: boolean;
   onOpenChange: (v: boolean) => void;
   items: AptData[];
   onRemove: (key: string) => void;
+  slot?: CommuteSlot;
 }) {
   if (items.length === 0) {
     return (
@@ -1528,8 +1532,8 @@ function CompareDialog({ open, onOpenChange, items, onRemove }: {
     { label: "환금성", render: (d) => <LabelText label={liquidityLabel(d.liquidity)} /> },
     { label: "6개월 거래", render: (d) => `${d.count}건` },
     { label: "출퇴근 점수", render: (d) => <LabelBadge label={commuteLabel(d.commuteScore)} />, group: "교통" },
-    { label: "출근(판교)", render: (d) => d.morning != null ? <span className={commuteColor(d.morning)}>{d.morning}분</span> : "-" },
-    { label: "퇴근(판교)", render: (d) => d.evening != null ? <span className={commuteColor(d.evening)}>{d.evening}분</span> : "-" },
+    { label: slot === "late" ? "출근 08:00(판교)" : "출근 06:30(판교)", render: (d) => { const m = commuteValues(d, slot).morning; return m != null ? <span className={commuteColor(m)}>{m}분</span> : "-"; } },
+    { label: slot === "late" ? "퇴근 18:00(판교)" : "퇴근 16:00(판교)", render: (d) => { const e = commuteValues(d, slot).evening; return e != null ? <span className={commuteColor(e)}>{e}분</span> : "-"; } },
     { label: "지하철", render: (d) => [d.subway_line, d.subway_station].filter(Boolean).join(" ") || "-" },
     { label: "단지 고저차", render: (d) => d.slope != null ? <span className={slopeColor(d.slope)}>{d.slope}m</span> : "-", group: "환경" },
     { label: "소아과 점수", render: (d) => <LabelBadge label={pedLabel(d.pedScore)} /> },
@@ -1678,6 +1682,7 @@ export default function App() {
   const sentinelRef = React.useRef<HTMLTableRowElement>(null);
   const [regionFilter, setRegionFilter] = useState<string[]>(() => lsArr("f_region_multi"));
   const [commuteFilter, setCommuteFilter] = useState(() => ls("f_commute", "all"));
+  const [commuteSlot, setCommuteSlot] = useState<CommuteSlot>(() => ls("f_commuteSlot", "early") as CommuteSlot);
   const [liquidityFilter, setLiquidityFilter] = useState(() => ls("f_liquidity", "all"));
   const [accelFilter, setAccelFilter] = useState(() => ls("f_accel", "all"));
   const [priceMin, setPriceMin] = useState(() => ls("f_priceMin", "0"));
@@ -1767,7 +1772,7 @@ export default function App() {
           d.school_violence = {};
         }
         d.pedScore = pedScore(d);
-        d.commuteScore = commuteScore(d);
+        d.commuteScore = commuteScore(d, commuteSlot);
         d.score = 0;
       });
       calcScores(raw, weights);
@@ -1784,6 +1789,7 @@ export default function App() {
   useEffect(() => { localStorage.setItem("f_sort", sortField); }, [sortField]);
   useEffect(() => { localStorage.setItem("f_region_multi", JSON.stringify(regionFilter)); }, [regionFilter]);
   useEffect(() => { localStorage.setItem("f_commute", commuteFilter); }, [commuteFilter]);
+  useEffect(() => { localStorage.setItem("f_commuteSlot", commuteSlot); }, [commuteSlot]);
   useEffect(() => { localStorage.setItem("f_liquidity", liquidityFilter); }, [liquidityFilter]);
   useEffect(() => { localStorage.setItem("f_accel", accelFilter); }, [accelFilter]);
   useEffect(() => { localStorage.setItem("f_priceMin", priceMin); }, [priceMin]);
@@ -1794,12 +1800,13 @@ export default function App() {
   useEffect(() => { localStorage.setItem("f_exDirect", String(excludeDirect)); }, [excludeDirect]);
   useEffect(() => { localStorage.setItem("f_ex1F", String(excludeFirstFloor)); }, [excludeFirstFloor]);
 
-  // 가중치 변경 시 스코어 재계산
+  // 가중치/출퇴근 시간대 변경 시 스코어 재계산
   useEffect(() => {
     if (data.length === 0) return;
+    for (const d of data) d.commuteScore = commuteScore(d, commuteSlot);
     calcScores(data, weights);
     setData([...data]);
-  }, [weights]);
+  }, [weights, commuteSlot]);
 
   const regions = useMemo(() => {
     const cities = new Set<string>();
@@ -2224,6 +2231,13 @@ export default function App() {
               <SelectItem value="ok">보통 이상</SelectItem>
             </SelectContent>
           </Select>
+          <Select value={commuteSlot} onValueChange={(v) => v && setCommuteSlot(v as CommuteSlot)} items={{ early: "일찍 (06:30/16:00)", late: "늦게 (08:00/18:00)" }}>
+            <SelectTrigger className="w-36 h-8 text-xs"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="early">일찍 (06:30/16:00)</SelectItem>
+              <SelectItem value="late">늦게 (08:00/18:00)</SelectItem>
+            </SelectContent>
+          </Select>
           <Select value={liquidityFilter} onValueChange={(v) => v && setLiquidityFilter(v)} items={{ all: "환금성 전체", good: "좋음 이상 (≥7%)", ok: "보통 이상 (≥4%)", bad: "나쁨 이상 (≥2%)" }}>
             <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
             <SelectContent>
@@ -2363,7 +2377,7 @@ export default function App() {
                       <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
                       <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                       <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
-                      {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><CommutePopover data={d} /></TableCell>}
+                      {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><CommutePopover data={d} slot={commuteSlot} /></TableCell>}
                       {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><PedPopover data={d} /></TableCell>}
                       {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><SlopePopover data={d} /></TableCell>}
                       {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><ParkingCell data={d} /></TableCell>}
@@ -2473,7 +2487,7 @@ export default function App() {
                     <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
                     <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                     <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
-                    <TableCell className="text-center"><CommutePopover data={d} /></TableCell>
+                    <TableCell className="text-center"><CommutePopover data={d} slot={commuteSlot} /></TableCell>
                     <TableCell className="text-center"><PedPopover data={d} /></TableCell>
                     <TableCell className="text-center"><SlopePopover data={d} /></TableCell>
                     <TableCell className="text-center"><ParkingCell data={d} /></TableCell>
@@ -2624,6 +2638,7 @@ export default function App() {
           onOpenChange={setCompareOpen}
           items={data.filter((d) => favorites.has(`${d.name}|${d.atype}`))}
           onRemove={toggleFav}
+          slot={commuteSlot}
         />
       </div>
     </div>

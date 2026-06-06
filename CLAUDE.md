@@ -39,12 +39,14 @@
 | 시각 | 작업 | 비고 |
 |------|------|------|
 | 05:00 | MOLIT 보도자료 수집·변환 | `cd ~/GitHub/home-scoring && bun scripts/collect_molit_press.ts --download-attachments --convert-md` (RSS 증분 + PDF → markdown via `codex` gpt-5.5 high → `public/molit_press.json`) |
-| 06:30 | 출근 시간 측정 | `bun pipeline/commute.ts` |
+| 06:30 | 출근 시간 측정 (일찍) | `bun pipeline/commute.ts` |
 | 07:30 | 일일 파이프라인 | `bun pipeline/daily.ts` (공휴일 자동 스킵) |
-| 16:00 | 퇴근 시간 측정 | `bun pipeline/commute.ts --reverse` |
+| 08:00 | 출근 시간 측정 (늦게) | `bun pipeline/commute.ts` |
+| 16:00 | 퇴근 시간 측정 (일찍) | `bun pipeline/commute.ts --reverse` |
+| 18:00 | 퇴근 시간 측정 (늦게) | `bun pipeline/commute.ts --reverse` |
 
 **launchd 운영**:
-- plist: `~/Library/LaunchAgents/com.home-scoring.{molit-press,commute-morning,daily,commute-evening}.plist`
+- plist: `~/Library/LaunchAgents/com.home-scoring.{molit-press,commute-morning,commute-morning2,daily,commute-evening,commute-evening2}.plist`
 - 모두 `WorkingDirectory = ~/GitHub/home-scoring`. daily/commute는 `pipeline/`, molit은 `scripts/` 실행.
 - 로그: `~/Library/Logs/home-scoring/{label}.log` / `.err`
 - plist 수정 후 `launchctl unload <plist> && launchctl load <plist>`로 reload.
@@ -144,6 +146,14 @@
 - 한국 공휴일 + 근로자의 날(5/1) 데이터 삭제
 - `commute_results.json`에서 해당 날짜 배치 제거 후 sync
 - **공휴일 판정 자동화** (`pipeline/holidays.ts`): 구글 공개 "대한민국의 휴일" 캘린더 ICS 피드 조회(키·활용신청 불필요). DESCRIPTION이 "공휴일"로 시작하는 VEVENT만 채택 → 임시공휴일(지방선거일 등)·대체공휴일 자동 반영. `data/holidays_cache.json`(gitignore)에 캐시, 네트워크 실패 시 하드코딩 `KR_HOLIDAYS` fallback. `daily.ts`·`commute.ts`가 진입점에서 `refreshHolidays()` 호출로 매 실행 갱신. `sync.ts` 출퇴근 집계도 `isNonBusinessDay` 가드(평일 공휴일이 요일 필터를 통과하던 문제 차단).
+
+### 출퇴근 — 시간대 2종(일찍/늦게) + hour 기반 슬롯 분류
+
+- **하루 4회 측정**: 출근 06:30(일찍)/08:00(늦게), 퇴근 16:00(일찍)/18:00(늦게). 4개 launchd job(commute-morning/morning2/evening/evening2)이 동일 `commute.ts`를 실행 — 슬롯 구분 인자 없이 **실행 시각(hour)으로 sync가 자동 분류**.
+- **슬롯 분류는 측정 시각 hour 기반** (`sync.ts` `inSlotWindow`): 출근 early=hour 6–7 / late=8–9, 퇴근 early=15–16 / late=17–19. sleep 후 catch-up이 윈도우 밖 시각에 실행되면 자동 배제 → "06:30 출근" 버킷에 10시 측정값이 안 섞임. **슬롯 필드 없는 레거시 데이터(06시/16시)는 자동 early.**
+- **배포 필드**: `morning`/`evening`(일찍) + `morning_late`/`evening_late`(늦게), 각 `_cnt`/`_details` 동반. 늦게 데이터 누적 전(첫 18:00 실행 전)까지는 null → 프론트는 graceful "-".
+- **프론트 토글**: 필터바 "일찍(06:30/16:00) / 늦게(08:00/18:00)" Select(`commuteSlot`, localStorage `f_commuteSlot`). 선택 슬롯이 `commuteScore`·테이블 배지·팝오버·정렬·종합점수에 모두 반영(`commuteValues(d, slot)` 헬퍼). `scoring.ts` `commuteScore(d, slot)`.
+- **카카오 키 3개 필요**: 6,114단지 × 4회 = 일 24,456 길찾기 콜. 키당 무료 10,000/일 → `.env` `KAKAO_REST_API_KEY`/`_2`/`_3` 라운드로빈(키당 ~82%). `commute.ts` `KAKAO_KEYS` 배열.
 
 ## 데이터 커버리지 (2026-05-07 기준)
 

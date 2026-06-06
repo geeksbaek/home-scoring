@@ -233,87 +233,61 @@ async function updatePages() {
     return map[code] ?? code;
   };
 
-  // ── 출퇴근 평균 ──────────────────────────────────────
-
-  const mmAll = new Map<string, number[]>();
-  const emAll = new Map<string, number[]>();
-  // 날짜별 측정값 (중복 합산용)
+  // ── 출퇴근 평균 (시간대별: 일찍=출근06:30/퇴근16:00, 늦게=출근08:00/퇴근18:00) ──
+  // 측정 시각(hour)으로 슬롯을 분류한다. sleep 후 catch-up이 엉뚱한 시각에 실행되면
+  // 윈도우 밖이라 자동 배제 → "06:30 출근" 버킷에 10시 측정값이 섞이지 않음.
+  // 레거시 데이터(06시/16시)는 slot 필드 없이도 hour로 자동 early 분류.
   interface CommuteDetail { date: string; weekday: string; minutes: number; time: string; }
-  const mmByDate = new Map<string, Map<string, { weekday: string; values: number[]; times: string[] }>>();
-  const emByDate = new Map<string, Map<string, { weekday: string; values: number[]; times: string[] }>>();
+  type CommuteSlot = "early" | "late";
 
-  for (const e of commute) {
-    if (!["월", "화", "수", "목", "금"].includes(e.weekday)) continue;
-    // 평일이어도 공휴일(지방선거일·대체공휴일 등)은 교통 패턴이 달라 제외
-    if (isNonBusinessDay(new Date(e.timestamp.split(" ")[0] + "T00:00:00"))) continue;
-    const hour = parseInt(e.timestamp.split(" ")[1].split(":")[0]);
-    const dir = e.direction ?? "출근";
-    const date = e.timestamp.split(" ")[0];
-    if (dir === "출근" && hour >= 6 && hour <= 7) {
+  const inSlotWindow = (dir: string, slot: CommuteSlot, hour: number): boolean =>
+    dir === "출근"
+      ? slot === "early" ? hour >= 6 && hour <= 7 : hour >= 8 && hour <= 9
+      : slot === "early" ? hour >= 15 && hour <= 16 : hour >= 17 && hour <= 19;
+
+  // 방향+슬롯 단위 집계: 날짜별 평균으로 중복 제거 후 단지별 평균/건수/상세 반환
+  function aggregateCommute(dirTarget: "출근" | "퇴근", slot: CommuteSlot) {
+    const all = new Map<string, number[]>();
+    const byDate = new Map<string, Map<string, { weekday: string; values: number[]; times: string[] }>>();
+    for (const e of commute) {
+      if (!["월", "화", "수", "목", "금"].includes(e.weekday)) continue;
+      // 평일이어도 공휴일(지방선거일·대체공휴일 등)은 교통 패턴이 달라 제외
+      if (isNonBusinessDay(new Date(e.timestamp.split(" ")[0] + "T00:00:00"))) continue;
+      if ((e.direction ?? "출근") !== dirTarget) continue;
+      const hour = parseInt(e.timestamp.split(" ")[1].split(":")[0]);
+      if (!inSlotWindow(dirTarget, slot, hour)) continue;
+      const date = e.timestamp.split(" ")[0];
       for (const r of e.results) {
-        if (!mmAll.has(r.name)) mmAll.set(r.name, []);
-        mmAll.get(r.name)!.push(r.minutes);
-        if (!mmByDate.has(r.name)) mmByDate.set(r.name, new Map());
-        const dm = mmByDate.get(r.name)!;
+        if (!all.has(r.name)) all.set(r.name, []);
+        all.get(r.name)!.push(r.minutes);
+        if (!byDate.has(r.name)) byDate.set(r.name, new Map());
+        const dm = byDate.get(r.name)!;
         if (!dm.has(date)) dm.set(date, { weekday: e.weekday, values: [], times: [] });
         const entry = dm.get(date)!;
         entry.values.push(r.minutes);
         // 개별 단지 실제 측정 시각(at) 우선, 없으면(구 데이터) batch 시작 시각
         entry.times.push(r.at ?? e.timestamp.split(" ")[1]);
       }
-    } else if (dir === "퇴근" && hour >= 15 && hour <= 17) {
-      for (const r of e.results) {
-        if (!emAll.has(r.name)) emAll.set(r.name, []);
-        emAll.get(r.name)!.push(r.minutes);
-        if (!emByDate.has(r.name)) emByDate.set(r.name, new Map());
-        const dm = emByDate.get(r.name)!;
-        if (!dm.has(date)) dm.set(date, { weekday: e.weekday, values: [], times: [] });
-        const entry2 = dm.get(date)!;
-        entry2.values.push(r.minutes);
-        // 개별 단지 실제 측정 시각(at) 우선, 없으면(구 데이터) batch 시작 시각
-        entry2.times.push(r.at ?? e.timestamp.split(" ")[1]);
-      }
     }
-  }
-
-  // 날짜별 평균으로 중복 제거
-  function dedup(byDate: Map<string, Map<string, { weekday: string; values: number[]; times: string[] }>>): Map<string, CommuteDetail[]> {
-    const result = new Map<string, CommuteDetail[]>();
+    const details = new Map<string, CommuteDetail[]>();
     for (const [name, dm] of byDate) {
-      const details: CommuteDetail[] = [];
+      const ds: CommuteDetail[] = [];
       for (const [date, { weekday, values, times }] of dm) {
-        details.push({ date, weekday, minutes: Math.round(values.reduce((a, b) => a + b, 0) / values.length), time: times[0] });
+        ds.push({ date, weekday, minutes: Math.round(values.reduce((a, b) => a + b, 0) / values.length), time: times[0] });
       }
-      details.sort((a, b) => a.date.localeCompare(b.date));
-      result.set(name, details);
+      ds.sort((a, b) => a.date.localeCompare(b.date));
+      details.set(name, ds);
     }
-    return result;
+    const avg = new Map<string, number>();
+    const cnt = new Map<string, number>();
+    for (const [n, v] of all) { avg.set(n, Math.round(mean(v))); cnt.set(n, v.length); }
+    return { avg, cnt, details };
   }
-  const mmDetails = dedup(mmByDate);
-  const emDetails = dedup(emByDate);
 
-  const mm = new Map<string, number>();
-  const em = new Map<string, number>();
-  const mmCnt = new Map<string, number>();
-  const emCnt = new Map<string, number>();
-
-  for (const [n, v] of mmAll) { mm.set(n, Math.round(mean(v))); mmCnt.set(n, v.length); }
-  for (const [n, v] of emAll) { em.set(n, Math.round(mean(v))); emCnt.set(n, v.length); }
-
-  // fallback: 평균 없으면 최신 단건 사용
-  for (const e of commute) {
-    if (isNonBusinessDay(new Date(e.timestamp.split(" ")[0] + "T00:00:00"))) continue;
-    const dir = e.direction ?? "출근";
-    for (const r of e.results) {
-      if (dir === "출근" && !mm.has(r.name)) {
-        mm.set(r.name, r.minutes);
-        mmCnt.set(r.name, 0);
-      } else if (dir === "퇴근" && !em.has(r.name)) {
-        em.set(r.name, r.minutes);
-        emCnt.set(r.name, 0);
-      }
-    }
-  }
+  const mEarly = aggregateCommute("출근", "early");
+  const eEarly = aggregateCommute("퇴근", "early");
+  const mLate = aggregateCommute("출근", "late");
+  const eLate = aggregateCommute("퇴근", "late");
 
   // ── 스코어링 ────────────────────────────────────────
 
@@ -418,12 +392,18 @@ async function updatePages() {
       dong,
       liquidity: liq != null ? Math.round(liq * 10) / 10 : null,
       type_units: tu,
-      morning: mm.get(n) ?? null,
-      evening: em.get(n) ?? null,
-      morning_cnt: mmCnt.get(n) ?? 0,
-      evening_cnt: emCnt.get(n) ?? 0,
-      morning_details: mmDetails.get(n) ?? [],
-      evening_details: emDetails.get(n) ?? [],
+      morning: mEarly.avg.get(n) ?? null,
+      evening: eEarly.avg.get(n) ?? null,
+      morning_cnt: mEarly.cnt.get(n) ?? 0,
+      evening_cnt: eEarly.cnt.get(n) ?? 0,
+      morning_details: mEarly.details.get(n) ?? [],
+      evening_details: eEarly.details.get(n) ?? [],
+      morning_late: mLate.avg.get(n) ?? null,
+      evening_late: eLate.avg.get(n) ?? null,
+      morning_late_cnt: mLate.cnt.get(n) ?? 0,
+      evening_late_cnt: eLate.cnt.get(n) ?? 0,
+      morning_late_details: mLate.details.get(n) ?? [],
+      evening_late_details: eLate.details.get(n) ?? [],
       slope: sl != null ? Math.round(sl * 10) / 10 : null,
       slope_method: sm,
       slope_dongs: seDongs,

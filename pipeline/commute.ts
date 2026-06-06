@@ -31,6 +31,7 @@ const DATA_INDEX = join(PUBLIC_DIR, "data-index.json");
 const KAKAO_KEYS = [
   process.env.KAKAO_REST_API_KEY,
   process.env.KAKAO_REST_API_KEY_2,
+  process.env.KAKAO_REST_API_KEY_3,
 ].filter((k): k is string => !!k);
 if (KAKAO_KEYS.length === 0) throw new Error("KAKAO_REST_API_KEY 미설정");
 

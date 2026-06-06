@@ -14,12 +14,20 @@ export interface AptData {
   liquidity: number | null;
   liq_approx?: boolean;
   type_units: number | null; // 해당 면적타입 세대수
+  // 출퇴근 — 일찍(출근06:30/퇴근16:00)
   morning: number | null;
   evening: number | null;
   morning_cnt: number;
   evening_cnt: number;
   morning_details: { date: string; weekday: string; minutes: number; time?: string }[];
   evening_details: { date: string; weekday: string; minutes: number; time?: string }[];
+  // 출퇴근 — 늦게(출근08:00/퇴근18:00). 신규 측정 누적 전까지 null/빈 배열.
+  morning_late: number | null;
+  evening_late: number | null;
+  morning_late_cnt: number;
+  evening_late_cnt: number;
+  morning_late_details: { date: string; weekday: string; minutes: number; time?: string }[];
+  evening_late_details: { date: string; weekday: string; minutes: number; time?: string }[];
   slope: number | null;
   slope_method: string;
   slope_dongs: { dong: number; elev: number }[];
@@ -124,10 +132,31 @@ export function pedScore(d: AptData): number | null {
   return Math.round(((adj1 + adj2) / 2) * 10) / 10;
 }
 
-export function commuteScore(d: AptData): number | null {
-  if (!d.morning && !d.evening) return null;
-  const m = d.morning ?? d.evening!;
-  const e = d.evening ?? d.morning!;
+export type CommuteSlot = "early" | "late";
+
+// 선택 슬롯의 출근/퇴근 평균·상세를 꺼낸다. late 필드가 없는 구버전 데이터는 null/빈배열.
+export function commuteValues(d: AptData, slot: CommuteSlot = "early") {
+  if (slot === "late") {
+    return {
+      morning: d.morning_late ?? null,
+      evening: d.evening_late ?? null,
+      morning_details: d.morning_late_details ?? [],
+      evening_details: d.evening_late_details ?? [],
+    };
+  }
+  return {
+    morning: d.morning,
+    evening: d.evening,
+    morning_details: d.morning_details ?? [],
+    evening_details: d.evening_details ?? [],
+  };
+}
+
+export function commuteScore(d: AptData, slot: CommuteSlot = "early"): number | null {
+  const { morning, evening } = commuteValues(d, slot);
+  if (!morning && !evening) return null;
+  const m = morning ?? evening!;
+  const e = evening ?? morning!;
   return Math.round((m + e) / 2);
 }
 
