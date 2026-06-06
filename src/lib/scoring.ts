@@ -40,6 +40,7 @@ export interface AptData {
   pedia2_slope: number | null;
   hcode: string | null;
   recent_trades: { date: string; price: number; floor: number | null; area: number; direct?: boolean }[];
+  long_trend?: [number, number][]; // 장기 추이: [yyyymm, 억] 월별 중앙값 (전 기간)
   // K-apt
   parking: number | null;
   parking_per_hh: number | null;

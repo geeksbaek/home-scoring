@@ -196,6 +196,80 @@ function Sparkline({ data, pctRange }: { data: { date: string; price: number }[]
   );
 }
 
+// 장기 추이 차트 — long_trend([yyyymm, 억] 월별 중앙값)을 시간축 비례 라인으로.
+function LongTrendChart({ data }: { data: [number, number][] }) {
+  const [hover, setHover] = useState<number | null>(null);
+  if (!data.length) return <p className="text-xs text-muted-foreground py-2">장기 거래 데이터 없음</p>;
+  const prices = data.map((d) => d[1]);
+  const min = Math.min(...prices), max = Math.max(...prices);
+  const range = max - min || 1;
+  const w = 300, h = 120, padX = 6, padTop = 8, padBottom = 16;
+  const idx = (ym: number) => Math.floor(ym / 100) * 12 + (ym % 100) - 1; // 월 인덱스
+  const t0 = idx(data[0][0]), tSpan = idx(data[data.length - 1][0]) - t0 || 1;
+  const xOf = (ym: number) => padX + ((idx(ym) - t0) / tSpan) * (w - padX * 2);
+  const yOf = (p: number) => padTop + (1 - (p - min) / range) * (h - padTop - padBottom);
+  const pts = data.map((d) => ({ x: xOf(d[0]), y: yOf(d[1]), ym: d[0], price: d[1] }));
+  const poly = pts.map((p) => `${p.x},${p.y}`).join(" ");
+  const first = prices[0], last = prices[prices.length - 1];
+  const chg = Math.round(((last - first) / first) * 1000) / 10;
+  const yrs = tSpan / 12;
+  const cagr = yrs >= 1 ? Math.round((Math.pow(last / first, 1 / yrs) - 1) * 1000) / 10 : null;
+  const color = last >= first ? "#10b981" : "#ef4444";
+  const fmtYm = (ym: number) => `${String(ym).slice(2, 4)}.${String(ym).slice(4)}`;
+  // 연도 경계 세로선
+  const years = [...new Set(data.map((d) => Math.floor(d[0] / 100)))];
+  const hv = hover != null ? pts.find((p) => p.ym === hover) : null;
+  return (
+    <div className="text-xs">
+      <div className="flex items-baseline justify-between mb-1">
+        <span className="font-semibold">장기 추이 · {data.length}개월</span>
+        <span className={chg >= 0 ? "text-emerald-500" : "text-red-500"}>{first}억 → {last}억 ({chg >= 0 ? "+" : ""}{chg}%)</span>
+      </div>
+      <div className="relative" style={{ width: w, height: h }}>
+        <svg width={w} height={h} onMouseLeave={() => setHover(null)}>
+          {years.map((y) => {
+            const x = xOf(y * 100 + 1);
+            return <line key={y} x1={x} y1={padTop} x2={x} y2={h - padBottom} stroke="currentColor" strokeWidth="0.5" className="text-muted-foreground/15" />;
+          })}
+          <polyline points={poly} fill="none" stroke={color} strokeWidth="1.5" strokeLinejoin="round" />
+          {pts.map((p, i) => (
+            <circle key={i} cx={p.x} cy={p.y} r={5} fill="transparent" onMouseEnter={() => setHover(p.ym)} />
+          ))}
+          {hv && <circle cx={hv.x} cy={hv.y} r={3} fill={color} />}
+          {years.map((y) => {
+            const x = xOf(y * 100 + 1);
+            return <text key={`l${y}`} x={x} y={h - 4} textAnchor="middle" className="fill-muted-foreground text-[8px]">'{String(y).slice(2)}</text>;
+          })}
+        </svg>
+        {hv && (
+          <div className="absolute -top-1 px-1.5 py-0.5 bg-popover border rounded shadow text-[10px] whitespace-nowrap z-50 pointer-events-none -translate-x-1/2" style={{ left: hv.x }}>
+            {fmtYm(hv.ym)} <span className="font-medium">{hv.price}억</span>
+          </div>
+        )}
+      </div>
+      <div className="flex justify-between text-muted-foreground mt-1">
+        <span>최저 {min}억 · 최고 {max}억</span>
+        {cagr != null && <span>연 {cagr >= 0 ? "+" : ""}{cagr}%</span>}
+      </div>
+      <p className="text-muted-foreground text-[10px] mt-0.5">월별 중앙값 · 직거래/1층 제외</p>
+    </div>
+  );
+}
+
+// 추이 셀 — Sparkline(최근) 표시, 클릭 시 장기 추이 차트 팝오버
+function TrendCell({ d, spark, pctRange }: { d: AptData; spark: { date: string; price: number }[]; pctRange: number }) {
+  const lt = d.long_trend ?? [];
+  if (!spark.length && !lt.length) return <span className="text-muted-foreground">-</span>;
+  return (
+    <Popover>
+      <PopoverTrigger className="cursor-pointer inline-block" title="장기 추이 보기">
+        {spark.length ? <Sparkline data={spark} pctRange={pctRange} /> : <span className="text-muted-foreground text-[10px]">장기↗</span>}
+      </PopoverTrigger>
+      <PopoverContent className="w-auto"><LongTrendChart data={lt} /></PopoverContent>
+    </Popover>
+  );
+}
+
 function CommutePopover({ data, slot = "early" }: { data: AptData; slot?: CommuteSlot }) {
   const label = commuteLabel(commuteScore(data, slot));
   const cv = commuteValues(data, slot);
@@ -2450,7 +2524,7 @@ export default function App() {
                       <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
                       <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
-                      <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
+                      <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} /></TableCell>
                       <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                       <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
                       {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><CommutePopover data={d} slot={commuteSlot} /></TableCell>}
@@ -2561,7 +2635,7 @@ export default function App() {
                     <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
                     <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
-                    <TableCell className="text-center"><Sparkline data={sparkData} pctRange={globalPctRange} /></TableCell>
+                    <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} /></TableCell>
                     <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                     <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
                     <TableCell className="text-center"><CommutePopover data={d} slot={commuteSlot} /></TableCell>

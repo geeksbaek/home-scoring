@@ -381,6 +381,23 @@ async function updatePages() {
       direct: r.거래유형 === "직거래" || undefined,
     }));
 
+    // 장기 추이 — 월별 중앙값(억 1자리), clean 거래(full) 전 기간, 비어있는 달 제외.
+    // [yyyymm, 억] 압축 배열. 프론트 장기 가격추이 차트용.
+    const ltMap = new Map<string, number[]>();
+    for (const r of full) {
+      const ym = r.거래일자.slice(0, 7);
+      let arr = ltMap.get(ym);
+      if (!arr) { arr = []; ltMap.set(ym, arr); }
+      arr.push(r.금액_만원);
+    }
+    const long_trend: [number, number][] = [...ltMap.entries()]
+      .sort((a, b) => (a[0] < b[0] ? -1 : 1))
+      .map(([ym, arr]) => {
+        const s = arr.slice().sort((x, y) => x - y);
+        const md = s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2;
+        return [Number(ym.replace("-", "")), Math.round((md / 10000) * 10) / 10];
+      });
+
     results.push({
       name: n,
       display_name: hgnnNames[n] ?? n,
@@ -421,6 +438,7 @@ async function updatePages() {
       pedia2_slope: ps[1] ?? null,
       hcode: idMap.get(n)?.hcode ?? null,
       recent_trades: rt,
+      long_trend,
       // K-apt 데이터 (주차는 건축물대장 우선 — K-apt가 부정확한 케이스 다수)
       parking: (() => {
         const bp = buildingInfo[n]?.parking;
@@ -569,6 +587,7 @@ async function updatePages() {
         liquidity: null,
         type_units: tu,
         recent_trades: [],
+        long_trend: [],
         pyeong_type_nos: null,
         // KB시세는 ghost row의 atype 기준으로 재조회 (baseRow의 값 덮어쓰기)
         kb_sale: kbPrice[`${n}|${at}`]?.sale ?? null,
@@ -675,6 +694,12 @@ async function updatePages() {
     const svFiltered: Record<string, any> = {};
     for (const [k, v] of Object.entries(svFull)) if (usedSchools.has(k)) svFiltered[k] = v;
     await Bun.write(join(PAGES_DIR, "public", "school_violence.json"), JSON.stringify(svFiltered));
+  }
+
+  // 검증용 — shard만 생성하고 배포 스킵
+  if (process.argv.includes("--no-deploy")) {
+    console.log("  → --no-deploy: shard만 생성, 배포 스킵");
+    return;
   }
 
   // 로컬 빌드 + gh-pages 브랜치 직접 배포
