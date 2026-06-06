@@ -119,29 +119,30 @@ const median = (arr: number[]): number => {
   return n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2;
 };
 
-// 가속도 — ㎡단가 vs 시간 Theil-Sen 회귀(쌍별 기울기 중앙값)로 강건 추세 추정.
-// 면적 정규화로 평형/층 구성편향 제거, 중앙값 기반이라 이상치 면역, 실제 거래일 연속 사용(중간점 절벽 제거).
+// 가속도 — 가격 vs 시간 Theil-Sen 회귀(쌍별 기울기 중앙값)로 강건 추세 추정.
+// 한 row가 같은 atype 버킷이라 면적이 사실상 동일(편차 중앙값 0%) → ㎡정규화 불필요.
+// 중앙값 기반이라 이상치(급매/고층) 면역, 실제 거래일 연속 사용(중간점 절벽 제거).
 // 결과는 기존과 동일한 스케일 유지를 위해 '선택기간 절반(halfMonths) 동안의 %변화'로 환산.
 function robustAccel(
-  trades: { date: string; price: number; area: number }[],
+  trades: { date: string; price: number }[],
   windowMonths: number,
 ): number | null {
   const pts = trades
-    .filter((t) => t.area > 0 && t.price > 0)
-    .map((t) => ({ x: Date.parse(t.date) / 86400000, y: t.price / t.area })) // x: 일(day), y: 억/㎡
+    .filter((t) => t.price > 0)
+    .map((t) => ({ x: Date.parse(t.date) / 86400000, y: t.price })) // x: 일(day), y: 억
     .filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y));
   if (pts.length < 2) return null;
-  const ppm = median(pts.map((p) => p.y)); // ㎡단가 중앙값 (억/㎡)
-  if (!(ppm > 0)) return null;
+  const base = median(pts.map((p) => p.y)); // 가격 중앙값 (억)
+  if (!(base > 0)) return null;
   const slopes: number[] = [];
   for (let i = 0; i < pts.length; i++)
     for (let j = i + 1; j < pts.length; j++) {
       const dx = pts[j].x - pts[i].x;
-      if (dx !== 0) slopes.push((pts[j].y - pts[i].y) / dx); // 억/㎡ per day
+      if (dx !== 0) slopes.push((pts[j].y - pts[i].y) / dx); // 억 per day
     }
   if (!slopes.length) return null; // 모든 거래가 같은 날 → 시간 분산 없음
   const halfDays = (windowMonths / 2) * 30.44;
-  return Math.round(((median(slopes) * halfDays) / ppm) * 100 * 10) / 10;
+  return Math.round(((median(slopes) * halfDays) / base) * 100 * 10) / 10;
 }
 
 function Sparkline({ data, pctRange }: { data: { date: string; price: number }[]; pctRange: number }) {
@@ -915,8 +916,8 @@ function AccelPopover({ data, halfLabel = "3개월" }: { data: AptData; halfLabe
     <Popover>
       <PopoverTrigger><span className="cursor-pointer"><AccelBadge value={data.accel} /></span></PopoverTrigger>
       <PopoverContent className="w-56 text-xs">
-        <p className="font-semibold mb-1">가속도 — ㎡단가 추세</p>
-        <p className="text-muted-foreground mb-2 leading-snug">Theil-Sen 회귀(쌍별 기울기 중앙값) · 면적정규화 · 이상치 면역. {halfLabel} 환산 변화율.</p>
+        <p className="font-semibold mb-1">가속도 — 가격 추세</p>
+        <p className="text-muted-foreground mb-2 leading-snug">Theil-Sen 회귀(쌍별 기울기 중앙값) · 이상치 면역. {halfLabel} 환산 변화율.</p>
         <div className="flex justify-between"><span className="text-muted-foreground">최근 {halfLabel} 평균</span><span>{(data.r3_avg / 10000).toFixed(1)}억</span></div>
         <div className="flex justify-between"><span className="text-muted-foreground">이전 {halfLabel} 평균</span><span>{data.p3_avg != null ? `${(data.p3_avg / 10000).toFixed(1)}억` : "-"}</span></div>
       </PopoverContent>
