@@ -1683,6 +1683,7 @@ export default function App() {
   const [regionFilter, setRegionFilter] = useState<string[]>(() => lsArr("f_region_multi"));
   const [commuteFilter, setCommuteFilter] = useState(() => ls("f_commute", "all"));
   const [commuteSlot, setCommuteSlot] = useState<CommuteSlot>(() => ls("f_commuteSlot", "early") as CommuteSlot);
+  const [trendRange, setTrendRange] = useState(() => ls("f_trendRange", "6")); // 추이 그래프 기간(개월): 3/6/12
   const [liquidityFilter, setLiquidityFilter] = useState(() => ls("f_liquidity", "all"));
   const [accelFilter, setAccelFilter] = useState(() => ls("f_accel", "all"));
   const [priceMin, setPriceMin] = useState(() => ls("f_priceMin", "0"));
@@ -1790,6 +1791,7 @@ export default function App() {
   useEffect(() => { localStorage.setItem("f_region_multi", JSON.stringify(regionFilter)); }, [regionFilter]);
   useEffect(() => { localStorage.setItem("f_commute", commuteFilter); }, [commuteFilter]);
   useEffect(() => { localStorage.setItem("f_commuteSlot", commuteSlot); }, [commuteSlot]);
+  useEffect(() => { localStorage.setItem("f_trendRange", trendRange); }, [trendRange]);
   useEffect(() => { localStorage.setItem("f_liquidity", liquidityFilter); }, [liquidityFilter]);
   useEffect(() => { localStorage.setItem("f_accel", accelFilter); }, [accelFilter]);
   useEffect(() => { localStorage.setItem("f_priceMin", priceMin); }, [priceMin]);
@@ -1990,10 +1992,18 @@ export default function App() {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
+  // 추이 그래프 기간 컷오프 — 선택 개월수 기준 첫째 날 (예: 2026-06 + 6 → 2026-01-01)
+  const trendCutoff = useMemo(() => {
+    const months = parseInt(trendRange) || 6;
+    const now = new Date();
+    const c = new Date(now.getFullYear(), now.getMonth() - months + 1, 1);
+    return `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-01`;
+  }, [trendRange]);
+
   const globalPctRange = useMemo(() => {
     const aptMaxes: number[] = [];
     for (const d of data) {
-      const prices = d.recent_trades?.map((t) => t.price) ?? [];
+      const prices = d.recent_trades?.filter((t) => t.date >= trendCutoff).map((t) => t.price) ?? [];
       if (prices.length < 2) continue;
       const mean = prices.reduce((a, b) => a + b, 0) / prices.length;
       let aptMax = 0;
@@ -2007,7 +2017,7 @@ export default function App() {
     aptMaxes.sort((a, b) => a - b);
     const p90 = aptMaxes[Math.floor(aptMaxes.length * 0.9)];
     return Math.max(p90, 0.05);
-  }, [data]);
+  }, [data, trendCutoff]);
 
   return (
     <div className="dark min-h-screen bg-background text-foreground">
@@ -2238,6 +2248,14 @@ export default function App() {
               <SelectItem value="late">늦게 (08:00/18:00)</SelectItem>
             </SelectContent>
           </Select>
+          <Select value={trendRange} onValueChange={(v) => v && setTrendRange(v)} items={{ "3": "추이 3개월", "6": "추이 6개월", "12": "추이 12개월" }}>
+            <SelectTrigger className="w-28 h-8 text-xs"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="3">추이 3개월</SelectItem>
+              <SelectItem value="6">추이 6개월</SelectItem>
+              <SelectItem value="12">추이 12개월</SelectItem>
+            </SelectContent>
+          </Select>
           <Select value={liquidityFilter} onValueChange={(v) => v && setLiquidityFilter(v)} items={{ all: "환금성 전체", good: "좋음 이상 (≥7%)", ok: "보통 이상 (≥4%)", bad: "나쁨 이상 (≥2%)" }}>
             <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
             <SelectContent>
@@ -2346,7 +2364,7 @@ export default function App() {
               </TableHeader>
               <TableBody>
                 {favoriteItems.map((d, idx) => {
-                  const sparkData = d.recent_trades?.slice().reverse().map((t) => ({ date: t.date, price: t.price })) ?? [];
+                  const sparkData = d.recent_trades?.filter((t) => t.date >= trendCutoff).slice().reverse().map((t) => ({ date: t.date, price: t.price })) ?? [];
                   const favKey = `${d.name}|${d.atype}`;
                   const { isFirst, span } = favoriteRowMeta[idx];
                   return (
@@ -2453,7 +2471,8 @@ export default function App() {
             <TableBody>
               {filtered.slice(0, visibleCount).map((d, i) => {
                 const sparkData = d.recent_trades
-                  ?.slice()
+                  ?.filter((t) => t.date >= trendCutoff)
+                  .slice()
                   .reverse()
                   .map((t) => ({ date: t.date, price: t.price })) ?? [];
                 const favKey = `${d.name}|${d.atype}`;

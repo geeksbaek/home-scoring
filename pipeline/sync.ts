@@ -193,6 +193,9 @@ async function updatePages() {
   const df = allTrades.filter((r) => r.거래유형 !== "직거래" && r.층 !== 1); // 통계용 (clean)
   const dfAll = allTrades; // recent_trades용 (전체)
   const recent = df.filter((r) => r.거래일자 >= "2025-11-01");
+  // recent_trades 배포 범위 — 프론트 추이 그래프 기간 토글(3/6/12개월) 대응용 12개월 롤링.
+  const _now = new Date();
+  const rtCutoff = `${_now.getFullYear() - 1}-${String(_now.getMonth() + 1).padStart(2, "0")}-01`;
 
   const identity = await loadJson<Identity[]>("apt_identity.json");
   const idMap = new Map(identity.map((d) => [d.name, d]));
@@ -368,7 +371,7 @@ async function updatePages() {
     // 최근 거래 내역 — 직거래/1층 포함 전체 (플래그로 구분)
     const fullAll = dfAllTyped.filter((r) => r.단지명 === n && r.at === atype);
     const rtRows = fullAll
-      .filter((r) => r.거래일자 >= "2025-11-01")
+      .filter((r) => r.거래일자 >= rtCutoff)
       .sort((a, b) => (b.거래일자 > a.거래일자 ? 1 : -1));
     const rt = rtRows.map((r) => ({
       date: r.거래일자.slice(0, 10),
