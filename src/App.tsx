@@ -20,6 +20,7 @@ import { ChevronDown } from "lucide-react";
 import { lazy, Suspense } from "react";
 const AptMap = lazy(() => import("@/components/AptMap"));
 const MolitPressViewer = lazy(() => import("@/components/MolitPressViewer"));
+const AuthButton = lazy(() => import("@/components/AuthButton"));
 
 const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
 
@@ -2196,12 +2197,17 @@ export default function App() {
             데이터: 실거래가 (전 면적) | 최종 업데이트: {new Date().toLocaleDateString("ko-KR")}
           </p>
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1 shrink-0 text-[10px]">
+            {import.meta.env.VITE_FIREBASE_API_KEY && (
+              <Suspense fallback={null}>
+                <AuthButton />
+              </Suspense>
+            )}
             <Button
               variant="outline"
               size="sm"
               className="text-[10px] h-auto py-0.5 px-2"
               onClick={() => setFinanceOpen(true)}
-              title="자본/연봉/대출 설정 (브라우저 로컬에만 저장)"
+              title="자본/연봉/대출 설정 (로그인 시 본인 계정에만 클라우드 동기화)"
             >
               💰 자금 설정
               {capital && <span className="ml-1 text-emerald-500">●</span>}
@@ -2240,7 +2246,7 @@ export default function App() {
                 <DialogHeader>
                   <DialogTitle>자금 / 대출 설정</DialogTitle>
                 </DialogHeader>
-                <p className="text-[11px] text-muted-foreground -mt-1 mb-2">⚠ 민감 정보 — 브라우저 localStorage에만 저장되며 외부로 전송되지 않습니다.</p>
+                <p className="text-[11px] text-muted-foreground -mt-1 mb-2">⚠ 민감 정보 — 로그인하지 않으면 이 브라우저에만 저장됩니다. 로그인 시 본인 계정에만 클라우드 동기화되며, 보안 규칙상 타인은 접근할 수 없습니다.</p>
                 <div className="space-y-3 text-sm">
                   <div className="grid grid-cols-2 gap-2">
                     <label className="flex flex-col gap-1">
@@ -2299,7 +2305,9 @@ export default function App() {
                     <button
                       className="text-xs text-muted-foreground hover:text-destructive"
                       onClick={() => {
-                        for (const k of ["capital", "income1", "income2", "extraLoan"]) localStorage.removeItem(k);
+                        // removeItem 대신 빈 문자열 저장 — 동기화로 삭제가 타 기기에 전파되도록
+                        // (snapshotLocal 은 null 키를 누락시켜 삭제가 전파되지 않음. getter 는 "" ?? "" 등가)
+                        for (const k of ["capital", "income1", "income2", "extraLoan"]) localStorage.setItem(k, "");
                         setCapital(""); setIncome1(""); setIncome2(""); setExtraLoan("");
                       }}
                     >금액 모두 지우기</button>
