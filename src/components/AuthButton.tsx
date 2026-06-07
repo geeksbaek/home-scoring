@@ -1,10 +1,12 @@
 // 로그인 / 클라우드 동기화 버튼 (헤더)
 //
 // firebaseReady === false (=.env 미설정/fork)이면 아무것도 렌더하지 않는다.
-// 로그인 전: 구글·애플 로그인 메뉴. 로그인 후: 계정 + 동기화 상태 + 로그아웃.
+// 로그인 전: 구글 로그인 메뉴. 로그인 후: 계정 + 동기화 상태 + 로그아웃.
+// (애플 로그인은 provider 설정 전까지 UI에서 숨김 — firebase.ts의 appleProvider/아래
+//  AppleIcon 복원 + Apple 버튼 추가로 되살릴 수 있다.)
 import { useEffect, useState } from "react";
 import { signInWithPopup, onAuthStateChanged, type User } from "firebase/auth";
-import { auth, googleProvider, appleProvider, firebaseReady } from "@/lib/firebase";
+import { auth, googleProvider, firebaseReady } from "@/lib/firebase";
 import { initSync, onSyncState, logout, type SyncState } from "@/lib/sync";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
@@ -34,7 +36,7 @@ export default function AuthButton() {
 
   if (!firebaseReady) return null;
 
-  const login = async (provider: typeof googleProvider | typeof appleProvider) => {
+  const login = async (provider: typeof googleProvider) => {
     setErr(null);
     try {
       await signInWithPopup(auth!, provider);
@@ -123,14 +125,7 @@ export default function AuthButton() {
             <GoogleIcon />
             Google로 계속
           </button>
-          <button
-            type="button"
-            onClick={() => login(appleProvider)}
-            className="flex w-full items-center justify-center gap-2 rounded border border-border bg-black px-2 py-1.5 text-[12px] font-medium text-white hover:bg-neutral-900"
-          >
-            <AppleIcon />
-            Apple로 계속
-          </button>
+          {/* 애플 로그인은 provider 설정 후 복원 */}
         </div>
         {err && <p className="mt-2 text-[10px] text-destructive">{err}</p>}
       </PopoverContent>
@@ -149,10 +144,3 @@ function GoogleIcon() {
   );
 }
 
-function AppleIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M16.36 12.78c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.78.74 3 .72 1.24-.02 2.02-1.12 2.78-2.23.88-1.28 1.24-2.52 1.26-2.58-.03-.01-2.42-.93-2.44-3.68zM14.13 5.9c.64-.78 1.07-1.85.95-2.93-.92.04-2.04.61-2.7 1.38-.59.69-1.11 1.79-.97 2.84 1.03.08 2.08-.52 2.72-1.29z" />
-    </svg>
-  );
-}
