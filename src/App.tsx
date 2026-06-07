@@ -182,7 +182,10 @@ function Sparkline({ data, pctRange, autoRange }: { data: { date: string; price:
     date: d.date,
     price: d.price,
   }));
-  const points = pts.map((p) => `${p.x},${p.y}`).join(" ");
+  // 계단형(step-after): 각 시점의 값을 다음 시점까지 수평 유지 후 수직 점프
+  const points = pts
+    .map((p, i) => (i === 0 ? `${p.x},${p.y}` : `${p.x},${pts[i - 1].y} ${p.x},${p.y}`))
+    .join(" ");
   const last = prices[prices.length - 1];
   const first = prices[0];
   const color = last >= first ? "#4ade80" : "#f87171";
@@ -424,7 +427,7 @@ function calcDsrMaxLoan(incomeMan: number, existDebtMan: number, existRate = 0.0
   return Math.round(monthlyRepay * factor);
 }
 
-// 규제지역: 서울 전 25구(투기과열·조정대상), 성남(분당/수정/중원), 수원(영통/장안/팔달), 용인 수지, 하남
+// 규제지역: 서울 전 25구(투기과열·조정대상), 성남(분당/수정/중원), 수원(영통/장안/팔달), 용인 수지, 하남, 의왕, 과천
 const REGULATED_REGIONS = new Set([
   // 서울 25구 전체
   "서울특별시 종로구", "서울특별시 중구", "서울특별시 용산구", "서울특별시 성동구",
@@ -437,7 +440,7 @@ const REGULATED_REGIONS = new Set([
   // 경기 주요
   "성남시 분당구", "성남시 수정구", "성남시 중원구",
   "수원시 영통구", "수원시 장안구", "수원시 팔달구",
-  "용인시 수지구", "하남시",
+  "용인시 수지구", "하남시", "의왕시", "과천시",
 ]);
 
 // 사내 이자지원 (주택구입 매매대출): 본인 2% 부담, 초과분 회사 지원
