@@ -664,10 +664,12 @@ function calcInterior(areaSqm: number | null | undefined, buildYear: number | nu
   };
 }
 
-function ArticleCard({ a, targetMonth }: { a: NaverArticle; targetMonth?: string }) {
+function ArticleCard({ a, targetMonth, pending }: { a: NaverArticle; targetMonth?: string; pending?: boolean }) {
   const movable = targetMonth ? isMovableBy(a, targetMonth) : undefined;
   const ownerJeonse = isOwnerJeonse(a);
   const tenant = isTenant(a);
+  const enriching = a.moveIn === undefined && pending; // 스트림 진행 중 + 아직 미수신
+  const unknown = a.moveIn === undefined && !pending;  // 스트림 종료 후에도 미상(cap 초과·조회실패)
   return (
     <a
       href={naverArticleUrl(a.articleNo, isMobile)}
@@ -687,7 +689,7 @@ function ArticleCard({ a, targetMonth }: { a: NaverArticle; targetMonth?: string
         </span>
       </div>
       <div className="flex items-center gap-1 text-[10px] flex-wrap">
-        <span className={cn(a.moveIn === undefined ? "text-amber-600 animate-pulse" : !ownerJeonse && !tenant && a.moveIn?.immediate ? "text-emerald-600 font-medium" : "text-muted-foreground")}>{a.moveIn === undefined ? "입주확인중…" : moveInLabel(a)}</span>
+        <span className={cn(enriching ? "text-amber-600 animate-pulse" : unknown ? "text-muted-foreground/60" : !ownerJeonse && !tenant && a.moveIn?.immediate ? "text-emerald-600 font-medium" : "text-muted-foreground")}>{enriching ? "입주확인중…" : unknown ? "입주미상" : moveInLabel(a)}</span>
         {ownerJeonse && <span className="text-rose-500 font-medium">· 주인전세(실입주X)</span>}
         {tenant && !ownerJeonse && <span className="text-rose-500">· 세낀(대출X)</span>}
         {a.dong && <span className="text-muted-foreground">· {a.dong}</span>}
@@ -752,7 +754,7 @@ function MoveInCell({ data, allData, targetMonth, enabled }: { data: AptData; al
           <p className="text-[10px] text-muted-foreground">매매 매물 없음 · <a href={moreUrl} target="_blank" rel="noopener" className="text-primary hover:underline">네이버 →</a></p>
         ) : (
           <>
-            <div className="space-y-1">{all.map((a) => <ArticleCard key={a.articleNo} a={a} targetMonth={targetMonth} />)}</div>
+            <div className="space-y-1">{all.map((a) => <ArticleCard key={a.articleNo} a={a} targetMonth={targetMonth} pending={refreshing} />)}</div>
             <a href={moreUrl} target="_blank" rel="noopener" className="block mt-1 text-[10px] text-primary hover:underline">네이버부동산에서 더보기 →</a>
             <div className="mt-1 pt-1 border-t"><ProxySetting /></div>
           </>

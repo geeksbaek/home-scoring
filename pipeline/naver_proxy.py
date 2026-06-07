@@ -46,8 +46,8 @@ MIN_INTERVAL = float(os.environ.get("MIN_INTERVAL", "1.2"))  # 업스트림 호�
 PAGE_SIZE = int(os.environ.get("PAGE_SIZE", "30"))           # 1~30 (네이버 제한)
 MAX_PAGES = int(os.environ.get("MAX_PAGES", "20"))           # 페이지네이션 상한(20×30=600건) — 무한루프 방지
 MOVEIN_TTL = float(os.environ.get("MOVEIN_TTL", "21600"))    # 매물 입주가능일 캐시 6h
-DETAIL_INTERVAL = float(os.environ.get("DETAIL_INTERVAL", "0.5"))  # 상세 HTML 호출 간격
-MOVEIN_CAP = int(os.environ.get("MOVEIN_CAP", "30"))         # 한 요청당 상세 조회 상한
+DETAIL_INTERVAL = float(os.environ.get("DETAIL_INTERVAL", "0.4"))  # 상세 HTML 호출 간격
+MOVEIN_CAP = int(os.environ.get("MOVEIN_CAP", "60"))         # 한 요청당 상세 조회 상한 (cap 초과 매물은 프론트서 '입주미상')
 # CORS 허용 origin (브라우저 남용 차단). ALLOWED_ORIGINS 환경변수로 덮어쓰기 가능.
 ALLOWED_ORIGINS = {
     o.strip() for o in os.environ.get(
