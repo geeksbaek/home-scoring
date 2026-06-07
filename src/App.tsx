@@ -1685,18 +1685,28 @@ function AllTypesDialog({ name, allData, favorites, onToggleFav }: { name: strin
 // 즐겨찾기 단지 추이 겹쳐보기 — 각 단지의 월별 중앙값 시계열을 한 차트에 오버레이.
 const COMPARE_PALETTE = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899", "#14b8a6", "#f97316", "#6366f1", "#84cc16", "#06b6d4", "#a855f7"];
 
-function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect, excludeFirstFloor }: {
+function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect, excludeFirstFloor, trendRange }: {
   open: boolean;
   onOpenChange: (v: boolean) => void;
   items: AptData[];
   onRemove: (key: string) => void;
   excludeDirect?: boolean;
   excludeFirstFloor?: boolean;
+  trendRange: string;
 }) {
   const [mode, setMode] = useState<"abs" | "index">("abs"); // 절대가(억) vs 지수(첫 시점=100)
   const [hoverYm, setHoverYm] = useState<string | null>(null);
 
-  // 단지별 월별 중앙값 시계열 (직거래/1층 토글 반영)
+  // 추이 필터(trendRange) 기간 cutoff (yyyy-mm). "all"이면 전체.
+  const cutYm = useMemo(() => {
+    const m = parseInt(trendRange) || 0;
+    if (trendRange === "all" || !m) return "";
+    const now = new Date();
+    const c = new Date(now.getFullYear(), now.getMonth() - m + 1, 1);
+    return `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}`;
+  }, [trendRange]);
+
+  // 단지별 월별 중앙값 시계열 (직거래/1층 토글 + 추이 기간 반영)
   const seriesList = useMemo(() => {
     return items.map((d, idx) => {
       const trades = d.ps
@@ -1705,6 +1715,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
       const m = new Map<string, number[]>();
       for (const t of trades) {
         const ym = t.date.slice(0, 7);
+        if (cutYm && ym < cutYm) continue;
         let arr = m.get(ym);
         if (!arr) { arr = []; m.set(ym, arr); }
         arr.push(t.price);
@@ -1727,7 +1738,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
         byYm: new Map(monthly.map((p) => [p.ym, p.price])),
       };
     });
-  }, [items, excludeDirect, excludeFirstFloor]);
+  }, [items, excludeDirect, excludeFirstFloor, cutYm]);
 
   // 차트 지오메트리
   const w = 640, h = 280, padL = 40, padR = 12, padTop = 12, padBottom = 28;
@@ -1788,7 +1799,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
                 <button className={cn("px-2 py-1", mode === "index" ? "bg-primary text-primary-foreground" : "hover:bg-muted")} onClick={() => setMode("index")}>지수(첫 시점=100)</button>
               </div>
               <span className="text-[10px] text-muted-foreground">
-                월별 중앙값{(excludeDirect || excludeFirstFloor) ? ` · ${[excludeDirect && "직거래", excludeFirstFloor && "1층"].filter(Boolean).join("/")} 제외` : ""}
+                {{ "3": "최근 3개월", "6": "최근 6개월", "12": "최근 1년", "36": "최근 3년", "60": "최근 5년", all: "전체 기간" }[trendRange] ?? "전체 기간"} · 월별 중앙값{(excludeDirect || excludeFirstFloor) ? ` · ${[excludeDirect && "직거래", excludeFirstFloor && "1층"].filter(Boolean).join("/")} 제외` : ""}
               </span>
             </div>
 
@@ -3049,6 +3060,7 @@ export default function App() {
           onRemove={toggleFav}
           excludeDirect={excludeDirect}
           excludeFirstFloor={excludeFirstFloor}
+          trendRange={trendRange}
         />
       </div>
     </div>
