@@ -105,12 +105,20 @@ def search_keys(d):
     stripped = re.sub(r"\(.*?\)", "", base).strip()
     # 숫자 꼬리표(번지·동수)도 제거한 코어 — 개포2차현대아파트(220) 등
     core = re.sub(r"[\(\d\-~,]+$", "", stripped).strip() or stripped
+    # 끝의 'N단지/N차/N블럭/N블록' 제거 — 네이버는 '인덕원센트럴자이'인데 우리는 '인덕원 센트럴 자이 1단지'
+    nodan = re.sub(r"\s*\d+\s*(단지|차|블럭|블록|블)$", "", stripped).strip() or stripped
     bjd = (d.get("bjdong") or "").strip()
     bjs = bjd[:-1] if bjd.endswith("동") else bjd  # 매탄동 → 매탄
+    # 시 접두 — 네이버는 브랜드 사이에 지역명을 끼움('래미안과천센트럴스위트') → '과천 래미안센트럴스위트'로 노출
+    city = re.sub(r"(특별시|광역시|시)$", "", (d.get("region") or "").split(" ")[0]).strip()
     # 동-접두 단지명 대응: 네이버는 '매탄e편한세상'인데 우리는 'e편한세상(매탄동)' → 접두 키워드 필요
     keys = []
     for k in (f"{stripped} {bjd}" if bjd else None, f"{bjs}{stripped}" if bjs else None,
               f"{bjs} {stripped}" if bjs else None, stripped,
+              f"{city} {stripped}" if city else None,
+              nodan if nodan != stripped else None,
+              f"{city} {nodan}" if city and nodan != stripped else None,
+              f"{nodan} {bjd}" if bjd and nodan != stripped else None,
               f"{core} {bjd}" if bjd and core != stripped else None, base):
         if k and k not in keys:
             keys.append(k)
