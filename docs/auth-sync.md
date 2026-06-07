@@ -45,7 +45,7 @@ GitHub Pages 정적 배포라 서버가 없어 **Firebase(Auth + Firestore)** �
      - Apple 측 **Return URL** = `https://<authDomain>/__/auth/handler`
        (authDomain 은 보통 `<projectId>.firebaseapp.com`)
 4. **Authentication > Settings > Authorized domains** 에 배포 도메인 추가:
-   - `jongyeol.github.io` (GitHub Pages)
+   - `geeksbaek.github.io` (GitHub Pages)
    - `localhost` 는 기본 포함됨.
 5. **Firestore Database** 생성(반드시 **프로덕션 모드** — 테스트 모드는 30일간 전체
    공개라 금융정보가 노출됨) 후 보안 규칙 게시. 두 방법 중 하나:
