@@ -1694,8 +1694,9 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
   excludeFirstFloor?: boolean;
   trendRange: string;
 }) {
-  const [mode, setMode] = useState<"abs" | "index">("abs"); // 절대가(억) vs 지수(첫 시점=100)
+  const [mode, setMode] = useState<"abs" | "index">("abs"); // 절대가(억) vs 지수(공통기준=100)
   const [hoverYm, setHoverYm] = useState<string | null>(null);
+  const [hoverKey, setHoverKey] = useState<string | null>(null); // 호버 강조 단지
 
   // 추이 필터(trendRange) 기간 cutoff (yyyy-mm). "all"이면 전체.
   const cutYm = useMemo(() => {
@@ -1740,11 +1741,30 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
     });
   }, [items, excludeDirect, excludeFirstFloor, cutYm]);
 
+  // 지수 공통 기준월(anchor) — 표시 단지들의 첫 거래월 중 가장 늦은 달(= 모두 데이터를 가진 시점).
+  // 이 시점을 100으로 리베이스해야 "같은 기간 누가 더 올랐나"를 공정하게 비교할 수 있다.
+  const anchor = useMemo(() => {
+    let a = "";
+    for (const s of seriesList) if (s.monthly.length && s.monthly[0]!.ym > a) a = s.monthly[0]!.ym;
+    return a;
+  }, [seriesList]);
+  // 각 단지의 기준값 = anchor 이하 마지막 알려진 월별값(carry-forward)
+  const indexBase = useMemo(() => {
+    const m = new Map<string, number>();
+    for (const s of seriesList) {
+      let ib = s.monthly[0]?.price ?? 1;
+      for (const p of s.monthly) { if (p.ym <= anchor) ib = p.price; else break; }
+      m.set(s.key, ib || 1);
+    }
+    return m;
+  }, [seriesList, anchor]);
+
   // 차트 지오메트리
   const w = 640, h = 280, padL = 40, padR = 12, padTop = 12, padBottom = 28;
   const ymToDay = (ym: string) => Date.parse(`${ym}-15`) / 86400000;
   const allMonths = useMemo(() => [...new Set(seriesList.flatMap((s) => s.monthly.map((p) => p.ym)))].sort(), [seriesList]);
-  const dispVal = (price: number, base: number) => (mode === "index" ? (base ? (price / base) * 100 : 100) : price);
+  const dispVal = (price: number, key: string) => (mode === "index" ? (price / (indexBase.get(key) || 1)) * 100 : price);
+  const indexOf = (price: number, key: string) => Math.round((price / (indexBase.get(key) || 1)) * 100);
 
   const geo = useMemo(() => {
     if (!allMonths.length) return null;
@@ -1752,7 +1772,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
     const t0 = Math.min(...days), t1 = Math.max(...days), tSpan = t1 - t0 || 1;
     let lo = Infinity, hi = -Infinity;
     for (const s of seriesList) for (const p of s.monthly) {
-      const v = dispVal(p.price, s.base);
+      const v = dispVal(p.price, s.key);
       if (v < lo) lo = v; if (v > hi) hi = v;
     }
     const pad = (hi - lo) * 0.08 || hi * 0.05 || 1;
@@ -1761,7 +1781,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
     const xOf = (ym: string) => padL + ((ymToDay(ym) - t0) / tSpan) * (w - padL - padR);
     const yOf = (v: number) => padTop + (1 - (v - lo) / range) * (h - padTop - padBottom);
     return { t0, t1, lo, hi, range, xOf, yOf };
-  }, [allMonths, seriesList, mode]);
+  }, [allMonths, seriesList, mode, indexBase]);
 
   const years = useMemo(() => {
     if (!allMonths.length) return [];
@@ -1773,11 +1793,24 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
 
   const onMove = (e: React.MouseEvent<SVGSVGElement>) => {
     if (!geo || !allMonths.length) return;
-    const mx = e.clientX - e.currentTarget.getBoundingClientRect().left;
+    const rect = e.currentTarget.getBoundingClientRect();
+    // svg가 축소 렌더(viewBox)될 수 있어 viewBox 좌표로 환산
+    const mx = (e.clientX - rect.left) * (w / rect.width);
+    const my = (e.clientY - rect.top) * (h / rect.height);
     let best = allMonths[0]!, bd = Infinity;
     for (const ym of allMonths) { const dd = Math.abs(geo.xOf(ym) - mx); if (dd < bd) { bd = dd; best = ym; } }
     setHoverYm(best);
+    // 해당 월에서 커서 Y에 가장 가까운 단지 강조
+    let nk: string | null = null, ndy = Infinity;
+    for (const s of seriesList) {
+      const v = s.byYm.get(best);
+      if (v == null) continue;
+      const dy = Math.abs(geo.yOf(dispVal(v, s.key)) - my);
+      if (dy < ndy) { ndy = dy; nk = s.key; }
+    }
+    setHoverKey(nk);
   };
+  const clearHover = () => { setHoverYm(null); setHoverKey(null); };
 
   const fmtYm = (ym: string) => `${ym.slice(2, 4)}.${ym.slice(5, 7)}`;
   const yTicks = geo ? [geo.lo + geo.range * 0.08, (geo.lo + geo.hi) / 2, geo.hi - geo.range * 0.08] : [];
@@ -1796,15 +1829,15 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
             <div className="flex items-center justify-between gap-2">
               <div className="inline-flex rounded-md border overflow-hidden text-xs">
                 <button className={cn("px-2 py-1", mode === "abs" ? "bg-primary text-primary-foreground" : "hover:bg-muted")} onClick={() => setMode("abs")}>절대가(억)</button>
-                <button className={cn("px-2 py-1", mode === "index" ? "bg-primary text-primary-foreground" : "hover:bg-muted")} onClick={() => setMode("index")}>지수(첫 시점=100)</button>
+                <button className={cn("px-2 py-1", mode === "index" ? "bg-primary text-primary-foreground" : "hover:bg-muted")} onClick={() => setMode("index")}>지수(공통기준=100)</button>
               </div>
               <span className="text-[10px] text-muted-foreground">
-                {{ "3": "최근 3개월", "6": "최근 6개월", "12": "최근 1년", "36": "최근 3년", "60": "최근 5년", all: "전체 기간" }[trendRange] ?? "전체 기간"} · 월별 중앙값{(excludeDirect || excludeFirstFloor) ? ` · ${[excludeDirect && "직거래", excludeFirstFloor && "1층"].filter(Boolean).join("/")} 제외` : ""}
+                {{ "3": "최근 3개월", "6": "최근 6개월", "12": "최근 1년", "36": "최근 3년", "60": "최근 5년", all: "전체 기간" }[trendRange] ?? "전체 기간"} · 월별 중앙값{mode === "index" && anchor ? ` · 기준 ${fmtYm(anchor)}=100` : ""}{(excludeDirect || excludeFirstFloor) ? ` · ${[excludeDirect && "직거래", excludeFirstFloor && "1층"].filter(Boolean).join("/")} 제외` : ""}
               </span>
             </div>
 
             <div className="relative" style={{ width: w, maxWidth: "100%" }}>
-              <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} className="max-w-full" onMouseMove={onMove} onMouseLeave={() => setHoverYm(null)}>
+              <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} className="max-w-full" onMouseMove={onMove} onMouseLeave={clearHover}>
                 {/* Y 그리드 + 라벨 */}
                 {yTicks.map((v, i) => (
                   <g key={i}>
@@ -1823,17 +1856,26 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
                     </g>
                   );
                 })}
+                {/* 지수 모드 공통 기준월 세로선 */}
+                {mode === "index" && anchor && geo.xOf(anchor) >= padL && geo.xOf(anchor) <= w - padR && (
+                  <g>
+                    <line x1={geo.xOf(anchor)} y1={padTop} x2={geo.xOf(anchor)} y2={h - padBottom} stroke="currentColor" strokeWidth="0.75" strokeDasharray="3 2" className="text-muted-foreground/40" />
+                    <text x={geo.xOf(anchor) + 2} y={padTop + 8} className="fill-muted-foreground text-[8px]">기준 {fmtYm(anchor)}</text>
+                  </g>
+                )}
                 {/* hover 세로선 */}
                 {hoverYm && <line x1={geo.xOf(hoverYm)} y1={padTop} x2={geo.xOf(hoverYm)} y2={h - padBottom} stroke="currentColor" strokeWidth="0.75" className="text-muted-foreground/40" />}
-                {/* 단지별 라인 (직선 연결) */}
+                {/* 단지별 라인 (직선 연결) — 호버 시 해당 단지 강조, 나머지 흐리게 */}
                 {seriesList.map((s) => {
                   if (!s.monthly.length) return null;
-                  const poly = s.monthly.map((p) => `${geo.xOf(p.ym)},${geo.yOf(dispVal(p.price, s.base))}`).join(" ");
+                  const poly = s.monthly.map((p) => `${geo.xOf(p.ym)},${geo.yOf(dispVal(p.price, s.key))}`).join(" ");
                   const hv = hoverYm && s.byYm.has(hoverYm) ? s.byYm.get(hoverYm)! : null;
+                  const isHi = hoverKey === s.key;
+                  const dim = hoverKey != null && !isHi;
                   return (
-                    <g key={s.key}>
-                      <polyline points={poly} fill="none" stroke={s.color} strokeWidth="1.5" strokeLinejoin="round" />
-                      {hv != null && <circle cx={geo.xOf(hoverYm!)} cy={geo.yOf(dispVal(hv, s.base))} r={3} fill={s.color} />}
+                    <g key={s.key} style={{ opacity: dim ? 0.18 : 1 }}>
+                      <polyline points={poly} fill="none" stroke={s.color} strokeWidth={isHi ? 2.6 : 1.5} strokeLinejoin="round" />
+                      {hv != null && !dim && <circle cx={geo.xOf(hoverYm!)} cy={geo.yOf(dispVal(hv, s.key))} r={isHi ? 3.6 : 3} fill={s.color} />}
                     </g>
                   );
                 })}
@@ -1845,12 +1887,12 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
                   {seriesList.map((s) => {
                     const v = s.byYm.get(hoverYm);
                     return (
-                      <div key={s.key} className="flex items-center justify-between gap-2">
+                      <div key={s.key} className={cn("flex items-center justify-between gap-2", hoverKey === s.key && "font-semibold")}>
                         <span className="flex items-center gap-1 truncate">
                           <span className="inline-block w-2 h-2 rounded-sm shrink-0" style={{ background: s.color }} />
                           <span className="truncate max-w-[90px]">{s.name}</span>
                         </span>
-                        <span className="tabular-nums">{v == null ? "-" : mode === "index" ? `${Math.round((v / (s.base || 1)) * 100)}` : `${v}억`}</span>
+                        <span className="tabular-nums">{v == null ? "-" : mode === "index" ? `${indexOf(v, s.key)}` : `${v}억`}</span>
                       </div>
                     );
                   })}
@@ -1858,14 +1900,20 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
               )}
             </div>
 
-            {/* 범례 — 색상 + 단지명, × 해제 */}
+            {/* 범례 — 색상 + 단지명, hover 강조, × 해제 */}
             <div className="flex flex-wrap gap-x-3 gap-y-1">
               {seriesList.map((s) => {
                 const chg = s.monthly.length > 1 && s.base ? Math.round(((s.monthly[s.monthly.length - 1]!.price - s.base) / s.base) * 1000) / 10 : null;
+                const dim = hoverKey != null && hoverKey !== s.key;
                 return (
-                  <span key={s.key} className="inline-flex items-center gap-1 text-xs">
+                  <span
+                    key={s.key}
+                    className={cn("inline-flex items-center gap-1 text-xs cursor-default transition-opacity", dim && "opacity-30")}
+                    onMouseEnter={() => setHoverKey(s.key)}
+                    onMouseLeave={() => setHoverKey(null)}
+                  >
                     <span className="inline-block w-2.5 h-2.5 rounded-sm" style={{ background: s.color }} />
-                    <span>{s.name}</span>
+                    <span className={cn(hoverKey === s.key && "font-semibold")}>{s.name}</span>
                     <span className="text-[10px] text-muted-foreground">{s.area}㎡</span>
                     {chg != null && <span className={cn("text-[10px]", chg >= 0 ? "text-emerald-500" : "text-red-500")}>{chg >= 0 ? "+" : ""}{chg}%</span>}
                     <button onClick={() => onRemove(s.key)} className="text-muted-foreground hover:text-destructive leading-none ml-0.5" title="즐겨찾기 해제">×</button>
