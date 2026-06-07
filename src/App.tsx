@@ -158,13 +158,22 @@ function robustAccel(
   return { value: Math.round(weighted * 10) / 10, tau: Math.round(tau * 100) / 100 };
 }
 
-function Sparkline({ data, pctRange }: { data: { date: string; price: number }[]; pctRange: number }) {
+function Sparkline({ data, pctRange, autoRange }: { data: { date: string; price: number }[]; pctRange: number; autoRange?: boolean }) {
   const [hover, setHover] = useState<{ x: number; date: string; price: number } | null>(null);
   if (!data.length) return null;
   const prices = data.map((d) => d.price);
   const mean = prices.reduce((a, b) => a + b, 0) / prices.length;
-  const min = mean * (1 - pctRange);
-  const max = mean * (1 + pctRange);
+  // 장기(autoRange): 실제 가격 min/max 에 여백을 둬 변동을 꽉 채워 표시.
+  // 단기: 전 단지 공통 pctRange(mean 기준)로 스케일 통일.
+  let min: number, max: number;
+  if (autoRange) {
+    const lo = Math.min(...prices), hi = Math.max(...prices);
+    const pad = (hi - lo) * 0.12 || hi * 0.02 || 1;
+    min = lo - pad; max = hi + pad;
+  } else {
+    min = mean * (1 - pctRange);
+    max = mean * (1 + pctRange);
+  }
   const range = max - min || 1;
   const w = 80, h = 24, pad = 2;
   const pts = data.map((d, i) => ({
@@ -276,13 +285,13 @@ function LongTrendChart({ data }: { data: [number, number, number][] }) {
 }
 
 // 추이 셀 — Sparkline(최근) 표시, 클릭 시 장기 추이 차트 팝오버
-function TrendCell({ d, spark, pctRange }: { d: AptData; spark: { date: string; price: number }[]; pctRange: number }) {
+function TrendCell({ d, spark, pctRange, autoRange }: { d: AptData; spark: { date: string; price: number }[]; pctRange: number; autoRange?: boolean }) {
   const lt = d.long_trend ?? [];
   if (!spark.length && !lt.length) return <span className="text-muted-foreground">-</span>;
   return (
     <Popover>
       <PopoverTrigger className="cursor-pointer inline-block" title="장기 추이 보기">
-        {spark.length ? <Sparkline data={spark} pctRange={pctRange} /> : <span className="text-muted-foreground text-[10px]">장기↗</span>}
+        {spark.length ? <Sparkline data={spark} pctRange={pctRange} autoRange={autoRange} /> : <span className="text-muted-foreground text-[10px]">장기↗</span>}
       </PopoverTrigger>
       <PopoverContent className="w-auto"><LongTrendChart data={lt} /></PopoverContent>
     </Popover>
@@ -2024,13 +2033,38 @@ export default function App() {
     return list;
   }, [data]);
 
-  // 추이 그래프 기간 컷오프 — 선택 개월수 기준 첫째 날 (예: 2026-06 + 6 → 2026-01-01)
+  // 상승력·환금 계산 윈도우 — 추이 기간을 길게 잡아도 최근 12개월로 cap (모멘텀 지표는 단기 유지).
+  // recent_trades 자체가 12개월 롤링 배포라, 장기 추이는 buildSpark 가 long_trend 로 그린다.
+  const accelMonths = Math.min(parseInt(trendRange) || 6, 12);
   const trendCutoff = useMemo(() => {
-    const months = parseInt(trendRange) || 6;
     const now = new Date();
-    const c = new Date(now.getFullYear(), now.getMonth() - months + 1, 1);
+    const c = new Date(now.getFullYear(), now.getMonth() - accelMonths + 1, 1);
     return `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-01`;
-  }, [trendRange]);
+  }, [accelMonths]);
+
+  // 추이 스파크라인 데이터 — 단기(≤1년)는 개별 거래(recent_trades), 장기(>1년/전체)는
+  // 월별 중앙값(long_trend, 전 기간 배포)으로 그린다. 데이터 추가 배포 없이 7년치 표시.
+  const buildSpark = useCallback((d: AptData): { data: { date: string; price: number }[]; autoRange: boolean } => {
+    const m = parseInt(trendRange) || 0;
+    const isLong = trendRange === "all" || m > 12;
+    if (isLong) {
+      let cutYm = 0;
+      if (trendRange !== "all") {
+        const now = new Date();
+        const c = new Date(now.getFullYear(), now.getMonth() - m + 1, 1);
+        cutYm = c.getFullYear() * 100 + (c.getMonth() + 1);
+      }
+      const data = (d.long_trend ?? [])
+        .filter(([ym]) => ym >= cutYm)
+        .map(([ym, price]) => ({ date: `${String(ym).slice(0, 4)}-${String(ym).slice(4, 6)}-01`, price }));
+      return { data, autoRange: true };
+    }
+    const data = (d.recent_trades ?? [])
+      .filter((t) => t.date >= trendCutoff)
+      .slice().reverse()
+      .map((t) => ({ date: t.date, price: t.price }));
+    return { data, autoRange: false };
+  }, [trendRange, trendCutoff]);
 
   // 1층·직거래 토글을 recent_trades에 적용 + count·환금·상승력 재계산 (메인/즐겨찾기/전체타입 공용)
   const applyTradeFilter = useCallback((d: AptData): AptData => {
@@ -2046,9 +2080,9 @@ export default function App() {
       : d.liquidity;
     const win = trades.filter((t) => t.date >= trendCutoff);
     // 상승력 — 크기(Theil-Sen) × 일관성(Kendall tau)
-    const { value: accel, tau: accel_tau } = robustAccel(win, parseInt(trendRange) || 6);
+    const { value: accel, tau: accel_tau } = robustAccel(win, accelMonths);
     return { ...d, recent_trades: trades, count, liquidity, accel, accel_tau };
-  }, [excludeDirect, excludeFirstFloor, trendCutoff, trendRange]);
+  }, [excludeDirect, excludeFirstFloor, trendCutoff, accelMonths]);
   const tradeFilteredData = useMemo(() => {
     const mapped = data.map(applyTradeFilter);
     calcScores(mapped, weights); // 재계산된 상승력/환금성을 종합점수에 반영
@@ -2485,12 +2519,15 @@ export default function App() {
               <SelectItem value="late">늦게 (08:00/18:00)</SelectItem>
             </SelectContent>
           </Select>
-          <Select value={trendRange} onValueChange={(v) => v && setTrendRange(v)} items={{ "3": "추이 3개월", "6": "추이 6개월", "12": "추이 12개월" }}>
+          <Select value={trendRange} onValueChange={(v) => v && setTrendRange(v)} items={{ "3": "추이 3개월", "6": "추이 6개월", "12": "추이 1년", "36": "추이 3년", "60": "추이 5년", all: "추이 전체" }}>
             <SelectTrigger className="w-28 h-8 text-xs"><SelectValue /></SelectTrigger>
             <SelectContent>
               <SelectItem value="3">추이 3개월</SelectItem>
               <SelectItem value="6">추이 6개월</SelectItem>
-              <SelectItem value="12">추이 12개월</SelectItem>
+              <SelectItem value="12">추이 1년</SelectItem>
+              <SelectItem value="36">추이 3년</SelectItem>
+              <SelectItem value="60">추이 5년</SelectItem>
+              <SelectItem value="all">추이 전체</SelectItem>
             </SelectContent>
           </Select>
           <Select value={liquidityFilter} onValueChange={(v) => v && setLiquidityFilter(v)} items={{ all: "환금성 전체", good: "좋음 이상 (≥7%)", ok: "보통 이상 (≥4%)", bad: "나쁨 이상 (≥2%)" }}>
@@ -2601,7 +2638,7 @@ export default function App() {
               </TableHeader>
               <TableBody>
                 {favoriteItems.map((d, idx) => {
-                  const sparkData = d.recent_trades?.filter((t) => t.date >= trendCutoff).slice().reverse().map((t) => ({ date: t.date, price: t.price })) ?? [];
+                  const { data: sparkData, autoRange: sparkAuto } = buildSpark(d);
                   const favKey = `${d.name}|${d.atype}`;
                   const { isFirst, span } = favoriteRowMeta[idx];
                   return (
@@ -2629,7 +2666,7 @@ export default function App() {
                       <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
                       <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
-                      <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} /></TableCell>
+                      <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} autoRange={sparkAuto} /></TableCell>
                       <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                       <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
                       {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><CommutePopover data={d} slot={commuteSlot} /></TableCell>}
@@ -2707,11 +2744,7 @@ export default function App() {
             </TableHeader>
             <TableBody>
               {filtered.slice(0, visibleCount).map((d, i) => {
-                const sparkData = d.recent_trades
-                  ?.filter((t) => t.date >= trendCutoff)
-                  .slice()
-                  .reverse()
-                  .map((t) => ({ date: t.date, price: t.price })) ?? [];
+                const { data: sparkData, autoRange: sparkAuto } = buildSpark(d);
                 const favKey = `${d.name}|${d.atype}`;
                 const isFav = favorites.has(favKey);
                 return (
@@ -2740,7 +2773,7 @@ export default function App() {
                     <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
                     <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
-                    <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} /></TableCell>
+                    <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} autoRange={sparkAuto} /></TableCell>
                     <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                     <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
                     <TableCell className="text-center"><CommutePopover data={d} slot={commuteSlot} /></TableCell>
