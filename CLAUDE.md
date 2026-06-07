@@ -119,15 +119,15 @@
 `getBrRecapTitleInfo` (총괄표제부)에 vlRat/bcRat가 없으면 `getBrTitleInfo` (표제부) 평균 사용.
 - 오래된 단지나 분리된 단지는 총괄표제부 미등록 케이스 있음
 
-### 주차 — 건축물대장 우선
+### 주차 — 네이버부동산 최우선
 
-- **K-apt 데이터(`kaptdPcntu/kaptdPcnt`)는 부정확 케이스 다수**. 단지가 K-apt에 잘못 보고하거나 분리 등록(예: 신봉센트레빌1단지 K-apt 267 vs 실제 567).
-- **건축물대장 총괄표제부의 `indrAutoUtcnt + oudrAutoUtcnt + indrMechUtcnt + oudrMechUtcnt` 우선 사용**.
-- `building_info.json`에 `parking` 필드로 저장.
-- sync.ts 우선순위: `building.parking > 0` → 사용, 그 외 K-apt fallback.
-- **과소집계 교정**: 건축물대장이 세대당 1대 미만(분할단지·동 누락 의심)인데 K-apt가 현실범위(1.0~2.0대/세대)면 K-apt로 교정(`bestParking`). 멀티단지 분할로 K-apt 합산주차가 분할세대수에 나뉘어 과대(>2.0)가 되는 경우는 채택 안 함 → 진짜 구축 저값(예: 권선신일유토빌 0.94)은 보존. 2026-06 기준 29개 단지 교정(서수원울트라참누리 0.49→1.02, 영덕신일 0.28→1.02 등).
-- **세대당 1대 미만이 전부 오류는 아님**: ~1260개가 <1.0이나 대부분 K-apt 미등록 구축(2000년 이전)의 실제값. 양쪽 출처 교차검증 가능한 과소집계만 교정.
-- `parking_per_hh`도 `bestParking` / 세대수로 재계산.
+- **세대당 주차대수 ground truth = 네이버부동산**. fin.land 단지 페이지 RSC에 `parkingInfo:{totalParkingCount, parkingCountPerHousehold}` 임베드. 올바른 단지별 세대수로 계산돼 과소집계·구축 저값 모두 정확(17개 단지 검증 전부 정답 일치). 2026-06 기준 5107/5158단지(99%) 수집, rows 82.7%가 네이버 출처.
+  - `pipeline/collect_naver_parking.py`: **curl_cffi Chrome TLS 임퍼소네이트 필수**(네이티브 fetch는 403). 워밍업 후 `/complexes/{cno}` GET → RSC 정규식 추출. `data/naver_parking.json`(gitignore)에 매 건 저장·resume. complexNo는 `naver_complex_ids.json`.
+  - 주차는 거의 안 변하므로 주기 갱신(주/월 단위)으로 충분.
+- **fallback(네이버 없는 ~826 rows)**: 건축물대장 → K-apt. `building.parking > 0` 우선, 과소집계 교정(`bestParking`): 건축물대장이 세대당 1대 미만인데 K-apt가 현실범위(1.0~2.0)면 K-apt 채택, 멀티단지 분할 과대(>2.0)는 배제.
+  - K-apt(`kaptdPcntu/kaptdPcnt`)·건축물대장 모두 분할단지에서 부정확 케이스 다수(신봉센트레빌1단지 K-apt 267 vs 실제 567 등).
+- **세대당 1대 미만이 전부 오류는 아님**: 네이버 기준으로도 26%가 <1.0 — 대부분 2000년 이전 구축의 실제값.
+- `sync.ts`: `parking_per_hh` 우선순위 네이버 > bestParking. `parking_src`(naver/building/kapt)로 출처 노출, 팝오버 표시.
 
 ### 관리비 — V2 API, 공용+개별 합산
 
