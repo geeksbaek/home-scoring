@@ -401,11 +401,16 @@ async function updatePages() {
         return [Number(ym.replace("-", "")), Math.round((md / 10000) * 10) / 10, arr.length];
       });
 
-    // 전체 기간 개별 실거래 시계열(차트 전용) — clean 거래(직거래/1층 제외) 전 기간을
+    // 전체 기간 개별 실거래 시계열(차트 전용) — 직거래/1층 포함 전 거래를 플래그와 함께
     // 극한 압축(델타+zigzag+base64 varint)해 문자열 1개로 배포. 장기 추이를 월별 중앙값 샘플링이
-    // 아니라 실거래 한 건 한 건으로 표시하기 위함. 프론트는 unpackPriceSeries로 복원.
+    // 아니라 실거래 한 건 한 건으로 표시 + 프론트 직거래/1층 제외 토글 반영용. unpackPriceSeries로 복원.
     const priceSeries = packPriceSeries(
-      full.map((r) => ({ date: r.거래일자, price01: Math.round(r.금액_만원 / 1000) })),
+      fullAll.map((r) => ({
+        date: r.거래일자,
+        price01: Math.round(r.금액_만원 / 1000),
+        direct: r.거래유형 === "직거래",
+        firstFloor: r.층 === 1,
+      })),
     );
 
     // 주차대수 — 건축물대장 우선. 단 건축물대장이 세대당 1대 미만(과소집계 의심)인데

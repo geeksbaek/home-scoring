@@ -218,16 +218,35 @@ function Sparkline({ data, pctRange, autoRange }: { data: { date: string; price:
 
 // 장기 추이 차트 — 전체 기간 개별 실거래(ps 압축 시계열)를 시간축 비례 라인으로.
 // 샘플링 없이 거래 한 건 한 건 표시. 아래 월별 중앙값 표(long_trend)는 요약으로 유지.
-function LongTrendChart({ data, ps }: { data: [number, number, number][]; ps?: string }) {
+function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor }: { data: [number, number, number][]; ps?: string; excludeDirect?: boolean; excludeFirstFloor?: boolean }) {
   const [hi, setHi] = useState<number | null>(null);
-  // 차트는 개별 실거래 전부. ps 없는 구버전 데이터는 월별 중앙값 fallback.
+  const all = useMemo(() => (ps ? unpackPriceSeries(ps) : null), [ps]);
+  // 차트는 개별 실거래 전부 — 직거래/1층 제외 토글 반영. ps 없는 구버전 데이터는 월별 중앙값 fallback.
   const series = useMemo(
     () =>
-      ps
-        ? unpackPriceSeries(ps)
-        : data.map(([ym, p]) => ({ date: `${String(ym).slice(0, 4)}-${String(ym).slice(4, 6)}-15`, price: p })),
-    [ps, data],
+      all
+        ? all.filter((t) => !(excludeDirect && t.direct) && !(excludeFirstFloor && t.firstFloor))
+        : data.map(([ym, p]) => ({ date: `${String(ym).slice(0, 4)}-${String(ym).slice(4, 6)}-15`, price: p, direct: false, firstFloor: false })),
+    [all, data, excludeDirect, excludeFirstFloor],
   );
+  // 월별 중앙값 표 — ps가 있으면 토글 반영된 개별 거래로 재집계, 없으면 long_trend 그대로.
+  const monthly = useMemo<[number, number, number][]>(() => {
+    if (!all) return data;
+    const m = new Map<string, number[]>();
+    for (const t of series) {
+      const ym = t.date.slice(0, 7);
+      let arr = m.get(ym);
+      if (!arr) { arr = []; m.set(ym, arr); }
+      arr.push(t.price);
+    }
+    return [...m.entries()]
+      .sort((a, b) => (a[0] < b[0] ? -1 : 1))
+      .map(([ym, arr]) => {
+        const s = arr.slice().sort((x, y) => x - y);
+        const md = s.length % 2 ? s[(s.length - 1) / 2]! : (s[s.length / 2 - 1]! + s[s.length / 2]!) / 2;
+        return [Number(ym.replace("-", "")), Math.round(md * 10) / 10, arr.length];
+      });
+  }, [all, series, data]);
   if (!series.length) return <p className="text-xs text-muted-foreground py-2">장기 거래 데이터 없음</p>;
   const prices = series.map((s) => s.price);
   const min = Math.min(...prices), max = Math.max(...prices);
@@ -298,7 +317,7 @@ function LongTrendChart({ data, ps }: { data: [number, number, number][]; ps?: s
             <tr className="text-muted-foreground"><th className="text-left font-normal pb-0.5">월</th><th className="text-right font-normal">중앙값</th><th className="text-right font-normal">건수</th></tr>
           </thead>
           <tbody>
-            {[...data].reverse().map(([ym, p, c], i) => (
+            {[...monthly].reverse().map(([ym, p, c], i) => (
               <tr key={ym} className={i ? "" : "font-medium"}>
                 <td className="text-left">{Math.floor(ym / 100)}.{String(ym % 100).padStart(2, "0")}</td>
                 <td className="text-right">{p}억</td>
@@ -308,21 +327,21 @@ function LongTrendChart({ data, ps }: { data: [number, number, number][]; ps?: s
           </tbody>
         </table>
       </div>
-      <p className="text-muted-foreground text-[10px] mt-0.5">차트: 개별 실거래 · 표: 월별 중앙값 · 직거래/1층 제외</p>
+      <p className="text-muted-foreground text-[10px] mt-0.5">차트: 개별 실거래 · 표: 월별 중앙값{excludeDirect || excludeFirstFloor ? ` · ${[excludeDirect && "직거래", excludeFirstFloor && "1층"].filter(Boolean).join("/")} 제외` : ""}</p>
     </div>
   );
 }
 
 // 추이 셀 — Sparkline(최근) 표시, 클릭 시 장기 추이 차트 팝오버
-function TrendCell({ d, spark, pctRange, autoRange }: { d: AptData; spark: { date: string; price: number }[]; pctRange: number; autoRange?: boolean }) {
+function TrendCell({ d, spark, pctRange, autoRange, excludeDirect, excludeFirstFloor }: { d: AptData; spark: { date: string; price: number }[]; pctRange: number; autoRange?: boolean; excludeDirect?: boolean; excludeFirstFloor?: boolean }) {
   const lt = d.long_trend ?? [];
-  if (!spark.length && !lt.length) return <span className="text-muted-foreground">-</span>;
+  if (!spark.length && !lt.length && !d.ps) return <span className="text-muted-foreground">-</span>;
   return (
     <Popover>
       <PopoverTrigger className="cursor-pointer inline-block" title="장기 추이 보기">
         {spark.length ? <Sparkline data={spark} pctRange={pctRange} autoRange={autoRange} /> : <span className="text-muted-foreground text-[10px]">장기↗</span>}
       </PopoverTrigger>
-      <PopoverContent className="w-auto"><LongTrendChart data={lt} ps={d.ps} /></PopoverContent>
+      <PopoverContent className="w-auto"><LongTrendChart data={lt} ps={d.ps} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} /></PopoverContent>
     </Popover>
   );
 }
@@ -1663,156 +1682,196 @@ function AllTypesDialog({ name, allData, favorites, onToggleFav }: { name: strin
   );
 }
 
-function CompareDialog({ open, onOpenChange, items, onRemove, slot = "early" }: {
+// 즐겨찾기 단지 추이 겹쳐보기 — 각 단지의 월별 중앙값 시계열을 한 차트에 오버레이.
+const COMPARE_PALETTE = ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899", "#14b8a6", "#f97316", "#6366f1", "#84cc16", "#06b6d4", "#a855f7"];
+
+function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect, excludeFirstFloor }: {
   open: boolean;
   onOpenChange: (v: boolean) => void;
   items: AptData[];
   onRemove: (key: string) => void;
-  slot?: CommuteSlot;
+  excludeDirect?: boolean;
+  excludeFirstFloor?: boolean;
 }) {
-  if (items.length === 0) {
-    return (
-      <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-w-md">
-          <DialogHeader><DialogTitle>단지 비교</DialogTitle></DialogHeader>
-          <p className="text-sm text-muted-foreground">비교할 즐겨찾기가 없습니다. ★를 눌러 즐겨찾기에 추가하세요.</p>
-        </DialogContent>
-      </Dialog>
-    );
-  }
+  const [mode, setMode] = useState<"abs" | "index">("abs"); // 절대가(억) vs 지수(첫 시점=100)
+  const [hoverYm, setHoverYm] = useState<string | null>(null);
 
-  // 행 정의
-  type Row = { label: string; render: (d: AptData) => React.ReactNode; group?: string };
-  const fmt = (n: number | null | undefined, suffix = "") => n == null ? "-" : `${n}${suffix}`;
-  const fmtBil = (n: number | null | undefined) => n == null ? "-" : `${(n / 10000).toFixed(2)}억`;
-  const fmtPct = (n: number | null | undefined) => n == null ? "-" : `${n}%`;
-  const slopeMaint = (n: number | null) => {
-    if (n == null) return "-";
-    if (n < 0) return <span className="text-red-500">초과 {Math.abs(n)}년</span>;
-    if (n === 0) return <span className="text-amber-500">교체 임박</span>;
-    if (n <= 3) return <span className="text-amber-500">{n}년</span>;
-    return <span className="text-emerald-500">{n}년</span>;
-  };
-  const slopeColor = (n: number | null) => n == null ? "" : n <= 10 ? "text-emerald-500" : n >= 30 ? "text-red-500" : "";
-  const commuteColor = (m: number | null) => m == null ? "" : m <= 30 ? "text-emerald-500" : m <= 40 ? "" : m <= 50 ? "text-amber-500" : "text-red-500";
-  const pedColor = (m: number | null) => m == null ? "" : m <= 20 ? "text-emerald-500" : m <= 30 ? "" : "text-amber-500";
-  const violenceTotal = (sv: any, year: string) => {
-    const yd = sv?.[year];
-    if (!yd || yd.zero || yd.noData) return 0;
-    return (yd.cases?.s1?.n || 0) + (yd.cases?.s2?.n || 0);
-  };
-  const currentYear = new Date().getFullYear();
-  const YEARS = [String(currentYear - 3), String(currentYear - 2), String(currentYear - 1), String(currentYear)];
+  // 단지별 월별 중앙값 시계열 (직거래/1층 토글 반영)
+  const seriesList = useMemo(() => {
+    return items.map((d, idx) => {
+      const trades = d.ps
+        ? unpackPriceSeries(d.ps).filter((t) => !(excludeDirect && t.direct) && !(excludeFirstFloor && t.firstFloor))
+        : (d.long_trend ?? []).map(([ym, p]) => ({ date: `${String(ym).slice(0, 4)}-${String(ym).slice(4, 6)}-15`, price: p }));
+      const m = new Map<string, number[]>();
+      for (const t of trades) {
+        const ym = t.date.slice(0, 7);
+        let arr = m.get(ym);
+        if (!arr) { arr = []; m.set(ym, arr); }
+        arr.push(t.price);
+      }
+      const monthly = [...m.entries()]
+        .sort((a, b) => (a[0] < b[0] ? -1 : 1))
+        .map(([ym, arr]) => {
+          const s = arr.slice().sort((x, y) => x - y);
+          const md = s.length % 2 ? s[(s.length - 1) / 2]! : (s[s.length / 2 - 1]! + s[s.length / 2]!) / 2;
+          return { ym, price: Math.round(md * 10) / 10 };
+        });
+      const base = monthly[0]?.price ?? 0;
+      return {
+        key: `${d.name}|${d.atype}`,
+        name: d.display_name,
+        area: Math.floor(d.area),
+        color: COMPARE_PALETTE[idx % COMPARE_PALETTE.length]!,
+        base,
+        monthly, // [{ym, price}]
+        byYm: new Map(monthly.map((p) => [p.ym, p.price])),
+      };
+    });
+  }, [items, excludeDirect, excludeFirstFloor]);
 
-  const rows: Row[] = [
-    { label: "지역", render: (d) => d.region },
-    { label: "준공", render: (d) => `${d.build}년` },
-    { label: "동수", render: (d) => fmt(d.dong_count, "동") },
-    { label: "최고층", render: (d) => fmt(d.top_floor, "층") },
-    { label: "총 세대수", render: (d) => d.households != null ? d.households.toLocaleString() + "세대" : "-" },
-    { label: "면적", render: (d) => <Badge variant="outline" className={cn("text-[10px]", atypeBadgeColor(d.atype))}>{Math.floor(d.area)}㎡</Badge> },
-    { label: "타입 세대수", render: (d) => d.type_units != null ? d.type_units.toLocaleString() + "세대" : "-" },
-    { label: "현재가", render: (d) => <span className="font-medium">{fmtBil(d.avg)}</span>, group: "가격" },
-    { label: "상승력", render: (d) => <AccelBadge value={d.accel} /> },
-    { label: "환금성", render: (d) => <LabelText label={liquidityLabel(d.liquidity)} /> },
-    { label: "6개월 거래", render: (d) => `${d.count}건` },
-    { label: "출퇴근 점수", render: (d) => <LabelBadge label={commuteLabel(d.commuteScore)} />, group: "교통" },
-    { label: slot === "late" ? "출근 08:00(판교)" : "출근 06:30(판교)", render: (d) => { const m = commuteValues(d, slot).morning; return m != null ? <span className={commuteColor(m)}>{m}분</span> : "-"; } },
-    { label: slot === "late" ? "퇴근 18:00(판교)" : "퇴근 16:00(판교)", render: (d) => { const e = commuteValues(d, slot).evening; return e != null ? <span className={commuteColor(e)}>{e}분</span> : "-"; } },
-    { label: "지하철", render: (d) => [d.subway_line, d.subway_station].filter(Boolean).join(" ") || "-" },
-    { label: "단지 고저차", render: (d) => d.slope != null ? <span className={slopeColor(d.slope)}>{d.slope}m</span> : "-", group: "환경" },
-    { label: "소아과 점수", render: (d) => <LabelBadge label={pedLabel(d.pedScore)} /> },
-    { label: "소아과 1", render: (d) => d.pedia1_name ? <span className={pedColor(d.pedia1)}>{d.pedia1_name} {d.pedia1}분{d.pedia1_slope != null ? ` (${d.pedia1_slope > 0 ? "↑" : "↓"}${Math.abs(d.pedia1_slope)}m)` : ""}</span> : "-" },
-    { label: "소아과 2", render: (d) => d.pedia2_name ? <span className={pedColor(d.pedia2)}>{d.pedia2_name} {d.pedia2}분{d.pedia2_slope != null ? ` (${d.pedia2_slope > 0 ? "↑" : "↓"}${Math.abs(d.pedia2_slope)}m)` : ""}</span> : "-" },
-    { label: "주차/세대", render: (d) => <LabelText label={parkingLabel(d.parking_per_hh)} /> },
-    { label: "배정초", render: (d) => d.schools?.join(", ") || "-", group: "교육" },
-    { label: "학폭 (4년)", render: (d) => {
-      if (!d.schools?.length) return "-";
-      const totals = YEARS.map((y) => d.schools.reduce((s, sn) => s + violenceTotal(d.school_violence?.[sn], y), 0));
-      const total4yr = totals.reduce((a, b) => a + b, 0);
-      const recent = totals[totals.length - 1];
-      const cls = recent >= 3 ? "text-red-500" : recent > 0 ? "text-amber-500" : total4yr === 0 ? "text-emerald-500" : "";
-      return <span className={cls}>{total4yr}건 (최근 {recent}건)</span>;
-    } },
-    { label: "치안", render: (d) => <LabelText label={safetyLabel(d.safety_grade)} /> },
-    { label: "내진설계", render: (d) => d.eq_design === true ? <span className="text-emerald-500">적용</span> : d.eq_design === false ? <span className="text-red-500">미적용</span> : "-", group: "건축" },
-    { label: "용적률", render: (d) => fmtPct(d.vl_rat) },
-    { label: "건폐율", render: (d) => fmtPct(d.bc_rat) },
-    { label: "대지지분", render: (d) => d.land_share != null ? <span className={d.land_share >= 60 ? "text-emerald-500" : d.land_share >= 40 ? "" : "text-amber-500"}>{d.land_share}㎡ ({(d.land_share / 3.3058).toFixed(1)}평)</span> : "-" },
-    { label: "관리비 연평균", render: (d) => d.mgmt_cost != null ? `${d.mgmt_cost}만원/월` : "-", group: "운영비" },
-    { label: "관리비 여름", render: (d) => d.mgmt_summer != null ? `${d.mgmt_summer}만원` : "-" },
-    { label: "관리비 겨울", render: (d) => d.mgmt_winter != null ? `${d.mgmt_winter}만원` : "-" },
-    { label: "에너지등급", render: (d) => d.energy_grade ?? "-" },
-    { label: "장기수선 적립", render: (d) => d.repair_balance != null ? `${d.repair_balance}만/세대` : "-", group: "장기수선" },
-    { label: "월 부과액", render: (d) => d.repair_levy != null ? `${d.repair_levy.toLocaleString()}원/세대` : "-" },
-    { label: "적립률", render: (d) => fmtPct(d.repair_reserve_rate) },
-    { label: "회계감사", render: (d) => d.audit_year ? <span>{d.audit_year} {d.audit_done ? "완료" : <span className="text-red-500">미실시</span>} {d.audit_opinion === "적정" ? <span className="text-emerald-500">적정</span> : <span className="text-amber-500">{d.audit_opinion}</span>}</span> : "-", group: "감사" },
-    { label: "당기손익", render: (d) => d.audit_net_profit != null ? <span className={d.audit_net_profit >= 0 ? "text-emerald-500" : "text-red-500"}>{d.audit_net_profit >= 0 ? "흑자 " : "적자 "}{(Math.abs(d.audit_net_profit) / 10000).toFixed(0)}만</span> : "-" },
-    { label: "유지관리 건수", render: (d) => d.maint_count != null ? `${d.maint_count}건` : "-", group: "유지관리" },
-    { label: "최근 공사", render: (d) => d.maint_recent ?? "-" },
-    { label: "승강기 잔여", render: (d) => slopeMaint(d.maint_elevator_remaining) },
-    { label: "배관 잔여", render: (d) => slopeMaint(d.maint_piping_remaining) },
-    { label: "방수 잔여", render: (d) => slopeMaint(d.maint_waterproof_remaining) },
-  ];
+  // 차트 지오메트리
+  const w = 640, h = 280, padL = 40, padR = 12, padTop = 12, padBottom = 28;
+  const ymToDay = (ym: string) => Date.parse(`${ym}-15`) / 86400000;
+  const allMonths = useMemo(() => [...new Set(seriesList.flatMap((s) => s.monthly.map((p) => p.ym)))].sort(), [seriesList]);
+  const dispVal = (price: number, base: number) => (mode === "index" ? (base ? (price / base) * 100 : 100) : price);
+
+  const geo = useMemo(() => {
+    if (!allMonths.length) return null;
+    const days = allMonths.map(ymToDay);
+    const t0 = Math.min(...days), t1 = Math.max(...days), tSpan = t1 - t0 || 1;
+    let lo = Infinity, hi = -Infinity;
+    for (const s of seriesList) for (const p of s.monthly) {
+      const v = dispVal(p.price, s.base);
+      if (v < lo) lo = v; if (v > hi) hi = v;
+    }
+    const pad = (hi - lo) * 0.08 || hi * 0.05 || 1;
+    lo -= pad; hi += pad;
+    const range = hi - lo || 1;
+    const xOf = (ym: string) => padL + ((ymToDay(ym) - t0) / tSpan) * (w - padL - padR);
+    const yOf = (v: number) => padTop + (1 - (v - lo) / range) * (h - padTop - padBottom);
+    return { t0, t1, lo, hi, range, xOf, yOf };
+  }, [allMonths, seriesList, mode]);
+
+  const years = useMemo(() => {
+    if (!allMonths.length) return [];
+    const y0 = Number(allMonths[0]!.slice(0, 4)), y1 = Number(allMonths[allMonths.length - 1]!.slice(0, 4));
+    const out: number[] = [];
+    for (let y = y0; y <= y1; y++) out.push(y);
+    return out;
+  }, [allMonths]);
+
+  const onMove = (e: React.MouseEvent<SVGSVGElement>) => {
+    if (!geo || !allMonths.length) return;
+    const mx = e.clientX - e.currentTarget.getBoundingClientRect().left;
+    let best = allMonths[0]!, bd = Infinity;
+    for (const ym of allMonths) { const dd = Math.abs(geo.xOf(ym) - mx); if (dd < bd) { bd = dd; best = ym; } }
+    setHoverYm(best);
+  };
+
+  const fmtYm = (ym: string) => `${ym.slice(2, 4)}.${ym.slice(5, 7)}`;
+  const yTicks = geo ? [geo.lo + geo.range * 0.08, (geo.lo + geo.hi) / 2, geo.hi - geo.range * 0.08] : [];
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="!w-[95vw] sm:!w-fit !max-w-[95vw] max-h-[90vh] overflow-hidden flex flex-col">
+      <DialogContent className="!w-[95vw] sm:!w-fit !max-w-[95vw] max-h-[90vh] overflow-auto flex flex-col gap-3">
         <DialogHeader>
-          <DialogTitle>단지 비교 — 즐겨찾기 {items.length}개</DialogTitle>
+          <DialogTitle>즐겨찾기 추이 비교 — {items.length}개</DialogTitle>
         </DialogHeader>
-        <div className="overflow-auto flex-1">
-          <table className="w-full text-xs border-collapse">
-            <thead>
-              <tr>
-                <th className="text-left p-2 border-b font-medium text-muted-foreground sticky left-0 bg-background min-w-[100px] z-20">항목</th>
-                {items.map((d) => (
-                  <th key={`${d.name}|${d.atype}`} className="text-left p-2 border-b border-l min-w-[180px] align-top">
-                    <div className="flex items-start justify-between gap-2">
-                      <div>
-                        <div className="font-semibold text-sm">{d.display_name}</div>
-                        <div className="text-[10px] text-muted-foreground">
-                          {d.region} · {d.area}㎡
-                        </div>
-                      </div>
-                      <button
-                        onClick={() => onRemove(`${d.name}|${d.atype}`)}
-                        className="text-muted-foreground hover:text-destructive text-base leading-none"
-                        title="즐겨찾기 해제"
-                      >×</button>
-                    </div>
-                  </th>
+
+        {items.length === 0 || !geo ? (
+          <p className="text-sm text-muted-foreground py-4">비교할 즐겨찾기가 없습니다. ★를 눌러 즐겨찾기에 추가하세요.</p>
+        ) : (
+          <>
+            <div className="flex items-center justify-between gap-2">
+              <div className="inline-flex rounded-md border overflow-hidden text-xs">
+                <button className={cn("px-2 py-1", mode === "abs" ? "bg-primary text-primary-foreground" : "hover:bg-muted")} onClick={() => setMode("abs")}>절대가(억)</button>
+                <button className={cn("px-2 py-1", mode === "index" ? "bg-primary text-primary-foreground" : "hover:bg-muted")} onClick={() => setMode("index")}>지수(첫 시점=100)</button>
+              </div>
+              <span className="text-[10px] text-muted-foreground">
+                월별 중앙값{(excludeDirect || excludeFirstFloor) ? ` · ${[excludeDirect && "직거래", excludeFirstFloor && "1층"].filter(Boolean).join("/")} 제외` : ""}
+              </span>
+            </div>
+
+            <div className="relative" style={{ width: w, maxWidth: "100%" }}>
+              <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} className="max-w-full" onMouseMove={onMove} onMouseLeave={() => setHoverYm(null)}>
+                {/* Y 그리드 + 라벨 */}
+                {yTicks.map((v, i) => (
+                  <g key={i}>
+                    <line x1={padL} y1={geo.yOf(v)} x2={w - padR} y2={geo.yOf(v)} stroke="currentColor" strokeWidth="0.5" className="text-muted-foreground/15" />
+                    <text x={padL - 4} y={geo.yOf(v) + 3} textAnchor="end" className="fill-muted-foreground text-[8px]">{mode === "index" ? Math.round(v) : v.toFixed(1)}</text>
+                  </g>
                 ))}
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row, i) => {
-                const isGroupStart = row.group && (i === 0 || rows[i - 1].group !== row.group);
+                {/* 연도 경계 + 라벨 */}
+                {years.map((y) => {
+                  const x = geo.xOf(`${y}-01`);
+                  if (x < padL || x > w - padR) return null;
+                  return (
+                    <g key={y}>
+                      <line x1={x} y1={padTop} x2={x} y2={h - padBottom} stroke="currentColor" strokeWidth="0.5" className="text-muted-foreground/10" />
+                      <text x={x} y={h - 8} textAnchor="middle" className="fill-muted-foreground text-[8px]">'{String(y).slice(2)}</text>
+                    </g>
+                  );
+                })}
+                {/* hover 세로선 */}
+                {hoverYm && <line x1={geo.xOf(hoverYm)} y1={padTop} x2={geo.xOf(hoverYm)} y2={h - padBottom} stroke="currentColor" strokeWidth="0.75" className="text-muted-foreground/40" />}
+                {/* 단지별 라인 (직선 연결) */}
+                {seriesList.map((s) => {
+                  if (!s.monthly.length) return null;
+                  const poly = s.monthly.map((p) => `${geo.xOf(p.ym)},${geo.yOf(dispVal(p.price, s.base))}`).join(" ");
+                  const hv = hoverYm && s.byYm.has(hoverYm) ? s.byYm.get(hoverYm)! : null;
+                  return (
+                    <g key={s.key}>
+                      <polyline points={poly} fill="none" stroke={s.color} strokeWidth="1.5" strokeLinejoin="round" />
+                      {hv != null && <circle cx={geo.xOf(hoverYm!)} cy={geo.yOf(dispVal(hv, s.base))} r={3} fill={s.color} />}
+                    </g>
+                  );
+                })}
+              </svg>
+              {/* hover 툴팁 */}
+              {hoverYm && (
+                <div className="absolute top-0 right-0 bg-popover border rounded shadow px-2 py-1 text-[10px] pointer-events-none z-50 min-w-[120px]">
+                  <div className="font-medium mb-0.5">{fmtYm(hoverYm)}</div>
+                  {seriesList.map((s) => {
+                    const v = s.byYm.get(hoverYm);
+                    return (
+                      <div key={s.key} className="flex items-center justify-between gap-2">
+                        <span className="flex items-center gap-1 truncate">
+                          <span className="inline-block w-2 h-2 rounded-sm shrink-0" style={{ background: s.color }} />
+                          <span className="truncate max-w-[90px]">{s.name}</span>
+                        </span>
+                        <span className="tabular-nums">{v == null ? "-" : mode === "index" ? `${Math.round((v / (s.base || 1)) * 100)}` : `${v}억`}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* 범례 — 색상 + 단지명, × 해제 */}
+            <div className="flex flex-wrap gap-x-3 gap-y-1">
+              {seriesList.map((s) => {
+                const chg = s.monthly.length > 1 && s.base ? Math.round(((s.monthly[s.monthly.length - 1]!.price - s.base) / s.base) * 1000) / 10 : null;
                 return (
-                  <React.Fragment key={row.label}>
-                    {isGroupStart && (
-                      <tr><td colSpan={items.length + 1} className="bg-muted/40 px-2 py-1 text-[10px] font-medium text-muted-foreground uppercase tracking-wide">{row.group}</td></tr>
-                    )}
-                    <tr className="border-b">
-                      <td className="p-2 text-muted-foreground sticky left-0 bg-background">{row.label}</td>
-                      {items.map((d) => (
-                        <td key={`${d.name}|${d.atype}|${row.label}`} className="p-2 border-l align-top">
-                          {row.render(d)}
-                        </td>
-                      ))}
-                    </tr>
-                  </React.Fragment>
+                  <span key={s.key} className="inline-flex items-center gap-1 text-xs">
+                    <span className="inline-block w-2.5 h-2.5 rounded-sm" style={{ background: s.color }} />
+                    <span>{s.name}</span>
+                    <span className="text-[10px] text-muted-foreground">{s.area}㎡</span>
+                    {chg != null && <span className={cn("text-[10px]", chg >= 0 ? "text-emerald-500" : "text-red-500")}>{chg >= 0 ? "+" : ""}{chg}%</span>}
+                    <button onClick={() => onRemove(s.key)} className="text-muted-foreground hover:text-destructive leading-none ml-0.5" title="즐겨찾기 해제">×</button>
+                  </span>
                 );
               })}
-            </tbody>
-          </table>
-        </div>
+            </div>
+          </>
+        )}
       </DialogContent>
     </Dialog>
   );
 }
 
 type SortKey = "score" | "accel" | "liquidity" | "commuteScore" | "pedScore" | "slope" | "avg" | "build" | "name" | "distance";
+// 즐겨찾기 테이블 컬럼 정렬 키
+type FavSortKey = "name" | "households" | "avg" | "accel" | "liquidity" | "commuteScore" | "pedScore" | "slope" | "parking";
 
 function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
   const R = 6371;
@@ -2085,7 +2144,7 @@ export default function App() {
         cutDate = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-01`;
       }
       const series = d.ps
-        ? unpackPriceSeries(d.ps)
+        ? unpackPriceSeries(d.ps).filter((t) => !(excludeDirect && t.direct) && !(excludeFirstFloor && t.firstFloor))
         : (d.long_trend ?? []).map(([ym, price]) => ({ date: `${String(ym).slice(0, 4)}-${String(ym).slice(4, 6)}-01`, price }));
       const data = cutDate ? series.filter((t) => t.date >= cutDate) : series;
       return { data, autoRange: true };
@@ -2095,7 +2154,7 @@ export default function App() {
       .slice().reverse()
       .map((t) => ({ date: t.date, price: t.price }));
     return { data, autoRange: false };
-  }, [trendRange, trendCutoff]);
+  }, [trendRange, trendCutoff, excludeDirect, excludeFirstFloor]);
 
   // 1층·직거래 토글을 recent_trades에 적용 + count·환금·상승력 재계산 (메인/즐겨찾기/전체타입 공용)
   const applyTradeFilter = useCallback((d: AptData): AptData => {
@@ -2191,23 +2250,53 @@ export default function App() {
     return () => io.disconnect();
   }, [viewMode, visibleCount, filtered.length]);
 
+  // 즐겨찾기 테이블 컬럼 정렬 (헤더 클릭) — 기본: 단지명 오름차순
+  const [favSort, setFavSort] = useState<{ key: FavSortKey; dir: "asc" | "desc" }>({ key: "name", dir: "asc" });
+  const sortFav = useCallback((key: FavSortKey) => {
+    setFavSort((prev) => (prev.key === key ? { key, dir: prev.dir === "asc" ? "desc" : "asc" } : { key, dir: key === "name" ? "asc" : "desc" }));
+  }, []);
+  const favTH = (key: FavSortKey, label: string, className = "text-center") => (
+    <TableHead className={cn(className, "cursor-pointer select-none hover:text-foreground")} onClick={() => sortFav(key)} title="클릭하여 정렬">
+      <span className="inline-flex items-center gap-0.5">{label}{favSort.key === key && <span className="text-[9px]">{favSort.dir === "asc" ? "▲" : "▼"}</span>}</span>
+    </TableHead>
+  );
+
   const favoriteItems = useMemo(() => {
     const items = tradeFilteredData.filter((d) => favorites.has(`${d.name}|${d.atype}`));
+    const byName = (a: AptData, b: AptData) => a.name.localeCompare(b.name, "ko") || a.area - b.area;
+    const val = (d: AptData): number | null => {
+      switch (favSort.key) {
+        case "households": return d.households;
+        case "avg": return d.avg;
+        case "accel": return d.accel;
+        case "liquidity": return d.liquidity;
+        case "commuteScore": return d.commuteScore;
+        case "pedScore": return d.pedScore;
+        case "slope": return d.slope;
+        case "parking": return d.parking_per_hh;
+        default: return null;
+      }
+    };
     return items.sort((a, b) => {
-      if (a.name !== b.name) return a.name.localeCompare(b.name, "ko");
-      return a.area - b.area;
+      if (favSort.key === "name") return favSort.dir === "asc" ? byName(a, b) : -byName(a, b);
+      const va = val(a), vb = val(b);
+      if (va == null && vb == null) return byName(a, b); // 둘 다 없으면 이름순
+      if (va == null) return 1; // 값 없는 행은 항상 뒤로
+      if (vb == null) return -1;
+      const c = va - vb || byName(a, b);
+      return favSort.dir === "asc" ? c : -c;
     });
-  }, [tradeFilteredData, favorites]);
+  }, [tradeFilteredData, favorites, favSort]);
 
-  // 같은 단지(name) row 그룹화 → rowspan 메타
+  // 같은 단지(name) row 그룹화 → rowspan 메타. 정렬로 같은 단지가 흩어질 수 있어
+  // "연속 구간" 기준으로 span 계산 (흩어지면 각자 자기 셀 렌더, 붙어있으면 병합).
   const favoriteRowMeta = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const d of favoriteItems) counts.set(d.name, (counts.get(d.name) ?? 0) + 1);
-    const seen = new Set<string>();
-    return favoriteItems.map((d) => {
-      const isFirst = !seen.has(d.name);
-      seen.add(d.name);
-      return { isFirst, span: counts.get(d.name) ?? 1 };
+    return favoriteItems.map((d, i) => {
+      const isFirst = i === 0 || favoriteItems[i - 1]!.name !== d.name;
+      if (!isFirst) return { isFirst: false, span: 1 };
+      let span = 1;
+      while (i + span < favoriteItems.length && favoriteItems[i + span]!.name === d.name) span++;
+      return { isFirst: true, span };
     });
   }, [favoriteItems]);
 
@@ -2584,7 +2673,7 @@ export default function App() {
           <Button variant={viewMode === "map" ? "default" : "outline"} size="sm" className="h-7 text-xs px-2" onClick={() => { setViewMode("map"); if (!myLocation) navigator.geolocation.getCurrentPosition((p) => setMyLocation({ lat: p.coords.latitude, lng: p.coords.longitude }), () => {}); }}>지도</Button>
           {favoriteItems.length > 1 && (
             <Button variant="outline" size="sm" className="h-7 text-xs px-2" onClick={() => setCompareOpen(true)}>
-              <span className="text-yellow-400">★</span> 비교 ({favoriteItems.length})
+              <span className="text-yellow-400">★</span> 추이 비교 ({favoriteItems.length})
             </Button>
           )}
         </div>
@@ -2650,17 +2739,17 @@ export default function App() {
               <TableHeader>
                 <TableRow className="bg-primary/10">
                   <TableHead className="w-6 text-center"></TableHead>
-                  <TableHead className="min-w-[160px]">즐겨찾기</TableHead>
-                  <TableHead className="text-center">세대수</TableHead>
-                  <TableHead className="text-center">현재가</TableHead>
+                  {favTH("name", "즐겨찾기", "min-w-[160px]")}
+                  {favTH("households", "세대수")}
+                  {favTH("avg", "현재가")}
                   <TableHead className="text-center" title="네이버 실매물 중 입주가능월까지 입주 가능한 매매 최저가 (세낀 제외)">호가</TableHead>
                   <TableHead className="text-center w-20">추이</TableHead>
-                  <TableHead className="text-center">상승력</TableHead>
-                  <TableHead className="text-center">환금</TableHead>
-                  <TableHead className="text-center">출퇴근</TableHead>
-                  <TableHead className="text-center">소아과</TableHead>
-                  <TableHead className="text-center">고저차</TableHead>
-                  <TableHead className="text-center">주차</TableHead>
+                  {favTH("accel", "상승력")}
+                  {favTH("liquidity", "환금")}
+                  {favTH("commuteScore", "출퇴근")}
+                  {favTH("pedScore", "소아과")}
+                  {favTH("slope", "고저차")}
+                  {favTH("parking", "주차")}
                   <TableHead className="text-center">초등학교</TableHead>
                   <TableHead className="text-center">안전</TableHead>
                   <TableHead className="text-center">내진</TableHead>
@@ -2697,7 +2786,7 @@ export default function App() {
                       <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
                       <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
-                      <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} autoRange={sparkAuto} /></TableCell>
+                      <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} autoRange={sparkAuto} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} /></TableCell>
                       <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                       <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
                       {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><CommutePopover data={d} slot={commuteSlot} /></TableCell>}
@@ -2804,7 +2893,7 @@ export default function App() {
                     <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
                     <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
-                    <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} autoRange={sparkAuto} /></TableCell>
+                    <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} autoRange={sparkAuto} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} /></TableCell>
                     <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                     <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
                     <TableCell className="text-center"><CommutePopover data={d} slot={commuteSlot} /></TableCell>
@@ -2953,12 +3042,13 @@ export default function App() {
             )}
           </div>
         )}
-        <CompareDialog
+        <CompareTrendChart
           open={compareOpen}
           onOpenChange={setCompareOpen}
           items={data.filter((d) => favorites.has(`${d.name}|${d.atype}`))}
           onRemove={toggleFav}
-          slot={commuteSlot}
+          excludeDirect={excludeDirect}
+          excludeFirstFloor={excludeFirstFloor}
         />
       </div>
     </div>
