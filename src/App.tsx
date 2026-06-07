@@ -1749,47 +1749,24 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
     });
   }, [items, excludeDirect, excludeFirstFloor, cutYm]);
 
-  // 지수 공통 기준월(anchor) — 표시 단지들의 첫 거래월 중 가장 늦은 달(= 모두 데이터를 가진 시점).
-  // 이 시점을 100으로 리베이스해야 "같은 기간 누가 더 올랐나"를 공정하게 비교할 수 있다.
-  const anchor = useMemo(() => {
-    let a = "";
-    for (const s of seriesList) if (s.monthly.length && s.monthly[0]!.ym > a) a = s.monthly[0]!.ym;
-    return a;
-  }, [seriesList]);
-  // 각 단지의 기준값 = anchor 이하 마지막 알려진 월별값(carry-forward)
-  const indexBase = useMemo(() => {
-    const m = new Map<string, number>();
-    for (const s of seriesList) {
-      let ib = s.monthly[0]?.price ?? 1;
-      for (const p of s.monthly) { if (p.ym <= anchor) ib = p.price; else break; }
-      m.set(s.key, ib || 1);
-    }
-    return m;
-  }, [seriesList, anchor]);
-
-  // 표시용 점열 — delta(상승액) 모드에선 공통기준월(anchor)에 0 시작점을 강제로 두고
-  // anchor 이후만 그린다 → 모든 단지가 같은 지점(anchor, 0)에서 출발. abs 모드는 전체 이력.
-  const vis = useMemo(() => seriesList.map((s) => {
-    const pts = mode === "delta" && anchor
-      ? [{ ym: anchor, price: indexBase.get(s.key) ?? 0 }, ...s.monthly.filter((p) => p.ym > anchor)]
-      : s.monthly;
-    return { ...s, pts, byYm: new Map(pts.map((p) => [p.ym, p.price] as const)) };
-  }), [seriesList, mode, anchor, indexBase]);
+  // 상승액(delta) 기준값 = 각 단지의 "표시 기간 내 첫 월별값"(s.base). 그 시점부터 0에서 출발해
+  // 얼마(억) 올랐는지 표시. x축 범위는 절대가와 동일(추이 필터 기간 전체) → 모드 전환해도 범위 불변.
+  const baseByKey = useMemo(() => new Map(seriesList.map((s) => [s.key, s.base || 0])), [seriesList]);
 
   // 차트 지오메트리
   const w = 640, h = 280, padL = 40, padR = 12, padTop = 12, padBottom = 28;
   const ymToDay = (ym: string) => Date.parse(`${ym}-15`) / 86400000;
-  const allMonths = useMemo(() => [...new Set(vis.flatMap((s) => s.pts.map((p) => p.ym)))].sort(), [vis]);
-  // delta 모드: 공통기준월(anchor) 값 대비 절대 상승액(억). anchor에서 0에서 출발해 얼마 올랐는지 표시.
-  const dispVal = (price: number, key: string) => (mode === "delta" ? price - (indexBase.get(key) ?? 0) : price);
-  const deltaOf = (price: number, key: string) => Math.round((price - (indexBase.get(key) ?? 0)) * 10) / 10;
+  const allMonths = useMemo(() => [...new Set(seriesList.flatMap((s) => s.monthly.map((p) => p.ym)))].sort(), [seriesList]);
+  // delta 모드: 기간 내 첫값(base) 대비 절대 상승액(억) — 각 단지가 자기 시작점에서 0으로 출발.
+  const dispVal = (price: number, key: string) => (mode === "delta" ? price - (baseByKey.get(key) ?? 0) : price);
+  const deltaOf = (price: number, key: string) => Math.round((price - (baseByKey.get(key) ?? 0)) * 10) / 10;
 
   const geo = useMemo(() => {
     if (!allMonths.length) return null;
     const days = allMonths.map(ymToDay);
     const t0 = Math.min(...days), t1 = Math.max(...days), tSpan = t1 - t0 || 1;
     let lo = Infinity, hi = -Infinity;
-    for (const s of vis) for (const p of s.pts) {
+    for (const s of seriesList) for (const p of s.monthly) {
       const v = dispVal(p.price, s.key);
       if (v < lo) lo = v; if (v > hi) hi = v;
     }
@@ -1799,7 +1776,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
     const xOf = (ym: string) => padL + ((ymToDay(ym) - t0) / tSpan) * (w - padL - padR);
     const yOf = (v: number) => padTop + (1 - (v - lo) / range) * (h - padTop - padBottom);
     return { t0, t1, lo, hi, range, xOf, yOf };
-  }, [allMonths, vis, mode, indexBase]);
+  }, [allMonths, seriesList, mode, baseByKey]);
 
   const years = useMemo(() => {
     if (!allMonths.length) return [];
@@ -1820,7 +1797,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
     setHoverYm(best);
     // 해당 월에서 커서 Y에 가장 가까운 단지 강조
     let nk: string | null = null, ndy = Infinity;
-    for (const s of vis) {
+    for (const s of seriesList) {
       const v = s.byYm.get(best);
       if (v == null) continue;
       const dy = Math.abs(geo.yOf(dispVal(v, s.key)) - my);
@@ -1850,7 +1827,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
                 <button className={cn("px-2 py-1", mode === "delta" ? "bg-primary text-primary-foreground" : "hover:bg-muted")} onClick={() => setMode("delta")}>상승액(기준=0)</button>
               </div>
               <span className="text-[10px] text-muted-foreground">
-                {{ "3": "최근 3개월", "6": "최근 6개월", "12": "최근 1년", "36": "최근 3년", "60": "최근 5년", all: "전체 기간" }[trendRange] ?? "전체 기간"} · 월별 중앙값{mode === "delta" && anchor ? ` · 기준 ${fmtYm(anchor)}=0 (억)` : ""}{(excludeDirect || excludeFirstFloor) ? ` · ${[excludeDirect && "직거래", excludeFirstFloor && "1층"].filter(Boolean).join("/")} 제외` : ""}
+                {{ "3": "최근 3개월", "6": "최근 6개월", "12": "최근 1년", "36": "최근 3년", "60": "최근 5년", all: "전체 기간" }[trendRange] ?? "전체 기간"} · 월별 중앙값{mode === "delta" ? " · 상승액(기간시작=0, 억)" : ""}{(excludeDirect || excludeFirstFloor) ? ` · ${[excludeDirect && "직거래", excludeFirstFloor && "1층"].filter(Boolean).join("/")} 제외` : ""}
               </span>
             </div>
 
@@ -1874,13 +1851,6 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
                     </g>
                   );
                 })}
-                {/* 상승액 모드: 공통 기준월 세로선 */}
-                {mode === "delta" && anchor && geo.xOf(anchor) >= padL && geo.xOf(anchor) <= w - padR && (
-                  <g>
-                    <line x1={geo.xOf(anchor)} y1={padTop} x2={geo.xOf(anchor)} y2={h - padBottom} stroke="currentColor" strokeWidth="0.75" strokeDasharray="3 2" className="text-muted-foreground/40" />
-                    <text x={geo.xOf(anchor) + 2} y={padTop + 8} className="fill-muted-foreground text-[8px]">기준 {fmtYm(anchor)}</text>
-                  </g>
-                )}
                 {/* 상승액 모드: 0(기준) 가로선 */}
                 {mode === "delta" && geo.yOf(0) >= padTop && geo.yOf(0) <= h - padBottom && (
                   <line x1={padL} y1={geo.yOf(0)} x2={w - padR} y2={geo.yOf(0)} stroke="currentColor" strokeWidth="0.75" className="text-muted-foreground/30" />
@@ -1888,9 +1858,9 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
                 {/* hover 세로선 */}
                 {hoverYm && <line x1={geo.xOf(hoverYm)} y1={padTop} x2={geo.xOf(hoverYm)} y2={h - padBottom} stroke="currentColor" strokeWidth="0.75" className="text-muted-foreground/40" />}
                 {/* 단지별 라인 (직선 연결) — 호버 시 해당 단지 강조, 나머지 흐리게 */}
-                {vis.map((s) => {
-                  if (!s.pts.length) return null;
-                  const poly = s.pts.map((p) => `${geo.xOf(p.ym)},${geo.yOf(dispVal(p.price, s.key))}`).join(" ");
+                {seriesList.map((s) => {
+                  if (!s.monthly.length) return null;
+                  const poly = s.monthly.map((p) => `${geo.xOf(p.ym)},${geo.yOf(dispVal(p.price, s.key))}`).join(" ");
                   const hv = hoverYm && s.byYm.has(hoverYm) ? s.byYm.get(hoverYm)! : null;
                   const isHi = hoverKey === s.key;
                   const dim = hoverKey != null && !isHi;
@@ -1906,7 +1876,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
               {hoverYm && (
                 <div className="absolute top-0 right-0 bg-popover border rounded shadow px-2 py-1 text-[10px] pointer-events-none z-50 min-w-[120px]">
                   <div className="font-medium mb-0.5">{fmtYm(hoverYm)}</div>
-                  {vis.map((s) => {
+                  {seriesList.map((s) => {
                     const v = s.byYm.get(hoverYm);
                     return (
                       <div key={s.key} className={cn("flex items-center justify-between gap-2", hoverKey === s.key && "font-semibold")}>
