@@ -17,12 +17,20 @@ GitHub Pages 정적 배포라 서버가 없어 **Firebase(Auth + Firestore)** �
 
 ## 동기화 대상
 
-- `favorites`, `weights`, 모든 `f_*` 필터, `loanYears`, `extraRepayYears`,
-  그리고 **자금/소득 민감정보**(`capital`, `income1`, `income2`, `extraLoan`)
-  (`src/lib/sync.ts` 의 `SYNC_KEYS`).
-- 자금/소득은 사용자 요청으로 동기화 대상에 포함된다. **Firestore 보안 규칙이
-  본인 문서(`users/{uid}`)만 read/write 를 허용하므로 타인은 접근할 수 없다.**
-  자금 설정 UI 도 "로그인 시 본인 계정에만 클라우드 동기화"로 문구를 맞췄다.
+- `favorites`, `weights`, 모든 `f_*` 필터(입주가능월 `f_moveInMonth` 포함),
+  `loanYears`, `extraRepayYears`, **자금/소득 민감정보**(`capital`, `income1`,
+  `income2`, `extraLoan`), **프록시 설정**(`naverProxyUrl`, `naverProxyToken`),
+  **KB 시세 수동 입력값**(`kb:*` 동적 prefix 키) (`src/lib/sync.ts` 의 `SYNC_KEYS` + `isSyncKey`).
+- 자금/소득·프록시 토큰 등 민감값도 포함된다. **Firestore 보안 규칙이 본인
+  문서(`users/{uid}`)만 read/write 를 허용하므로 타인은 접근할 수 없다.**
+
+## 실시간 반영 (reload 없이)
+
+타 기기 변경은 `onSnapshot` 으로 수신 → `applyRemote` 가 localStorage 를 갱신한 뒤
+`cloudsync` 이벤트를 디스패치한다. `App.tsx` 의 `applyCloudState` 리스너가 영향받는
+모든 상태를 localStorage 에서 다시 읽어 React 에 재주입하므로 **페이지 새로고침 없이**
+즐겨찾기·필터가 즉시 바뀐다. 핑퐁/덮어쓰기를 막기 위해 patched `setItem` 은 **값이
+실제로 바뀐 경우에만** push 한다(동일값 재기록 무시).
 
 ## Firebase 콘솔 설정 (최초 1회)
 

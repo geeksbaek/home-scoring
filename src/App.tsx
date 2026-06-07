@@ -14,6 +14,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { CLOUD_SYNC_EVENT } from "@/lib/sync";
 import { fetchKbLivePrice, type KbLivePrice } from "@/lib/kbLivePrice";
 import { getProxyUrl, setProxyUrl, getProxyToken, setProxyToken, useColumnListings, articlesForAtype, isMovableBy, isTenant, isOwnerJeonse, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
 import { ChevronDown } from "lucide-react";
@@ -1890,6 +1891,48 @@ export default function App() {
       return next;
     });
   };
+
+  // 클라우드 동기화: 타 기기 변경(sync.ts onSnapshot)이 localStorage 를 갱신한 뒤
+  // "cloudsync" 이벤트를 쏘면, 영향받는 모든 상태를 localStorage 에서 다시 읽어
+  // React 에 재주입한다 → 페이지 reload 없이 실시간 반영. (useState 초기화와 동일 파싱)
+  const applyCloudState = useCallback(() => {
+    setTypeFilter(lsArr("f_type_multi"));
+    setSortField(ls("f_sort", "score") as SortKey);
+    setRegionFilter(lsArr("f_region_multi"));
+    setCommuteFilter(ls("f_commute", "all"));
+    setPediaFilter(ls("f_pedia", "all"));
+    setParkingFilter(ls("f_parking", "all"));
+    setCommuteSlot(ls("f_commuteSlot", "early") as CommuteSlot);
+    setTrendRange(ls("f_trendRange", "6"));
+    setLiquidityFilter(ls("f_liquidity", "all"));
+    setAccelFilter(ls("f_accel", "all"));
+    setPriceMin(ls("f_priceMin", "0"));
+    setPriceMax(ls("f_priceMax", "20"));
+    setHhMin(["0", "150", "300", "500", "1000"].includes(ls("f_hhMin", "0")) ? ls("f_hhMin", "0") : "0");
+    setBuildMin(["0", "1992", "2005", "2018", "2019"].includes(ls("f_buildMin", "0")) ? ls("f_buildMin", "0") : "0");
+    setTradeMin(ls("f_tradeMin", "0"));
+    setExcludeDirect(ls("f_exDirect", "true") === "true");
+    setExcludeFirstFloor(ls("f_ex1F", "true") === "true");
+    setCapital(localStorage.getItem("capital") ?? "");
+    setIncome1(localStorage.getItem("income1") ?? "");
+    setIncome2(localStorage.getItem("income2") ?? "");
+    setExtraLoan(localStorage.getItem("extraLoan") ?? "");
+    setLoanYears(localStorage.getItem("loanYears") ?? "30");
+    setExtraRepayYears(localStorage.getItem("extraRepayYears") ?? "2");
+    setFirstTimeBuyer(ls("f_firstTime", "true") === "true");
+    setLoanProduct(ls("f_loanProduct", "normal") as LoanProduct);
+    setInterestSubsidy(ls("f_interestSubsidy", "false") === "true");
+    setIncludeInterior(ls("f_includeInterior", "false") === "true");
+    setNaverColEnabled(ls("f_naverCol", "false") === "true");
+    const mv = localStorage.getItem("f_moveInMonth");
+    if (mv) setMoveInMonth(mv);
+    try { const s = localStorage.getItem("weights"); setWeights(s ? JSON.parse(s) : DEFAULT_WEIGHTS); } catch { /* keep current */ }
+    try { setFavorites(new Set(JSON.parse(localStorage.getItem("favorites") ?? "[]"))); } catch { /* keep current */ }
+  }, []);
+  useEffect(() => {
+    window.addEventListener(CLOUD_SYNC_EVENT, applyCloudState);
+    return () => window.removeEventListener(CLOUD_SYNC_EVENT, applyCloudState);
+  }, [applyCloudState]);
 
   const [compareOpen, setCompareOpen] = useState(false);
 
