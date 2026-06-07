@@ -415,7 +415,9 @@ async function updatePages() {
       }
       return best;
     })();
-    const naverPark = naverParking[n]; // {total, perHh} | null — 세대당 ground truth
+    // 네이버 주차 — perHh>0일 때만 유효(0은 네이버 '데이터 없음' sentinel → fallback)
+    const npRaw = naverParking[n];
+    const naverPark = npRaw && npRaw.perHh > 0 ? npRaw : null;
 
     results.push({
       name: n,

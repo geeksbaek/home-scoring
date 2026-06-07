@@ -31,7 +31,8 @@ def fetch(cno):
             if r.status_code != 200:
                 return ("err", r.status_code)
             t = RE_TOT.search(r.text); p = RE_PH.search(r.text)
-            if p:
+            # perHh==0은 네이버 '데이터 없음' sentinel → null 기록
+            if p and float(p.group(1)) > 0:
                 return ("ok", {"total": int(t.group(1)) if t else None,
                                "perHh": float(p.group(1)), "cno": str(cno)})
             return ("none", None)
