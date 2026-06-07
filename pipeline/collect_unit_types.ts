@@ -154,7 +154,9 @@ function buildUnitTypes(rows: ExposItem[], targetName: string, allowFallback: bo
 
 async function main() {
   const force = process.argv.includes("--force");
-  console.log(`건축물대장 전유부 면적별 세대수 수집${force ? " (전체 재수집)" : ""}\n`);
+  const ci = process.argv.indexOf("--cities");
+  const cityFilter = ci >= 0 && process.argv[ci + 1] ? process.argv[ci + 1].split(",").map((s) => s.trim()) : null;
+  console.log(`건축물대장 전유부 면적별 세대수 수집${force ? " (전체 재수집)" : ""}${cityFilter ? ` [필터: ${cityFilter.join("/")}]` : ""}\n`);
 
   const identity: IdentityEntry[] = await Bun.file(join(DATA_DIR, "apt_identity.json")).json();
 
@@ -181,6 +183,7 @@ async function main() {
 
   // 대상: 데이터 없거나 K-apt 기반(부정확)
   const targets = identity.filter((a) => {
+    if (cityFilter && !cityFilter.some((c) => (a.region || "").includes(c))) return false;
     const cur = existing[a.name];
     if (force) return true;
     if (!cur) return true;

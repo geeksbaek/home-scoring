@@ -41,8 +41,9 @@ def fetch(cno):
     return ("fail", None)
 
 items = list(IDS.items())
-todo = [(n, c) for n, c in items if n not in out]
-print(f"전체 {len(items)} / 미수집 {len(todo)}", flush=True)
+_only = set(json.load(open(os.environ["ONLY_NAMES"]))) if os.environ.get("ONLY_NAMES") else None
+todo = [(n, c) for n, c in items if n not in out and (_only is None or n in _only)]
+print(f"전체 {len(items)} / 미수집 {len(todo)}" + (f" (필터 {len(_only)}개)" if _only else ""), flush=True)
 done = 0
 for name, cno in todo:
     status, val = fetch(cno)

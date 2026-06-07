@@ -17,7 +17,7 @@ import { homedir } from "node:os";
 
 const HOME_DIR = join(homedir(), "GitHub", "home");
 const SRC_DIR = join(homedir(), "GitHub", "school-violence-map", "data");
-const TARGET_CITIES = new Set(["수원시", "용인시", "성남시", "화성시", "하남시", "안양시"]);
+const TARGET_CITIES = new Set(["수원시", "용인시", "성남시", "화성시", "하남시", "안양시", "의왕시", "과천시"]);
 
 interface School {
   code: string;

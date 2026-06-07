@@ -1,5 +1,5 @@
 /**
- * 서울 25개 구 + 경기(수원/성남/안양/용인/하남/화성) 아파트 실거래가 수집 — 전 면적.
+ * 서울 25개 구 + 경기(수원/성남/안양/용인/하남/화성/의왕/과천) 아파트 실거래가 수집 — 전 면적.
  *
  * Usage:
  *   bun src/collect.ts          # 증분 수집
@@ -64,6 +64,8 @@ const REGIONS: Record<string, string> = {
   "41591": "화성시",
   "41595": "화성시",
   "41597": "화성시",
+  "41430": "의왕시",
+  "41290": "과천시",
 };
 
 const xmlParser = new XMLParser({ trimValues: true, parseTagValue: false });

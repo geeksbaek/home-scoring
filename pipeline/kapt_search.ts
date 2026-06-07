@@ -159,6 +159,8 @@ const SIGUNGU_ADDR: Record<string, string> = {
   "41591": "화성시", // 만세구
   "41595": "화성시", // 병점구
   "41597": "화성시", // 동탄구
+  "41430": "의왕시",
+  "41290": "과천시",
 };
 
 function matchesRegion(addr: string, sigunguCd: string): boolean {
@@ -195,8 +197,13 @@ async function main() {
   const identityPath = join(DATA_DIR, "apt_identity.json");
   const identity: any[] = await Bun.file(identityPath).json();
 
-  const targets = identity.filter((e) => !e.kapt_code && e.sigungu_cd);
-  console.log(`대상: ${targets.length}개 아파트 (kapt_code 없음)\n`);
+  // --cities "의왕시,과천시" 로 특정 시/구만 타깃 (전체 재시도 회피)
+  const ci = process.argv.indexOf("--cities");
+  const cityFilter = ci >= 0 && process.argv[ci + 1] ? process.argv[ci + 1].split(",").map((s) => s.trim()) : null;
+  const targets = identity.filter(
+    (e) => !e.kapt_code && e.sigungu_cd && (!cityFilter || cityFilter.some((c) => (e.region || "").startsWith(c) || (e.region || "").includes(c))),
+  );
+  console.log(`대상: ${targets.length}개 아파트 (kapt_code 없음${cityFilter ? `, 필터: ${cityFilter.join("/")}` : ""})\n`);
 
   await initSession();
   console.log("");
