@@ -216,54 +216,71 @@ function Sparkline({ data, pctRange, autoRange }: { data: { date: string; price:
   );
 }
 
-// 장기 추이 차트 — long_trend([yyyymm, 억, 건수] 월별 중앙값)을 시간축 비례 라인으로.
-function LongTrendChart({ data }: { data: [number, number, number][] }) {
-  const [hover, setHover] = useState<number | null>(null);
-  if (!data.length) return <p className="text-xs text-muted-foreground py-2">장기 거래 데이터 없음</p>;
-  const prices = data.map((d) => d[1]);
+// 장기 추이 차트 — 전체 기간 개별 실거래(ps 압축 시계열)를 시간축 비례 라인으로.
+// 샘플링 없이 거래 한 건 한 건 표시. 아래 월별 중앙값 표(long_trend)는 요약으로 유지.
+function LongTrendChart({ data, ps }: { data: [number, number, number][]; ps?: string }) {
+  const [hi, setHi] = useState<number | null>(null);
+  // 차트는 개별 실거래 전부. ps 없는 구버전 데이터는 월별 중앙값 fallback.
+  const series = useMemo(
+    () =>
+      ps
+        ? unpackPriceSeries(ps)
+        : data.map(([ym, p]) => ({ date: `${String(ym).slice(0, 4)}-${String(ym).slice(4, 6)}-15`, price: p })),
+    [ps, data],
+  );
+  if (!series.length) return <p className="text-xs text-muted-foreground py-2">장기 거래 데이터 없음</p>;
+  const prices = series.map((s) => s.price);
   const min = Math.min(...prices), max = Math.max(...prices);
   const range = max - min || 1;
   const w = 300, h = 120, padX = 6, padTop = 8, padBottom = 16;
-  const idx = (ym: number) => Math.floor(ym / 100) * 12 + (ym % 100) - 1; // 월 인덱스
-  const t0 = idx(data[0][0]), tSpan = idx(data[data.length - 1][0]) - t0 || 1;
-  const xOf = (ym: number) => padX + ((idx(ym) - t0) / tSpan) * (w - padX * 2);
+  const dayOf = (date: string) => Date.parse(date) / 86400000;
+  const t0 = dayOf(series[0].date), tSpan = dayOf(series[series.length - 1].date) - t0 || 1;
+  const xOf = (date: string) => padX + ((dayOf(date) - t0) / tSpan) * (w - padX * 2);
   const yOf = (p: number) => padTop + (1 - (p - min) / range) * (h - padTop - padBottom);
-  const pts = data.map((d) => ({ x: xOf(d[0]), y: yOf(d[1]), ym: d[0], price: d[1] }));
+  const pts = series.map((s, i) => ({ x: xOf(s.date), y: yOf(s.price), date: s.date, price: s.price, i }));
   const poly = pts.map((p) => `${p.x},${p.y}`).join(" ");
   const first = prices[0], last = prices[prices.length - 1];
   const chg = Math.round(((last - first) / first) * 1000) / 10;
-  const yrs = tSpan / 12;
+  const yrs = tSpan / 365.25;
   const cagr = yrs >= 1 ? Math.round((Math.pow(last / first, 1 / yrs) - 1) * 1000) / 10 : null;
   const color = last >= first ? "#10b981" : "#ef4444";
-  const fmtYm = (ym: number) => `${String(ym).slice(2, 4)}.${String(ym).slice(4)}`;
-  // 연도 경계 세로선
-  const years = [...new Set(data.map((d) => Math.floor(d[0] / 100)))];
-  const hv = hover != null ? pts.find((p) => p.ym === hover) : null;
+  const fmtDate = (d: string) => d.slice(2).replace(/-/g, ".");
+  // 연도 경계 세로선 + 라벨
+  const yStart = Number(series[0].date.slice(0, 4)), yEnd = Number(series[series.length - 1].date.slice(0, 4));
+  const years: number[] = [];
+  for (let y = yStart; y <= yEnd; y++) years.push(y);
+  const hv = hi != null ? pts[hi] : null;
+  // 점 수백 개여도 가볍도록 단일 mousemove 최근접 탐색.
+  const onMove = (e: React.MouseEvent<SVGSVGElement>) => {
+    const mx = e.clientX - e.currentTarget.getBoundingClientRect().left;
+    let best = 0, bd = Infinity;
+    for (const p of pts) { const dd = Math.abs(p.x - mx); if (dd < bd) { bd = dd; best = p.i; } }
+    setHi(best);
+  };
   return (
     <div className="text-xs">
       <div className="flex items-baseline justify-between mb-1">
-        <span className="font-semibold">장기 추이 · {data.length}개월</span>
+        <span className="font-semibold">장기 추이 · {series.length}건</span>
         <span className={chg >= 0 ? "text-emerald-500" : "text-red-500"}>{first}억 → {last}억 ({chg >= 0 ? "+" : ""}{chg}%)</span>
       </div>
       <div className="relative" style={{ width: w, height: h }}>
-        <svg width={w} height={h} onMouseLeave={() => setHover(null)}>
+        <svg width={w} height={h} onMouseMove={onMove} onMouseLeave={() => setHi(null)}>
           {years.map((y) => {
-            const x = xOf(y * 100 + 1);
+            const x = xOf(`${y}-01-01`);
+            if (x < padX || x > w - padX) return null;
             return <line key={y} x1={x} y1={padTop} x2={x} y2={h - padBottom} stroke="currentColor" strokeWidth="0.5" className="text-muted-foreground/15" />;
           })}
           <polyline points={poly} fill="none" stroke={color} strokeWidth="1.5" strokeLinejoin="round" />
-          {pts.map((p, i) => (
-            <circle key={i} cx={p.x} cy={p.y} r={5} fill="transparent" onMouseEnter={() => setHover(p.ym)} />
-          ))}
           {hv && <circle cx={hv.x} cy={hv.y} r={3} fill={color} />}
           {years.map((y) => {
-            const x = xOf(y * 100 + 1);
+            const x = xOf(`${y}-07-01`);
+            if (x < padX || x > w - padX) return null;
             return <text key={`l${y}`} x={x} y={h - 4} textAnchor="middle" className="fill-muted-foreground text-[8px]">'{String(y).slice(2)}</text>;
           })}
         </svg>
         {hv && (
           <div className="absolute -top-1 px-1.5 py-0.5 bg-popover border rounded shadow text-[10px] whitespace-nowrap z-50 pointer-events-none -translate-x-1/2" style={{ left: hv.x }}>
-            {fmtYm(hv.ym)} <span className="font-medium">{hv.price}억</span>
+            {fmtDate(hv.date)} <span className="font-medium">{hv.price}억</span>
           </div>
         )}
       </div>
@@ -271,7 +288,7 @@ function LongTrendChart({ data }: { data: [number, number, number][] }) {
         <span>최저 {min}억 · 최고 {max}억</span>
         {cagr != null && <span>연 {cagr >= 0 ? "+" : ""}{cagr}%</span>}
       </div>
-      {/* 월별 시세 표 (최신순, 스크롤) */}
+      {/* 월별 중앙값 표 (최신순, 스크롤) — 요약 */}
       <div className="mt-2 border-t pt-1 max-h-40 overflow-y-auto">
         <table className="w-full text-[11px] tabular-nums">
           <thead className="sticky top-0 bg-popover">
@@ -288,7 +305,7 @@ function LongTrendChart({ data }: { data: [number, number, number][] }) {
           </tbody>
         </table>
       </div>
-      <p className="text-muted-foreground text-[10px] mt-0.5">월별 중앙값 · 직거래/1층 제외</p>
+      <p className="text-muted-foreground text-[10px] mt-0.5">차트: 개별 실거래 · 표: 월별 중앙값 · 직거래/1층 제외</p>
     </div>
   );
 }
@@ -302,7 +319,7 @@ function TrendCell({ d, spark, pctRange, autoRange }: { d: AptData; spark: { dat
       <PopoverTrigger className="cursor-pointer inline-block" title="장기 추이 보기">
         {spark.length ? <Sparkline data={spark} pctRange={pctRange} autoRange={autoRange} /> : <span className="text-muted-foreground text-[10px]">장기↗</span>}
       </PopoverTrigger>
-      <PopoverContent className="w-auto"><LongTrendChart data={lt} /></PopoverContent>
+      <PopoverContent className="w-auto"><LongTrendChart data={lt} ps={d.ps} /></PopoverContent>
     </Popover>
   );
 }
