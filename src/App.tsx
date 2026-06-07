@@ -1759,10 +1759,19 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
     return m;
   }, [seriesList, anchor]);
 
+  // 표시용 점열 — delta(상승액) 모드에선 공통기준월(anchor)에 0 시작점을 강제로 두고
+  // anchor 이후만 그린다 → 모든 단지가 같은 지점(anchor, 0)에서 출발. abs 모드는 전체 이력.
+  const vis = useMemo(() => seriesList.map((s) => {
+    const pts = mode === "delta" && anchor
+      ? [{ ym: anchor, price: indexBase.get(s.key) ?? 0 }, ...s.monthly.filter((p) => p.ym > anchor)]
+      : s.monthly;
+    return { ...s, pts, byYm: new Map(pts.map((p) => [p.ym, p.price] as const)) };
+  }), [seriesList, mode, anchor, indexBase]);
+
   // 차트 지오메트리
   const w = 640, h = 280, padL = 40, padR = 12, padTop = 12, padBottom = 28;
   const ymToDay = (ym: string) => Date.parse(`${ym}-15`) / 86400000;
-  const allMonths = useMemo(() => [...new Set(seriesList.flatMap((s) => s.monthly.map((p) => p.ym)))].sort(), [seriesList]);
+  const allMonths = useMemo(() => [...new Set(vis.flatMap((s) => s.pts.map((p) => p.ym)))].sort(), [vis]);
   // delta 모드: 공통기준월(anchor) 값 대비 절대 상승액(억). anchor에서 0에서 출발해 얼마 올랐는지 표시.
   const dispVal = (price: number, key: string) => (mode === "delta" ? price - (indexBase.get(key) ?? 0) : price);
   const deltaOf = (price: number, key: string) => Math.round((price - (indexBase.get(key) ?? 0)) * 10) / 10;
@@ -1772,7 +1781,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
     const days = allMonths.map(ymToDay);
     const t0 = Math.min(...days), t1 = Math.max(...days), tSpan = t1 - t0 || 1;
     let lo = Infinity, hi = -Infinity;
-    for (const s of seriesList) for (const p of s.monthly) {
+    for (const s of vis) for (const p of s.pts) {
       const v = dispVal(p.price, s.key);
       if (v < lo) lo = v; if (v > hi) hi = v;
     }
@@ -1782,7 +1791,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
     const xOf = (ym: string) => padL + ((ymToDay(ym) - t0) / tSpan) * (w - padL - padR);
     const yOf = (v: number) => padTop + (1 - (v - lo) / range) * (h - padTop - padBottom);
     return { t0, t1, lo, hi, range, xOf, yOf };
-  }, [allMonths, seriesList, mode, indexBase]);
+  }, [allMonths, vis, mode, indexBase]);
 
   const years = useMemo(() => {
     if (!allMonths.length) return [];
@@ -1803,7 +1812,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
     setHoverYm(best);
     // 해당 월에서 커서 Y에 가장 가까운 단지 강조
     let nk: string | null = null, ndy = Infinity;
-    for (const s of seriesList) {
+    for (const s of vis) {
       const v = s.byYm.get(best);
       if (v == null) continue;
       const dy = Math.abs(geo.yOf(dispVal(v, s.key)) - my);
@@ -1871,9 +1880,9 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
                 {/* hover 세로선 */}
                 {hoverYm && <line x1={geo.xOf(hoverYm)} y1={padTop} x2={geo.xOf(hoverYm)} y2={h - padBottom} stroke="currentColor" strokeWidth="0.75" className="text-muted-foreground/40" />}
                 {/* 단지별 라인 (직선 연결) — 호버 시 해당 단지 강조, 나머지 흐리게 */}
-                {seriesList.map((s) => {
-                  if (!s.monthly.length) return null;
-                  const poly = s.monthly.map((p) => `${geo.xOf(p.ym)},${geo.yOf(dispVal(p.price, s.key))}`).join(" ");
+                {vis.map((s) => {
+                  if (!s.pts.length) return null;
+                  const poly = s.pts.map((p) => `${geo.xOf(p.ym)},${geo.yOf(dispVal(p.price, s.key))}`).join(" ");
                   const hv = hoverYm && s.byYm.has(hoverYm) ? s.byYm.get(hoverYm)! : null;
                   const isHi = hoverKey === s.key;
                   const dim = hoverKey != null && !isHi;
@@ -1889,7 +1898,7 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
               {hoverYm && (
                 <div className="absolute top-0 right-0 bg-popover border rounded shadow px-2 py-1 text-[10px] pointer-events-none z-50 min-w-[120px]">
                   <div className="font-medium mb-0.5">{fmtYm(hoverYm)}</div>
-                  {seriesList.map((s) => {
+                  {vis.map((s) => {
                     const v = s.byYm.get(hoverYm);
                     return (
                       <div key={s.key} className={cn("flex items-center justify-between gap-2", hoverKey === s.key && "font-semibold")}>
