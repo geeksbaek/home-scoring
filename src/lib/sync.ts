@@ -57,6 +57,9 @@ export const SYNC_KEYS = [
 const SYNC_SET = new Set<string>(SYNC_KEYS);
 // KB 시세 수동 입력값은 단지×타입별 동적 키(`kb:{name}|{atype}`) → prefix 로 매칭.
 const KB_PREFIX = "kb:";
+// 미push 로컬변경 시각(ms). reload로 pushTimer가 사라져도 살아남아, 다음 로드에서
+// "로컬이 원격보다 최신"임을 판별하는 근거가 된다. 동기화 대상 키 아님(SYNC_KEYS/kb: 제외).
+const PENDING_TS_KEY = "_sync_pending_ts";
 function isSyncKey(k: string): boolean {
   return SYNC_SET.has(k) || k.startsWith(KB_PREFIX);
 }
@@ -183,16 +186,20 @@ let currentUser: User | null = null;
 let unsub: Unsubscribe | null = null;
 let pushTimer: ReturnType<typeof setTimeout> | undefined;
 let pulled = false; // 최초 원격 pull 완료 전에는 push 금지 (데이터 손실 차단)
+const DEBOUNCE_MS = 800;
 
 function schedulePush() {
   if (!currentUser || !db || !pulled) return;
+  // 미push 변경 시각 기록 → reload로 timer가 유실돼도 다음 로드에서 로컬 우선 판별 근거.
+  rawSet(PENDING_TS_KEY, String(Date.now()));
   clearTimeout(pushTimer);
-  pushTimer = setTimeout(pushNow, 1200);
+  pushTimer = setTimeout(pushNow, DEBOUNCE_MS);
 }
 
 async function pushNow() {
   pushTimer = undefined;
   if (!currentUser || !db || !pulled) return;
+  const ts = localStorage.getItem(PENDING_TS_KEY); // push 직전 dirty 스냅샷
   try {
     notify({ status: "syncing" });
     await setDoc(doc(db, "users", currentUser.uid), {
@@ -200,6 +207,8 @@ async function pushNow() {
       updatedAt: Date.now(),
       client: clientId(),
     });
+    // push 도중 새 변경이 없었으면 dirty 해제(있었으면 그 변경이 다시 push 예약돼 마커 유지).
+    if (localStorage.getItem(PENDING_TS_KEY) === ts) rawRemove(PENDING_TS_KEY);
     notify({ status: "synced", at: Date.now() });
   } catch (e) {
     notify({ status: "error", error: String(e) });
@@ -226,15 +235,25 @@ function startSync(user: User) {
         pushNow();
         return;
       }
-      const d = s.data() as { kv?: Record<string, string>; client?: string };
+      const d = s.data() as { kv?: Record<string, string>; client?: string; updatedAt?: number };
       if (d.client === clientId()) {
         // 내 쓰기 에코 — 적용 불필요. push 는 계속 허용.
         pulled = true;
+        rawRemove(PENDING_TS_KEY);
         notify({ status: "synced", at: Date.now() });
+        return;
+      }
+      // reload 등으로 pushTimer가 유실됐어도, 미push 로컬변경이 원격보다 최신이면
+      // 로컬을 우선 업로드한다(= stale 원격이 방금 바꾼 필터값을 덮어쓰는 현상 차단).
+      const pendingTs = Number(localStorage.getItem(PENDING_TS_KEY) || 0);
+      if (pendingTs > Number(d.updatedAt || 0)) {
+        pulled = true;
+        pushNow();
         return;
       }
       const changed = applyRemote(d.kv ?? {});
       pulled = true;
+      rawRemove(PENDING_TS_KEY); // 원격을 source of truth 로 채택 → dirty 해제
       if (changed) emitCloudSync(); // React 상태 재주입 (reload 없이 실시간 반영)
       notify({ status: "synced", at: Date.now() });
     },
@@ -275,6 +294,21 @@ export function initSync() {
   if (started || !firebaseReady || !auth) return;
   started = true;
   installPatch();
+  // 탭 숨김/이탈 직전 대기 중 push 를 즉시 flush → 변경 직후 새로고침/이탈에도 유실 최소화.
+  // (완전 유실 시에도 PENDING_TS_KEY 기반으로 다음 로드에서 로컬이 복구됨.)
+  if (typeof document !== "undefined") {
+    const flush = () => {
+      if (pushTimer) {
+        clearTimeout(pushTimer);
+        pushTimer = undefined;
+        pushNow();
+      }
+    };
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") flush();
+    });
+    window.addEventListener("pagehide", flush);
+  }
   onAuthStateChanged(auth, (user) => {
     if (user) startSync(user);
     else stopSync();
