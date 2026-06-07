@@ -238,7 +238,10 @@ function LongTrendChart({ data, ps }: { data: [number, number, number][]; ps?: s
   const xOf = (date: string) => padX + ((dayOf(date) - t0) / tSpan) * (w - padX * 2);
   const yOf = (p: number) => padTop + (1 - (p - min) / range) * (h - padTop - padBottom);
   const pts = series.map((s, i) => ({ x: xOf(s.date), y: yOf(s.price), date: s.date, price: s.price, i }));
-  const poly = pts.map((p) => `${p.x},${p.y}`).join(" ");
+  // 계단형(step-after): 각 거래가의 값을 다음 거래까지 수평 유지 후 수직 점프
+  const poly = pts
+    .map((p, i) => (i === 0 ? `${p.x},${p.y}` : `${p.x},${pts[i - 1].y} ${p.x},${p.y}`))
+    .join(" ");
   const first = prices[0], last = prices[prices.length - 1];
   const chg = Math.round(((last - first) / first) * 1000) / 10;
   const yrs = tSpan / 365.25;
