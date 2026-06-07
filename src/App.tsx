@@ -218,17 +218,25 @@ function Sparkline({ data, pctRange, autoRange }: { data: { date: string; price:
 
 // 장기 추이 차트 — 전체 기간 개별 실거래(ps 압축 시계열)를 시간축 비례 라인으로.
 // 샘플링 없이 거래 한 건 한 건 표시. 아래 월별 중앙값 표(long_trend)는 요약으로 유지.
-function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor }: { data: [number, number, number][]; ps?: string; excludeDirect?: boolean; excludeFirstFloor?: boolean }) {
+function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor, trendRange }: { data: [number, number, number][]; ps?: string; excludeDirect?: boolean; excludeFirstFloor?: boolean; trendRange?: string }) {
   const [hi, setHi] = useState<number | null>(null);
   const all = useMemo(() => (ps ? unpackPriceSeries(ps) : null), [ps]);
-  // 차트는 개별 실거래 전부 — 직거래/1층 제외 토글 반영. ps 없는 구버전 데이터는 월별 중앙값 fallback.
-  const series = useMemo(
-    () =>
-      all
-        ? all.filter((t) => !(excludeDirect && t.direct) && !(excludeFirstFloor && t.firstFloor))
-        : data.map(([ym, p]) => ({ date: `${String(ym).slice(0, 4)}-${String(ym).slice(4, 6)}-15`, price: p, direct: false, firstFloor: false })),
-    [all, data, excludeDirect, excludeFirstFloor],
-  );
+  // 선택한 추이 기간(trendRange) cutoff — 스파크라인(buildSpark)과 동일 기준. "all"/미지정이면 전체.
+  const cutDate = useMemo(() => {
+    const m = parseInt(trendRange || "") || 0;
+    if (!trendRange || trendRange === "all" || !m) return "";
+    const now = new Date();
+    const c = new Date(now.getFullYear(), now.getMonth() - m + 1, 1);
+    return `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-01`;
+  }, [trendRange]);
+  const rangeLabel = ({ "3": "3개월", "6": "6개월", "12": "1년", "36": "3년", "60": "5년", all: "전체" } as Record<string, string>)[trendRange || "all"] ?? "전체";
+  // 차트는 개별 실거래 — 직거래/1층 제외 토글 + 추이 기간 반영. ps 없는 구버전 데이터는 월별 중앙값 fallback.
+  const series = useMemo(() => {
+    const base = all
+      ? all.filter((t) => !(excludeDirect && t.direct) && !(excludeFirstFloor && t.firstFloor))
+      : data.map(([ym, p]) => ({ date: `${String(ym).slice(0, 4)}-${String(ym).slice(4, 6)}-15`, price: p, direct: false, firstFloor: false }));
+    return cutDate ? base.filter((t) => t.date >= cutDate) : base;
+  }, [all, data, excludeDirect, excludeFirstFloor, cutDate]);
   // 월별 중앙값 표 — ps가 있으면 토글 반영된 개별 거래로 재집계, 없으면 long_trend 그대로.
   const monthly = useMemo<[number, number, number][]>(() => {
     if (!all) return data;
@@ -247,7 +255,7 @@ function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor }: { data: 
         return [Number(ym.replace("-", "")), Math.round(md * 10) / 10, arr.length];
       });
   }, [all, series, data]);
-  if (!series.length) return <p className="text-xs text-muted-foreground py-2">장기 거래 데이터 없음</p>;
+  if (!series.length) return <p className="text-xs text-muted-foreground py-2">{rangeLabel} 기간 거래 없음</p>;
   const prices = series.map((s) => s.price);
   const min = Math.min(...prices), max = Math.max(...prices);
   const range = max - min || 1;
@@ -282,7 +290,7 @@ function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor }: { data: 
   return (
     <div className="text-xs">
       <div className="flex items-baseline justify-between mb-1">
-        <span className="font-semibold">장기 추이 · {series.length}건</span>
+        <span className="font-semibold">추이 {rangeLabel} · {series.length}건</span>
         <span className={chg >= 0 ? "text-emerald-500" : "text-red-500"}>{first}억 → {last}억 ({chg >= 0 ? "+" : ""}{chg}%)</span>
       </div>
       <div className="relative" style={{ width: w, height: h }}>
@@ -333,7 +341,7 @@ function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor }: { data: 
 }
 
 // 추이 셀 — Sparkline(최근) 표시, 클릭 시 장기 추이 차트 팝오버
-function TrendCell({ d, spark, pctRange, autoRange, excludeDirect, excludeFirstFloor }: { d: AptData; spark: { date: string; price: number }[]; pctRange: number; autoRange?: boolean; excludeDirect?: boolean; excludeFirstFloor?: boolean }) {
+function TrendCell({ d, spark, pctRange, autoRange, excludeDirect, excludeFirstFloor, trendRange }: { d: AptData; spark: { date: string; price: number }[]; pctRange: number; autoRange?: boolean; excludeDirect?: boolean; excludeFirstFloor?: boolean; trendRange?: string }) {
   const lt = d.long_trend ?? [];
   if (!spark.length && !lt.length && !d.ps) return <span className="text-muted-foreground">-</span>;
   return (
@@ -341,7 +349,7 @@ function TrendCell({ d, spark, pctRange, autoRange, excludeDirect, excludeFirstF
       <PopoverTrigger className="cursor-pointer inline-block" title="장기 추이 보기">
         {spark.length ? <Sparkline data={spark} pctRange={pctRange} autoRange={autoRange} /> : <span className="text-muted-foreground text-[10px]">장기↗</span>}
       </PopoverTrigger>
-      <PopoverContent className="w-auto"><LongTrendChart data={lt} ps={d.ps} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} /></PopoverContent>
+      <PopoverContent className="w-auto"><LongTrendChart data={lt} ps={d.ps} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} trendRange={trendRange} /></PopoverContent>
     </Popover>
   );
 }
@@ -2859,7 +2867,7 @@ export default function App() {
                       <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
                       <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
-                      <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} autoRange={sparkAuto} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} /></TableCell>
+                      <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} autoRange={sparkAuto} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} trendRange={trendRange} /></TableCell>
                       <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                       <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
                       {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><CommutePopover data={d} slot={commuteSlot} /></TableCell>}
@@ -2966,7 +2974,7 @@ export default function App() {
                     <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
                     <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
-                    <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} autoRange={sparkAuto} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} /></TableCell>
+                    <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} autoRange={sparkAuto} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} trendRange={trendRange} /></TableCell>
                     <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
                     <TableCell className="text-center"><LiquidityCell data={d} /></TableCell>
                     <TableCell className="text-center"><CommutePopover data={d} slot={commuteSlot} /></TableCell>
