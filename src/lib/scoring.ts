@@ -41,6 +41,7 @@ export interface AptData {
   hcode: string | null;
   recent_trades: { date: string; price: number; floor: number | null; area: number; direct?: boolean }[];
   long_trend?: [number, number, number][]; // 장기 추이: [yyyymm, 억, 건수] 월별 중앙값 (전 기간)
+  ps?: string; // 전체 기간 개별 실거래 시계열(압축). unpackPriceSeries로 [{date,price}] 복원 (차트 전용)
   // K-apt
   parking: number | null;
   parking_per_hh: number | null;

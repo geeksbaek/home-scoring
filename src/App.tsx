@@ -14,6 +14,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { unpackPriceSeries } from "@/lib/pricePack";
 import { CLOUD_SYNC_EVENT } from "@/lib/sync";
 import { fetchKbLivePrice, type KbLivePrice } from "@/lib/kbLivePrice";
 import { getProxyUrl, setProxyUrl, getProxyToken, setProxyToken, useColumnListings, articlesForAtype, isMovableBy, isTenant, isOwnerJeonse, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
@@ -159,7 +160,7 @@ function robustAccel(
 }
 
 function Sparkline({ data, pctRange, autoRange }: { data: { date: string; price: number }[]; pctRange: number; autoRange?: boolean }) {
-  const [hover, setHover] = useState<{ x: number; date: string; price: number } | null>(null);
+  const [hover, setHover] = useState<{ x: number; y: number; date: string; price: number } | null>(null);
   if (!data.length) return null;
   const prices = data.map((d) => d.price);
   const mean = prices.reduce((a, b) => a + b, 0) / prices.length;
@@ -189,17 +190,22 @@ function Sparkline({ data, pctRange, autoRange }: { data: { date: string; price:
   const last = prices[prices.length - 1];
   const first = prices[0];
   const color = last >= first ? "#4ade80" : "#f87171";
+  // 호버: 점이 수백 개(전체 기간 개별 거래)여도 가볍도록 단일 mousemove로 최근접 점 탐색.
+  const onMove = (e: React.MouseEvent<SVGSVGElement>) => {
+    const mx = e.clientX - e.currentTarget.getBoundingClientRect().left;
+    let best = pts[0];
+    let bd = Infinity;
+    for (const p of pts) {
+      const dd = Math.abs(p.x - mx);
+      if (dd < bd) { bd = dd; best = p; }
+    }
+    setHover({ x: best.x, y: best.y, date: best.date, price: best.price });
+  };
   return (
     <div className="relative inline-block">
-      <svg width={w} height={h} onMouseLeave={() => setHover(null)}>
+      <svg width={w} height={h} onMouseMove={onMove} onMouseLeave={() => setHover(null)}>
         <polyline points={points} fill="none" stroke={color} strokeWidth="1.5" strokeLinejoin="round" />
-        {pts.map((p, i) => (
-          <circle key={i} cx={p.x} cy={p.y} r={4} fill="transparent" stroke="none"
-            onMouseEnter={() => setHover({ x: p.x, date: p.date, price: p.price })} />
-        ))}
-        {hover && (
-          <circle cx={pts.find(p => p.date === hover.date)?.x} cy={pts.find(p => p.date === hover.date)?.y} r={2.5} fill={color} />
-        )}
+        {hover && <circle cx={hover.x} cy={hover.y} r={2.5} fill={color} />}
       </svg>
       {hover && (
         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-1.5 py-0.5 bg-popover border rounded shadow text-[10px] whitespace-nowrap z-50 pointer-events-none">
@@ -2046,20 +2052,22 @@ export default function App() {
   }, [accelMonths]);
 
   // 추이 스파크라인 데이터 — 단기(≤1년)는 개별 거래(recent_trades), 장기(>1년/전체)는
-  // 월별 중앙값(long_trend, 전 기간 배포)으로 그린다. 데이터 추가 배포 없이 7년치 표시.
+  // 전체 기간 개별 실거래(ps, 압축 시계열)를 복원해 한 건 한 건 그린다(월별 중앙값 샘플링 아님).
+  // ps 없는 구버전 데이터는 long_trend(월별 중앙값) fallback.
   const buildSpark = useCallback((d: AptData): { data: { date: string; price: number }[]; autoRange: boolean } => {
     const m = parseInt(trendRange) || 0;
     const isLong = trendRange === "all" || m > 12;
     if (isLong) {
-      let cutYm = 0;
+      let cutDate = "";
       if (trendRange !== "all") {
         const now = new Date();
         const c = new Date(now.getFullYear(), now.getMonth() - m + 1, 1);
-        cutYm = c.getFullYear() * 100 + (c.getMonth() + 1);
+        cutDate = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-01`;
       }
-      const data = (d.long_trend ?? [])
-        .filter(([ym]) => ym >= cutYm)
-        .map(([ym, price]) => ({ date: `${String(ym).slice(0, 4)}-${String(ym).slice(4, 6)}-01`, price }));
+      const series = d.ps
+        ? unpackPriceSeries(d.ps)
+        : (d.long_trend ?? []).map(([ym, price]) => ({ date: `${String(ym).slice(0, 4)}-${String(ym).slice(4, 6)}-01`, price }));
+      const data = cutDate ? series.filter((t) => t.date >= cutDate) : series;
       return { data, autoRange: true };
     }
     const data = (d.recent_trades ?? [])

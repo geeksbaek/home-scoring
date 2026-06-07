@@ -10,6 +10,7 @@ import { homedir } from "node:os";
 import { join } from "node:path";
 import { type Trade, readCsv, mean, median, mode, groupBy } from "./csv";
 import { isNonBusinessDay } from "./holidays";
+import { packPriceSeries } from "../src/lib/pricePack";
 
 const ROOT = join(import.meta.dir, "..");
 const DATA_DIR = join(ROOT, "data");
@@ -400,6 +401,13 @@ async function updatePages() {
         return [Number(ym.replace("-", "")), Math.round((md / 10000) * 10) / 10, arr.length];
       });
 
+    // 전체 기간 개별 실거래 시계열(차트 전용) — clean 거래(직거래/1층 제외) 전 기간을
+    // 극한 압축(델타+zigzag+base64 varint)해 문자열 1개로 배포. 장기 추이를 월별 중앙값 샘플링이
+    // 아니라 실거래 한 건 한 건으로 표시하기 위함. 프론트는 unpackPriceSeries로 복원.
+    const priceSeries = packPriceSeries(
+      full.map((r) => ({ date: r.거래일자, price01: Math.round(r.금액_만원 / 1000) })),
+    );
+
     // 주차대수 — 건축물대장 우선. 단 건축물대장이 세대당 1대 미만(과소집계 의심)인데
     // K-apt가 현실범위(1.0~2.0대/세대)면 K-apt로 교정. 멀티단지 분할로 K-apt 합산주차가
     // 분할세대수에 나뉘어 과대(>2.0)가 되는 경우는 채택 안 함(진짜 구축 저값도 보존).
@@ -460,6 +468,7 @@ async function updatePages() {
       hcode: idMap.get(n)?.hcode ?? null,
       recent_trades: rt,
       long_trend,
+      ps: priceSeries,
       // 주차 — 네이버 세대당 주차대수 최우선(올바른 단지별 세대수로 계산, 과소집계·구축 모두 정확).
       // 네이버 없으면 건축물대장·K-apt(과소집계 교정 bestParking) fallback.
       parking: naverPark?.total ?? bestParking,
@@ -607,6 +616,7 @@ async function updatePages() {
         type_units: tu,
         recent_trades: [],
         long_trend: [],
+        ps: "",
         pyeong_type_nos: null,
         // KB시세는 ghost row의 atype 기준으로 재조회 (baseRow의 값 덮어쓰기)
         kb_sale: kbPrice[`${n}|${at}`]?.sale ?? null,
