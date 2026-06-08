@@ -2385,26 +2385,39 @@ export default function App() {
   };
 
   const searchResults = useMemo(() => {
-    if (!searchQuery.trim()) return [];
+    const empty = { rows: [] as (AptData & { _inFilter: boolean })[], totalComplexes: 0, hiddenComplexes: 0 };
+    if (!searchQuery.trim()) return empty;
     // 특수문자·공백 무시: 소문자화 후 한글/영문/숫자만 남김 (e편한세상 ↔ e-편한세상, 래미안 안양 ↔ 래미안안양)
     const norm = (s: string) => s.toLowerCase().replace(/[^0-9a-z가-힣]/g, "");
     const q = norm(searchQuery);
-    if (!q) return [];
-    // 전체 데이터에서 타입별로 검색 (필터 무관)
-    const results: (AptData & { _inFilter: boolean })[] = [];
+    if (!q) return empty;
+    // 전체 데이터에서 타입별로 매칭 (필터 무관, break 없이 모두 수집 — 면적 행 단위 컷이면 동명단지가 누락됨)
+    const matched: (AptData & { _inFilter: boolean })[] = [];
     for (const d of data) {
       if (d.no_trades) continue;
       const haystack = norm([d.name, d.display_name, d.dong, d.doro_juso, d.region].filter(Boolean).join(" "));
       if (!haystack.includes(q)) continue;
-      results.push({ ...d, _inFilter: filteredNames.has(d.name) });
-      if (results.length >= 30) break;
+      matched.push({ ...d, _inFilter: filteredNames.has(d.name) });
     }
     // 정렬: 필터에 있는 것 먼저 → 단지명 → 면적 오름차순
-    return results.sort((a, b) => {
+    matched.sort((a, b) => {
       if (a._inFilter !== b._inFilter) return a._inFilter ? -1 : 1;
       if (a.name !== b.name) return a.name.localeCompare(b.name);
       return a.area - b.area;
     });
+    // 단지(name) 단위 상한 — 한 단지의 모든 면적 행은 항상 함께 표시. 정렬이 먼저라 필터 통과 단지가 우선 노출됨.
+    const MAX_COMPLEXES = 60;
+    const seen = new Set<string>();
+    const rows: typeof matched = [];
+    for (const d of matched) {
+      if (!seen.has(d.name)) {
+        if (seen.size >= MAX_COMPLEXES) break;
+        seen.add(d.name);
+      }
+      rows.push(d);
+    }
+    const totalComplexes = new Set(matched.map((d) => d.name)).size;
+    return { rows, totalComplexes, hiddenComplexes: totalComplexes - seen.size };
   }, [data, searchQuery, filteredNames]);
 
   // Cmd+K / Ctrl+K 단축키
@@ -3024,14 +3037,14 @@ export default function App() {
               )}
               <kbd className="text-[10px] text-muted-foreground bg-muted px-1.5 py-0.5 rounded cursor-pointer" onClick={() => { setSearchOpen(false); clearSearch(); }}>ESC</kbd>
             </div>
-            {searchResults.length > 0 && (
+            {searchResults.rows.length > 0 && (
               <div className="max-h-96 overflow-y-auto py-1">
-                {searchResults.map((d: any, i) => {
+                {searchResults.rows.map((d: any, i) => {
                   const inFilter = d._inFilter;
                   const reason = inFilter ? null : getFilterReason(d);
                   const favKey = `${d.name}|${d.atype}`;
                   const isFav = favorites.has(favKey);
-                  const prev = searchResults[i - 1];
+                  const prev = searchResults.rows[i - 1];
                   const isFirstOfName = !prev || prev.name !== d.name;
                   return (
                     <div
@@ -3086,9 +3099,14 @@ export default function App() {
                     </div>
                   );
                 })}
+                {searchResults.hiddenComplexes > 0 && (
+                  <div className="px-4 py-2 text-center text-[11px] text-muted-foreground border-t border-border/40 mt-0.5">
+                    매칭 {searchResults.totalComplexes}개 단지 중 {searchResults.totalComplexes - searchResults.hiddenComplexes}개 표시 · 외 {searchResults.hiddenComplexes}개 — 검색어를 좁혀주세요
+                  </div>
+                )}
               </div>
             )}
-            {searchQuery && searchResults.length === 0 && (
+            {searchQuery && searchResults.rows.length === 0 && (
               <div className="px-4 py-6 text-center text-sm text-muted-foreground">검색 결과 없음</div>
             )}
           </div>
