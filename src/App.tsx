@@ -3038,7 +3038,7 @@ export default function App() {
               <kbd className="text-[10px] text-muted-foreground bg-muted px-1.5 py-0.5 rounded cursor-pointer" onClick={() => { setSearchOpen(false); clearSearch(); }}>ESC</kbd>
             </div>
             {searchResults.rows.length > 0 && (
-              <div className="max-h-96 overflow-y-auto py-1">
+              <div className="max-h-96 overflow-y-auto overscroll-contain py-1">
                 {searchResults.rows.map((d: any, i) => {
                   const inFilter = d._inFilter;
                   const reason = inFilter ? null : getFilterReason(d);
