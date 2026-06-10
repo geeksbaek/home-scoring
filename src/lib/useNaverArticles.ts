@@ -183,16 +183,23 @@ export function moveInLabel(a: NaverArticle): string {
 // 매핑되지 않는다(같은 84.98이 비연속 번호 1·2·5로 쪼개짐). 그래서 평형번호 필터 대신
 // 단지 전체 매물을 받아 전용면적으로 직접 버킷 필터한다.
 export function areaType(a: number): string {
-  if (a < 55) return "49";
-  if (a < 62) return "59";
-  if (a < 70) return "74";
-  if (a < 86) return "84";
-  if (a < 95) return "99";
-  if (a < 110) return "114";
-  if (a < 130) return "134";
-  if (a < 150) return "164";
-  if (a < 170) return "184";
-  return "200";
+  if (a >= 220) return "230";
+  if (a >= 180) return "200";
+  if (a >= 150) return "160";
+  if (a >= 130) return "140";
+  if (a >= 120) return "124";
+  if (a >= 110) return "114";
+  if (a >= 100) return "104";
+  if (a >= 86) return "99";
+  if (a >= 80) return "84";
+  if (a >= 70) return "74";
+  if (a >= 64) return "64";   // 64~69
+  if (a >= 60.5) return "60"; // 60.5~63 (60.0 거래는 사실 59.x raw, "59"로 묶음)
+  if (a >= 57) return "59";   // 57~60.49
+  if (a >= 50) return "52";   // 50~56
+  if (a >= 40) return "49";
+  if (a >= 30) return "39";
+  return "29";
 }
 /**
  * 단지 전체 매물 중 이 atype row에 속하는 것만.
@@ -261,9 +268,11 @@ async function _runStream(key: string, complexId: string, force: boolean, prevAr
     const ct = r.headers.get("content-type") || "";
     if (!r.ok || !ct.includes("ndjson") || !r.body) {
       // 폴백: 구버전 프록시(한방 JSON) 또는 에러 응답
-      const j = await r.json().catch(() => ({}));
+      const j = await r.json().catch(() => null);
       if (!r.ok) throw new Error(j?.error || `proxy ${r.status}`);
-      _store.set(key, { status: "done", articles: (j.articles ?? []) as NaverArticle[] });
+      // 200이지만 JSON이 아니거나(터널 장애 HTML 등) articles 필드가 없으면 "0건"으로 오인하지 않게 에러 처리
+      if (!j || !Array.isArray(j.articles)) throw new Error("프록시 응답 형식 오류");
+      _store.set(key, { status: "done", articles: j.articles as NaverArticle[] });
       _emit();
       return;
     }

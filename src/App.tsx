@@ -692,7 +692,7 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   const repayRatio = netMonthlyIncome ? totalMonthly / netMonthlyIncome : null;
   const repayRatioParental = netMonthlyParental ? totalMonthly / netMonthlyParental : null;
 
-  return { taxRate, acqTax, eduTax, ruralTax, totalTax, netTax, taxExempt, broker, legalFee, stampTax, bondDiscount, miscCost, interiorCost, ltvRate, ltvBase, ltvMax, ltvCap, productCap, eligIssues, dsrMax, maxLoan, dsrLimited, totalCapital, extraLoanMan, required, affordable, totalMonthly, mortgageMonthly, extraMonthly, mortgageRate, extraRate, effectiveRate, totalInterest, extraRepayMonthly, extraRepayYrs, netMonthlyIncome, netMonthlyParental, repayRatio, repayRatioParental, years, firstTimeBuyer, regulated, product, productName: prodInfo.name, interestSubsidy, subsidyEligible, subsidyAmount, subsidyMonthly, subsidyTotal, grossMortgageMonthly };
+  return { taxRate, acqTax, eduTax, ruralTax, totalTax, netTax, taxExempt, broker, brokerRate, legalFee, stampTax, bondDiscount, miscCost, interiorCost, ltvRate, ltvBase, ltvMax, ltvCap, productCap, eligIssues, dsrMax, maxLoan, dsrLimited, totalCapital, extraLoanMan, required, affordable, totalMonthly, mortgageMonthly, extraMonthly, mortgageRate, extraRate, effectiveRate, totalInterest, extraRepayMonthly, extraRepayYrs, netMonthlyIncome, netMonthlyParental, repayRatio, repayRatioParental, years, firstTimeBuyer, regulated, product, productName: prodInfo.name, interestSubsidy, subsidyEligible, subsidyAmount, subsidyMonthly, subsidyTotal, grossMortgageMonthly };
 }
 
 // 2026년 기준 인테리어 평당 단가 (수도권 평균, 자재·시공 포함). 출처: 업계 단가 벤치마크 (오늘의집/집브로/AJD 2025-26).
@@ -705,7 +705,7 @@ function calcInterior(areaSqm: number | null | undefined, buildYear: number | nu
   if (!areaSqm || areaSqm <= 0) return null;
   if (!buildYear || buildYear <= 1900) return null;
   const py = (areaSqm * 1.3) / 3.3058;
-  const age = 2026 - buildYear;
+  const age = new Date().getFullYear() - buildYear;
   let minRate: number, maxRate: number, level: string, scope: string;
   if (age <= 5) {
     minRate = 30; maxRate = 80;
@@ -996,7 +996,7 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
                 </span>
               </div>
               <div className="flex justify-between"><span className="text-muted-foreground">취득세 ({(aff.taxRate * 100).toFixed(1)}%+교육{aff.ruralTax > 0 ? "+농특" : ""})</span><span>{aff.netTax.toLocaleString()}만원</span></div>
-              <div className="flex justify-between"><span className="text-muted-foreground">중개보수 (0.44%)</span><span>{aff.broker.toLocaleString()}만원</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">중개보수 ({(aff.brokerRate * 110).toFixed(2)}%)</span><span>{aff.broker.toLocaleString()}만원</span></div>
               <div className="flex justify-between"><span className="text-muted-foreground">법무사/인지/채권</span><span>{aff.miscCost.toLocaleString()}만원</span></div>
               {aff.taxExempt > 0 && <div className="flex justify-between"><span className="text-muted-foreground">생애최초 감면</span><span className="text-emerald-500">-{aff.taxExempt.toLocaleString()}만원</span></div>}
               {aff.interiorCost > 0 && (
@@ -1148,7 +1148,7 @@ function LiquidityCell({ data }: { data: AptData }) {
         <p className="font-semibold mb-2">환금성</p>
         <div className="space-y-0.5">
           <div className="flex justify-between"><span className="text-muted-foreground">최근 6개월 거래</span><span>{data.count}건</span></div>
-          <div className="flex justify-between"><span className="text-muted-foreground">{atypeLabel(data.atype)} 타입 세대수</span><span>{v > 0 ? Math.round(data.count / v * 100) : "-"}세대</span></div>
+          <div className="flex justify-between"><span className="text-muted-foreground">{atypeLabel(data.atype)} 타입 세대수</span><span>{data.type_units != null ? `${data.type_units.toLocaleString()}세대` : "-"}</span></div>
           <div className="flex justify-between font-medium"><span className="text-muted-foreground">환금성</span><span>{v}%</span></div>
         </div>
         <p className="text-muted-foreground mt-2 pt-2 border-t leading-relaxed">거래건수 / 해당 면적타입 세대수. 높을수록 거래가 활발하여 매도 시 유리</p>
@@ -1390,7 +1390,7 @@ function SchoolCell({ data }: { data: AptData }) {
                     {trend > 0 && <span className="text-destructive font-medium">+{trend} 증가</span>}
                     {trend < 0 && <span className="text-emerald-500 font-medium">{trend} 감소</span>}
                     {trend === 0 && hasAny && <span className="text-muted-foreground">변동없음</span>}
-                    {!hasAny && <span className="text-emerald-500">3년간 0건</span>}
+                    {!hasAny && <span className="text-emerald-500">4년간 0건</span>}
                   </div>
                 </div>
 
@@ -1404,7 +1404,7 @@ function SchoolCell({ data }: { data: AptData }) {
             );
           })}
         </div>
-        <p className="text-muted-foreground mt-2 text-[10px]">출처: 학교알리미 ({currentYear - 4}-{currentYear - 1}학년도) · 유형 중복 포함</p>
+        <p className="text-muted-foreground mt-2 text-[10px]">출처: 학교알리미 ({currentYear - 3}-{currentYear}학년도) · 유형 중복 포함</p>
       </PopoverContent>
     </Popover>
   );
@@ -1412,7 +1412,8 @@ function SchoolCell({ data }: { data: AptData }) {
 
 function MulticulturalPanel({ mc }: { mc: MulticulturalData }) {
   const [selected, setSelected] = useState<string>("수원시");
-  const targets = ["수원시", "성남시", "용인시", "하남시", "화성시"];
+  // 데이터에 새 시가 추가되면 자동 반영 (하드코딩 시 신규 지역 누락)
+  const targets = Object.keys(mc);
   const items = targets.filter((c) => mc[c]).map((c) => ({ city: c, ...mc[c] }));
   if (items.length === 0) return <p className="text-xs text-muted-foreground">데이터 로딩 중...</p>;
 
@@ -1960,6 +1961,7 @@ export default function App() {
     searchTimerRef.current = setTimeout(() => startTransition(() => setSearchQuery(v)), 150);
   };
   const clearSearch = () => {
+    clearTimeout(searchTimerRef.current); // pending debounce가 닫은 뒤 유령 검색어를 되살리는 것 방지
     if (searchRef.current) searchRef.current.value = "";
     setSearchQuery("");
   };
@@ -2083,6 +2085,8 @@ export default function App() {
   }, [applyCloudState]);
 
   const [compareOpen, setCompareOpen] = useState(false);
+  const [loadError, setLoadError] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0); // 에러 배너의 재시도 버튼이 증가 → 로드 effect 재실행
 
   useEffect(() => {
     const base = import.meta.env.BASE_URL ?? "/";
@@ -2097,6 +2101,7 @@ export default function App() {
     };
     const loadFallback = () => fetch(base + "data.json").then((r) => r.json() as Promise<AptData[]>);
 
+    setLoadError(false);
     Promise.all([
       loadFromIndex().catch(() => loadFallback()),
       // school_violence는 별도 파일. 학교명 키로 참조 공유 → 메모리 절감 (8MB → 2MB)
@@ -2117,11 +2122,21 @@ export default function App() {
       });
       calcScores(raw, weights);
       setData(raw);
-    });
+    }).catch(() => setLoadError(true)); // shard·fallback 모두 실패 시 무한 로딩 대신 에러 배너
     fetch(base + "multicultural.json")
       .then((r) => r.json())
       .then(setMulticultural)
       .catch(() => {});
+  }, [reloadKey]);
+
+  // 저장된 정렬이 거리순이면 위치 재요청 (도착 전엔 comparator가 점수순 fallback, 거부 시 점수순 복귀)
+  useEffect(() => {
+    if (sortField !== "distance") return;
+    navigator.geolocation.getCurrentPosition(
+      (pos) => setMyLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+      () => setSortField("score"),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 필터 localStorage 저장
@@ -2174,12 +2189,19 @@ export default function App() {
 
   // 상승력·환금 계산 윈도우 — 추이 기간을 길게 잡아도 최근 12개월로 cap (모멘텀 지표는 단기 유지).
   // recent_trades 자체가 12개월 롤링 배포라, 장기 추이는 buildSpark 가 long_trend 로 그린다.
-  const accelMonths = Math.min(parseInt(trendRange) || 6, 12);
+  // "전체"는 parseInt가 NaN이라 기본 6으로 떨어지지 않게 cap(12)으로 명시.
+  const accelMonths = trendRange === "all" ? 12 : Math.min(parseInt(trendRange) || 6, 12);
   const trendCutoff = useMemo(() => {
     const now = new Date();
     const c = new Date(now.getFullYear(), now.getMonth() - accelMonths + 1, 1);
     return `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-01`;
   }, [accelMonths]);
+  // 거래건수·환금성 윈도우 — 라벨("6개월 거래")과 동일한 최근 6개월 고정 (추이 기간과 무관)
+  const sixMonthCutoff = useMemo(() => {
+    const now = new Date();
+    const c = new Date(now.getFullYear(), now.getMonth() - 5, 1);
+    return `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-01`;
+  }, []);
 
   // 추이 스파크라인 데이터 — 단기(≤1년)는 개별 거래(recent_trades), 장기(>1년/전체)는
   // 전체 기간 개별 실거래(ps, 압축 시계열)를 복원해 한 건 한 건 그린다(월별 중앙값 샘플링 아님).
@@ -2215,7 +2237,8 @@ export default function App() {
       if (excludeFirstFloor && t.floor === 1) return false;
       return true;
     });
-    const count = trades.length;
+    // recent_trades는 12개월 롤링 배포 — count·환금성은 라벨대로 최근 6개월만 집계
+    const count = trades.filter((t) => t.date >= sixMonthCutoff).length;
     const liquidity = d.type_units && d.type_units > 0
       ? Math.round((count / d.type_units) * 1000) / 10
       : d.liquidity;
@@ -2223,7 +2246,7 @@ export default function App() {
     // 상승력 — 크기(Theil-Sen) × 일관성(Kendall tau)
     const { value: accel, tau: accel_tau } = robustAccel(win, accelMonths);
     return { ...d, recent_trades: trades, count, liquidity, accel, accel_tau };
-  }, [excludeDirect, excludeFirstFloor, trendCutoff, accelMonths]);
+  }, [excludeDirect, excludeFirstFloor, trendCutoff, accelMonths, sixMonthCutoff]);
   const tradeFilteredData = useMemo(() => {
     const mapped = data.map(applyTradeFilter);
     calcScores(mapped, weights); // 재계산된 상승력/환금성을 종합점수에 반영
@@ -2268,7 +2291,10 @@ export default function App() {
     });
 
     f.sort((a, b) => {
-      if (sortField === "distance" && myLocation) {
+      if (sortField === "distance") {
+        // 위치 미확보(저장된 거리순 복원 직후·권한 거부) 시 점수순 fallback — AptData에 distance 속성이 없어
+        // 아래 공통 분기로 떨어지면 NaN comparator(무정렬)가 되는 것을 방지
+        if (!myLocation) return (b.score ?? -Infinity) - (a.score ?? -Infinity);
         const da = a.lat && a.lng ? haversineKm(myLocation.lat, myLocation.lng, a.lat, a.lng) : Infinity;
         const db = b.lat && b.lng ? haversineKm(myLocation.lat, myLocation.lng, b.lat, b.lng) : Infinity;
         return da - db;
@@ -2285,6 +2311,26 @@ export default function App() {
 
   // 필터/정렬/뷰 변경 시 점진 렌더 카운트 리셋 (스크롤 맨 위로 돌아간 효과)
   useEffect(() => { setVisibleCount(ROW_PAGE); }, [filtered, viewMode]);
+
+  // 검색 점프 — 대상 행이 점진 렌더 범위(60행) 밖이면 그 순위까지 렌더 확장 후 스크롤.
+  // 리셋 effect(위) 뒤에 선언해 같은 커밋에서 확장값이 리셋을 덮어쓰도록 한다.
+  const [jumpTarget, setJumpTarget] = useState<string | null>(null);
+  useEffect(() => {
+    if (!jumpTarget) return;
+    const idx = filtered.findIndex((x) => x.name === jumpTarget);
+    if (idx >= 0) setVisibleCount((c) => Math.max(c, idx + 10));
+    let cancelled = false;
+    let tries = 0;
+    const tick = () => {
+      if (cancelled) return;
+      const row = document.querySelector(`[data-apt="${jumpTarget}"]`);
+      if (row) { row.scrollIntoView({ behavior: "smooth", block: "center" }); setJumpTarget(null); return; }
+      if (++tries < 10) setTimeout(tick, 100);
+      else setJumpTarget(null);
+    };
+    const t = setTimeout(tick, 50);
+    return () => { cancelled = true; clearTimeout(t); };
+  }, [jumpTarget, filtered]);
 
   // sentinel이 보이면 다음 페이지만큼 더 렌더
   useEffect(() => {
@@ -2453,6 +2499,12 @@ export default function App() {
     <div className="dark min-h-screen bg-background text-foreground">
       <div className="max-w-7xl mx-auto px-3 py-4 sm:px-6">
         <h1 className="text-xl font-bold mb-1">아파트 매수 후보 스코어링</h1>
+        {loadError && data.length === 0 && (
+          <div className="mb-3 flex items-center gap-3 rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-xs">
+            <span className="text-destructive">데이터를 불러오지 못했습니다. 네트워크 상태를 확인해 주세요.</span>
+            <Button variant="outline" size="sm" className="h-6 text-xs px-2" onClick={() => setReloadKey((k) => k + 1)}>재시도</Button>
+          </div>
+        )}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
           <p className="text-xs text-muted-foreground">
             데이터: 실거래가 (전 면적) | 최종 업데이트: {new Date().toLocaleDateString("ko-KR")}
@@ -2752,7 +2804,7 @@ export default function App() {
               min={0}
               max={20}
               step={1}
-              value={[+priceMin || 0, +priceMax || 20]}
+              value={[+priceMin || 0, priceMax === "" ? 20 : +priceMax]}
               onValueChange={(v: readonly number[]) => { setPriceMin(String(v[0])); setPriceMax(String(v[1])); }}
             />
           </label>
@@ -3067,10 +3119,8 @@ export default function App() {
                           if (!inFilter) return;
                           setSearchOpen(false); clearSearch();
                           setHighlightedApt(d.name);
-                          setTimeout(() => {
-                            const row = document.querySelector(`[data-apt="${d.name}"]`);
-                            if (row) row.scrollIntoView({ behavior: "smooth", block: "center" });
-                          }, 50);
+                          if (viewMode !== "table") setViewMode("table"); // 지도 뷰에선 행이 없음
+                          setJumpTarget(d.name); // 점진 렌더 범위 밖 행도 확장 후 스크롤 (effect 처리)
                           setTimeout(() => setHighlightedApt(null), 3000);
                         }}
                       >

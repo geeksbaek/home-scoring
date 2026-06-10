@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { APIProvider, Map as GoogleMap, AdvancedMarker } from "@vis.gl/react-google-maps";
+import { useEffect, useMemo, useState } from "react";
+import { APIProvider, Map as GoogleMap, AdvancedMarker, useMap } from "@vis.gl/react-google-maps";
 import type { AptData } from "@/lib/scoring";
 
 const GOOGLE_MAPS_KEY = import.meta.env.VITE_GOOGLE_MAPS_KEY ?? "";
@@ -105,6 +105,16 @@ function AptMarker({ group, isSelected, onClick, onClose }: { group: AptGroup; i
 }
 
 
+// defaultCenter는 mount 시 1회만 적용 — geolocation이 지도 mount보다 늦게 도착하는
+// 일반 케이스(지도 버튼 클릭과 동시에 위치 요청)에서 현재위치로 이동시키는 보조 컴포넌트.
+function PanToLocation({ loc }: { loc: { lat: number; lng: number } | null }) {
+  const map = useMap();
+  useEffect(() => {
+    if (map && loc) map.panTo(loc);
+  }, [map, loc]);
+  return null;
+}
+
 export default function AptMap({ data, myLocation }: AptMapProps) {
   const [selected, setSelected] = useState<string | null>(null);
 
@@ -159,6 +169,7 @@ export default function AptMap({ data, myLocation }: AptMapProps) {
             mapTypeControl={true}
             zoomControl={true}
           >
+            <PanToLocation loc={myLocation} />
             {myLocation && (
               <AdvancedMarker position={myLocation}>
                 <div style={{
