@@ -18,7 +18,7 @@ import { unpackPriceSeries } from "@/lib/pricePack";
 import { CLOUD_SYNC_EVENT } from "@/lib/sync";
 import { fetchKbLivePrice, type KbLivePrice } from "@/lib/kbLivePrice";
 import { getProxyUrl, setProxyUrl, getProxyToken, setProxyToken, useColumnListings, articlesForAtype, isMovableBy, isTenant, isOwnerJeonse, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, SlidersHorizontal, X } from "lucide-react";
 import { lazy, Suspense } from "react";
 const AptMap = lazy(() => import("@/components/AptMap"));
 const MolitPressViewer = lazy(() => import("@/components/MolitPressViewer"));
@@ -79,6 +79,9 @@ function atypeLabel(atype: string): string {
 const ATYPES_LARGE = ["230", "200", "160", "140", "124", "114", "104", "99"];
 const ATYPES_MEDIUM = ["84"];
 const ATYPES_SMALL = ["74", "64", "60", "59", "52", "49", "39", "29"];
+
+// 기본값에서 벗어난(활성) 필터 트리거 강조 스타일
+const FILTER_ON = "border-primary/60 bg-primary/10 text-primary dark:bg-primary/15 dark:hover:bg-primary/20";
 
 function atypeMatchesFilter(atype: string, filter: string): boolean {
   if (filter === "large") return ATYPES_LARGE.includes(atype);
@@ -1973,6 +1976,7 @@ export default function App() {
   const [sortField, setSortField] = useState<SortKey>(() => ls("f_sort", "score") as SortKey);
   const [myLocation, setMyLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [viewMode, setViewMode] = useState<"table" | "map">("table");
+  const [filtersOpen, setFiltersOpen] = useState(false); // 모바일 상세 필터 패널 토글 (sm+ 에선 항상 표시)
   // 메인 테이블 점진 렌더 — 필터 없을 때 ~5,900행 동시 렌더 freeze 방지
   const ROW_PAGE = 60;
   const [visibleCount, setVisibleCount] = useState(ROW_PAGE);
@@ -2495,6 +2499,21 @@ export default function App() {
     return Math.max(p90, 0.05);
   }, [data, trendCutoff]);
 
+  // ── 필터 활성 상태(기본값 이탈) — 트리거 하이라이트·모바일 배지·일괄 초기화 공용 ──
+  const priceFilterOn = +priceMin > 0 || (priceMax !== "" && +priceMax < 20);
+  const detailFilterCount = [
+    commuteFilter !== "all", pediaFilter !== "all", parkingFilter !== "all",
+    liquidityFilter !== "all", accelFilter !== "all",
+    priceFilterOn, hhMin !== "0", buildMin !== "0", (+tradeMin || 0) > 0,
+  ].filter(Boolean).length;
+  const activeFilterCount = detailFilterCount + (typeFilter.length ? 1 : 0) + (regionFilter.length ? 1 : 0);
+  const resetFilters = () => {
+    setTypeFilter([]); setRegionFilter([]);
+    setCommuteFilter("all"); setPediaFilter("all"); setParkingFilter("all");
+    setLiquidityFilter("all"); setAccelFilter("all");
+    setPriceMin("0"); setPriceMax("20"); setHhMin("0"); setBuildMin("0"); setTradeMin("0");
+  };
+
   return (
     <div className="dark min-h-screen bg-background text-foreground">
       <div className="max-w-7xl mx-auto px-3 py-4 sm:px-6">
@@ -2509,7 +2528,7 @@ export default function App() {
           <p className="text-xs text-muted-foreground">
             데이터: 실거래가 (전 면적) | 최종 업데이트: {new Date().toLocaleDateString("ko-KR")}
           </p>
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 shrink-0 text-[10px]">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 shrink-0 text-[11px]">
             {import.meta.env.VITE_FIREBASE_API_KEY && (
               <Suspense fallback={null}>
                 <AuthButton />
@@ -2518,7 +2537,7 @@ export default function App() {
             <Button
               variant="outline"
               size="sm"
-              className="text-[10px] h-auto py-0.5 px-2"
+              className="text-[11px] h-7 px-2"
               onClick={() => setFinanceOpen(true)}
               title="자본/연봉/대출 설정 (로그인 시 본인 계정에만 클라우드 동기화)"
             >
@@ -2528,7 +2547,7 @@ export default function App() {
             <select
               value={loanProduct}
               onChange={(e) => { setLoanProduct(e.target.value as LoanProduct); localStorage.setItem("f_loanProduct", e.target.value); }}
-              className="h-auto py-0.5 px-1 rounded border bg-background text-[10px]"
+              className="h-7 px-1.5 rounded border bg-background text-[11px]"
               title={LOAN_PRODUCTS[loanProduct].desc}
             >
               {(Object.keys(LOAN_PRODUCTS) as LoanProduct[]).map((p) => {
@@ -2546,10 +2565,10 @@ export default function App() {
             </label>
             <label className="flex items-center gap-1" title="이 시점까지 입주 가능한 매물만 '실입주가능'으로 간주 (세낀/지연 매물 제외)">
               <span className="text-muted-foreground">입주가능</span>
-              <input type="month" value={moveInMonth} onChange={(e) => { setMoveInMonth(e.target.value); localStorage.setItem("f_moveInMonth", e.target.value); }} className="h-auto py-0.5 px-1 rounded border bg-background text-[10px] tabular-nums" />
+              <input type="month" value={moveInMonth} onChange={(e) => { setMoveInMonth(e.target.value); localStorage.setItem("f_moveInMonth", e.target.value); }} className="h-7 px-1.5 rounded border bg-background text-[11px] tabular-nums" />
             </label>
             <ProxySetting />
-            <Button variant="outline" size="sm" className="text-[10px] h-auto py-0.5 px-2" onClick={() => setMcOpen(true)}>다문화 통계</Button>
+            <Button variant="outline" size="sm" className="text-[11px] h-7 px-2" onClick={() => setMcOpen(true)}>다문화 통계</Button>
             <Suspense fallback={null}>
               <MolitPressViewer />
             </Suspense>
@@ -2665,188 +2684,240 @@ export default function App() {
           </CollapsibleContent>
         </Collapsible>
 
-        <div className="flex flex-wrap gap-2 mb-2 items-center">
-          <Select multiple value={typeFilter} onValueChange={(v: string[]) => setTypeFilter(v)}>
-            <SelectTrigger className="w-32 h-8 text-xs">
-              <SelectValue>{(v: string[]) => v.length === 0 ? "전체 면적" : v.length === 1 ? atypeLabel(v[0]) : `면적 ${v.length}개`}</SelectValue>
-            </SelectTrigger>
-            <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
-              <SelectItem value="large"><span className="font-medium">대형 전체 (84㎡ 초과)</span></SelectItem>
-              {ATYPES_LARGE.map((a) => (
-                <SelectItem key={a} value={a}><span className="pl-3 text-muted-foreground">{atypeLabel(a)}</span></SelectItem>
-              ))}
-              <SelectItem value="medium"><span className="font-medium">중형 전체 (84㎡)</span></SelectItem>
-              {ATYPES_MEDIUM.map((a) => (
-                <SelectItem key={a} value={a}><span className="pl-3 text-muted-foreground">{atypeLabel(a)}</span></SelectItem>
-              ))}
-              <SelectItem value="small"><span className="font-medium">소형 전체 (84㎡ 미만)</span></SelectItem>
-              {ATYPES_SMALL.map((a) => (
-                <SelectItem key={a} value={a}><span className="pl-3 text-muted-foreground">{atypeLabel(a)}</span></SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select value={sortField} onValueChange={(v) => {
-            if (!v) return;
-            if (v === "distance" && !myLocation) {
-              navigator.geolocation.getCurrentPosition(
-                (pos) => { setMyLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude }); setSortField("distance"); },
-                () => { /* 위치 권한 거부 시 무시 */ },
-              );
-            } else {
-              setSortField(v as SortKey);
-            }
-          }} items={{ score: "점수순", accel: "상승력순", liquidity: "환금성순", commuteScore: "출퇴근순", pedScore: "소아과순", avg: "현재가순", distance: "거리순" }}>
-            <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="score">점수순</SelectItem>
-              <SelectItem value="accel">상승력순</SelectItem>
-              <SelectItem value="liquidity">환금성순</SelectItem>
-              <SelectItem value="commuteScore">출퇴근순</SelectItem>
-              <SelectItem value="pedScore">소아과순</SelectItem>
-              <SelectItem value="avg">현재가순</SelectItem>
-              <SelectItem value="distance">거리순</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select multiple value={regionFilter} onValueChange={(v: string[]) => setRegionFilter(v)}>
-            <SelectTrigger className="w-32 h-8 text-xs">
-              <SelectValue>{(v: string[]) => v.length === 0 ? "전체 지역" : v.length === 1 ? v[0] : `지역 ${v.length}개`}</SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              {regions.map((r) => {
-                const isGu = r.includes(" ");
-                return (
-                  <SelectItem key={r} value={r}>
-                    {isGu ? <span className="pl-3 text-muted-foreground">{r.split(" ")[1]}</span> : <span className="font-medium">{r}</span>}
-                  </SelectItem>
-                );
-              })}
-            </SelectContent>
-          </Select>
-          <Select value={commuteFilter} onValueChange={(v) => v && setCommuteFilter(v)} items={{ all: "출퇴근 전체", good: "좋음 이상", ok: "보통 이상" }}>
-            <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">출퇴근 전체</SelectItem>
-              <SelectItem value="good">좋음 이상</SelectItem>
-              <SelectItem value="ok">보통 이상</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select value={pediaFilter} onValueChange={(v) => v && setPediaFilter(v)} items={{ all: "소아과 전체", best: "매우좋음", good: "좋음 이상", ok: "보통 이상" }}>
-            <SelectTrigger className="w-28 h-8 text-xs"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">소아과 전체</SelectItem>
-              <SelectItem value="best">매우좋음</SelectItem>
-              <SelectItem value="good">좋음 이상</SelectItem>
-              <SelectItem value="ok">보통 이상</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select value={parkingFilter} onValueChange={(v) => v && setParkingFilter(v)} items={{ all: "주차 전체", good: "넉넉 (≥1.3)", ok: "보통 이상 (≥1.2)", low: "부족 제외 (≥1.1)" }}>
-            <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">주차 전체</SelectItem>
-              <SelectItem value="good">넉넉 (≥1.3)</SelectItem>
-              <SelectItem value="ok">보통 이상 (≥1.2)</SelectItem>
-              <SelectItem value="low">부족 제외 (≥1.1)</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select value={commuteSlot} onValueChange={(v) => v && setCommuteSlot(v as CommuteSlot)} items={{ early: "일찍 (06:30/16:00)", late: "늦게 (08:00/18:00)" }}>
-            <SelectTrigger className="w-36 h-8 text-xs"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="early">일찍 (06:30/16:00)</SelectItem>
-              <SelectItem value="late">늦게 (08:00/18:00)</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select value={trendRange} onValueChange={(v) => v && setTrendRange(v)} items={{ "3": "추이 3개월", "6": "추이 6개월", "12": "추이 1년", "36": "추이 3년", "60": "추이 5년", all: "추이 전체" }}>
-            <SelectTrigger className="w-28 h-8 text-xs"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="3">추이 3개월</SelectItem>
-              <SelectItem value="6">추이 6개월</SelectItem>
-              <SelectItem value="12">추이 1년</SelectItem>
-              <SelectItem value="36">추이 3년</SelectItem>
-              <SelectItem value="60">추이 5년</SelectItem>
-              <SelectItem value="all">추이 전체</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select value={liquidityFilter} onValueChange={(v) => v && setLiquidityFilter(v)} items={{ all: "환금성 전체", good: "좋음 이상 (≥7%)", ok: "보통 이상 (≥4%)", bad: "나쁨 이상 (≥2%)" }}>
-            <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">환금성 전체</SelectItem>
-              <SelectItem value="good">좋음 이상 (≥7%)</SelectItem>
-              <SelectItem value="ok">보통 이상 (≥4%)</SelectItem>
-              <SelectItem value="bad">나쁨 이상 (≥2%)</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select value={accelFilter} onValueChange={(v) => v && setAccelFilter(v)} items={{ all: "상승력 전체", good: "상승 (>5%)", ok: "보합 이상 (≥0%)", bad: "하락 (<0%)" }}>
-            <SelectTrigger className="w-32 h-8 text-xs"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">상승력 전체</SelectItem>
-              <SelectItem value="good">상승 (&gt;5%)</SelectItem>
-              <SelectItem value="ok">보합 이상 (≥0%)</SelectItem>
-              <SelectItem value="bad">하락 (&lt;0%)</SelectItem>
-            </SelectContent>
-          </Select>
-          <span className="text-xs text-muted-foreground">{filtered.length}개 단지</span>
-          <Button variant={viewMode === "table" ? "default" : "outline"} size="sm" className="h-7 text-xs px-2" onClick={() => setViewMode("table")}>테이블</Button>
-          <Button variant={viewMode === "map" ? "default" : "outline"} size="sm" className="h-7 text-xs px-2" onClick={() => { setViewMode("map"); if (!myLocation) navigator.geolocation.getCurrentPosition((p) => setMyLocation({ lat: p.coords.latitude, lng: p.coords.longitude }), () => {}); }}>지도</Button>
-          {favoriteItems.length > 1 && (
-            <Button variant="outline" size="sm" className="h-7 text-xs px-2" onClick={() => setCompareOpen(true)}>
-              <span className="text-yellow-400">★</span> 추이 비교 ({favoriteItems.length})
-            </Button>
-          )}
-        </div>
-        <div className="flex flex-wrap gap-3 mb-4 items-center text-xs">
-          <label className="flex items-center gap-2" title="현재가 범위 (억 단위)">
-            <span className="text-muted-foreground">현재가</span>
-            <span className="text-[10px] tabular-nums w-24 text-center">
-              {(+priceMin === 0 && +priceMax >= 20) ? "전체" : `${priceMin}억 ~ ${+priceMax >= 20 ? "20억+" : priceMax + "억"}`}
-            </span>
-            <Slider
-              className="w-40"
-              min={0}
-              max={20}
-              step={1}
-              value={[+priceMin || 0, priceMax === "" ? 20 : +priceMax]}
-              onValueChange={(v: readonly number[]) => { setPriceMin(String(v[0])); setPriceMax(String(v[1])); }}
-            />
-          </label>
-          <label className="flex items-center gap-1" title="최소 세대수 (공동주택관리법 / 주택건설기준)">
-            <span className="text-muted-foreground">세대수</span>
-            <Select value={hhMin} onValueChange={(v) => v && setHhMin(v)} items={{ "0": "전체", "150": "150세대↑", "300": "300세대↑", "500": "500세대↑", "1000": "1000세대↑" }}>
-              <SelectTrigger className="w-28 h-7 text-xs"><SelectValue /></SelectTrigger>
+        {/* ───── 필터 툴바: 핵심 행(항상 표시) + 상세 행(모바일에선 접힘) ───── */}
+        <div className="mb-4 rounded-lg border bg-card/40 p-2 sm:p-2.5">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            <Select multiple value={typeFilter} onValueChange={(v: string[]) => setTypeFilter(v)}>
+              <SelectTrigger className={cn("h-8 text-xs flex-1 min-w-[6.5rem] sm:flex-none sm:w-32", typeFilter.length > 0 && FILTER_ON)}>
+                <SelectValue>{(v: string[]) => v.length === 0 ? "전체 면적" : v.length === 1 ? atypeLabel(v[0]) : `면적 ${v.length}개`}</SelectValue>
+              </SelectTrigger>
               <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
-                <SelectItem value="0">전체</SelectItem>
+                <SelectItem value="large"><span className="font-medium">대형 전체 (84㎡ 초과)</span></SelectItem>
+                {ATYPES_LARGE.map((a) => (
+                  <SelectItem key={a} value={a}><span className="pl-3 text-muted-foreground">{atypeLabel(a)}</span></SelectItem>
+                ))}
+                <SelectItem value="medium"><span className="font-medium">중형 전체 (84㎡)</span></SelectItem>
+                {ATYPES_MEDIUM.map((a) => (
+                  <SelectItem key={a} value={a}><span className="pl-3 text-muted-foreground">{atypeLabel(a)}</span></SelectItem>
+                ))}
+                <SelectItem value="small"><span className="font-medium">소형 전체 (84㎡ 미만)</span></SelectItem>
+                {ATYPES_SMALL.map((a) => (
+                  <SelectItem key={a} value={a}><span className="pl-3 text-muted-foreground">{atypeLabel(a)}</span></SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select multiple value={regionFilter} onValueChange={(v: string[]) => setRegionFilter(v)}>
+              <SelectTrigger className={cn("h-8 text-xs flex-1 min-w-[6.5rem] sm:flex-none sm:w-32", regionFilter.length > 0 && FILTER_ON)}>
+                <SelectValue>{(v: string[]) => v.length === 0 ? "전체 지역" : v.length === 1 ? v[0] : `지역 ${v.length}개`}</SelectValue>
+              </SelectTrigger>
+              <SelectContent>
+                {regions.map((r) => {
+                  const isGu = r.includes(" ");
+                  return (
+                    <SelectItem key={r} value={r}>
+                      {isGu ? <span className="pl-3 text-muted-foreground">{r.split(" ")[1]}</span> : <span className="font-medium">{r}</span>}
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
+            </Select>
+            <Select value={sortField} onValueChange={(v) => {
+              if (!v) return;
+              if (v === "distance" && !myLocation) {
+                navigator.geolocation.getCurrentPosition(
+                  (pos) => { setMyLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude }); setSortField("distance"); },
+                  () => { /* 위치 권한 거부 시 무시 */ },
+                );
+              } else {
+                setSortField(v as SortKey);
+              }
+            }} items={{ score: "점수순", accel: "상승력순", liquidity: "환금성순", commuteScore: "출퇴근순", pedScore: "소아과순", avg: "현재가순", distance: "거리순" }}>
+              <SelectTrigger className="h-8 text-xs flex-1 min-w-[6rem] sm:flex-none sm:w-28"><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="score">점수순</SelectItem>
+                <SelectItem value="accel">상승력순</SelectItem>
+                <SelectItem value="liquidity">환금성순</SelectItem>
+                <SelectItem value="commuteScore">출퇴근순</SelectItem>
+                <SelectItem value="pedScore">소아과순</SelectItem>
+                <SelectItem value="avg">현재가순</SelectItem>
+                <SelectItem value="distance">거리순</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={trendRange} onValueChange={(v) => v && setTrendRange(v)} items={{ "3": "추이 3개월", "6": "추이 6개월", "12": "추이 1년", "36": "추이 3년", "60": "추이 5년", all: "추이 전체" }}>
+              <SelectTrigger className="h-8 text-xs flex-1 min-w-[6rem] sm:flex-none sm:w-28"><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="3">추이 3개월</SelectItem>
+                <SelectItem value="6">추이 6개월</SelectItem>
+                <SelectItem value="12">추이 1년</SelectItem>
+                <SelectItem value="36">추이 3년</SelectItem>
+                <SelectItem value="60">추이 5년</SelectItem>
+                <SelectItem value="all">추이 전체</SelectItem>
+              </SelectContent>
+            </Select>
+            <Button
+              variant="outline"
+              size="sm"
+              className={cn("h-8 px-2.5 text-xs sm:hidden", filtersOpen && "bg-muted")}
+              onClick={() => setFiltersOpen((o) => !o)}
+            >
+              <SlidersHorizontal className="h-3.5 w-3.5 mr-1" />
+              상세 필터
+              {detailFilterCount > 0 && (
+                <span className="ml-1 inline-flex items-center justify-center min-w-[1.1rem] h-4 px-1 rounded-full bg-primary text-primary-foreground text-[10px] font-semibold tabular-nums">{detailFilterCount}</span>
+              )}
+              <ChevronDown className={cn("h-3.5 w-3.5 ml-0.5 transition-transform", filtersOpen && "rotate-180")} />
+            </Button>
+            {activeFilterCount > 0 && (
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-8 px-2 text-xs text-muted-foreground hover:text-destructive"
+                onClick={resetFilters}
+                title="모든 필터를 기본값으로 되돌립니다 (정렬·추이 기간·직거래/1층 제외는 유지)"
+              >
+                <X className="h-3.5 w-3.5 mr-0.5" />
+                초기화
+              </Button>
+            )}
+            <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
+              <span className="text-xs text-muted-foreground whitespace-nowrap">
+                <span className="font-semibold text-foreground tabular-nums">{filtered.length.toLocaleString()}</span>개 단지
+              </span>
+              <div className="flex h-8 rounded-lg border overflow-hidden text-xs shrink-0">
+                <button
+                  type="button"
+                  className={cn("px-2.5 transition-colors", viewMode === "table" ? "bg-primary text-primary-foreground font-medium" : "text-muted-foreground hover:bg-muted/50")}
+                  onClick={() => setViewMode("table")}
+                >테이블</button>
+                <button
+                  type="button"
+                  className={cn("px-2.5 border-l transition-colors", viewMode === "map" ? "bg-primary text-primary-foreground font-medium" : "text-muted-foreground hover:bg-muted/50")}
+                  onClick={() => { setViewMode("map"); if (!myLocation) navigator.geolocation.getCurrentPosition((p) => setMyLocation({ lat: p.coords.latitude, lng: p.coords.longitude }), () => {}); }}
+                >지도</button>
+              </div>
+              {favoriteItems.length > 1 && (
+                <Button variant="outline" size="sm" className="h-8 text-xs px-2" onClick={() => setCompareOpen(true)}>
+                  <span className="text-yellow-400">★</span> 추이 비교 ({favoriteItems.length})
+                </Button>
+              )}
+            </div>
+          </div>
+          <div
+            className={cn(
+              "mt-2 border-t border-border/60 pt-2 text-xs sm:flex sm:flex-wrap sm:items-center sm:gap-x-2.5 sm:gap-y-1.5",
+              filtersOpen ? "grid grid-cols-2 gap-1.5" : "hidden",
+            )}
+          >
+            <Select value={commuteFilter} onValueChange={(v) => v && setCommuteFilter(v)} items={{ all: "출퇴근 전체", good: "출퇴근 좋음 이상", ok: "출퇴근 보통 이상" }}>
+              <SelectTrigger className={cn("h-8 sm:h-7 text-xs w-full sm:w-auto", commuteFilter !== "all" && FILTER_ON)}><SelectValue /></SelectTrigger>
+              <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
+                <SelectItem value="all">출퇴근 전체</SelectItem>
+                <SelectItem value="good">좋음 이상 (≤30분)</SelectItem>
+                <SelectItem value="ok">보통 이상 (≤40분)</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={pediaFilter} onValueChange={(v) => v && setPediaFilter(v)} items={{ all: "소아과 전체", best: "소아과 매우좋음", good: "소아과 좋음 이상", ok: "소아과 보통 이상" }}>
+              <SelectTrigger className={cn("h-8 sm:h-7 text-xs w-full sm:w-auto", pediaFilter !== "all" && FILTER_ON)}><SelectValue /></SelectTrigger>
+              <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
+                <SelectItem value="all">소아과 전체</SelectItem>
+                <SelectItem value="best">매우좋음</SelectItem>
+                <SelectItem value="good">좋음 이상</SelectItem>
+                <SelectItem value="ok">보통 이상</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={parkingFilter} onValueChange={(v) => v && setParkingFilter(v)} items={{ all: "주차 전체", good: "주차 넉넉", ok: "주차 보통 이상", low: "주차 부족 제외" }}>
+              <SelectTrigger className={cn("h-8 sm:h-7 text-xs w-full sm:w-auto", parkingFilter !== "all" && FILTER_ON)}><SelectValue /></SelectTrigger>
+              <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
+                <SelectItem value="all">주차 전체</SelectItem>
+                <SelectItem value="good">넉넉 (≥1.3대)</SelectItem>
+                <SelectItem value="ok">보통 이상 (≥1.2대)</SelectItem>
+                <SelectItem value="low">부족 제외 (≥1.1대)</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={liquidityFilter} onValueChange={(v) => v && setLiquidityFilter(v)} items={{ all: "환금성 전체", good: "환금성 좋음 이상", ok: "환금성 보통 이상", bad: "환금성 나쁨 이상" }}>
+              <SelectTrigger className={cn("h-8 sm:h-7 text-xs w-full sm:w-auto", liquidityFilter !== "all" && FILTER_ON)}><SelectValue /></SelectTrigger>
+              <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
+                <SelectItem value="all">환금성 전체</SelectItem>
+                <SelectItem value="good">좋음 이상 (≥7%)</SelectItem>
+                <SelectItem value="ok">보통 이상 (≥4%)</SelectItem>
+                <SelectItem value="bad">나쁨 이상 (≥2%)</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={accelFilter} onValueChange={(v) => v && setAccelFilter(v)} items={{ all: "상승력 전체", good: "상승력 상승", ok: "상승력 보합 이상", bad: "상승력 하락" }}>
+              <SelectTrigger className={cn("h-8 sm:h-7 text-xs w-full sm:w-auto", accelFilter !== "all" && FILTER_ON)}><SelectValue /></SelectTrigger>
+              <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
+                <SelectItem value="all">상승력 전체</SelectItem>
+                <SelectItem value="good">상승 (&gt;5%)</SelectItem>
+                <SelectItem value="ok">보합 이상 (≥0%)</SelectItem>
+                <SelectItem value="bad">하락 (&lt;0%)</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={hhMin} onValueChange={(v) => v && setHhMin(v)} items={{ "0": "세대수 전체", "150": "150세대↑", "300": "300세대↑", "500": "500세대↑", "1000": "1000세대↑" }}>
+              <SelectTrigger className={cn("h-8 sm:h-7 text-xs w-full sm:w-auto", hhMin !== "0" && FILTER_ON)} title="최소 세대수 (공동주택관리법 / 주택건설기준)"><SelectValue /></SelectTrigger>
+              <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
+                <SelectItem value="0">세대수 전체</SelectItem>
                 <SelectItem value="150">150세대↑ (승강기/난방 시 의무관리)</SelectItem>
                 <SelectItem value="300">300세대↑ (전면 의무관리)</SelectItem>
                 <SelectItem value="500">500세대↑ (놀이터·경로당)</SelectItem>
                 <SelectItem value="1000">1000세대↑ (대단지)</SelectItem>
               </SelectContent>
             </Select>
-          </label>
-          <label className="flex items-center gap-1" title="최소 준공년도 (스프링클러·주차장 법적 기준)">
-            <span className="text-muted-foreground">준공</span>
-            <Select value={buildMin} onValueChange={(v) => v && setBuildMin(v)} items={{ "0": "전체", "1992": "1992년↑", "2005": "2005년↑", "2018": "2018년↑", "2019": "2019년↑" }}>
-              <SelectTrigger className="w-28 h-7 text-xs"><SelectValue /></SelectTrigger>
+            <Select value={buildMin} onValueChange={(v) => v && setBuildMin(v)} items={{ "0": "준공 전체", "1992": "1992년↑", "2005": "2005년↑", "2018": "2018년↑", "2019": "2019년↑" }}>
+              <SelectTrigger className={cn("h-8 sm:h-7 text-xs w-full sm:w-auto", buildMin !== "0" && FILTER_ON)} title="최소 준공년도 (스프링클러·주차장 법적 기준)"><SelectValue /></SelectTrigger>
               <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
-                <SelectItem value="0">전체</SelectItem>
+                <SelectItem value="0">준공 전체</SelectItem>
                 <SelectItem value="1992">1992년↑ (16층 이상 층만 스프링클러)</SelectItem>
                 <SelectItem value="2005">2005년↑ (11층+ 동 전층 스프링클러)</SelectItem>
                 <SelectItem value="2018">2018년↑ (6층+ 신축 스프링클러)</SelectItem>
                 <SelectItem value="2019">2019년↑ (주차칸 2.5m)</SelectItem>
               </SelectContent>
             </Select>
-          </label>
-          <label className="flex items-center gap-1" title="최근 6개월 최소 거래 건수">
-            <span className="text-muted-foreground">6개월 거래</span>
-            <input type="number" min="0" placeholder="0" value={tradeMin} onChange={(e) => setTradeMin(e.target.value)} className="w-10 h-7 rounded border bg-background px-1.5 text-xs text-center" />
-            <span className="text-muted-foreground text-[10px]">건+</span>
-          </label>
-          <label className="flex items-center gap-1.5 cursor-pointer" title="중개인 없는 직거래 제외">
-            <input type="checkbox" checked={excludeDirect} onChange={(e) => setExcludeDirect(e.target.checked)} className="rounded" />
-            <span className="text-muted-foreground">직거래 제외</span>
-          </label>
-          <label className="flex items-center gap-1.5 cursor-pointer" title="1층 거래 제외">
-            <input type="checkbox" checked={excludeFirstFloor} onChange={(e) => setExcludeFirstFloor(e.target.checked)} className="rounded" />
-            <span className="text-muted-foreground">1층 제외</span>
-          </label>
+            <label className="flex items-center gap-1 h-8 sm:h-7" title="최근 6개월 최소 거래 건수">
+              <span className={cn("text-muted-foreground", (+tradeMin || 0) > 0 && "text-primary font-medium")}>6개월 거래</span>
+              <input
+                type="number"
+                min="0"
+                placeholder="0"
+                value={tradeMin}
+                onChange={(e) => setTradeMin(e.target.value)}
+                className={cn("w-12 h-7 rounded border bg-background px-1.5 text-xs text-center", (+tradeMin || 0) > 0 && "border-primary/60 text-primary")}
+              />
+              <span className="text-muted-foreground text-[10px]">건+</span>
+            </label>
+            <label className="col-span-2 flex items-center gap-2 h-8 sm:h-7" title="현재가 범위 (억 단위)">
+              <span className={cn("text-muted-foreground shrink-0", priceFilterOn && "text-primary font-medium")}>현재가</span>
+              <span className={cn("text-[10px] tabular-nums w-20 text-center shrink-0", priceFilterOn && "text-primary")}>
+                {(+priceMin === 0 && +priceMax >= 20) ? "전체" : `${priceMin}억 ~ ${+priceMax >= 20 ? "20억+" : priceMax + "억"}`}
+              </span>
+              {/* Slider className은 내부 Control에 적용 — Root가 flex item이라 flex-1이 안 먹어 래퍼로 폭 확보 */}
+              <div className="flex-1 sm:flex-none">
+                <Slider
+                  className="w-full sm:w-40"
+                  min={0}
+                  max={20}
+                  step={1}
+                  value={[+priceMin || 0, priceMax === "" ? 20 : +priceMax]}
+                  onValueChange={(v: readonly number[]) => { setPriceMin(String(v[0])); setPriceMax(String(v[1])); }}
+                />
+              </div>
+            </label>
+            <div className="hidden sm:block w-px h-5 bg-border/70" />
+            <label className="flex items-center gap-1.5 cursor-pointer h-8 sm:h-7" title="중개인 없는 직거래 제외">
+              <input type="checkbox" checked={excludeDirect} onChange={(e) => setExcludeDirect(e.target.checked)} className="rounded" />
+              <span className="text-muted-foreground">직거래 제외</span>
+            </label>
+            <label className="flex items-center gap-1.5 cursor-pointer h-8 sm:h-7" title="1층 거래 제외">
+              <input type="checkbox" checked={excludeFirstFloor} onChange={(e) => setExcludeFirstFloor(e.target.checked)} className="rounded" />
+              <span className="text-muted-foreground">1층 제외</span>
+            </label>
+            <Select value={commuteSlot} onValueChange={(v) => v && setCommuteSlot(v as CommuteSlot)} items={{ early: "측정 일찍", late: "측정 늦게" }}>
+              <SelectTrigger className="h-8 sm:h-7 text-xs w-full sm:w-auto" title="출퇴근 시간 측정 시간대 — 일찍(06:30/16:00) / 늦게(08:00/18:00)"><SelectValue /></SelectTrigger>
+              <SelectContent alignItemWithTrigger={false} className="w-auto min-w-fit">
+                <SelectItem value="early">일찍 (06:30 출근 / 16:00 퇴근)</SelectItem>
+                <SelectItem value="late">늦게 (08:00 출근 / 18:00 퇴근)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
         {favoriteItems.length > 0 && (
