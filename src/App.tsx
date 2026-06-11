@@ -2714,8 +2714,8 @@ export default function App() {
                     </label>
                   </div>
                   <div className="grid grid-cols-2 gap-2">
-                    <label className="flex flex-col gap-1" title="미성년 자녀 수 — 디딤돌 우대(1자녀 -0.3/2자녀 -0.5/3자녀+ -0.7%p)·소득상한, 보금자리론 소득상한(1자녀 9천/2자녀+ 1억)·한도(다자녀 4억)에 반영">
-                      <span className="text-xs text-muted-foreground">미성년 자녀 수</span>
+                    <label className="flex flex-col gap-1" title="출생한 미성년 자녀만 — 태아 미포함 (청약 특공과 달리 기금·HF 대출은 등본·가족관계증명서로 증빙되는 출생 자녀만 인정). 디딤돌 우대(1자녀 -0.3/2자녀 -0.5/3자녀+ -0.7%p)·소득상한, 보금자리론 소득상한(1자녀 9천/2자녀+ 1억)·한도(다자녀 4억)에 반영">
+                      <span className="text-xs text-muted-foreground">미성년 자녀 수 <span className="text-[10px]">(태아 제외)</span></span>
                       <select value={childCount} onChange={(e) => { setChildCount(e.target.value); localStorage.setItem("f_children", e.target.value); }} className="h-8 rounded border bg-background px-2 text-sm">
                         <option value="0">없음</option>
                         <option value="1">1명</option>
