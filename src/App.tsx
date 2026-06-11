@@ -507,57 +507,134 @@ const SUBSIDY_USER_RATE = 0.02;
 const SUBSIDY_MAX_AMOUNT = 15000; // 만원
 const SUBSIDY_LTV = 0.5;
 
-// 정책상품 정의 (2025-2026 기준, 부부합산 소득 기준)
-// 디딤돌: HUG 디딤돌대출 (생애최초 한정 우대)
-// 보금자리: 한국주택금융공사 보금자리론 (특례 종료, u-보금자리 신설)
-// 신생아특례: 2024-01 시행 → 2025-04 소득상한 2.5억 확대 (한시)
+// ───────── 대출상품 (2026-06-01 HF·주택도시기금 공시 기준) ─────────
+// 검증 출처: hf.go.kr 디딤돌 상품소개/금리안내, 보금자리론 상품소개/금리안내, myhome.go.kr 신생아특례.
+// 가구유형(생애최초/신혼/자녀/출산)에 따라 소득상한·주택가·한도·금리가 모두 달라짐 → 함수형 getLoanTerms.
+// LTV: 정책상품 생애최초 80%는 수도권·규제지역 제외 — 본 앱 대상(서울·경기 전역)은 사실상 70% 고정.
 type LoanProduct = "normal" | "didimdol" | "bogeumjari" | "newborn";
-const LOAN_PRODUCTS: Record<LoanProduct, {
-  name: string;
-  rate: number;
-  maxLoan: number; // 최대 대출 한도 (만원). 0 = 없음
-  maxPrice: number; // 주택가격 한도 (만원). 0 = 없음
-  maxIncome: number; // 부부합산 소득 한도 (만원). 0 = 없음
-  maxAreaSqm: number; // 전용면적 한도 (㎡). 0 = 없음
-  forceLtv?: number; // LTV 강제 (정책상품)
-  desc: string;
-}> = {
-  normal: { name: "일반 주담대", rate: 0.045, maxLoan: 0, maxPrice: 0, maxIncome: 0, maxAreaSqm: 0, desc: "은행 자체상품, 시장금리" },
-  // 디딤돌 (2025): 부부합산 8.5천 (신혼·2자녀 1억), 주택 5억(수도권 6억), 한도 일반 2.5억/신혼 4억/2자녀 4억/신생아 4억
-  didimdol: { name: "디딤돌 (생애최초)", rate: 0.032, maxLoan: 40000, maxPrice: 60000, maxIncome: 8500, maxAreaSqm: 85, forceLtv: 0.7, desc: "부부합산 8.5천(신혼/자녀 1억), 한도 신혼 4억" },
-  // 보금자리: 2024 종료 → u-보금자리 (디딤돌 흡수) → 일반 보금자리 한도 3.6억, 생애최초 4.2억, 부부합산 7천(신혼 8.5천), 주택 6억
-  bogeumjari: { name: "u-보금자리 (생애최초)", rate: 0.044, maxLoan: 42000, maxPrice: 60000, maxIncome: 7000, maxAreaSqm: 0, forceLtv: 0.7, desc: "부부합산 7천(신혼 8.5천), LTV 70%, 4.2억" },
-  // 신생아특례 (2024-01 시행): 부부합산 1.3억 → 2025-04부터 한시 2.5억 상향
-  // 2년 내 출산 가구, 9억 이하 주택, 전용 85㎡ 이하 (수도권), 한도 4억(2025-06-27부터 5억→4억 축소)
-  // rate: 표시용 기본값 — 실제 적용 금리는 getNewbornRate(소득·만기·맞벌이) 사용
-  newborn: { name: "신생아특례 (출산 2년 내)", rate: 0.026, maxLoan: 40000, maxPrice: 90000, maxIncome: 25000, maxAreaSqm: 85, forceLtv: 0.8, desc: "부부합산 2.5억(맞벌이), 9억·85㎡ 이하, 한도 4억, 금리 1.8~4.5% (소득·만기별)" },
+// 가구 프로필 — 자금 설정에서 입력, 상품별 자격·금리 판정에 사용
+type HouseholdProfile = {
+  firstTime: boolean;   // 생애최초 주택 구입
+  newlywed: boolean;    // 혼인신고 7년 이내 (결혼예정 포함)
+  children: number;     // 미성년 자녀 수 (3 = 3명 이상)
+  recentBirth: boolean; // 대출접수일 기준 2년 내 출산·입양
 };
+const LOAN_PRODUCT_KEYS: LoanProduct[] = ["normal", "didimdol", "bogeumjari", "newborn"];
+type LoanTerms = {
+  name: string;
+  rate: number;     // 적용 금리 (소득·만기·가구 우대 반영)
+  rateMin: number;  // 소득 미입력 시 표시용 범위
+  rateMax: number;
+  maxLoan: number;    // 최대 대출 한도 (만원). 0 = 없음
+  maxPrice: number;   // 주택가격 한도 (만원). 0 = 없음
+  maxIncome: number;  // 부부합산 소득 한도 (만원). 0 = 없음
+  maxAreaSqm: number; // 전용면적 한도 (㎡). 0 = 없음
+  forceLtv?: number;  // LTV 강제 (정책상품)
+  desc: string;
+  eligNotes: string[]; // 가구·소득 차원 자격미달 사유 (단지 무관 — 가격/면적은 calcAffordability에서)
+};
+const fmtManwon = (man: number) => man >= 10000 ? `${man % 10000 === 0 ? man / 10000 : (man / 10000).toFixed(1)}억` : `${man / 1000}천만`;
+const termIdx4 = (years: number) => years <= 10 ? 0 : years <= 15 ? 1 : years <= 20 ? 2 : 3;
 
-// 신생아 특례 디딤돌 금리표 (2026-05 기준, myhome.go.kr)
-// 부부합산 소득(만원) × 만기(10/15/20/30년) — 기본 5년 적용, 우대금리 별도
-function getNewbornRate(incomeMan: number, years: number, dualIncome: boolean): number {
-  const termIdx = years <= 10 ? 0 : years <= 15 ? 1 : years <= 20 ? 2 : 3;
-  const brackets: Array<{ upper: number; dualOnly?: boolean; rates: [number, number, number, number] }> = [
+// 디딤돌 금리표 (2026-06-01 공시): 부부합산 소득구간 × 만기(10/15/20/30년). 신혼가구는 별도 특례표.
+const DIDIMDOL_RATES: Array<{ upper: number; general: [number, number, number, number]; newlywed: [number, number, number, number] }> = [
+  { upper: 2000, general: [0.0285, 0.0295, 0.0305, 0.0310], newlywed: [0.0255, 0.0265, 0.0275, 0.0280] },
+  { upper: 4000, general: [0.0320, 0.0330, 0.0340, 0.0345], newlywed: [0.0290, 0.0300, 0.0310, 0.0315] },
+  { upper: 7000, general: [0.0355, 0.0365, 0.0375, 0.0380], newlywed: [0.0325, 0.0335, 0.0345, 0.0350] },
+  { upper: 8500, general: [0.0390, 0.0400, 0.0410, 0.0415], newlywed: [0.0360, 0.0370, 0.0380, 0.0385] },
+];
+function getDidimdolRate(incomeMan: number, years: number, p: HouseholdProfile): number {
+  const idx = termIdx4(years);
+  const row = DIDIMDOL_RATES.find((r) => incomeMan <= r.upper) ?? DIDIMDOL_RATES[DIDIMDOL_RATES.length - 1];
+  let rate = p.newlywed ? row.newlywed[idx] : row.general[idx];
+  // 우대: 생애최초 0.2%p는 신혼 등과 택1(신혼특례표 사용 시 미적용), 자녀 우대는 중복 가능
+  if (!p.newlywed && p.firstTime) rate -= 0.002;
+  rate -= p.children >= 3 ? 0.007 : p.children === 2 ? 0.005 : p.children === 1 ? 0.003 : 0;
+  return Math.max(rate, 0.015); // 우대 적용 후 하한 1.5%
+}
+
+// 보금자리론(아낌e) 만기별 기준금리 (2026-06-01 공시) + 우대 최대 1.0%p 중복, 규제지역 +0.1%p 가산
+const BOGEUMJARI_RATES: Array<[number, number]> = [[10, 0.0460], [15, 0.0470], [20, 0.0475], [30, 0.0480], [40, 0.0485], [50, 0.0490]];
+function getBogeumjariRate(years: number, p: HouseholdProfile, regulated: boolean): number {
+  const base = (BOGEUMJARI_RATES.find(([y]) => years <= y) ?? BOGEUMJARI_RATES[BOGEUMJARI_RATES.length - 1])[1];
+  let disc = 0;
+  if (p.newlywed) disc += 0.003;
+  disc += p.children >= 3 ? 0.007 : p.children >= 2 ? 0.005 : 0;
+  if (p.recentBirth) disc += 0.002;
+  return base - Math.min(disc, 0.010) + (regulated ? 0.001 : 0);
+}
+
+// 신생아 특례 디딤돌 금리표 (2026-06 myhome.go.kr 공시와 일치 확인)
+// 부부합산 소득(만원) × 만기(10/15/20/30년) — 특례금리 기본 5년, 우대금리 별도
+// 1.3억 초과 구간은 맞벌이 전용 — 자격 검증은 getLoanTerms 에서 (여기선 금리만)
+function getNewbornRate(incomeMan: number, years: number): number {
+  const brackets: Array<{ upper: number; rates: [number, number, number, number] }> = [
     { upper: 2000,  rates: [0.0180, 0.0190, 0.0200, 0.0205] },
     { upper: 4000,  rates: [0.0215, 0.0225, 0.0235, 0.0240] },
     { upper: 6000,  rates: [0.0240, 0.0250, 0.0260, 0.0265] },
     { upper: 8500,  rates: [0.0265, 0.0275, 0.0285, 0.0290] },
-    { upper: 13000, rates: [0.0290, 0.0300, 0.0310, 0.0320] },
-    { upper: 15000, dualOnly: true, rates: [0.0350, 0.0360, 0.0370, 0.0380] },
-    { upper: 17000, dualOnly: true, rates: [0.0385, 0.0395, 0.0405, 0.0415] },
-    { upper: 20000, dualOnly: true, rates: [0.0420, 0.0430, 0.0440, 0.0450] },
+    { upper: 10000, rates: [0.0290, 0.0300, 0.0310, 0.0320] },
+    { upper: 13000, rates: [0.0320, 0.0330, 0.0340, 0.0350] },
+    { upper: 15000, rates: [0.0350, 0.0360, 0.0370, 0.0380] },
+    { upper: 17000, rates: [0.0385, 0.0395, 0.0405, 0.0415] },
+    { upper: 20000, rates: [0.0420, 0.0430, 0.0440, 0.0450] },
   ];
-  for (const b of brackets) {
-    if (incomeMan <= b.upper) {
-      if (b.dualOnly && !dualIncome) return LOAN_PRODUCTS.normal.rate; // 외벌이 1.3억 초과 → 자격 미달
-      return b.rates[termIdx];
-    }
-  }
-  return LOAN_PRODUCTS.normal.rate; // 2억 초과
+  const row = brackets.find((b) => incomeMan <= b.upper) ?? brackets[brackets.length - 1];
+  return row.rates[termIdx4(years)];
 }
 
-function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit: number, income1Man: number, income2Man: number, years: number, extraRepayYrs: number, areaSqm?: number, firstTimeBuyer: boolean = true, regulated: boolean = false, product: LoanProduct = "normal", interestSubsidy: boolean = false, interiorCost: number = 0, kbPriceMan: number | null = null) {
+// 상품 × 가구 프로필 × 소득 → 실제 적용 조건. 소득 0(미입력)이면 소득 자격검사 생략.
+function getLoanTerms(product: LoanProduct, p: HouseholdProfile, incomeMan: number, dualIncome: boolean, years: number, regulated: boolean, normalRatePct: number): LoanTerms {
+  const hasIncome = incomeMan > 0;
+  if (product === "didimdol") {
+    // 소득: 일반 6천 / 생초·2자녀 7천 / 신혼 8.5천 · 주택: 일반 5억 / 신혼·2자녀 6억
+    // 한도: 일반 2억 / 생초 2.4억 / 신혼·2자녀 3.2억 · 85㎡ 이하 · LTV 70%
+    const maxIncome = p.newlywed ? 8500 : (p.firstTime || p.children >= 2) ? 7000 : 6000;
+    const big = p.newlywed || p.children >= 2;
+    const eligNotes: string[] = [];
+    if (hasIncome && incomeMan > maxIncome) eligNotes.push(`부부합산 소득 ${fmtManwon(maxIncome)} 초과`);
+    return {
+      name: "디딤돌", rate: getDidimdolRate(incomeMan, years, p), rateMin: 0.0255, rateMax: 0.0415,
+      maxLoan: big ? 32000 : p.firstTime ? 24000 : 20000, maxPrice: big ? 60000 : 50000,
+      maxIncome, maxAreaSqm: 85, forceLtv: 0.7,
+      desc: `소득 ${fmtManwon(maxIncome)}↓ · 주택 ${big ? "6억" : "5억"}↓ · 85㎡↓ · 한도 ${fmtManwon(big ? 32000 : p.firstTime ? 24000 : 20000)}`,
+      eligNotes,
+    };
+  }
+  if (product === "bogeumjari") {
+    // 소득: 일반 7천 / 신혼 8.5천 / 1자녀 9천 / 2자녀+ 1억 · 주택 6억 · 한도: 일반·신혼 3.6억 / 생초 4.2억 / 다자녀 4억
+    const maxIncome = p.children >= 2 ? 10000 : p.children === 1 ? 9000 : p.newlywed ? 8500 : 7000;
+    const maxLoan = p.children >= 2 ? 40000 : p.firstTime ? 42000 : 36000;
+    const eligNotes: string[] = [];
+    if (hasIncome && incomeMan > maxIncome) eligNotes.push(`부부합산 소득 ${fmtManwon(maxIncome)} 초과`);
+    return {
+      name: "보금자리론", rate: getBogeumjariRate(years, p, regulated), rateMin: 0.0360, rateMax: 0.0490,
+      maxLoan, maxPrice: 60000, maxIncome, maxAreaSqm: 0, forceLtv: 0.7,
+      desc: `소득 ${fmtManwon(maxIncome)}↓ · 주택 6억↓ · 한도 ${fmtManwon(maxLoan)}`,
+      eligNotes,
+    };
+  }
+  if (product === "newborn") {
+    // 2년 내 출산 가구 · 소득 1.3억(맞벌이 2억) — 2.5억 상향안은 미시행 · 9억·85㎡ 이하 · 한도 4억
+    const maxIncome = dualIncome ? 20000 : 13000;
+    const eligNotes: string[] = [];
+    if (!p.recentBirth) eligNotes.push("2년 내 출산 가구 아님");
+    if (hasIncome && incomeMan > maxIncome) eligNotes.push(`부부합산 소득 ${dualIncome ? "2억(맞벌이)" : "1.3억(외벌이)"} 초과`);
+    return {
+      name: "신생아특례", rate: getNewbornRate(incomeMan, years), rateMin: 0.0180, rateMax: 0.0450,
+      maxLoan: 40000, maxPrice: 90000, maxIncome, maxAreaSqm: 85, forceLtv: 0.7,
+      desc: "출산 2년 내 · 소득 1.3억(맞벌이 2억)↓ · 주택 9억·85㎡↓ · 한도 4억",
+      eligNotes,
+    };
+  }
+  // 일반 주담대 — 시중금리는 자금 설정에서 직접 입력 (2026-06 기준 5년 고정 하단 ~5%대, 변동 3.8~4.2%)
+  const r = (normalRatePct || 5.2) / 100;
+  return { name: "일반 주담대", rate: r, rateMin: r, rateMax: r, maxLoan: 0, maxPrice: 0, maxIncome: 0, maxAreaSqm: 0, desc: "은행 자체상품 — 금리는 자금 설정에서 변경", eligNotes: [] };
+}
+
+function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit: number, income1Man: number, income2Man: number, years: number, extraRepayYrs: number, areaSqm: number | undefined, profile: HouseholdProfile, regulated: boolean = false, product: LoanProduct = "normal", interestSubsidy: boolean = false, interiorCost: number = 0, kbPriceMan: number | null = null, normalRatePct: number = 5.2) {
   const incomeMan = income1Man + income2Man;
+  const firstTimeBuyer = profile.firstTime;
   // 취득세율: 6억 이하 1%, 6~9억 누진, 9억 초과 3%
   let taxRate: number;
   if (priceMan <= 60000) taxRate = 0.01;
@@ -595,8 +672,15 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   // LTV: 규제지역 vs 비규제지역 (2026 정책)
   // 규제: 생애최초 70%, 일반 40%, cap 6억 (15억초과→4억, 25억초과→2억)
   // 비규제: 생애최초/일반 모두 70%, cap 6억
-  const prodInfo = LOAN_PRODUCTS[product];
-  // 정책상품 LTV: 규제지역 진입 시 70% 상한 적용 (신생아특례 80% → 70% 등)
+  const dualIncome = income1Man > 0 && income2Man > 0;
+  const chosen = getLoanTerms(product, profile, incomeMan, dualIncome, years, regulated, normalRatePct);
+  // 자격 미달(가구·소득 + 단지별 가격·면적) 시 일반 주담대 조건으로 fallback 계산 — 미달 상품 조건으로 계산하는 비현실 방지
+  const eligIssues: string[] = [...chosen.eligNotes];
+  if (chosen.maxPrice > 0 && priceMan > chosen.maxPrice) eligIssues.push(`주택가격 ${chosen.maxPrice / 10000}억 초과`);
+  if (chosen.maxAreaSqm > 0 && (areaSqm ?? 0) > chosen.maxAreaSqm) eligIssues.push(`전용 ${chosen.maxAreaSqm}㎡ 초과`);
+  const fellBack = product !== "normal" && eligIssues.length > 0;
+  const prodInfo = fellBack ? getLoanTerms("normal", profile, incomeMan, dualIncome, years, regulated, normalRatePct) : chosen;
+  // 정책상품 LTV: 규제지역 진입 시 70% 상한 적용
   const ltvRate = prodInfo.forceLtv != null
     ? (regulated ? Math.min(prodInfo.forceLtv, 0.7) : prodInfo.forceLtv)
     : regulated
@@ -610,13 +694,8 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
     if (ltvBase > 250000) ltvCap = 20000;
     else if (ltvBase > 150000) ltvCap = 40000;
   }
-  // 정책상품 절대 한도
+  // 정책상품 절대 한도 (fallback 시 일반 주담대 = 한도 없음)
   const productCap = prodInfo.maxLoan > 0 ? prodInfo.maxLoan : Infinity;
-  // 정책상품 자격 미달 검증
-  const eligIssues: string[] = [];
-  if (prodInfo.maxPrice > 0 && priceMan > prodInfo.maxPrice) eligIssues.push(`주택가격 ${prodInfo.maxPrice / 10000}억 초과`);
-  if (prodInfo.maxIncome > 0 && incomeMan > prodInfo.maxIncome) eligIssues.push(`소득 ${prodInfo.maxIncome / 10000}억 초과`);
-  if (prodInfo.maxAreaSqm > 0 && (areaSqm ?? 0) > prodInfo.maxAreaSqm) eligIssues.push(`전용 ${prodInfo.maxAreaSqm}㎡ 초과`);
   const ltvMax = Math.min(ltvCalc, ltvCap, productCap);
   // 추가대출 없이 먼저 필요자금 계산
   const dsrMaxNone = incomeMan && incomeMan > 0 ? calcDsrMaxLoan(incomeMan, 0, 0.055, 0.045, Math.min(years, 40)) : null;
@@ -639,10 +718,8 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   const required = priceMan + netTax + broker + miscCost + interiorCost - maxLoan;
   const affordable = totalCapital >= required;
 
-  // 월납입금/이자총액
-  const mortgageRate = product === "newborn"
-    ? getNewbornRate(incomeMan, years, income1Man > 0 && income2Man > 0)
-    : prodInfo.rate; // 상품별 금리
+  // 월납입금/이자총액 — 금리는 상품·가구·소득·만기 반영 (자격미달 시 일반 주담대)
+  const mortgageRate = prodInfo.rate;
   const extraRate = 0.055; // 추가/신용대출 5.5%
   const months = years * 12;
   const mr = mortgageRate / 12;
@@ -695,7 +772,7 @@ function calcAffordability(priceMan: number, capitalMan: number, extraLoanLimit:
   const repayRatio = netMonthlyIncome ? totalMonthly / netMonthlyIncome : null;
   const repayRatioParental = netMonthlyParental ? totalMonthly / netMonthlyParental : null;
 
-  return { taxRate, acqTax, eduTax, ruralTax, totalTax, netTax, taxExempt, broker, brokerRate, legalFee, stampTax, bondDiscount, miscCost, interiorCost, ltvRate, ltvBase, ltvMax, ltvCap, productCap, eligIssues, dsrMax, maxLoan, dsrLimited, totalCapital, extraLoanMan, required, affordable, totalMonthly, mortgageMonthly, extraMonthly, mortgageRate, extraRate, effectiveRate, totalInterest, extraRepayMonthly, extraRepayYrs, netMonthlyIncome, netMonthlyParental, repayRatio, repayRatioParental, years, firstTimeBuyer, regulated, product, productName: prodInfo.name, interestSubsidy, subsidyEligible, subsidyAmount, subsidyMonthly, subsidyTotal, grossMortgageMonthly };
+  return { taxRate, acqTax, eduTax, ruralTax, totalTax, netTax, taxExempt, broker, brokerRate, legalFee, stampTax, bondDiscount, miscCost, interiorCost, ltvRate, ltvBase, ltvMax, ltvCap, productCap, eligIssues, fellBack, dsrMax, maxLoan, dsrLimited, totalCapital, extraLoanMan, required, affordable, totalMonthly, mortgageMonthly, extraMonthly, mortgageRate, extraRate, effectiveRate, totalInterest, extraRepayMonthly, extraRepayYrs, netMonthlyIncome, netMonthlyParental, repayRatio, repayRatioParental, years, firstTimeBuyer, regulated, product, productName: fellBack ? `${chosen.name} → 일반` : prodInfo.name, interestSubsidy, subsidyEligible, subsidyAmount, subsidyMonthly, subsidyTotal, grossMortgageMonthly };
 }
 
 // 2026년 기준 인테리어 평당 단가 (수도권 평균, 자재·시공 포함). 출처: 업계 단가 벤치마크 (오늘의집/집브로/AJD 2025-26).
@@ -868,7 +945,7 @@ function ProxySetting() {
   );
 }
 
-function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, firstTimeBuyer, loanProduct, interestSubsidy, includeInterior }: { data: AptData; capitalMan: number | null; extraLoanMan: number; income1Man: number; income2Man: number; loanYears: number; extraRepayYrs: number; firstTimeBuyer: boolean; loanProduct: LoanProduct; interestSubsidy: boolean; includeInterior: boolean }) {
+function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, household, loanProduct, interestSubsidy, includeInterior, normalRatePct }: { data: AptData; capitalMan: number | null; extraLoanMan: number; income1Man: number; income2Man: number; loanYears: number; extraRepayYrs: number; household: HouseholdProfile; loanProduct: LoanProduct; interestSubsidy: boolean; includeInterior: boolean; normalRatePct: number }) {
   const [customPrice, setCustomPrice] = useState<string>("");
   const customMan = customPrice && !Number.isNaN(parseFloat(customPrice)) ? parseFloat(customPrice) * 10000 : null;
   const kbStorageKey = `kb:${data.name}|${data.atype}`;
@@ -908,7 +985,7 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
     ? `${((data.avg + interiorAvg) / 10000).toFixed(1)}억`
     : `${(data.avg / 10000).toFixed(1)}억`;
   const regulated = REGULATED_REGIONS.has(data.region);
-  const aff = capitalMan != null ? calcAffordability(priceMan, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, data.area, firstTimeBuyer, regulated, loanProduct, interestSubsidy, interiorForCalc, kbMan) : null;
+  const aff = capitalMan != null ? calcAffordability(priceMan, capitalMan, extraLoanMan, income1Man, income2Man, loanYears, extraRepayYrs, data.area, household, regulated, loanProduct, interestSubsidy, interiorForCalc, kbMan, normalRatePct) : null;
   const color = aff ? (aff.affordable ? (aff.extraLoanMan > 0 ? "text-amber-500" : "text-emerald-500") : "text-red-500") : "";
 
   return (
@@ -922,7 +999,7 @@ function PricePopover({ data, capitalMan, extraLoanMan, income1Man, income2Man, 
               <span className="text-[10px] text-muted-foreground font-normal">{aff.productName}</span>
             </p>
             {aff.eligIssues.length > 0 && (
-              <p className="text-[10px] text-amber-500 mb-1">⚠ 자격 미달: {aff.eligIssues.join(", ")}</p>
+              <p className="text-[10px] text-amber-500 mb-1">⚠ 자격 미달({aff.eligIssues.join(", ")}){aff.fellBack ? " → 일반 주담대 기준으로 계산" : ""}</p>
             )}
             <div className="space-y-0.5">
               <div className="flex justify-between items-center">
@@ -2009,6 +2086,15 @@ export default function App() {
   const [loanYears, setLoanYears] = useState<string>(() => localStorage.getItem("loanYears") ?? "30");
   const [extraRepayYears, setExtraRepayYears] = useState<string>(() => localStorage.getItem("extraRepayYears") ?? "2");
   const [firstTimeBuyer, setFirstTimeBuyer] = useState(() => ls("f_firstTime", "true") === "true");
+  const [newlywed, setNewlywed] = useState(() => ls("f_newlywed", "false") === "true");
+  const [childCount, setChildCount] = useState(() => ls("f_children", "0"));
+  const [recentBirth, setRecentBirth] = useState(() => ls("f_recentBirth", "false") === "true");
+  const [normalRate, setNormalRate] = useState(() => ls("f_normalRate", "5.2")); // 일반 주담대 금리 (%, 사용자 입력)
+  const household = useMemo<HouseholdProfile>(() => ({
+    firstTime: firstTimeBuyer, newlywed, children: parseInt(childCount) || 0, recentBirth,
+  }), [firstTimeBuyer, newlywed, childCount, recentBirth]);
+  const incomeManTotal = ((parseFloat(income1) || 0) + (parseFloat(income2) || 0)) * 10000; // 부부합산 (만원)
+  const dualIncome = (parseFloat(income1) || 0) > 0 && (parseFloat(income2) || 0) > 0;
   const [loanProduct, setLoanProduct] = useState<LoanProduct>(() => ls("f_loanProduct", "normal") as LoanProduct);
   const [interestSubsidy, setInterestSubsidy] = useState(() => ls("f_interestSubsidy", "false") === "true");
   const [includeInterior, setIncludeInterior] = useState(() => ls("f_includeInterior", "false") === "true");
@@ -2074,6 +2160,10 @@ export default function App() {
     setLoanYears(localStorage.getItem("loanYears") ?? "30");
     setExtraRepayYears(localStorage.getItem("extraRepayYears") ?? "2");
     setFirstTimeBuyer(ls("f_firstTime", "true") === "true");
+    setNewlywed(ls("f_newlywed", "false") === "true");
+    setChildCount(ls("f_children", "0"));
+    setRecentBirth(ls("f_recentBirth", "false") === "true");
+    setNormalRate(ls("f_normalRate", "5.2"));
     setLoanProduct(ls("f_loanProduct", "normal") as LoanProduct);
     setInterestSubsidy(ls("f_interestSubsidy", "false") === "true");
     setIncludeInterior(ls("f_includeInterior", "false") === "true");
@@ -2548,11 +2638,14 @@ export default function App() {
               value={loanProduct}
               onChange={(e) => { setLoanProduct(e.target.value as LoanProduct); localStorage.setItem("f_loanProduct", e.target.value); }}
               className="h-7 px-1.5 rounded border bg-background text-[11px]"
-              title={LOAN_PRODUCTS[loanProduct].desc}
+              title={getLoanTerms(loanProduct, household, incomeManTotal, dualIncome, parseInt(loanYears) || 30, false, parseFloat(normalRate) || 5.2).desc}
             >
-              {(Object.keys(LOAN_PRODUCTS) as LoanProduct[]).map((p) => {
-                const rateLabel = p === "newborn" ? "1.8~4.5%" : `${(LOAN_PRODUCTS[p].rate * 100).toFixed(1)}%`;
-                return <option key={p} value={p}>{LOAN_PRODUCTS[p].name} ({rateLabel})</option>;
+              {LOAN_PRODUCT_KEYS.map((p) => {
+                const t = getLoanTerms(p, household, incomeManTotal, dualIncome, parseInt(loanYears) || 30, false, parseFloat(normalRate) || 5.2);
+                // 디딤돌·신생아는 소득 입력 시 정확 금리, 미입력 시 범위 표시. 보금자리·일반은 소득 무관.
+                const exact = p === "normal" || p === "bogeumjari" || incomeManTotal > 0;
+                const rateLabel = exact ? `${(t.rate * 100).toFixed(1)}%` : `${(t.rateMin * 100).toFixed(1)}~${(t.rateMax * 100).toFixed(1)}%`;
+                return <option key={p} value={p}>{t.name} ({rateLabel}){t.eligNotes.length > 0 ? " · 자격미달" : ""}</option>;
               })}
             </select>
             <label className="flex items-center gap-1 cursor-pointer" title="테이블 현재가 = 매매가 + 인테리어(평균)">
@@ -2620,10 +2713,35 @@ export default function App() {
                       </select>
                     </label>
                   </div>
-                  <label className="flex items-center gap-2 cursor-pointer" title="생애최초 주택 구매자 (LTV 80% / 취득세 200만원 감면)">
+                  <div className="grid grid-cols-2 gap-2">
+                    <label className="flex flex-col gap-1" title="미성년 자녀 수 — 디딤돌 우대(1자녀 -0.3/2자녀 -0.5/3자녀+ -0.7%p)·소득상한, 보금자리론 소득상한(1자녀 9천/2자녀+ 1억)·한도(다자녀 4억)에 반영">
+                      <span className="text-xs text-muted-foreground">미성년 자녀 수</span>
+                      <select value={childCount} onChange={(e) => { setChildCount(e.target.value); localStorage.setItem("f_children", e.target.value); }} className="h-8 rounded border bg-background px-2 text-sm">
+                        <option value="0">없음</option>
+                        <option value="1">1명</option>
+                        <option value="2">2명</option>
+                        <option value="3">3명 이상</option>
+                      </select>
+                    </label>
+                    <label className="flex flex-col gap-1" title="일반 주담대 적용 금리 — 2026-06 시중은행 5년 고정 하단 ~5%대, 변동 3.8~4.2% 수준. 정책상품 자격미달 시 이 금리로 계산">
+                      <span className="text-xs text-muted-foreground">일반 주담대 금리 (%)</span>
+                      <input type="number" step="0.1" min="0" value={normalRate} onChange={(e) => { setNormalRate(e.target.value); localStorage.setItem("f_normalRate", e.target.value); }} className="h-8 rounded border bg-background px-2 text-sm" />
+                    </label>
+                  </div>
+                  <label className="flex items-center gap-2 cursor-pointer" title="생애최초 주택 구매자 — 취득세 200만원 감면, 디딤돌 소득 7천·한도 2.4억, 보금자리론 한도 4.2억">
                     <input type="checkbox" checked={firstTimeBuyer} onChange={(e) => { setFirstTimeBuyer(e.target.checked); localStorage.setItem("f_firstTime", String(e.target.checked)); }} className="rounded" />
                     <span className="text-sm">생애최초 주택 구매자</span>
-                    <span className="text-[10px] text-muted-foreground">(LTV 우대 + 취득세 -200만원)</span>
+                    <span className="text-[10px] text-muted-foreground">(취득세 -200만원 + 정책상품 한도↑)</span>
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer" title="혼인신고 7년 이내 또는 결혼예정 — 디딤돌 신혼 특례금리·소득 8.5천·한도 3.2억·주택 6억, 보금자리론 소득 8.5천·우대 -0.3%p">
+                    <input type="checkbox" checked={newlywed} onChange={(e) => { setNewlywed(e.target.checked); localStorage.setItem("f_newlywed", String(e.target.checked)); }} className="rounded" />
+                    <span className="text-sm">신혼부부 (혼인 7년 이내)</span>
+                    <span className="text-[10px] text-muted-foreground">(디딤돌 특례금리 + 소득·한도↑)</span>
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer" title="대출접수일 기준 2년 내 출산·입양 — 신생아특례(1.8~4.5%, 한도 4억) 자격, 보금자리론 우대 -0.2%p">
+                    <input type="checkbox" checked={recentBirth} onChange={(e) => { setRecentBirth(e.target.checked); localStorage.setItem("f_recentBirth", String(e.target.checked)); }} className="rounded" />
+                    <span className="text-sm">2년 내 출산·입양</span>
+                    <span className="text-[10px] text-muted-foreground">(신생아특례 자격)</span>
                   </label>
                   <label className="flex items-start gap-2 cursor-pointer" title="사내 대출이자지원 (주택구입 매매대출). 본인 2% 부담, 초과분 회사 지원. 한도: 매매가 50% / 최대 1.5억. 일반 주담대 기본 적용. 정책상품은 신한 신생아특례 / SC제일 u-보금자리에서만 가능.">
                     <input type="checkbox" checked={interestSubsidy} onChange={(e) => { setInterestSubsidy(e.target.checked); localStorage.setItem("f_interestSubsidy", String(e.target.checked)); }} className="rounded mt-0.5" />
@@ -2971,7 +3089,7 @@ export default function App() {
                         </div>
                       </TableCell>
                       <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
-                      <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
+                      <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} household={household} normalRatePct={parseFloat(normalRate) || 5.2} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
                       <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} autoRange={sparkAuto} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} trendRange={trendRange} /></TableCell>
                       <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
@@ -3078,7 +3196,7 @@ export default function App() {
                       </div>
                     </TableCell>
                     <TableCell className="text-center text-xs">{d.households != null ? (<div className="leading-tight"><div>{d.households.toLocaleString()}</div>{d.type_units != null && <div className="text-muted-foreground text-[10px]">({d.type_units.toLocaleString()})</div>}</div>) : "-"}</TableCell>
-                    <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} firstTimeBuyer={firstTimeBuyer} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
+                    <TableCell className="text-center text-sm"><PricePopover data={d} capitalMan={capital ? parseFloat(capital) * 10000 : null} extraLoanMan={extraLoan ? parseFloat(extraLoan) * 10000 : 0} income1Man={income1 ? parseFloat(income1) * 10000 : 0} income2Man={income2 ? parseFloat(income2) * 10000 : 0} loanYears={parseInt(loanYears) || 30} extraRepayYrs={parseInt(extraRepayYears) || 2} household={household} normalRatePct={parseFloat(normalRate) || 5.2} loanProduct={loanProduct} interestSubsidy={interestSubsidy} includeInterior={includeInterior} /></TableCell>
                       <TableCell className="text-center text-sm"><MoveInCell data={d} allData={tradeFilteredData} targetMonth={moveInMonth} enabled={naverColEnabled} /></TableCell>
                     <TableCell className="text-center"><TrendCell d={d} spark={sparkData} pctRange={globalPctRange} autoRange={sparkAuto} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} trendRange={trendRange} /></TableCell>
                     <TableCell className="text-center"><AccelPopover data={d} /></TableCell>
