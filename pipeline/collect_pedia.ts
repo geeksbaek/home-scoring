@@ -35,8 +35,18 @@ async function getElevations(points: { lat: number; lng: number }[]): Promise<nu
   try {
     const res = await fetch(url);
     const json = (await res.json()) as any;
-    return (json.elevation ?? []).map((e: number) => Math.round(e * 10) / 10);
-  } catch { return []; }
+    const elevs = (json.elevation ?? []).map((e: number) => Math.round(e * 10) / 10);
+    if (elevs.length === points.length) return elevs;
+  } catch {}
+  // open-meteo 한도 초과(429, 좌표 수 기준 과금) 시 Google Elevation fallback
+  try {
+    const locations = points.map((p) => `${p.lat},${p.lng}`).join("|");
+    const gurl = `https://maps.googleapis.com/maps/api/elevation/json?locations=${locations}&key=${GOOGLE_KEY}`;
+    const res = await fetch(gurl);
+    const json = (await res.json()) as any;
+    if (json.status === "OK") return json.results.map((r: any) => Math.round(r.elevation * 10) / 10);
+  } catch {}
+  return [];
 }
 
 async function main() {
