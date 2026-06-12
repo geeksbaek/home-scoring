@@ -155,7 +155,12 @@
 - **슬롯 분류는 측정 시각 hour 기반** (`sync.ts` `inSlotWindow`): 출근 early=hour 6–7 / late=8–9, 퇴근 early=15–16 / late=17–19. sleep 후 catch-up이 윈도우 밖 시각에 실행되면 자동 배제 → "06:30 출근" 버킷에 10시 측정값이 안 섞임. **슬롯 필드 없는 레거시 데이터(06시/16시)는 자동 early.**
 - **배포 필드**: `morning`/`evening`(일찍) + `morning_late`/`evening_late`(늦게), 각 `_cnt`/`_details` 동반. 늦게 데이터 누적 전(첫 18:00 실행 전)까지는 null → 프론트는 graceful "-".
 - **프론트 토글**: 필터바 "일찍(06:30/16:00) / 늦게(08:00/18:00)" Select(`commuteSlot`, localStorage `f_commuteSlot`). 선택 슬롯이 `commuteScore`·테이블 배지·팝오버·정렬·종합점수에 모두 반영(`commuteValues(d, slot)` 헬퍼). `scoring.ts` `commuteScore(d, slot)`.
-- **카카오 키 3개 필요**: 6,114단지 × 4회 = 일 24,456 길찾기 콜. 키당 무료 10,000/일 → `.env` `KAKAO_REST_API_KEY`/`_2`/`_3` 라운드로빈(키당 ~82%). `commute.ts` `KAKAO_KEYS` 배열.
+- **길찾기 = 하이브리드(Kakao 기본 + 일부 네이버)** — 네이버 무료 월 6만 한도 안에 맞추기 위한 라우팅. `commute.ts` `driveTime(useNaver,…)` → `driveTimeKakao`/`driveTimeNaver`.
+  - **네이버 호출 조건**(`useNaver`) = ① 지역 ∈ {수원시·용인시·화성시}(`NAVER_REGIONS`) AND ② 현재가(`r3_avg`, 없으면 `avg`) **아무 타입이나 ≤10억**(`NAVER_PRICE_MAX=100000`만원) AND ③ **늦은 슬롯 실행**(출근 hour 8–9 / 퇴근 hour 17–19, `isLateRun`). 셋 다 만족하는 단지만 네이버 → 약 **1,184단지**(`naverNames`).
+  - **네이버 호출량**: 1,184 × 2슬롯(늦은) × ~22영업일 = **월 ~52,000건**(무료 6만의 0.87배, 약 13% 마진). 일 한도 6만도 여유.
+  - **네이버 API**: NCP Maps Directions 5 `maps.apigw.ntruss.com/map-direction/v1/driving`, 헤더 `x-ncp-apigw-api-key-id`/`x-ncp-apigw-api-key`(`.env` `NAVER_CLIENT_ID`/`NAVER_CLIENT_SECRET`), 옵션 `traoptimal`. 응답 `route.traoptimal[0].summary.{distance(m),duration(**ms**)}` → `/1000/60` 분 환산. 429·5xx backoff. **현행 Maps(Application Service) 제품 무료 제공량 사용**(구 'AI NAVER API ▶ 지도' 2025-05-28 무료종료와 별개). **월/일 한도는 콘솔 '사용량 제한'으로 가드 권장**.
+  - **카카오 길찾기**(나머지 전부): Kakao Mobility `apis-navi.kakaomobility.com/v1/directions`, `priority=RECOMMEND`, duration 초(`/60`). 일 ~22,500건 → 무료 10,000/일 × 3키 = 30,000/일 한도 내. quota(-10) backoff + 키 소진 시 `exhausted` 로테이션, 전 키 소진은 fatal(불완전 batch 저장 금지).
+- **좌표(geocode)는 Kakao Local**: `kakaoJson(…, "local")`, `KAKAO_KEYS` 라운드로빈. 좌표 캐시(`commute_coords_cache.json`)로 매 실행 사실상 1회성. 키별 OPEN_MAP_AND_LOCAL 권한차(403)는 `localDisabled` 자동 우회.
 
 ## 데이터 커버리지 (2026-05-07 기준)
 
@@ -189,7 +194,7 @@
 - `pipeline/identity.ts` — apt_identity.json 마스터 빌드 (data.json 기반)
 - `pipeline/audit_hcode.ts` — hcode 좌표 검증 (mismatch 자동 검출)
 - `pipeline/sync.ts` — 스코어링 + data.json + GitHub Pages 배포
-- `pipeline/commute.ts` — 출퇴근 측정 (Kakao Mobility)
+- `pipeline/commute.ts` — 출퇴근 측정 (길찾기 하이브리드: Kakao Mobility 기본 + 수원/용인/화성 ≤10억·늦은슬롯만 네이버 NCP, geocode는 Kakao Local)
 - `pipeline/collect.ts` — 실거래가 증분 수집
 
 ### 데이터 수집
@@ -203,7 +208,9 @@
 - `pipeline/collect_audit.ts` — 회계감사
 - `pipeline/collect_maintenance.ts` — 유지관리이력
 - `pipeline/collect_delinquency.ts` — 장기수선충당금
-- `pipeline/collect_pedia.ts` — 소아과 + 고저차
+- `pipeline/collect_pedia_clinics_naver.py` — 소아과 검색 (네이버 pcmap, curl_cffi 필수, category "소아청소년과" 필터, 2km→5km fallback, `--refresh` 전체 재검색)
+- `pipeline/collect_pedia.ts` — 소아과 고저차 (clinic 좌표 카카오 재확인 + Open-Meteo Elevation)
+- `pipeline/collect_pedia_clinics.ts` — 소아과 검색 구버전 (카카오, fallback용 — 키워드 검색이라 내과/가정의학과 오염 가능)
 - `pipeline/collect_violence.ts` — 학폭 (CAPTCHA)
 - `pipeline/collect_unit_types.ts` — 건축물대장 전유부 면적별 세대수 (정밀, 신규)
 - `pipeline/unit_types.ts` — K-apt 4분류 fallback (`fromKapt: true`)
