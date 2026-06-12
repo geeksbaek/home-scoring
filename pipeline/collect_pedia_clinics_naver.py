@@ -14,7 +14,7 @@
 
 Usage: python3 pipeline/collect_pedia_clinics_naver.py [--refresh]
 """
-import json, math, sys, time
+import json, math, os, sys, time
 from pathlib import Path
 from urllib.parse import quote
 from curl_cffi import requests
@@ -98,13 +98,18 @@ slope = json.load(open(SLOPE_PATH)) if SLOPE_PATH.exists() else {}
 coords = json.load(open(DATA / "dong_coords_naver.json"))
 identity = json.load(open(DATA / "apt_identity.json"))
 
+# ONLY_NAMES=파일경로(JSON 배열) — 해당 단지만 처리 (실패분 재시도용)
+only = set(json.load(open(os.environ["ONLY_NAMES"]))) if os.environ.get("ONLY_NAMES") else None
+
 targets = []
 for e in identity:
     name = e["name"]
     c = coords.get(name)
     if not c or not isinstance(c, list) or not c[0].get("lat"):
         continue
-    if not REFRESH and clinics.get(name):
+    if only is not None and name not in only:
+        continue
+    if only is None and not REFRESH and clinics.get(name):
         continue
     targets.append((name, c))
 
