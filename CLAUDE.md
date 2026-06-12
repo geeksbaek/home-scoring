@@ -208,7 +208,7 @@
 - `pipeline/collect_audit.ts` — 회계감사
 - `pipeline/collect_maintenance.ts` — 유지관리이력
 - `pipeline/collect_delinquency.ts` — 장기수선충당금
-- `pipeline/collect_pedia_clinics_naver.py` — 소아과 검색 (네이버 pcmap, curl_cffi 필수, category "소아청소년과" 필터, 2km→5km fallback, `--refresh` 전체 재검색)
+- `pipeline/collect_pedia_clinics_naver.py` — 소아과 검색 (네이버 pcmap GraphQL `getNxList` + `department=소아청소년과` HIRA 진료과목 필터, curl_cffi 필수, `x-wtm-graphql` 헤더만으로 동작. 채택 = category 소아청소년과 OR 소아 전문의 ≥1 — 상호에 소아과 없는 의원도 잡힘(백운밸리 연세메디의원). 종합·대학병원 후순위, 2km→5km fallback, `--refresh` 전체 재검색, `ONLY_NAMES` 선별)
 - `pipeline/collect_pedia.ts` — 소아과 고저차 (clinic 좌표 카카오 재확인 + Open-Meteo Elevation)
 - `pipeline/collect_pedia_clinics.ts` — 소아과 검색 구버전 (카카오, fallback용 — 키워드 검색이라 내과/가정의학과 오염 가능)
 - `pipeline/collect_violence.ts` — 학폭 (CAPTCHA)

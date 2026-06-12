@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """
-소아과 거리 데이터 빌더 — pediatric_clinics.json (네이버지도 검색).
+소아과 거리 데이터 빌더 — pediatric_clinics.json (네이버지도 병원 검색 GraphQL).
 
-각 단지 좌표(dong_coords_naver) 기준 네이버 pcmap 검색 "소아과"
-→ category "소아청소년과"만 필터(내과/가정의학과 오염 차단)
+각 단지 좌표(dong_coords_naver) 기준 pcmap-api GraphQL getNxList,
+department="소아청소년과"(HIRA 진료과목 필터) + bounds box.
+→ 상호/카테고리에 소아과가 없어도 진료과목 등록 기관이 잡힘
+  (예: 백운밸리 연세메디의원 — category "병원,의원"이지만 소아청소년과 전문의 1인).
+→ 채택 조건: category에 "소아청소년과" 포함 OR HIRA 소아청소년과 전문의 ≥1
+  (진료과목만 걸어둔 내과/가정의학과 배제).
 → 반경 2km, 없으면 5km 확장 → 거리순 top 2 → road_m/walk_min 추정.
 
 - curl_cffi Chrome TLS 임퍼소네이트 필수 (Bun fetch는 429).
+- GraphQL은 x-wtm-graphql 헤더만 있으면 ncaptcha 토큰 없이 동작 (2026-06 확인).
 - 매 건 즉시 저장(크래시 대비), 기본 모드는 미수집 단지만(resume).
 - --refresh: 전체 단지 재검색. 새 결과가 있을 때만 덮어쓰고(빈 결과면 기존 유지),
   병원 목록이 바뀐 단지는 pedia_slope.json 엔트리 삭제(고저차 재계산 유도).
@@ -14,9 +19,8 @@
 
 Usage: python3 pipeline/collect_pedia_clinics_naver.py [--refresh]
 """
-import json, math, os, sys, time
+import base64, json, math, os, sys, time
 from pathlib import Path
-from urllib.parse import quote
 from curl_cffi import requests
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -38,53 +42,92 @@ def haversine(lat1, lng1, lat2, lng2):
 s = requests.Session(impersonate="chrome")
 
 
-def search_clinics(lat, lng):
-    """네이버 pcmap 검색 → 소아청소년과만, 거리순 top 5. 실패 시 None(기존 데이터 보존용)."""
-    url = (f"https://pcmap.place.naver.com/place/list?query={quote('소아과')}"
-           f"&x={lng}&y={lat}&clientX={lng}&clientY={lat}&display=50"
-           f"&mapUrl=https%3A%2F%2Fmap.naver.com")
+GQL = """query getNxList($input: HospitalListInput) {
+  businesses: hospitals(input: $input) {
+    total
+    items { id name category x y hiraSpecialists { name count } }
+  }
+}"""
+WTM = base64.b64encode(json.dumps(
+    {"arg": "소아청소년과", "type": "hospital", "source": "place"},
+    ensure_ascii=False).encode()).decode()
+
+
+def is_pediatric(item):
+    if "소아청소년과" in str(item.get("category", "")):
+        return True
+    return any(h.get("name") == "소아청소년과" and (h.get("count") or 0) >= 1
+               for h in item.get("hiraSpecialists") or [])
+
+
+def query_naver(lat, lng, radius):
+    """GraphQL getNxList(department=소아청소년과, bounds=radius box). 실패 시 None."""
+    dlat = radius / 111320
+    dlng = radius / (111320 * math.cos(lat * math.pi / 180))
+    bounds = f"{lng - dlng};{lat - dlat};{lng + dlng};{lat + dlat}"
+    payload = [{
+        "operationName": "getNxList",
+        "variables": {"input": {
+            "query": "소아청소년과", "display": 70, "start": 1,
+            "filterBooking": False, "filterOpentime": False, "filterSpecialist": False,
+            # distance 정렬: 밀집 지역에서 display 70 잘림 시 최근접 누락 방지
+            "sortingOrder": "distance", "x": str(lng), "y": str(lat),
+            "clientX": str(lng), "clientY": str(lat), "day": None,
+            "department": "소아청소년과", "bounds": bounds,
+            "deviceType": "pcmap", "isCurrentLocationSearch": True}},
+        "query": GQL,
+    }]
     for attempt in range(4):
         try:
-            r = s.get(url, headers={"Referer": "https://map.naver.com/"}, timeout=20)
+            r = s.post("https://pcmap-api.place.naver.com/graphql", json=payload, headers={
+                "Referer": "https://pcmap.place.naver.com/hospital/list",
+                "Origin": "https://pcmap.place.naver.com",
+                "Accept": "*/*", "Accept-Language": "ko",
+                "x-wtm-graphql": WTM,
+            }, timeout=20)
             if r.status_code == 429:
                 time.sleep(8 * (attempt + 1))
                 continue
             if r.status_code != 200:
                 return None
-            i = r.text.find("window.__APOLLO_STATE__")
-            if i < 0:
+            j = r.json()
+            if j[0].get("errors"):
                 return None
-            i = r.text.find("{", i)
-            state, _ = json.JSONDecoder().raw_decode(r.text[i:])
-            cands = []
-            for v in state.values():
-                if not isinstance(v, dict) or "Summary" not in str(v.get("__typename", "")):
-                    continue
-                if "소아청소년과" not in str(v.get("category", "")):
-                    continue
-                x, y = v.get("x"), v.get("y")
-                if not x or not y:
-                    continue
-                cands.append({
-                    "id": str(v.get("id", "")),
-                    "name": " ".join(str(v.get("name", "")).split()),
-                    "dist": haversine(lat, lng, float(y), float(x)),
-                })
-            cands.sort(key=lambda c: c["dist"])
-            dedup, seen = [], set()
-            for c in cands:
-                if c["id"] in seen:
-                    continue
-                seen.add(c["id"])
-                dedup.append(c)
-            for radius in RADII:
-                within = [c for c in dedup if c["dist"] <= radius]
-                if within:
-                    return within[:5]
-            return []
+            return (j[0].get("data", {}).get("businesses") or {}).get("items") or []
         except Exception:
             time.sleep(4 * (attempt + 1))
     return None
+
+
+def search_clinics(lat, lng):
+    """소아청소년과 진료기관 검색, 거리순 top 5. 실패 시 None(기존 데이터 보존용)."""
+    for radius in RADII:
+        items = query_naver(lat, lng, radius)
+        if items is None:
+            return None
+        cands = []
+        for v in items:
+            if not is_pediatric(v) or not v.get("x") or not v.get("y"):
+                continue
+            cat = str(v.get("category", ""))
+            cands.append({
+                "id": str(v.get("id", "")),
+                "name": " ".join(str(v.get("name", "")).split()),
+                "dist": haversine(lat, lng, float(v["y"]), float(v["x"])),
+                # 종합·대학병원은 동네 소아과 용도로 후순위 (대안 없으면 채택)
+                "big": any(k in cat for k in ("종합병원", "대학병원")),
+            })
+        cands.sort(key=lambda c: (c["big"], c["dist"]))
+        dedup, seen = [], set()
+        for c in cands:
+            if c["id"] in seen or c["dist"] > radius:
+                continue
+            seen.add(c["id"])
+            dedup.append(c)
+        if dedup:
+            return dedup[:5]
+        time.sleep(0.2)
+    return []
 
 
 def to_entry(c):
