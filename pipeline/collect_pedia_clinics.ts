@@ -1,7 +1,7 @@
 /**
  * 소아과 거리 데이터 빌더 — pediatric_clinics.json.
  *
- * 각 단지 좌표(dong_coords_naver) 기준 Kakao 키워드 검색 "소아청소년과"
+ * 각 단지 좌표(dong_coords_naver) 기준 Kakao 키워드 검색 "소아청소년과"+"소아과" 병합
  * → 가까운 5개 후보 → 도보 경로 API로 road_m + walk_min → top 2 채택.
  *
  * 기존에 데이터 있는 단지는 스킵. 신규 단지(예: 안양)만 채움.
@@ -32,27 +32,34 @@ function haversine(lat1: number, lng1: number, lat2: number, lng2: number): numb
   return Math.round(2 * R * Math.asin(Math.sqrt(a)));
 }
 
+const SEARCH_KEYWORDS = ["소아청소년과", "소아과"];
+
 async function searchClinics(lat: number, lng: number): Promise<Array<{ name: string; lat: number; lng: number; distM: number }>> {
-  // Kakao 카테고리 HP8(병원) + 키워드 — 키워드 검색이 정확도 높음
-  const url = `https://dapi.kakao.com/v2/local/search/keyword.json?query=${encodeURIComponent("소아청소년과")}&x=${lng}&y=${lat}&radius=2000&size=10&sort=distance`;
-  const res = await fetch(url, { headers: { Authorization: `KakaoAK ${KAKAO_KEY}` } });
-  if (!res.ok) return [];
-  const j = await res.json() as any;
-  const docs = j.documents || [];
-  const out: Array<{ name: string; lat: number; lng: number; distM: number }> = [];
-  for (const d of docs) {
-    const cLat = parseFloat(d.y);
-    const cLng = parseFloat(d.x);
-    const distM = haversine(lat, lng, cLat, cLng);
-    out.push({
-      name: d.place_name.replace(/\s+/g, " ").trim(),
-      lat: cLat, lng: cLng, distM,
-    });
+  // Kakao 카테고리 HP8(병원) + 키워드 — 키워드 검색이 정확도 높음.
+  // "소아청소년과"(정식 명칭)와 "소아과"(통칭) 결과가 서로 다르게 나와 둘 다 검색 후 병합.
+  const out: Array<{ id: string; name: string; lat: number; lng: number; distM: number }> = [];
+  for (const keyword of SEARCH_KEYWORDS) {
+    const url = `https://dapi.kakao.com/v2/local/search/keyword.json?query=${encodeURIComponent(keyword)}&x=${lng}&y=${lat}&radius=2000&size=10&sort=distance`;
+    const res = await fetch(url, { headers: { Authorization: `KakaoAK ${KAKAO_KEY}` } });
+    if (!res.ok) continue;
+    const j = await res.json() as any;
+    for (const d of j.documents || []) {
+      const cLat = parseFloat(d.y);
+      const cLng = parseFloat(d.x);
+      const distM = haversine(lat, lng, cLat, cLng);
+      out.push({
+        id: String(d.id ?? ""),
+        name: d.place_name.replace(/\s+/g, " ").trim(),
+        lat: cLat, lng: cLng, distM,
+      });
+    }
+    await sleep(100);
   }
-  // 중복 제거 (이름 동일 + 200m 이내)
+  out.sort((a, b) => a.distM - b.distM);
+  // 중복 제거 (place id 동일 또는 이름 동일 + 200m 이내)
   const dedup: typeof out = [];
   for (const c of out) {
-    if (dedup.some((d) => d.name === c.name && Math.abs(d.distM - c.distM) < 200)) continue;
+    if (dedup.some((d) => (c.id && d.id === c.id) || (d.name === c.name && Math.abs(d.distM - c.distM) < 200))) continue;
     dedup.push(c);
   }
   return dedup.slice(0, 5);
