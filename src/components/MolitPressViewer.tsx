@@ -71,7 +71,7 @@ export default function MolitPressViewer() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch(PUBLIC_JSON_URL)
+    fetch(PUBLIC_JSON_URL, { cache: "no-cache" })
       .then(async (r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
       .then((json: PressRelease[]) => { if (!cancelled) setData(json); })
       .catch((e) => { if (!cancelled) setErr(e.message); });

@@ -2185,21 +2185,23 @@ export default function App() {
   useEffect(() => {
     const base = import.meta.env.BASE_URL ?? "/";
     const loadFromIndex = async () => {
-      const idxRes = await fetch(base + "data-index.json");
+      // no-cache = ETag 재검증: 재배포 즉시 새 index 반영 (304면 캐시 재사용이라 비용 미미)
+      const idxRes = await fetch(base + "data-index.json", { cache: "no-cache" });
       if (!idxRes.ok) throw new Error("no-index");
-      const idx: { shards: { url: string }[] } = await idxRes.json();
+      const idx: { shards: { url: string; hash?: string }[] } = await idxRes.json();
       const parts = await Promise.all(
-        idx.shards.map((s) => fetch(base + s.url).then((r) => r.json() as Promise<AptData[]>)),
+        // shard는 content hash 쿼리로 캐시버스팅 — 내용 안 바뀐 shard는 브라우저 캐시 그대로 사용
+        idx.shards.map((s) => fetch(base + s.url + (s.hash ? `?v=${s.hash}` : "")).then((r) => r.json() as Promise<AptData[]>)),
       );
       return parts.flat();
     };
-    const loadFallback = () => fetch(base + "data.json").then((r) => r.json() as Promise<AptData[]>);
+    const loadFallback = () => fetch(base + "data.json", { cache: "no-cache" }).then((r) => r.json() as Promise<AptData[]>);
 
     setLoadError(false);
     Promise.all([
       loadFromIndex().catch(() => loadFallback()),
       // school_violence는 별도 파일. 학교명 키로 참조 공유 → 메모리 절감 (8MB → 2MB)
-      fetch(base + "school_violence.json").then((r) => r.ok ? r.json() : {}).catch(() => ({})),
+      fetch(base + "school_violence.json", { cache: "no-cache" }).then((r) => r.ok ? r.json() : {}).catch(() => ({})),
     ]).then(([raw, sv]: [AptData[], Record<string, Record<string, any>>]) => {
       raw.forEach((d) => {
         // schools 배열 기반 inline 매핑. 객체 참조 공유 (deep copy X)
@@ -2217,7 +2219,7 @@ export default function App() {
       calcScores(raw, weights);
       setData(raw);
     }).catch(() => setLoadError(true)); // shard·fallback 모두 실패 시 무한 로딩 대신 에러 배너
-    fetch(base + "multicultural.json")
+    fetch(base + "multicultural.json", { cache: "no-cache" })
       .then((r) => r.json())
       .then(setMulticultural)
       .catch(() => {});

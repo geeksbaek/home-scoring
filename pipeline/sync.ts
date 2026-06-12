@@ -687,15 +687,18 @@ async function updatePages() {
     { key: "seoul", label: "서울특별시", match: (r) => (r.region || "").startsWith("서울") },
     { key: "gyeonggi", label: "경기도", match: (r) => !(r.region || "").startsWith("서울") },
   ];
-  const shardSummary: { key: string; label: string; url: string; count: number; region_prefixes: string[] }[] = [];
+  const shardSummary: { key: string; label: string; url: string; hash: string; count: number; region_prefixes: string[] }[] = [];
   for (const sd of shardDefs) {
     const subset = results.filter(sd.match);
     const prefixes = [...new Set(subset.map((r: any) => (r.region || "").split(" ")[0]).filter(Boolean))].sort();
     const fname = `data-${sd.key}.json`;
     // minify (no indent) — 50% 크기 절감 + gzip 효과 충분
-    await Bun.write(join(PAGES_DIR, "public", fname), JSON.stringify(subset));
-    shardSummary.push({ key: sd.key, label: sd.label, url: fname, count: subset.length, region_prefixes: prefixes });
-    console.log(`  ${fname} → ${subset.length}개 단지 (${prefixes.join(", ")})`);
+    const body = JSON.stringify(subset);
+    // content hash → 프론트가 ?v= 쿼리로 캐시버스팅 (내용 안 바뀐 shard는 캐시 재사용)
+    const hash = new Bun.CryptoHasher("md5").update(body).digest("hex").slice(0, 10);
+    await Bun.write(join(PAGES_DIR, "public", fname), body);
+    shardSummary.push({ key: sd.key, label: sd.label, url: fname, hash, count: subset.length, region_prefixes: prefixes });
+    console.log(`  ${fname} → ${subset.length}개 단지 (${prefixes.join(", ")}) [${hash}]`);
   }
   const indexPath = join(PAGES_DIR, "public", "data-index.json");
   await Bun.write(indexPath, JSON.stringify({ shards: shardSummary, generatedAt: new Date().toISOString() }, null, 2));
