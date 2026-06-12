@@ -53,11 +53,26 @@ WTM = base64.b64encode(json.dumps(
     ensure_ascii=False).encode()).decode()
 
 
+# 소아 진료과목/전문의가 있어도 '동네 소아과'로 부적합한 기관
+EXCLUDE_PATTERNS = ("보건소", "보건지소", "보건분소", "보건의료원",
+                    "한방", "한의원", "치과", "요양병원")
+
+
 def is_pediatric(item):
-    if "소아청소년과" in str(item.get("category", "")):
+    name = str(item.get("name", ""))
+    cat = str(item.get("category", ""))
+    if any(b in name or b in cat for b in EXCLUDE_PATTERNS):
+        return False
+    if "소아청소년과" in cat:
         return True
-    return any(h.get("name") == "소아청소년과" and (h.get("count") or 0) >= 1
-               for h in item.get("hiraSpecialists") or [])
+    hira = {h.get("name"): h.get("count") or 0 for h in item.get("hiraSpecialists") or []}
+    ped = hira.get("소아청소년과", 0)
+    if ped < 1:
+        return False
+    # 정신건강의학과 중심 기관(시립 정신병원 등) 배제
+    if hira.get("정신건강의학과", 0) > ped:
+        return False
+    return True
 
 
 def query_naver(lat, lng, radius):
