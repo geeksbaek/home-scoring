@@ -326,19 +326,36 @@ async function mtime(path: string): Promise<number> {
   return (await stat(path)).mtimeMs;
 }
 
-function spawnCapture(cmd: string, args: string[], stdin?: string): Promise<{ stdout: string; stderr: string; code: number }> {
+// 서브프로세스가 close 이벤트 없이 멈추면(codex가 빈 응답 후 hang 등) Promise가
+// 영영 settle되지 않아 스크립트 전체가 무한 정지한다(launchd 작업이 며칠씩 hung →
+// 새 인스턴스 미실행 → 자동 갱신 중단). 타임아웃으로 강제 kill + reject 해
+// 호출부 try/catch가 "변환 실패"로 넘기고 파이프라인이 계속 진행되게 한다.
+const SPAWN_TIMEOUT_MS = 300_000; // 5분 (codex 페이지당 변환 여유 + hang 방지)
+function spawnCapture(cmd: string, args: string[], stdin?: string, timeoutMs = SPAWN_TIMEOUT_MS): Promise<{ stdout: string; stderr: string; code: number }> {
   return new Promise((resolve, reject) => {
     const proc = spawn(cmd, args, { stdio: ["pipe", "pipe", "pipe"] });
     const out: Buffer[] = [];
     const err: Buffer[] = [];
+    let settled = false;
+    const timer = setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      proc.kill("SIGKILL");
+      reject(new Error(`${cmd} timed out after ${Math.round(timeoutMs / 1000)}s`));
+    }, timeoutMs);
     proc.stdout.on("data", (b) => out.push(b));
     proc.stderr.on("data", (b) => err.push(b));
-    proc.on("error", reject);
-    proc.on("close", (code) => resolve({
-      stdout: Buffer.concat(out).toString("utf8"),
-      stderr: Buffer.concat(err).toString("utf8"),
-      code: code ?? -1,
-    }));
+    proc.on("error", (e) => { if (settled) return; settled = true; clearTimeout(timer); reject(e); });
+    proc.on("close", (code) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      resolve({
+        stdout: Buffer.concat(out).toString("utf8"),
+        stderr: Buffer.concat(err).toString("utf8"),
+        code: code ?? -1,
+      });
+    });
     if (stdin != null) { proc.stdin.write(stdin); proc.stdin.end(); } else { proc.stdin.end(); }
   });
 }

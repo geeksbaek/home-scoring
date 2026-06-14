@@ -193,9 +193,12 @@ let pulled = false; // 최초 원격 pull 완료 전에는 push 금지 (데이�
 const DEBOUNCE_MS = 800;
 
 function schedulePush() {
-  if (!currentUser || !db || !pulled) return;
+  if (!currentUser || !db) return;
   // 미push 변경 시각 기록 → reload로 timer가 유실돼도 다음 로드에서 로컬 우선 판별 근거.
+  // pull 완료 전에도 마커는 남긴다 — 그래야 직후 도착하는 초기 pull이 방금 누른
+  // 별표(아직 push 못 함)를 옛 원격값으로 덮어쓰지 못한다.
   rawSet(PENDING_TS_KEY, String(Date.now()));
+  if (!pulled) return; // 최초 pull 전엔 push 보류(마커만 남김)
   clearTimeout(pushTimer);
   pushTimer = setTimeout(pushNow, DEBOUNCE_MS);
 }
@@ -240,19 +243,21 @@ function startSync(user: User) {
         return;
       }
       const d = s.data() as { kv?: Record<string, string>; client?: string; updatedAt?: number };
+      // 미push 로컬변경이 원격보다 최신이면 무조건 로컬을 우선 업로드한다.
+      // (에코 판정보다 먼저 검사 — reload 직후 도착한 원격이 "내 옛 쓰기 에코"여도,
+      //  그 사이 누른 별표가 더 최신이면 마커를 지우지 않고 로컬을 올린다.
+      //  이 순서가 뒤바뀌면 디바운스 내 새로고침 시 새 별표가 유실됨.)
+      const pendingTs = Number(localStorage.getItem(PENDING_TS_KEY) || 0);
+      if (pendingTs > Number(d.updatedAt || 0)) {
+        pulled = true;
+        pushNow();
+        return;
+      }
       if (d.client === clientId()) {
         // 내 쓰기 에코 — 적용 불필요. push 는 계속 허용.
         pulled = true;
         rawRemove(PENDING_TS_KEY);
         notify({ status: "synced", at: Date.now() });
-        return;
-      }
-      // reload 등으로 pushTimer가 유실됐어도, 미push 로컬변경이 원격보다 최신이면
-      // 로컬을 우선 업로드한다(= stale 원격이 방금 바꾼 필터값을 덮어쓰는 현상 차단).
-      const pendingTs = Number(localStorage.getItem(PENDING_TS_KEY) || 0);
-      if (pendingTs > Number(d.updatedAt || 0)) {
-        pulled = true;
-        pushNow();
         return;
       }
       const changed = applyRemote(d.kv ?? {});
