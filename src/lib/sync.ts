@@ -231,34 +231,45 @@ function startSync(user: User) {
   const ref = doc(db, "users", user.uid);
 
   // onSnapshot 단독으로 초기 pull + 실시간 구독을 모두 처리한다.
+  // includeMetadataChanges: 로컬 낙관적 쓰기 → 서버 커밋 전이로 hasPendingWrites가
+  // true→false로 바뀌는 메타 이벤트를 받아야 "서버 확정" 시점을 알 수 있다.
   unsub = onSnapshot(
     ref,
+    { includeMetadataChanges: true },
     (s) => {
       // 로컬에 미반영 편집이 대기 중이면 이번 원격 적용을 건너뛴다.
       if (pushTimer) return;
 
+      // 서버 커밋 확정 여부. Firestore는 setDoc 직후 로컬 캐시 반영분을
+      // hasPendingWrites=true로 한 번 쏜다(아직 서버 미반영). 이걸 "동기화됨"으로
+      // 처리하면 느린 네트워크(모바일)에서 서버 커밋 전에 dirty 마커가 지워지고,
+      // 새로고침 시 in-flight 쓰기가 취소돼 변경이 유실된다 → 옛 원격으로 복구.
+      const confirmed = !s.metadata?.hasPendingWrites;
+
       if (!s.exists()) {
-        // 첫 로그인 — 원격 문서가 없으면 현재 로컬을 업로드.
+        // 원격 문서 없음 — 서버 확정 시에만 현재 로컬 업로드.
         pulled = true;
-        pushNow();
+        if (confirmed) pushNow();
         return;
       }
       const d = s.data() as { kv?: Record<string, string>; client?: string; updatedAt?: number };
       // 미push 로컬변경이 원격보다 최신이면 무조건 로컬을 우선 업로드한다.
       // (에코 판정보다 먼저 검사 — reload 직후 도착한 원격이 "내 옛 쓰기 에코"여도,
-      //  그 사이 누른 별표가 더 최신이면 마커를 지우지 않고 로컬을 올린다.
-      //  이 순서가 뒤바뀌면 디바운스 내 새로고침 시 새 별표가 유실됨.)
+      //  그 사이 누른 별표가 더 최신이면 마커를 지우지 않고 로컬을 올린다.)
       const pendingTs = Number(localStorage.getItem(PENDING_TS_KEY) || 0);
       if (pendingTs > Number(d.updatedAt || 0)) {
         pulled = true;
-        pushNow();
+        if (confirmed) pushNow(); // 미확정(낙관적) 에코면 push 재트리거 말고 대기
         return;
       }
       if (d.client === clientId()) {
-        // 내 쓰기 에코 — 적용 불필요. push 는 계속 허용.
+        // 내 쓰기 에코. **서버 확정 전에는 마커 해제·synced 금지** — 마커 유지하고 대기.
+        // (서버 커밋되면 hasPendingWrites=false 메타 이벤트가 다시 와서 그때 해제)
         pulled = true;
-        rawRemove(PENDING_TS_KEY);
-        notify({ status: "synced", at: Date.now() });
+        if (confirmed) {
+          rawRemove(PENDING_TS_KEY);
+          notify({ status: "synced", at: Date.now() });
+        }
         return;
       }
       const changed = applyRemote(d.kv ?? {});
