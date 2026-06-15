@@ -193,12 +193,13 @@ let pulled = false; // 최초 원격 pull 완료 전에는 push 금지 (데이�
 const DEBOUNCE_MS = 800;
 
 function schedulePush() {
-  if (!currentUser || !db) return;
-  // 미push 변경 시각 기록 → reload로 timer가 유실돼도 다음 로드에서 로컬 우선 판별 근거.
-  // pull 완료 전에도 마커는 남긴다 — 그래야 직후 도착하는 초기 pull이 방금 누른
-  // 별표(아직 push 못 함)를 옛 원격값으로 덮어쓰지 못한다.
+  // 로컬 동기화키 편집이 발생하면 무엇보다 먼저 dirty 마커를 남긴다 —
+  // 로그인(currentUser)·최초 pull 완료 전이라도. 마커가 없으면 직후 도착하는
+  // 초기 onSnapshot이 stale 원격으로 이 편집을 덮어써 유실된다(별표 해제가
+  // 새로고침에서 복구되고 클라우드가 frozen 되던 근본 원인 — 인증 해소 전 토글).
+  // reload로 pushTimer가 유실돼도 다음 로드에서 "로컬이 원격보다 최신" 판별 근거.
   rawSet(PENDING_TS_KEY, String(Date.now()));
-  if (!pulled) return; // 최초 pull 전엔 push 보류(마커만 남김)
+  if (!currentUser || !db || !pulled) return; // 로그인+최초pull 전엔 push 보류(마커만 남김)
   clearTimeout(pushTimer);
   pushTimer = setTimeout(pushNow, DEBOUNCE_MS);
 }
