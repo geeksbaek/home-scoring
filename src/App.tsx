@@ -15,7 +15,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { unpackPriceSeries } from "@/lib/pricePack";
-import { CLOUD_SYNC_EVENT } from "@/lib/sync";
+import { CLOUD_SYNC_EVENT, syncDebug } from "@/lib/sync";
 import { fetchKbLivePrice, type KbLivePrice } from "@/lib/kbLivePrice";
 import { getProxyUrl, setProxyUrl, getProxyToken, setProxyToken, useColumnListings, articlesForAtype, isMovableBy, isTenant, isOwnerJeonse, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
 import { ChevronDown, SlidersHorizontal, X } from "lucide-react";
@@ -2124,10 +2124,17 @@ export default function App() {
   });
 
   const toggleFav = (key: string) => {
+    syncDebug("toggleFav", { key: key.slice(0, 12) });
     setFavorites((prev) => {
       const next = new Set(prev);
       if (next.has(key)) next.delete(key); else next.add(key);
-      localStorage.setItem("favorites", JSON.stringify([...next]));
+      try {
+        syncDebug("toggleFav:setItem-call");
+        localStorage.setItem("favorites", JSON.stringify([...next]));
+        syncDebug("toggleFav:setItem-done");
+      } catch (e) {
+        syncDebug("toggleFav:setItem-throw", { e: String(e).slice(0, 80) });
+      }
       return next;
     });
   };

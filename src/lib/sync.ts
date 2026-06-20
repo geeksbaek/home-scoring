@@ -142,7 +142,10 @@ function installPatch() {
   // 함수에는 커스텀 프로퍼티가 복사되지 않아 .__synced 검사가 무력화되던 문제 +
   // Vite HMR 모듈 재평가 시 중복 설치를 모두 차단)
   const g = globalThis as { __homeScoringSyncPatched?: boolean };
-  if (g.__homeScoringSyncPatched) return;
+  if (g.__homeScoringSyncPatched) {
+    dbg("installPatch:skip");
+    return;
+  }
   g.__homeScoringSyncPatched = true;
 
   const origSet = Storage.prototype.setItem;
@@ -165,6 +168,12 @@ function installPatch() {
     if (sync) dbg("removeItem", { k: k.slice(0, 14), applying, had });
     if (!applying && had && sync) schedulePush();
   };
+  dbg("installPatch:done");
+}
+
+// 외부(App)에서 동기화 디버그 오버레이에 로그를 남기기 위한 export.
+export function syncDebug(event: string, data?: Record<string, unknown>) {
+  dbg(event, data);
 }
 
 // 세션 단위 client-id — 에코 식별용. 같은 탭 reload 시 유지(sessionStorage).
