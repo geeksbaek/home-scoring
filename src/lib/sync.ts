@@ -98,6 +98,38 @@ function emitCloudSync() {
   }
 }
 
+// ───────────────────────── 디버그 오버레이 (임시 계측) ───────────────────────
+// `?debug=1` 로 열면 동기화 이벤트를 화면 하단에 실시간 표시 → 모바일(콘솔 불가)
+// 진단용. setDoc 성공/에러/영구 pending 까지 구분 가능. 진단 후 제거 예정.
+const DEBUG =
+  typeof location !== "undefined" && /[?&]debug=1/.test(location.search);
+const dbgEvents: string[] = [];
+function dbg(event: string, data?: Record<string, unknown>) {
+  if (!DEBUG) return;
+  const t = new Date().toISOString().slice(11, 23);
+  const extra = data ? " " + JSON.stringify(data) : "";
+  dbgEvents.push(`${t} ${event}${extra}`);
+  if (dbgEvents.length > 40) dbgEvents.shift();
+  try {
+    let el = document.getElementById("__syncdbg");
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "__syncdbg";
+      el.setAttribute(
+        "style",
+        "position:fixed;left:0;right:0;bottom:0;max-height:45vh;overflow:auto;" +
+          "z-index:99999;background:rgba(0,0,0,.9);color:#0f0;font:10px/1.35 monospace;" +
+          "padding:6px 8px;white-space:pre-wrap;word-break:break-all;border-top:2px solid #0f0",
+      );
+      document.body.appendChild(el);
+    }
+    el.textContent = dbgEvents.join("\n");
+    el.scrollTop = el.scrollHeight;
+  } catch {
+    /* DOM 미준비 가드 */
+  }
+}
+
 // ───────────────────────── localStorage 패치 ────────────────────────────────
 // applyRemote 가 localStorage 를 갱신할 때 push 가 재트리거되지 않도록 억제.
 let applying = false;
@@ -199,6 +231,7 @@ function schedulePush() {
   // 새로고침에서 복구되고 클라우드가 frozen 되던 근본 원인 — 인증 해소 전 토글).
   // reload로 pushTimer가 유실돼도 다음 로드에서 "로컬이 원격보다 최신" 판별 근거.
   rawSet(PENDING_TS_KEY, String(Date.now()));
+  dbg("schedulePush", { u: !!currentUser, db: !!db, pulled });
   if (!currentUser || !db || !pulled) return; // 로그인+최초pull 전엔 push 보류(마커만 남김)
   clearTimeout(pushTimer);
   pushTimer = setTimeout(pushNow, DEBOUNCE_MS);
@@ -206,25 +239,32 @@ function schedulePush() {
 
 async function pushNow() {
   pushTimer = undefined;
-  if (!currentUser || !db || !pulled) return;
+  if (!currentUser || !db || !pulled) {
+    dbg("pushNow:skip", { u: !!currentUser, db: !!db, pulled });
+    return;
+  }
   const ts = localStorage.getItem(PENDING_TS_KEY); // push 직전 dirty 스냅샷
   try {
     notify({ status: "syncing" });
+    dbg("pushNow:setDoc-start", { ts });
     await setDoc(doc(db, "users", currentUser.uid), {
       kv: snapshotLocal(),
       updatedAt: Date.now(),
       client: clientId(),
     });
+    dbg("pushNow:setDoc-ok");
     // push 도중 새 변경이 없었으면 dirty 해제(있었으면 그 변경이 다시 push 예약돼 마커 유지).
     if (localStorage.getItem(PENDING_TS_KEY) === ts) rawRemove(PENDING_TS_KEY);
     notify({ status: "synced", at: Date.now() });
   } catch (e) {
+    dbg("pushNow:error", { e: String(e).slice(0, 120) });
     notify({ status: "error", error: String(e) });
   }
 }
 
 function startSync(user: User) {
   if (!db) return;
+  dbg("startSync", { uid: user.uid.slice(0, 6) });
   currentUser = user;
   pulled = false;
   notify({ status: "syncing" });
@@ -238,13 +278,23 @@ function startSync(user: User) {
     { includeMetadataChanges: true },
     (s) => {
       // 로컬에 미반영 편집이 대기 중이면 이번 원격 적용을 건너뛴다.
-      if (pushTimer) return;
+      if (pushTimer) {
+        dbg("snap:skip-pushTimer");
+        return;
+      }
 
       // 서버 커밋 확정 여부. Firestore는 setDoc 직후 로컬 캐시 반영분을
       // hasPendingWrites=true로 한 번 쏜다(아직 서버 미반영). 이걸 "동기화됨"으로
       // 처리하면 느린 네트워크(모바일)에서 서버 커밋 전에 dirty 마커가 지워지고,
       // 새로고침 시 in-flight 쓰기가 취소돼 변경이 유실된다 → 옛 원격으로 복구.
       const confirmed = !s.metadata?.hasPendingWrites;
+      dbg("snap", {
+        confirmed,
+        cache: s.metadata?.fromCache,
+        exists: s.exists(),
+        pend: localStorage.getItem(PENDING_TS_KEY),
+        up: (s.data() as { updatedAt?: number } | undefined)?.updatedAt,
+      });
 
       if (!s.exists()) {
         // 원격 문서 없음 — 서버 확정 시에만 현재 로컬 업로드.
@@ -278,7 +328,10 @@ function startSync(user: User) {
       if (changed) emitCloudSync(); // React 상태 재주입 (reload 없이 실시간 반영)
       notify({ status: "synced", at: Date.now() });
     },
-    (e) => notify({ status: "error", error: String(e) }),
+    (e) => {
+      dbg("snap:error", { e: String(e).slice(0, 120) });
+      notify({ status: "error", error: String(e) });
+    },
   );
 }
 
@@ -315,10 +368,12 @@ export function initSync() {
   if (started || !firebaseReady || !auth) return;
   started = true;
   installPatch();
+  dbg("initSync", { ua: navigator.userAgent.slice(0, 60), standalone: (navigator as { standalone?: boolean }).standalone });
   // 탭 숨김/이탈 직전 대기 중 push 를 즉시 flush → 변경 직후 새로고침/이탈에도 유실 최소화.
   // (완전 유실 시에도 PENDING_TS_KEY 기반으로 다음 로드에서 로컬이 복구됨.)
   if (typeof document !== "undefined") {
     const flush = () => {
+      dbg("flush", { hasTimer: !!pushTimer });
       if (pushTimer) {
         clearTimeout(pushTimer);
         pushTimer = undefined;
@@ -331,7 +386,9 @@ export function initSync() {
     // setDoc 도 완료되지 못하고 변경이 영구 유실됐다(서버 미반영, 마커만 잔존).
     // 데스크톱엔 freeze 가 없어 정상이었던 것. "백그라운드에서 못 보내면 다시 열 때
     // 보낸다" — 다시 보일 때 PENDING_TS 마커가 남아 있으면 즉시 push 한다.
-    const flushOrRetry = () => {
+    const flushOrRetry = (src: string) => {
+      const marker = localStorage.getItem(PENDING_TS_KEY);
+      dbg("flushOrRetry", { src, hasTimer: !!pushTimer, marker, u: !!currentUser, pulled });
       if (pushTimer) {
         clearTimeout(pushTimer);
         pushTimer = undefined;
@@ -339,16 +396,18 @@ export function initSync() {
         return;
       }
       // 대기 타이머는 없지만(=freeze 로 소실) 미전송 마커가 남았으면 재전송.
-      if (currentUser && db && pulled && localStorage.getItem(PENDING_TS_KEY)) pushNow();
+      if (currentUser && db && pulled && marker) pushNow();
     };
     document.addEventListener("visibilitychange", () => {
+      dbg("visibilitychange", { state: document.visibilityState });
       if (document.visibilityState === "hidden") flush();
-      else flushOrRetry();
+      else flushOrRetry("visible");
     });
     window.addEventListener("pagehide", flush);
-    window.addEventListener("pageshow", flushOrRetry);
+    window.addEventListener("pageshow", () => flushOrRetry("pageshow"));
   }
   onAuthStateChanged(auth, (user) => {
+    dbg("onAuthStateChanged", { hasUser: !!user });
     if (user) startSync(user);
     else stopSync();
   });
