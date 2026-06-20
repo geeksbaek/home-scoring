@@ -148,22 +148,32 @@ function installPatch() {
   }
   g.__homeScoringSyncPatched = true;
 
+  // **Storage.prototype 을 패치한다(인스턴스가 아니라).** iOS WebKit(iPad/iPhone)은
+  // `localStorage.setItem = fn` 인스턴스 프로퍼티 재할당을 무시해 패치가 무효가 되고
+  // native 가 호출됐다 → schedulePush 미호출 → 마커 없음 → push 유실 → 원복.
+  // (데스크톱 Blink 는 인스턴스 재할당이 먹혀 멀쩡했던 것.) prototype 메서드 교체는
+  // 전 엔진에서 확실히 적용된다. sessionStorage 도 같은 prototype 을 쓰므로
+  // `this === localStorage` 일 때만 동기화 훅을 돈다.
   const origSet = Storage.prototype.setItem;
   const origRemove = Storage.prototype.removeItem;
   rawSet = (k, v) => origSet.call(localStorage, k, v);
   rawRemove = (k) => origRemove.call(localStorage, k);
 
-  localStorage.setItem = function (k: string, v: string) {
+  Storage.prototype.setItem = function (this: Storage, k: string, v: string) {
+    const isLS = this === localStorage;
     // 값이 실제로 바뀐 경우에만 push 예약. 동일값 재기록(마운트 useEffect 등)은 무시.
-    const prev = localStorage.getItem(k);
-    origSet.call(localStorage, k, v);
+    const prev = isLS ? this.getItem(k) : null;
+    origSet.call(this, k, v);
+    if (!isLS) return;
     const sync = isSyncKey(k);
     if (sync) dbg("setItem", { k: k.slice(0, 14), applying, changed: prev !== v });
     if (!applying && prev !== v && sync) schedulePush();
   };
-  localStorage.removeItem = function (k: string) {
-    const had = localStorage.getItem(k) !== null;
-    origRemove.call(localStorage, k);
+  Storage.prototype.removeItem = function (this: Storage, k: string) {
+    const isLS = this === localStorage;
+    const had = isLS ? this.getItem(k) !== null : false;
+    origRemove.call(this, k);
+    if (!isLS) return;
     const sync = isSyncKey(k);
     if (sync) dbg("removeItem", { k: k.slice(0, 14), applying, had });
     if (!applying && had && sync) schedulePush();
