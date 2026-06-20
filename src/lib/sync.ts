@@ -325,10 +325,28 @@ export function initSync() {
         pushNow();
       }
     };
+    // 포그라운드 복귀(visible/bfcache 복원) 시 미전송분 재전송.
+    // iOS PWA(홈화면 추가)는 백그라운드 진입 즉시 페이지를 freeze 해 setTimeout 과
+    // 네트워크를 중단한다 → 토글 직후 앱을 나가면 debounce 타이머도, hidden flush 의
+    // setDoc 도 완료되지 못하고 변경이 영구 유실됐다(서버 미반영, 마커만 잔존).
+    // 데스크톱엔 freeze 가 없어 정상이었던 것. "백그라운드에서 못 보내면 다시 열 때
+    // 보낸다" — 다시 보일 때 PENDING_TS 마커가 남아 있으면 즉시 push 한다.
+    const flushOrRetry = () => {
+      if (pushTimer) {
+        clearTimeout(pushTimer);
+        pushTimer = undefined;
+        pushNow();
+        return;
+      }
+      // 대기 타이머는 없지만(=freeze 로 소실) 미전송 마커가 남았으면 재전송.
+      if (currentUser && db && pulled && localStorage.getItem(PENDING_TS_KEY)) pushNow();
+    };
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState === "hidden") flush();
+      else flushOrRetry();
     });
     window.addEventListener("pagehide", flush);
+    window.addEventListener("pageshow", flushOrRetry);
   }
   onAuthStateChanged(auth, (user) => {
     if (user) startSync(user);
