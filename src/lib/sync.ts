@@ -154,12 +154,16 @@ function installPatch() {
     // 값이 실제로 바뀐 경우에만 push 예약. 동일값 재기록(마운트 useEffect 등)은 무시.
     const prev = localStorage.getItem(k);
     origSet.call(localStorage, k, v);
-    if (!applying && prev !== v && isSyncKey(k)) schedulePush();
+    const sync = isSyncKey(k);
+    if (sync) dbg("setItem", { k: k.slice(0, 14), applying, changed: prev !== v });
+    if (!applying && prev !== v && sync) schedulePush();
   };
   localStorage.removeItem = function (k: string) {
     const had = localStorage.getItem(k) !== null;
     origRemove.call(localStorage, k);
-    if (!applying && had && isSyncKey(k)) schedulePush();
+    const sync = isSyncKey(k);
+    if (sync) dbg("removeItem", { k: k.slice(0, 14), applying, had });
+    if (!applying && had && sync) schedulePush();
   };
 }
 
