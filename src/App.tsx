@@ -1300,14 +1300,38 @@ function EqCell({ data }: { data: AptData }) {
   );
 }
 
+const PARTY_COLOR: Record<string, string> = {
+  더불어민주당: "#152484",
+  국민의힘: "#E61E2B",
+  조국혁신당: "#0073CF",
+  개혁신당: "#FF7210",
+  진보당: "#D6001C",
+  기본소득당: "#00D2C3",
+  사회민주당: "#F58400",
+  무소속: "#6b7280",
+};
+function partyColor(p: string | null): string {
+  return (p && PARTY_COLOR[p]) || "#6b7280";
+}
+function wikiUrl(title: string | null): string | null {
+  return title ? `https://ko.wikipedia.org/wiki/${encodeURIComponent(title.replace(/ /g, "_"))}` : null;
+}
+
 function PoliticianCell({ data }: { data: AptData }) {
   const ps = data.politicians;
   if (!ps || ps.length === 0) return <span className="text-muted-foreground text-xs">-</span>;
-  // 의원별 그룹 (본인+배우자 두 레코드는 한 줄로)
-  const byP = new Map<string, { position: string; relations: string[]; area: number | null; year: number }>();
+  // 의원별 그룹 (본인+배우자 두 레코드는 한 줄로, 가액 합산)
+  const byP = new Map<
+    string,
+    { position: string; relations: string[]; area: number | null; year: number; party: string | null; district: string | null; wikiTitle: string | null; value: number }
+  >();
   for (const p of ps) {
-    const g = byP.get(p.politician) ?? { position: p.position, relations: [], area: p.area, year: p.year };
+    const g =
+      byP.get(p.politician) ??
+      { position: p.position, relations: [], area: p.area, year: p.year, party: p.party, district: p.district, wikiTitle: p.wikiTitle, value: 0 };
     if (!g.relations.includes(p.relation)) g.relations.push(p.relation);
+    g.value += p.value ?? 0;
+    if ((p.area ?? 0) > (g.area ?? 0)) g.area = p.area;
     byP.set(p.politician, g);
   }
   const names = [...byP.keys()];
@@ -1317,24 +1341,43 @@ function PoliticianCell({ data }: { data: AptData }) {
       <PopoverTrigger className="cursor-pointer text-[10px] px-1.5 py-0.5 rounded border border-violet-500/60 text-violet-500 bg-violet-500/10 whitespace-nowrap">
         🏛 {label}
       </PopoverTrigger>
-      <PopoverContent className="w-72 text-xs">
-        <p className="font-semibold mb-1">국회의원 재산공개 신고</p>
-        <ul className="space-y-1 text-muted-foreground">
-          {[...byP.entries()].map(([name, g]) => (
-            <li key={name} className="flex justify-between gap-2">
-              <span className="text-foreground/80">
-                {name}
-                <span className="text-[10px] text-muted-foreground ml-1">
+      <PopoverContent className="w-80 text-xs">
+        <p className="font-semibold mb-1.5">국회의원 재산공개 신고</p>
+        <ul className="space-y-1.5">
+          {[...byP.entries()].map(([name, g]) => {
+            const url = wikiUrl(g.wikiTitle);
+            return (
+              <li key={name} className="border-b border-border/50 last:border-0 pb-1.5 last:pb-0">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="flex items-center gap-1 min-w-0">
+                    {url ? (
+                      <a href={url} target="_blank" rel="noreferrer" className="font-medium text-foreground hover:underline truncate">
+                        {name}
+                      </a>
+                    ) : (
+                      <span className="font-medium text-foreground truncate">{name}</span>
+                    )}
+                    {g.party && (
+                      <span className="text-[9px] px-1 py-px rounded text-white shrink-0" style={{ backgroundColor: partyColor(g.party) }}>
+                        {g.party}
+                      </span>
+                    )}
+                  </span>
+                  <span className="tabular-nums shrink-0 text-foreground/70">{g.value > 0 ? `${g.value}억` : ""}</span>
+                </div>
+                <div className="text-[10px] text-muted-foreground mt-0.5">
                   {g.position !== "국회의원" ? `${g.position} · ` : ""}
-                  {g.relations.join("·")}
-                </span>
-              </span>
-              <span className="tabular-nums shrink-0">{g.area ? `${Math.floor(g.area)}㎡` : ""}</span>
-            </li>
-          ))}
+                  {g.district ?? ""}
+                  {g.district ? " · " : ""}
+                  {g.relations.join("·")} 명의
+                  {g.area ? ` · ${Math.floor(g.area)}㎡` : ""}
+                </div>
+              </li>
+            );
+          })}
         </ul>
         <p className="mt-2 pt-2 border-t text-[10px] text-muted-foreground">
-          {ps[0].year}년 국회공보 정기재산공개 기준 · 본인/배우자 명의 보유(거주지 아님). 출처: 정보공개센터
+          {ps[0].year}년 국회공보 정기재산공개 기준 · 본인/배우자 명의 보유(거주지 아님) · 가액=신고 현재가액. 출처: 정보공개센터·위키백과
         </p>
       </PopoverContent>
     </Popover>

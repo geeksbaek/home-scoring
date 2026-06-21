@@ -30,6 +30,95 @@ interface PoliticianRec {
   relation: string;
   area: number | null;
   year: number;
+  party: string | null; // 현재 정당 (위키 기준)
+  district: string | null; // 지역구 (시도+선거구) 또는 "비례대표"
+  wikiTitle: string | null; // 위키백과 문서명 (프로필 링크용)
+  value: number | null; // 신고 현재가액 (억원, 소수1)
+}
+
+interface Profile {
+  party: string | null;
+  district: string | null;
+  wikiTitle: string;
+}
+
+const SIDO_ABBR: Record<string, string> = {
+  서울특별시: "서울", 부산광역시: "부산", 대구광역시: "대구", 인천광역시: "인천",
+  광주광역시: "광주", 대전광역시: "대전", 울산광역시: "울산", 세종특별자치시: "세종",
+  경기도: "경기", 강원특별자치도: "강원", 충청북도: "충북", 충청남도: "충남",
+  전북특별자치도: "전북", 전라남도: "전남", 경상북도: "경북", 경상남도: "경남",
+  제주특별자치도: "제주",
+};
+
+// 위키백과 22대 국회의원 목록 위키텍스트 → { 이름: Profile }
+async function loadProfiles(): Promise<Record<string, Profile>> {
+  const cache = `${CACHE_DIR}/_assembly22.wiki`;
+  let text: string;
+  if (await Bun.file(cache).exists()) {
+    text = await Bun.file(cache).text();
+  } else {
+    const url =
+      "https://ko.wikipedia.org/w/index.php?title=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%A0%9C22%EB%8C%80_%EA%B5%AD%ED%9A%8C%EC%9D%98%EC%9B%90_%EB%AA%A9%EB%A1%9D&action=raw";
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`위키 다운로드 실패: ${res.status}`);
+    text = await res.text();
+    await Bun.write(cache, text);
+  }
+  const prof: Record<string, Profile> = {};
+  const nameRe = /^\|\s*\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/;
+  const seatRe = /^!\s*\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/;
+  const partyRe = /정당=([^}|]+?)\s*}}/g;
+  let mode = "";
+  let curSido: string | null = null; // 지역구 시도
+  let curPropParty: string | null = null; // 비례 섹션 정당
+  let block: string[] = [];
+  const flush = () => {
+    if (!block.length) return;
+    const joined = block.join("\n");
+    let name: string | null = null,
+      wikiTitle: string | null = null,
+      seat: string | null = null;
+    for (const l of block) {
+      const m = l.match(nameRe);
+      if (m) {
+        wikiTitle = m[1].trim();
+        name = (m[2] || m[1]).trim();
+        break;
+      }
+    }
+    if (!name || !wikiTitle) {
+      block = [];
+      return;
+    }
+    for (const l of block) {
+      const s = l.match(seatRe);
+      if (s) {
+        seat = (s[2] || s[1]).trim();
+        break;
+      }
+    }
+    const parties = [...joined.matchAll(partyRe)].map((m) => m[1].trim());
+    const party = parties.length ? parties[parties.length - 1] : mode === "prop" ? curPropParty : null;
+    const district = mode === "prop" ? "비례대표" : seat ? `${curSido ?? ""} ${seat}`.trim() : null;
+    prof[name] = { party, district, wikiTitle };
+    block = [];
+  };
+  for (const l of text.split("\n")) {
+    if (/^==\s*비례대표/.test(l)) mode = "prop";
+    else if (/^==\s*지역구/.test(l)) mode = "region";
+    const sec = l.match(/^===\s*(.+?)\s*\(\d+석\)\s*===/);
+    if (sec) {
+      if (mode === "prop") curPropParty = sec[1].trim();
+      else curSido = SIDO_ABBR[sec[1].trim()] ?? sec[1].trim();
+    }
+    if (l.trim() === "|-") {
+      flush();
+      continue;
+    }
+    block.push(l);
+  }
+  flush();
+  return prof;
 }
 
 // 단지명 정규화: 공백·특수문자 제거, 소문자, 표기 변이 흡수
@@ -83,6 +172,8 @@ function parseDesc(descRaw: string): { dong: string; aptText: string; area: numb
 }
 
 async function main() {
+  const profiles = await loadProfiles();
+  console.log(`위키 프로필: ${Object.keys(profiles).length}명`);
   const identity: IdentityEntry[] = await Bun.file(`${CACHE_DIR}/apt_identity.json`).json();
   // 법정동 → 후보 단지 (정규화 이름 길이 내림차순)
   const byDong = new Map<string, { name: string; nname: string }[]>();
@@ -110,7 +201,8 @@ async function main() {
       cName = ci("이름"),
       cRel = ci("본인과의 관계"),
       cKind = ci("재산의종류"),
-      cDesc = ci("소재지 면적 등 권리의 명세");
+      cDesc = ci("소재지 면적 등 권리의 명세"),
+      cValue = ci("현재가액"); // 천원 단위
 
     for (let i = 1; i < rows.length; i++) {
       const r = rows[i];
@@ -140,17 +232,28 @@ async function main() {
         continue;
       }
       matched++;
-      const rec: PoliticianRec = {
-        politician: String(r[cName]).trim(),
-        position: String(r[cPos]).replace(/\s+/g, " ").trim() || "국회의원",
-        relation: rel,
-        area: parsed.area,
-        year,
-      };
+      const politician = String(r[cName]).trim();
+      const prof = profiles[politician] ?? null;
+      const valueThousand = parseFloat(String(r[cValue]).replace(/[^0-9.]/g, "")) || 0;
+      const value = valueThousand > 0 ? Math.round(valueThousand / 10000) / 10 : null; // 천원 → 억(소수1)
       if (!result[hit.name]) result[hit.name] = [];
-      // 중복(동일 의원·관계·단지) 제거
-      if (!result[hit.name].some((x) => x.politician === rec.politician && x.relation === rec.relation && x.year === rec.year)) {
-        result[hit.name].push(rec);
+      const dup = result[hit.name].find((x) => x.politician === politician && x.relation === rel && x.year === year);
+      if (dup) {
+        // 같은 의원·관계·단지의 추가 행(평형 분할 등) → 가액 합산, 면적은 큰 값 유지
+        dup.value = (dup.value ?? 0) + (value ?? 0);
+        if ((parsed.area ?? 0) > (dup.area ?? 0)) dup.area = parsed.area;
+      } else {
+        result[hit.name].push({
+          politician,
+          position: String(r[cPos]).replace(/\s+/g, " ").trim() || "국회의원",
+          relation: rel,
+          area: parsed.area,
+          year,
+          party: prof?.party ?? null,
+          district: prof?.district ?? null,
+          wikiTitle: prof?.wikiTitle ?? null,
+          value,
+        });
       }
     }
   }

@@ -111,7 +111,19 @@ export interface AptData {
   audit_opinion: string | null;
   audit_net_profit: number | null;
   // 국회의원 재산공개 (관보) — 본인/배우자 명의 아파트 보유 신고
-  politicians: { politician: string; position: string; relation: string; area: number | null; year: number }[] | null;
+  politicians:
+    | {
+        politician: string;
+        position: string;
+        relation: string;
+        area: number | null;
+        year: number;
+        party: string | null;
+        district: string | null;
+        wikiTitle: string | null;
+        value: number | null;
+      }[]
+    | null;
   // 가족 비중 추정 신호
   school_lower3_rate: number | null;  // 배정초 1~3학년/전체 (%)
   school_total: number | null;        // 배정초 전체 학생수
