@@ -1300,29 +1300,42 @@ function EqCell({ data }: { data: AptData }) {
   );
 }
 
-function LhCell({ data }: { data: AptData }) {
-  if (!data.lh_origin) return <span className="text-muted-foreground text-xs">-</span>;
-  const conv = data.lh_has_conversion;
+function PoliticianCell({ data }: { data: AptData }) {
+  const ps = data.politicians;
+  if (!ps || ps.length === 0) return <span className="text-muted-foreground text-xs">-</span>;
+  // 의원별 그룹 (본인+배우자 두 레코드는 한 줄로)
+  const byP = new Map<string, { position: string; relations: string[]; area: number | null; year: number }>();
+  for (const p of ps) {
+    const g = byP.get(p.politician) ?? { position: p.position, relations: [], area: p.area, year: p.year };
+    if (!g.relations.includes(p.relation)) g.relations.push(p.relation);
+    byP.set(p.politician, g);
+  }
+  const names = [...byP.keys()];
+  const label = names.length === 1 ? names[0] : `${names[0]} 외 ${names.length - 1}`;
   return (
     <Popover>
-      <PopoverTrigger
-        className={cn(
-          "cursor-pointer text-[10px] px-1.5 py-0 rounded border",
-          conv ? "border-amber-500/60 text-amber-500 bg-amber-500/10" : "border-border text-muted-foreground"
-        )}
-      >
-        {conv ? "임대전환" : "LH"}
+      <PopoverTrigger className="cursor-pointer text-[10px] px-1.5 py-0.5 rounded border border-violet-500/60 text-violet-500 bg-violet-500/10 whitespace-nowrap">
+        🏛 {label}
       </PopoverTrigger>
-      <PopoverContent className="w-64 text-xs">
-        <p className="font-semibold mb-1">LH 공급 유형</p>
-        <ul className="space-y-0.5 text-muted-foreground">
-          {data.lh_types.map((t) => <li key={t}>· {t}</li>)}
+      <PopoverContent className="w-72 text-xs">
+        <p className="font-semibold mb-1">국회의원 재산공개 신고</p>
+        <ul className="space-y-1 text-muted-foreground">
+          {[...byP.entries()].map(([name, g]) => (
+            <li key={name} className="flex justify-between gap-2">
+              <span className="text-foreground/80">
+                {name}
+                <span className="text-[10px] text-muted-foreground ml-1">
+                  {g.position !== "국회의원" ? `${g.position} · ` : ""}
+                  {g.relations.join("·")}
+                </span>
+              </span>
+              <span className="tabular-nums shrink-0">{g.area ? `${Math.floor(g.area)}㎡` : ""}</span>
+            </li>
+          ))}
         </ul>
-        {conv && (
-          <p className="mt-2 pt-2 border-t text-[10px] text-muted-foreground">
-            5/10/50년 또는 분납 임대 후 분양전환 단지 (일부 동만 해당될 수 있음)
-          </p>
-        )}
+        <p className="mt-2 pt-2 border-t text-[10px] text-muted-foreground">
+          {ps[0].year}년 국회공보 정기재산공개 기준 · 본인/배우자 명의 보유(거주지 아님). 출처: 정보공개센터
+        </p>
       </PopoverContent>
     </Popover>
   );
@@ -3060,7 +3073,7 @@ export default function App() {
                   <TableHead className="text-center">초등학교</TableHead>
                   <TableHead className="text-center">안전</TableHead>
                   <TableHead className="text-center">내진</TableHead>
-                  <TableHead className="text-center">LH</TableHead>
+                  <TableHead className="text-center">정치인</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -3127,7 +3140,7 @@ export default function App() {
                         </TableCell>
                       )}
                       {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><EqCell data={d} /></TableCell>}
-                      {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><LhCell data={d} /></TableCell>}
+                      {isFirst && <TableCell rowSpan={span} className="text-center align-middle"><PoliticianCell data={d} /></TableCell>}
                     </TableRow>
                   );
                 })}
@@ -3166,7 +3179,7 @@ export default function App() {
                 <TableHead className="text-center">초등학교</TableHead>
                 <TableHead className="text-center">안전</TableHead>
                 <TableHead className="text-center">내진</TableHead>
-                <TableHead className="text-center">LH</TableHead>
+                <TableHead className="text-center">정치인</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -3231,7 +3244,7 @@ export default function App() {
                       </Popover>
                     </TableCell>
                     <TableCell className="text-center"><EqCell data={d} /></TableCell>
-                    <TableCell className="text-center"><LhCell data={d} /></TableCell>
+                    <TableCell className="text-center"><PoliticianCell data={d} /></TableCell>
                   </TableRow>
                 );
               })}

@@ -223,8 +223,7 @@ async function updatePages() {
   const repairFund = await loadJsonOpt<Record<string, { balance_per_hh: number; levy_per_hh: number; reserve_rate: number | null; months_collected: number }>>("repair_fund.json", {});
   const maintHistory = await loadJsonOpt<Record<string, { items: any[]; summary: { totalCost: number; recentYear: string | null; elevatorRemaining: number | null; pipingRemaining: number | null; waterproofRemaining: number | null } }>>("maintenance_history.json", {});
   const auditHistory = await loadJsonOpt<Record<string, { audited: boolean; opinion: string | null; company: string | null; annualIncome: number | null; annualCost: number | null; netProfit: number | null; year: string }>>("audit_history.json", {});
-  const lhOriginList = await loadJsonOpt<{ apt: string; lh_origin: boolean; has_conversion: boolean; lh_types: string[] }[]>("lh_origin.json", []);
-  const lhOrigin = new Map(lhOriginList.map((e) => [e.apt, e]));
+  const politicianRes = await loadJsonOpt<Record<string, { politician: string; position: string; relation: string; area: number | null; year: number }[]>>("politician_residence.json", {});
   // 가족 신호: 학교 학년별 + 동 인구
   const schoolGrade = await loadJsonOpt<Record<string, { total: number; lower3: number; lower3_rate: number }>>("school_grade.json", {});
   const dongPop = await loadJsonOpt<{
@@ -547,10 +546,8 @@ async function updatePages() {
       audit_done: auditHistory[n]?.audited ?? null,
       audit_opinion: auditOpinionLabel(auditHistory[n]?.opinion ?? null),
       audit_net_profit: auditHistory[n]?.netProfit ?? null,
-      // LH 분양전환
-      lh_origin: lhOrigin.get(n)?.lh_origin ?? false,
-      lh_has_conversion: lhOrigin.get(n)?.has_conversion ?? false,
-      lh_types: lhOrigin.get(n)?.lh_types ?? [],
+      // 국회의원 재산공개 (관보)
+      politicians: politicianRes[n] ?? null,
       // 가족 비중 신호
       school_lower3_rate: (() => {
         const sn = (schoolMap[n] ?? [])[0];
