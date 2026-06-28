@@ -26,10 +26,12 @@ Usage:
 import hmac
 import json
 import os
+import random
 import re
 import threading
 import time
 from collections import deque
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
@@ -46,7 +48,9 @@ MIN_INTERVAL = float(os.environ.get("MIN_INTERVAL", "1.2"))  # 업스트림 호�
 PAGE_SIZE = int(os.environ.get("PAGE_SIZE", "30"))           # 1~30 (네이버 제한)
 MAX_PAGES = int(os.environ.get("MAX_PAGES", "20"))           # 페이지네이션 상한(20×30=600건) — 무한루프 방지
 MOVEIN_TTL = float(os.environ.get("MOVEIN_TTL", "21600"))    # 매물 입주가능일 캐시 6h
-DETAIL_INTERVAL = float(os.environ.get("DETAIL_INTERVAL", "0.4"))  # 상세 HTML 호출 간격
+# 상세(입주가능일) 조회 동시성. 실측: 동시 4 → 25건 1.1s 전부 200 / 동시 6 → 버스트 429.
+# 4가 안전선. 전역 세마포어라 여러 단지 동시 클릭에도 네이버 부하 총량은 이 값으로 캡됨.
+DETAIL_CONCURRENCY = int(os.environ.get("DETAIL_CONCURRENCY", "4"))
 MOVEIN_CAP = int(os.environ.get("MOVEIN_CAP", "60"))         # 한 요청당 상세 조회 상한 (cap 초과 매물은 프론트서 '입주미상')
 # CORS 허용 origin (브라우저 남용 차단). ALLOWED_ORIGINS 환경변수로 덮어쓰기 가능.
 ALLOWED_ORIGINS = {
@@ -214,14 +218,25 @@ def fetch_articles(complex_no: str, trade: str, sort: str, pyeong_types: list[in
 # ── 매물별 입주가능일(상세) 조회·파싱·캐시 ──────────────────────────────────
 # 입주가능일은 리스트 API에 없고 매물 상세 SSR HTML에만 노출 → 매물 1건당 1콜.
 # 별도 세션/락/간격으로 리스트 호출과 분리, articleNo별 장기 캐시(6h).
+# CSS 클래스명은 빌드마다 해시가 바뀌므로(예: DataList-module-scss-module__9aKEGa__definition)
+# 클래스명에 의존하지 말고 '입주가능일' 라벨 + definition 키워드만으로 앵커링.
 _DEFN_RE = re.compile(
-    r'DataList_term[^>]*>입주가능일</div><div class="DataList_definition[^>]*>(.*?)</div>'
+    r'>입주가능일</div><div class="[^"]*definition[^"]*">(.*?)</div>'
 )
 _mi_lock = threading.Lock()
 _movein_cache: dict[str, tuple[float, dict]] = {}
-_detail_lock = threading.Lock()
-_detail_session: requests.Session | None = None
-_last_detail = 0.0
+# 상세 조회 동시성 게이트(전역). 워커 스레드는 thread-local 세션을 사용해 curl_cffi
+# 세션 공유 경합을 피하고, 세마포어가 네이버로 가는 동시 요청 총량을 캡한다.
+_detail_sem = threading.Semaphore(DETAIL_CONCURRENCY)
+_detail_tls = threading.local()
+
+
+def _detail_session() -> requests.Session:
+    s = getattr(_detail_tls, "sess", None)
+    if s is None:
+        s = _new_session()
+        _detail_tls.sess = s
+    return s
 
 
 def parse_movein(html: str) -> dict:
@@ -249,42 +264,50 @@ def parse_movein(html: str) -> dict:
 
 
 def fetch_movein(article_no: str) -> dict:
-    """매물 상세에서 입주가능일 파싱. articleNo별 캐시 + 직렬 간격."""
-    global _detail_session, _last_detail
+    """매물 상세에서 입주가능일 파싱. articleNo별 캐시 + 동시성 제한(세마포어).
+    캐시는 200 응답만 장기 보관 — 429/403/timeout 일시 실패를 6h '미상'으로 고착하지 않는다."""
     with _mi_lock:
         hit = _movein_cache.get(article_no)
         if hit and hit[0] > time.monotonic():
             return hit[1]
-    with _detail_lock:
-        gap = time.monotonic() - _last_detail
-        if gap < DETAIL_INTERVAL:
-            time.sleep(DETAIL_INTERVAL - gap)
-        mi = {"raw": None, "immediate": False, "date": None}
-        try:
-            if _detail_session is None:
-                _detail_session = _new_session()
-            r = _detail_session.get(
-                ART_URL + str(article_no),
-                headers={"referer": "https://fin.land.naver.com/"},
-                timeout=15,
-            )
-            _last_detail = time.monotonic()
-            if r.status_code == 200:
-                mi = parse_movein(r.text)
-            elif r.status_code in (403, 429):
-                _detail_session = _new_session()  # 다음 건을 위해 재워밍업
-        except Exception:
-            _detail_session = None
-    with _mi_lock:
-        _movein_cache[article_no] = (time.monotonic() + MOVEIN_TTL, mi)
+    mi = {"raw": None, "immediate": False, "date": None}
+    ok = False  # 200 수신해 신뢰 가능한 결과인가 (미상이어도 정당한 미상)
+    with _detail_sem:
+        for attempt in range(2):
+            try:
+                r = _detail_session().get(
+                    ART_URL + str(article_no),
+                    headers={"referer": "https://fin.land.naver.com/"},
+                    timeout=15,
+                )
+                if r.status_code == 200:
+                    mi = parse_movein(r.text)
+                    ok = True
+                    break
+                if r.status_code in (403, 429):
+                    _detail_tls.sess = None  # 워밍업 재생성
+                    if attempt == 0:
+                        time.sleep(0.5 + random.random())
+                        continue
+                break
+            except Exception:
+                _detail_tls.sess = None
+                if attempt == 0:
+                    time.sleep(0.3)
+                    continue
+    if ok:  # 일시 실패는 캐시하지 않음 → 다음 요청에 재시도
+        with _mi_lock:
+            _movein_cache[article_no] = (time.monotonic() + MOVEIN_TTL, mi)
     return mi
 
 
 def enrich_movein(articles: list[dict]) -> None:
-    """각 매물에 moveIn 필드 부착 (상한 MOVEIN_CAP). 가격 오름차순 우선 조회."""
+    """각 매물에 moveIn 필드 부착 (상한 MOVEIN_CAP). 동시 DETAIL_CONCURRENCY 병렬."""
     targets = [a for a in articles if a.get("articleNo")][:MOVEIN_CAP]
-    for a in targets:
-        a["moveIn"] = fetch_movein(str(a["articleNo"]))
+    with ThreadPoolExecutor(max_workers=DETAIL_CONCURRENCY) as ex:
+        futs = {ex.submit(fetch_movein, str(a["articleNo"])): a for a in targets}
+        for fut in as_completed(futs):
+            futs[fut]["moveIn"] = fut.result()
 
 
 def normalize(raw: dict) -> dict:
@@ -546,12 +569,21 @@ class Handler(BaseHTTPRequestHandler):
                              "hasNextPage": payload["hasNextPage"], "count": payload["count"],
                              "articles": arts, "cached": False}):
             return  # 클라이언트 끊김 — movein 상세 조회 스킵(업스트림 부하 절감)
-        # 입주가능일 건별 스트림 (가격 오름차순 우선, 상한 MOVEIN_CAP)
-        for a in [x for x in arts if x.get("articleNo")][:MOVEIN_CAP]:
-            mi = fetch_movein(str(a["articleNo"]))
-            a["moveIn"] = mi
-            if not self._ndjson({"type": "movein", "articleNo": a.get("articleNo"), "moveIn": mi}):
-                return  # 끊김 — 남은 상세 조회 중단
+        # 입주가능일 동시 조회(DETAIL_CONCURRENCY 병렬) → 완료되는 대로 스트림.
+        # emit은 핸들러 스레드 단독이라 _ndjson 직렬화 안전. 순서는 무관(프론트가 articleNo로 매칭).
+        targets = [x for x in arts if x.get("articleNo")][:MOVEIN_CAP]
+        with ThreadPoolExecutor(max_workers=DETAIL_CONCURRENCY) as ex:
+            futs = {ex.submit(fetch_movein, str(a["articleNo"])): a for a in targets}
+            try:
+                for fut in as_completed(futs):
+                    a = futs[fut]
+                    mi = fut.result()
+                    a["moveIn"] = mi
+                    if not self._ndjson({"type": "movein", "articleNo": a.get("articleNo"), "moveIn": mi}):
+                        return  # 끊김 — 미완료 작업 취소 후 종료
+            finally:
+                for f in futs:
+                    f.cancel()
         store(key, payload, False)  # moveIn 부착 완료분 캐시 → 다음 요청은 즉시 재생
         self._ndjson({"type": "done", "cached": False})
 
