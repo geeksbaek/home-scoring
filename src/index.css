@@ -129,3 +129,31 @@
     @apply font-sans;
     }
 }
+
+@layer utilities {
+  .commute-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    scrollbar-color: color-mix(in oklab, var(--muted-foreground) 34%, transparent) transparent;
+  }
+
+  .commute-scrollbar::-webkit-scrollbar {
+    width: 0.45rem;
+  }
+
+  .commute-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .commute-scrollbar::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--muted-foreground) 34%, transparent);
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-clip: content-box;
+  }
+
+  .commute-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--muted-foreground) 52%, transparent);
+    background-clip: content-box;
+  }
+}

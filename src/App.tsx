@@ -394,7 +394,7 @@ function CommutePopover({ data, slot = "early" }: { data: AptData; slot?: Commut
           <span className="text-muted-foreground ml-3">퇴근 평균</span><span className={color(cv.evening ?? 99)}>{cv.evening ? `${cv.evening}분` : "-"}</span>
         </div>
         {recentDays.length > 0 && (
-          <div className="max-h-36 overflow-y-auto border-t border-border/50">
+          <div className="commute-scrollbar max-h-36 overflow-y-auto border-t border-border/50 pr-1">
             <table className="w-full">
               <thead className="sticky top-0 bg-popover">
                 <tr className="text-muted-foreground">
