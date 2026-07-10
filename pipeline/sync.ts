@@ -5,7 +5,7 @@
  *   bun src/sync.ts
  */
 
-import { copyFileSync, existsSync } from "node:fs";
+import { copyFileSync, existsSync, readdirSync, unlinkSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 import { type Trade, readCsv, mean, median, mode, groupBy } from "./csv";
@@ -23,6 +23,7 @@ const ICLOUD_DIR = join(
 const PAGES_DIR = join(homedir(), "GitHub", "home-scoring");
 
 const ICLOUD_FILES = ["apt_scoring_results.md"];
+const MAX_SHARD_BYTES = 80 * 1024 * 1024;
 
 // ── 데이터 로더 ────────────────────────────────────────
 
@@ -683,22 +684,55 @@ async function updatePages() {
 
   // 광역 단위 분할 (data-seoul.json + data-gyeonggi.json + data-index.json)
   // 합본 data.json은 100MB 초과로 GitHub 차단 → 제거.
+  const publicDir = join(PAGES_DIR, "public");
+  for (const name of readdirSync(publicDir)) {
+    if (/^data-(?!index\.json$).+\.json$/.test(name)) {
+      unlinkSync(join(publicDir, name));
+    }
+  }
   const shardDefs: { key: string; label: string; match: (r: any) => boolean }[] = [
     { key: "seoul", label: "서울특별시", match: (r) => (r.region || "").startsWith("서울") },
     { key: "gyeonggi", label: "경기도", match: (r) => !(r.region || "").startsWith("서울") },
   ];
   const shardSummary: { key: string; label: string; url: string; hash: string; count: number; region_prefixes: string[] }[] = [];
+
+  function splitShardRows(rows: any[]): any[][] {
+    const chunks: any[][] = [];
+    let chunk: any[] = [];
+    let bytes = 2; // []
+    for (const row of rows) {
+      const rowJson = JSON.stringify(row);
+      const rowBytes = Buffer.byteLength(rowJson) + (chunk.length > 0 ? 1 : 0);
+      if (chunk.length > 0 && bytes + rowBytes > MAX_SHARD_BYTES) {
+        chunks.push(chunk);
+        chunk = [];
+        bytes = 2;
+      }
+      chunk.push(row);
+      bytes += Buffer.byteLength(rowJson) + (chunk.length > 1 ? 1 : 0);
+    }
+    if (chunk.length > 0) chunks.push(chunk);
+    return chunks;
+  }
+
   for (const sd of shardDefs) {
     const subset = results.filter(sd.match);
-    const prefixes = [...new Set(subset.map((r: any) => (r.region || "").split(" ")[0]).filter(Boolean))].sort();
-    const fname = `data-${sd.key}.json`;
-    // minify (no indent) — 50% 크기 절감 + gzip 효과 충분
-    const body = JSON.stringify(subset);
-    // content hash → 프론트가 ?v= 쿼리로 캐시버스팅 (내용 안 바뀐 shard는 캐시 재사용)
-    const hash = new Bun.CryptoHasher("md5").update(body).digest("hex").slice(0, 10);
-    await Bun.write(join(PAGES_DIR, "public", fname), body);
-    shardSummary.push({ key: sd.key, label: sd.label, url: fname, hash, count: subset.length, region_prefixes: prefixes });
-    console.log(`  ${fname} → ${subset.length}개 단지 (${prefixes.join(", ")}) [${hash}]`);
+    const chunks = splitShardRows(subset);
+    for (let i = 0; i < chunks.length; i++) {
+      const chunk = chunks[i];
+      const key = chunks.length === 1 ? sd.key : `${sd.key}-${i + 1}`;
+      const label = chunks.length === 1 ? sd.label : `${sd.label} ${i + 1}`;
+      const prefixes = [...new Set(chunk.map((r: any) => (r.region || "").split(" ")[0]).filter(Boolean))].sort();
+      const fname = `data-${key}.json`;
+      // minify (no indent) — 50% 크기 절감 + gzip 효과 충분
+      const body = JSON.stringify(chunk);
+      // content hash → 프론트가 ?v= 쿼리로 캐시버스팅 (내용 안 바뀐 shard는 캐시 재사용)
+      const hash = new Bun.CryptoHasher("md5").update(body).digest("hex").slice(0, 10);
+      await Bun.write(join(PAGES_DIR, "public", fname), body);
+      shardSummary.push({ key, label, url: fname, hash, count: chunk.length, region_prefixes: prefixes });
+      const mb = Math.round((Buffer.byteLength(body) / 1024 / 1024) * 10) / 10;
+      console.log(`  ${fname} → ${chunk.length}개 단지 (${prefixes.join(", ")}) ${mb}MB [${hash}]`);
+    }
   }
   const indexPath = join(PAGES_DIR, "public", "data-index.json");
   await Bun.write(indexPath, JSON.stringify({ shards: shardSummary, generatedAt: new Date().toISOString() }, null, 2));
