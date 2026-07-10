@@ -315,6 +315,8 @@ async function updatePages() {
   const oneMonthCutoff = `${oneMonthAgo.getFullYear()}-${String(oneMonthAgo.getMonth() + 1).padStart(2, "0")}-${String(oneMonthAgo.getDate()).padStart(2, "0")}`;
 
   const grouped = groupBy(recentTyped, (r) => `${r.단지명}\t${r.at}`);
+  const fullGrouped = groupBy(dfTyped, (r) => `${r.단지명}\t${r.at}`);
+  const fullAllGrouped = groupBy(dfAllTyped, (r) => `${r.단지명}\t${r.at}`);
   const results: any[] = [];
 
   for (const [key, g] of grouped) {
@@ -326,7 +328,8 @@ async function updatePages() {
 
     const cnt = g.length;
 
-    const full = dfTyped.filter((r) => r.단지명 === n && r.at === atype);
+    const full = fullGrouped.get(key) ?? [];
+    if (full.length === 0) continue;
     const r3 = full.filter((r) => r.거래일자 >= "2026-02-01").map((r) => r.금액_만원);
     const p3 = full
       .filter((r) => r.거래일자 >= "2025-11-01" && r.거래일자 < "2026-02-01")
@@ -371,7 +374,7 @@ async function updatePages() {
     }
 
     // 최근 거래 내역 — 직거래/1층 포함 전체 (플래그로 구분)
-    const fullAll = dfAllTyped.filter((r) => r.단지명 === n && r.at === atype);
+    const fullAll = fullAllGrouped.get(key) ?? [];
     const rtRows = fullAll
       .filter((r) => r.거래일자 >= rtCutoff)
       .sort((a, b) => (b.거래일자 > a.거래일자 ? 1 : -1));
