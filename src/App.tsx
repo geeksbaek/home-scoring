@@ -381,40 +381,43 @@ function CommutePopover({ data, slot = "early" }: { data: AptData; slot?: Commut
     e.eveningTime = t.time;
   }
   const days = [...dayMap.values()].sort((a, b) => b.date.localeCompare(a.date));
+  const recentDays = days.slice(0, 7);
 
   return (
     <Popover>
       <PopoverTrigger><span className="cursor-pointer"><LabelBadge label={label} /></span></PopoverTrigger>
-      <PopoverContent className="w-64 text-xs">
+      <PopoverContent className="w-72 text-xs">
         <p className="font-semibold mb-0.5">출퇴근 상세 (판교)</p>
         <p className="text-muted-foreground text-[10px] mb-2">{slotLabel}</p>
         <div className="flex justify-between mb-2">
           <span className="text-muted-foreground">출근 평균</span><span className={color(cv.morning ?? 99)}>{cv.morning ? `${cv.morning}분` : "-"}</span>
           <span className="text-muted-foreground ml-3">퇴근 평균</span><span className={color(cv.evening ?? 99)}>{cv.evening ? `${cv.evening}분` : "-"}</span>
         </div>
-        {days.length > 0 && (
-          <table className="w-full border-t border-border/50">
-            <thead>
-              <tr className="text-muted-foreground">
-                <th className="text-left py-1 font-normal">날짜</th>
-                <th className="text-right py-1 font-normal">출근</th>
-                <th className="text-right py-1 font-normal">퇴근</th>
-              </tr>
-            </thead>
-            <tbody>
-              {days.map((d) => (
-                <tr key={d.date} className="border-t border-border/30">
-                  <td className="py-0.5 text-muted-foreground">{d.date.slice(5)} ({d.weekday})</td>
-                  <td className={cn("text-right py-0.5", d.morning ? color(d.morning) : "text-muted-foreground")}>
-                    {d.morning ? <span>{d.morning}분{d.morningTime && <span className="text-muted-foreground text-[10px] ml-1">{d.morningTime}</span>}</span> : "-"}
-                  </td>
-                  <td className={cn("text-right py-0.5", d.evening ? color(d.evening) : "text-muted-foreground")}>
-                    {d.evening ? <span>{d.evening}분{d.eveningTime && <span className="text-muted-foreground text-[10px] ml-1">{d.eveningTime}</span>}</span> : "-"}
-                  </td>
+        {recentDays.length > 0 && (
+          <div className="max-h-36 overflow-y-auto border-t border-border/50">
+            <table className="w-full">
+              <thead className="sticky top-0 bg-popover">
+                <tr className="text-muted-foreground">
+                  <th className="text-left py-1 font-normal">날짜</th>
+                  <th className="text-right py-1 font-normal">출근</th>
+                  <th className="text-right py-1 font-normal">퇴근</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {recentDays.map((d) => (
+                  <tr key={d.date} className="border-t border-border/30">
+                    <td className="py-0.5 text-muted-foreground">{d.date.slice(5)} ({d.weekday})</td>
+                    <td className={cn("text-right py-0.5", d.morning ? color(d.morning) : "text-muted-foreground")}>
+                      {d.morning ? <span>{d.morning}분{d.morningTime && <span className="text-muted-foreground text-[10px] ml-1">{d.morningTime}</span>}</span> : "-"}
+                    </td>
+                    <td className={cn("text-right py-0.5", d.evening ? color(d.evening) : "text-muted-foreground")}>
+                      {d.evening ? <span>{d.evening}분{d.eveningTime && <span className="text-muted-foreground text-[10px] ml-1">{d.eveningTime}</span>}</span> : "-"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
         {(data.subway_line || data.subway_station) && (
           <div className="mt-2 pt-2 border-t">
