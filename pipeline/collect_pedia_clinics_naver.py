@@ -8,7 +8,7 @@ department="소아청소년과"(HIRA 진료과목 필터) + bounds box.
   (예: 백운밸리 연세메디의원 — category "병원,의원"이지만 소아청소년과 전문의 1인).
 → 채택 조건: category에 "소아청소년과" 포함 OR HIRA 소아청소년과 전문의 ≥1
   (진료과목만 걸어둔 내과/가정의학과 배제).
-→ 반경 2km, 없으면 5km 확장 → 거리순 top 2 → road_m/walk_min 추정.
+→ 반경 2km, 없으면 5km 확장 → 거리순 top 2 → road_m/walk_min 실측(도보 경로 API).
 
 - curl_cffi Chrome TLS 임퍼소네이트 필수 (Bun fetch는 429).
 - GraphQL은 x-wtm-graphql 헤더만 있으면 ncaptcha 토큰 없이 동작 (2026-06 확인).
@@ -17,9 +17,22 @@ department="소아청소년과"(HIRA 진료과목 필터) + bounds box.
   병원 목록이 바뀐 단지는 pedia_slope.json 엔트리 삭제(고저차 재계산 유도).
 - 구버전 카카오 검색: pipeline/collect_pedia_clinics.ts (fallback용으로 유지).
 
+도보 경로 실측 (2026-07-21 출시 카카오맵 도보 경로 조회 API):
+  GET https://dapi.kakao.com/v2/local/directions/walk.json
+  Authorization: KakaoAK {KAKAO_REST_API_KEY}  (geocoding과 동일 키)
+  Params: origin={lng},{lat}  destination={lng},{lat}  (경도,위도 순)
+  Response: routes[0].summary.{distance(m), duration(s)}
+  무료 한도: 첫 앱 1,000건/일; 초과 시 ₩10/건 (2026 할인 기간)
+  ※ 엔드포인트/파라미터명은 로컬에서 공식 문서(developers.kakao.com/docs/latest/ko/local/dev-guide)
+    확인 후 WALK_ENDPOINT / _walk_params() 를 수정할 것 (클라우드 세션에서 docs 403)
+
+- API 실패 또는 일일 한도 초과 시 기존 '직선거리 × 1.3 ÷ 80m/분' 추정으로 graceful fallback.
+- 출력 필드 호환: straight_m / road_m / walk_min.
+
 Usage: python3 pipeline/collect_pedia_clinics_naver.py [--refresh]
 """
 import base64, json, math, os, sys, time
+from datetime import date
 from pathlib import Path
 from curl_cffi import requests
 
@@ -27,8 +40,15 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 CLINICS_PATH = DATA / "pediatric_clinics.json"
 SLOPE_PATH = DATA / "pedia_slope.json"
+WALK_QUOTA_PATH = DATA / "walk_api_quota.json"
 RADII = [2000, 5000]  # 2km 무결과 시 5km 확장 (의왕백운밸리 등 신도시: 최근접 2.8km+)
 REFRESH = "--refresh" in sys.argv
+
+# ── 카카오맵 도보 경로 조회 API 설정 ─────────────────────────────────────────
+# 엔드포인트: 2026-07-21 출시. 로컬에서 공식 문서 확인 후 수정 필요.
+WALK_ENDPOINT = "https://dapi.kakao.com/v2/local/directions/walk.json"
+KAKAO_WALK_DAILY_LIMIT = 990   # 1,000 무료/일 중 10 버퍼 확보
+# ──────────────────────────────────────────────────────────────────────────────
 
 
 def haversine(lat1, lng1, lat2, lng2):
@@ -131,6 +151,8 @@ def search_clinics(lat, lng):
                 "dist": haversine(lat, lng, float(v["y"]), float(v["x"])),
                 # 종합·대학병원은 동네 소아과 용도로 후순위 (대안 없으면 채택)
                 "big": any(k in cat for k in ("종합병원", "대학병원")),
+                "x": v["x"],   # 경도 (Naver x = longitude)
+                "y": v["y"],   # 위도 (Naver y = latitude)
             })
         cands.sort(key=lambda c: (c["big"], c["dist"]))
         dedup, seen = [], set()
@@ -145,10 +167,104 @@ def search_clinics(lat, lng):
     return []
 
 
-def to_entry(c):
-    road = round(c["dist"] * 1.3)  # 도로 보정 1.3배
-    return {"name": c["name"], "straight_m": c["dist"],
-            "road_m": road, "walk_min": round(road / 80)}  # 분당 80m
+# ── 카카오맵 도보 경로 조회 API ───────────────────────────────────────────────
+_kakao_walk_key = os.environ.get("KAKAO_REST_API_KEY", "")
+_walk_api_count = 0    # 이번 실행에서 API 성공 호출 수
+_walk_fallback_count = 0  # fallback(직선×1.3) 적용 수
+
+
+def _load_quota():
+    """오늘 날짜 기준 일일 사용량 로드. 날짜가 다르면 0으로 리셋."""
+    today = str(date.today())
+    if WALK_QUOTA_PATH.exists():
+        try:
+            q = json.load(open(WALK_QUOTA_PATH))
+            if q.get("date") == today:
+                return q
+        except Exception:
+            pass
+    return {"date": today, "count": 0}
+
+
+def _save_quota(q):
+    WALK_QUOTA_PATH.write_text(json.dumps(q))
+
+
+_quota = _load_quota()
+
+
+def walk_route_kakao(slat, slng, dlat, dlng):
+    """카카오맵 도보 경로 조회 API 호출.
+
+    성공 시 (road_m: int, walk_min: int) 반환.
+    키 미설정 / 일일 한도 초과 / 호출 실패 시 (None, None) 반환.
+
+    API 스펙 (2026-07-21 출시):
+      GET https://dapi.kakao.com/v2/local/directions/walk.json
+      Authorization: KakaoAK {KAKAO_REST_API_KEY}
+      origin={경도},{위도}  destination={경도},{위도}
+      응답: routes[0].summary.distance(m) / duration(s)
+      무료: 첫 앱 1,000건/일; 초과 ₩10/건 (2026 할인 기간)
+    """
+    global _quota, _walk_api_count, _walk_fallback_count
+    if not _kakao_walk_key:
+        _walk_fallback_count += 1
+        return None, None
+    if _quota["count"] >= KAKAO_WALK_DAILY_LIMIT:
+        _walk_fallback_count += 1
+        return None, None
+    params = {
+        "origin": f"{slng},{slat}",        # 카카오 좌표 형식: 경도,위도
+        "destination": f"{dlng},{dlat}",
+    }
+    headers = {"Authorization": f"KakaoAK {_kakao_walk_key}"}
+    for attempt in range(3):
+        try:
+            r = s.get(WALK_ENDPOINT, params=params, headers=headers, timeout=10)
+            if r.status_code == 429:
+                time.sleep(5 * (attempt + 1))
+                continue
+            if r.status_code != 200:
+                _walk_fallback_count += 1
+                return None, None
+            j = r.json()
+            routes = j.get("routes") or []
+            if not routes or routes[0].get("result_code") != 0:
+                _walk_fallback_count += 1
+                return None, None
+            summary = routes[0].get("summary", {})
+            dist_m = summary.get("distance")
+            dur_s = summary.get("duration")
+            if dist_m is None or dur_s is None:
+                _walk_fallback_count += 1
+                return None, None
+            _quota["count"] += 1
+            _save_quota(_quota)
+            _walk_api_count += 1
+            return int(dist_m), max(1, round(dur_s / 60))
+        except Exception:
+            time.sleep(2 * (attempt + 1))
+    _walk_fallback_count += 1
+    return None, None
+# ──────────────────────────────────────────────────────────────────────────────
+
+
+def to_entry(c, apt_lat=None, apt_lng=None):
+    """소아과 후보를 출력 엔트리로 변환.
+
+    카카오맵 도보 경로 API로 road_m/walk_min 실측.
+    API 실패·한도 초과 시 직선거리 × 1.3 ÷ 80m/분 추정으로 fallback.
+    출력 필드: straight_m / road_m / walk_min (기존 호환 유지).
+    """
+    straight = c["dist"]
+    road, walk_min = None, None
+    if apt_lat is not None and apt_lng is not None:
+        road, walk_min = walk_route_kakao(apt_lat, apt_lng, float(c["y"]), float(c["x"]))
+    if road is None:  # fallback: 직선×1.3, 분당 80m
+        road = round(straight * 1.3)
+        walk_min = round(road / 80)
+    return {"name": c["name"], "straight_m": straight,
+            "road_m": road, "walk_min": walk_min}
 
 
 clinics = json.load(open(CLINICS_PATH)) if CLINICS_PATH.exists() else {}
@@ -172,6 +288,15 @@ for e in identity:
     targets.append((name, c))
 
 print(f"대상: {len(targets)}개 단지 ({'전체 refresh' if REFRESH else '미수집만'})", flush=True)
+if _kakao_walk_key:
+    remaining = KAKAO_WALK_DAILY_LIMIT - _quota["count"]
+    print(f"도보 경로 API: 오늘 {_quota['count']}건 사용 / {remaining}건 잔여 "
+          f"(일 한도 {KAKAO_WALK_DAILY_LIMIT}건, 초과분 직선×1.3 fallback)", flush=True)
+    if remaining < len(targets) * 2:
+        print(f"⚠️  잔여 한도({remaining}건)가 예상 호출량({len(targets) * 2}건)보다 적음 "
+              f"— 한도 초과분은 자동 fallback 처리됩니다.", flush=True)
+else:
+    print("⚠️  KAKAO_REST_API_KEY 미설정 → 직선×1.3 추정 사용 (도보 경로 API 비활성)", flush=True)
 
 done = saved = changed_slope = 0
 for name, dongs in targets:
@@ -190,7 +315,7 @@ for name, dongs in targets:
         time.sleep(0.4)
         continue
 
-    new_entries = [to_entry(c) for c in result[:2]]
+    new_entries = [to_entry(c, lat, lng) for c in result[:2]]
     old = clinics.get(name) or []
     if [e["name"] for e in old] != [e["name"] for e in new_entries]:
         if name in slope:
@@ -208,3 +333,8 @@ CLINICS_PATH.write_text(json.dumps(clinics, ensure_ascii=False, indent=2))
 SLOPE_PATH.write_text(json.dumps(slope, ensure_ascii=False, indent=2))
 print(f"\n갱신 {saved} / 처리 {done} / 고저차 재계산 대상 {changed_slope}", flush=True)
 print(f"총 pediatric_clinics: {len(clinics)}개", flush=True)
+if _kakao_walk_key:
+    print(f"도보 경로 API — 이번 실행 성공: {_walk_api_count}건 / "
+          f"fallback(직선×1.3): {_walk_fallback_count}건 / "
+          f"오늘 누적: {_quota['count']}건 / 잔여: {KAKAO_WALK_DAILY_LIMIT - _quota['count']}건",
+          flush=True)
