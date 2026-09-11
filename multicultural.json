@@ -1,0 +1,497 @@
+{
+  "수원시": {
+    "total": 2765,
+    "domestic": 1271,
+    "midEntry": 193,
+    "foreign": 1301,
+    "countries": {
+      "일본": {
+        "domestic": 74,
+        "midEntry": 85,
+        "foreign": 963
+      },
+      "중국": {
+        "domestic": 544,
+        "midEntry": 7,
+        "foreign": 133
+      },
+      "중국(한국계)": {
+        "domestic": 79,
+        "midEntry": 9,
+        "foreign": 4
+      },
+      "대만": {
+        "domestic": 12,
+        "midEntry": 4,
+        "foreign": 42
+      },
+      "몽골": {
+        "domestic": 16,
+        "midEntry": 17,
+        "foreign": 4
+      },
+      "필리핀": {
+        "domestic": 87,
+        "midEntry": 20,
+        "foreign": 31
+      },
+      "베트남": {
+        "domestic": 279,
+        "midEntry": 7,
+        "foreign": 0
+      },
+      "태국": {
+        "domestic": 24,
+        "midEntry": 5,
+        "foreign": 5
+      },
+      "캄보디아": {
+        "domestic": 32,
+        "midEntry": 0,
+        "foreign": 4
+      },
+      "인도네시아": {
+        "domestic": 4,
+        "midEntry": 2,
+        "foreign": 45
+      },
+      "중앙아시아": {
+        "domestic": 15,
+        "midEntry": 3,
+        "foreign": 2
+      },
+      "미국": {
+        "domestic": 25,
+        "midEntry": 0,
+        "foreign": 15
+      },
+      "러시아": {
+        "domestic": 17,
+        "midEntry": 1,
+        "foreign": 2
+      },
+      "러시아(한국계)": {
+        "domestic": 5,
+        "midEntry": 0,
+        "foreign": 9
+      },
+      "중동": {
+        "domestic": 4,
+        "midEntry": 9,
+        "foreign": 2
+      },
+      "유럽": {
+        "domestic": 18,
+        "midEntry": 0,
+        "foreign": 6
+      },
+      "아프리카": {
+        "domestic": 3,
+        "midEntry": 10,
+        "foreign": 34
+      },
+      "기타": {
+        "domestic": 33,
+        "midEntry": 0,
+        "foreign": 0
+      }
+    },
+    "totalStudents": 96842
+  },
+  "성남시": {
+    "total": 1053,
+    "domestic": 659,
+    "midEntry": 83,
+    "foreign": 311,
+    "countries": {
+      "일본": {
+        "domestic": 49,
+        "midEntry": 29,
+        "foreign": 229
+      },
+      "중국": {
+        "domestic": 171,
+        "midEntry": 0,
+        "foreign": 29
+      },
+      "중국(한국계)": {
+        "domestic": 21,
+        "midEntry": 1,
+        "foreign": 0
+      },
+      "대만": {
+        "domestic": 6,
+        "midEntry": 2,
+        "foreign": 12
+      },
+      "몽골": {
+        "domestic": 8,
+        "midEntry": 11,
+        "foreign": 5
+      },
+      "필리핀": {
+        "domestic": 66,
+        "midEntry": 12,
+        "foreign": 8
+      },
+      "베트남": {
+        "domestic": 223,
+        "midEntry": 5,
+        "foreign": 0
+      },
+      "태국": {
+        "domestic": 12,
+        "midEntry": 4,
+        "foreign": 0
+      },
+      "캄보디아": {
+        "domestic": 28,
+        "midEntry": 0,
+        "foreign": 0
+      },
+      "인도네시아": {
+        "domestic": 3,
+        "midEntry": 0,
+        "foreign": 4
+      },
+      "중앙아시아": {
+        "domestic": 6,
+        "midEntry": 2,
+        "foreign": 3
+      },
+      "미국": {
+        "domestic": 21,
+        "midEntry": 0,
+        "foreign": 1
+      },
+      "러시아": {
+        "domestic": 3,
+        "midEntry": 0,
+        "foreign": 0
+      },
+      "러시아(한국계)": {
+        "domestic": 4,
+        "midEntry": 0,
+        "foreign": 0
+      },
+      "중동": {
+        "domestic": 1,
+        "midEntry": 3,
+        "foreign": 2
+      },
+      "유럽": {
+        "domestic": 9,
+        "midEntry": 1,
+        "foreign": 1
+      },
+      "아프리카": {
+        "domestic": 2,
+        "midEntry": 5,
+        "foreign": 16
+      },
+      "기타": {
+        "domestic": 26,
+        "midEntry": 0,
+        "foreign": 0
+      }
+    },
+    "totalStudents": 74519
+  },
+  "용인시": {
+    "total": 1291,
+    "domestic": 935,
+    "midEntry": 108,
+    "foreign": 248,
+    "countries": {
+      "일본": {
+        "domestic": 63,
+        "midEntry": 33,
+        "foreign": 142
+      },
+      "중국": {
+        "domestic": 276,
+        "midEntry": 1,
+        "foreign": 18
+      },
+      "중국(한국계)": {
+        "domestic": 30,
+        "midEntry": 2,
+        "foreign": 3
+      },
+      "대만": {
+        "domestic": 6,
+        "midEntry": 3,
+        "foreign": 31
+      },
+      "몽골": {
+        "domestic": 15,
+        "midEntry": 11,
+        "foreign": 1
+      },
+      "필리핀": {
+        "domestic": 70,
+        "midEntry": 14,
+        "foreign": 5
+      },
+      "베트남": {
+        "domestic": 253,
+        "midEntry": 10,
+        "foreign": 0
+      },
+      "태국": {
+        "domestic": 27,
+        "midEntry": 2,
+        "foreign": 0
+      },
+      "캄보디아": {
+        "domestic": 31,
+        "midEntry": 0,
+        "foreign": 1
+      },
+      "인도네시아": {
+        "domestic": 2,
+        "midEntry": 2,
+        "foreign": 12
+      },
+      "중앙아시아": {
+        "domestic": 23,
+        "midEntry": 5,
+        "foreign": 2
+      },
+      "미국": {
+        "domestic": 35,
+        "midEntry": 1,
+        "foreign": 2
+      },
+      "러시아": {
+        "domestic": 12,
+        "midEntry": 0,
+        "foreign": 0
+      },
+      "러시아(한국계)": {
+        "domestic": 8,
+        "midEntry": 0,
+        "foreign": 10
+      },
+      "중동": {
+        "domestic": 2,
+        "midEntry": 7,
+        "foreign": 1
+      },
+      "유럽": {
+        "domestic": 24,
+        "midEntry": 0,
+        "foreign": 0
+      },
+      "아프리카": {
+        "domestic": 3,
+        "midEntry": 4,
+        "foreign": 20
+      },
+      "기타": {
+        "domestic": 55,
+        "midEntry": 0,
+        "foreign": 0
+      }
+    },
+    "totalStudents": 101263
+  },
+  "하남시": {
+    "total": 275,
+    "domestic": 226,
+    "midEntry": 18,
+    "foreign": 31,
+    "countries": {
+      "일본": {
+        "domestic": 29,
+        "midEntry": 6,
+        "foreign": 13
+      },
+      "중국": {
+        "domestic": 38,
+        "midEntry": 0,
+        "foreign": 0
+      },
+      "중국(한국계)": {
+        "domestic": 0,
+        "midEntry": 4,
+        "foreign": 0
+      },
+      "대만": {
+        "domestic": 5,
+        "midEntry": 0,
+        "foreign": 5
+      },
+      "몽골": {
+        "domestic": 7,
+        "midEntry": 0,
+        "foreign": 4
+      },
+      "필리핀": {
+        "domestic": 32,
+        "midEntry": 3,
+        "foreign": 1
+      },
+      "베트남": {
+        "domestic": 70,
+        "midEntry": 1,
+        "foreign": 0
+      },
+      "태국": {
+        "domestic": 2,
+        "midEntry": 0,
+        "foreign": 0
+      },
+      "캄보디아": {
+        "domestic": 7,
+        "midEntry": 0,
+        "foreign": 1
+      },
+      "인도네시아": {
+        "domestic": 1,
+        "midEntry": 0,
+        "foreign": 2
+      },
+      "중앙아시아": {
+        "domestic": 4,
+        "midEntry": 1,
+        "foreign": 2
+      },
+      "미국": {
+        "domestic": 9,
+        "midEntry": 0,
+        "foreign": 0
+      },
+      "러시아": {
+        "domestic": 3,
+        "midEntry": 0,
+        "foreign": 0
+      },
+      "러시아(한국계)": {
+        "domestic": 1,
+        "midEntry": 0,
+        "foreign": 0
+      },
+      "중동": {
+        "domestic": 1,
+        "midEntry": 1,
+        "foreign": 0
+      },
+      "유럽": {
+        "domestic": 5,
+        "midEntry": 0,
+        "foreign": 0
+      },
+      "아프리카": {
+        "domestic": 0,
+        "midEntry": 1,
+        "foreign": 3
+      },
+      "기타": {
+        "domestic": 12,
+        "midEntry": 0,
+        "foreign": 0
+      }
+    },
+    "totalStudents": 32847
+  },
+  "화성시": {
+    "total": 2718,
+    "domestic": 1487,
+    "midEntry": 167,
+    "foreign": 1064,
+    "countries": {
+      "일본": {
+        "domestic": 96,
+        "midEntry": 50,
+        "foreign": 365
+      },
+      "중국": {
+        "domestic": 439,
+        "midEntry": 2,
+        "foreign": 51
+      },
+      "중국(한국계)": {
+        "domestic": 74,
+        "midEntry": 2,
+        "foreign": 0
+      },
+      "대만": {
+        "domestic": 22,
+        "midEntry": 3,
+        "foreign": 25
+      },
+      "몽골": {
+        "domestic": 23,
+        "midEntry": 6,
+        "foreign": 12
+      },
+      "필리핀": {
+        "domestic": 120,
+        "midEntry": 31,
+        "foreign": 77
+      },
+      "베트남": {
+        "domestic": 451,
+        "midEntry": 10,
+        "foreign": 4
+      },
+      "태국": {
+        "domestic": 59,
+        "midEntry": 5,
+        "foreign": 7
+      },
+      "캄보디아": {
+        "domestic": 52,
+        "midEntry": 2,
+        "foreign": 2
+      },
+      "인도네시아": {
+        "domestic": 5,
+        "midEntry": 11,
+        "foreign": 254
+      },
+      "중앙아시아": {
+        "domestic": 27,
+        "midEntry": 10,
+        "foreign": 4
+      },
+      "미국": {
+        "domestic": 23,
+        "midEntry": 6,
+        "foreign": 101
+      },
+      "러시아": {
+        "domestic": 16,
+        "midEntry": 0,
+        "foreign": 71
+      },
+      "러시아(한국계)": {
+        "domestic": 11,
+        "midEntry": 0,
+        "foreign": 21
+      },
+      "중동": {
+        "domestic": 7,
+        "midEntry": 6,
+        "foreign": 1
+      },
+      "유럽": {
+        "domestic": 13,
+        "midEntry": 0,
+        "foreign": 0
+      },
+      "아프리카": {
+        "domestic": 4,
+        "midEntry": 6,
+        "foreign": 64
+      },
+      "기타": {
+        "domestic": 45,
+        "midEntry": 0,
+        "foreign": 0
+      }
+    },
+    "totalStudents": 108935
+  }
+}
