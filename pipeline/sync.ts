@@ -494,7 +494,8 @@ async function updatePages() {
       heat_type: kaptInfo[n]?.heatType ?? null,
       structure: kaptInfo[n]?.structure ?? null,
       cctv: kaptInfo[n]?.cctvCount ?? null,
-      doro_juso: kaptInfo[n]?.doroJuso ?? null,
+      // K-apt 없거나 오매칭으로 해제된 단지는 identity의 실거래 지번 기준 도로명(verify_identity apply) — 출퇴근 출발지
+      doro_juso: kaptInfo[n]?.doroJuso ?? idMap.get(n)?.doro_juso ?? null,
       use_date: kaptInfo[n]?.useDate ?? null,
       repair_fund: kaptInfo[n]?.repairFund ?? null,
       subway_line: kaptInfo[n]?.subwayLine ?? null,
