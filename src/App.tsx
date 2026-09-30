@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 import { unpackPriceSeries } from "@/lib/pricePack";
 import { CLOUD_SYNC_EVENT } from "@/lib/sync";
 import { fetchKbLivePrice, type KbLivePrice } from "@/lib/kbLivePrice";
+import { eventsFor, type PriceEvent } from "@/lib/priceEvents";
 import { getProxyUrl, setProxyUrl, getProxyToken, setProxyToken, useColumnListings, articlesForAtype, isMovableBy, isTenant, isOwnerJeonse, moveInLabel, formatWon, formatArticlePrice, formatConfirm, verifyLabel, type NaverArticle } from "@/lib/useNaverArticles";
 import { ChevronDown, SlidersHorizontal, X } from "lucide-react";
 import { lazy, Suspense } from "react";
@@ -219,9 +220,11 @@ function Sparkline({ data, pctRange, autoRange }: { data: { date: string; price:
   );
 }
 
+const EVENT_COLOR = "#f59e0b"; // 이벤트(정책 발표) 마커
+
 // 장기 추이 차트 — 전체 기간 개별 실거래(ps 압축 시계열)를 시간축 비례 라인으로.
 // 샘플링 없이 거래 한 건 한 건 표시. 아래 월별 중앙값 표(long_trend)는 요약으로 유지.
-function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor, trendRange }: { data: [number, number, number][]; ps?: string; excludeDirect?: boolean; excludeFirstFloor?: boolean; trendRange?: string }) {
+function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor, trendRange, events }: { data: [number, number, number][]; ps?: string; excludeDirect?: boolean; excludeFirstFloor?: boolean; trendRange?: string; events?: PriceEvent[] }) {
   const [hi, setHi] = useState<number | null>(null);
   const all = useMemo(() => (ps ? unpackPriceSeries(ps) : null), [ps]);
   // 선택한 추이 기간(trendRange) cutoff — 스파크라인(buildSpark)과 동일 기준. "all"/미지정이면 전체.
@@ -234,12 +237,20 @@ function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor, trendRange
   }, [trendRange]);
   const rangeLabel = ({ "3": "3개월", "6": "6개월", "12": "1년", "36": "3년", "60": "5년", all: "전체" } as Record<string, string>)[trendRange || "all"] ?? "전체";
   // 차트는 개별 실거래 — 직거래/1층 제외 토글 + 추이 기간 반영. ps 없는 구버전 데이터는 월별 중앙값 fallback.
-  const series = useMemo(() => {
-    const base = all
-      ? all.filter((t) => !(excludeDirect && t.direct) && !(excludeFirstFloor && t.firstFloor))
-      : data.map(([ym, p]) => ({ date: `${String(ym).slice(0, 4)}-${String(ym).slice(4, 6)}-15`, price: p, direct: false, firstFloor: false }));
-    return cutDate ? base.filter((t) => t.date >= cutDate) : base;
-  }, [all, data, excludeDirect, excludeFirstFloor, cutDate]);
+  const toggled = useMemo(() => all
+    ? all.filter((t) => !(excludeDirect && t.direct) && !(excludeFirstFloor && t.firstFloor))
+    : data.map(([ym, p]) => ({ date: `${String(ym).slice(0, 4)}-${String(ym).slice(4, 6)}-15`, price: p, direct: false, firstFloor: false })),
+  [all, data, excludeDirect, excludeFirstFloor]);
+  const series = useMemo(() => (cutDate ? toggled.filter((t) => t.date >= cutDate) : toggled), [toggled, cutDate]);
+  // 이벤트(발표) 전후 비교 — 직전 3개월 vs 발표 후 거래 중앙값. 추이 기간과 무관하게 전체 거래 기준.
+  // 발표 당일 거래는 계약이 발표 전인지 후인지 알 수 없어 양쪽 모두 제외.
+  const eventStats = useMemo(() => (events ?? []).map((e) => {
+    const from = new Date(Date.parse(e.date) - 90 * 86400000).toISOString().slice(0, 10);
+    const before = toggled.filter((t) => t.date >= from && t.date < e.date).map((t) => t.price);
+    const after = toggled.filter((t) => t.date > e.date).map((t) => t.price);
+    const r1 = (v: number) => Math.round(v * 10) / 10;
+    return { e, before: before.length ? r1(median(before)) : null, nBefore: before.length, after: after.length ? r1(median(after)) : null, nAfter: after.length };
+  }), [events, toggled]);
   // 월별 중앙값 표 — ps가 있으면 토글 반영된 개별 거래로 재집계, 없으면 long_trend 그대로.
   const monthly = useMemo<[number, number, number][]>(() => {
     if (!all) return data;
@@ -264,8 +275,12 @@ function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor, trendRange
   const range = max - min || 1;
   const w = 300, h = 120, padX = 6, padTop = 8, padBottom = 16;
   const dayOf = (date: string) => Date.parse(date) / 86400000;
+  // 표시 기간 안의 이벤트 — 마지막 거래 이후 발표여도 보이도록 x축 끝을 발표일까지 연장
+  const shownEvents = (events ?? []).filter((e) => e.date >= series[0].date);
+  const endDate = [series[series.length - 1].date, ...shownEvents.map((e) => e.date)].sort().at(-1)!;
   const t0 = dayOf(series[0].date), tSpan = dayOf(series[series.length - 1].date) - t0 || 1;
-  const xOf = (date: string) => padX + ((dayOf(date) - t0) / tSpan) * (w - padX * 2);
+  const xSpan = dayOf(endDate) - t0 || 1;
+  const xOf = (date: string) => padX + ((dayOf(date) - t0) / xSpan) * (w - padX * 2);
   const yOf = (p: number) => padTop + (1 - (p - min) / range) * (h - padTop - padBottom);
   const pts = series.map((s, i) => ({ x: xOf(s.date), y: yOf(s.price), date: s.date, price: s.price, i }));
   // 계단형(step-after): 각 거래가의 값을 다음 거래까지 수평 유지 후 수직 점프
@@ -279,7 +294,7 @@ function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor, trendRange
   const color = last >= first ? "#10b981" : "#ef4444";
   const fmtDate = (d: string) => d.slice(2).replace(/-/g, ".");
   // 연도 경계 세로선 + 라벨
-  const yStart = Number(series[0].date.slice(0, 4)), yEnd = Number(series[series.length - 1].date.slice(0, 4));
+  const yStart = Number(series[0].date.slice(0, 4)), yEnd = Number(endDate.slice(0, 4));
   const years: number[] = [];
   for (let y = yStart; y <= yEnd; y++) years.push(y);
   const hv = hi != null ? pts[hi] : null;
@@ -303,7 +318,17 @@ function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor, trendRange
             if (x < padX || x > w - padX) return null;
             return <line key={y} x1={x} y1={padTop} x2={x} y2={h - padBottom} stroke="currentColor" strokeWidth="0.5" className="text-muted-foreground/15" />;
           })}
+          {/* 이벤트 마커 — 발표일 세로 점선 (라벨은 가격선 위에 그리도록 아래에서) */}
+          {shownEvents.map((e) => (
+            <line key={e.label} x1={xOf(e.date)} y1={padTop} x2={xOf(e.date)} y2={h - padBottom} stroke={EVENT_COLOR} strokeWidth="1" strokeDasharray="3 2" />
+          ))}
           <polyline points={poly} fill="none" stroke={color} strokeWidth="1.5" strokeLinejoin="round" />
+          {/* 이벤트 라벨 — 오른쪽 절반이면 선 왼쪽에, 배경색 테두리로 가격선과 겹쳐도 읽히게 */}
+          {shownEvents.map((e) => {
+            const x = xOf(e.date);
+            const left = x > w / 2;
+            return <text key={e.label} x={left ? x - 3 : x + 3} y={padTop + 6} textAnchor={left ? "end" : "start"} fill={EVENT_COLOR} stroke="var(--popover)" strokeWidth={3} paintOrder="stroke" className="text-[8px]">{Number(e.date.slice(5, 7))}.{Number(e.date.slice(8, 10))} 발표</text>;
+          })}
           {hv && <circle cx={hv.x} cy={hv.y} r={3} fill={color} />}
           {years.map((y) => {
             const x = xOf(`${y}-07-01`);
@@ -321,6 +346,23 @@ function LongTrendChart({ data, ps, excludeDirect, excludeFirstFloor, trendRange
         <span>최저 {min}억 · 최고 {max}억</span>
         {cagr != null && <span>연 {cagr >= 0 ? "+" : ""}{cagr}%</span>}
       </div>
+      {/* 이벤트 전후 비교 — 직전 3개월 중앙값 → 발표 후 중앙값 */}
+      {eventStats.map(({ e, before, nBefore, after, nAfter }) => {
+        const chgE = before != null && after != null ? Math.round(((after - before) / before) * 1000) / 10 : null;
+        return (
+          <div key={e.label} className="mt-1.5 rounded border px-1.5 py-1" style={{ borderColor: `${EVENT_COLOR}55` }}>
+            <div className="flex items-baseline justify-between gap-2">
+              <span className="font-medium" style={{ color: EVENT_COLOR }}>{e.date.slice(2).replace(/-/g, ".")} {e.label}</span>
+              {e.url && <a href={e.url} target="_blank" rel="noreferrer" className="text-[10px] text-muted-foreground underline shrink-0">기사</a>}
+            </div>
+            <div className="tabular-nums text-muted-foreground">
+              직전 3개월 {before != null ? <span className="text-foreground">{before}억</span> : "-"} ({nBefore}건)
+              {" → "}발표 후 {after != null ? <span className="text-foreground">{after}억</span> : "-"} ({nAfter}건)
+              {chgE != null && <span className={cn("ml-1 font-medium", chgE >= 0 ? "text-emerald-500" : "text-red-500")}>{chgE >= 0 ? "+" : ""}{chgE}%</span>}
+            </div>
+          </div>
+        );
+      })}
       {/* 월별 중앙값 표 (최신순, 스크롤) — 요약 */}
       <div className="mt-2 border-t pt-1 max-h-40 overflow-y-auto">
         <table className="w-full text-[11px] tabular-nums">
@@ -352,7 +394,7 @@ function TrendCell({ d, spark, pctRange, autoRange, excludeDirect, excludeFirstF
       <PopoverTrigger className="cursor-pointer inline-block" title="장기 추이 보기">
         {spark.length ? <Sparkline data={spark} pctRange={pctRange} autoRange={autoRange} /> : <span className="text-muted-foreground text-[10px]">장기↗</span>}
       </PopoverTrigger>
-      <PopoverContent className="w-auto"><LongTrendChart data={lt} ps={d.ps} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} trendRange={trendRange} /></PopoverContent>
+      <PopoverContent className="w-auto"><LongTrendChart data={lt} ps={d.ps} excludeDirect={excludeDirect} excludeFirstFloor={excludeFirstFloor} trendRange={trendRange} events={eventsFor(d.name)} /></PopoverContent>
     </Popover>
   );
 }
@@ -1897,13 +1939,19 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
   const w = 640, h = 280, padL = 40, padR = 12, padTop = 12, padBottom = 28;
   const ymToDay = (ym: string) => Date.parse(`${ym}-15`) / 86400000;
   const allMonths = useMemo(() => [...new Set(seriesList.flatMap((s) => s.monthly.map((p) => p.ym)))].sort(), [seriesList]);
+  // 비교 단지 중 하나라도 해당되는 이벤트 — 같은 날 발표는 세로선 하나로 합침
+  const eventDates = useMemo(() => {
+    if (!allMonths.length) return [];
+    const start = `${allMonths[0]}-01`;
+    return [...new Set(items.flatMap((d) => eventsFor(d.name).map((e) => e.date)))].filter((dt) => dt >= start).sort();
+  }, [items, allMonths]);
   // delta 모드: 기간 내 첫값(base) 대비 절대 상승액(억) — 각 단지가 자기 시작점에서 0으로 출발.
   const dispVal = (price: number, key: string) => (mode === "delta" ? price - (baseByKey.get(key) ?? 0) : price);
   const deltaOf = (price: number, key: string) => Math.round((price - (baseByKey.get(key) ?? 0)) * 10) / 10;
 
   const geo = useMemo(() => {
     if (!allMonths.length) return null;
-    const days = allMonths.map(ymToDay);
+    const days = [...allMonths.map(ymToDay), ...eventDates.map((dt) => Date.parse(dt) / 86400000)];
     const t0 = Math.min(...days), t1 = Math.max(...days), tSpan = t1 - t0 || 1;
     let lo = Infinity, hi = -Infinity;
     for (const s of seriesList) for (const p of s.monthly) {
@@ -1913,10 +1961,12 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
     const pad = (hi - lo) * 0.08 || hi * 0.05 || 1;
     lo -= pad; hi += pad;
     const range = hi - lo || 1;
-    const xOf = (ym: string) => padL + ((ymToDay(ym) - t0) / tSpan) * (w - padL - padR);
+    const xOfDay = (day: number) => padL + ((day - t0) / tSpan) * (w - padL - padR);
+    const xOf = (ym: string) => xOfDay(ymToDay(ym));
+    const xOfDate = (date: string) => xOfDay(Date.parse(date) / 86400000);
     const yOf = (v: number) => padTop + (1 - (v - lo) / range) * (h - padTop - padBottom);
-    return { t0, t1, lo, hi, range, xOf, yOf };
-  }, [allMonths, seriesList, mode, baseByKey]);
+    return { t0, t1, lo, hi, range, xOf, xOfDate, yOf };
+  }, [allMonths, eventDates, seriesList, mode, baseByKey]);
 
   const years = useMemo(() => {
     if (!allMonths.length) return [];
@@ -1995,6 +2045,10 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
                 {mode === "delta" && geo.yOf(0) >= padTop && geo.yOf(0) <= h - padBottom && (
                   <line x1={padL} y1={geo.yOf(0)} x2={w - padR} y2={geo.yOf(0)} stroke="currentColor" strokeWidth="0.75" className="text-muted-foreground/30" />
                 )}
+                {/* 이벤트(발표) 마커 — 팔레트에 amber가 있어 여기선 무채색 점선. 라벨은 단지 라인 뒤에 */}
+                {eventDates.map((dt) => (
+                  <line key={dt} x1={geo.xOfDate(dt)} y1={padTop} x2={geo.xOfDate(dt)} y2={h - padBottom} stroke="currentColor" strokeWidth="1" strokeDasharray="3 2" className="text-foreground/60" />
+                ))}
                 {/* hover 세로선 */}
                 {hoverYm && <line x1={geo.xOf(hoverYm)} y1={padTop} x2={geo.xOf(hoverYm)} y2={h - padBottom} stroke="currentColor" strokeWidth="0.75" className="text-muted-foreground/40" />}
                 {/* 단지별 라인 (직선 연결) — 호버 시 해당 단지 강조, 나머지 흐리게 */}
@@ -2010,6 +2064,11 @@ function CompareTrendChart({ open, onOpenChange, items, onRemove, excludeDirect,
                       {hv != null && !dim && <circle cx={geo.xOf(hoverYm!)} cy={geo.yOf(dispVal(hv, s.key))} r={isHi ? 3.6 : 3} fill={s.color} />}
                     </g>
                   );
+                })}
+                {eventDates.map((dt) => {
+                  const x = geo.xOfDate(dt);
+                  const left = x > w / 2;
+                  return <text key={dt} x={left ? x - 3 : x + 3} y={padTop + 8} textAnchor={left ? "end" : "start"} fill="currentColor" stroke="var(--popover)" strokeWidth={3} paintOrder="stroke" className="text-[8px] text-foreground/60">{Number(dt.slice(5, 7))}.{Number(dt.slice(8, 10))} 발표</text>;
                 })}
               </svg>
               {/* hover 툴팁 */}
