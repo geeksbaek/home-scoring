@@ -1,5 +1,5 @@
 import Papa from "papaparse";
-import { existsSync } from "node:fs";
+import { existsSync, renameSync, rmSync } from "node:fs";
 
 export interface Trade {
   시: string;
@@ -68,13 +68,24 @@ export async function readCsv(path: string): Promise<Trade[]> {
 
 export async function writeCsv(path: string, rows: Trade[]) {
   const csv = "\uFEFF" + Papa.unparse(rows, { columns: CSV_COLS as string[] });
-  await Bun.write(path, csv);
+  // 임시 파일에 쓴 뒤 rename — 디스크 부족(ENOSPC) 등으로 쓰기가 중간에 실패해도 기존 파일은 온전히 유지.
+  // (2026-09-13 제자리 쓰기 중 디스크가 가득 차 83.9만 → 12.4만 건으로 잘린 사고 재발 방지)
+  const tmp = `${path}.tmp`;
+  try {
+    await Bun.write(tmp, csv);
+    renameSync(tmp, path);
+  } catch (e) {
+    rmSync(tmp, { force: true });
+    throw e;
+  }
 }
+
+export const dedupKey = (row: Trade): string => DEDUP_COLS.map((col) => String(row[col])).join("|");
 
 export function deduplicate(rows: Trade[]): Trade[] {
   const seen = new Set<string>();
   return rows.filter((row) => {
-    const key = DEDUP_COLS.map((col) => String(row[col])).join("|");
+    const key = dedupKey(row);
     if (seen.has(key)) return false;
     seen.add(key);
     return true;

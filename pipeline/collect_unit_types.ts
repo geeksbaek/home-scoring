@@ -182,7 +182,10 @@ async function main() {
   }
 
   // 대상: 데이터 없거나 K-apt 기반(부정확)
+  // ONLY_NAMES=파일경로(JSON 배열) — 해당 단지만 (식별자 교정 후 재수집 등)
+  const __only = process.env.ONLY_NAMES ? new Set(JSON.parse(require("node:fs").readFileSync(process.env.ONLY_NAMES, "utf8")) as string[]) : null;
   const targets = identity.filter((a) => {
+    if (__only && !__only.has(a.name)) return false;
     if (cityFilter && !cityFilter.some((c) => (a.region || "").includes(c))) return false;
     const cur = existing[a.name];
     if (force) return true;

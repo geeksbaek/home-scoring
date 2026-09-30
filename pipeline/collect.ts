@@ -10,7 +10,7 @@
 import { XMLParser } from "fast-xml-parser";
 import { existsSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
-import { type Trade, readCsv, writeCsv, deduplicate } from "./csv";
+import { type Trade, readCsv, writeCsv, deduplicate, dedupKey } from "./csv";
 
 const ROOT = join(import.meta.dir, "..");
 const DATA_DIR = join(ROOT, "data");
@@ -161,6 +161,24 @@ function transformRows(
   return result;
 }
 
+// 해제(계약 취소) 거래 분리 — API는 해제 건도 cdealType="O"로 그대로 내려줌.
+// 해제 신고는 계약 후 뒤늦게 들어오므로, 이미 CSV에 저장된 원거래도 같은 키로 찾아 지워야 한다.
+// 단 "해제 후 동일 내용 재신고"(정정)가 매우 흔해서(표본 296건 중 213건) 같은 키의 정상 건이 있으면 지우지 않는다.
+function splitCancelled(raw: (RawItem & { 지역코드: string; 지역명: string })[]) {
+  const live = transformRows(raw.filter((r) => (r.cdealType ?? "").trim() !== "O"));
+  const liveKeys = new Set(live.map(dedupKey));
+  const cancelledKeys = new Set(
+    transformRows(raw.filter((r) => (r.cdealType ?? "").trim() === "O")).map(dedupKey).filter((k) => !liveKeys.has(k)),
+  );
+  return { newRows: live, cancelledKeys };
+}
+
+function dropCancelled(rows: Trade[], cancelledKeys: Set<string>): Trade[] {
+  const kept = rows.filter((r) => !cancelledKeys.has(dedupKey(r)));
+  if (kept.length !== rows.length) console.log(`해제 거래 제거: ${rows.length - kept.length}건`);
+  return kept;
+}
+
 // ── 수집 ───────────────────────────────────────────────
 
 async function collect(startYm: string, endYm: string) {
@@ -227,11 +245,11 @@ async function main() {
   if (startYm && (since || full || !existsSync(OUT_PATH))) {
     const raw = await collect(startYm, endYm);
     console.log(`\n수집: ${raw.length}건`);
-    const newRows = transformRows(raw);
+    const { newRows, cancelledKeys } = splitCancelled(raw);
 
     if (existsSync(OUT_PATH) && since) {
       const existing = await readCsv(OUT_PATH);
-      const combined = deduplicate([...existing, ...newRows]);
+      const combined = dropCancelled(deduplicate([...existing, ...newRows]), cancelledKeys);
       const removed = existing.length + newRows.length - combined.length;
       console.log(
         `중복 제거: ${existing.length + newRows.length} → ${combined.length}건 (${removed}건 제거)`,
@@ -263,8 +281,8 @@ async function main() {
 
     const raw = await collect(startYm, endYm);
     console.log(`\n신규 수집: ${raw.length}건`);
-    const newRows = transformRows(raw);
-    const combined = deduplicate([...existing, ...newRows]);
+    const { newRows, cancelledKeys } = splitCancelled(raw);
+    const combined = dropCancelled(deduplicate([...existing, ...newRows]), cancelledKeys);
     const removed = existing.length + newRows.length - combined.length;
     console.log(
       `중복 제거: ${existing.length + newRows.length} → ${combined.length}건 (${removed}건 제거)`,

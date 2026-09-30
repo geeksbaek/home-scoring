@@ -54,15 +54,29 @@
 
 ## 일일 파이프라인 (`daily.ts`)
 
-1. `collect.ts` — 실거래가 증분 수집 (마지막 거래월 - 2개월부터 백필)
+1. `collect.ts` — 실거래가 증분 수집 (마지막 거래월 - 2개월부터 백필). 거래 수가 2% 넘게 줄면 파이프라인 중단(CSV 손상 가드)
 2. `identity.ts` — apt_identity.json 동기화 (data.json 기반, 신규 단지 자동 추가)
-3. `audit_hcode.ts` — hcode 검증, mismatch 자동 정리
-4. `collect_hcode.ts` + coords/slope/schools — 누락 보강
+3. `verify_identity.py` truth→hcode→naver→kapt→apply — 신규 단지 식별자 지번 검증 + 오매칭 파생 데이터 무효화
+4. coords/slope/schools — 누락 보강
 5. `sync.ts` — 스코어링 + 배포
 
 **주의**: 신규 단지(r3 첫 진입)는 `sync` 후 `data.json`에 등장 → identity는 다음 사이클에 추가됨. 즉시 식별자 매핑 필요 시 sync 후 identity 한 번 더 실행.
 
 ## 핵심 지침
+
+### 식별자 검증 — 실거래 지번이 ground truth (`pipeline/verify_identity.py`)
+
+- **ground truth = 실거래 신고의 (시군구, 법정동, 지번)**. 카카오 지번 geocode로 좌표+법정동코드 획득(`_verify_truth.json`).
+- **K-apt 주소를 truth로 쓰지 말 것**: 마을 단지(이매촌·무지개·까치마을·한솔마을 등)에서 K-apt가 대표 단지 하나로 묶여
+  (이매촌 8개 단지 → 이매촌청구) 그 주소를 truth 삼은 hcode·네이버 단지·건축물대장·KB·출퇴근 출발지가 줄줄이 옆 단지로 오염됐었음.
+- **500m 거리 검증 금지**: 인접 단지는 200m 안이라 못 거름. 대신
+  - hcode: 호갱노노 검색 결과 `address`의 (법정동, 지번) 정확 일치 → 없으면 단지 polygon이 truth 좌표 포함(≤30m)
+  - 네이버: `fin.land.naver.com/front-api/v1/complex?complexNumber=N`의 (legalDivisionNumber, jibun) 정확 일치 →
+    후보는 `m.land.naver.com/complex/ajax/complexListByCortarNo?cortarNo=법정동코드`. 없으면 검증된 hcode polygon 안 단지
+  - K-apt: `kapt_info.addr`의 (법정동, 지번) 불일치면 해제(→ 건축물대장 fallback), 파생 데이터(building/unit_types/관리비 등) 무효화
+  - KB: `bubcode`+`arno` 정확 일치, 아니면 KB 좌표가 검증된 hcode polygon 안일 때만 유지
+  - 마지막 수단 `name+dist`: 정규화 이름 완전 일치 + truth 500m 이내 후보가 유일할 때만 (예: 네이버가 파크타운 4개 단지를 1개로 묶은 경우)
+- 결과 `_verify_{hcode,naver,kapt}.json`(status: ok/fixed/ok_poly/fixed_name/unresolved…), API 캐시 `data/_vi_cache/`. 재실행 시 신규 단지만 처리, `--redo`로 unresolved 재시도.
 
 ### hcode 매칭 — 좌표 검증 필수
 

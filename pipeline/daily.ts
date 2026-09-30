@@ -48,6 +48,12 @@ async function main() {
   const afterLines = (await Bun.file(csvPath).text()).split("\n").length - 1;
   const newTrades = afterLines - beforeLines;
   console.log(`   수집 완료: 신규 ${newTrades}건 (총 ${afterLines}건)\n`);
+  // 거래 수가 크게 줄면(파일 손상 등) 이후 단계·배포 중단 — 2026-09-13 디스크 부족으로 CSV가 83.9만→12.4만 건으로
+  // 잘린 채 파이프라인이 계속 돌아 손상 데이터가 배포될 뻔한 사고 재발 방지.
+  if (afterLines < beforeLines * 0.98) {
+    console.log(`   ❌ 거래 수 급감 (${beforeLines} → ${afterLines}) — CSV 손상 의심, 파이프라인 중단`);
+    process.exit(1);
+  }
 
   // ── 2. identity 동기화 (신규 단지 자동 추가) ─────────
   console.log("2️⃣  identity 동기화...");
@@ -57,38 +63,21 @@ async function main() {
     console.log(`   ⚠ identity 오류: ${e.message?.slice(0, 100)}`);
   }
 
-  // ── 3. hcode 검증 + 신규 수집 ────────────────────────
-  console.log("3️⃣  hcode 검증...");
+  // ── 3. 식별자 검증 (신규 단지) + 파생 데이터 보강 ─────
+  // 실거래 (법정동+지번)을 ground truth로 hcode·네이버 단지·K-apt를 정확 대조 (verify_identity.py).
+  // 기존 audit_hcode/collect_hcode는 K-apt 주소를 truth로, 500m 거리로 검증해 마을 단지(이매촌 등)를
+  // 옆 단지로 오매칭했고, 매일 같은 453건을 지웠다 다시 붙이는 루프였음 → 대체.
+  console.log("3️⃣  식별자 검증...");
   try {
-    await $`bun pipeline/audit_hcode.ts`.cwd(ROOT);
-    const audit = await Bun.file(join(ROOT, "data", "_hcode_audit.json")).json();
-    if ((audit.mismatches?.length ?? 0) > 0) {
-      console.log(`   ⚠ ${audit.mismatches.length}건 mismatch — 자동 정리 후 재수집`);
-      await $`bun -e ${`
-        const audit = await Bun.file("data/_hcode_audit.json").json();
-        const identity = await Bun.file("data/apt_identity.json").json();
-        const coords = await Bun.file("data/dong_coords_naver.json").json();
-        const slope = await Bun.file("data/slope_results.json").json();
-        const sm = await Bun.file("data/school_map.json").json();
-        const hc = await Bun.file("data/hogangnono_codes.json").json();
-        const bad = new Set(audit.mismatches.map(m => m.name));
-        for (const a of identity) if (bad.has(a.name)) a.hcode = null;
-        for (const n of bad) { delete coords[n]; delete slope[n]; delete sm[n]; delete hc[n]; }
-        await Bun.write("data/apt_identity.json", JSON.stringify(identity, null, 2));
-        await Bun.write("data/dong_coords_naver.json", JSON.stringify(coords, null, 2));
-        await Bun.write("data/slope_results.json", JSON.stringify(slope, null, 2));
-        await Bun.write("data/school_map.json", JSON.stringify(sm, null, 2));
-        await Bun.write("data/hogangnono_codes.json", JSON.stringify(hc, null, 2));
-      `}`.cwd(ROOT);
+    for (const stage of ["truth", "hcode", "naver", "kapt", "apply"]) {
+      await $`python3 pipeline/verify_identity.py ${stage}`.cwd(ROOT);
     }
-    // 누락된 hcode 수집 (검증된 매칭만)
-    await $`bun pipeline/collect_hcode.ts`.cwd(ROOT);
-    // 좌표/고저차/배정초 보강
+    // 좌표/고저차/배정초 보강 (식별자가 바뀐 단지는 apply에서 무효화됨)
     await $`bun pipeline/collect_coords.ts`.cwd(ROOT);
     await $`bun pipeline/collect_slope.ts`.cwd(ROOT);
     await $`bun pipeline/collect_schools.ts`.cwd(ROOT);
   } catch (e: any) {
-    console.log(`   ⚠ hcode 검증 오류: ${e.message?.slice(0, 100)}`);
+    console.log(`   ⚠ 식별자 검증 오류: ${e.message?.slice(0, 100)}`);
   }
 
   // ── 3.5 KB부동산 시세 (신규 단지 증분 + 금요일 전체 갱신) ──
@@ -141,7 +130,10 @@ async function main() {
   console.log("6️⃣  결과 보고");
 
   try {
-    const dataJson = await Bun.file(join(scoringDir, "public", "data.json")).json();
+    // 합본 data.json은 폐기됨 → data-index.json의 shard를 합쳐서 요약
+    const idx = await Bun.file(join(scoringDir, "public", "data-index.json")).json();
+    const dataJson: any[] = [];
+    for (const s of idx.shards) dataJson.push(...(await Bun.file(join(scoringDir, "public", s.url)).json()));
 
     const recentCutoff = new Date(Date.now() - 7 * 86400_000).toISOString().slice(0, 10);
     const recentlyTraded = dataJson.filter((d: any) =>

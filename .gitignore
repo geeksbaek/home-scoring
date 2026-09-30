@@ -15,3 +15,4 @@ public/data*.json
 !/data/molit_press_releases.json
 # 임시/디버그 + 비밀(프록시 토큰 등)
 /data/_*
+__pycache__/

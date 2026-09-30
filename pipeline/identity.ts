@@ -42,11 +42,12 @@ const KAPT_MANUAL: Record<string, string> = {
   "시범한빛마을동탄아이파크": "A44572517",
   "동탄2하우스디더레이크": "A10027281",
   "동탄2엘에이치26단지아파트(에이65블록)": "A10027291",
-  "한양수자인": "A44370704",  // 한양수자인에듀파크 (영통구 망포동)
+  // "한양수자인"(망포동 에듀파크)은 동명단지 분리 후 "한양수자인(망포동)"이 됐고 K-apt 자동 매칭됨.
+  // 분리 후 "한양수자인"은 도봉구 단지라 이 수동 매핑이 도봉구에 영통 K-apt를 붙이는 오매칭이었음 → 제거.
   "시범한빛마을금호어울림": "A44579008",  // 동탄금호어울림 (반송동 82)
   "푸르지오": "A44517002",
   "더레이크시티부영1단지": "A10025885",   // 더레이크파크뷰
-  "더레이크시티부영5단지": "A10025909",   // 동탄 더 레이크 팰리스
+  // "더레이크시티부영5단지"(산척동 730) → "동탄 더 레이크 팰리스"(A10025909)는 실거래에 별도 단지(산척동 718)로 존재 → 오매칭이라 제거
   "영통SKVIEW": "A10027563",             // 영통 SK VIEW 아파트 (망포동)
   "흥덕마을자연앤스위첸": "A44678703",    // 광교레이크스위첸 (영덕동 971)
   "시범다은마을우남퍼스트빌": "A44516011", // 시범다은마을우남퍼스트빌 (반송동)
@@ -142,11 +143,12 @@ async function main() {
   // 호갱노노
   const hcodes: Record<string, string | null> = existsSync(join(DATA_DIR, "hogangnono_codes.json"))
     ? await Bun.file(join(DATA_DIR, "hogangnono_codes.json")).json() : {};
+  // 이름 부분일치(includes) fallback은 "이매촌(금강)"↔"이매촌(청구)"처럼 옆 단지 hcode를 붙여 제거.
+  // hcode는 collect_hcode/verify_identity가 지번 검증으로만 채운다.
   function findHcode(name: string): string | null {
     if (name in hcodes) return hcodes[name];
     const nc = name.replace(/\s/g, "");
     for (const [k, v] of Object.entries(hcodes)) { if (v && k.replace(/\s/g, "") === nc) return v; }
-    for (const [k, v] of Object.entries(hcodes)) { const kc = k.replace(/\s/g, ""); if (v && (kc.includes(nc) || nc.includes(kc))) return v; }
     return null;
   }
 
@@ -186,12 +188,13 @@ async function main() {
       kaptName = m?.[1]?.trim() || null;
     }
 
+    // naver_place_id "" = 검증에서 오매칭으로 판명(verify_identity apply) → 이름 재검색하면 같은 오답이라 재검색 안 함
     let naverId = cached?.naver_place_id ?? null;
     let kakaoId = cached?.kakao_place_id ?? null;
 
-    if (!naverId || !kakaoId) {
+    if (naverId == null || !kakaoId) {
       process.stdout.write(`  [${idx}/${uniqueNames.length}] ${name}...`);
-      if (!naverId) { naverId = await fetchNaverPlaceId(name); await sleep(300); }
+      if (naverId == null) { naverId = await fetchNaverPlaceId(name); await sleep(300); }
       if (!kakaoId) { kakaoId = await fetchKakaoPlaceId(name); await sleep(200); }
       console.log(` naver:${naverId ?? "✗"} kakao:${kakaoId ?? "✗"}`);
     }
