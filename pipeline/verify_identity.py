@@ -584,6 +584,21 @@ def stage_apply():
     print("apply: " + ", ".join(f"{k} {len(v)}" for k, v in ch.items()), flush=True)
 
 
+def stage_coords():
+    """호갱노노 동별 좌표가 없는 단지(빌라·소규모 단지는 polygon에 건물이 없음, hcode 미확인 단지)는
+    실거래 지번 좌표를 대표 좌표로 채움 → 지도·배정초·소아과·KB 매칭이 동작. collect_coords 다음에 실행."""
+    truth = load(TRUTH_PATH, {})
+    dc = load(DATA / "dong_coords_naver.json", {})
+    added = 0
+    for a in IDN:
+        t = truth.get(a["name"])
+        if t and t.get("exact") and not dc.get(a["name"]):
+            dc[a["name"]] = [{"dong": "지번", "lat": t["lat"], "lng": t["lng"]}]
+            added += 1
+    save(DATA / "dong_coords_naver.json", dc)
+    print(f"coords: 지번 좌표로 대체 {added}개 (전체 {len(dc)})", flush=True)
+
+
 def pending(out):
     """미처리 단지. --redo면 unresolved도 다시(다른 단계 결과가 새로 생겼을 때 fallback 재시도)."""
     redo = "--redo" in sys.argv
@@ -598,4 +613,5 @@ def summarize(label, out):
 
 if __name__ == "__main__":
     stage = sys.argv[1] if len(sys.argv) > 1 else ""
-    {"truth": stage_truth, "hcode": stage_hcode, "naver": stage_naver, "kapt": stage_kapt, "apply": stage_apply}[stage]()
+    {"truth": stage_truth, "hcode": stage_hcode, "naver": stage_naver, "kapt": stage_kapt, "apply": stage_apply,
+     "coords": stage_coords}[stage]()

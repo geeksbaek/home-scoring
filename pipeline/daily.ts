@@ -74,6 +74,7 @@ async function main() {
     }
     // 좌표/고저차/배정초 보강 (식별자가 바뀐 단지는 apply에서 무효화됨)
     await $`bun pipeline/collect_coords.ts`.cwd(ROOT);
+    await $`python3 pipeline/verify_identity.py coords`.cwd(ROOT); // 동별 좌표 없는 단지 → 지번 좌표
     await $`bun pipeline/collect_slope.ts`.cwd(ROOT);
     await $`bun pipeline/collect_schools.ts`.cwd(ROOT);
   } catch (e: any) {

@@ -39,7 +39,9 @@ async function main() {
   const outPath = join(DATA_DIR, "slope_results.json");
   const existing: Record<string, ElevResult> = existsSync(outPath) ? await Bun.file(outPath).json() : {};
 
-  const targets = Object.entries(coords).filter(([name, dongs]) => !existing[name] && Array.isArray(dongs) && dongs.length > 0);
+  // dong "지번" = 동별 좌표가 없어 실거래 지번 한 점으로 대체한 단지(verify_identity coords) → 고저차 계산 불가(0m 평지로 오표시 방지)
+  const targets = Object.entries(coords).filter(([name, dongs]) =>
+    !existing[name] && Array.isArray(dongs) && dongs.length > 0 && !(dongs.length === 1 && dongs[0].dong === "지번"));
   console.log(`고저차 계산: ${targets.length}개 대상, 기존 ${Object.keys(existing).length}개\n`);
 
   let done = 0;
