@@ -8,6 +8,7 @@
  */
 
 import { join } from "node:path";
+import { existsSync, rmSync } from "node:fs";
 import { $ } from "bun";
 import { isNonBusinessDay, refreshHolidays } from "./holidays";
 
@@ -39,8 +40,18 @@ async function main() {
   const csvPath = join(ROOT, "data", "apt_trade_filtered.csv");
   const beforeLines = (await Bun.file(csvPath).text()).split("\n").length - 1;
 
+  // data/_todo_full_recollect (내용: 시작월 yyyymm) 있으면 그날은 전체 재수집 후 플래그 삭제
+  // — 과거 전체 기간 정정(예: 계약 해제 거래 일괄 제거)을 API 일일 한도가 풀린 다음 날 자동 수행
+  const fullFlag = join(ROOT, "data", "_todo_full_recollect");
   try {
-    await $`bun pipeline/collect.ts`.cwd(ROOT);
+    if (existsSync(fullFlag)) {
+      const since = (await Bun.file(fullFlag).text()).trim();
+      console.log(`   전체 재수집 예약 → ${since}부터`);
+      await $`bun pipeline/collect.ts --since ${since}`.cwd(ROOT);
+      rmSync(fullFlag);
+    } else {
+      await $`bun pipeline/collect.ts`.cwd(ROOT);
+    }
   } catch (e: any) {
     console.log(`   ⚠ 수집 오류: ${e.message?.slice(0, 100)}`);
   }
