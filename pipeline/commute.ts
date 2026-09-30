@@ -1,5 +1,9 @@
 /**
- * 후보 단지 ↔ 판교아지트 출퇴근 시간 측정 (Kakao Mobility API).
+ * 후보 단지 ↔ 판교아지트 출퇴근 시간 측정.
+ * - 길찾기(소요시간): 하이브리드 — 기본 Kakao Mobility, 일부만 네이버 NCP Directions 5.
+ *   네이버 호출 조건(무료 월 6만 한도 내 유지): 지역=수원/용인/화성 + 현재가(r3_avg) 아무 타입이나 ≤10억
+ *   + 늦은 슬롯 실행(출근 08시·퇴근 18시). 그 외(이른 슬롯·기타 지역·고가)는 모두 Kakao.
+ * - 좌표(geocode): Kakao Local (좌표 캐시로 사실상 1회성)
  *
  * Usage:
  *   bun src/commute.ts            # 출근 방향 (집→판교)
@@ -15,9 +19,8 @@ const OUT_PATH = join(ROOT, "data", "commute_results.json");
 // 단지 좌표 캐시 (좌표는 불변 → 매일 geocode 5,300+회 생략). query가 바뀌면 무효화.
 const COORDS_CACHE_PATH = join(ROOT, "data", "commute_coords_cache.json");
 
-// 병렬 측정 동시성. 카카오 directions는 동시 50+에서 순간 rate limit(code -10)이 발생하므로
-// 안전선(24)을 유지 → 5,300+개를 ~30초에 측정(과거 순차 49분 대비). QPS 초과 -10은
-// kakaoJson의 backoff 재시도로 흡수(일일 quota 소진과 구분).
+// 병렬 측정 동시성. 대부분 Kakao directions(동시 50+에서 순간 -10 rate limit) → 안전선 24.
+// 네이버 호출(소수)도 같은 풀에서 RPS 초과 시 429 → 각 길찾기 함수의 backoff로 흡수.
 const CONCURRENCY = 24;
 
 // 단지 목록 소스: data.json은 도시별 shard로 분할됨 (data-seoul.json + data-gyeonggi.json).
@@ -25,9 +28,19 @@ const CONCURRENCY = 24;
 const PUBLIC_DIR = join(ROOT, "public");
 const DATA_INDEX = join(PUBLIC_DIR, "data-index.json");
 
-// 카카오 길찾기 무료 할당량은 앱(REST API 키) 단위 일 10,000건.
-// 단지 5,300+개 × 출퇴근 2회 = 일 10,700+건 → 키 1개로는 초과.
-// KAKAO_REST_API_KEY_2가 있으면 호출마다 라운드로빈해 합산 할당량을 2배로.
+// 네이버 클라우드 플랫폼(NCP) Maps Directions 5 — 길찾기 소요시간.
+// 무료 제공량은 2025-05-28 종료 → 종량제(호출당 과금). 좌표는 캐시되므로 directions가 주 비용.
+const NAVER_ID = process.env.NAVER_CLIENT_ID;
+const NAVER_SECRET = process.env.NAVER_CLIENT_SECRET;
+if (!NAVER_ID || !NAVER_SECRET)
+  throw new Error("NAVER_CLIENT_ID / NAVER_CLIENT_SECRET 미설정 (NCP Maps Directions)");
+const NAVER_DIRECTIONS_URL = "https://maps.apigw.ntruss.com/map-direction/v1/driving";
+// 경로 옵션: traoptimal(실시간 최적, NCP 기본) — 기존 Kakao RECOMMEND에 대응.
+// trafast(실시간 빠른길)로 바꾸면 더 공격적(소요시간 최소) 경로.
+const NAVER_OPTION = "traoptimal";
+
+// Kakao 키: 길찾기(navi) 대부분 + 좌표검색(local) 라운드로빈. navi 무료 10,000/일·키, 3키로 30,000/일.
+// 하이브리드 후 navi 부하는 일 ~22,500(늦은슬롯의 수원/용인/화성 ≤10억만 네이버로 분리)이라 3키 한도 내.
 const KAKAO_KEYS = [
   process.env.KAKAO_REST_API_KEY,
   process.env.KAKAO_REST_API_KEY_2,
@@ -35,7 +48,7 @@ const KAKAO_KEYS = [
 ].filter((k): k is string => !!k);
 if (KAKAO_KEYS.length === 0) throw new Error("KAKAO_REST_API_KEY 미설정");
 
-/** 모든 카카오 키가 할당량 초과(code -10)된 경우. 측정 중단 + 불완전 batch 저장 금지. */
+/** 모든 카카오 키가 소진/비활성된 경우. 측정 중단 + 불완전 batch 저장 금지. */
 class QuotaExceededError extends Error {}
 
 // 카카오 키별 권한/할당량은 서비스(navi=길찾기, local=좌표검색)마다 별개다.
@@ -61,10 +74,8 @@ function nextKeyIdx(service: Service): number {
 }
 
 // 카카오 JSON GET. 서비스별 키 로테이션 + 권한/할당량 처리.
-//
-// - navi code -10: (a)일일 quota 소진 또는 (b)순간 QPS 초과(rate limit) 양쪽에 쓰임.
-//   -10이면 backoff 재시도. (b)면 회복, (a)면 계속 -10 → MAX_RETRY 후 그 키 소진 확정.
-// - local 403(OPEN_MAP_AND_LOCAL disabled): 그 키는 좌표검색 불가 → localDisabled 처리 후 다른 키.
+// - navi code -10: 일일 quota 소진 또는 순간 QPS 초과 → backoff 재시도, 회복 안 되면 그 키 소진 확정.
+// - local 403(OPEN_MAP_AND_LOCAL disabled): 그 키 좌표검색 제외(localDisabled) 후 다른 키.
 async function kakaoJson(buildUrl: () => string, service: Service): Promise<any> {
   const MAX_RETRY = 4; // backoff 250·500·750·1000ms
   let attempt = 0;
@@ -107,10 +118,25 @@ const DESTINATION = "판교역로 166";
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-// data shard(들)에서 아파트 목록 자동 생성
-async function loadCandidates(): Promise<[string, string][]> {
+// 네이버 길찾기 대상 = 지역(수원/용인/화성) + 현재가(r3_avg, 없으면 avg) 아무 타입이나 ≤10억.
+const NAVER_REGIONS = ["수원시", "용인시", "화성시"];
+const NAVER_PRICE_MAX = 100000; // 10억 (단위 만원)
+
+// data shard(들)에서 아파트 목록 + 네이버 길찾기 대상 이름 집합 생성.
+async function loadCandidates(): Promise<{
+  candidates: [string, string][];
+  naverNames: Set<string>;
+}> {
   const index: { shards: { url: string }[] } = await Bun.file(DATA_INDEX).json();
-  const data: { name: string; dong: string; region: string; doro_juso: string | null }[] = [];
+  type Row = {
+    name: string;
+    dong: string;
+    region: string;
+    doro_juso: string | null;
+    r3_avg?: number | null;
+    avg?: number | null;
+  };
+  const data: Row[] = [];
   for (const shard of index.shards) {
     const rows = await Bun.file(join(PUBLIC_DIR, shard.url)).json();
     data.push(...rows);
@@ -118,14 +144,31 @@ async function loadCandidates(): Promise<[string, string][]> {
 
   const seen = new Set<string>();
   const candidates: [string, string][] = [];
+  const regionOf = new Map<string, string>(); // 첫 등장(shard 순서상 서울 우선) 지역
+  const minPrice = new Map<string, number>(); // 단지별 모든 타입 중 최저 현재가
   for (const d of data) {
-    if (seen.has(d.name)) continue;
-    seen.add(d.name);
-    // 도로명주소 우선, 없으면 지역+법정동+단지명
-    const query = d.doro_juso || `${d.region} ${d.dong} ${d.name}`;
-    candidates.push([d.name, query]);
+    if (!seen.has(d.name)) {
+      seen.add(d.name);
+      // 도로명주소 우선, 없으면 지역+법정동+단지명
+      const query = d.doro_juso || `${d.region} ${d.dong} ${d.name}`;
+      candidates.push([d.name, query]);
+      regionOf.set(d.name, d.region);
+    }
+    const p = d.r3_avg ?? d.avg;
+    if (typeof p === "number" && p > 0) {
+      const cur = minPrice.get(d.name);
+      if (cur === undefined || p < cur) minPrice.set(d.name, p);
+    }
   }
-  return candidates;
+
+  // 자격 판정: 첫 등장 지역이 대상 시 + 최저 현재가 ≤ 10억
+  const naverNames = new Set<string>();
+  for (const [name, region] of regionOf) {
+    if (!NAVER_REGIONS.some((r) => region.includes(r))) continue;
+    const mp = minPrice.get(name);
+    if (mp !== undefined && mp <= NAVER_PRICE_MAX) naverNames.add(name);
+  }
+  return { candidates, naverNames };
 }
 
 // 하드코딩 후보 (레거시, data.json에 없는 경우 fallback)
@@ -351,7 +394,46 @@ async function geocodeCached(name: string, query: string): Promise<GeoResult | n
   return g;
 }
 
-async function driveTime(
+// ── 길찾기 (하이브리드 라우팅) ─────────────────────────────
+
+// 네이버 Directions 5. duration은 ms(/1000/60→분), distance는 m.
+// 429(RPS 초과)·5xx는 순간 부하 → backoff 재시도. 경로 없음(code≠0)·실패는 null → 해당 단지 SKIP.
+async function driveTimeNaver(
+  sLat: number,
+  sLng: number,
+  gLat: number,
+  gLng: number,
+): Promise<{ minutes: number; distance: number } | null> {
+  const params = new URLSearchParams({
+    start: `${sLng},${sLat}`,
+    goal: `${gLng},${gLat}`,
+    option: NAVER_OPTION,
+  });
+  const MAX_RETRY = 4; // backoff 250·500·750·1000ms
+  for (let attempt = 0; ; attempt++) {
+    const res = await fetch(`${NAVER_DIRECTIONS_URL}?${params}`, {
+      headers: {
+        "x-ncp-apigw-api-key-id": NAVER_ID!,
+        "x-ncp-apigw-api-key": NAVER_SECRET!,
+      },
+    });
+    if ((res.status === 429 || res.status >= 500) && attempt < MAX_RETRY) {
+      await sleep(250 * (attempt + 1)); // 순간 RPS 초과/일시 장애 → backoff 후 재시도
+      continue;
+    }
+    const data: any = await res.json().catch(() => null);
+    const summary = data?.route?.[NAVER_OPTION]?.[0]?.summary;
+    if (!summary) return null; // 경로 탐색 실패/출발·도착지 도로밖 등 → SKIP
+    return {
+      minutes: Math.floor(summary.duration / 1000 / 60), // ms → 분
+      distance: summary.distance, // m
+    };
+  }
+}
+
+// 카카오 모빌리티 Directions. duration은 초(/60→분), distance는 m. RECOMMEND=추천경로(실시간 반영).
+// quota(-10)·키 로테이션은 kakaoJson("navi")이 처리. 경로 없음은 null → SKIP.
+async function driveTimeKakao(
   sLat: number,
   sLng: number,
   gLat: number,
@@ -372,6 +454,19 @@ async function driveTime(
     minutes: Math.floor(summary.duration / 60),
     distance: summary.distance,
   };
+}
+
+// 라우터: 늦은 슬롯의 수원/용인/화성 ≤10억 단지만 네이버, 나머지는 Kakao.
+function driveTime(
+  useNaver: boolean,
+  sLat: number,
+  sLng: number,
+  gLat: number,
+  gLng: number,
+): Promise<{ minutes: number; distance: number } | null> {
+  return useNaver
+    ? driveTimeNaver(sLat, sLng, gLat, gLng)
+    : driveTimeKakao(sLat, sLng, gLat, gLng);
 }
 
 // ── 메인 ───────────────────────────────────────────────
@@ -425,10 +520,18 @@ async function main() {
     `판교아지트 좌표: ${dest.name} (${dest.lat.toFixed(4)}, ${dest.lng.toFixed(4)})\n`,
   );
 
+  // 늦은 슬롯 실행 여부 — 네이버 길찾기는 늦은 슬롯에서만 호출.
+  // 출근 늦게=hour 8–9(08:00), 퇴근 늦게=hour 17–19(18:00). 그 외(이른 슬롯·catch-up)는 전부 Kakao.
+  const h = now.getHours();
+  const isLateRun = reverse ? h >= 17 && h <= 19 : h >= 8 && h <= 9;
+
   // 후보 목록: data.json 기반 (실패 시 레거시 목록)
   let candidates: [string, string][];
+  let naverNames = new Set<string>();
   try {
-    candidates = await loadCandidates();
+    const loaded = await loadCandidates();
+    candidates = loaded.candidates;
+    naverNames = loaded.naverNames;
     console.log(`data.json에서 ${candidates.length}개 아파트 로드`);
   } catch {
     const seen = new Set<string>();
@@ -440,6 +543,14 @@ async function main() {
     console.log(`data.json 로드 실패, 레거시 목록 ${candidates.length}개 사용`);
   }
   if (testMode) candidates = candidates.slice(0, limit);
+
+  // 이번 실행에서 실제로 네이버를 탈 단지 수 (늦은 슬롯에서만).
+  const naverThisRun = isLateRun
+    ? candidates.filter(([name]) => naverNames.has(name)).length
+    : 0;
+  console.log(
+    `길찾기 분배: 네이버 대상 ${naverNames.size}단지(수원/용인/화성 ≤10억) · 이번 실행 네이버 ${naverThisRun}건(${isLateRun ? "늦은 슬롯" : "이른 슬롯/catch-up → 0"}) · 나머지 Kakao`,
+  );
 
   // 병렬 측정 (동시성 CONCURRENCY). 좌표는 캐시 우선 → directions만 호출.
   const measured: Measurement[] = [];
@@ -459,9 +570,10 @@ async function main() {
           console.log(`  SKIP ${name}: 좌표 조회 실패`);
           continue;
         }
+        const useNaver = isLateRun && naverNames.has(name);
         const dt = reverse
-          ? await driveTime(dest.lat, dest.lng, geo.lat, geo.lng)
-          : await driveTime(geo.lat, geo.lng, dest.lat, dest.lng);
+          ? await driveTime(useNaver, dest.lat, dest.lng, geo.lat, geo.lng)
+          : await driveTime(useNaver, geo.lat, geo.lng, dest.lat, dest.lng);
         if (!dt) {
           console.log(`  SKIP ${name}: 경로 조회 실패`);
           continue;
@@ -490,9 +602,9 @@ async function main() {
   await Bun.write(COORDS_CACHE_PATH, JSON.stringify(coordsCache));
 
   if (fatal) {
-    // 모든 키 일일 할당량 소진 → 불완전 batch는 통계를 왜곡하므로 저장/배포하지 않고 종료.
+    // 모든 키 소진/비활성(길찾기 quota 또는 좌표검색 권한) → 불완전 batch는 통계 왜곡 → 저장/배포 안 함.
     console.error(
-      `\n⛔ 카카오 길찾기 일일 할당량 초과(키 ${KAKAO_KEYS.length}개 모두 소진): ${fatal.message}\n` +
+      `\n⛔ 카카오 키 소진/비활성: ${fatal.message}\n` +
         `   ${measured.length}/${candidates.length}건만 측정됨 — 불완전 batch는 저장하지 않습니다.\n` +
         `   해결: 키 추가(.env KAKAO_REST_API_KEY_3...) 또는 측정 대상/주기 조정.`,
     );
