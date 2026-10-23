@@ -1,0 +1,78 @@
+{
+  "shards": [
+    {
+      "key": "seoul-1",
+      "label": "서울특별시 1",
+      "url": "data-seoul-1.json",
+      "hash": "d9e92df409",
+      "count": 4193,
+      "region_prefixes": [
+        "서울특별시"
+      ]
+    },
+    {
+      "key": "seoul-2",
+      "label": "서울특별시 2",
+      "url": "data-seoul-2.json",
+      "hash": "2a406e869a",
+      "count": 4690,
+      "region_prefixes": [
+        "서울특별시"
+      ]
+    },
+    {
+      "key": "seoul-3",
+      "label": "서울특별시 3",
+      "url": "data-seoul-3.json",
+      "hash": "66618844f6",
+      "count": 4714,
+      "region_prefixes": [
+        "서울특별시"
+      ]
+    },
+    {
+      "key": "seoul-4",
+      "label": "서울특별시 4",
+      "url": "data-seoul-4.json",
+      "hash": "c056b40bec",
+      "count": 274,
+      "region_prefixes": [
+        "서울특별시"
+      ]
+    },
+    {
+      "key": "gyeonggi-1",
+      "label": "경기도 1",
+      "url": "data-gyeonggi-1.json",
+      "hash": "9b60d42d49",
+      "count": 3872,
+      "region_prefixes": [
+        "과천시",
+        "성남시",
+        "수원시",
+        "안양시",
+        "용인시",
+        "하남시",
+        "화성시"
+      ]
+    },
+    {
+      "key": "gyeonggi-2",
+      "label": "경기도 2",
+      "url": "data-gyeonggi-2.json",
+      "hash": "54620e8bbb",
+      "count": 1854,
+      "region_prefixes": [
+        "과천시",
+        "성남시",
+        "수원시",
+        "안양시",
+        "용인시",
+        "의왕시",
+        "하남시",
+        "화성시"
+      ]
+    }
+  ],
+  "generatedAt": "2026-10-23T09:02:25.095Z"
+}
