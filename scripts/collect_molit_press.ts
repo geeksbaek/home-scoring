@@ -1,6 +1,7 @@
 import { mkdir, readFile, rename, stat, unlink, writeFile } from "node:fs/promises";
 import { dirname, extname, join } from "node:path";
-import { spawn } from "node:child_process";
+import { execFileSync } from "node:child_process";
+import Anthropic from "@anthropic-ai/sdk";
 
 type Attachment = {
   name: string;
@@ -41,9 +42,9 @@ type CliOptions = {
   downloadAttachments: boolean;
   attachmentDir: string;
   convertMd: boolean;
-  codexModel: string;
-  codexEffort: string;
-  dpi: number;
+  claudeModel: string;
+  claudeEffort: string;
+  maxCostUsd: number;
   publicPath: string | null;
   refresh: boolean;
 };
@@ -79,10 +80,10 @@ Options:
   --no-detail                Skip korea.kr detail page fetch
   --download-attachments     Download detail-page attachments
   --attachment-dir=PATH      Attachment directory (default: data/molit_press_attachments)
-  --convert-md               Convert downloaded PDF attachments to Markdown via codex CLI
-  --codex-model=NAME         Codex model (default: gpt-5.5)
-  --codex-effort=LEVEL       Codex reasoning effort (default: high)
-  --dpi=N                    pdftoppm DPI for rasterization (default: 200)
+  --convert-md               Convert downloaded PDF attachments to Markdown via Claude API
+  --claude-model=NAME        Claude model (default: claude-opus-5-5)
+  --claude-effort=LEVEL      Effort low|medium|high (default: medium)
+  --max-cost-usd=N           Stop converting once this run's estimated API cost passes N (default: 5)
   --public=PATH              Sync to a public JSON for frontend (inline markdown bodies). Default: public/molit_press.json. Use --public=off to disable.
   --help                     Show this help
 
@@ -102,9 +103,9 @@ function parseArgs(argv: string[]): CliOptions {
     downloadAttachments: false,
     attachmentDir: "data/molit_press_attachments",
     convertMd: false,
-    codexModel: "gpt-5.5",
-    codexEffort: "high",
-    dpi: 200,
+    claudeModel: "claude-opus-5-5",
+    claudeEffort: "medium",
+    maxCostUsd: 5,
     publicPath: "public/molit_press.json",
     refresh: false,
   };
@@ -123,9 +124,9 @@ function parseArgs(argv: string[]): CliOptions {
     else if (key === "--since") options.since = value;
     else if (key === "--keyword") options.keyword = value;
     else if (key === "--attachment-dir") options.attachmentDir = value;
-    else if (key === "--codex-model") options.codexModel = value;
-    else if (key === "--codex-effort") options.codexEffort = value;
-    else if (key === "--dpi") options.dpi = Number.parseInt(value, 10);
+    else if (key === "--claude-model") options.claudeModel = value;
+    else if (key === "--claude-effort") options.claudeEffort = value;
+    else if (key === "--max-cost-usd") options.maxCostUsd = Number.parseFloat(value);
     else if (key === "--public") options.publicPath = value === "off" ? null : value;
     else throw new Error(`Unknown option: ${key}`);
   }
@@ -371,8 +372,8 @@ async function downloadAttachment(id: string, attachment: Attachment, attachment
   return path;
 }
 
-const CODEX_PROMPT =
-  "이 한국어 정부 보도자료 페이지를 정확히 Markdown으로 변환해줘. " +
+const CLAUDE_PROMPT =
+  "한국어 정부 보도자료 PDF를 정확히 Markdown으로 변환한다. 모든 페이지를 순서대로, 내용을 줄이거나 요약하지 말고 옮긴다. " +
   "제목은 #/##, 표는 GFM 표 문법으로 변환. " +
   "페이지 번호·로고·푸터(공공누리 등) 같은 페이지 외 정보는 제외. " +
   "다른 설명 없이 markdown 본문만 출력. 코드블록으로 감싸지 말 것.";
@@ -385,85 +386,57 @@ async function mtime(path: string): Promise<number> {
   return (await stat(path)).mtimeMs;
 }
 
-// 서브프로세스가 close 이벤트 없이 멈추면(codex가 빈 응답 후 hang 등) Promise가
-// 영영 settle되지 않아 스크립트 전체가 무한 정지한다(launchd 작업이 며칠씩 hung →
-// 새 인스턴스 미실행 → 자동 갱신 중단). 타임아웃으로 강제 kill + reject 해
-// 호출부 try/catch가 "변환 실패"로 넘기고 파이프라인이 계속 진행되게 한다.
-const SPAWN_TIMEOUT_MS = 300_000; // 5분 (codex 페이지당 변환 여유 + hang 방지)
-function spawnCapture(cmd: string, args: string[], stdin?: string, timeoutMs = SPAWN_TIMEOUT_MS): Promise<{ stdout: string; stderr: string; code: number }> {
-  return new Promise((resolve, reject) => {
-    const proc = spawn(cmd, args, { stdio: ["pipe", "pipe", "pipe"] });
-    const out: Buffer[] = [];
-    const err: Buffer[] = [];
-    let settled = false;
-    const timer = setTimeout(() => {
-      if (settled) return;
-      settled = true;
-      proc.kill("SIGKILL");
-      reject(new Error(`${cmd} timed out after ${Math.round(timeoutMs / 1000)}s`));
-    }, timeoutMs);
-    proc.stdout.on("data", (b) => out.push(b));
-    proc.stderr.on("data", (b) => err.push(b));
-    proc.on("error", (e) => { if (settled) return; settled = true; clearTimeout(timer); reject(e); });
-    proc.on("close", (code) => {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timer);
-      resolve({
-        stdout: Buffer.concat(out).toString("utf8"),
-        stderr: Buffer.concat(err).toString("utf8"),
-        code: code ?? -1,
-      });
-    });
-    if (stdin != null) { proc.stdin.write(stdin); proc.stdin.end(); } else { proc.stdin.end(); }
-  });
-}
+// $/1M tokens (input, output) — 비용 상한 계산용
+const PRICES: Record<string, [number, number]> = {
+  "claude-opus-5-5": [4, 20],
+  "claude-sonnet-5-5": [2, 10],
+  "claude-haiku-5-5": [0.1, 0.5],
+};
+let runCostUsd = 0;
+let anthropic: Anthropic | null = null;
 
-function extractCodexBody(out: string): string {
-  // codex exec 출력에서 `\ncodex\n` 다음 본문만 추출, `\ntokens used\n` 직전까지
-  const startKey = "\ncodex\n";
-  const startIdx = out.indexOf(startKey);
-  if (startIdx === -1) return out.trim();
-  const after = out.slice(startIdx + startKey.length);
-  const endIdx = after.indexOf("\ntokens used\n");
-  return (endIdx === -1 ? after : after.slice(0, endIdx)).trim();
+function apiKey(): string | undefined {
+  if (process.env.ANTHROPIC_API_KEY) return process.env.ANTHROPIC_API_KEY;
+  try {
+    // 허브 집사와 같은 키(macOS 키체인)
+    return execFileSync("security", ["find-generic-password", "-s", "homehub-anthropic", "-a", "jongyeol", "-w"], { encoding: "utf8" }).trim();
+  } catch {
+    return undefined;
+  }
 }
 
 async function convertPdfToMarkdown(pdfPath: string, options: CliOptions): Promise<string> {
-  const dir = dirname(pdfPath);
-  const stem = `_tmp_${Date.now()}`;
-  const prefix = join(dir, stem);
-  const ppm = await spawnCapture("pdftoppm", ["-r", String(options.dpi), "-png", pdfPath, prefix]);
-  if (ppm.code !== 0) throw new Error(`pdftoppm failed: ${ppm.stderr}`);
-
-  const { readdir } = await import("node:fs/promises");
-  const pages = (await readdir(dir))
-    .filter((f) => f.startsWith(`${stem}-`) && f.endsWith(".png"))
-    .sort();
-
-  const sections: string[] = [];
-  try {
-    // 순차 변환: codex CLI는 동시 호출 시 system skills 디렉토리 충돌로 빈 응답 발생
-    for (const page of pages) {
-      const imgPath = join(dir, page);
-      const result = await spawnCapture(
-        "codex",
-        [
-          "exec",
-          "-c", `model="${options.codexModel}"`,
-          "-c", `model_reasoning_effort="${options.codexEffort}"`,
-          "--image", imgPath,
-        ],
-        CODEX_PROMPT,
-      );
-      const body = extractCodexBody(result.stdout);
-      if (!body) throw new Error(`codex returned empty body for ${page}: ${result.stderr.slice(0, 200)}`);
-      sections.push(body);
-    }
-    return sections.join("\n\n");
-  } finally {
-    for (const page of pages) await unlink(join(dir, page)).catch(() => {});
+  if (runCostUsd >= options.maxCostUsd) {
+    throw new Error(`cost cap reached ($${runCostUsd.toFixed(2)} >= $${options.maxCostUsd})`);
   }
+  anthropic ??= new Anthropic({ apiKey: apiKey() });
+  const data = (await readFile(pdfPath)).toString("base64");
+  const withFallback = options.claudeModel !== "claude-haiku-5-5";
+  const stream = anthropic.beta.messages.stream({
+    model: options.claudeModel,
+    max_tokens: 64000,
+    output_config: { effort: options.claudeEffort as "low" | "medium" | "high" },
+    ...(withFallback ? { betas: ["server-side-fallback-2026-07-01"], fallbacks: "default" } : {}),
+    system: CLAUDE_PROMPT,
+    messages: [{
+      role: "user",
+      content: [
+        { type: "document", source: { type: "base64", media_type: "application/pdf", data } },
+        { type: "text", text: "이 보도자료 PDF 전체를 Markdown으로 변환해줘." },
+      ],
+    }],
+  } as any);
+  const msg = await stream.finalMessage();
+  const [pin, pout] = PRICES[options.claudeModel] ?? PRICES["claude-opus-5-5"];
+  const cost = (msg.usage.input_tokens * pin + msg.usage.output_tokens * pout) / 1e6;
+  runCostUsd += cost;
+  console.log(`  ↳ claude ${msg.model} in ${msg.usage.input_tokens} out ${msg.usage.output_tokens} ≈ $${cost.toFixed(3)} (run $${runCostUsd.toFixed(2)})`);
+  if (msg.stop_reason === "refusal") throw new Error("claude refused");
+  if (msg.stop_reason === "max_tokens") throw new Error("claude output truncated (max_tokens)");
+  const body = msg.content.filter((b: any) => b.type === "text").map((b: any) => b.text).join("").trim()
+    .replace(/^```(?:markdown|md)?\n/, "").replace(/\n```$/, "").trim();
+  if (!body) throw new Error("claude returned empty body");
+  return body;
 }
 
 async function convertAttachmentToMarkdown(attachment: Attachment, options: CliOptions): Promise<string | undefined> {
