@@ -45,6 +45,7 @@ type CliOptions = {
   claudeModel: string;
   claudeEffort: string;
   maxCostUsd: number;
+  concurrency: number;
   publicPath: string | null;
   refresh: boolean;
 };
@@ -81,8 +82,9 @@ Options:
   --download-attachments     Download detail-page attachments
   --attachment-dir=PATH      Attachment directory (default: data/molit_press_attachments)
   --convert-md               Convert downloaded PDF attachments to Markdown via Claude API
-  --claude-model=NAME        Claude model (default: claude-opus-5-5)
+  --claude-model=NAME        Claude model (default: claude-haiku-5-5)
   --claude-effort=LEVEL      Effort low|medium|high (default: medium)
+  --concurrency=N            Items processed at once (default: 8)
   --max-cost-usd=N           Stop converting once this run's estimated API cost passes N (default: 5)
   --public=PATH              Sync to a public JSON for frontend (inline markdown bodies). Default: public/molit_press.json. Use --public=off to disable.
   --help                     Show this help
@@ -103,9 +105,10 @@ function parseArgs(argv: string[]): CliOptions {
     downloadAttachments: false,
     attachmentDir: "data/molit_press_attachments",
     convertMd: false,
-    claudeModel: "claude-opus-5-5",
+    claudeModel: "claude-haiku-5-5",
     claudeEffort: "medium",
     maxCostUsd: 5,
+    concurrency: 8,
     publicPath: "public/molit_press.json",
     refresh: false,
   };
@@ -127,6 +130,7 @@ function parseArgs(argv: string[]): CliOptions {
     else if (key === "--claude-model") options.claudeModel = value;
     else if (key === "--claude-effort") options.claudeEffort = value;
     else if (key === "--max-cost-usd") options.maxCostUsd = Number.parseFloat(value);
+    else if (key === "--concurrency") options.concurrency = Math.max(1, Number.parseInt(value, 10));
     else if (key === "--public") options.publicPath = value === "off" ? null : value;
     else throw new Error(`Unknown option: ${key}`);
   }
@@ -507,7 +511,9 @@ async function main() {
     .slice(0, options.limit);
 
   console.log(`list items: ${listed.length}, candidates: ${candidates.length}`);
-  for (const item of candidates) {
+  // 여러 건을 동시에 처리(상세·첨부·변환). 저장은 한 줄로 줄 세워 같은 tmp 파일 충돌을 막는다.
+  let saveChain: Promise<void> = Promise.resolve();
+  const processItem = async (item: RssItem) => {
     const record = { ...byId.get(parseNewsId(item.link) ?? item.creator ?? item.guid ?? item.link), ...makeRecord(item) };
 
     if (options.detail) {
@@ -561,10 +567,26 @@ async function main() {
     }
 
     byId.set(record.id, record);
-    const sorted = [...byId.values()].sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
-    await writeJsonAtomic(options.output, sorted);
+    saveChain = saveChain.then(() => writeJsonAtomic(
+      options.output,
+      [...byId.values()].sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? "")),
+    ));
+    await saveChain;
     console.log(`saved ${record.id} ${record.publishedDate ?? ""} ${record.title}`);
-  }
+  };
+
+  let next = 0;
+  const workers = Array.from({ length: Math.min(options.concurrency, candidates.length) }, async () => {
+    while (next < candidates.length) {
+      const item = candidates[next++];
+      try {
+        await processItem(item);
+      } catch (error) {
+        console.warn(`실패 ${item.guid} ${item.title}: ${(error as Error).message}`);
+      }
+    }
+  });
+  await Promise.all(workers);
 
   console.log(`done: ${byId.size} records in ${options.output}`);
 
