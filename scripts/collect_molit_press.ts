@@ -45,6 +45,7 @@ type CliOptions = {
   codexEffort: string;
   dpi: number;
   publicPath: string | null;
+  refresh: boolean;
 };
 
 type RssItem = {
@@ -57,7 +58,10 @@ type RssItem = {
   guid: string;
 };
 
-const RSS_URL = "https://www.korea.kr/rss/dept_molit.xml";
+// 정책브리핑 RSS는 2026-07-01 서비스 종료(korea.kr 공지 newsId=132038885).
+// 대신 보도자료 목록 페이지를 국토교통부(A00006)로 걸러 긁는다.
+const LIST_URL = "https://www.korea.kr/briefing/pressReleaseList.do?repCodeType=A&repCode=A00006";
+const MAX_LIST_PAGES = 60;
 const KOREA_BASE_URL = "https://www.korea.kr";
 
 function usage(): never {
@@ -71,6 +75,7 @@ Options:
   --since=YYYY-MM-DD         Include records published on/after this date
   --keyword=TEXT             Filter by title or RSS description text
   --include-policy-news      Include policyNewsView.do items. Default is pressReleaseView.do only.
+  --refresh                  Re-process already-saved records too (default: only new ones)
   --no-detail                Skip korea.kr detail page fetch
   --download-attachments     Download detail-page attachments
   --attachment-dir=PATH      Attachment directory (default: data/molit_press_attachments)
@@ -101,12 +106,14 @@ function parseArgs(argv: string[]): CliOptions {
     codexEffort: "high",
     dpi: 200,
     publicPath: "public/molit_press.json",
+    refresh: false,
   };
 
   for (const arg of argv) {
     if (arg === "--help" || arg === "-h") usage();
     if (arg === "--include-policy-news") { options.includePolicyNews = true; continue; }
     if (arg === "--no-detail") { options.detail = false; continue; }
+    if (arg === "--refresh") { options.refresh = true; continue; }
     if (arg === "--download-attachments") { options.downloadAttachments = true; continue; }
     if (arg === "--convert-md") { options.convertMd = true; continue; }
     const [key, value] = arg.split("=", 2);
@@ -185,6 +192,58 @@ function parseRss(xml: string): RssItem[] {
       guid: tagValue(item, "guid"),
     };
   });
+}
+
+
+// 목록 페이지 <li><a href="/briefing/pressReleaseView.do?newsId=..."> <strong>제목</strong>
+// <span class="lead">요약</span> <span class="source"><span>YYYY.MM.DD</span><span>부처</span>
+function parseList(html: string): RssItem[] {
+  const items: RssItem[] = [];
+  const re = /<a href="(\/briefing\/pressReleaseView\.do\?newsId=(\d+)[^"]*)">([\s\S]*?)<\/a>/gi;
+  for (const m of html.matchAll(re)) {
+    const body = m[3];
+    const title = cleanText(body.match(/<strong>([\s\S]*?)<\/strong>/i)?.[1] ?? "");
+    const lead = body.match(/<span class="lead">([\s\S]*?)<\/span>/i)?.[1] ?? "";
+    const src = body.match(/<span class="source">([\s\S]*?)<\/span>\s*<\/span>/i)?.[1] ?? "";
+    const spans = [...src.matchAll(/<span>([^<]*)<\/span>/g)].map((x) => x[1].trim());
+    const date = spans.find((x) => /^\d{4}[.-]\d{2}[.-]\d{2}$/.test(x)) ?? "";
+    const dept = spans.find((x) => !/^\d{4}[.-]\d{2}[.-]\d{2}$/.test(x)) ?? "";
+    if (!title || !date) continue;
+    if (dept && dept !== "국토교통부") continue;
+    items.push({
+      title,
+      link: `${KOREA_BASE_URL}/briefing/pressReleaseView.do?newsId=${m[2]}`,
+      description: lead.trim(),
+      pubDate: "",
+      creator: "",
+      dcDate: `${date.replace(/\./g, "-")}T09:00:00+09:00`,
+      guid: m[2],
+    });
+  }
+  return items;
+}
+
+async function fetchListItems(options: CliOptions, known: Set<string>): Promise<RssItem[]> {
+  const out: RssItem[] = [];
+  const seen = new Set<string>();
+  for (let page = 1; page <= MAX_LIST_PAGES; page++) {
+    const html = await fetchText(`${LIST_URL}&pageIndex=${page}`);
+    const items = parseList(html);
+    if (items.length === 0) break;
+    let fresh = 0;
+    let older = false;
+    for (const it of items) {
+      if (seen.has(it.guid)) continue;
+      seen.add(it.guid);
+      if (options.since && it.dcDate.slice(0, 10) < options.since) { older = true; continue; }
+      if (!known.has(it.guid)) fresh++;
+      out.push(it);
+    }
+    const wanted = out.filter((it) => options.refresh || !known.has(it.guid)).length;
+    // 이미 받은 것만 나온 페이지 = 증분 끝. since 이전까지 내려갔거나 한도만큼 모았으면 멈춤.
+    if (older || wanted >= options.limit || (fresh === 0 && !options.since)) break;
+  }
+  return out;
 }
 
 function parseNewsId(url: string): string | null {
@@ -468,10 +527,13 @@ async function main() {
   const existing = await readExisting(options.output);
   const byId = new Map(existing.map((item) => [item.id, item]));
 
-  const rss = await fetchText(RSS_URL);
-  const candidates = parseRss(rss).filter((item) => shouldInclude(item, options)).slice(0, options.limit);
+  const listed = await fetchListItems(options, new Set(byId.keys()));
+  const candidates = listed
+    .filter((item) => shouldInclude(item, options))
+    .filter((item) => options.refresh || !byId.has(item.guid))
+    .slice(0, options.limit);
 
-  console.log(`RSS candidates: ${candidates.length}`);
+  console.log(`list items: ${listed.length}, candidates: ${candidates.length}`);
   for (const item of candidates) {
     const record = { ...byId.get(parseNewsId(item.link) ?? item.creator ?? item.guid ?? item.link), ...makeRecord(item) };
 

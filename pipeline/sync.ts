@@ -787,6 +787,11 @@ async function updatePages() {
   }
 
   // 항상 로컬 빌드 → gh-pages 배포
+  // node_modules가 지워지면(2026-10-27～11-17 배포 중단 원인) 빌드 전에 다시 설치
+  if (!existsSync(join(PAGES_DIR, "node_modules", ".bin", "vite"))) {
+    console.log("  node_modules 없음 → bun install");
+    Bun.spawnSync(["bun", "install", "--frozen-lockfile"], gitOpts);
+  }
   const build = Bun.spawnSync(["bun", "run", "build"], gitOpts);
   if (build.exitCode !== 0) {
     console.error("  ✗ 빌드 실패");

@@ -173,8 +173,11 @@ async function main() {
 
     // 데이터 커버리지
     const hasMgmt = dataJson.filter((d: any) => d.mgmt_cost != null).length;
-    const hasCommute = dataJson.filter((d: any) => d.commuteScore != null).length;
-    const hasViolence = dataJson.filter((d: any) => d.school_violence && Object.keys(d.school_violence).length > 0).length;
+    // commuteScore는 프론트 계산값, 학폭은 public/school_violence.json 별도 파일 → shard 필드로 센다
+    const hasCommute = dataJson.filter((d: any) => d.morning != null || d.evening != null || d.morning_late != null || d.evening_late != null).length;
+    let svSchools = new Set<string>();
+    try { svSchools = new Set(Object.keys(await Bun.file(join(scoringDir, "public", "school_violence.json")).json())); } catch {}
+    const hasViolence = dataJson.filter((d: any) => Array.isArray(d.schools) && d.schools.some((s: any) => svSchools.has(typeof s === "string" ? s : s?.name))).length;
     console.log(`   │`);
     console.log(`   ├ 📋 데이터 커버리지`);
     console.log(`   │  관리비: ${hasMgmt}/${dataJson.length} | 출퇴근: ${hasCommute}/${dataJson.length} | 학폭: ${hasViolence}/${dataJson.length}`);
